@@ -2,7 +2,7 @@
 
   if(!isset($_SESSION['userId'])) 
   {
-        header("Location: index.html?error=wrong username or password");
+        header("Location: login.php?error=wrong username or password");
   } 
 
 ?>
