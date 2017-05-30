@@ -1,6 +1,6 @@
 <?php
 
-  if(!isset($_SESSION['userId'])) 
+  if(!isset($_SESSION['userName'])) 
   {
         header("Location: login.php?error=wrong username or password");
   } 
