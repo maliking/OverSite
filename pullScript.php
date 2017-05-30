@@ -10,8 +10,8 @@
   $commands = array(
     'echo $PWD',
     'whoami',
-    'git pull',
-    'git status',
+    'sudo git pull',
+    'sudo git status',
   );
   // Run the commands for output
   $output = '';
