@@ -1,3 +1,12 @@
+<?php
+
+  if(!isset($_SESSION['userId'])) 
+  {
+        header("Location: index.html?error=wrong username or password");
+  } 
+
+?>
+
 <!DOCTYPE html>
 <html>
 
