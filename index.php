@@ -19,7 +19,7 @@
     $namedParameters[':password'] = $password;
     $stmt = $dbConn->prepare($sql);
     
-    $stmt->execute();
+    $stmt->execute($namedParameters);
     //$stmt->execute();
     // $result = $stmt->fetch(); //We are expecting one record
     // if (empty($result)) 
