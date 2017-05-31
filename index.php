@@ -21,29 +21,29 @@
     
     $stmt->execute($namedParameters);
     //$stmt->execute();
-    // $result = $stmt->fetch(); //We are expecting one record
-    // if (empty($result)) 
-    // {
-    //      header("Location: login.php?error=WRONG USERNAME OR PASSWORD");
-    // }
-    // else 
-    // {
-    //   session_start();
+    $result = $stmt->fetch(); //We are expecting one record
+    if (empty($result)) 
+    {
+         header("Location: login.php?error=WRONG USERNAME OR PASSWORD");
+    }
+    else 
+    {
+      session_start();
         
-    //   $_SESSION['userId']  = $result['userId'];
-    //   $_SESSION['username'] = $result['username'];
-    //   //$_SESSION['userName'] = $result['firstName'] . " " . $result['lastName'];
-    //   //$_SESSION['userId'] = $result['userId'];
-    //   if($result['userType'] == 1)
-    //   {
-    //     header("Location: Agent/IDXGetFeatured.php");
-    //   }
-    //   else if($result['userType'] == 0)
-    //   {
-    //     header("Location: Admin/AdminProfile.php");
-    //   }
+      $_SESSION['userId']  = $result['userId'];
+      $_SESSION['username'] = $result['username'];
+      //$_SESSION['userName'] = $result['firstName'] . " " . $result['lastName'];
+      //$_SESSION['userId'] = $result['userId'];
+      if($result['userType'] == 1)
+      {
+        header("Location: Agent/IDXGetFeatured.php");
+      }
+      else if($result['userType'] == 0)
+      {
+        header("Location: Admin/AdminProfile.php");
+      }
         
-    // }
+    }
   }
 
 ?>
