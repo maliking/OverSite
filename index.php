@@ -7,9 +7,12 @@
   else
   {
     require 'databaseConnection.php';
+
     $dbConn = getConnection();
+
     $username = $_POST['userName'];
     $password = sha1($_POST['password']);
+    
     $sql = "SELECT * FROM UsersInfo WHERE username = :username AND password = :password";
     $namedParameters = array();
     $namedParameters[':userame'] = $username;
@@ -24,6 +27,7 @@
     }
     else 
     {
+      session_start();
         
       $_SESSION['userId']  = $result['userId'];
       $_SESSION['username'] = $result['username'];
