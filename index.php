@@ -10,8 +10,8 @@
 
     $dbConn = getConnection();
 
-    // $username = $_POST['userName'];
-    // $password = sha1($_POST['password']);
+    $username = $_POST['userName'];
+    $password = sha1($_POST['password']);
     
     // $sql = "SELECT * FROM UsersInfo WHERE username = :username AND password = :password";
     // $namedParameters = array();
