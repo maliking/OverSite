@@ -36,12 +36,13 @@
       //$_SESSION['userId'] = $result['userId'];
       if($result['userType'] == 1)
       {
-        header("Location: Agent/IDXGetFeatured.php");
+        alert("Agent Side comming soon!");
+        header("Location: login.php");
       }
-      else if($result['userType'] == 0)
-      {
-        header("Location: Admin/AdminProfile.php");
-      }
+      // else if($result['userType'] == 0)
+      // {
+      //   header("Location: Admin/AdminProfile.php");
+      // }
         
     }
   }
