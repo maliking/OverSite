@@ -36,7 +36,7 @@
       //$_SESSION['userId'] = $result['userId'];
       if($result['userType'] == 1)
       {
-        alert("Agent Side comming soon!");
+        echo "alert('Agent Side comming soon!')";
         header("Location: login.php");
       }
       // else if($result['userType'] == 0)
