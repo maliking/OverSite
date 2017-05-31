@@ -13,13 +13,13 @@
     $username = $_POST['userName'];
     $password = sha1($_POST['password']);
     
-    // $sql = "SELECT * FROM UsersInfo WHERE username = :username AND password = :password";
-    // $namedParameters = array();
-    // $namedParameters[':userame'] = $username;
-    // $namedParameters[':password'] = $password;
-    // $stmt = $dbConn -> prepare($sql);
-    // $stmt->execute($namedParameters);
-    // //$stmt->execute();
+    $sql = "SELECT * FROM UsersInfo WHERE username = :username AND password = :password";
+    $namedParameters = array();
+    $namedParameters[':userame'] = $username;
+    $namedParameters[':password'] = $password;
+    $stmt = $dbConn -> prepare($sql);
+    $stmt->execute($namedParameters);
+    //$stmt->execute();
     // $result = $stmt->fetch(); //We are expecting one record
     // if (empty($result)) 
     // {
