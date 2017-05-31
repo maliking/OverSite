@@ -15,7 +15,7 @@
     
     $sql = "SELECT * FROM UsersInfo WHERE username = :username AND password = :password";
     $namedParameters = array();
-    $namedParameters[':userame'] = $username;
+    $namedParameters[':username'] = $username;
     $namedParameters[':password'] = $password;
     $stmt = $dbConn->prepare($sql);
     
