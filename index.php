@@ -1,53 +1,11 @@
 <?php
 
-  if(!isset($_POST['userName'])) 
+  session_start();
+
+  if(!isset($_SESSION['userId'])) 
   {
-        header("Location: login.php?error=wrong username or password");
-  } 
-  else
-  {
-    require 'databaseConnection.php';
-
-    $dbConn = getConnection();
-
-    $username = $_POST['userName'];
-    $password = sha1($_POST['password']);
-    
-    $sql = "SELECT * FROM UsersInfo WHERE username = :username AND password = :password";
-    $namedParameters = array();
-    $namedParameters[':username'] = $username;
-    $namedParameters[':password'] = $password;
-    $stmt = $dbConn->prepare($sql);
-    
-    $stmt->execute($namedParameters);
-    //$stmt->execute();
-    $result = $stmt->fetch(); //We are expecting one record
-    if (empty($result)) 
-    {
-         header("Location: login.php?error=WRONG USERNAME OR PASSWORD");
-    }
-    else 
-    {
-      session_start();
-        
-      $_SESSION['userId']  = $result['userId'];
-      $_SESSION['username'] = $result['username'];
-      //$_SESSION['userName'] = $result['firstName'] . " " . $result['lastName'];
-      //$_SESSION['userId'] = $result['userId'];
-
-      // userType 0 is for Admin and 1 is for Agent
-      if($result['userType'] == 0)
-      {
-        
         header("Location: login.php");
-      }
-      // else if($result['userType'] == 0)
-      // {
-      //   header("Location: Admin/AdminProfile.php");
-      // }
-        
-    }
-  }
+  } 
 
 ?>
 
