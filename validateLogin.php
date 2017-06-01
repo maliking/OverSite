@@ -17,7 +17,7 @@ $stmt->execute($namedParameters);
 $result = $stmt->fetch(); //We are expecting one record
 
 if (empty($result)) {
-     header("Location: index.html?error=WRONG USERNAME OR PASSWORD");
+     header("Location: login.php?error=WRONG USERNAME OR PASSWORD");
 }
 
 else {
@@ -27,7 +27,7 @@ else {
     //$_SESSION['userName'] = $result['firstName'] . " " . $result['lastName'];
     //$_SESSION['userId'] = $result['userId'];
     if($result['userType'] == 1){
-    	header("Location: index.php");
+    	header("Location: IDXGetFeatured.php");
 	}
 
 	else if($result['userType'] == 0){
