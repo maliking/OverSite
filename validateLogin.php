@@ -27,7 +27,7 @@ else {
     //$_SESSION['userName'] = $result['firstName'] . " " . $result['lastName'];
     //$_SESSION['userId'] = $result['userId'];
     if($result['userType'] == 1){
-    	header("Location: IDXGetFeatured.php");
+    	header("Location: index.php");
 	}
 
 	else if($result['userType'] == 0){
