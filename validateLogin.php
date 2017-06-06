@@ -26,11 +26,11 @@ else {
     $_SESSION['username'] = $result['username'];
     //$_SESSION['userName'] = $result['firstName'] . " " . $result['lastName'];
     //$_SESSION['userId'] = $result['userId'];
-    if($result['userType'] == 1){
+    if($result['userType'] == 0){
     	header("Location: index.php");
 	}
 
-	else if($result['userType'] == 0){
+	else if($result['userType'] == 1){
 		header("Location: Admin/AdminProfile.php");
 	}
     
