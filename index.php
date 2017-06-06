@@ -2,10 +2,10 @@
 
   session_start();
 
-  // if(!isset($_SESSION['userId'])) 
-  // {
-  //       header("Location: login.php");
-  // } 
+  if(!isset($_SESSION['userId'])) 
+  {
+        header("Location: login.php");
+  } 
 
 ?>
 
@@ -211,7 +211,7 @@
           <li class="header">OVERVIEW</li>
           <li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
           <li class="header">PROPERTIES</li>
-          <li><a href="inventory.html"><i class="fa fa-home"></i> <span>Current Inventory</span></a></li>
+          <li><a href="inventory.php"><i class="fa fa-home"></i> <span>Current Inventory</span></a></li>
           <li><a href="coming-soon.html"><i class="fa fa-flag"></i> <span>Coming Soon</span></a></li>
           <li><a href="past-sales.html"><i class="fa fa-archive"></i> <span>Past Sales</span></a></li>
           <li class="header">TRANSACTIONS</li>
