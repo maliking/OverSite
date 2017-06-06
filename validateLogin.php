@@ -31,7 +31,7 @@ else {
 	}
 
 	else if($result['userType'] == 1){
-		header("Location: Admin/AdminProfile.php");
+		header("Location: login.php");
 	}
     
 }
