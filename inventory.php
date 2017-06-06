@@ -312,10 +312,10 @@
                         echo "<td>" . $house['zip'] . "</td>";
                         echo "<td>" . $house['bedrooms'] . "</td>";
                         echo "<td>" . $house['bathrooms'] . "</td>";
-                        echo "<td>" . $house['NA'] . "</td>";
-                        echo "<td>" . $house['NA'] . "</td>";
+                        echo "<td>" . "NA" . "</td>";
+                        echo "<td>" . "NA" . "</td>";
                         echo "<td>" . $house['price'] . "</td>";
-                        echo "<td>" . $house['NA'] . "</td>";
+                        echo "<td>" . "NA" . "</td>";
                         echo "</tr>";
                       }
 
