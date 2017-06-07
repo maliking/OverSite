@@ -224,7 +224,7 @@
           <li><a href="#"><i class="fa fa-list-alt"></i> <span> Sales Breakdown</span></a></li>
           <li><a href="#"><i class="fa fa-file-text"></i> <span>Monthly Report</span></a></li>
           <li class="header">AGENTS</li>
-          <li><a href="roster.html"><i class="fa fa-users"></i> <span> Roster</span></a></li>
+          <li><a href="roster.php"><i class="fa fa-users"></i> <span> Roster</span></a></li>
           <li class="header">STATISTICS</li>
           <li><a href="#"><i class="fa fa-home"></i> <span> Sales Breakdown</span></a></li>
           <li><a href="#"><i class="fa fa-archive"></i> <span>Monthly Report</span></a></li>
