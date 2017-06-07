@@ -202,7 +202,7 @@
 
       <!-- Sidebar: style can be found in sidebar.less -->
       <section class="sidebar">
-        <a href="index.html" class="logo">
+        <a href="index.php" class="logo">
           <!-- Logo -->
           <img class="img-responsive" src="dist/img/remax-logo.png">
         </a>

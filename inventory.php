@@ -205,7 +205,7 @@
     <aside class="main-sidebar">
       <!-- Sidebar -->
       <section class="sidebar">
-        <a href="index2.html" class="logo">
+        <a href="index.php" class="logo">
           <!-- Logo -->
           <img class="img-responsive" src="dist/img/remax-logo.png">
         </a>
