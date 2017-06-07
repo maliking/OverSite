@@ -1,3 +1,17 @@
+<?php
+  session_start();
+  
+  require 'databaseConnection.php';
+
+  $dbConn = getConnection();
+  $sql = "SELECT username FROM  UsersInfo";
+  $stmt = $dbConn -> prepare($sql);
+  $stmt->execute();
+  $result = $stmt->fetchAll();
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -247,115 +261,30 @@
           <!-- /.col -->
         </div>
         <!-- /.row -->
-        <div class="row">
-          <div class="col-md-3">
-            <div class="box box-default collapsed-box">
-              <div class="box-header with-border">
-                <h3 class="box-title">Judy West</h3>
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-               </button>
-                </div>
-                <!-- /.box-tools -->
-              </div>
-              <!-- /.box-header -->
-              <div class="box-body">
-                Stats
-              </div>
-              <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-        <div class="row">
-          <div class="col-md-3">
-            <div class="box box-default collapsed-box">
-              <div class="box-header with-border">
-                <h3 class="box-title">Tory Parker</h3>
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-               </button>
-                </div>
-                <!-- /.box-tools -->
-              </div>
-              <!-- /.box-header -->
-              <div class="box-body">
-                Stats
-              </div>
-              <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-        <div class="row">
-          <div class="col-md-3">
-            <div class="box box-default collapsed-box">
-              <div class="box-header with-border">
-                <h3 class="box-title">Mandy Pierson</h3>
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-               </button>
-                </div>
-                <!-- /.box-tools -->
-              </div>
-              <!-- /.box-header -->
-              <div class="box-body">
-                Stats
-              </div>
-              <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-        <div class="row">
-          <div class="col-md-3">
-            <div class="box box-default collapsed-box">
-              <div class="box-header with-border">
-                <h3 class="box-title">Gary Holmes</h3>
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-               </button>
-                </div>
-                <!-- /.box-tools -->
-              </div>
-              <!-- /.box-header -->
-              <div class="box-body">
-                Stats
-              </div>
-              <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
-          </div>
-          <!-- /.col -->
-        </div>
-        <!-- /.row -->
-        <div class="row">
-          <div class="col-md-3">
-            <div class="box box-default collapsed-box">
-              <div class="box-header with-border">
-                <h3 class="box-title">Amy King</h3>
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
-               </button>
-                </div>
-                <!-- /.box-tools -->
-              </div>
-              <!-- /.box-header -->
-              <div class="box-body">
-                Stats
-              </div>
-              <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
-          </div>
-          <!-- /.col -->
-        </div>
+        <?php
+
+          foreach ($result as $agent) 
+          {
+            echo '<div class="row">';
+            echo '<div class="col-md-3">';
+            echo '<div class="box box-default collapsed-box">';
+            echo '<div class="box-header with-border">';
+            echo '<h3 class="box-title">' . ucwords($agent['username']) . '</h3>';
+            echo '<div class="box-tools pull-right">';
+            echo '<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>';
+            echo '</button>';
+            echo '</div>';
+            echo '</div>';
+            echo '<div class="box-body">';
+            echo 'Stats';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
+
+          }
+        ?>
+
         <!-- /.row -->
       </section>
       <!-- /.content -->
