@@ -391,10 +391,10 @@
                         {
                           echo "<tr>";
                           echo "<td>#" . $limit . <"/td>";
-                          echo "<td>" . $agent["lastName"] . "</td>"; 
-                          echo "<td>" . $agent["firstName"] . "</td>"; 
-                          echo "<td>" . $agent["sold"] . "</td>"; 
-                          echo "<td>" . $agent["YTDComm"] . "</td>"; 
+                          echo "<td>" . $agent['lastName'] . "</td>"; 
+                          echo "<td>" . $agent['firstName'] . "</td>"; 
+                          echo "<td>" . $agent['sold'] . "</td>"; 
+                          echo "<td>" . $agent['YTDComm'] . "</td>"; 
                           echo "<td>" . "NA" . "</td>"; 
                           echo "</tr>";
                           $limit++;
