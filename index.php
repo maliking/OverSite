@@ -339,7 +339,7 @@
             <!-- small box -->
             <div class="small-box bg-red">
               <div class="inner">
-                <h3><sup style="font-size: 20px">$</sup> <?php print $sumEarnings->name; ?> </h3>
+                <h3><sup style="font-size: 20px">$</sup> <?php print_r( $sumEarnings); ?> </h3>
                 <p>Total Net Earnings</p>
               </div>
               <div class="icon">
