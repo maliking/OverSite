@@ -380,13 +380,13 @@
                   </thead>
                   <tbody>
                     <?php
-                      $limit = 0;
+                     // $limit = 0;
                       foreach($rank as $agent)
                       {
-                        if($limit > 4)
-                        {
-                          break;
-                        }
+                        // if($limit > 4)
+                        // {
+                        //   break;
+                        // }
                         else
                         {
                           echo "<tr>";
@@ -396,7 +396,7 @@
                           // echo "<td>" . $agent['sold'] . "</td>"; 
                           // echo "<td>" . $agent['YTDComm'] . "</td>"; 
                           // echo "<td>" . "NA" . "</td>"; 
-                          // echo "</tr>";
+                          echo "</tr>";
                           $limit++;
                         }
                       }
