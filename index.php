@@ -16,7 +16,7 @@
   $houseStatus = $stmt->fetchAll();
 
   $dbConnEarn = getConnection();
-  $sqlEarn = "SELECT SUM(finalComm) AS earnings FROM commInfo";
+  $sqlEarn = "SELECT AVG(finalComm) as average, SUM(finalComm) AS earnings FROM commInfo";
   $stmtEarn = $dbConnEarn -> prepare($sqlEarn);
   $stmtEarn->execute();
   $sumEarnings = $stmtEarn->fetch();
@@ -308,7 +308,7 @@
             <!-- small box -->
             <div class="small-box bg-orange">
               <div class="inner">
-                <h3><sup style="font-size: 20px">$</sup>13,943</h3>
+                <h3><sup style="font-size: 20px">$</sup><?php echo $sumEarnings['average']; ?></h3>
                 <p>Avg. Agent Commission</p>
               </div>
               <div class="icon">
@@ -339,7 +339,7 @@
             <!-- small box -->
             <div class="small-box bg-red">
               <div class="inner">
-                <h3><sup style="font-size: 20px">$</sup> <?php echo $sumEarnings[0]; ?> </h3>
+                <h3><sup style="font-size: 20px">$</sup> <?php echo $sumEarnings['earnings']; ?> </h3>
                 <p>Total Net Earnings</p>
               </div>
               <div class="icon">
