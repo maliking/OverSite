@@ -22,9 +22,7 @@
   $sumEarnings = $stmtEarn->fetch();
 
   $dbConnRank = getConnection();
-  $sqlRank = "SELECT UsersInfo.firstName, UsersInfo.lastName, count(*) as sold, sum(finalComm) as YTDComm 
-              FROM UsersInfo Inner Join commInfo on UsersInfo.license = commInfo.license 
-              group by UsersInfo.license order by sold Desc ";
+  $sqlRank = "SELECT UsersInfo.firstName, UsersInfo.lastName, count(*) as sold, sum(finalComm) as YTDComm FROM UsersInfo Inner Join commInfo on UsersInfo.license = commInfo.license group by UsersInfo.license order by sold Desc ";
   $stmtRank = $dbConnRank -> prepare($sqlRank);
   $stmtRank->execute();
   $rank = $stmtRank->fetchAll();
@@ -381,7 +379,28 @@
                     </tr>
                   </thead>
                   <tbody>
-                    
+                    <?php
+                      $limit = 0;
+                      foreach ($rank as $agent)
+                      {
+                        if($limit > 4)
+                        {
+                          break;
+                        }
+                        else
+                        {
+                          echo "<tr>";
+                          echo "<td>#" . $limit . <"/td>";
+                          echo "<td>" . $agent["lastName"] . "</td>"; 
+                          echo "<td>" . $agent["firstName"] . "</td>"; 
+                          echo "<td>" . $agent["sold"] . "</td>"; 
+                          echo "<td>" . $agent["YTDComm"] . "</td>"; 
+                          echo "<td>" . "NA" . "</td>"; 
+                          echo "</tr>";
+                          $limit++;
+                        }
+                      }
+                    ?>
                   </tbody>
                 </table>
               </div>
