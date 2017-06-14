@@ -396,6 +396,7 @@
                       echo "<td>" . $agent["YTDComm"] . "</td>"; 
                       echo "<td>" . "NA" . "</td>"; 
                       echo "</tr>";
+                      $limit++;
                     }
                     ?>
                   </tbody>
