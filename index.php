@@ -7,6 +7,16 @@
         header("Location: login.php");
   } 
 
+  require 'databaseConnection.php';
+
+  $dbConn = getConnection();
+  $sql = "SELECT status, count(*) AS num FROM HouseInfo GROUP BY status";
+  $stmt = $dbConn -> prepare($sql);
+  $stmt->execute();
+  $houseStatus = $stmt->fetchAll();
+
+  
+
 ?>
 
 <!DOCTYPE html>
@@ -250,7 +260,7 @@
             <!-- small box -->
             <div class="small-box bg-aqua">
               <div class="inner">
-                <h3>7</h3>
+                <h3><?php echo $houseStatus[0]['num'] ?></h3>
                 <p>Active Listings</p>
               </div>
               <div class="icon">
@@ -264,7 +274,7 @@
             <!-- small box -->
             <div class="small-box bg-yellow">
               <div class="inner">
-                <h3>6</h3>
+                <h3><?php echo $houseStatus[1]['num'] ?></h3>
                 <p>Pending Listings</p>
               </div>
               <div class="icon">
@@ -278,7 +288,7 @@
             <!-- small box -->
             <div class="small-box bg-green">
               <div class="inner">
-                <h3>11</h3>
+                <h3><?php echo $houseStatus[2]['num'] ?></h3>
                 <p>Sold Listings</p>
               </div>
               <div class="icon">
