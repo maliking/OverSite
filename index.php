@@ -21,7 +21,13 @@
   $stmtEarn->execute();
   $sumEarnings = $stmtEarn->fetch();
 
-  
+  $dbConnRank = getConnection();
+  $sqlRank = "SELECT UsersInfo.firstName, UsersInfo.lastName, count(*) as sold, sum(finalComm) as YTDComm 
+              FROM `UsersInfo` Inner Join `commInfo` on UsersInfo.license = commInfo.license 
+              group by UsersInfo.license order by sold Desc ";
+  $stmtRank = $dbConnRank -> prepare($sqlRank);
+  $stmtRank->execute();
+  $rank = $stmtRank->fetchAll();
 
 ?>
 
@@ -375,49 +381,23 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>#1</td>
-                      <td>Regen</td>
-                      <td>Thomas</td>
-                      <td>17</td>
-                      <td>$102,039</td>
-                      <td>2.5%</td>
-                    </tr>
-                    <tr>
-                      <td>#2</td>
-                      <td>Poll</td>
-                      <td>Wendy
-                      </td>
-                      <td>15</td>
-                      <td>$101,132</td>
-                      <td>2.3%</td>
-                    </tr>
-                    <tr>
-                      <td>#3</td>
-                      <td>Beck</td>
-                      <td>Eric
-                      </td>
-                      <td>11</td>
-                      <td>$98,293</td>
-                      <td>2.3%</td>
-                    </tr>
-                    <tr>
-                      <td>#4</td>
-                      <td>Rogan</td>
-                      <td>Joe
-                      </td>
-                      <td>9</td>
-                      <td>$96,329</td>
-                      <td>2.1%</td>
-                    </tr>
-                    <tr>
-                      <td>#5</td>
-                      <td>Grigsby</td>
-                      <td>Lynn</td>
-                      <td>9</td>
-                      <td>$88,3293</td>
-                      <td>2.0%</td>
-                    </tr>
+                    <?php
+                    $limit = 0;
+                    foreach ($rank as $agent)
+                    {
+                      if($limit > 4)
+                        break;
+                    
+                      echo "<tr>";
+                      echo "<td>#" . $limit . <"/td>";
+                      echo "<td>" . $agent["lastName"] . "</td>"; 
+                      echo "<td>" . $agent["firstName"] . "</td>"; 
+                      echo "<td>" . $agent["sold"] . "</td>"; 
+                      echo "<td>" . $agent["YTDComm"] . "</td>"; 
+                      echo "<td>" . "NA" . "</td>"; 
+                      echo "</tr>";
+                    }
+                    ?>
                   </tbody>
                 </table>
               </div>
