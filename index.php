@@ -383,22 +383,22 @@
                      $limit = 0;
                       foreach($rank as $agent)
                       {
-                        // if($limit > 4)
-                        // {
-                        //   break;
-                        // }
-                        // else
-                        // {
+                        if($limit > 4)
+                        {
+                          break;
+                        }
+                        else
+                        {
                           echo "<tr>";
-                          echo "<td>#" . $limit . "/td>";
-                          // echo "<td>" . $agent['lastName'] . "</td>"; 
-                          // echo "<td>" . $agent['firstName'] . "</td>"; 
-                          // echo "<td>" . $agent['sold'] . "</td>"; 
-                          // echo "<td>" . $agent['YTDComm'] . "</td>"; 
-                          // echo "<td>" . "NA" . "</td>"; 
+                          echo "<td>#" . $limit . "</td>";
+                          echo "<td>" . $agent['lastName'] . "</td>"; 
+                          echo "<td>" . $agent['firstName'] . "</td>"; 
+                          echo "<td>" . $agent['sold'] . "</td>"; 
+                          echo "<td>" . $agent['YTDComm'] . "</td>"; 
+                          echo "<td>" . "NA" . "</td>"; 
                           echo "</tr>";
                           $limit++;
-                        // }
+                        }
                       }
                     ?>
                   </tbody>
