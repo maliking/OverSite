@@ -16,7 +16,7 @@
   $houseStatus = $stmt->fetchAll();
 
   $dbConnEarn = getConnection();
-  $sqlEarn = "SELECT SUM('finalComm') AS earnings FROM commInfo";
+  $sqlEarn = "SELECT SUM(finalComm) AS earnings FROM commInfo";
   $stmtEarn = $dbConnEarn -> prepare($sqlEarn);
   $stmtEarn->execute();
   $sumEarnings = $stmtEarn->fetch();
@@ -339,7 +339,7 @@
             <!-- small box -->
             <div class="small-box bg-red">
               <div class="inner">
-                <h3><sup style="font-size: 20px">$</sup> <?php print_r( $sumEarnings); ?> </h3>
+                <h3><sup style="font-size: 20px">$</sup> <?php echo $sumEarnings[0]; ?> </h3>
                 <p>Total Net Earnings</p>
               </div>
               <div class="icon">
