@@ -382,7 +382,7 @@
                   </thead>
                   <tbody>
                     <?php
-                    $limit = 0;
+                    var $limit = 0;
                     foreach ($rank as $agent)
                     {
                       if($limit > 4)
