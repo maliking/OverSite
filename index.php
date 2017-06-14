@@ -387,8 +387,8 @@
                         // {
                         //   break;
                         // }
-                        else
-                        {
+                        // else
+                        // {
                           echo "<tr>";
                           echo "<td>#" . $limit . <"/td>";
                           // echo "<td>" . $agent['lastName'] . "</td>"; 
@@ -398,7 +398,7 @@
                           // echo "<td>" . "NA" . "</td>"; 
                           echo "</tr>";
                           $limit++;
-                        }
+                        // }
                       }
                     ?>
                   </tbody>
