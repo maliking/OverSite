@@ -15,7 +15,7 @@
   $stmt->execute();
   $houseStatus = $stmt->fetchAll();
 
-  $sqlEarn = "SELECT sum(finalComm) AS earnings FROM commInfo";
+  $sqlEarn = "SELECT sum('finalComm') AS earnings FROM commInfo";
   $stmtEarn = $dbConn -> prepare($sqlEarn);
   $stmtEarn->execute();
   $sumEarnings = $stmtEarn->fetchAll();
