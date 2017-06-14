@@ -15,10 +15,10 @@
   $stmt->execute();
   $houseStatus = $stmt->fetchAll();
 
-  $sql = "SELECT sum(finalComm) AS earnings FROM commInfo";
-  $stmt = $dbConn -> prepare($sql);
-  $stmt->execute();
-  $earnings = $stmt->fetchAll();
+  $sqlEarn = "SELECT sum(finalComm) AS earnings FROM commInfo";
+  $stmtEarn = $dbConn -> prepare($sqlEarn);
+  $stmtEarn->execute();
+  $earnings = $stmtEarn->fetchAll();
 
   
 
