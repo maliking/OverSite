@@ -18,7 +18,7 @@
   $sqlEarn = "SELECT sum(finalComm) AS earnings FROM commInfo";
   $stmtEarn = $dbConn -> prepare($sqlEarn);
   $stmtEarn->execute();
-  $earnings = $stmtEarn->fetchAll();
+  $sumEarnings = $stmtEarn->fetchAll();
 
   
 
@@ -265,7 +265,7 @@
             <!-- small box -->
             <div class="small-box bg-aqua">
               <div class="inner">
-                <h3><?php echo $houseStatus[0]['num'] ?></h3>
+                <h3><?php echo $houseStatus[0]['num']; ?></h3>
                 <p>Active Listings</p>
               </div>
               <div class="icon">
@@ -279,7 +279,7 @@
             <!-- small box -->
             <div class="small-box bg-yellow">
               <div class="inner">
-                <h3><?php echo $houseStatus[1]['num'] ?></h3>
+                <h3><?php echo $houseStatus[1]['num']; ?></h3>
                 <p>Pending Listings</p>
               </div>
               <div class="icon">
@@ -293,7 +293,7 @@
             <!-- small box -->
             <div class="small-box bg-green">
               <div class="inner">
-                <h3><?php echo $houseStatus[2]['num'] ?></h3>
+                <h3><?php echo $houseStatus[2]['num']; ?></h3>
                 <p>Sold Listings</p>
               </div>
               <div class="icon">
@@ -338,7 +338,7 @@
             <!-- small box -->
             <div class="small-box bg-red">
               <div class="inner">
-                <h3><sup style="font-size: 20px">$</sup><?php echo $earnings['earnings'] ?></h3>
+                <h3><sup style="font-size: 20px">$</sup><?php echo $sumEarnings['earnings']; ?></h3>
                 <p>Total Net Earnings</p>
               </div>
               <div class="icon">
