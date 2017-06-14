@@ -380,7 +380,7 @@
                   </thead>
                   <tbody>
                     <?php
-                     // $limit = 0;
+                     $limit = 0;
                       foreach($rank as $agent)
                       {
                         // if($limit > 4)
