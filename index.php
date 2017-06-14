@@ -390,7 +390,7 @@
                         // else
                         // {
                           echo "<tr>";
-                          echo "<td>#" . $limit . <"/td>";
+                          echo "<td>#" . $limit . "/td>";
                           // echo "<td>" . $agent['lastName'] . "</td>"; 
                           // echo "<td>" . $agent['firstName'] . "</td>"; 
                           // echo "<td>" . $agent['sold'] . "</td>"; 
