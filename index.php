@@ -179,7 +179,7 @@
                 <li class="user-header">
                   <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                   <p>
-                    Alexander Pierce - Web Developer
+                    <?php echo $_SESSION['username']; ?>
                     <small>Member since Nov. 2012</small>
                   </p>
                 </li>
@@ -426,7 +426,7 @@
                       <th>Last</th>
                       <th>First</th>
                       <th><i class="fa fa-home"></i> Sold</th>
-                      <th><i class="fa fa-money"> YTD Comm.</i></th>
+                      <th><i class="fa fa-money"></i> YTD Comm.</th>
                       <th><i class="fa fa-percent"></i></th>
                     </tr>
                   </thead>
