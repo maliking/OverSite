@@ -445,7 +445,7 @@
                         {
                           echo "<tr>";
                           echo "<td>#" . $limit . "</td>";
-                          echo "<td>" . $reverseRank['lastName'] . "</td>"; 
+                          echo "<td>" . print_r($reverseRank) . "</td>"; 
                           echo "<td>" . $reverseRank['firstName'] . "</td>"; 
                           echo "<td>" . $reverseRank['sold'] . "</td>"; 
                           echo "<td>" . $reverseRank['YTDComm'] . "</td>"; 
