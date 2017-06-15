@@ -22,7 +22,7 @@
   $sumEarnings = $stmtEarn->fetch();
 
   $dbConnRank = getConnection();
-  $sqlRank = "SELECT UsersInfo.firstName, UsersInfo.lastName, count(*) as sold, sum(finalComm) as YTDComm FROM UsersInfo Inner Join commInfo on UsersInfo.license = commInfo.license group by UsersInfo.license order by sold Desc ";
+  $sqlRank = "SELECT UsersInfo.firstName, UsersInfo.lastName, count(*) as sold, sum(finalComm) as YTDComm FROM UsersInfo LEFT JOIN commInfo on UsersInfo.license = commInfo.license group by UsersInfo.license order by sold Desc ";
   $stmtRank = $dbConnRank -> prepare($sqlRank);
   $stmtRank->execute();
   $rank = $stmtRank->fetchAll();
