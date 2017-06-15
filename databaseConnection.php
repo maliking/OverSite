@@ -5,6 +5,7 @@ function getConnection() {
     $dbname = "test";
     $username = "root";
     $password = "root";
+    
     try{
 	    $dbConn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password); 
 	    // Check for ERROR 
@@ -16,6 +17,8 @@ function getConnection() {
     {
     	echo "Connection failed: " . $e->getMessage();
     }
+    
+    setlocale(LC_MONETARY, 'en_US.UTF-8');
 }
 //used to UPDATE, INSERT, and SELECT statements for database
 function sendQuery($sql, $namedParameters){

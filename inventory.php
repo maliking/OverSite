@@ -314,7 +314,7 @@
                         echo "<td>" . $house['bathrooms'] . "</td>";
                         echo "<td>" . "NA" . "</td>";
                         echo "<td>" . "NA" . "</td>";
-                        echo "<td>" . $house['price'] . "</td>";
+                        echo "<td>" . '$' . number_format($house['price'], 0) . "</td>";
                         echo "<td>" . "NA" . "</td>";
                         echo "</tr>";
                       }
