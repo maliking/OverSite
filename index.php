@@ -431,6 +431,30 @@
                     </tr>
                   </thead>
                   <tbody>
+                    <?php
+                      $rankArraySize = sizeof($rank);
+                     $limit = $rankArraySize;
+                     $reverseRank = array_reverse($rank);
+                      foreach($reverseRank as $agent)
+                      {
+                        if($limit < $rankArraySize - 5)
+                        {
+                          break;
+                        }
+                        else
+                        {
+                          echo "<tr>";
+                          echo "<td>#" . $limit . "</td>";
+                          echo "<td>" . $reverseRank['lastName'] . "</td>"; 
+                          echo "<td>" . $reverseRank['firstName'] . "</td>"; 
+                          echo "<td>" . $reverseRank['sold'] . "</td>"; 
+                          echo "<td>" . $reverseRank['YTDComm'] . "</td>"; 
+                          echo "<td>" . "NA" . "</td>"; 
+                          echo "</tr>";
+                          $limit--;
+                        }
+                      }
+                    ?>
                     <tr>
                       <td>#16</td>
                       <td>Walter</td>
