@@ -457,51 +457,6 @@
                         }
                       }
                     ?>
-                    <tr>
-                      <td>#16</td>
-                      <td>Walter</td>
-                      <td>Emily</td>
-                      <td>2</td>
-                      <td>$19,323</td>
-                      <td>1.4%</td>
-                    </tr>
-                    <tr>
-                      <td>#15</td>
-                      <td>Reals</td>
-                      <td>Paul</td>
-                      <td>4</td>
-                      <td>$20,323</td>
-
-                      <td>1.5%</td>
-                    </tr>
-                    <tr>
-                      <td>#14</td>
-                      <td>Musk</td>
-                      <td>Charles
-                      </td>
-                      <td>4</td>
-                      <td>$22,320</td>
-
-                      <td>1.5%</td>
-                    </tr>
-                    <tr>
-                      <td>#13</td>
-                      <td>Holmes</td>
-                      <td>Greg</td>
-                      <td>5</td>
-                      <td>$23,023</td>
-
-                      <td>1.4%</td>
-                    </tr>
-                    <tr>
-                      <td>#12</td>
-                      <td>Lee</td>
-                      <td>Miriam</td>
-                      <td>5</td>
-                      <td>$33,230</td>
-
-                      <td>1.3%</td>
-                    </tr>
                   </tbody>
                 </table>
               </div>
