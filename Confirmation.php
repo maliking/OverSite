@@ -12,7 +12,7 @@
 		<form action="BuyerForm.php">
             <input type="submit" value="Go back to form" name="BuyerForm"/>
         </form>  
-        <meta http-equiv="refresh" content="3;url=addBuyer.php" />
+        <meta http-equiv="refresh" content="3;url=signIn.php" />
 	</center>
 	</body>
 	
