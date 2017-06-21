@@ -243,7 +243,7 @@ if (!isset($_SESSION['userId'])) {
                     <div class="row">
                         <div class="col-lg-8 col-xs-12">
                             <div class="box box-success">
-                                <div class="box-header with-border" style="background-color: red">
+                                <div class="box-header with-border" style="background-color: rgb(210, 69, 60)">
                                     <h3 class="box-title"><i class=" fa fa-flash"></i> Leads</h3>
 
                                     <div class="box-tools pull-right">
@@ -257,21 +257,57 @@ if (!isset($_SESSION['userId'])) {
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th style="text-align: center; background-color: #b1eba4"><i class="fa fa-address-card-o"></i> Contact</th>
-                                                <th style="text-align: center; background-color: #b1eba4"><i class="fa fa-map-marker"></i> Property</th>
-                                                <th style="text-align: center; background-color: #fdecd1"><i class="fa fa-check-square-o"></i> Connect</th>
+                                                <th style="text-align: center"><i class="fa fa-address-card-o"></i> Contact</th>
+                                                <th style="text-align: center"><i class="fa fa-map-marker"></i> Property</th>
+                                                <th style="text-align: center"><i class="fa fa-paper-plane"></i> Connect</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <tr>
                                                 <td>Mali King<br>(408) 348-8336</td>
                                                 <td>704 Craig St.<br>Los Gatos, CA 93905</td>
-                                                <td><button class="btn btn-default">Email</button></td>
+                                                <td><button class="btn btn-default"><i class="fa fa-envelope"></i> Email</button></td>
                                             </tr>
                                             <tr>
                                                 <td>Tommy Lore<br>(408) 432-4325</td>
                                                 <td>53 Greg St.<br>Los Gatos, CA 93905</td>
-                                                <td><button class="btn btn-default">Email</button></td>
+                                                <td><button class="btn btn-default"><i class="fa fa-envelope"></i> Email</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <div class="box box-success">
+                                <div class="box-header with-border" style="background-color: rgb(210, 69, 60)">
+                                    <h3 class="box-title"><i class=" fa fa-flash"></i> Leads</h3>
+
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <table id="myTable" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align: center"><i class="fa fa-address-card-o"></i> Contact</th>
+                                                <th style="text-align: center"><i class="fa fa-map-marker"></i> Property</th>
+                                                <th style="text-align: center"><i class="fa fa-paper-plane"></i> Connect</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Mali King<br>(408) 348-8336</td>
+                                                <td>704 Craig St.<br>Los Gatos, CA 93905</td>
+                                                <td><button class="btn btn-default"><i class="fa fa-envelope"></i> Email</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tommy Lore<br>(408) 432-4325</td>
+                                                <td>53 Greg St.<br>Los Gatos, CA 93905</td>
+                                                <td><button class="btn btn-default"><i class="fa fa-envelope"></i> Email</button></td>
                                             </tr>
                                         </tbody>
                                     </table>
