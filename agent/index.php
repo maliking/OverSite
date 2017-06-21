@@ -242,8 +242,8 @@ if (!isset($_SESSION['userId'])) {
                 <section class="content">
                     <div class="row">
                         <div class="col-lg-8 col-xs-12">
-                            <div class="box box-success" style="background-color: red">
-                                <div class="box-header with-border">
+                            <div class="box box-success">
+                                <div class="box-header with-border" style="background-color: red">
                                     <h3 class="box-title"><i class=" fa fa-flash"></i> Leads</h3>
 
                                     <div class="box-tools pull-right">
@@ -257,8 +257,8 @@ if (!isset($_SESSION['userId'])) {
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th style="text-align: center; background-color: #b1eba4"><i class="fa fa-map-marker"></i> Contact</th>
-                                                <th style="text-align: center; background-color: #b1eba4"><i class="fa fa-address-card-o"></i> Property</th>
+                                                <th style="text-align: center; background-color: #b1eba4"><i class="fa fa-address-card-o"></i> Contact</th>
+                                                <th style="text-align: center; background-color: #b1eba4"><i class="fa fa-map-marker"></i> Property</th>
                                                 <th style="text-align: center; background-color: #fdecd1"><i class="fa fa-check-square-o"></i> Connect</th>
                                             </tr>
                                         </thead>
