@@ -313,7 +313,7 @@
             <!-- small box -->
             <div class="small-box bg-orange">
               <div class="inner">
-                <h3><sup style="font-size: 20px">$</sup><?php echo round($sumEarnings['average']) ?></h3>
+                <h3><sup style="font-size: 20px">$</sup><?php echo number_format($sumEarnings['average'], 0) ?></h3>
                 <p>Avg. Agent Commission</p>
               </div>
               <div class="icon">
