@@ -241,7 +241,7 @@ if (!isset($_SESSION['userId'])) {
                 <!-- Main content -->
                 <section class="content">
                     <div class="row">
-                        <div class="col-lg-8 col-xs-12">
+                        <div class="col-lg-12 col-xs-12">
                             <div class="box box-success">
                                 <div class="box-header with-border">
                                     <h3 class="box-title"><i class=" fa fa-flash"></i> My Active Properties</h3>
@@ -293,57 +293,6 @@ if (!isset($_SESSION['userId'])) {
                             </div>
                         </div>
                         <!-- /.box-body -->
-                        <div class="col-lg-4 col-xs-12">
-                            <div class="box box-success">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title"><i class=" fa fa-flash"></i> My Active Properties</h3>
-
-                                    <div class="box-tools pull-right">
-                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </div>
-                                <!-- /.box-header -->
-                                <div class="box-body">
-                                    <table id="myTable" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th colspan="2" style="text-align: center; background-color: #7edf68">Property</th>
-                                                <th colspan="4" style="text-align: center; background-color: #f9a019">Important Dates</th>
-                                            </tr>
-                                            <tr>
-                                                <th style="text-align: center; background-color: #b1eba4"><i class="fa fa-map-marker"></i> Address</th>
-                                                <th style="text-align: center; background-color: #b1eba4"><i class="fa fa-address-card-o"></i> Owner</th>
-                                                <th style="text-align: center; background-color: #fdecd1"><i class="fa fa-check-square-o"></i> Approved</th>
-                                                <th style="text-align: center; background-color: #fddfb2"><i class="fa fa-paperclip"></i> Disclosure</th>
-                                                <th style="text-align: center; background-color: #fcca7f"><i class="fa fa-shield"></i> Contingency</th>
-                                                <th style="text-align: center; background-color: #fab54c"><i class="fa fa-handshake-o"></i> COE</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>4345 Gregor St.<br>Los Gatos, CA 93940</td>
-                                                <td>Mali King<br>(408) 348-8336</td>
-                                                <td>5/4/17</td>
-                                                <td>5/6/17</td>
-                                                <td>5/9/17</td>
-                                                <td>5/12/17</td>
-                                            </tr>
-                                            <tr>
-                                                <td>94832 Mystery Rd.<br>Monte Sereno, CA 93940</td>
-                                                <td>Mali King<br>(408) 348-8336</td>
-                                                <td>5/4/17</td>
-                                                <td>5/6/17</td>
-                                                <td>5/9/17</td>
-                                                <td>5/12/17</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- /.box-body -->
-                            </div>
-                        </div>
                     </div>
                 </section>
             </div>
