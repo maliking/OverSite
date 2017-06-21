@@ -259,16 +259,16 @@ if (!isset($_SESSION['userId'])) {
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th colspan="2" style="text-align: center; background-color: #FFA112">Property</th>
-                                                <th colspan="4" style="text-align: center; background-color: #faf2cc">Important Dates</th>
+                                                <th colspan="2" style="text-align: center; background-color: #7edf68">Property</th>
+                                                <th colspan="4" style="text-align: center; background-color: #f9a019">Important Dates</th>
                                             </tr>
                                             <tr>
-                                                <th style="text-align: center; background-color: #FFB647"><i class="fa fa-map-marker"></i> Address</th>
-                                                <th style="text-align: center; background-color: #FFC147"><i class="fa fa-address-card-o"></i> Owner</th>
-                                                <th style="text-align: center; background-color: #FFA112"><i class="fa fa-check-square-o"></i> Approved</th>
-                                                <th style="text-align: center; background-color: #FFA112"><i class="fa fa-paperclip"></i> Disclosure</th>
-                                                <th style="text-align: center; background-color: #FFA112"><i class="fa fa-shield"></i> Contingency</th>
-                                                <th style="text-align: center; background-color: #FFA112"><i class="fa fa-handshake-o"></i> COE</th>
+                                                <th style="text-align: center; background-color: #8fe37b"><i class="fa fa-map-marker"></i> Address</th>
+                                                <th style="text-align: center; background-color: #9fe78e"><i class="fa fa-address-card-o"></i> Owner</th>
+                                                <th style="text-align: center; background-color: #faab32"><i class="fa fa-check-square-o"></i> Approved</th>
+                                                <th style="text-align: center; background-color: #fab54c"><i class="fa fa-paperclip"></i> Disclosure</th>
+                                                <th style="text-align: center; background-color: #fbc066"><i class="fa fa-shield"></i> Contingency</th>
+                                                <th style="text-align: center; background-color: #fcca7f"><i class="fa fa-handshake-o"></i> COE</th>
                                             </tr>
                                         </thead>
                                         <tbody>
