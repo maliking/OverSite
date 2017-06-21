@@ -57,7 +57,7 @@
     </header>
 
     <form method="post" action="addToDatabase.php">
-    <table>
+    <table style="margin: 0 auto;">
         <tr>
             <td colspan="2"><img align="bottom" alt="Interesting Image" border="0" class="simage float_center" height="151" src="https://d1yoaun8syyxxt.cloudfront.net/dh307-4c1ce6ae-ef18-4d63-ae22-952804c98fc4-v2" style="margin-left: 0px; margin-right: 0px;" title="Interesting Image" width="385" />
             </td>
