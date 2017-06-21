@@ -239,8 +239,6 @@
           <li class="header">TRANSACTIONS</li>
           <li><a href="#"><i class="fa fa-list-alt"></i> <span> Sales Breakdown</span></a></li>
           <li><a href="#"><i class="fa fa-file-text"></i> <span>Monthly Report</span></a></li>
-          <li class="header">AGENTS</li>
-          <li><a href="roster.php"><i class="fa fa-users"></i> <span> Roster</span></a></li>
           <li class="header">STATISTICS</li>
           <li><a href="#"><i class="fa fa-home"></i> <span> Sales Breakdown</span></a></li>
           <li><a href="#"><i class="fa fa-archive"></i> <span>Monthly Report</span></a></li>
@@ -359,7 +357,7 @@
           <div class="col-lg-12 col-xs-12">
             <div class="box box-success">
               <div class="box-header with-border">
-                <h3 class="box-title"><i class=" fa fa-user"></i> Agent Roster</h3>
+                <h3 class="box-title"><i class=" fa fa-users"></i> Agent Roster</h3>
 
                 <div class="box-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
