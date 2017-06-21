@@ -9,7 +9,7 @@
 
 		<h2>Thank you!</h2>
 
-		<form action="BuyerForm.php">
+		<form action="signIn.php">
             <input type="submit" value="Go back to form" name="BuyerForm"/>
         </form>  
         <meta http-equiv="refresh" content="3;url=signIn.php" />
