@@ -23,7 +23,7 @@ if (!isset($_SESSION['userId'])) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-        <link rel="stylesheet" href="../dist/css/skins/skin-black.min.css">
+        <link rel="stylesheet" href="../dist/css/skins/skin-red-light.min.css">
         <link rel="stylesheet" href="../plugins/datatables/datatables.min.css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -33,7 +33,7 @@ if (!isset($_SESSION['userId'])) {
         <![endif]-->
     </head>
 
-    <body class="hold-transition skin-black sidebar-mini">
+    <body class="hold-transition skin-red-light sidebar-mini">
         <!-- Site Wrapper -->
         <div class="wrapper">
             <!-- Main Header -->
