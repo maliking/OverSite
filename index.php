@@ -230,6 +230,7 @@
         <ul class="sidebar-menu">
           <li class="header">OVERVIEW</li>
           <li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+          <li><a href="signIn.php"><i class=""></i> <span>Sign In Sheet</span></a></li>
           <li class="header">PROPERTIES</li>
           <li><a href="inventory.php"><i class="fa fa-home"></i> <span>Current Inventory</span></a></li>
           <li><a href="coming-soon.html"><i class="fa fa-flag"></i> <span>Coming Soon</span></a></li>
