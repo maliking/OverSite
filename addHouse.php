@@ -55,7 +55,7 @@
     <body>
                 <!-- Navigation Bar -->
             <?php
-                require("agentNav.php");
+                // require("agentNav.php");
             ?>  
             
                 <div type="text" class="form" style="float:left; width:50%;">
