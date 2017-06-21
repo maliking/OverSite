@@ -1,7 +1,7 @@
 <?php
 //session_start();
-require '../databaseConnection.php';
-require('../keys/tKey.php');
+require 'databaseConnection.php';
+require('keys/cred.php');
 require('twilio-php-master/Twilio/autoload.php');
 use Twilio\Rest\Client;
 session_start();
