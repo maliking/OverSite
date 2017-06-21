@@ -47,6 +47,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="dist/css/skins/skin-blue-light.css">
+  <link rel="stylesheet" href="plugins/datatables/datatables.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
@@ -444,7 +445,8 @@
   <script src="plugins/fastclick/fastclick.js"></script>
   <!-- AdminLTE App -->
   <script src="dist/js/app.min.js"></script>
-
+  <!-- Datatables -->
+  <script type="text/javascript" src="plugins/datatables/datatables.min.js"></script>
   <script>
     /*
      * DATATABLE CONTROLS
