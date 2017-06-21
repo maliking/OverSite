@@ -371,13 +371,13 @@
                 <table id="agent-table" class="table table-bordered table-striped">
                   <thead>
                     <tr>
-                      <th>Rank</th>
+               
                       <th>Last</th>
                       <th>First</th>
                       <th><i class="fa fa-home"></i> Listings</th>
-                      <th><i class="fa fa-home"></i><i class="fa fa-expand"></i> Listings Volume</th>
+                      <th><i class="fa fa-home"></i> <i class="fa fa-expand"></i> Listings Volume</th>
                       <th><i class="fa fa-money"></i> Sales</th>
-                      <th><i class="fa fa-money"></i><i class="fa fa-expand"></i> Sales Volume</th>
+                      <th><i class="fa fa-money"></i> <i class="fa fa-expand"></i> Sales Volume</th>
                       <th><i class="fa fa-home"></i> YTD Comm.</th>
                       <th><i class="fa fa-percent"></i></th>
                     </tr>
@@ -394,7 +394,6 @@
                         else
                         {
                           echo "<tr>";
-                          echo "<td>#" . $limit . "</td>";
                           echo "<td>" . $agent['lastName'] . "</td>"; 
                           echo "<td>" . $agent['firstName'] . "</td>"; 
                           echo "<td>" . $agent['sold'] . "</td>"; 
@@ -460,16 +459,9 @@
               "searching": false,
               "ordering": true,
               "order": [0, 'asc'],
-              "columnDefs": [{
-                  "orderable": false,
-                  "targets": [1],
-                },
-                "info": false,
+              "columnDefs": [
                 "autoWidth": true,
-                "columnDefs": [{
-                  "width": "1%",
-                  "targets": 0
-                }]
+                ]
               }); 
           });
   </script>
