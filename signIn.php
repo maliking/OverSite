@@ -3,9 +3,9 @@
     session_start();
     $dbConn = getConnection();
     if(!isset($_SESSION['userId'])) {
-      header("Location: userLogin.php?error=wrong username or password");
+      header("Location: index.php?error=wrong username or password");
     } 
-    $houseId = $_GET['houseId'];
+    //$houseId = $_GET['houseId'];
  ?>
  
 <!DOCTYPE html>
@@ -97,7 +97,7 @@
                     <input type="number" name="priceMax" min="0" placeholder="max" step="1000" />
                 </td>  <br />
         </tr>
-        <input type="hidden" name="houseId" value="<?=$houseId?>"> 
+        <input type="hidden" name="houseId" value="1234"> 
 
         <tr>
             <td>
