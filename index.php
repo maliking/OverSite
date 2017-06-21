@@ -399,7 +399,7 @@
                           echo "<td>" . $agent['sold'] . "</td>"; 
                           echo "<td>" . $agent['sold'] . "</td>"; 
                           echo "<td>" . $agent['sold'] . "</td>"; 
-                          echo "<td>" . $agent['YTDComm'] . "</td>"; 
+                          echo "<td>" . "$" . number_format($agent['YTDComm'], 0) . "</td>"; 
                           echo "<td>" . "NA" . "</td>"; 
                           echo "</tr>";
                      
