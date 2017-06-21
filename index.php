@@ -458,7 +458,6 @@
               "lengthChange": false,
               "searching": false,
               "ordering": true,
-              "order": [0, 'asc'],
               "columnDefs": [
                 "autoWidth": true,
                 ]
