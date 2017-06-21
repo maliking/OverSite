@@ -355,10 +355,10 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-lg-6 col-xs-12">
+          <div class="col-lg-12 col-xs-12">
             <div class="box box-success">
               <div class="box-header with-border">
-                <h3 class="box-title"><i class=" fa fa-thumbs-up"></i> Top Performing Agents</h3>
+                <h3 class="box-title"><i class=" fa fa-user"></i> Agent Roster</h3>
 
                 <div class="box-tools pull-right">
                   <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -368,13 +368,16 @@
               </div>
               <!-- /.box-header -->
               <div class="box-body">
-                <table id="rank-table-top" class="table table-bordered table-striped">
+                <table id="agent-table" class="table table-bordered table-striped">
                   <thead>
                     <tr>
                       <th>Rank</th>
                       <th>Last</th>
                       <th>First</th>
-                      <th><i class="fa fa-home"></i> Sold</th>
+                      <th><i class="fa fa-home"></i> Listings</th>
+                      <th><i class="fa fa-home"></i><i class="fa fa-expand"></i> Listings Volume</th>
+                      <th><i class="fa fa-money"></i> Sales</th>
+                      <th><i class="fa fa-money"></i><i class="fa fa-expand"></i> Sales Volume</th>
                       <th><i class="fa fa-home"></i> YTD Comm.</th>
                       <th><i class="fa fa-percent"></i></th>
                     </tr>
@@ -395,6 +398,9 @@
                           echo "<td>" . $agent['lastName'] . "</td>"; 
                           echo "<td>" . $agent['firstName'] . "</td>"; 
                           echo "<td>" . $agent['sold'] . "</td>"; 
+                          echo "<td>" . $agent['sold'] . "</td>"; 
+                          echo "<td>" . $agent['sold'] . "</td>"; 
+                          echo "<td>" . $agent['sold'] . "</td>"; 
                           echo "<td>" . $agent['YTDComm'] . "</td>"; 
                           echo "<td>" . "NA" . "</td>"; 
                           echo "</tr>";
@@ -408,112 +414,8 @@
               <!-- /.box-body -->
             </div>
           </div>
-          <div class="col-lg-6 col-xs-12">
-            <div class="box box-danger">
-              <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-thumbs-down"></i> Poorest Performing Agents</h3>
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                </div>
-              </div>
-              <!-- /.box-header -->
-              <div class="box-body">
-                <table id="rank-table-bottom" class="table table-bordered table-striped">
-                  <thead>
-                    <tr>
-                      <th>Rank</th>
-                      <th>Last</th>
-                      <th>First</th>
-                      <th><i class="fa fa-home"></i> Sold</th>
-                      <th><i class="fa fa-money"></i> YTD Comm.</th>
-                      <th><i class="fa fa-percent"></i></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <?php
-                      $rankArraySize = sizeof($rank);
-                     $limit = $rankArraySize;
-                     $reverseRank = array_reverse($rank);
-                     $index = 0;
-                      foreach($reverseRank as $agent)
-                      {
-                        if($limit < $rankArraySize - 4)
-                        {
-                          break;
-                        }
-                        else
-                        {
-                          echo "<tr>";
-                          echo "<td>#" . $limit . "</td>";
-                          echo "<td>" . $reverseRank[$index]['lastName'] . "</td>"; 
-                          echo "<td>" . $reverseRank[$index]['firstName'] . "</td>"; 
-                          echo "<td>" . $reverseRank[$index]['sold'] . "</td>"; 
-                          echo "<td>" . $reverseRank[$index]['YTDComm'] . "</td>"; 
-                          echo "<td>" . "NA" . "</td>"; 
-                          echo "</tr>";
-                          $limit--;
-                          $index++;
-                        }
-                      }
-                    ?>
-                  </tbody>
-                </table>
-              </div>
-              <!-- /.box-body -->
-            </div>
-          </div>
-          <!-- /.col -->
         </div>
         <!-- ./row -->
-        <div class="row">
-          <div class="col-md-6">
-            <!-- LINE CHART -->
-            <div class="box box-primary">
-              <div class="box-header with-border">
-                <h3 class="box-title">YTD Monthly Net Earnings</h3>
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                </div>
-              </div>
-              <!-- /.box-header -->
-              <div class="box-body">
-                <div class="chart">
-                  <canvas id="lineChart"></canvas>
-                </div>
-              </div>
-              <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
-          </div>
-          <!-- /.col (LEFT) -->
-          <div class="col-md-6">
-            <!-- BAR CHART -->
-            <div class="box box-success">
-              <div class="box-header with-border">
-                <h3 class="box-title">Buyer's Listing vs. Seller's Listing</h3>
-                <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                  </button>
-                  <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                </div>
-              </div>
-              <!-- /.box-header -->
-              <div class="box-body">
-                <div class="chart">
-                  <canvas id="barChart"></canvas>
-                </div>
-              </div>
-              <!-- /.box-body -->
-            </div>
-            <!-- /.box -->
-          </div>
-          <!-- /.col (RIGHT) -->
-        </div>
-        <!-- /.row -->
       </section>
     </div>
     <!-- /.content-wrapper -->
@@ -524,7 +426,7 @@
   <footer class="main-footer">
     <!-- To the right -->
     <div class="pull-right hidden-xs">
-      Powered by <a href="#">Oversite</a>
+      Powered by <a href="#">OverSite</a>
     </div>
     <!-- Default to the left -->
     <strong>&copy; 2016 | <a href="#">Re/Max Salinas</a>.</strong> All rights reserved.
@@ -543,7 +445,7 @@
   <script src="plugins/fastclick/fastclick.js"></script>
   <!-- AdminLTE App -->
   <script src="dist/js/app.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
+
   <script>
     /*
      * DATATABLE CONTROLS
@@ -552,7 +454,7 @@
 
     // Ranked 5 Agent Table Options (Top Performing Agents & Poorest Performing Agents)
     $(function() {
-          $("#rank-table-top").DataTable({
+          $("#agent-table").DataTable({
               "paging": false,
               "lengthChange": false,
               "searching": false,
@@ -568,125 +470,8 @@
                   "width": "1%",
                   "targets": 0
                 }]
-              }); $('#rank-table-bottom').DataTable({
-              "paging": false,
-              "lengthChange": false,
-              "searching": false,
-              "ordering": true,
-              "order": [0, 'desc'],
-              "select": true,
-              "info": false,
-              "autoWidth": true,
-              "columnDefs": [{
-                "width": "1%",
-                "targets": 0
-              }]
-            });
+              }); 
           });
-  </script>
-  <script>
-    /*
-     * CHART JS CONTROLS
-     * -----------------------
-     */
-
-    // Line Chart - YTD Monthly Net Earnings
-    var lineChartCanvas = document.getElementById("lineChart");
-
-    var lineChartData = {
-      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
-      datasets: [{
-        label: '2017',
-        data: [103940, 123023, 123023, 102934, 121234, 112039, 103942, 120393, 109234, 102384, 122402, 122012],
-        backgroundColor: 'rgba(1, 195, 32, 0.72)'
-      }, {
-        label: '2016',
-        data: [124343, 102934, 129482, 103824, 129271, 103982, 102934, 110232, 112902, 102412, 113304, 129023],
-        backgroundColor: 'rgba(81, 89, 73, 0.4)'
-      }]
-    }
-
-    var lineChartOptions = {
-      scales: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: false,
-            max: 150000,
-            callback: function(value, index, values) {
-              if (parseInt(value) >= 1000) {
-                return '$' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-              } else {
-                return '$' + value;
-              }
-            }
-
-          }
-        }]
-      }
-    }
-
-    var lineChart = new Chart(lineChartCanvas, {
-      type: 'line',
-      data: lineChartData,
-      options: lineChartOptions
-    });
-  </script>
-
-  <script>
-    var barChartCanvas = document.getElementById("barChart");
-    var myChart = new Chart(barChartCanvas, {
-      type: 'bar',
-      data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
-        datasets: [{
-          label: 'Buyer\'s',
-          data: [504923, 340242, 402492, 604923, 400232, 360234, 504934, 604394, 540942, 604343, 405923, 503239],
-          backgroundColor: "rgba(220,220,220,0.5)",
-        }, {
-          label: 'Seller\'s',
-          data: [604032, 402392, 503924, 590423, 429321, 498243, 552843, 623203, 502934, 598493, 450294, 559823],
-          backgroundColor: "rgba(82,154,190,0.5)",
-        }]
-      },
-      options: {
-        tooltips: {
-          mode: 'label',
-          callbacks: {
-            afterTitle: function() {
-              window.total = 0;
-            },
-            label: function(tooltipItem, data) {
-              var corporation = data.datasets[tooltipItem.datasetIndex].label;
-              var valor = data.datasets[tooltipItem.datasetIndex].data[tooltipItem.index];
-              window.total += valor;
-              return corporation + ": $" + valor.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            },
-            footer: function() {
-              return "Total: $" + window.total.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-            }
-          }
-        },
-        scales: {
-          yAxes: [{
-            beginAtZero: false,
-            stacked: true,
-            ticks: {
-              beginAtZero: false,
-              callback: function(value, index, values) {
-                if (parseInt(value) >= 1000) {
-                  return '$' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                } else {
-                  return '$' + value;
-                }
-              }
-            },
-          }],
-          xAxes: [{
-            stacked: true
-          }],
-        }
-      }
-    });
   </script>
 </body>
 
