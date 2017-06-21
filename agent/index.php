@@ -242,8 +242,8 @@ if (!isset($_SESSION['userId'])) {
                 <section class="content">
                     <div class="row">
                         <div class="col-lg-8 col-xs-12">
-                            <div class="box box-success">
-                                <div class="box-header with-border" style="background-color: rgb(210, 69, 60)">
+                            <div class="box">
+                                <div class="box-header with-border" style="background-color: rgba(210, 69, 60, 0.81)">
                                     <h3 class="box-title"><i class=" fa fa-flash"></i> Leads</h3>
 
                                     <div class="box-tools pull-right">
@@ -278,9 +278,45 @@ if (!isset($_SESSION['userId'])) {
                                 </div>
                                 <!-- /.box-body -->
                             </div>
-                            <div class="box box-success">
-                                <div class="box-header with-border" style="background-color: rgb(210, 69, 60)">
-                                    <h3 class="box-title"><i class=" fa fa-flash"></i> Leads</h3>
+                            <div class="box">
+                                <div class="box-header with-border" style="background-color: rgba(255, 136, 50, 0.82)">
+                                    <h3 class="box-title"><i class=" fa fa-flash"></i> Contacted</h3>
+
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <table id="myTable" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th style="text-align: center"><i class="fa fa-address-card-o"></i> Contact</th>
+                                                <th style="text-align: center"><i class="fa fa-map-marker"></i> Property</th>
+                                                <th style="text-align: center"><i class="fa fa-paper-plane"></i> Connect</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Mali King<br>(408) 348-8336</td>
+                                                <td>704 Craig St.<br>Los Gatos, CA 93905</td>
+                                                <td><button class="btn btn-default"><i class="fa fa-envelope"></i> Email</button></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tommy Lore<br>(408) 432-4325</td>
+                                                <td>53 Greg St.<br>Los Gatos, CA 93905</td>
+                                                <td><button class="btn btn-default"><i class="fa fa-envelope"></i> Email</button></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <div class="box">
+                                <div class="box-header with-border" style="background-color: rgba(47, 206, 241, 0.89)">
+                                    <h3 class="box-title"><i class=" fa fa-flash"></i> First Appointment</h3>
 
                                     <div class="box-tools pull-right">
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
