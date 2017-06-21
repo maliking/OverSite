@@ -242,7 +242,7 @@ if (!isset($_SESSION['userId'])) {
                 <section class="content">
                     <div class="row">
                         <div class="col-lg-8 col-xs-12">
-                            <div class="box box-success">
+                            <div class="box box-success" style="background-color: red">
                                 <div class="box-header with-border">
                                     <h3 class="box-title"><i class=" fa fa-flash"></i> Leads</h3>
 
@@ -269,9 +269,9 @@ if (!isset($_SESSION['userId'])) {
                                                 <td><button class="btn btn-default">Email</button></td>
                                             </tr>
                                             <tr>
-                                                <td>94832 Mystery Rd.<br>Monte Sereno, CA 93940</td>
-                                                <td>Mali King<br>(408) 348-8336</td>
-                                                <td>5/4/17</td>
+                                                <td>Tommy Lore<br>(408) 432-4325</td>
+                                                <td>53 Greg St.<br>Los Gatos, CA 93905</td>
+                                                <td><button class="btn btn-default">Email</button></td>
                                             </tr>
                                         </tbody>
                                     </table>
