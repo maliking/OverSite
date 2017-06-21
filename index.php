@@ -372,7 +372,6 @@
                 <table id="agent-table" class="table table-bordered table-striped">
                   <thead>
                     <tr>
-               
                       <th>Last</th>
                       <th>First</th>
                       <th><i class="fa fa-home"></i> Listings</th>
@@ -404,7 +403,7 @@
                           echo "<td>" . $agent['YTDComm'] . "</td>"; 
                           echo "<td>" . "NA" . "</td>"; 
                           echo "</tr>";
-                          $limit++;
+                     
                         }
                       }
                     ?>
@@ -453,16 +452,10 @@
      * -----------------------
      */
 
-    // Ranked 5 Agent Table Options (Top Performing Agents & Poorest Performing Agents)
+
     $(function() {
           $("#agent-table").DataTable({
               "paging": false,
-              "lengthChange": false,
-              "searching": false,
-              "ordering": true,
-              "columnDefs": [
-                "autoWidth": true,
-                ]
               }); 
           });
   </script>
