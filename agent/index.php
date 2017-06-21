@@ -263,12 +263,12 @@ if (!isset($_SESSION['userId'])) {
                                                 <th colspan="4" style="text-align: center; background-color: #f9a019">Important Dates</th>
                                             </tr>
                                             <tr>
-                                                <th style="text-align: center; background-color: #8fe37b"><i class="fa fa-map-marker"></i> Address</th>
-                                                <th style="text-align: center; background-color: #9fe78e"><i class="fa fa-address-card-o"></i> Owner</th>
-                                                <th style="text-align: center; background-color: #faab32"><i class="fa fa-check-square-o"></i> Approved</th>
-                                                <th style="text-align: center; background-color: #fab54c"><i class="fa fa-paperclip"></i> Disclosure</th>
-                                                <th style="text-align: center; background-color: #fbc066"><i class="fa fa-shield"></i> Contingency</th>
-                                                <th style="text-align: center; background-color: #fcca7f"><i class="fa fa-handshake-o"></i> COE</th>
+                                                <th style="text-align: center; background-color: #97e586"><i class="fa fa-map-marker"></i> Address</th>
+                                                <th style="text-align: center; background-color: #b1eba4"><i class="fa fa-address-card-o"></i> Owner</th>
+                                                <th style="text-align: center; background-color: #fab54c"><i class="fa fa-check-square-o"></i> Approved</th>
+                                                <th style="text-align: center; background-color: #fcca7f"><i class="fa fa-paperclip"></i> Disclosure</th>
+                                                <th style="text-align: center; background-color: #fddfb2"><i class="fa fa-shield"></i> Contingency</th>
+                                                <th style="text-align: center; background-color: #fef4e5"><i class="fa fa-handshake-o"></i> COE</th>
                                             </tr>
                                         </thead>
                                         <tbody>
