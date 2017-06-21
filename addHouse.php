@@ -18,7 +18,6 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
   <title>Sign-Up Form</title>
-  <link href="styles.css" rel="stylesheet"/>
   <meta name="description" content="">
   <meta name="author" content="">
 
