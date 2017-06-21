@@ -223,8 +223,9 @@
           <li class="header">AGENTS</li>
           <li><a href="roster.php"><i class="fa fa-users"></i> <span> Roster</span></a></li>
           <li class="header">STATISTICS</li>
-          <li><a href="#"><i class="fa fa-home"></i> <span> Sales Breakdown</span></a></li>
-          <li><a href="#"><i class="fa fa-archive"></i> <span>Monthly Report</span></a></li>
+          <li><a href="statistics.php"><i class="fa fa-line-chart"></i> <span> Analytics</span></a></li>
+          <li><a href="#"><i class="fa fa-dollar"></i> <span> Sales Breakdown</span></a></li>
+          <li><a href="#"><i class="fa fa-file-text-o"></i> <span>Monthly Report</span></a></li>
         </ul>
         <!-- /.sidebar-menu -->
       </section>
