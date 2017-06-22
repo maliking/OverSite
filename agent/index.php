@@ -27,6 +27,7 @@ if (!isset($_SESSION['userId'])) {
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]> <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script> <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script> <![endif]-->
+
   </head>
 
   <body class="hold-transition skin-red-light sidebar-mini">
@@ -293,8 +294,8 @@ if (!isset($_SESSION['userId'])) {
         <!-- Main content -->
         <section class="content">
           <div class="row">
-            <div class="col-lg-8 col-xs-12">
-              <div class="box">
+            <div class="col-lg-9 col-xs-12">
+              <div class="box box-solid box-danger">
                 <div class="box-header with-border" style="background-color: rgba(210, 69, 60, 0.81)">
                   <h3 class="box-title">
                     <i class=" fa fa-flash"></i>
@@ -311,37 +312,98 @@ if (!isset($_SESSION['userId'])) {
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                  <table id="myTable" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
-                        <th style="text-align: center">
-                          <i class="fa fa-address-card-o"></i>
-                          Contact</th>
-                        <th style="text-align: center">
-                          <i class="fa fa-map-marker"></i>
-                          Property</th>
-                        <th style="text-align: center">
-                          <i class="fa fa-paper-plane"></i>
-                          Connect</th>
-                      </tr>
-                    </thead>
+                  <table class="table table-bordered table-striped">
                     <tbody>
                       <tr>
                         <td>Mali King<br>(408) 348-8336</td>
                         <td>704 Craig St.<br>Los Gatos, CA 93905</td>
+
                         <td>
-                          <button class="btn btn-default">
+
+                          <button type="button" class="btn btn-primary">
                             <i class="fa fa-envelope"></i>
-                            Email</button>
+                          </button>
+                          <div class="btn-group" role="group">
+
+                            <div class="btn-group" role="group">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Mark As
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li>
+                                  <a href="#">Lead</a>
+                                </li>
+                                <li>
+                                  <a href="#">Contacted</a>
+                                </li>
+                                <li>
+                                  <a href="#">First Appointment</a>
+                                </li>
+                                <li>
+                                  <a href="#">Finalizing Contract</a>
+                                </li>
+                                <li>
+                                  <a href="#">Closed</a>
+                                </li>
+                              </ul>
+                            </div>
+                            <button type="button" class="btn btn-default">
+                              <i class="fa fa-arrow-up"></i>
+                            </button>
+                            <button type="button" class="btn btn-default">
+                              <i class="fa fa-arrow-down"></i>
+                            </button>
+                          </div>
+                          <button type="button" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                          </button>
+
                         </td>
                       </tr>
                       <tr>
                         <td>Tommy Lore<br>(408) 432-4325</td>
                         <td>53 Greg St.<br>Los Gatos, CA 93905</td>
                         <td>
-                          <button class="btn btn-default">
+
+                          <button type="button" class="btn btn-primary">
                             <i class="fa fa-envelope"></i>
-                            Email</button>
+                          </button>
+                          <div class="btn-group" role="group">
+
+                            <div class="btn-group" role="group">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Mark As
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li>
+                                  <a href="#">Lead</a>
+                                </li>
+                                <li>
+                                  <a href="#">Contacted</a>
+                                </li>
+                                <li>
+                                  <a href="#">First Appointment</a>
+                                </li>
+                                <li>
+                                  <a href="#">Finalizing Contract</a>
+                                </li>
+                                <li>
+                                  <a href="#">Closed</a>
+                                </li>
+                              </ul>
+                            </div>
+                            <button type="button" class="btn btn-default">
+                              <i class="fa fa-arrow-up"></i>
+                            </button>
+                            <button type="button" class="btn btn-default">
+                              <i class="fa fa-arrow-down"></i>
+                            </button>
+                          </div>
+                          <button type="button" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                          </button>
                         </td>
                       </tr>
                     </tbody>
@@ -349,10 +411,10 @@ if (!isset($_SESSION['userId'])) {
                 </div>
                 <!-- /.box-body -->
               </div>
-              <div class="box">
-                <div class="box-header with-border" style="background-color: rgba(255, 136, 50, 0.82)">
+              <div class="box box-solid box-warning">
+                <div class="box-header with-border">
                   <h3 class="box-title">
-                    <i class=" fa fa-flash"></i>
+                    <i class=" fa fa-phone"></i>
                     Contacted</h3>
 
                   <div class="box-tools pull-right">
@@ -366,37 +428,99 @@ if (!isset($_SESSION['userId'])) {
                 </div>
                 <!-- /.box-header -->
                 <div class="box-body">
-                  <table id="myTable" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
-                        <th style="text-align: center">
-                          <i class="fa fa-address-card-o"></i>
-                          Contact</th>
-                        <th style="text-align: center">
-                          <i class="fa fa-map-marker"></i>
-                          Property</th>
-                        <th style="text-align: center">
-                          <i class="fa fa-paper-plane"></i>
-                          Connect</th>
-                      </tr>
-                    </thead>
+                  <table id="table22" class="table table-bordered table-striped">
                     <tbody>
                       <tr>
                         <td>Mali King<br>(408) 348-8336</td>
                         <td>704 Craig St.<br>Los Gatos, CA 93905</td>
+
                         <td>
-                          <button class="btn btn-default">
+
+                          <button type="button" class="btn btn-primary">
                             <i class="fa fa-envelope"></i>
-                            Email</button>
+                          </button>
+                          <div class="btn-group" role="group">
+
+                            <div class="btn-group" role="group">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Mark As
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li>
+                                  <a href="#">Lead</a>
+                                </li>
+                                <li>
+                                  <a href="#">Contacted</a>
+                                </li>
+                                <li>
+                                  <a href="#">First Appointment</a>
+                                </li>
+                                <li>
+                                  <a href="#">Finalizing Contract</a>
+                                </li>
+                                <li>
+                                  <a href="#">Closed</a>
+                                </li>
+                              </ul>
+                            </div>
+                            <button type="button" class="btn btn-default">
+                              <i class="fa fa-arrow-up"></i>
+                            </button>
+                            <button type="button" class="btn btn-default">
+                              <i class="fa fa-arrow-down"></i>
+                            </button>
+                          </div>
+                          <button type="button" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                          </button>
+
                         </td>
                       </tr>
                       <tr>
                         <td>Tommy Lore<br>(408) 432-4325</td>
                         <td>53 Greg St.<br>Los Gatos, CA 93905</td>
                         <td>
-                          <button class="btn btn-default">
+
+                          <button type="button" class="btn btn-primary">
                             <i class="fa fa-envelope"></i>
-                            Email</button>
+                          </button>
+                          <div class="btn-group" role="group">
+
+                            <div class="btn-group" role="group">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Mark As
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li>
+                                  <a href="#">Lead</a>
+                                </li>
+                                <li>
+                                  <a href="#">Contacted</a>
+                                </li>
+                                <li>
+                                  <a href="#">First Appointment</a>
+                                </li>
+                                <li>
+                                  <a href="#">Finalizing Contract</a>
+                                </li>
+                                <li>
+                                  <a href="#">Closed</a>
+                                </li>
+                              </ul>
+                            </div>
+                            <button type="button" class="btn btn-default">
+                              <i class="fa fa-arrow-up"></i>
+                            </button>
+                            <button type="button" class="btn btn-default">
+                              <i class="fa fa-arrow-down"></i>
+                            </button>
+                          </div>
+                          <button type="button" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                          </button>
+
                         </td>
                       </tr>
                     </tbody>
@@ -404,10 +528,10 @@ if (!isset($_SESSION['userId'])) {
                 </div>
                 <!-- /.box-body -->
               </div>
-              <div class="box">
-                <div class="box-header with-border" style="background-color: rgba(47, 206, 241, 0.89)">
-                  <h3 class="box-title">
-                    <i class=" fa fa-flash"></i>
+              <div class="box box-solid box-info">
+                <div class="box-header with-border">
+                  <h3 class=" box-title">
+                    <i class=" fa fa-calendar-plus-o"></i>
                     First Appointment</h3>
 
                   <div class="box-tools pull-right">
@@ -420,38 +544,335 @@ if (!isset($_SESSION['userId'])) {
                   </div>
                 </div>
                 <!-- /.box-header -->
+
                 <div class="box-body">
-                  <table id="myTable" class="table table-bordered table-striped">
-                    <thead>
-                      <tr>
-                        <th style="text-align: center">
-                          <i class="fa fa-address-card-o"></i>
-                          Contact</th>
-                        <th style="text-align: center">
-                          <i class="fa fa-map-marker"></i>
-                          Property</th>
-                        <th style="text-align: center">
-                          <i class="fa fa-paper-plane"></i>
-                          Connect</th>
-                      </tr>
-                    </thead>
+                  <table id="table23" class="table table-bordered table-striped">
                     <tbody>
                       <tr>
                         <td>Mali King<br>(408) 348-8336</td>
                         <td>704 Craig St.<br>Los Gatos, CA 93905</td>
+
                         <td>
-                          <button class="btn btn-default">
+
+                          <button type="button" class="btn btn-primary">
                             <i class="fa fa-envelope"></i>
-                            Email</button>
+                          </button>
+                          <div class="btn-group" role="group">
+
+                            <div class="btn-group" role="group">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Mark As
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li>
+                                  <a href="#">Lead</a>
+                                </li>
+                                <li>
+                                  <a href="#">Contacted</a>
+                                </li>
+                                <li>
+                                  <a href="#">First Appointment</a>
+                                </li>
+                                <li>
+                                  <a href="#">Finalizing Contract</a>
+                                </li>
+                                <li>
+                                  <a href="#">Closed</a>
+                                </li>
+                              </ul>
+                            </div>
+                            <button type="button" class="btn btn-default">
+                              <i class="fa fa-arrow-up"></i>
+                            </button>
+                            <button type="button" class="btn btn-default">
+                              <i class="fa fa-arrow-down"></i>
+                            </button>
+                          </div>
+                          <button type="button" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                          </button>
+
                         </td>
                       </tr>
                       <tr>
                         <td>Tommy Lore<br>(408) 432-4325</td>
                         <td>53 Greg St.<br>Los Gatos, CA 93905</td>
                         <td>
-                          <button class="btn btn-default">
+
+                          <button type="button" class="btn btn-primary">
                             <i class="fa fa-envelope"></i>
-                            Email</button>
+                          </button>
+                          <div class="btn-group" role="group">
+
+                            <div class="btn-group" role="group">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Mark As
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li>
+                                  <a href="#">Lead</a>
+                                </li>
+                                <li>
+                                  <a href="#">Contacted</a>
+                                </li>
+                                <li>
+                                  <a href="#">First Appointment</a>
+                                </li>
+                                <li>
+                                  <a href="#">Finalizing Contract</a>
+                                </li>
+                                <li>
+                                  <a href="#">Closed</a>
+                                </li>
+                              </ul>
+                            </div>
+                            <button type="button" class="btn btn-default">
+                              <i class="fa fa-arrow-up"></i>
+                            </button>
+                            <button type="button" class="btn btn-default">
+                              <i class="fa fa-arrow-down"></i>
+                            </button>
+                          </div>
+                          <button type="button" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                          </button>
+
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.box-body -->
+              </div>
+              <div class="box box-solid box-primary">
+                <div class="box-header">
+                  <h3 class="box-title">
+                    <i class=" fa fa-spinner"></i>
+                    Finalizing Contract</h3>
+
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                      <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove">
+                      <i class="fa fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <table class="table table-bordered table-striped">
+                    <tbody>
+                      <tr>
+                        <td>Mali King<br>(408) 348-8336</td>
+                        <td>704 Craig St.<br>Los Gatos, CA 93905</td>
+
+                        <td>
+
+                          <button type="button" class="btn btn-primary">
+                            <i class="fa fa-envelope"></i>
+                          </button>
+                          <div class="btn-group" role="group">
+
+                            <div class="btn-group" role="group">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Mark As
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li>
+                                  <a href="#">Lead</a>
+                                </li>
+                                <li>
+                                  <a href="#">Contacted</a>
+                                </li>
+                                <li>
+                                  <a href="#">First Appointment</a>
+                                </li>
+                                <li>
+                                  <a href="#">Finalizing Contract</a>
+                                </li>
+                                <li>
+                                  <a href="#">Closed</a>
+                                </li>
+                              </ul>
+                            </div>
+                            <button type="button" class="btn btn-default">
+                              <i class="fa fa-arrow-up"></i>
+                            </button>
+                            <button type="button" class="btn btn-default">
+                              <i class="fa fa-arrow-down"></i>
+                            </button>
+                          </div>
+                          <button type="button" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                          </button>
+
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Tommy Lore<br>(408) 432-4325</td>
+                        <td>53 Greg St.<br>Los Gatos, CA 93905</td>
+                        <td>
+
+                          <button type="button" class="btn btn-primary">
+                            <i class="fa fa-envelope"></i>
+                          </button>
+                          <div class="btn-group" role="group">
+
+                            <div class="btn-group" role="group">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Mark As
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li>
+                                  <a href="#">Lead</a>
+                                </li>
+                                <li>
+                                  <a href="#">Contacted</a>
+                                </li>
+                                <li>
+                                  <a href="#">First Appointment</a>
+                                </li>
+                                <li>
+                                  <a href="#">Finalizing Contract</a>
+                                </li>
+                                <li>
+                                  <a href="#">Closed</a>
+                                </li>
+                              </ul>
+                            </div>
+                            <button type="button" class="btn btn-default">
+                              <i class="fa fa-arrow-up"></i>
+                            </button>
+                            <button type="button" class="btn btn-default">
+                              <i class="fa fa-arrow-down"></i>
+                            </button>
+                          </div>
+                          <button type="button" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                          </button>
+
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <!-- /.box-body -->
+              </div>
+              <div class="box box-solid box-default">
+                <div class="box-header with-border">
+                  <h3 class="box-title">
+                    <i class=" fa fa-handshake-o"></i>
+                    Closed</h3>
+
+                  <div class="box-tools pull-right">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                      <i class="fa fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-box-tool" data-widget="remove">
+                      <i class="fa fa-times"></i>
+                    </button>
+                  </div>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body">
+                  <table class="table table-bordered table-striped">
+                    <tbody>
+                      <tr>
+                        <td>Mali King<br>(408) 348-8336</td>
+                        <td>704 Craig St.<br>Los Gatos, CA 93905</td>
+
+                        <td>
+
+                          <button type="button" class="btn btn-primary">
+                            <i class="fa fa-envelope"></i>
+                          </button>
+                          <div class="btn-group" role="group">
+
+                            <div class="btn-group" role="group">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Mark As
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li>
+                                  <a href="#">Lead</a>
+                                </li>
+                                <li>
+                                  <a href="#">Contacted</a>
+                                </li>
+                                <li>
+                                  <a href="#">First Appointment</a>
+                                </li>
+                                <li>
+                                  <a href="#">Finalizing Contract</a>
+                                </li>
+                                <li>
+                                  <a href="#">Closed</a>
+                                </li>
+                              </ul>
+                            </div>
+                            <button type="button" class="btn btn-default">
+                              <i class="fa fa-arrow-up"></i>
+                            </button>
+                            <button type="button" class="btn btn-default">
+                              <i class="fa fa-arrow-down"></i>
+                            </button>
+                          </div>
+                          <button type="button" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                          </button>
+
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Tommy Lore<br>(408) 432-4325</td>
+                        <td>53 Greg St.<br>Los Gatos, CA 93905</td>
+                        <td>
+
+                          <button type="button" class="btn btn-primary">
+                            <i class="fa fa-envelope"></i>
+                          </button>
+                          <div class="btn-group" role="group">
+
+                            <div class="btn-group" role="group">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Mark As
+                                <span class="caret"></span>
+                              </button>
+                              <ul class="dropdown-menu">
+                                <li>
+                                  <a href="#">Lead</a>
+                                </li>
+                                <li>
+                                  <a href="#">Contacted</a>
+                                </li>
+                                <li>
+                                  <a href="#">First Appointment</a>
+                                </li>
+                                <li>
+                                  <a href="#">Finalizing Contract</a>
+                                </li>
+                                <li>
+                                  <a href="#">Closed</a>
+                                </li>
+                              </ul>
+                            </div>
+                            <button type="button" class="btn btn-default">
+                              <i class="fa fa-arrow-up"></i>
+                            </button>
+                            <button type="button" class="btn btn-default">
+                              <i class="fa fa-arrow-down"></i>
+                            </button>
+                          </div>
+                          <button type="button" class="btn btn-danger">
+                            <i class="fa fa-trash"></i>
+                          </button>
+
                         </td>
                       </tr>
                     </tbody>
@@ -461,11 +882,11 @@ if (!isset($_SESSION['userId'])) {
               </div>
             </div>
             <!-- /.box-body -->
-            <div class="col-lg-4 col-xs-12">
-              <div class="box box-success">
+            <div class="col-lg-3 col-xs-12">
+              <div class="box box-solid box-success">
                 <div class="box-header with-border">
                   <h3 class="box-title">
-                    <i class=" fa fa-flash"></i>
+                    <i class=" fa fa-list-ul"></i>
                     To-Do List</h3>
 
                   <div class="box-tools pull-right">
@@ -549,12 +970,21 @@ if (!isset($_SESSION['userId'])) {
 
       // size bar 100% and finish
       nanobar.go(100);
+
+      $('.table').dataTable({
+        "searching": false,
+        "ordering": false,
+        "info": false,
+        "lengthChange": false,
+        "columnDefs": [
+          {
+            "width": "35%",
+            "targets": 2
+          }
+        ]
+      });
     </script>
 
   </body>
-
-</html>
-
-</html>
 
 </html>
