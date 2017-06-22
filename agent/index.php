@@ -214,7 +214,7 @@ if (!isset($_SESSION['userId'])) {
           <ul class="sidebar-menu">
             <li class="header">OVERVIEW</li>
             <li class="active">
-              <a href="#">
+              <a href="index.php">
                 <i class="fa fa-dashboard"></i>
                 <span>Dashboard</span>
               </a>
@@ -233,13 +233,13 @@ if (!isset($_SESSION['userId'])) {
               </a>
             </li>
             <li>
-              <a href="coming-soon.html">
+              <a href="#">
                 <i class="fa fa-flag"></i>
                 <span>Current Inventory</span>
               </a>
             </li>
             <li>
-              <a href="past-sales.php">
+              <a href="#">
                 <i class="fa fa-archive"></i>
                 <span>Past Sales</span>
               </a>
@@ -261,7 +261,7 @@ if (!isset($_SESSION['userId'])) {
             </li>
             <li class="header">STATISTICS</li>
             <li>
-              <a href="statistics.php">
+              <a href="#">
                 <i class="fa fa-line-chart"></i>
                 <span>
                   Analytics</span>

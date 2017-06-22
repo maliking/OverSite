@@ -207,12 +207,12 @@ if (!isset($_SESSION['userId'])) {
                     <!-- Sidebar Menu -->
                     <ul class="sidebar-menu">
                         <li class="header">OVERVIEW</li>
-                        <li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+                        <li class="active"><a href="index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
                         <li><a href="signIn.php" target="_blank"><i class=""></i> <span>Sign In Sheet</span></a></li>
                         <li class="header">PROPERTIES</li>
                         <li><a href="agent-active-properties.php"><i class="fa fa-home"></i> <span>My Active Properties</span></a></li>
-                        <li><a href="coming-soon.html"><i class="fa fa-flag"></i> <span>Current Inventory</span></a></li>
-                        <li><a href="past-sales.php"><i class="fa fa-archive"></i> <span>Past Sales</span></a></li>
+                        <li><a href="#"><i class="fa fa-flag"></i> <span>Current Inventory</span></a></li>
+                        <li><a href="#"><i class="fa fa-archive"></i> <span>Past Sales</span></a></li>
                         <li class="header">TRANSACTIONS</li>
                         <li><a href="#"><i class="fa fa-list-alt"></i> <span> Sales Breakdown</span></a></li>
                         <li><a href="#"><i class="fa fa-file-text"></i> <span> Monthly Report</span></a></li>
