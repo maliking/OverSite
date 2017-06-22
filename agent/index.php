@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['userId'])) {
-    header("Location: ../login.php");
+    header("Location: http://jjp2017.org/login.php");
 }
 ?>
 <!DOCTYPE html>
