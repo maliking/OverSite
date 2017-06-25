@@ -474,19 +474,18 @@ if (!isset($_SESSION['userId'])) {
         <script>
             jQuery(function ($) {
                 $('#myTable').footable({
-                    "showHeader": false,
-                    "columns": [
+=                    "columns": [
                         {"name": "id", "title": "ID", "breakpoints": "xs"},
-                        {"name": "property"},
-                        {"name": "firstname"},
-                        {"name": "lastname"},
-                        {"name": "phone", "breakpoints": "xs"},
-                        {"name": "approval", "breakpoints": "xs sm"},
-                        {"name": "emd", "breakpoints": "xs sm md"},
-                        {"name": "contingency", "breakpoints": "xs sm md"},
-                        {"name": "coe", "breakpoints": "xs sm md"},
-                        {"name": "loans", "breakpoints": "xs sm md"},
-                        {"name": "notes", "breakpoints": "xs sm md"},
+                        {"name": "property", "title": "Property",},
+                        {"name": "firstname", "title": "First Name",},
+                        {"name": "lastname", "title": "Last Name",},
+                        {"name": "phone", "title": "Phone","breakpoints": "xs"},
+                        {"name": "approval", "title": "Approval","breakpoints": "xs sm"},
+                        {"name": "emd", "title": "emd", "breakpoints": "xs sm md"},
+                        {"name": "contingency", "title": "Contingency","breakpoints": "xs sm md"},
+                        {"name": "coe", "title": "coe", "breakpoints": "xs sm md"},
+                        {"name": "loans", "title": "Loans", "breakpoints": "xs sm md"},
+                        {"name": "notes", "title": "Notes", "breakpoints": "xs sm md"},
                     ],
                     "rows": [
                         {"id": 1, "property": "43298 Craig Dr. Salinas CA, 94832", "firstname": "Elodia", "lastname": "Weisz", "phone":"329-328-3284", "approval": "03/12/2017", "emd": "03/12/2017", "contingency": "03/12/2017", "coe": "03/12/2017",  "loans": "03/12/2017", "notes": "notes"},
