@@ -258,10 +258,6 @@ if (!isset($_SESSION['userId'])) {
                                     <table id="myTable" data-editing="true" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th colspan="2" style="text-align: center; background-color: #7edf68">Property</th>
-                                                <th colspan="4" style="text-align: center; background-color: #f9a019">Important Dates</th>
-                                            </tr>
-                                            <tr>
                                                 <th style="text-align: center; background-color: #b1eba4"><i class="fa fa-map-marker"></i> Address</th>
                                                 <th style="text-align: center; background-color: #b1eba4"><i class="fa fa-address-card-o"></i> Owner</th>
                                                 <th style="text-align: center; background-color: #fdecd1"><i class="fa fa-check-square-o"></i> Approved</th>
