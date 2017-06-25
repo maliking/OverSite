@@ -351,7 +351,7 @@ if (!isset($_SESSION['userId'])) {
                                 </div>
                                 <!-- /.box-header -->
                                 <div class="box-body">
-                                    <table id="myTable" data-editing-always-show="true" class="table table-bordered table-striped">
+                                    <table id="myTable" data-editing-always-show="true" data-editing="true" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th data-visible="false" style="text-align: center">ID</th>
@@ -399,84 +399,84 @@ if (!isset($_SESSION['userId'])) {
                                             </tr>
                                         </tbody>
                                     </table>
-                                            <div class="modal fade" id="editor-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
+                                    <div class="modal fade" id="editor-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
 
-            <div class="modal-dialog" role="document">
-                <form class="modal-content form-horizontal" id="editor">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                        <h4 class="modal-title" id="editor-title">Add Row</h4>
-                    </div>
-                    <div class="modal-body">
-                        <input type="number" id="id" name="id" class="hidden"/>
-                        <div class="form-group required">
-                            <label for="property" class="col-sm-3 control-label">Property Address</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="property" name="property" placeholder="property" required>
-                            </div>
-                        </div>
-                        <div class="form-group required">
-                            <label for="lastname" class="col-sm-3 control-label">Last Name</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="firstname" class="col-sm-3 control-label">First Name</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name">
-                            </div>
-                        </div>
-                        <div class="form-group required">
-                            <label for="phone" class="col-sm-3 control-label">Phone Number</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="phone" name="phone" placeholder="XXX-XXX-XXXX" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="approval" class="col-sm-3 control-label">Approval</label>
-                            <div class="col-sm-9">
-                                <input type="date" class="form-control" id="approval" name="approval">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="emd" class="col-sm-3 control-label">EMD</label>
-                            <div class="col-sm-9">
-                                <input type="date" class="form-control" id="emd" name="emd" >
-                            </div>
-                        </div>                        <div class="form-group">
-                            <label for="contingency" class="col-sm-3 control-label">Contingency</label>
-                            <div class="col-sm-9">
-                                <input type="date" class="form-control" id="contingency" name="contingency" >
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="coe" class="col-sm-3 control-label">COE</label>
-                            <div class="col-sm-9">
-                                <input type="date" class="form-control" id="coe" name="coe">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="loans" class="col-sm-3 control-label">Loans</label>
-                            <div class="col-sm-9">
-                                <input type="date" class="form-control" id="loans" name="loans">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="notes" class="col-sm-3 control-label">Notes</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="notes" name="notes" placeholder="Notes">
-                            </div>
-                        </div>
+                                        <div class="modal-dialog" role="document">
+                                            <form class="modal-content form-horizontal" id="editor">
+                                                <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                                    <h4 class="modal-title" id="editor-title">Add Row</h4>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <input type="number" id="id" name="id" class="hidden"/>
+                                                    <div class="form-group required">
+                                                        <label for="property" class="col-sm-3 control-label">Property Address</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" class="form-control" id="property" name="property" placeholder="property" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group required">
+                                                        <label for="lastname" class="col-sm-3 control-label">Last Name</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="firstname" class="col-sm-3 control-label">First Name</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group required">
+                                                        <label for="phone" class="col-sm-3 control-label">Phone Number</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" class="form-control" id="phone" name="phone" placeholder="XXX-XXX-XXXX" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="approval" class="col-sm-3 control-label">Approval</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="date" class="form-control" id="approval" name="approval">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="emd" class="col-sm-3 control-label">EMD</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="date" class="form-control" id="emd" name="emd" >
+                                                        </div>
+                                                    </div>                        <div class="form-group">
+                                                        <label for="contingency" class="col-sm-3 control-label">Contingency</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="date" class="form-control" id="contingency" name="contingency" >
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="coe" class="col-sm-3 control-label">COE</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="date" class="form-control" id="coe" name="coe">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="loans" class="col-sm-3 control-label">Loans</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="date" class="form-control" id="loans" name="loans">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="notes" class="col-sm-3 control-label">Notes</label>
+                                                        <div class="col-sm-9">
+                                                            <input type="text" class="form-control" id="notes" name="notes" placeholder="Notes">
+                                                        </div>
+                                                    </div>
 
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- /.box-body -->
                             </div>
@@ -523,7 +523,7 @@ if (!isset($_SESSION['userId'])) {
                         $editor = $('#editor'),
                         $editorTitle = $('#editor-title'),
                         ft = FooTable.init('#myTable', {
-                            
+
                             editing: {
                                 enabled: true,
                                 addRow: function () {
