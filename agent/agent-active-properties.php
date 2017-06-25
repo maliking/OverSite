@@ -24,7 +24,7 @@ if (!isset($_SESSION['userId'])) {
         <!-- Theme style -->
         <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
         <link rel="stylesheet" href="../dist/css/skins/skin-red-light.min.css">
-        <link rel="stylesheet" href="../plugins/datatables/datatables.min.css">
+        <link rel="stylesheet" href="../plugins/footable/footable.bootstrap.min.css">
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -210,8 +210,8 @@ if (!isset($_SESSION['userId'])) {
                         <li class="active"><a href="index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
                         <li><a href="signIn.php" target="_blank"><i class=""></i> <span>Sign In Sheet</span></a></li>
                         <li class="header">PROPERTIES</li>
-                        <li><a href="agent-active-properties.php"><i class="fa fa-home"></i> <span>My Active Properties</span></a></li>
-                        <li><a href="#"><i class="fa fa-flag"></i> <span>Current Inventory</span></a></li>
+                        <li><a href="agent-active-properties.php"><i class="fa fa-home"></i> <span>My Inventory</span></a></li>
+                        <li><a href="#"><i class="fa fa-flag"></i> <span>Office Inventory</span></a></li>
                         <li><a href="#"><i class="fa fa-archive"></i> <span>Past Sales</span></a></li>
                         <li class="header">TRANSACTIONS</li>
                         <li><a href="#"><i class="fa fa-list-alt"></i> <span> Sales Breakdown</span></a></li>
@@ -325,7 +325,7 @@ if (!isset($_SESSION['userId'])) {
         <!-- AdminLTE App -->
         <script src="../dist/js/app.min.js"></script>
         <!-- Datatables -->
-        <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
+        <script type="text/javascript" src="../plugins/footable/footable.min.js"></script>
         <script>
             /*
              * DATATABLE CONTROLS
