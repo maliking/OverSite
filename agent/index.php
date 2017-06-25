@@ -4,6 +4,26 @@ session_start();
 if (!isset($_SESSION['userId'])) {
     header("Location: http://jjp2017.org/login.php");
 }
+
+  require 'databaseConnection.php';
+
+  $dbConn = getConnection();
+  $sql = "SELECT status, count(*) AS num FROM HouseInfo GROUP BY status";
+  $stmt = $dbConn -> prepare($sql);
+  $stmt->execute();
+  $houseStatus = $stmt->fetchAll();
+
+  $dbConnEarn = getConnection();
+  $sqlEarn = "SELECT AVG(finalComm) as average, SUM(finalComm) AS earnings FROM commInfo";
+  $stmtEarn = $dbConnEarn -> prepare($sqlEarn);
+  $stmtEarn->execute();
+  $sumEarnings = $stmtEarn->fetch();
+
+  $dbConnRank = getConnection();
+  $sqlRank = "SELECT UsersInfo.firstName, UsersInfo.lastName, count(*) as sold, sum(finalComm) as YTDComm FROM UsersInfo LEFT JOIN commInfo on UsersInfo.license = commInfo.license group by UsersInfo.license order by sold Desc ";
+  $stmtRank = $dbConnRank -> prepare($sqlRank);
+  $stmtRank->execute();
+  $rank = $stmtRank->fetchAll();
 ?>
 
 <!DOCTYPE html>
