@@ -521,7 +521,7 @@ if (!isset($_SESSION['userId'])) {
                 var $modal = $('#editor-modal'),
                         $editor = $('#editor'),
                         $editorTitle = $('#editor-title'),
-                        ft = FooTable.init('#myTable', {
+                        ft = footable.init('#myTable', {
                             editing: {
                                 enabled: true,
                                 addRow: function () {
