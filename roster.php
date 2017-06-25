@@ -1,6 +1,6 @@
 <?php
   session_start();
-  
+
   require 'databaseConnection.php';
 
   $dbConn = getConnection();
@@ -239,11 +239,11 @@
     <div class="content-wrapper">
       <!-- Main content -->
       <section class="content">
-      
+
         <?php
 
-          foreach ($result as $agent) 
-          {
+        foreach ($result as $agent)
+        {
             echo '<div class="row">';
             echo '<div class="col-md-3">';
             echo '<div class="box box-default collapsed-box">';
@@ -261,7 +261,7 @@
             echo '</div>';
             echo '</div>';
 
-          }
+        }
         ?>
 
         <!-- /.row -->

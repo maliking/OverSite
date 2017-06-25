@@ -1,6 +1,6 @@
 <?php
   session_start();
-  
+
   require 'databaseConnection.php';
 
   $dbConn = getConnection();
@@ -305,8 +305,8 @@
                   </thead>
                   <tbody>
                     <?php
-                      foreach ($result as $house) 
-                      {
+                    foreach ($result as $house)
+                    {
                         echo "<tr>";
                         echo "<td>" . $house['address'] . "</td>";
                         echo "<td>" . $house['city'] . "</td>";
@@ -318,10 +318,10 @@
                         echo "<td>" . '$' . number_format($house['price'], 0) . "</td>";
                         echo "<td>" . "NA" . "</td>";
                         echo "</tr>";
-                      }
+                    }
 
                     ?>
-                    
+
                   </tbody>
                 </table>
               </div>

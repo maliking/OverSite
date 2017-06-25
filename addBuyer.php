@@ -1,8 +1,8 @@
 <?php
 //session_start();
 require 'databaseConnection.php';
-require('keys/cred.php');
-require('twilio-php-master/Twilio/autoload.php');
+require 'keys/cred.php';
+require 'twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
 session_start();
 $dbConn = getConnection();
@@ -18,7 +18,7 @@ $priceMax = $_POST['priceMax'];
 $priceMin = $_POST['priceMin'];
 $houseId = $_POST['houseId'];
 $userId = $_SESSION['userId'];
-$sql = "INSERT INTO BuyerInfo 
+$sql = "INSERT INTO BuyerInfo
 		(firstName, lastName, email, phone, bedroomsMax, bedroomsMin, bathroomsMax, bathroomsMin, priceMax, priceMin, houseId, userId)
 		VALUES (:firstName, :lastName, :email, :phone, :bedroomsMax, :bedroomsMin, :bathroomsMax, :bathroomsMin, :priceMax, :priceMin, :houseId, :userId)";
 $namedParameters = array();
@@ -38,40 +38,40 @@ $stmt = $dbConn -> prepare($sql);
 $stmt->execute($namedParameters);
 //$stmt->execute();
 //$result = $stmt->fetch(); //We are expecting one record
-$twilio_phone_number = "+18315851661"; 
+$twilio_phone_number = "+18315851661";
 // if($houseId == "89")
 // {
-	$client = new Client($sid, $token);
-	$client->messages->create(
-	$phone,
-	array(
-	"From" => $twilio_phone_number,
-	"Body" => "Flyer",
-	'mediaUrl' => "http://52.11.24.75/flyers/Flyer.jpg",
-	)
-	);
-// }
-// else if($houseId == "193")
-// {
-// 	$client = new Client($sid, $token);
-// 	$client->messages->create(
-// 	$phone,
-// 	array(
-// 	"From" => $twilio_phone_number,
-// 	"Body" => "Flyer",
-// 	'mediaUrl' => "http://52.11.24.75/keys/declaration.jpg",
-// 	)
-// 	);
-// }
-//if (empty($result)) {
- header("Location: Confirmation.php");
-//}
-/*else {
-    
+    $client = new Client($sid, $token);
+    $client->messages->create(
+        $phone,
+        array(
+        "From" => $twilio_phone_number,
+        "Body" => "Flyer",
+        'mediaUrl' => "http://52.11.24.75/flyers/Flyer.jpg",
+        )
+    );
+    // }
+    // else if($houseId == "193")
+    // {
+    // 	$client = new Client($sid, $token);
+    // 	$client->messages->create(
+    // 	$phone,
+    // 	array(
+    // 	"From" => $twilio_phone_number,
+    // 	"Body" => "Flyer",
+    // 	'mediaUrl' => "http://52.11.24.75/keys/declaration.jpg",
+    // 	)
+    // 	);
+    // }
+    //if (empty($result)) {
+    header("Location: Confirmation.php");
+    //}
+    /*else {
+
     $_SESSION['username']  = $result['username'];
     $_SESSION['adminName'] = $result['firstName'] . " " . $result['lastName'];
     $_SESSION['userId'] = $result['userId'];
     header("Location: quiz.php");
-    
-}*/
+
+    }*/
 ?>

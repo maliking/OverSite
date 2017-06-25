@@ -1,6 +1,6 @@
 <?php
   session_start();
-  
+
   require 'databaseConnection.php';
 
   $dbConn = getConnection();
@@ -305,21 +305,21 @@
                     </tr>
                   </thead>
                   <tbody>
-                     <?php
-                      foreach ($result as $house) 
-                      {
-                        echo "<tr>";
-                        echo "<td>" . $house['address'] . "</td>";
-                        echo "<td>" . $house['city'] . "</td>";
-                        echo "<td>" . $house['zip'] . "</td>";
-                        echo "<td>" . $house['bedrooms'] . "</td>";
-                        echo "<td>" . $house['bathrooms'] . "</td>";
-                        echo "<td>" . "NA" . "</td>";
-                        echo "<td>" . "NA" . "</td>";
-                        echo "<td>" . '$' . number_format($house['price'], 0) . "</td>";
-                        echo "<td>" . "NA" . "</td>";
-                        echo "</tr>";
-                      }
+                        <?php
+                        foreach ($result as $house)
+                        {
+                            echo "<tr>";
+                            echo "<td>" . $house['address'] . "</td>";
+                            echo "<td>" . $house['city'] . "</td>";
+                            echo "<td>" . $house['zip'] . "</td>";
+                            echo "<td>" . $house['bedrooms'] . "</td>";
+                            echo "<td>" . $house['bathrooms'] . "</td>";
+                            echo "<td>" . "NA" . "</td>";
+                            echo "<td>" . "NA" . "</td>";
+                            echo "<td>" . '$' . number_format($house['price'], 0) . "</td>";
+                            echo "<td>" . "NA" . "</td>";
+                            echo "</tr>";
+                        }
 
                     ?>
                   </tbody>

@@ -2,10 +2,9 @@
 
   session_start();
 
-  if(!isset($_SESSION['userId'])) 
-  {
-        header("Location: login.php");
-  } 
+if(!isset($_SESSION['userId'])) {
+    header("Location: login.php");
+}
 
   require 'databaseConnection.php';
 
@@ -384,27 +383,26 @@
                   <tbody>
                     <?php
                      $limit = 1;
-                      foreach($rank as $agent)
-                      {
-                        if($limit > 5)
-                        {
-                          break;
+                    foreach($rank as $agent)
+                    {
+                        if($limit > 5) {
+                            break;
                         }
                         else
                         {
-                          echo "<tr>";
-                          echo "<td>" . $agent['lastName'] . "</td>"; 
-                          echo "<td>" . $agent['firstName'] . "</td>"; 
-                          echo "<td>" . $agent['sold'] . "</td>"; 
-                          echo "<td>" . $agent['sold'] . "</td>"; 
-                          echo "<td>" . $agent['sold'] . "</td>"; 
-                          echo "<td>" . $agent['sold'] . "</td>"; 
-                          echo "<td>" . "$" . number_format($agent['YTDComm'], 0) . "</td>"; 
-                          echo "<td>" . "NA" . "</td>"; 
-                          echo "</tr>";
-                     
+                            echo "<tr>";
+                            echo "<td>" . $agent['lastName'] . "</td>";
+                            echo "<td>" . $agent['firstName'] . "</td>";
+                            echo "<td>" . $agent['sold'] . "</td>";
+                            echo "<td>" . $agent['sold'] . "</td>";
+                            echo "<td>" . $agent['sold'] . "</td>";
+                            echo "<td>" . $agent['sold'] . "</td>";
+                            echo "<td>" . "$" . number_format($agent['YTDComm'], 0) . "</td>";
+                            echo "<td>" . "NA" . "</td>";
+                            echo "</tr>";
+
                         }
-                      }
+                    }
                     ?>
                   </tbody>
                 </table>
@@ -455,7 +453,7 @@
     $(function() {
           $("#agent-table").DataTable({
               "paging": false,
-              }); 
+              });
           });
   </script>
 </body>
