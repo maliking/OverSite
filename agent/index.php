@@ -473,7 +473,7 @@ if (!isset($_SESSION['userId'])) {
         <script type="text/javascript" src="../plugins/footable/js/footable.min.js"></script>
         <script>
             jQuery(function ($) {
-                $('.table').footable({
+                $('#myTable').footable({
                     "showHeader": false,
                     "columns": [
                         {"name": "id", "title": "ID", "breakpoints": "xs"},
