@@ -352,7 +352,52 @@ if (!isset($_SESSION['userId'])) {
                                 <!-- /.box-header -->
                                 <div class="box-body">
                                     <table id="myTable" data-editing-always-show="true" data-editing="true" class="table table-bordered table-striped">
-                                        
+                                        <thead>
+                                            <tr>
+                                                <th data-visible="false" style="text-align: center">ID</th>
+                                                <th style="text-align: center">Property</th>
+                                                <th style="text-align: center">Last</th>
+                                                <th style="text-align: center">First</th>
+                                                <th style="text-align: center">Number</th>
+                                                <th style="text-align: center">Approval</th>
+                                                <th style="text-align: center">EMD</th>
+                                                <th style="text-align: center">Contingency</th>
+                                                <th style="text-align: center">COE</th>
+                                                <th style="text-align: center">Loans</th>
+                                                <th style="text-align: center">Notes</th>
+                                            </tr>
+
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
+
+                                                <td>94832 Mystery Rd. Monterey, CA 939</td>
+                                                <td>King</td>
+                                                <td>Mali</td>
+                                                <td>4083488336</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>Notes</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+
+                                                <td>94832 Mystery Rd. Monterey, CA 939</td>
+                                                <td>King</td>
+                                                <td>Mali</td>
+                                                <td>4083488336</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>Notes</td>
+                                            </tr>
+                                        </tbody>
                                     </table>
                                     <div class="modal fade" id="editor-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
 
@@ -473,34 +518,6 @@ if (!isset($_SESSION['userId'])) {
         <script type="text/javascript" src="../plugins/footable/js/footable.min.js"></script>
         <script>
             jQuery(function ($) {
-                $('#myTable').footable({
-=                    "columns": [
-                        {"name": "id", "title": "ID", "breakpoints": "xs"},
-                        {"name": "property", "title": "Property",},
-                        {"name": "firstname", "title": "First Name",},
-                        {"name": "lastname", "title": "Last Name",},
-                        {"name": "phone", "title": "Phone","breakpoints": "xs"},
-                        {"name": "approval", "title": "Approval","breakpoints": "xs sm"},
-                        {"name": "emd", "title": "emd", "breakpoints": "xs sm md"},
-                        {"name": "contingency", "title": "Contingency","breakpoints": "xs sm md"},
-                        {"name": "coe", "title": "coe", "breakpoints": "xs sm md"},
-                        {"name": "loans", "title": "Loans", "breakpoints": "xs sm md"},
-                        {"name": "notes", "title": "Notes", "breakpoints": "xs sm md"},
-                    ],
-                    "rows": [
-                        {"id": 1, "property": "43298 Craig Dr. Salinas CA, 94832", "firstname": "Elodia", "lastname": "Weisz", "phone":"329-328-3284", "approval": "03/12/2017", "emd": "03/12/2017", "contingency": "03/12/2017", "coe": "03/12/2017",  "loans": "03/12/2017", "notes": "notes"},
-                        {"id": 2, "property": "43298 Craig Dr. Salinas CA, 94832", "firstname": "Elodia", "lastname": "Weisz", "phone":"329-328-3284", "approval": "03/12/2017", "emd": "03/12/2017", "contingency": "03/12/2017", "coe": "03/12/2017",  "loans": "03/12/2017", "notes": "notes"},
-                        {"id": 3, "property": "43298 Craig Dr. Salinas CA, 94832", "firstname": "Elodia", "lastname": "Weisz", "phone":"329-328-3284", "approval": "03/12/2017", "emd": "03/12/2017", "contingency": "03/12/2017", "coe": "03/12/2017",  "loans": "03/12/2017", "notes": "notes"},
-                        {"id": 4, "property": "43298 Craig Dr. Salinas CA, 94832", "firstname": "Elodia", "lastname": "Weisz", "phone":"329-328-3284", "approval": "03/12/2017", "emd": "03/12/2017", "contingency": "03/12/2017", "coe": "03/12/2017",  "loans": "03/12/2017", "notes": "notes"},
-                        {"id": 5, "property": "43298 Craig Dr. Salinas CA, 94832", "firstname": "Elodia", "lastname": "Weisz", "phone":"329-328-3284", "approval": "03/12/2017", "emd": "03/12/2017", "contingency": "03/12/2017", "coe": "03/12/2017",  "loans": "03/12/2017", "notes": "notes"},
-                        {"id": 6, "property": "43298 Craig Dr. Salinas CA, 94832", "firstname": "Elodia", "lastname": "Weisz", "phone":"329-328-3284", "approval": "03/12/2017", "emd": "03/12/2017", "contingency": "03/12/2017", "coe": "03/12/2017",  "loans": "03/12/2017", "notes": "notes"},
-                        {"id": 7, "property": "43298 Craig Dr. Salinas CA, 94832", "firstname": "Elodia", "lastname": "Weisz", "phone":"329-328-3284", "approval": "03/12/2017", "emd": "03/12/2017", "contingency": "03/12/2017", "coe": "03/12/2017",  "loans": "03/12/2017", "notes": "notes"},
-                    ]
-                });
-            });
-        </script>
-        <script>
-            jQuery(function ($) {
 
                 var $modal = $('#editor-modal'),
                         $editor = $('#editor'),
@@ -572,8 +589,7 @@ if (!isset($_SESSION['userId'])) {
                 });
             });
         </script>
-
-
+        
     </body>
 
 </html>
