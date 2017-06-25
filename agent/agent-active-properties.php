@@ -25,6 +25,14 @@ if (!isset($_SESSION['userId'])) {
         <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
         <link rel="stylesheet" href="../dist/css/skins/skin-red-light.min.css">
         <link rel="stylesheet" href="../plugins/footable/footable.bootstrap.min.css">
+        <style>
+            .form-group.required .control-label:after {
+                content:"*";
+                color:red;
+                margin-left: 4px;
+            }
+
+        </style>
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
@@ -157,7 +165,7 @@ if (!isset($_SESSION['userId'])) {
                                     <li class="user-header">
                                         <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                                         <p>
-                                          <?php echo $_SESSION['username']; ?>
+                                            <?php echo $_SESSION['username']; ?>
                                             <small>Member since Nov. 2012</small>
                                         </p>
                                     </li>
@@ -244,7 +252,7 @@ if (!isset($_SESSION['userId'])) {
                         <div class="col-lg-12 col-xs-12">
                             <div class="box box-success">
                                 <div class="box-header with-border">
-                                    <h3 class="box-title"><i class=" fa fa-flash"></i> My Active Properties</h3>
+                                    <h3 class="box-title"><i class=" fa fa-flash"></i> My Inventory</h3>
 
                                     <div class="box-tools pull-right">
                                         <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -257,34 +265,48 @@ if (!isset($_SESSION['userId'])) {
                                     <table id="myTable" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th colspan="2" style="text-align: center; background-color: #7edf68">Property</th>
-                                                <th colspan="4" style="text-align: center; background-color: #f9a019">Important Dates</th>
+                                                <th data-visible="false" style="text-align: center">ID</th>
+                                                <th style="text-align: center">Property</th>
+                                                <th style="text-align: center">Last</th>
+                                                <th style="text-align: center">First</th>
+                                                <th style="text-align: center">Number</th>
+                                                <th style="text-align: center">Approval</th>
+                                                <th style="text-align: center">EMD</th>
+                                                <th style="text-align: center">Contingency</th>
+                                                <th style="text-align: center">COE</th>
+                                                <th style="text-align: center">Loans</th>
+                                                <th style="text-align: center">Notes</th>
                                             </tr>
-                                            <tr>
-                                                <th style="text-align: center; background-color: #b1eba4"><i class="fa fa-map-marker"></i> Address</th>
-                                                <th style="text-align: center; background-color: #b1eba4"><i class="fa fa-address-card-o"></i> Owner</th>
-                                                <th style="text-align: center; background-color: #fdecd1"><i class="fa fa-check-square-o"></i> Approved</th>
-                                                <th style="text-align: center; background-color: #fddfb2"><i class="fa fa-paperclip"></i> Disclosure</th>
-                                                <th style="text-align: center; background-color: #fcca7f"><i class="fa fa-shield"></i> Contingency</th>
-                                                <th style="text-align: center; background-color: #fab54c"><i class="fa fa-handshake-o"></i> COE</th>
-                                            </tr>
+
                                         </thead>
                                         <tbody>
                                             <tr>
-                                                <td>4345 Gregor St.<br>Los Gatos, CA 93940</td>
-                                                <td>Mali King<br>(408) 348-8336</td>
-                                                <td>5/4/17</td>
+                                                <td>1</td>
+
+                                                <td>94832 Mystery Rd. Monterey, CA 939</td>
+                                                <td>King</td>
+                                                <td>Mali</td>
+                                                <td>4083488336</td>
                                                 <td>5/6/17</td>
                                                 <td>5/9/17</td>
                                                 <td>5/12/17</td>
+                                                <td>5/12/17</td>
+                                                <td>5/12/17</td>
+                                                <td>Notes</td>
                                             </tr>
                                             <tr>
-                                                <td>94832 Mystery Rd.<br>Monte Sereno, CA 93940</td>
-                                                <td>Mali King<br>(408) 348-8336</td>
-                                                <td>5/4/17</td>
+                                                <td>2</td>
+
+                                                <td>94832 Mystery Rd. Monterey, CA 939</td>
+                                                <td>King</td>
+                                                <td>Mali</td>
+                                                <td>4083488336</td>
                                                 <td>5/6/17</td>
                                                 <td>5/9/17</td>
                                                 <td>5/12/17</td>
+                                                <td>5/12/17</td>
+                                                <td>5/12/17</td>
+                                                <td>Notes</td>
                                             </tr>
                                         </tbody>
                                     </table>
@@ -299,7 +321,84 @@ if (!isset($_SESSION['userId'])) {
             <!-- /.content-wrapper -->
         </div>
         <!-- /.wrapper -->
+        <div class="modal fade" id="editor-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
+           
+            <div class="modal-dialog" role="document">
+                <form class="modal-content form-horizontal" id="editor">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="editor-title">Add Row</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="number" id="id" name="id" class="hidden"/>
+                        <div class="form-group required">
+                            <label for="property" class="col-sm-3 control-label">Property Address</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="property" name="property" placeholder="property" required>
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label for="lastname" class="col-sm-3 control-label">Last Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Last Name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="firstname" class="col-sm-3 control-label">First Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="firstname" name="firstname" placeholder="First Name">
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label for="phone" class="col-sm-3 control-label">Phone Number</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="phone" name="phone" placeholder="XXX-XXX-XXXX" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="approval" class="col-sm-3 control-label">Approval</label>
+                            <div class="col-sm-9">
+                                <input type="date" class="form-control" id="approval" name="approval">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="emd" class="col-sm-3 control-label">EMD</label>
+                            <div class="col-sm-9">
+                                <input type="date" class="form-control" id="emd" name="emd" >
+                            </div>
+                        </div>                        <div class="form-group">
+                            <label for="contingency" class="col-sm-3 control-label">Contingency</label>
+                            <div class="col-sm-9">
+                                <input type="date" class="form-control" id="contingency" name="contingency" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="coe" class="col-sm-3 control-label">COE</label>
+                            <div class="col-sm-9">
+                                <input type="date" class="form-control" id="coe" name="coe">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="loans" class="col-sm-3 control-label">Loans</label>
+                            <div class="col-sm-9">
+                                <input type="date" class="form-control" id="loans" name="loans">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="notes" class="col-sm-3 control-label">Notes</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="notes" name="notes" placeholder="Notes">
+                            </div>
+                        </div>
 
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
         <!-- Main Footer -->
         <footer class="main-footer">
@@ -327,15 +426,73 @@ if (!isset($_SESSION['userId'])) {
         <!-- Datatables -->
         <script type="text/javascript" src="../plugins/footable/footable.min.js"></script>
         <script>
-            /*
-             * DATATABLE CONTROLS
-             * -----------------------
-             */
+            jQuery(function ($) {
 
+                var $modal = $('#editor-modal'),
+                        $editor = $('#editor'),
+                        $editorTitle = $('#editor-title'),
+                        ft = FooTable.init('#myTable', {
+                            editing: {
+                                enabled: true,
+                                addRow: function () {
+                                    $modal.removeData('row');
+                                    $editor[0].reset();
+                                    $editorTitle.text('Add a new row');
+                                    $modal.modal('show');
+                                },
+                                editRow: function (row) {
+                                    var values = row.val();
+                                    $editor.find('#id').val(values.id);
+                                    $editor.find('#property').val(values.property);
+                                    $editor.find('#firstname').val(values.firstname);
+                                    $editor.find('#lastname').val(values.lastname);
+                                    $editor.find('#phone').val(values.phone);
+                                    $editor.find('#approval').val(values.approval);
+                                    $editor.find('#emd').val(values.emd);
+                                    $editor.find('#contingency').val(values.contingency);
+                                    $editor.find('#coe').val(values.coe);
+                                    $editor.find('#loans').val(values.loans);
+                                    $editor.find('#notes').val(values.notes);
+                                    $modal.data('row', row);
+                                    $editorTitle.text('Edit row #' + values.id);
+                                    $modal.modal('show');
+                                },
+                                deleteRow: function (row) {
+                                    if (confirm('Are you sure you want to delete the row?')) {
+                                        row.delete();
+                                    }
+                                }
+                            }
+                        }),
+                        uid = 10;
 
-            $(function () {
-                $("#agent-table").DataTable({
-                    "paging": false,
+                $editor.on('submit', function (e) {
+                    if (this.checkValidity && !this.checkValidity())
+                        return;
+                    e.preventDefault();
+                    var row = $modal.data('row'),
+                            values = {
+                                id: $editor.find('#id').val(),
+                                property: $editor.find('#property').val(),
+                                firstname: $editor.find('#firstname').val(),
+                                lastname: $editor.find('#lastname').val(),
+                                phone: $editor.find('#phone').val(),
+                                approval: moment($editor.find('#approval').val(), 'DD-MM-YYYY'),
+                                emd: moment($editor.find('#emd').val(), 'DD-MM-YYYY'),
+                                contingency: moment($editor.find('#contingency').val(), 'DD-MM-YYYY'),
+                                coe: moment($editor.find('#coe').val(), 'DD-MM-YYYY'),
+                                loans: moment($editor.find('#loans').val(), 'DD-MM-YYYY'),
+                                notes: $editor.find('#notes').val()
+
+                            };
+
+                    if (row instanceof FooTable.Row) {
+                        row.val(values);
+                    } else {
+                        values.id = uid++;
+                        ft.rows.add(values);
+                    }
+                    $modal.modal('hide');
                 });
             });
         </script>
