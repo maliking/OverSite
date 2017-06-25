@@ -24,7 +24,7 @@ if (!isset($_SESSION['userId'])) {
         <!-- Theme style -->
         <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
         <link rel="stylesheet" href="../dist/css/skins/skin-red-light.min.css">
-        <link rel="stylesheet" href="../plugins/datatables/datatables.min.css">
+        <link rel="stylesheet" href="../plugins/footable/css/footable.bootstrap.min.css">
 
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -255,7 +255,7 @@ if (!isset($_SESSION['userId'])) {
                                 </div>
                                 <!-- /.box-header -->
                                 <div class="box-body">
-                                    <table id="myTable" class="table table-bordered table-striped">
+                                    <table id="myTable" data-editing="true" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th colspan="2" style="text-align: center; background-color: #7edf68">Property</th>
@@ -268,6 +268,7 @@ if (!isset($_SESSION['userId'])) {
                                                 <th style="text-align: center; background-color: #fddfb2"><i class="fa fa-paperclip"></i> Disclosure</th>
                                                 <th style="text-align: center; background-color: #fcca7f"><i class="fa fa-shield"></i> Contingency</th>
                                                 <th style="text-align: center; background-color: #fab54c"><i class="fa fa-handshake-o"></i> COE</th>
+                                                <th style="text-align: center; background-color: #fab54c">Notes</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -278,6 +279,7 @@ if (!isset($_SESSION['userId'])) {
                                                 <td>5/6/17</td>
                                                 <td>5/9/17</td>
                                                 <td>5/12/17</td>
+                                                <td>5/12/17</td>
                                             </tr>
                                             <tr>
                                                 <td>94832 Mystery Rd.<br>Monte Sereno, CA 93940</td>
@@ -285,6 +287,7 @@ if (!isset($_SESSION['userId'])) {
                                                 <td>5/4/17</td>
                                                 <td>5/6/17</td>
                                                 <td>5/9/17</td>
+                                                <td>5/12/17</td>
                                                 <td>5/12/17</td>
                                             </tr>
                                         </tbody>
@@ -326,7 +329,7 @@ if (!isset($_SESSION['userId'])) {
         <!-- AdminLTE App -->
         <script src="../dist/js/app.min.js"></script>
         <!-- Datatables -->
-        <script type="text/javascript" src="../plugins/datatables/datatables.min.js"></script>
+        <script type="text/javascript" src="../plugins/footable/js/footable.min.js"></script>
         <script>
             /*
              * DATATABLE CONTROLS
