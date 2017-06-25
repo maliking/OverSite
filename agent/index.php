@@ -24,7 +24,7 @@ if (!isset($_SESSION['userId'])) {
         <!-- Theme style -->
         <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
         <link rel="stylesheet" href="../dist/css/skins/skin-red-light.min.css">
-        <link rel="stylesheet" href="../plugins/footable/footable.bootstrap.min.css">
+        <link rel="stylesheet" href="../plugins/footable/css/footable.bootstrap.min.css">
         <style>
             .form-group.required .control-label:after {
                 content:"*";
@@ -514,7 +514,7 @@ if (!isset($_SESSION['userId'])) {
         <!-- AdminLTE App -->
         <script src="../dist/js/app.min.js"></script>
         <!-- Datatables -->
-        <script type="text/javascript" src="../plugins/footable/footable.min.js"></script>
+        <script type="text/javascript" src="../plugins/footable/js/footable.min.js"></script>
         <script>
             jQuery(function ($) {
 
