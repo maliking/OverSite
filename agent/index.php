@@ -339,71 +339,56 @@ if (!isset($_SESSION['userId'])) {
                     </div>
                     <div class="row">
                         <div class="col-lg-12 col-xs-12">
-                            <div class="box box-success">
-                                <div class="box-header with-border">
-                                    <h3 class="box-title"><i class=" fa fa-flash"></i> My Inventory</h3>
+                            
+                            <table id="myTable" data-editing="true" data-editing-always-show="true" class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th data-visible="false" style="text-align: center">ID</th>
+                                        <th style="text-align: center">Property</th>
+                                        <th style="text-align: center">Last</th>
+                                        <th style="text-align: center">First</th>
+                                        <th style="text-align: center">Number</th>
+                                        <th style="text-align: center">Approval</th>
+                                        <th style="text-align: center">EMD</th>
+                                        <th style="text-align: center">Contingency</th>
+                                        <th style="text-align: center">COE</th>
+                                        <th style="text-align: center">Loans</th>
+                                        <th style="text-align: center">Notes</th>
+                                    </tr>
 
-                                    <div class="box-tools pull-right">
-                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                                    </div>
-                                </div>
-                                <!-- /.box-header -->
-                                <div class="box-body">
-                                    <table id="myTable" data-editing="true" data-editing-always-show="true" class="table table-bordered table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th data-visible="false" style="text-align: center">ID</th>
-                                                <th style="text-align: center">Property</th>
-                                                <th style="text-align: center">Last</th>
-                                                <th style="text-align: center">First</th>
-                                                <th style="text-align: center">Number</th>
-                                                <th style="text-align: center">Approval</th>
-                                                <th style="text-align: center">EMD</th>
-                                                <th style="text-align: center">Contingency</th>
-                                                <th style="text-align: center">COE</th>
-                                                <th style="text-align: center">Loans</th>
-                                                <th style="text-align: center">Notes</th>
-                                            </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
 
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
+                                        <td>94832 Mystery Rd. Monterey, CA 939</td>
+                                        <td>King</td>
+                                        <td>Mali</td>
+                                        <td>4083488336</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Notes</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
 
-                                                <td>94832 Mystery Rd. Monterey, CA 939</td>
-                                                <td>King</td>
-                                                <td>Mali</td>
-                                                <td>4083488336</td>
-                                                <td>5/6/17</td>
-                                                <td>5/9/17</td>
-                                                <td>5/12/17</td>
-                                                <td>5/12/17</td>
-                                                <td>5/12/17</td>
-                                                <td>Notes</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
-
-                                                <td>94832 Mystery Rd. Monterey, CA 939</td>
-                                                <td>King</td>
-                                                <td>Mali</td>
-                                                <td>4083488336</td>
-                                                <td>5/6/17</td>
-                                                <td>5/9/17</td>
-                                                <td>5/12/17</td>
-                                                <td>5/12/17</td>
-                                                <td>5/12/17</td>
-                                                <td>Notes</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                                <!-- /.box-body -->
-                            </div>
+                                        <td>94832 Mystery Rd. Monterey, CA 939</td>
+                                        <td>King</td>
+                                        <td>Mali</td>
+                                        <td>4083488336</td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Notes</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <!-- /.box-body -->
                     </div>
                 </section>
             </div>
@@ -521,7 +506,7 @@ if (!isset($_SESSION['userId'])) {
                 var $modal = $('#editor-modal'),
                         $editor = $('#editor'),
                         $editorTitle = $('#editor-title'),
-                        ft = FooTable.init('#myTable', {
+                        ft = FooTable.init('.table', {
                             editing: {
                                 enabled: true,
                                 addRow: function () {
@@ -537,11 +522,12 @@ if (!isset($_SESSION['userId'])) {
                                     $editor.find('#firstname').val(values.firstname);
                                     $editor.find('#lastname').val(values.lastname);
                                     $editor.find('#phone').val(values.phone);
-                                    $editor.find('#approval').val(values.approval);
-                                    $editor.find('#emd').val(values.emd);
-                                    $editor.find('#contingency').val(values.contingency);
-                                    $editor.find('#coe').val(values.coe);
-                                    $editor.find('#loans').val(values.loans);
+                                    $editor.find('#approval').val(values.approval.format('MM-DD-YYYY'));
+                                    $editor.find('#emd').val(values.emd.format('MM-DD-YYYY'));
+                                    $editor.find('#contingency').val(values.contingency.format('MM-DD-YYYY'));
+                                    $editor.find('#coe').val(values.coe.format('MM-DD-YYYY'));
+                                    $editor.find('#loans').val(values.loans.format('MM-DD-YYYY'));
+
                                     $editor.find('#notes').val(values.notes);
                                     $modal.data('row', row);
                                     $editorTitle.text('Edit row #' + values.id);
@@ -567,11 +553,11 @@ if (!isset($_SESSION['userId'])) {
                                 firstname: $editor.find('#firstname').val(),
                                 lastname: $editor.find('#lastname').val(),
                                 phone: $editor.find('#phone').val(),
-                                approval: moment($editor.find('#approval').val(), 'DD-MM-YYYY'),
-                                emd: moment($editor.find('#emd').val(), 'DD-MM-YYYY'),
-                                contingency: moment($editor.find('#contingency').val(), 'DD-MM-YYYY'),
-                                coe: moment($editor.find('#coe').val(), 'DD-MM-YYYY'),
-                                loans: moment($editor.find('#loans').val(), 'DD-MM-YYYY'),
+                                approval: moment($editor.find('#approval').val(), 'MM-DD-YYYY'),
+                                emd: moment($editor.find('#emd').val(), 'MM-DD-YYYY'),
+                                contingency: moment($editor.find('#contingency').val(), 'MM-DD-YYYY'),
+                                coe: moment($editor.find('#coe').val(), 'MM-DD-YYYY'),
+                                loans: moment($editor.find('#loans').val(), 'MM-DD-YYYY'),
                                 notes: $editor.find('#notes').val()
 
                             };
