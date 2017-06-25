@@ -351,7 +351,7 @@ if (!isset($_SESSION['userId'])) {
                                 </div>
                                 <!-- /.box-header -->
                                 <div class="box-body">
-                                    <table id="myTable" class="table table-bordered table-striped">
+                                    <table id="myTable" data-editing="true" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th data-visible="false" style="text-align: center">ID</th>
