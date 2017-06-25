@@ -351,7 +351,7 @@ if (!isset($_SESSION['userId'])) {
                                 </div>
                                 <!-- /.box-header -->
                                 <div class="box-body">
-                                    <table id="myTable" data-editing="true" data-editing-always-show="true" class="table table-bordered table-striped">
+                                    <table id="myTable" data-editing-always-show="true" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
                                                 <th data-visible="false" style="text-align: center">ID</th>
@@ -521,7 +521,8 @@ if (!isset($_SESSION['userId'])) {
                 var $modal = $('#editor-modal'),
                         $editor = $('#editor'),
                         $editorTitle = $('#editor-title'),
-                        ft = footable.init('#myTable', {
+                        ft = FooTable.init('#myTable', {
+                            
                             editing: {
                                 enabled: true,
                                 addRow: function () {
