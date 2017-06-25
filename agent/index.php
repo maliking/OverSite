@@ -339,56 +339,71 @@ if (!isset($_SESSION['userId'])) {
                     </div>
                     <div class="row">
                         <div class="col-lg-12 col-xs-12">
-                            
-                            <table id="myTable" data-editing="true" data-editing-always-show="true" class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th data-visible="false" style="text-align: center">ID</th>
-                                        <th style="text-align: center">Property</th>
-                                        <th style="text-align: center">Last</th>
-                                        <th style="text-align: center">First</th>
-                                        <th style="text-align: center">Number</th>
-                                        <th style="text-align: center">Approval</th>
-                                        <th style="text-align: center">EMD</th>
-                                        <th style="text-align: center">Contingency</th>
-                                        <th style="text-align: center">COE</th>
-                                        <th style="text-align: center">Loans</th>
-                                        <th style="text-align: center">Notes</th>
-                                    </tr>
+                            <div class="box box-success">
+                                <div class="box-header with-border">
+                                    <h3 class="box-title"><i class=" fa fa-flash"></i> My Inventory</h3>
 
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
+                                    <div class="box-tools pull-right">
+                                        <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="box-body">
+                                    <table id="myTable" data-editing="true" data-editing-always-show="true" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th data-visible="false" style="text-align: center">ID</th>
+                                                <th style="text-align: center">Property</th>
+                                                <th style="text-align: center">Last</th>
+                                                <th style="text-align: center">First</th>
+                                                <th style="text-align: center">Number</th>
+                                                <th style="text-align: center">Approval</th>
+                                                <th style="text-align: center">EMD</th>
+                                                <th style="text-align: center">Contingency</th>
+                                                <th style="text-align: center">COE</th>
+                                                <th style="text-align: center">Loans</th>
+                                                <th style="text-align: center">Notes</th>
+                                            </tr>
 
-                                        <td>94832 Mystery Rd. Monterey, CA 939</td>
-                                        <td>King</td>
-                                        <td>Mali</td>
-                                        <td>4083488336</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Notes</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>1</td>
 
-                                        <td>94832 Mystery Rd. Monterey, CA 939</td>
-                                        <td>King</td>
-                                        <td>Mali</td>
-                                        <td>4083488336</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>Notes</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                                                <td>94832 Mystery Rd. Monterey, CA 939</td>
+                                                <td>King</td>
+                                                <td>Mali</td>
+                                                <td>4083488336</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>Notes</td>
+                                            </tr>
+                                            <tr>
+                                                <td>2</td>
+
+                                                <td>94832 Mystery Rd. Monterey, CA 939</td>
+                                                <td>King</td>
+                                                <td>Mali</td>
+                                                <td>4083488336</td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td></td>
+                                                <td>Notes</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
                         </div>
+                        <!-- /.box-body -->
                     </div>
                 </section>
             </div>
@@ -506,7 +521,7 @@ if (!isset($_SESSION['userId'])) {
                 var $modal = $('#editor-modal'),
                         $editor = $('#editor'),
                         $editorTitle = $('#editor-title'),
-                        ft = FooTable.init('.table', {
+                        ft = FooTable.init('#myTable', {
                             editing: {
                                 enabled: true,
                                 addRow: function () {
