@@ -399,18 +399,7 @@ if (!isset($_SESSION['userId'])) {
                                             </tr>
                                         </tbody>
                                     </table>
-                                </div>
-                                <!-- /.box-body -->
-                            </div>
-                        </div>
-                        <!-- /.box-body -->
-                    </div>
-                </section>
-            </div>
-            <!-- /.content-wrapper -->
-        </div>
-        <!-- /.wrapper -->
-        <div class="modal fade" id="editor-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
+                                            <div class="modal fade" id="editor-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
 
             <div class="modal-dialog" role="document">
                 <form class="modal-content form-horizontal" id="editor">
@@ -488,6 +477,18 @@ if (!isset($_SESSION['userId'])) {
                 </form>
             </div>
         </div>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+                    </div>
+                </section>
+            </div>
+            <!-- /.content-wrapper -->
+        </div>
+        <!-- /.wrapper -->
+
 
         <!-- Main Footer -->
         <footer class="main-footer">
