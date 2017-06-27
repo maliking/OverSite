@@ -27,11 +27,11 @@ else {
     //$_SESSION['userName'] = $result['firstName'] . " " . $result['lastName'];
     //$_SESSION['userId'] = $result['userId'];
     if($result['userType'] == 0) {
-        header("Location: agent/index.php");
+        header("Location: index.php");
     }
 
     else if($result['userType'] == 1) {
-        header("Location: login.php");
+        header("Location: agent/index.php");
     }
 
 }
