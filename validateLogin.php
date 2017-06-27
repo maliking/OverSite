@@ -27,7 +27,7 @@ else {
     //$_SESSION['userName'] = $result['firstName'] . " " . $result['lastName'];
     //$_SESSION['userId'] = $result['userId'];
     if($result['userType'] == 0) {
-        header("Location: index.php");
+        header("Location: agent/index.php");
     }
 
     else if($result['userType'] == 1) {
