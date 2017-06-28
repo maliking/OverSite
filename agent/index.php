@@ -365,6 +365,7 @@ if (!isset($_SESSION['userId'])) {
                                         </thead>
                                         <tbody>
                                             <tr>
+
                                                 <td>1204 Rogers Ct. Salinas, CA 94934</td>
                                                 <td>Patty Hershang</td>
                                                 <td>831-382-4833</td>
