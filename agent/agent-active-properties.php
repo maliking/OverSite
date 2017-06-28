@@ -314,6 +314,7 @@ if (!isset($_SESSION['userId'])) {
                                                 echo "</tr>";
                                             } //closes foreach
                                             ?>
+
                                         </tbody>
                                     </table>
                                 </div>
