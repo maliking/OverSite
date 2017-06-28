@@ -244,6 +244,8 @@ $rank = $stmtRank->fetchAll();
                         <li class="header">STATISTICS</li>
                         <li><a href="analytics.php"><i class="fa fa-line-chart"></i> <span> Analytics</span></a></li>
 
+                        <li><a href="agent/viewVisitors.php"><i class="fa fa-file-text-o"></i> <span>Visitors</span></a></li>
+
                     </ul>
                     <!-- /.sidebar-menu -->
                 </section>
