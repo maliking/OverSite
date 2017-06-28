@@ -300,20 +300,20 @@ if (!isset($_SESSION['userId'])) {
                                                 $results = $stmt->fetchAll();
 
                                                 foreach($results as $result){
-                                                    /*echo "<tr>";
+                                                    echo "<tr>";
                                                     echo "<td>" . $result['houseId'] . "</td>";
                                                     echo "<td>" . $result['address'] . "</td>";
                                                     echo "<td>King</td>";
                                                     echo "<td>Mali</td>";
-                                                    echo "<td>4083488336</td>":
+                                                    echo "<td>4083488336</td>";
                                                     echo "<td>5/6/17</td>";
                                                     echo "<td>5/9/17</td>";
                                                     echo "<td>5/12/17</td>";
                                                     echo "<td>5/12/17</td>";
                                                     echo "<td>5/12/17</td>";
                                                     echo "<td>Notes</td>";
-                                                    echo "</tr>";*/
-                                                } //closes foreach
+                                                    echo "</tr>";
+                                                } 
                                             ?>  
                                         </tbody>
                                     </table>
