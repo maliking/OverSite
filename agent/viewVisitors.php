@@ -77,7 +77,7 @@ To change this template use Tools | Templates.
             
             <?php
             $dbConn = getConnection();
-            $sql = "SELECT * FROM BuyerInfo WHERE :userId = 38";
+            $sql = "SELECT * FROM BuyerInfo WHERE userId = :userId";
             $namedParameters = array();
             $namedParameters[':userId'] = $_SESSION['userId'];
             $stmt = $dbConn -> prepare($sql);
