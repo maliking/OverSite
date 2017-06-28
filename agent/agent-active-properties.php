@@ -1,9 +1,11 @@
 <?php
-session_start();
 require("../databaseConnection.php");
 
+session_start();
+
+
 if (!isset($_SESSION['userId'])) {
-    header("Location: http://jjp2017.org/login.php");
+    header("Location: ../login.php");
 }
 ?>
 
@@ -312,7 +314,6 @@ if (!isset($_SESSION['userId'])) {
                                                     echo "<td>Notes</td>";
                                                    } //closes foreach
                                             ?>  
-                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
