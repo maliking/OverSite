@@ -289,9 +289,41 @@ $result = $stmt->fetchAll();
                                                 echo "<td>" . '$' . number_format($sales['price'], 0) . "</td>";
                                                 echo "<td>" . $sales['listing_buyer'] . "</td>";
                                                 echo "<td>" . $sales['notes'] . "</td>";
-             
+
                                                 echo "</tr>";
                                             }
+                                            ?>
+
+                                            <?php
+//                                                $dbConn = getConnection();
+//
+//                                                $sql = "SELECT status, houseId, date(dateTimes) as dateTimes, address, city, state, zip, bedrooms, bathrooms, price
+//                                                            FROM HouseInfo
+//                                                            WHERE userId = :userId
+//                                                            ORDER BY dateTimes ASC";
+//
+//                                                //$namedParameters = array();
+//                                                //$namedParameters[':userId'] = $_SESSION['userId'];
+//                                                //$stmt = $dbConn -> prepare($sql);
+//                                                /*$stmt->execute($namedParameters);
+//                                                //$stmt->execute();
+//                                                $results = $stmt->fetchAll();
+//
+//                                                foreach($results as $result){
+//                                                    echo "<tr>";
+//                                                    echo "<td>" . $result['houseId'] . "</td>";
+//                                                    echo "<td>" . $result['address'] . "</td>";
+//                                                    echo "<td>King</td>";
+//                                                    echo "<td>Mali</td>";
+//                                                    echo "<td>4083488336</td>":
+//                                                    echo "<td>5/6/17</td>";
+//                                                    echo "<td>5/9/17</td>";
+//                                                    echo "<td>5/12/17</td>";
+//                                                    echo "<td>5/12/17</td>";
+//                                                    echo "<td>5/12/17</td>";
+//                                                    echo "<td>Notes</td>";
+//                                                    echo "</tr>";
+//                                                } //closes foreach*/
                                             ?>
                                         </tbody>
                                     </table>
@@ -473,7 +505,7 @@ $result = $stmt->fetchAll();
         <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
         <!-- FastClick -->
         <script src="plugins/fastclick/fastclick.js"></script>
-        <!-- Datatables 
+        <!-- Datatables
         <script type="text/javascript" src="plugins/datatables/datatables.min.js"></script> -->
         <!-- AdminLTE App -->
         <script src="dist/js/app.min.js"></script>
