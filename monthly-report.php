@@ -1,12 +1,11 @@
 <?php
-require("../databaseConnection.php");
+require("databaseConnection.php");
 
 session_start();
 
-require 'databaseConnection.php';
 
 $dbConn = getConnection();
-$sql = "SELECT * FROM salesinfo";
+$sql = "SELECT * FROM commInfo";
 $stmt = $dbConn->prepare($sql);
 $stmt->execute();
 $result = $stmt->fetchAll();
@@ -273,7 +272,7 @@ if (!isset($_SESSION['userId'])) {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <<<<<<< HEAD:monthly-report.php
+                                           
                                             <?php
                                             foreach ($result as $sales) {
                                                 echo "<tr>";
@@ -285,7 +284,7 @@ if (!isset($_SESSION['userId'])) {
                                                 echo "</tr>";
                                             }
                                             ?>
-                                            =======
+                                           
                                             <?php
                                             /* $dbConn = getConnection();
 
@@ -316,7 +315,6 @@ if (!isset($_SESSION['userId'])) {
                                               echo "<td>Notes</td>";
                                               } //closes foreach */
                                             ?>
-                                            >>>>>>> origin/master:agent/agent-active-properties.php
                                         </tbody>
                                     </table>
                                 </div>
