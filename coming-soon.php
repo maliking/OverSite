@@ -19,7 +19,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Re/Max Salinas | Past Sales</title>
+        <title>Re/Max Salinas | Coming Soon</title>
 
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.6 -->
@@ -220,8 +220,8 @@
                         <li><a href="index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
                         <li class="header">PROPERTIES</li>
                         <li><a href="inventory.php"><i class="fa fa-home"></i> <span>Current Inventory</span></a></li>
-                        <li><a href="coming-soon.php"><i class="fa fa-flag"></i> <span>Coming Soon</span></a></li>
-                        <li class="past-sales active"><a href="past-sales.php"><i class="fa fa-archive"></i> <span>Past Sales</span></a></li>
+                        <li class="active"><a href="coming-soon.php"><i class="fa fa-flag"></i> <span>Coming Soon</span></a></li>
+                        <li class="past-sales"><a href="past-sales.php"><i class="fa fa-archive"></i> <span>Past Sales</span></a></li>
                         <li class="header">TRANSACTIONS</li>
                         <li><a href="sales-breakdown.php"><i class="fa fa-list-alt"></i> <span> Sales Breakdown</span></a></li>
                         <li><a href="monthly-report.php"><i class="fa fa-file-text-o"></i> <span>Monthly Report</span></a></li>
@@ -239,11 +239,11 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Past Sales
+                        Coming Soon
                     </h1>
                     <ol class="breadcrumb">
                         <li>Properties</li>
-                        <li class="active"><a href="#"><i class="fa fa-archive"></i> Past Sales</a></li>
+                        <li class="active"><a href="#"><i class="fa fa-archive"></i> Coming Soon</a></li>
                     </ol>
                 </section>
                 <!-- Main content -->

@@ -6,14 +6,13 @@ if (!isset($_SESSION['userId'])) {
 }
 ?>
 
-
 <!DOCTYPE html>
 <html>
 
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Re/Max Salinas | Dashboard</title>
+        <title>Re/Max Salinas | Office Inventory</title>
 
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.6 -->
@@ -36,9 +35,9 @@ if (!isset($_SESSION['userId'])) {
             a.dotted {
                 color: #333333;
                 border-bottom: 1px dashed #999;
-                text-decoration: none;
+                text-decoration: none; 
             }
-
+            
         </style>
 
     </head>
@@ -217,11 +216,11 @@ if (!isset($_SESSION['userId'])) {
                     <!-- Sidebar Menu -->
                     <ul class="sidebar-menu">
                         <li class="header">OVERVIEW</li>
-                        <li class="active"><a href="./index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+                        <li><a href="./index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
                         <li class="header">PROPERTIES</li>
                         <li><a href="my-inventory.php"><i class="fa fa-home"></i> <span>My Inventory</span></a></li>
-                        <li><a href="office-inventory.php"><i class="fa fa-building"></i> <span>Office Inventory</span></a></li>
-                        <li><a href="#"><i class="fa fa-archive"></i> <span>Past Sales</span></a></li>
+                        <li class="active"><a href="office-inventory.php"><i class="fa fa-building"></i> <span>Office Inventory</span></a></li>
+                        <li><a href="past-sales.php"><i class="fa fa-archive"></i> <span>Past Sales</span></a></li>
                         <li class="header">TRANSACTIONS</li>
                         <li><a href="#"><i class="fa fa-list-alt"></i> <span> Sales Breakdown</span></a></li>
                         <li><a href="#"><i class="fa fa-file-text-o"></i> <span>Monthly Report</span></a></li>
@@ -239,106 +238,16 @@ if (!isset($_SESSION['userId'])) {
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Agent Dashboard
-                        <small>Week Overview</small>
+                        Office Inventory
                     </h1>
                     <ol class="breadcrumb">
-                        <li>Overview</li>
-                        <li class="active"><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                        <li>Properties</li>
+                        <li class="active"><a href="#"><i class="fa fa-dashboard"></i> Office Inventory</a></li>
                     </ol>
                 </section>
 
                 <!-- Main content -->
                 <section class="content">
-                    <!-- Small boxes (Stat box) -->
-                    <div class="row">
-                        <div class="col-lg-2 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-aqua">
-                                <div class="inner">
-                                    <h3>4</h3>
-                                    <p>Active Listings</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-flash"></i>
-                                </div>
-                                <a href="#" class="small-box-footer"><i class="fa fa-chevron-up "></i> <span class="text-lime">2%</span> than last year</a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-2 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-yellow">
-                                <div class="inner">
-                                    <h3>2</h3>
-                                    <p>Pending Listings</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-ios-timer"></i>
-                                </div>
-                                <a href="#" class="small-box-footer"><i class="fa fa-chevron-up "></i> <span class="text-lime">5%</span> than last year</a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-2 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-green">
-                                <div class="inner">
-                                    <h3>6</h3>
-                                    <p>Sold Listings</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion-ios-pricetags"></i>
-                                </div>
-                                <a href="#" class="small-box-footer"><i class="fa fa-chevron-up "></i> <span class="text-lime">8%</span> than last year</a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <div class="col-lg-2 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-orange">
-                                <div class="inner">
-                                    <h3><sup style="font-size: 20px">$</sup>12,232</h3>
-                                    <p>Avg. Commission</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="ion ion-cash"></i>
-                                </div>
-                                <a href="#" class="small-box-footer"><i class="fa fa-chevron-down "></i> <span class="text-red">3%</span> than last year</a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <!-- ./col -->
-                        <div class="col-lg-2 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-blue">
-                                <div class="inner">
-                                    <h3>2.2<sup style="font-size: 20px">%</sup></h3>
-
-                                    <p>Avg. Commission </p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fa fa-percent"></i>
-                                </div>
-                                <a href="#" class="small-box-footer"><i class="fa fa-chevron-down "></i> <span class="text-red">1%</span> than last year</a>
-                            </div>
-                        </div>
-                        <!-- ./col -->
-                        <!-- ./col -->
-                        <div class="col-lg-2 col-xs-6">
-                            <!-- small box -->
-                            <div class="small-box bg-red">
-                                <div class="inner">
-                                    <h3><sup style="font-size: 20px">$</sup> 39,434</h3>
-                                    <p>Total Net Earnings</p>
-                                </div>
-                                <div class="icon">
-                                    <i class="fa fa-bank"></i>
-                                </div>
-                                <a href="#" class="small-box-footer"><i class="fa fa-chevron-up "></i> <span class="text-lime">11%</span> than last year</a>
-                            </div>
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="box">
@@ -372,20 +281,20 @@ if (!isset($_SESSION['userId'])) {
                                                     <span class="label label-success">Done! <i class="fa fa-check-circle-o"></i></span>
                                                 </td>
                                                 <td>3/1/2017
-                                                    <br>
+                                                    <br>                                                    
                                                     <span class="label label-success">Done! <i class="fa fa-check-circle-o"></i></span>
                                                 </td>
                                                 <td>3/1/2017
                                                     <br>
-                                                    <span class="label label-danger">Overdue</span>
+                                                    <span class="label label-danger">Overdue</span>     
                                                 </td>
                                                 <td>3/1/2017
                                                     <br>
-                                                    <span class="label label-warning">Due in 8d</span>
+                                                    <span class="label label-warning">Due in 8d</span>                 
                                                 </td>
                                                 <td>3/1/2017
                                                     <br>
-                                                    <span class="label label-warning">Due in 14d</span>
+                                                    <span class="label label-warning">Due in 14d</span>                 
                                                 </td>
                                                 <td>3/1/2017
                                                     <br>

@@ -1,10 +1,19 @@
+<?php
+
+  session_start();
+
+if(!isset($_SESSION['userId'])) {
+    header("Location: login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html>
 
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Re/Max Salinas | Dashboard</title>
+  <title>Re/Max Salinas | Analytics</title>
 
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -140,13 +149,13 @@
               <!-- Menu Toggle Button -->
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <!-- User image in navbar-->
-                <img src="../../dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
+                <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
                 <span class="hidden-xs"><?php echo $_SESSION['username']; ?></span>
               </a>
               <ul class="dropdown-menu">
                 <!-- User image in the menu -->
                 <li class="user-header">
-                  <img src="../../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                  <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                   <p>
                     <?php echo $_SESSION['username']; ?>
                     <small>Member since Nov. 2012</small>
@@ -198,18 +207,16 @@
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
           <li class="header">OVERVIEW</li>
-          <li class="active"><a href="index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+          <li><a href="index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
           <li class="header">PROPERTIES</li>
           <li><a href="inventory.php"><i class="fa fa-home"></i> <span>Current Inventory</span></a></li>
-          <li><a href="coming-soon.html"><i class="fa fa-flag"></i> <span>Coming Soon</span></a></li>
+          <li><a href="coming-soon.php"><i class="fa fa-flag"></i> <span>Coming Soon</span></a></li>
           <li><a href="past-sales.php"><i class="fa fa-archive"></i> <span>Past Sales</span></a></li>
           <li class="header">TRANSACTIONS</li>
-          <li><a href="#"><i class="fa fa-list-alt"></i> <span> Sales Breakdown</span></a></li>
-          <li><a href="#"><i class="fa fa-file-text"></i> <span>Monthly Report</span></a></li>
+          <li><a href="sales-breakdown.php"><i class="fa fa-list-alt"></i> <span> Sales Breakdown</span></a></li>
+          <li><a href="monthly-report.php"><i class="fa fa-file-text-o"></i> <span>Monthly Report</span></a></li>
           <li class="header">STATISTICS</li>
-          <li><a href="statistics.php"><i class="fa fa-line-chart"></i> <span> Analytics</span></a></li>
-          <li><a href="#"><i class="fa fa-dollar"></i> <span> Sales Breakdown</span></a></li>
-          <li><a href="#"><i class="fa fa-file-text-o"></i> <span>Monthly Report</span></a></li>
+          <li class="active"><a href="analytics.php"><i class="fa fa-line-chart"></i> <span> Analytics</span></a></li>
         </ul>
         <!-- /.sidebar-menu -->
       </section>
@@ -221,12 +228,11 @@
       <!-- Content Header (Page header) -->
       <section class="content-header">
         <h1>
-          Dashboard
-          <small>Week Overview</small>
+          Analytics
         </h1>
         <ol class="breadcrumb">
-          <li>Overview</li>
-          <li class="active"><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+          <li>Statistics</li>
+          <li class="active"><a href="#"><i class="fa fa-dashboard"></i> Analytics</a></li>
         </ol>
       </section>
 
