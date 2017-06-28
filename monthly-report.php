@@ -272,7 +272,7 @@ if (!isset($_SESSION['userId'])) {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <<<<<<< HEAD:monthly-report.php
+                                           
                                             <?php
                                             foreach ($result as $sales) {
                                                 echo "<tr>";
@@ -284,7 +284,7 @@ if (!isset($_SESSION['userId'])) {
                                                 echo "</tr>";
                                             }
                                             ?>
-                                            =======
+                                           
                                             <?php
                                             /* $dbConn = getConnection();
 
@@ -315,7 +315,6 @@ if (!isset($_SESSION['userId'])) {
                                               echo "<td>Notes</td>";
                                               } //closes foreach */
                                             ?>
-                                            >>>>>>> origin/master:agent/agent-active-properties.php
                                         </tbody>
                                     </table>
                                 </div>
