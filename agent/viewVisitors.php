@@ -77,7 +77,7 @@ To change this template use Tools | Templates.
             
             <?php
             $dbConn = getConnection();
-            $sql = "SELECT * FROM BuyerInfo WHERE houseId = " . 38;
+            $sql = "SELECT * FROM BuyerInfo WHERE houseId = 38";
             $namedParameters = array();
             $namedParameters[':houseId'] = $_GET['houseId'];
             $stmt = $dbConn -> prepare($sql);
@@ -116,5 +116,3 @@ To change this template use Tools | Templates.
     </body>
     <?php include('../footer.php'); ?>
 </html>
-Contact GitHub API Training Shop Blog About
-© 2017 GitHub, Inc. Terms Privacy Security Status Help
