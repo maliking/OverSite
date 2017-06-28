@@ -353,7 +353,7 @@ if (!isset($_SESSION['userId'])) {
                                                 <th>Property</th>
                                                 <th data-breakpoints="all">Client Name</th>
                                                 <th data-breakpoints="all">Client Number</th>
-                                                <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Approved Date">Aprv. </a></th>
+                                                <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Acceptance Date">Accp. </a></th>
                                                 <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Earnest Money Deposit">EMD </a></th>
                                                 <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Inspection">Insp. </a></th>
                                                 <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Disclosures">Disc. </a></th>

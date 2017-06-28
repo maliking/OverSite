@@ -35,9 +35,9 @@ if (!isset($_SESSION['userId'])) {
             a.dotted {
                 color: #333333;
                 border-bottom: 1px dashed #999;
-                text-decoration: none; 
+                text-decoration: none;
             }
-            
+
         </style>
 
     </head>
@@ -261,7 +261,7 @@ if (!isset($_SESSION['userId'])) {
                                                 <th>Property</th>
                                                 <th data-breakpoints="all">Client Name</th>
                                                 <th data-breakpoints="all">Client Number</th>
-                                                <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Approved Date">Aprv. </a></th>
+                                                <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Acceptance Date">Accp. </a></th>
                                                 <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Earnest Money Deposit">EMD </a></th>
                                                 <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Inspection">Insp. </a></th>
                                                 <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Disclosures">Disc. </a></th>
@@ -281,20 +281,20 @@ if (!isset($_SESSION['userId'])) {
                                                     <span class="label label-success">Done! <i class="fa fa-check-circle-o"></i></span>
                                                 </td>
                                                 <td>3/1/2017
-                                                    <br>                                                    
+                                                    <br>
                                                     <span class="label label-success">Done! <i class="fa fa-check-circle-o"></i></span>
                                                 </td>
                                                 <td>3/1/2017
                                                     <br>
-                                                    <span class="label label-danger">Overdue</span>     
+                                                    <span class="label label-danger">Overdue</span>
                                                 </td>
                                                 <td>3/1/2017
                                                     <br>
-                                                    <span class="label label-warning">Due in 8d</span>                 
+                                                    <span class="label label-warning">Due in 8d</span>
                                                 </td>
                                                 <td>3/1/2017
                                                     <br>
-                                                    <span class="label label-warning">Due in 14d</span>                 
+                                                    <span class="label label-warning">Due in 14d</span>
                                                 </td>
                                                 <td>3/1/2017
                                                     <br>
