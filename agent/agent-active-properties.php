@@ -1,5 +1,6 @@
 <?php
 session_start();
+require("../databaseConnection.php");
 
 if (!isset($_SESSION['userId'])) {
     header("Location: http://jjp2017.org/login.php");
@@ -280,33 +281,37 @@ if (!isset($_SESSION['userId'])) {
 
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>1</td>
+                                         <?php
 
-                                                <td>94832 Mystery Rd. Monterey, CA 939</td>
-                                                <td>King</td>
-                                                <td>Mali</td>
-                                                <td>4083488336</td>
-                                                <td>5/6/17</td>
-                                                <td>5/9/17</td>
-                                                <td>5/12/17</td>
-                                                <td>5/12/17</td>
-                                                <td>5/12/17</td>
-                                                <td>Notes</td>
-                                            </tr>
-                                            <tr>
-                                                <td>2</td>
+                                                $dbConn = getConnection();
+                                            
+                                                $sql = "SELECT status, houseId, date(dateTimes) as dateTimes, address, city, state, zip, bedrooms, bathrooms, price
+                                                            FROM HouseInfo
+                                                            WHERE userId = :userId
+                                                            ORDER BY dateTimes ASC";
+                                                   
+                                                $namedParameters = array();
+                                                $namedParameters[':userId'] = $_SESSION['userId'];
+                                                $stmt = $dbConn -> prepare($sql);
+                                                $stmt->execute($namedParameters);
+                                                //$stmt->execute();
+                                                $results = $stmt->fetchAll();
 
-                                                <td>94832 Mystery Rd. Monterey, CA 939</td>
-                                                <td>King</td>
-                                                <td>Mali</td>
-                                                <td>4083488336</td>
-                                                <td>5/6/17</td>
-                                                <td>5/9/17</td>
-                                                <td>5/12/17</td>
-                                                <td>5/12/17</td>
-                                                <td>5/12/17</td>
-                                                <td>Notes</td>
+                                                foreach($results as $result){
+                                                    echo "<tr>";
+                                                    echo "<td>" . $result['houseId'] . "</td>";
+                                                    echo "<td>" . $result['address'] . "</td>";
+                                                    echo "<td>King</td>";
+                                                    echo "<td>Mali</td>";
+                                                    echo "<td>4083488336</td>":
+                                                    echo "<td>5/6/17</td>";
+                                                    echo "<td>5/9/17</td>";
+                                                    echo "<td>5/12/17</td>";
+                                                    echo "<td>5/12/17</td>";
+                                                    echo "<td>5/12/17</td>";
+                                                    echo "<td>Notes</td>";
+                                                   } //closes foreach
+                                            ?>  
                                             </tr>
                                         </tbody>
                                     </table>
