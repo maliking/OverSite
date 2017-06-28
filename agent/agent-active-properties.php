@@ -285,7 +285,7 @@ if (!isset($_SESSION['userId'])) {
                                         <tbody>
                                          <?php
 
-                                                $dbConn = getConnection();
+                                                //$dbConn = getConnection();
                                             
                                                 $sql = "SELECT status, houseId, date(dateTimes) as dateTimes, address, city, state, zip, bedrooms, bathrooms, price
                                                             FROM HouseInfo
@@ -312,8 +312,8 @@ if (!isset($_SESSION['userId'])) {
                                                     echo "<td>5/12/17</td>";
                                                     echo "<td>5/12/17</td>";
                                                     echo "<td>Notes</td>";
-                                                    echo "</tr>";*/
-                                                } //closes foreach
+                                                    echo "</tr>";
+                                                } //closes foreach*/
                                             ?>  
                                         </tbody>
                                     </table>
