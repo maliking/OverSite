@@ -292,9 +292,9 @@ if (!isset($_SESSION['userId'])) {
                                                             WHERE userId = :userId
                                                             ORDER BY dateTimes ASC";
                                                    
-                                                $namedParameters = array();
-                                                $namedParameters[':userId'] = $_SESSION['userId'];
-                                                $stmt = $dbConn -> prepare($sql);
+                                                //$namedParameters = array();
+                                                //$namedParameters[':userId'] = $_SESSION['userId'];
+                                                //$stmt = $dbConn -> prepare($sql);
                                                 /*$stmt->execute($namedParameters);
                                                 //$stmt->execute();
                                                 $results = $stmt->fetchAll();
