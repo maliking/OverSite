@@ -67,7 +67,7 @@ To change this template use Tools | Templates.
     <body>
                         <!-- Navigation Bar -->
         <?php
-            require("agentNav.php");
+            //require("agentNav.php");
         ?> 
         <br/><br/><h2 id="header2">Visitors &#x2713</h2> 
         
@@ -77,7 +77,7 @@ To change this template use Tools | Templates.
             
             <?php
             $dbConn = getConnection();
-            $sql = "SELECT * FROM BuyerInfo WHERE houseId = '38'";
+            $sql = "SELECT * FROM BuyerInfo WHERE houseId = " . 38;
             $namedParameters = array();
             $namedParameters[':houseId'] = $_GET['houseId'];
             $stmt = $dbConn -> prepare($sql);
