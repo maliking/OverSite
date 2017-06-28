@@ -1,9 +1,8 @@
 <?php
-require("../databaseConnection.php");
+require("databaseConnection.php");
 
 session_start();
 
-require 'databaseConnection.php';
 
 $dbConn = getConnection();
 $sql = "SELECT * FROM commInfo";
