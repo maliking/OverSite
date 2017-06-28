@@ -6,7 +6,7 @@ session_start();
 require 'databaseConnection.php';
 
 $dbConn = getConnection();
-$sql = "SELECT * FROM salesinfo";
+$sql = "SELECT * FROM commInfo";
 $stmt = $dbConn->prepare($sql);
 $stmt->execute();
 $result = $stmt->fetchAll();
