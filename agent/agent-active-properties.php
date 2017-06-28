@@ -294,12 +294,12 @@ if (!isset($_SESSION['userId'])) {
                                                    
                                                 $namedParameters = array();
                                                 $namedParameters[':userId'] = $_SESSION['userId'];
-                                                //$stmt = $dbConn -> prepare($sql);
-                                                /*$stmt->execute($namedParameters);
+                                                $stmt = $dbConn -> prepare($sql);
+                                                $stmt->execute($namedParameters);
                                                 //$stmt->execute();
                                                 $results = $stmt->fetchAll();
 
-                                                foreach($results as $result){
+                                                /*foreach($results as $result){
                                                     echo "<tr>";
                                                     echo "<td>" . $result['houseId'] . "</td>";
                                                     echo "<td>" . $result['address'] . "</td>";
