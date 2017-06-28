@@ -292,7 +292,7 @@ if (!isset($_SESSION['userId'])) {
                                                             WHERE userId = :userId
                                                             ORDER BY dateTimes ASC";
                                                    
-                                                $namedParameters = array();
+                                                /*$namedParameters = array();
                                                 $namedParameters[':userId'] = $_SESSION['userId'];
                                                 $stmt = $dbConn -> prepare($sql);
                                                 $stmt->execute($namedParameters);
@@ -313,7 +313,7 @@ if (!isset($_SESSION['userId'])) {
                                                     echo "<td>5/12/17</td>";
                                                     echo "<td>Notes</td>";
                                                     echo "</tr>";
-                                                } //closes foreach
+                                                } //closes foreach*/
                                             ?>  
                                         </tbody>
                                     </table>
