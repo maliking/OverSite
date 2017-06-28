@@ -300,7 +300,7 @@ if (!isset($_SESSION['userId'])) {
                                                 $results = $stmt->fetchAll();
 
                                                 foreach($results as $result){
-                                                    echo "<tr>";
+                                                    /*echo "<tr>";
                                                     echo "<td>" . $result['houseId'] . "</td>";
                                                     echo "<td>" . $result['address'] . "</td>";
                                                     echo "<td>King</td>";
@@ -312,7 +312,7 @@ if (!isset($_SESSION['userId'])) {
                                                     echo "<td>5/12/17</td>";
                                                     echo "<td>5/12/17</td>";
                                                     echo "<td>Notes</td>";
-                                                    echo "</tr>";
+                                                    echo "</tr>";*/
                                                 } //closes foreach
                                             ?>  
                                         </tbody>
