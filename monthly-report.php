@@ -1,4 +1,6 @@
 <?php
+require("../databaseConnection.php");
+
 session_start();
 
 require 'databaseConnection.php';
@@ -8,6 +10,11 @@ $sql = "SELECT * FROM salesinfo";
 $stmt = $dbConn->prepare($sql);
 $stmt->execute();
 $result = $stmt->fetchAll();
+
+
+if (!isset($_SESSION['userId'])) {
+    header("Location: ../login.php");
+}
 ?>
 
 <!DOCTYPE html>
@@ -189,7 +196,11 @@ $result = $stmt->fetchAll();
                                             <a href="#" class="btn btn-default btn-flat">Profile</a>
                                         </div>
                                         <div class="pull-right">
+                                            <<<<<<< HEAD:monthly-report.php
                                             <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                            =======
+                                            <a href="../logout.php" class="btn btn-default btn-flat">Sign out</a>
+                                            >>>>>>> origin/master:agent/agent-active-properties.php
                                         </div>
                                     </li>
                                 </ul>
@@ -261,6 +272,7 @@ $result = $stmt->fetchAll();
                                             </tr>
                                         </thead>
                                         <tbody>
+                                            <<<<<<< HEAD:monthly-report.php
                                             <?php
                                             foreach ($result as $sales) {
                                                 echo "<tr>";
@@ -272,6 +284,38 @@ $result = $stmt->fetchAll();
                                                 echo "</tr>";
                                             }
                                             ?>
+                                            =======
+                                            <?php
+                                            /* $dbConn = getConnection();
+
+                                              $sql = "SELECT status, houseId, date(dateTimes) as dateTimes, address, city, state, zip, bedrooms, bathrooms, price
+                                              FROM HouseInfo
+                                              WHERE userId = :userId
+                                              ORDER BY dateTimes ASC";
+
+                                              $namedParameters = array();
+                                              $namedParameters[':userId'] = $_SESSION['userId'];
+                                              $stmt = $dbConn -> prepare($sql);
+                                              $stmt->execute($namedParameters);
+                                              //$stmt->execute();
+                                              $results = $stmt->fetchAll();
+
+                                              foreach($results as $result){
+                                              echo "<tr>";
+                                              echo "<td>" . $result['houseId'] . "</td>";
+                                              echo "<td>" . $result['address'] . "</td>";
+                                              echo "<td>King</td>";
+                                              echo "<td>Mali</td>";
+                                              echo "<td>4083488336</td>":
+                                              echo "<td>5/6/17</td>";
+                                              echo "<td>5/9/17</td>";
+                                              echo "<td>5/12/17</td>";
+                                              echo "<td>5/12/17</td>";
+                                              echo "<td>5/12/17</td>";
+                                              echo "<td>Notes</td>";
+                                              } //closes foreach */
+                                            ?>
+                                            >>>>>>> origin/master:agent/agent-active-properties.php
                                         </tbody>
                                     </table>
                                 </div>
@@ -452,7 +496,7 @@ $result = $stmt->fetchAll();
         <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
         <!-- FastClick -->
         <script src="plugins/fastclick/fastclick.js"></script>
-        <!-- Datatables 
+        <!-- Datatables
         <script type="text/javascript" src="plugins/datatables/datatables.min.js"></script> -->
         <!-- AdminLTE App -->
         <script src="dist/js/app.min.js"></script>

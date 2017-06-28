@@ -1,7 +1,11 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['userId'])) {
+
+session_start();
+
+if (!isset($_SESSION['userId']) || $_SESSION['userId'] == 1) {
+
     header("Location: login.php");
 }
 
@@ -362,7 +366,7 @@ $rank = $stmtRank->fetchAll();
                                         <thead>
                                             <tr>
                                                 <th>Last, First</th>
-                                                
+
                                                 <th>Listings</th>
                                                 <th>L.V. <a href="#" data-toggle="tooltip" data-placement="top" title="Listings Volume"><i class="fa fa-question-circle"></i></a></th>
                                                 <th>Sales</th>
@@ -431,7 +435,7 @@ $rank = $stmtRank->fetchAll();
         <script src="dist/js/app.min.js"></script>
         <!-- Footable -->
         <script type="text/javascript" src="plugins/footable/js/footable.min.js"></script>
-        
+
     </body>
 
 </html>

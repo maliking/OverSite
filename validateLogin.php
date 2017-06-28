@@ -31,7 +31,7 @@ else {
     }
 
     else if($result['userType'] == 1) {
-        header("Location: login.php");
+        header("Location: agent/index.php");
     }
 
 }
