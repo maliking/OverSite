@@ -285,7 +285,7 @@ if (!isset($_SESSION['userId'])) {
                                         <tbody>
                                          <?php
 
-                                                //$dbConn = getConnection();
+                                                $dbConn = getConnection();
                                             
                                                 $sql = "SELECT status, houseId, date(dateTimes) as dateTimes, address, city, state, zip, bedrooms, bathrooms, price
                                                             FROM HouseInfo
