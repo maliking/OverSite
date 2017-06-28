@@ -325,6 +325,7 @@ $result = $stmt->fetchAll();
 //                                                    echo "</tr>";
 //                                                } //closes foreach*/
                                             ?>
+
                                         </tbody>
                                     </table>
                                 </div>
