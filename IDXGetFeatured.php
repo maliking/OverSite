@@ -54,12 +54,10 @@ function inDatabase($address, $results)
         $error = $code;
     }
 
-   // print_r($response);
-
     $keys = array_keys($response);
 
     for($i = 0; $i < sizeof($keys); $i++){
-        /*if(!inDatabase($response[$keys[$i]]['address'], $results)) {
+        if(!inDatabase($response[$keys[$i]]['address'], $results)) {
             $sql = "INSERT INTO HouseInfo
 	                 (userId, status, address, city, state, zip, bedrooms, bathrooms, price)
 	                 VALUES (:userId, :status, :address, :city, :state, :zip, :bedrooms, :bathrooms, :price)";
@@ -79,10 +77,9 @@ function inDatabase($address, $results)
                  $stmt->execute($namedParameters);
 
                  
-        }*/
-        echo "<img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error'>";
+        }
     }
 
-    //header("Location: agent/index.php");
+    header("Location: agent/index.php");
 
 ?>
