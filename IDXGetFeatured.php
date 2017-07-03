@@ -80,6 +80,6 @@ function inDatabase($address, $results)
         }
     }
 
-    //header("Location: index.php");
+    header("Location: agent/index.php");
 
 ?>
