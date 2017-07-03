@@ -64,7 +64,7 @@ function inDatabase($address, $results)
 	                 (userId, status, address, city, state, zip, bedrooms, bathrooms, price)
 	                 VALUES (:userId, :status, :address, :city, :state, :zip, :bedrooms, :bathrooms, :price)";
                  $namedParameters = array();
-                 $namedParameters[":userId"] = $_SESSION['userId'];
+                 /*$namedParameters[":userId"] = $_SESSION['userId'];
                  $namedParameters[":status"] = strtolower($response[$keys[$i]]['idxStatus']);
                  $namedParameters[":address"] = $response[$keys[$i]]['address'];
                  $namedParameters[":city"] = ucfirst(strtolower($response[$keys[$i]]['cityName']));
@@ -72,8 +72,9 @@ function inDatabase($address, $results)
                  $namedParameters[":zip"] = $response[$keys[$i]]['zipcode'];
                  $namedParameters[":bedrooms"] = $response[$keys[$i]]['bedrooms'];
                  $namedParameters[":bathrooms"] = $response[$keys[$i]]['totalBaths'];
-                 $value = preg_replace('/[\$,]/', '', $response[$keys[$i]]['listingPrice']);
-              $value = intval($value);
+                 $value = preg_replace('/[\$,]/', '', $response[$keys[$i]]['listingPrice']);*/
+                 echo "<img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error'>";
+                 $value = intval($value);
                  $namedParameters[":price"] = $value;
                  $stmt = $dbConn -> prepare($sql);
                  $stmt->execute($namedParameters);
