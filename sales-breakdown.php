@@ -1,17 +1,14 @@
 <?php
-  session_start();
+session_start();
 
-  require 'databaseConnection.php';
+require 'databaseConnection.php';
 
-  $dbConn = getConnection();
-  $sql = "SELECT HouseInfo.address, HouseInfo.city, HouseInfo.zip, HouseInfo.bedrooms, HouseInfo.bathrooms, HouseInfo.price FROM HouseInfo
-  INNER JOIN commInfo ON HouseInfo.houseId = commInfo.houseId";
-  $stmt = $dbConn -> prepare($sql);
-  $stmt->execute();
-  $result = $stmt->fetchAll();
-
+$dbConn = getConnection();
+$sql = "SELECT * FROM commInfo";
+$stmt = $dbConn->prepare($sql);
+$stmt->execute();
+$result = $stmt->fetchAll();
 ?>
-
 
 <!DOCTYPE html>
 <html>
@@ -19,7 +16,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Re/Max Salinas | Past Sales</title>
+        <title>Re/Max Salinas | Sales Breakdown</title>
 
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.6 -->
@@ -221,9 +218,9 @@
                         <li class="header">PROPERTIES</li>
                         <li><a href="inventory.php"><i class="fa fa-home"></i> <span>Current Inventory</span></a></li>
                         <li><a href="coming-soon.php"><i class="fa fa-flag"></i> <span>Coming Soon</span></a></li>
-                        <li class="past-sales active"><a href="past-sales.php"><i class="fa fa-archive"></i> <span>Past Sales</span></a></li>
+                        <li class="past-sales"><a href="past-sales.php"><i class="fa fa-archive"></i> <span>Past Sales</span></a></li>
                         <li class="header">TRANSACTIONS</li>
-                        <li><a href="sales-breakdown.php"><i class="fa fa-list-alt"></i> <span> Sales Breakdown</span></a></li>
+                        <li class="active"><a href="sales-breakdown.php"><i class="fa fa-list-alt"></i> <span> Sales Breakdown</span></a></li>
                         <li><a href="monthly-report.php"><i class="fa fa-file-text-o"></i> <span>Monthly Report</span></a></li>
                         <li class="header">STATISTICS</li>
                         <li><a href="analytics.php"><i class="fa fa-line-chart"></i> <span> Analytics</span></a></li>
@@ -239,11 +236,11 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        Past Sales
+                        Sales Breakdown
                     </h1>
                     <ol class="breadcrumb">
-                        <li>Properties</li>
-                        <li class="active"><a href="#"><i class="fa fa-archive"></i> Past Sales</a></li>
+                        <li>Transactions</li>
+                        <li class="active"><a href="#"><i class="fa fa-archive"></i> Sales Breakdown</a></li>
                     </ol>
                 </section>
                 <!-- Main content -->
@@ -256,80 +253,79 @@
                                     <table id="listing-table" class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th colspan="10">
-                                                    <div class="pull-right">
-                                                        <div class="dropdown" style="display: inline-block">
-                                                            <button class="btn dropdown-toggle btn-xs btn-warning" type="button" data-toggle="dropdown">Filter Price <span class="caret"></span></button>
-                                                            <ul class="dropdown-menu">
-                                                                <li style="display: flex">
-                                                                    <div id="min-box" style="display: flex-item; padding-left: 7px; padding-right: 7px; padding-top: 6px">
-                                                                        <input type="text" placeholder="min" style="padding: 3px;" size="10">
-                                                                    </div>
-                                                                    <p style="padding-top: 10px">-</p>
-                                                                    <div id="max-box" style="display: flex-item; padding-right: 7px; padding-left: 7px; padding-top: 6px">
-                                                                        <input type="text" placeholder="max" style="padding: 3px;" size="10">
-                                                                    </div>
-                                                                </li>
-                                                                <div class="divider"></div>
-                                                                <li><a href="#">$50,000+</a></li>
-                                                                <li><a href="#">$75,000+</a></li>
-                                                                <li><a href="#">$100,000+</a></li>
-                                                                <li><a href="#">$150,000+</a></li>
-                                                                <li><a href="#">$200,000+</a></li>
-                                                                <li><a href="#">$250,000+</a></li>
-                                                                <li><a href="#">$300,000+</a></li>
-                                                                <li><a href="#">$400,000+</a></li>
-                                                                <li><a href="#">$500,000+</a></li>
-                                                            </ul>
-
-                                                        </div>
-
-
-                                                        <div class="dropdown" style="display: inline-block;margin-right: 10px;">
-                                                            <button class="btn dropdown-toggle btn-xs btn-success" type="button" data-toggle="dropdown">Filter Bedrooms <span class="caret"></span></button>
-                                                            <ul class="dropdown-menu">
-                                                                <li><a href="#">0+</a></li>
-                                                                <li><a href="#">1+</a></li>
-                                                                <li><a href="#">2+</a></li>
-                                                                <li><a href="#">3+</a></li>
-                                                                <li><a href="#">4+</a></li>
-                                                                <li><a href="#">5+</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </th>
-
-
-                                            </tr>
-                                            <tr>
-                                                <th>Address</th>
-                                                <th>City</th>
-                                                <th>Zip</th>
-                                                <th><i class="fa fa-bed"></i></th>
-                                                <th><i class="fa fa-bath"></i></th>
-                                                <th>Sqft</th>
-                                                <th>Lot</th>
+                                                <th>Date Settled</th>
+                                                <th>Property Address</th>
+                                                <th>Agent</th>
+                                                <th>Total</th>
+                                                <th data-breakpoints="all">Office</th>
+                                                <th data-breakpoints="all">E&O <a href="#" data-toggle="tooltip" data-placement="top" title="Errors & Omissions"><i class="fa fa-question-circle"></i></a></th>
+                                                <th data-breakpoints="all">Tech Fee</th>
+                                                <th data-breakpoints="all">Processing</th>
+                                                <th data-breakpoints="all">Re/Max FF</th>
+                                                <th data-breakpoints="all">Misc</th>
+                                                <th>Commission</th>
+                                                <th data-breakpoints="all">Client</th>
                                                 <th>Price</th>
-                                                <th>DOM <a href="#" data-toggle="tooltip" data-placement="top" title="Days on the market"><i class="fa fa-question-circle"></i></a></th>
+                                                <th>Listing/Buyer</th>
+                                                <th data-breakpoints="all">Notes</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            foreach ($result as $house) {
+                                            foreach ($result as $sales) {
                                                 echo "<tr>";
-                                           
-                                                echo "<td>" . $house['address'] . "</td>";
-                                                echo "<td>" . $house['city'] . "</td>";
-                                                echo "<td>" . $house['zip'] . "</td>";
-                                                echo "<td>" . $house['bedrooms'] . "</td>";
-                                                echo "<td>" . $house['bathrooms'] . "</td>";
-                                                echo "<td>" . "NA" . "</td>";
-                                                echo "<td>" . "NA" . "</td>";
-                                                echo "<td>" . '$' . number_format($house['price'], 0) . "</td>";
-                                                echo "<td>" . "NA" . "</td>";
+                                                echo "<td>" . $sales['date_settled'] . "</td>";
+                                                echo "<td>" . $sales['address'] . "</td>";
+                                                echo "<td>" . $sales['agent'] . "</td>";
+                                                echo "<td>" . '$' . number_format($sales['total'], 0) . "</td>";
+                                                echo "<td>" . '$' . number_format($sales['office'], 0) . "</td>";
+                                                echo "<td>" . '$' . number_format($sales['eo'], 0) . "</td>";
+                                                echo "<td>" . '$' . number_format($sales['tech'], 0) . "</td>";
+                                                echo "<td>" . '$' . number_format($sales['processing'], 0) . "</td>";
+                                                echo "<td>" . '$' . number_format($sales['remax_ff'], 0) . "</td>";
+                                                echo "<td>" . '$' . number_format($sales['misc'], 0) . "</td>";
+                                                echo "<td>" . '$' . number_format($sales['commission'], 0) . "</td>";
+                                                echo "<td>" . $sales['client'] . "</td>";
+                                                echo "<td>" . '$' . number_format($sales['price'], 0) . "</td>";
+                                                echo "<td>" . $sales['listing_buyer'] . "</td>";
+                                                echo "<td>" . $sales['notes'] . "</td>";
+
                                                 echo "</tr>";
                                             }
                                             ?>
+
+                                            <?php
+//                                                $dbConn = getConnection();
+//
+//                                                $sql = "SELECT status, houseId, date(dateTimes) as dateTimes, address, city, state, zip, bedrooms, bathrooms, price
+//                                                            FROM HouseInfo
+//                                                            WHERE userId = :userId
+//                                                            ORDER BY dateTimes ASC";
+//
+//                                                //$namedParameters = array();
+//                                                //$namedParameters[':userId'] = $_SESSION['userId'];
+//                                                //$stmt = $dbConn -> prepare($sql);
+//                                                /*$stmt->execute($namedParameters);
+//                                                //$stmt->execute();
+//                                                $results = $stmt->fetchAll();
+//
+//                                                foreach($results as $result){
+//                                                    echo "<tr>";
+//                                                    echo "<td>" . $result['houseId'] . "</td>";
+//                                                    echo "<td>" . $result['address'] . "</td>";
+//                                                    echo "<td>King</td>";
+//                                                    echo "<td>Mali</td>";
+//                                                    echo "<td>4083488336</td>":
+//                                                    echo "<td>5/6/17</td>";
+//                                                    echo "<td>5/9/17</td>";
+//                                                    echo "<td>5/12/17</td>";
+//                                                    echo "<td>5/12/17</td>";
+//                                                    echo "<td>5/12/17</td>";
+//                                                    echo "<td>Notes</td>";
+//                                                    echo "</tr>";
+//                                                } //closes foreach*/
+                                            ?>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -510,7 +506,7 @@
         <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
         <!-- FastClick -->
         <script src="plugins/fastclick/fastclick.js"></script>
-        <!-- Datatables 
+        <!-- Datatables
         <script type="text/javascript" src="plugins/datatables/datatables.min.js"></script> -->
         <!-- AdminLTE App -->
         <script src="dist/js/app.min.js"></script>

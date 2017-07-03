@@ -283,38 +283,38 @@ if (!isset($_SESSION['userId'])) {
 
                                         </thead>
                                         <tbody>
-                                         <?php
+                                            <?php
+                                            $dbConn = getConnection();
 
-                                                $dbConn = getConnection();
-                                            
-                                                $sql = "SELECT status, houseId, date(dateTimes) as dateTimes, address, city, state, zip, bedrooms, bathrooms, price
+                                            $sql = "SELECT status, houseId, date(dateTimes) as dateTimes, address, city, state, zip, bedrooms, bathrooms, price
                                                             FROM HouseInfo
                                                             WHERE userId = :userId
                                                             ORDER BY dateTimes ASC";
-                                                   
-                                                $namedParameters = array();
-                                                $namedParameters[':userId'] = $_SESSION['userId'];
-                                                $stmt = $dbConn -> prepare($sql);
-                                                $stmt->execute($namedParameters);
-                                                //$stmt->execute();
-                                                $results = $stmt->fetchAll();
 
-                                                foreach($results as $result){
-                                                    echo "<tr>";
-                                                    echo "<td>" . $result['houseId'] . "</td>";
-                                                    echo "<td>" . $result['address'] . "</td>";
-                                                    echo "<td>King</td>";
-                                                    echo "<td>Mali</td>";
-                                                    echo "<td>4083488336</td>";
-                                                    echo "<td>5/6/17</td>";
-                                                    echo "<td>5/9/17</td>";
-                                                    echo "<td>5/12/17</td>";
-                                                    echo "<td>5/12/17</td>";
-                                                    echo "<td>5/12/17</td>";
-                                                    echo "<td>Notes</td>";
-                                                    echo "</tr>";
-                                                } 
-                                            ?>  
+                                            $namedParameters = array();
+                                            $namedParameters[':userId'] = $_SESSION['userId'];
+                                            $stmt = $dbConn->prepare($sql);
+                                            $stmt->execute($namedParameters);
+                                            //$stmt->execute();
+                                            $results = $stmt->fetchAll();
+
+                                            foreach ($results as $result) {
+                                                echo "<tr>";
+                                                echo "<td>" . $result['houseId'] . "</td>";
+                                                echo "<td>" . $result['address'] . "</td>";
+                                                echo "<td>King</td>";
+                                                echo "<td>Mali</td>";
+                                                echo "<td>4083488336</td>";
+                                                echo "<td>5/6/17</td>";
+                                                echo "<td>5/9/17</td>";
+                                                echo "<td>5/12/17</td>";
+                                                echo "<td>5/12/17</td>";
+                                                echo "<td>5/12/17</td>";
+                                                echo "<td>Notes</td>";
+                                                echo "</tr>";
+                                            } //closes foreach
+                                            ?>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -329,7 +329,7 @@ if (!isset($_SESSION['userId'])) {
         </div>
         <!-- /.wrapper -->
         <div class="modal fade" id="editor-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
-           
+
             <div class="modal-dialog" role="document">
                 <form class="modal-content form-horizontal" id="editor">
                     <div class="modal-header">
