@@ -59,8 +59,8 @@ function inDatabase($address, $results)
     $keys = array_keys($response);
 
     for($i = 0; $i < sizeof($keys); $i++){
-        if(!inDatabase($response[$keys[$i]]['address'], $results)) {
-            /*$sql = "INSERT INTO HouseInfo
+        /*if(!inDatabase($response[$keys[$i]]['address'], $results)) {
+            $sql = "INSERT INTO HouseInfo
 	                 (userId, status, address, city, state, zip, bedrooms, bathrooms, price)
 	                 VALUES (:userId, :status, :address, :city, :state, :zip, :bedrooms, :bathrooms, :price)";
                  $namedParameters = array();
@@ -76,11 +76,12 @@ function inDatabase($address, $results)
                  $value = intval($value);
                  $namedParameters[":price"] = $value;
                  $stmt = $dbConn -> prepare($sql);
-                 $stmt->execute($namedParameters);*/
-                                    
-                 echo($response[$keys[$i]]['address']);
-                 echo($response[$keys[$i]]['image']);
-        }
+                 $stmt->execute($namedParameters);
+
+                 
+        }*/
+        echo($response[$keys[$i]]['address']);
+        echo($response[$keys[$i]]['image']);
     }
 
     //header("Location: agent/index.php");
