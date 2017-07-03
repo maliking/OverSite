@@ -54,6 +54,8 @@ function inDatabase($address, $results)
         $error = $code;
     }
 
+    print_r($response);
+
     $keys = array_keys($response);
 
     for($i = 0; $i < sizeof($keys); $i++){
@@ -78,6 +80,6 @@ function inDatabase($address, $results)
         }
     }
 
-    header("Location: agent/index.php");
+    //header("Location: agent/index.php");
 
 ?>
