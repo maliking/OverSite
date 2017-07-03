@@ -60,11 +60,11 @@ function inDatabase($address, $results)
 
     for($i = 0; $i < sizeof($keys); $i++){
         if(!inDatabase($response[$keys[$i]]['address'], $results)) {
-            $sql = "INSERT INTO HouseInfo
+            /*$sql = "INSERT INTO HouseInfo
 	                 (userId, status, address, city, state, zip, bedrooms, bathrooms, price)
 	                 VALUES (:userId, :status, :address, :city, :state, :zip, :bedrooms, :bathrooms, :price)";
                  $namedParameters = array();
-                 /*$namedParameters[":userId"] = $_SESSION['userId'];
+                 $namedParameters[":userId"] = $_SESSION['userId'];
                  $namedParameters[":status"] = strtolower($response[$keys[$i]]['idxStatus']);
                  $namedParameters[":address"] = $response[$keys[$i]]['address'];
                  $namedParameters[":city"] = ucfirst(strtolower($response[$keys[$i]]['cityName']));
@@ -72,13 +72,14 @@ function inDatabase($address, $results)
                  $namedParameters[":zip"] = $response[$keys[$i]]['zipcode'];
                  $namedParameters[":bedrooms"] = $response[$keys[$i]]['bedrooms'];
                  $namedParameters[":bathrooms"] = $response[$keys[$i]]['totalBaths'];
-                 $value = preg_replace('/[\$,]/', '', $response[$keys[$i]]['listingPrice']);*/
-                 echo($response[$keys[$i]]['address']);
-                 echo($response[$keys[$i]]['image']);
+                 $value = preg_replace('/[\$,]/', '', $response[$keys[$i]]['listingPrice']);
                  $value = intval($value);
                  $namedParameters[":price"] = $value;
                  $stmt = $dbConn -> prepare($sql);
-                 $stmt->execute($namedParameters);
+                 $stmt->execute($namedParameters);*/
+                                    
+                 echo($response[$keys[$i]]['address']);
+                 echo($response[$keys[$i]]['image']);
         }
     }
 
