@@ -81,7 +81,7 @@ function inDatabase($address, $results)
                  
         }*/
         echo($response[$keys[$i]]['address']);
-        echo($response[$keys[$i]]['image']['0']);
+        echo($response[$keys[$i]]['image']['0']['url']);
     }
 
     //header("Location: agent/index.php");
