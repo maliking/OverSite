@@ -54,7 +54,7 @@ function inDatabase($address, $results)
         $error = $code;
     }
 
-    print_r($response);
+   // print_r($response);
 
     $keys = array_keys($response);
 
