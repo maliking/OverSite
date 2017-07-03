@@ -80,8 +80,7 @@ function inDatabase($address, $results)
 
                  
         }*/
-        echo($response[$keys[$i]]['address']);
-        echo($response[$keys[$i]]['image']['0']['url']);
+        echo "<img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error'>";
     }
 
     //header("Location: agent/index.php");
