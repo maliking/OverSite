@@ -15,6 +15,7 @@
     //$stmt->execute();
     $results = $stmt->fetchAll();
 
+    print_r($results);
 
 
 function inDatabase($address, $results)
@@ -79,6 +80,6 @@ function inDatabase($address, $results)
         }
     }
 
-    header("Location: index.php");
+    //header("Location: index.php");
 
 ?>
