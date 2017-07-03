@@ -73,8 +73,8 @@ function inDatabase($address, $results)
                  $namedParameters[":bedrooms"] = $response[$keys[$i]]['bedrooms'];
                  $namedParameters[":bathrooms"] = $response[$keys[$i]]['totalBaths'];
                  $value = preg_replace('/[\$,]/', '', $response[$keys[$i]]['listingPrice']);*/
-                 print_r($response[$keys[$i]]['address']);
-                 print_r($response[$keys[$i]]['image']);
+                 echo($response[$keys[$i]]['address']);
+                 echo($response[$keys[$i]]['image']);
                  $value = intval($value);
                  $namedParameters[":price"] = $value;
                  $stmt = $dbConn -> prepare($sql);
