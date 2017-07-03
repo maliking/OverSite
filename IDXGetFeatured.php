@@ -16,7 +16,6 @@
     $results = $stmt->fetchAll();
 
 
-
 function inDatabase($address, $results)
 {
     foreach($results as $result){
@@ -72,13 +71,15 @@ function inDatabase($address, $results)
                  $namedParameters[":bedrooms"] = $response[$keys[$i]]['bedrooms'];
                  $namedParameters[":bathrooms"] = $response[$keys[$i]]['totalBaths'];
                  $value = preg_replace('/[\$,]/', '', $response[$keys[$i]]['listingPrice']);
-              $value = intval($value);
+                 $value = intval($value);
                  $namedParameters[":price"] = $value;
                  $stmt = $dbConn -> prepare($sql);
                  $stmt->execute($namedParameters);
+
+                 
         }
     }
 
-    header("Location: index.php");
+    header("Location: agent/index.php");
 
 ?>

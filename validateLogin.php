@@ -31,7 +31,7 @@ else {
     }
 
     else if($result['userType'] == 1) {
-        header("Location: agent/index.php");
+        header("Location: IDXGetFeatured.php");
     }
 
 }

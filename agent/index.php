@@ -229,6 +229,7 @@ if (!isset($_SESSION['userId'])) {
                         <li class="header">STATISTICS</li>
                         <li><a href="#"><i class="fa fa-line-chart"></i> <span> Analytics</span></a></li>
 
+                        <li><a href="viewVisitors.php"><i class="fa fa-file-text-o"></i> <span>Visitors</span></a></li>
                     </ul>
                     <!-- /.sidebar-menu -->
                 </section>
