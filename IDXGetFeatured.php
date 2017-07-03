@@ -15,8 +15,6 @@
     //$stmt->execute();
     $results = $stmt->fetchAll();
 
-    print_r($results);
-
 
 function inDatabase($address, $results)
 {
@@ -55,6 +53,8 @@ function inDatabase($address, $results)
     } else {
         $error = $code;
     }
+
+    print_r($response);
 
     $keys = array_keys($response);
 
