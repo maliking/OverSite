@@ -1,16 +1,6 @@
 <?php
 session_start();
-
-require 'databaseConnection.php';
-
-$dbConn = getConnection();
-$sql = "SELECT * FROM HouseInfo";
-$stmt = $dbConn->prepare($sql);
-$stmt->execute();
-$result = $stmt->fetchAll();
 ?>
-
-
 <!DOCTYPE html>
 <html>
 
@@ -20,31 +10,50 @@ $result = $stmt->fetchAll();
         <title>Re/Max Salinas | Inventory</title>
 
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <!-- Bootstrap 3.3.6 -->
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
         <!-- Font Awesome -->
         <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
         <!-- Ionicons -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-
         <link rel="stylesheet" href="dist/css/skins/skin-blue-light.css">
-        <!-- jQuery 2.2.3 -->
-        <link rel="stylesheet" href="plugins/jQueryUI/jquery-ui.min.css">
+        <link rel="stylesheet" href="plugins/bootstrap-datepicker/bootstrap-datetimepicker.min.css">
 
+        <!-- jQuery 2.2.3 -->
         <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-        <script src="plugins/jQueryUI/jquery-ui.min.js"></script>
+        <!-- Moment -->
+        <script src="plugins/moment/moment.min.js"></script>
+        <!-- Bootstrap 3.3.6 [JS] -->
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <!-- Bootstrap DatePicker -->
+        <script src="plugins/bootstrap-datepicker/bootstrap-datetimepicker.min.js"></script>
+
+        <!-- Bootstrap 3.3.6 [CSS] -->
+        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="plugins/bootstrap-datepicker/bootstrap-datetimepicker.min.css">
+
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <style>
+            label.col-xs-9 {
+                text-align: right;
+            }
+
+        </style>
+
         <script>
             $(function () {
-                $("#datepicker").datepicker({
-                    changeMonth: true,
-                    changeYear: true
+                $('#today-date').datetimepicker({
+                    defaultDate: new Date(),
+                    format: "M/D/YYYY",
+                });
+                $('#settlement-date').datetimepicker({
+                    format: "M/D/YYYY"
+
                 });
             });
         </script>
@@ -182,13 +191,13 @@ $result = $stmt->fetchAll();
                                     <!-- Menu Body -->
                                     <li class="user-body">
                                         <div class="row">
-                                            <div class="col-xs-4 text-center">
+                                            <div class="col-xs-3 text-center">
                                                 <a href="#">Followers</a>
                                             </div>
-                                            <div class="col-xs-4 text-center">
+                                            <div class="col-xs-3 text-center">
                                                 <a href="#">Sales</a>
                                             </div>
-                                            <div class="col-xs-4 text-center">
+                                            <div class="col-xs-3 text-center">
                                                 <a href="#">Friends</a>
                                             </div>
                                         </div>
@@ -259,51 +268,157 @@ $result = $stmt->fetchAll();
                                 </div>
                                 <div class="box-body">
                                     <div class="row">
-                                        <div class="col-xs-4 col-xs-offset-1">
-                                            <form class="form-horizontal">
+                                        <div class="col-xs-12">
+                                            <form>
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="panel panel-info">
+                                                                <div class="panel-heading">
+                                                                    <h3 class="panel-title"><strong>Transaction Details</strong></h3>
+                                                                </div>
+                                                                <div class="panel-body">
+                                                                    <div class="form-group col-xs-4">
+                                                                        <label class="control-label " for="email">Date</label>
+                                                                        <input type="text" data-provide="datepicker" class="form-control" id="today-date" placeholder="Enter today's date">
+                                                                    </div>
+                                                                    <div class="form-group col-xs-4">
+                                                                        <label class="control-label  " for="pwd">Beginning Gross Commission</label>
+                                                                        <input type="text" class="form-control" id="beg-comm" placeholder="">
+                                                                    </div>
+                                                                    <div class="form-group col-xs-4">
+                                                                        <label class="control-label  " for="datetimepicker4">Check Number</label>
+                                                                        <input type="text" class="form-control" id="check" placeholder="">
+                                                                    </div>
 
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="email">Date</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="text" class="form-control" id="datepicker" placeholder="Enter today's date">
+                                                                    <div class="form-group col-xs-4">
+                                                                        <label class="control-label  " for="email">Settlement Date</label>
+                                                                        <input type="text" data-provide="datepicker" class="form-control" id="settlement-date" placeholder="Click to set date">
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+                                                                    <div class="form-group col-xs-3">
+                                                                        <label class="control-label" for="pwd">Agent Name</label>
+                                                                        <input type="text" class="form-control" id="agent" placeholder="">
+                                                                    </div>
+                                                                    <div class="form-group col-xs-3">
+                                                                        <label class="control-label" for="pwd">Client Name(s)</label>
+                                                                        <input type="text" class="form-control" id="client" placeholder="">
+                                                                    </div>
+                                                                    <div class="form-group col-xs-6">
+                                                                        <label class="control-label " for="pwd">Property Address</label>
+                                                                        <input type="text" onFocus="geolocate()" class="form-control" id="address" placeholder="">
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="panel panel-success">
+                                                                <div class="panel-heading">
+                                                                    <h3 class="panel-title"><strong>Earnings & Deductions</strong></h3>
+                                                                </div>
+                                                                <div class="panel-body">
+                                                                    <div class="form-group col-xs-12">
+                                                                        <label class="col-xs-9 control-label " for="pwd">Gross Commission</label>
+                                                                        <div class="col-xs-3">
+                                                                            <input type="text" class="form-control" id="gross-comm" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
 
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label class="control-label col-sm-2" for="pwd">Password:</label>
-                                                    <div class="col-sm-10">
-                                                        <input type="password" class="form-control" id="pwd" placeholder="Enter password">
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <div class="col-sm-offset-2 col-sm-10">
-                                                        <div class="checkbox">
-                                                            <label><input type="checkbox"> Remember me</label>
+                                                                    <div class="form-group col-xs-12">
+                                                                        <label class="col-xs-9 control-label" for="pwd">Broker Fee</label>
+                                                                        <div class="col-xs-3">
+                                                                            <input type="text" class="form-control" id="broker" placeholder="">
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+
+                                                                    <div class="form-group col-xs-12">
+                                                                        <label class="col-xs-9 control-label" for="pwd">Subtotal</label>
+                                                                        <div class="col-xs-3">
+                                                                            <input type="text" class="form-control" id="subtotal" placeholder="">
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+
+                                                                    <div class="form-group col-xs-12">
+                                                                        <label class="col-xs-9 control-label" for="pwd">Transaction Coordinator</label>
+                                                                        <div class="col-xs-3">
+                                                                            <input type="text" class="form-control" id="trans-coor" placeholder="">
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+
+                                                                    <div class="form-group col-xs-12">
+                                                                        <label class="col-xs-9 control-label" for="pwd">TC. Tech Fee</label>
+                                                                        <div class="col-xs-3">
+                                                                            <input type="text" class="form-control" id="tech" placeholder="">
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+
+                                                                    <div class="form-group col-xs-12">
+                                                                        <label class="col-xs-9 control-label" for="pwd">E&O Insurance</label>
+                                                                        <div class="col-xs-3">
+                                                                            <input type="text" class="form-control" id="eo_insurance" placeholder="">
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+
+                                                                    <div class="form-group col-xs-12">
+                                                                        <label class="col-xs-9 control-label" for="pwd">Re/Max Fee</label>
+                                                                        <div class="col-xs-3">
+                                                                            <input type="text" class="form-control" id="remax" placeholder="">
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+
+                                                                    <div class="form-group col-xs-12">
+                                                                        <label class="col-xs-9 control-label" for="pwd">Agent Net Commission</label>
+                                                                        <div class="col-xs-3">
+                                                                            <input type="text" class="form-control" id="agent_net" placeholder="">
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
-                                                    <div class="col-sm-offset-2 col-sm-10">
-                                                        <button type="submit" class="btn btn-default">Submit</button>
+                                                    <div class="col-xs-11 col-xs-offset-11">
+                                                        <button type="submit" class="btn btn-success">Submit</button>
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
+                                    <!-- /.box-body -->
+                                    <!-- /.box -->
                                 </div>
-                                <!-- /.box-body -->
+                                <!-- /.col -->
                             </div>
-                            <!-- /.box -->
+                            <!-- /.row -->
                         </div>
-                        <!-- /.col -->
                     </div>
-                    <!-- /.row -->
                 </section>
-                <!-- /.content -->
             </div>
-            <!-- /.content-wrapper -->
+
+            <!-- /.content -->
+
         </div>
-        <!-- /.wrapper -->
+        <!-- /.content-wrapper -->
 
 
 
@@ -381,18 +496,54 @@ $result = $stmt->fetchAll();
         <!-- REQUIRED JS SCRIPTS -->
 
 
-        <!-- Bootstrap 3.3.6 -->
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-
         <!-- Slimscroll -->
         <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
         <!-- FastClick -->
         <script src="plugins/fastclick/fastclick.js"></script>
-        <!-- Datatables
-        <script type="text/javascript" src="plugins/datatables/datatables.min.js"></script> -->
         <!-- AdminLTE App -->
         <script src="dist/js/app.min.js"></script>
 
+        <script>
+                                                                            var placeSearch, autocomplete;
+
+                                                                            var options = {
+                                                                                componentRestrictions: {country: 'usa'},
+
+                                                                            };
+
+                                                                            function initAutocomplete() {
+                                                                                // Create the autocomplete object, restricting the search to geographical
+                                                                                // location types.
+                                                                                autocomplete = new google.maps.places.Autocomplete(
+                                                                                        /** @type {!HTMLInputElement} */(document.getElementById('address')),
+                                                                                        {types: ['geocode'], options});
+
+                                                                                // When the user selects an address from the dropdown, populate the address
+                                                                                // fields in the form.
+                                                                                autocomplete.addListener('place_changed', fillInAddress);
+                                                                            }
+
+
+                                                                            // Bias the autocomplete object to the user's geographical location,
+                                                                            // as supplied by the browser's 'navigator.geolocation' object.
+                                                                            function geolocate() {
+                                                                                if (navigator.geolocation) {
+                                                                                    navigator.geolocation.getCurrentPosition(function (position) {
+                                                                                        var geolocation = {
+                                                                                            lat: position.coords.latitude,
+                                                                                            lng: position.coords.longitude
+                                                                                        };
+                                                                                        var circle = new google.maps.Circle({
+                                                                                            center: geolocation,
+                                                                                            radius: position.coords.accuracy
+                                                                                        });
+                                                                                        autocomplete.setBounds(circle.getBounds());
+                                                                                    });
+                                                                                }
+                                                                            }
+        </script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAK_Tffqf_2RClIjnuOPoz6wk1lZy4dAeg&libraries=places&callback=initAutocomplete"
+        async defer></script>
     </body>
 
 </html>
