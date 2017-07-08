@@ -18,7 +18,7 @@ if (!isset($_SESSION['userId'])) {
         <!-- Bootstrap 3.3.6 -->
         <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
         <!-- Ionicons -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+        
         <!-- Font Awesome -->
         <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
         <!-- Theme style -->

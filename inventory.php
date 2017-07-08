@@ -24,8 +24,6 @@ $result = $stmt->fetchAll();
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <!-- Font Awesome -->
         <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
-        <!-- Ionicons -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
 
@@ -315,7 +313,7 @@ $result = $stmt->fetchAll();
                                             <?php
                                             foreach ($result as $house) {
                                                 echo "<tr>";
-                                           
+
                                                 echo "<td>" . $house['address'] . "</td>";
                                                 echo "<td>" . $house['city'] . "</td>";
                                                 echo "<td>" . $house['zip'] . "</td>";
@@ -508,7 +506,7 @@ $result = $stmt->fetchAll();
         <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
         <!-- FastClick -->
         <script src="plugins/fastclick/fastclick.js"></script>
-        <!-- Datatables 
+        <!-- Datatables
         <script type="text/javascript" src="plugins/datatables/datatables.min.js"></script> -->
         <!-- AdminLTE App -->
         <script src="dist/js/app.min.js"></script>

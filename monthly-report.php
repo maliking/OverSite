@@ -30,8 +30,6 @@ if (!isset($_SESSION['userId'])) {
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <!-- Font Awesome -->
         <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
-        <!-- Ionicons -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
 
@@ -272,7 +270,7 @@ if (!isset($_SESSION['userId'])) {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                           
+
                                             <?php
                                             foreach ($result as $sales) {
                                                 echo "<tr>";
@@ -284,7 +282,7 @@ if (!isset($_SESSION['userId'])) {
                                                 echo "</tr>";
                                             }
                                             ?>
-                                           
+
                                             <?php
                                             /* $dbConn = getConnection();
 
