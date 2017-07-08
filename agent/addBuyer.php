@@ -16,8 +16,8 @@ $bathroomsMax = $_POST['bathroomsMax'];
 $bathroomsMin = $_POST['bathroomsMin'];
 $priceMax = $_POST['priceMax'];
 $priceMin = $_POST['priceMin'];
-// $houseId = $_POST['houseId'];
-$houseId = "253";
+$houseId = $_POST['houseId'];
+// $houseId = "253";
 $userId = $_SESSION['userId'];
 $sql = "INSERT INTO BuyerInfo
 		(firstName, lastName, email, phone, bedroomsMax, bedroomsMin, bathroomsMax, bathroomsMin, priceMax, priceMin, houseId, userId)
