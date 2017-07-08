@@ -352,45 +352,74 @@ $rank = $stmtRank->fetchAll();
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                                        <div class="row">
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
-                                    <h4>Agent Roster</h4>
+                                    <h4>Active/Active Contingent Properties</h4>
                                 </div>
                                 <div class="box-body">
-                                    <table id="agent-table" class="table table-bordered table-striped">
+                                    <table class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Last, First</th>
+                                                <th>Property</th>
+                                                <th data-breakpoints="all">Client Name</th>
+                                                <th data-breakpoints="all">Client Number</th>
+                                                <th data-breakpoints="all">Client Email</th>
+                                                <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Approval Date">Aprv. </a></th>
+                                                <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Earnest Money Deposit">EMD </a></th>
+                                                <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Disclosures">Disc. </a></th>
 
-                                                <th>Listings</th>
-                                                <th>L.V. <a href="#" data-toggle="tooltip" data-placement="top" title="Listings Volume"><i class="fa fa-question-circle"></i></a></th>
-                                                <th>Sales</th>
-                                                <th>S.V. <a href="#" data-toggle="tooltip" data-placement="top" title="Sales Volume"><i class="fa fa-question-circle"></i></a></th>
-                                                <th>YTD Comm.</th>
-                                                <th><i class="fa fa-percent"></i></th>
+                                                <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Inspection">Insp. </a></th>
+
+                                                <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Appraisal">Appr. </a></th>
+
+                                                <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Loan Contingencies">LC </a></th>
+                                                <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Close of Escrow">COE </a></th>
+                                                <th data-breakpoints="xs sm">Notes</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <?php
-                                            $limit = 1;
-                                            foreach ($rank as $agent) {
-                                                if ($limit > 5) {
-                                                    break;
-                                                } else {
-                                                    echo "<tr>";
-                                                    echo "<td>" . $agent['lastName'] . ", " . $agent['firstName'] . "</td>";
-                                                    echo "<td>" . $agent['sold'] . "</td>";
-                                                    echo "<td>" . $agent['sold'] . "</td>";
-                                                    echo "<td>" . $agent['sold'] . "</td>";
-                                                    echo "<td>" . $agent['sold'] . "</td>";
-                                                    echo "<td>" . "$" . number_format($agent['YTDComm'], 0) . "</td>";
-                                                    echo "<td>" . "NA" . "</td>";
-                                                    echo "</tr>";
-                                                }
-                                            }
-                                            ?>
+                                            <tr>
+
+                                                <td>1204 Rogers Ct. Salinas, CA 94934</td>
+                                                <td>Patty Hershang</td>
+                                                <td>831-382-4833</td>
+                                                <td>phershang@gmail.com</td>
+
+                                                <td>3/1/17
+                                                    <br>
+                                                    <span class="label label-success">Done! <i class="fa fa-check-circle-o"></i></span>
+                                                </td>
+                                                <td>3/1/17
+                                                    <br>
+                                                    <span class="label label-success">Done! <i class="fa fa-check-circle-o"></i></span>
+                                                </td>
+                                                <td>3/1/17 <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17" data-toggle="popover" data-Oplacement="right" data-content="<b>Completed:</b> 3/4/17"><i class="fa fa-chevron-circle-right"></i></a>
+                                                    <br>
+                                                    <span class="label label-danger">Overdue</span>
+                                                </td>
+
+                                                <td>3/1/17 <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17" data-toggle="popover" data-Oplacement="right" data-content="<b>Completed:</b> 3/4/17"><i class="fa fa-chevron-circle-right"></i></a>
+                                                    <br>
+                                                    <span class="label label-warning">Due in 8d</span>
+                                                </td>
+
+                                                <td>3/1/17 <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17" data-toggle="popover" data-Oplacement="right" data-content="<b>Completed:</b> 3/4/17"><i class="fa fa-chevron-circle-right"></i></a>
+                                                    <br>
+                                                    <span class="label label-warning">Due in 8d</span>
+                                                </td>
+
+                                                <td>3/1/17
+                                                    <br>
+                                                    <span class="label label-default">Incomplete</span>
+                                                </td>
+                                                <td>3/1/17
+                                                    <br>
+                                                    <span class="label label-default">Incomplete</span>
+                                                </td>
+                                                <td>Write some notes here!</td>
+                                            </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -565,6 +594,20 @@ $rank = $stmtRank->fetchAll();
                     ft.rows.add(values);
                 }
                 $modal.modal('hide');
+            });
+        </script>
+                <script>
+            jQuery(function ($) {
+                $('.table').footable({
+
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function () {
+                $('[data-toggle="popover"]').popover({
+                    html: true
+                });
             });
         </script>
     </body>
