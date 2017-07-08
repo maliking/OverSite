@@ -219,6 +219,7 @@ if (!isset($_SESSION['userId'])) {
                     <ul class="sidebar-menu">
                         <li class="header">OVERVIEW</li>
                         <li class="active"><a href="./index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+                        <li><a href="signIn.php" target="_blank"><i class=""></i> <span>Sign In Sheet</span></a></li>
                         <li class="header">PROPERTIES</li>
                         <li><a href="my-inventory.php"><i class="fa fa-home"></i> <span>My Inventory</span></a></li>
                         <li><a href="office-inventory.php"><i class="fa fa-building"></i> <span>Office Inventory</span></a></li>
