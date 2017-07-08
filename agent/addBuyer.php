@@ -16,7 +16,8 @@ $bathroomsMax = $_POST['bathroomsMax'];
 $bathroomsMin = $_POST['bathroomsMin'];
 $priceMax = $_POST['priceMax'];
 $priceMin = $_POST['priceMin'];
-$houseId = $_POST['houseId'];
+// $houseId = $_POST['houseId'];
+$houseId = "253";
 $userId = $_SESSION['userId'];
 $sql = "INSERT INTO BuyerInfo
 		(firstName, lastName, email, phone, bedroomsMax, bedroomsMin, bathroomsMax, bathroomsMin, priceMax, priceMin, houseId, userId)
@@ -38,6 +39,11 @@ $stmt = $dbConn -> prepare($sql);
 $stmt->execute($namedParameters);
 //$stmt->execute();
 //$result = $stmt->fetch(); //We are expecting one record
+
+
+
+
+
 $twilio_phone_number = "+18315851661";
 // if($houseId == "89")
 // {
@@ -47,7 +53,7 @@ $twilio_phone_number = "+18315851661";
         array(
         "From" => $twilio_phone_number,
         "Body" => "Flyer",
-        'mediaUrl' => "http://52.11.24.75/flyers/Flyer.jpg",
+        'mediaUrl' => "http://52.11.24.75/flyers/Provincetown.jpg",
         )
     );
     // }
