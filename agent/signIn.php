@@ -97,7 +97,6 @@
                     <input type="number" name="priceMax" min="0" placeholder="max" step="1000" />
                 </td>  <br />
         </tr>
-        <input type="hidden" name="houseId" value="1234"> 
 
         <tr>
             <td>
