@@ -79,7 +79,7 @@ To change this template use Tools | Templates.
             $dbConn = getConnection();
             // $sql = "SELECT * FROM BuyerInfo WHERE userId = :userId";
             $sql = "SELECT  address, firstName, lastName, email, phone, bedroomsMin, bedroomsMax, priceMin, priceMax 
-            from BuyerInfo as BI LEFT JOIN HouseInfo as HI ON BI.houseId = HI.houseId AND BI.userId = :userId";
+            from BuyerInfo as BI LEFT JOIN HouseInfo as HI ON BI.houseId = HI.houseId WHERE BI.userId = :userId";
             $namedParameters = array();
             $namedParameters[':userId'] = $_SESSION['userId'];
             $stmt = $dbConn -> prepare($sql);
