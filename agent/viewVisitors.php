@@ -73,7 +73,7 @@ To change this template use Tools | Templates.
         
         <table class="tftable" border="1">
        
-        <tr><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th>Bedrooms</th><th>Bathrooms</th><th>Price</th><th>Edit</th><th>Delete</th></tr>    
+        <tr><th>Address</th><th>First Name</th><th>Last Name</th><th>Email</th><th>Phone</th><th>Bedrooms</th><th>Bathrooms</th><th>Price</th><th>Edit</th><th>Delete</th></tr>    
             
             <?php
             $dbConn = getConnection();
@@ -88,6 +88,7 @@ To change this template use Tools | Templates.
             $results = $stmt->fetchAll();
             foreach($results as $result){
                 echo "<tr>";
+                echo "<td>" . $result['address'] . "</td>";
                 echo "<td>" . $result['firstName'] . "</td>";
                 echo "<td>" . $result['lastName'] . "</td>";
                 echo "<td>" . htmlspecialchars($result['email']) . "</td>";
