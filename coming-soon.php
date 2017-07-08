@@ -307,7 +307,6 @@ $result = $stmt->fetchAll();
                                                 <th>Sqft</th>
                                                 <th>Lot</th>
                                                 <th>Price</th>
-                                                <th>DOM <a href="#" data-toggle="tooltip" data-placement="top" title="Days on the market"><i class="fa fa-question-circle"></i></a></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -323,7 +322,6 @@ $result = $stmt->fetchAll();
                                                 echo "<td>" . "NA" . "</td>";
                                                 echo "<td>" . "NA" . "</td>";
                                                 echo "<td>" . '$' . number_format($house['price'], 0) . "</td>";
-                                                echo "<td>" . "NA" . "</td>";
                                                 echo "</tr>";
                                             }
                                             ?>
@@ -407,12 +405,6 @@ $result = $stmt->fetchAll();
                             <label for="price" class="col-sm-3 control-label">Price</label>
                             <div class="col-sm-9">
                                 <input type="number" class="form-control" id="price" name="price" placeholder="Date of Birth">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="dom" class="col-sm-3 control-label">DOM <a href="#" data-toggle="tooltip" data-placement="top" title="Days on the market"><i class="fa fa-question-circle"></i></a></label>
-                            <div class="col-sm-9">
-                                <input type="number" class="form-control" id="dom" name="dom" placeholder="Date of Birth">
                             </div>
                         </div>
                     </div>
@@ -538,7 +530,6 @@ $result = $stmt->fetchAll();
                                 $editor.find('#sqft').val(values.dob);
                                 $editor.find('#lot').val(values.dob);
                                 $editor.find('#price').val(values.dob);
-                                $editor.find('#dom').val(values.dob);
 
 
 
@@ -570,7 +561,6 @@ $result = $stmt->fetchAll();
                             sqft: $editor.find('#sqft').val(),
                             lot: $editor.find('#lot').val(),
                             price: $editor.find('#price').val(),
-                            dom: $editor.find('#dom').val(),
 
                         };
 
