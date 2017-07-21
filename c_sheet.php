@@ -333,9 +333,22 @@ $houses = $stmtHouse->fetchAll();
                                                                         <label class="control-label" for="pwd">Agent License</label>
                                                                         <input type="text" class="form-control" id="agent" placeholder="">
                                                                     </div>
-                                                                    <div class="form-group col-xs-6">
+                                                                   <!--  <div class="form-group col-xs-6">
                                                                         <label class="control-label " for="pwd">Property Address</label>
                                                                         <input type="text" onFocus="geolocate()" class="form-control" id="address" placeholder="">
+                                                                    </div> -->
+
+                                                                     <div class="form-group col-xs-6">
+                                                                        <label class="control-label " for="pwd">Property Address</label>
+                                                                        <select id="houseId" >
+                                                                        <?php
+                                                                            $license = "";
+                                                                            foreach($houses as $house)
+                                                                            {
+                                                                                echo "<option value='". $house['houseId']."'>". $house['address'] . " " . $house['city'] . " " . $house['state'] . " " . $house['zip'] . "</option>";
+                                                                            }
+                                                                        ?>
+                                                                    </select>
                                                                     </div>
 
                                                                     <div class="form-group col-xs-3">
