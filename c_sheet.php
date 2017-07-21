@@ -76,7 +76,7 @@ $houses = $stmtHouse->fetchAll();
             {
 
                 var x = document.getElementById("agentName").value;
-                document.getElementById("agentLicense").value = x;
+                document.getElementById("agent").value = x;
 
                 var xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function() 
@@ -355,7 +355,7 @@ $houses = $stmtHouse->fetchAll();
 
                                                                     <div class="form-group col-xs-3">
                                                                         <label class="control-label" for="pwd">Agent License</label>
-                                                                        <input type="text" class="form-control" id="agent" placeholder="">
+                                                                        <input type="text" class="form-control" id="agent" placeholder="" value="">
                                                                     </div>
                                                                    <!--  <div class="form-group col-xs-6">
                                                                         <label class="control-label " for="pwd">Property Address</label>
