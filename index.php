@@ -237,6 +237,7 @@ $rank = $stmtRank->fetchAll();
                         <li class="header">TRANSACTIONS</li>
                         <li><a href="sales-breakdown.php"><i class="fa fa-list-alt"></i> <span> Sales Breakdown</span></a></li>
                         <li><a href="monthly-report.php"><i class="fa fa-file-text-o"></i> <span>Monthly Report</span></a></li>
+                        <li><a href="c_sheet.php"><i class="fa fa-file-text-o"></i> <span>Commission sheet</span></a></li>
                         <li class="header">STATISTICS</li>
                         <li><a href="analytics.php"><i class="fa fa-line-chart"></i> <span> Analytics</span></a></li>
                         <li><a href="agent/viewVisitors.php"><i class="fa fa-file-text-o"></i> <span>Visitors</span></a></li>
