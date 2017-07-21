@@ -267,7 +267,7 @@ session_start();
                                 <div class="box-body">
                                     <div class="row">
                                         <div class="col-xs-12">
-                                            <form>
+                                            <form action="commissionAlgo.php" method="post">
                                                 <div class="container">
                                                     <div class="row">
                                                         <div class="col-md-12">
@@ -298,14 +298,21 @@ session_start();
                                                                         <label class="control-label" for="pwd">Agent Name</label>
                                                                         <input type="text" class="form-control" id="agent" placeholder="">
                                                                     </div>
+
                                                                     <div class="form-group col-xs-3">
-                                                                        <label class="control-label" for="pwd">Client Name(s)</label>
-                                                                        <input type="text" class="form-control" id="client" placeholder="">
+                                                                        <label class="control-label" for="pwd">Agent License</label>
+                                                                        <input type="text" class="form-control" id="agent" placeholder="">
                                                                     </div>
                                                                     <div class="form-group col-xs-6">
                                                                         <label class="control-label " for="pwd">Property Address</label>
                                                                         <input type="text" onFocus="geolocate()" class="form-control" id="address" placeholder="">
                                                                     </div>
+                                                                    
+                                                                    <div class="form-group col-xs-3">
+                                                                        <label class="control-label" for="pwd">Client Name(s)</label>
+                                                                        <input type="text" class="form-control" id="client" placeholder="">
+                                                                    </div>
+                                                                    
                                                                     <div class="clearfix"></div>
                                                                 </div>
                                                             </div>
