@@ -87,7 +87,7 @@ $houses = $stmtHouse->fetchAll();
                         document.getElementById("beg-comm").innerHTML = data.TYGross;
                     }
                 };
-                xhttp.open("GET", "agentCommission.php/?license=" + x, true);
+                xhttp.open("GET", "agentCommission.php?license=" + x, true);
                 xhttp.send(); 
             }
 
