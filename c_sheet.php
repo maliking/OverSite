@@ -60,6 +60,7 @@ $houses = $stmtHouse->fetchAll();
 
         </style>
 
+        <script src="commAlgoJS.js"></script>
         <script>
             $(function () {
                 $('#today-date').datetimepicker({
@@ -397,7 +398,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     <div class="form-group col-xs-12">
                                                                         <label class="col-xs-9 control-label " for="pwd">Gross Commission</label>
                                                                         <div class="col-xs-3">
-                                                                            <input type="text" class="form-control" id="gross-comm" placeholder="">
+                                                                            <input type="text" class="form-control" id="gross-comm" placeholder="" onchange="calculateCommission(this.value)">
                                                                         </div>
                                                                     </div>
                                                                     <div class="clearfix"></div>
@@ -423,7 +424,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     <div class="form-group col-xs-12">
                                                                         <label class="col-xs-9 control-label" for="pwd">Transaction Coordinator</label>
                                                                         <div class="col-xs-3">
-                                                                            <input type="text" class="form-control" id="trans-coor" placeholder="">
+                                                                            <input type="text" class="form-control" id="trans-coor" placeholder="" value="200.00">
                                                                         </div>
 
                                                                     </div>
@@ -432,7 +433,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     <div class="form-group col-xs-12">
                                                                         <label class="col-xs-9 control-label" for="pwd">TC. Tech Fee</label>
                                                                         <div class="col-xs-3">
-                                                                            <input type="text" class="form-control" id="tech" placeholder="">
+                                                                            <input type="text" class="form-control" id="tech" placeholder="" value="50.00">
                                                                         </div>
 
                                                                     </div>
@@ -441,7 +442,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     <div class="form-group col-xs-12">
                                                                         <label class="col-xs-9 control-label" for="pwd">E&O Insurance</label>
                                                                         <div class="col-xs-3">
-                                                                            <input type="text" class="form-control" id="eo_insurance" placeholder="">
+                                                                            <input type="text" class="form-control" id="eo_insurance" placeholder="" value="99.00">
                                                                         </div>
 
 
