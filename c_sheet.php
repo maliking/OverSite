@@ -84,7 +84,7 @@ $houses = $stmtHouse->fetchAll();
                     if (this.readyState == 4 && this.status == 200) 
                     {
                         var data = (this.responseText);
-                        alert(data.TYGross);
+                        alert(data);
                         document.getElementById("beg-comm").innerHTML = data.TYGross;
                     }
                 };
