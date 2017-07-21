@@ -71,6 +71,30 @@ $houses = $stmtHouse->fetchAll();
 
                 });
             });
+
+            function getLicense()
+            {
+
+                var x = document.getElementById("agentName").value;
+                document.getElementById("agentLicense").value = x;
+
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function() 
+                {
+                    if (this.readyState == 4 && this.status == 200) 
+                    {
+                        var data = JSON.parse(xhttp.responseText);
+                        document.getElementById("beg-comm").innerHTML = data.TYGross;
+                    }
+                };
+                xhttp.open("GET", "agentCommission.php/?license=" + x, true);
+                xhttp.send(); 
+            }
+
+            function getOwners()
+            {
+
+            }
         </script>
     </head>
 
@@ -340,9 +364,9 @@ $houses = $stmtHouse->fetchAll();
 
                                                                      <div class="form-group col-xs-6">
                                                                         <label class="control-label " for="pwd">Property Address</label>
-                                                                        <select id="houseId" >
+                                                                        <select id="houseId" onchange="getOwners()">
                                                                         <?php
-                                                                            $license = "";
+                                                                           
                                                                             foreach($houses as $house)
                                                                             {
                                                                                 echo "<option value='". $house['houseId']."'>". $house['address'] . " " . $house['city'] . " " . $house['state'] . " " . $house['zip'] . "</option>";
