@@ -1,5 +1,22 @@
 <?php
 session_start();
+require("databaseConnection.php");  
+$dbConn = getConnection();
+if(!isset($_SESSION['userId'])) 
+{
+    header("Location: index.html?error=wrong username or password");
+} 
+
+$sql = "SELECT * FROM UsersInfo ";
+$stmt = $dbConn -> prepare($sql);
+$stmt->execute();
+//$stmt->execute();
+$sqlHouse = "SELECT * FROM HouseInfo ORDER BY address";
+$stmtHouse = $dbConn -> prepare($sqlHouse);
+$stmtHouse->execute();
+$results = $stmt->fetchAll();
+$houses = $stmtHouse->fetchAll();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -294,9 +311,22 @@ session_start();
                                                                         <input type="text" data-provide="datepicker" class="form-control" id="settlement-date" placeholder="Click to set date">
                                                                     </div>
                                                                     <div class="clearfix"></div>
-                                                                    <div class="form-group col-xs-3">
+                                                                    <!-- <div class="form-group col-xs-3">
                                                                         <label class="control-label" for="pwd">Agent Name</label>
                                                                         <input type="text" class="form-control" id="agent" placeholder="">
+                                                                    </div> -->
+
+                                                                    <div class="form-group col-xs-3">
+                                                                        <label class="control-label" for="pwd">Agent Name</label>
+                                                                        <select id="agentName" onchange="getLicense()">
+                                                                        <?php
+                                                                            $license = "";
+                                                                            foreach($results as $result)
+                                                                            {
+                                                                                echo "<option value='". $result['license']."'>". $result['firstName'] . " " . $result['lastName'] . "</option>";
+                                                                            }
+                                                                        ?>
+                                                                    </select>
                                                                     </div>
 
                                                                     <div class="form-group col-xs-3">
@@ -307,7 +337,7 @@ session_start();
                                                                         <label class="control-label " for="pwd">Property Address</label>
                                                                         <input type="text" onFocus="geolocate()" class="form-control" id="address" placeholder="">
                                                                     </div>
-                                                                    
+
                                                                     <div class="form-group col-xs-3">
                                                                         <label class="control-label" for="pwd">Client Name(s)</label>
                                                                         <input type="text" class="form-control" id="client" placeholder="">
