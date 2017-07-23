@@ -1,7 +1,7 @@
 <?php
-require("../databaseConnection.php");
-require("../keys/refreshKeyAdobe.php");
-require("../keys/pass.php");
+require("databaseConnection.php");
+// require("../keys/refreshKeyAdobe.php");
+require("keys/cred.php");
 session_start();
 $dbConn = getConnection();
 // $commId;
