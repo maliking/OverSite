@@ -310,7 +310,7 @@ $houses = $stmtHouse->fetchAll();
                                 <div class="box-body">
                                     <div class="row">
                                         <div class="col-xs-12">
-                                            <form action="commissionAlgo.php" method="post">
+                                            <form action="sendCommissionSheet.php" method="post">
                                                 <div class="container">
                                                     <div class="row">
                                                         <div class="col-md-12">
@@ -321,20 +321,20 @@ $houses = $stmtHouse->fetchAll();
                                                                 <div class="panel-body">
                                                                     <div class="form-group col-xs-4">
                                                                         <label class="control-label " for="email">Date</label>
-                                                                        <input type="text" data-provide="datepicker" class="form-control" id="today-date" placeholder="Enter today's date">
+                                                                        <input type="text" data-provide="datepicker" class="form-control" id="today-date" name = "today-date" placeholder="Enter today's date">
                                                                     </div>
                                                                     <div class="form-group col-xs-4">
                                                                         <label class="control-label  " for="pwd">Beginning Gross Commission</label>
-                                                                        <input type="text" class="form-control" id="beg-comm" placeholder="">
+                                                                        <input type="text" class="form-control" id="beg-comm" name="TYGross" placeholder="">
                                                                     </div>
                                                                     <div class="form-group col-xs-4">
                                                                         <label class="control-label  " for="datetimepicker4">Check Number</label>
-                                                                        <input type="text" class="form-control" id="check" placeholder="">
+                                                                        <input type="text" class="form-control" id="check" name="checkNum" placeholder="">
                                                                     </div>
 
                                                                     <div class="form-group col-xs-4">
                                                                         <label class="control-label  " for="email">Settlement Date</label>
-                                                                        <input type="text" data-provide="datepicker" class="form-control" id="settlement-date" placeholder="Click to set date">
+                                                                        <input type="text" data-provide="datepicker" class="form-control" id="settlement-date" name="settlementDate" placeholder="Click to set date">
                                                                     </div>
                                                                     <div class="clearfix"></div>
                                                                     <!-- <div class="form-group col-xs-3">
@@ -344,7 +344,7 @@ $houses = $stmtHouse->fetchAll();
 
                                                                     <div class="form-group col-xs-3">
                                                                         <label class="control-label" for="pwd">Agent Name</label>
-                                                                        <select id="agentName" onchange="getLicense()">
+                                                                        <select id="agentName" onchange="getLicense()" name="agentName">
                                                                         <?php
                                                                             $license = "";
                                                                             foreach($results as $result)
@@ -366,7 +366,7 @@ $houses = $stmtHouse->fetchAll();
 
                                                                      <div class="form-group col-xs-6">
                                                                         <label class="control-label " for="pwd">Property Address</label>
-                                                                        <select id="houseId" onchange="getOwners()">
+                                                                        <select id="houseId" onchange="getOwners()" name="propertyAddress">
                                                                         <?php
                                                                            
                                                                             foreach($houses as $house)
@@ -398,7 +398,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     <div class="form-group col-xs-12">
                                                                         <label class="col-xs-9 control-label " for="pwd">Gross Commission</label>
                                                                         <div class="col-xs-3">
-                                                                            <input type="text" class="form-control" id="gross-comm" placeholder="" onchange="calculateCommission(this.value)">
+                                                                            <input type="text" class="form-control" id="gross-comm" placeholder="" name=="InitialGross" onchange="calculateCommission(this.value)">
                                                                         </div>
                                                                     </div>
                                                                     <div class="clearfix"></div>
@@ -406,7 +406,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     <div class="form-group col-xs-12">
                                                                         <label class="col-xs-9 control-label" for="pwd">Broker Fee</label>
                                                                         <div class="col-xs-3">
-                                                                            <input type="text" class="form-control" id="broker" placeholder="">
+                                                                            <input type="text" class="form-control" id="broker" name="brokerFee" placeholder="">
                                                                         </div>
 
                                                                     </div>
@@ -461,7 +461,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     <div class="form-group col-xs-12">
                                                                         <label class="col-xs-9 control-label" for="pwd">Agent Net Commission</label>
                                                                         <div class="col-xs-3">
-                                                                            <input type="text" class="form-control" id="agent_net" placeholder="">
+                                                                            <input type="text" class="form-control" id="agent_net" name="netCommission" placeholder="">
                                                                         </div>
                                                                     </div>
                                                                     <div class="clearfix"></div>
