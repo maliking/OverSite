@@ -35,7 +35,7 @@ $pdf->Cell(0,10,'Property Address: ' . $_POST['propertyAddress'],0,1);
 $pdf->Cell(0,10,' ',0,1);
 $pdf->Cell(0,10,'                        Agent Initial Gross Commission: $' . $_POST['InitialGross'],0,1);
 $pdf->Cell(0,10,'                        Remax/Broker Fee: $' . $_POST['brokerFee'],0,1);
-$pdf->Cell(0,10,'                        Agent Subtotal: $' . ($_POST['InitialGross'] - $_POST['brokerFee']),0,1);
+$pdf->Cell(0,10,'                        Agent Subtotal: $' . ($_POST['InitialGross'] . $_POST['brokerFee']),0,1);
 $pdf->Cell(0,10,'                        Processing Fee: $200.00  Flat fee fixed ',0,1);
 $pdf->Cell(0,10,'                        TC. Tech Fee:  $50.00  Flat fee fixed ',0,1);
 $pdf->Cell(0,10,'                        E&O Insurance:  $99.00  Flat fee fixed ',0,1);
