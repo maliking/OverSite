@@ -13,10 +13,10 @@ $dbConn = getConnection();
 // {
 // 	$commId = $_GET['commId'];
 // }
-$sqlAgent = "SELECT FYGross FROM commInfo  WHERE commId = '" . $commId . "'";
-$stmtAgent = $dbConn -> prepare($sqlAgent);
-$stmtAgent->execute();
-$comm = $stmtAgent->fetch();
+// $sqlAgent = "SELECT FYGross FROM commInfo  WHERE commId = '" . $commId . "'";
+// $stmtAgent = $dbConn -> prepare($sqlAgent);
+// $stmtAgent->execute();
+// $comm = $stmtAgent->fetch();
 require('fpdf/fpdf.php');
  
         // $data = $_GET["agentNum"];
