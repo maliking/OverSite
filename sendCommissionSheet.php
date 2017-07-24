@@ -92,7 +92,7 @@ $pdf->Cell(0,10,'Agent Signature                              Date              
 	  CURLOPT_HTTPHEADER => array(
     "accept: application/json",
     "content-type: application/json",
-    "x-docusign-authentication: { \"Username\":" . $username . ",\"Password\":" . $password .",\"IntegratorKey\":" . $intKey . " }"
+    "x-docusign-authentication: { \"Username\": \"" . $username . "\",\"Password\":\"" . $password ."\",\"IntegratorKey\":\"" . $intKey . "\" }"
   	),
 	));
 	$response = curl_exec($curl);
