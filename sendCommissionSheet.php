@@ -103,7 +103,7 @@ $pdf->Cell(0,10,'Agent Signature                              Date              
 	} else {
 	  echo $response;
 	}
-	//header("Location: index.php");
+	header("Location: index.php");
 
 ?>
 
