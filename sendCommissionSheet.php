@@ -106,3 +106,23 @@ $pdf->Cell(0,10,'Agent Signature                              Date              
 	header("Location: index.php");
 
 ?>
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    
+<head>
+    <title>Commission Sheet</title>
+    
+    
+    <meta charset = "utf-8"/>
+
+ 
+</head>
+    
+
+    <body>
+       
+    </body>
+
+</html>
