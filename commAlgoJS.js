@@ -1,10 +1,10 @@
-function calculateCommission()
+function calculateCommission(misc)
 {
   var brokerFee = 0;
   var difference = 0;
   var TYGross = parseFloat(document.getElementById("beg-comm").value);
   var initialCommission = parseFloat(document.getElementById("gross-comm").value);
-  var misc = parseFloat(document.getElementById("misc").value);
+  // var misc = parseFloat(document.getElementById("misc").value);
   var commission = parseFloat(document.getElementById("gross-comm").value);
 
 
