@@ -396,9 +396,9 @@ $houses = $stmtHouse->fetchAll();
                                                                 </div>
                                                                 <div class="panel-body">
                                                                     <div class="form-group col-xs-12">
-                                                                        <label class="col-xs-9 control-label " for="pwd">Gross Commission</label>
+                                                                        <label class="col-xs-9 control-label " for="pwd">*Gross Commission</label>
                                                                         <div class="col-xs-3">
-                                                                            <input type="text" class="form-control" id="gross-comm" placeholder="" name=="InitialGross" onchange="calculateCommission(this.value)">
+                                                                            <input type="text" class="form-control" id="gross-comm" placeholder="" name="InitialGross" >
                                                                         </div>
                                                                     </div>
                                                                     <div class="clearfix"></div>
@@ -453,6 +453,15 @@ $houses = $stmtHouse->fetchAll();
                                                                         <label class="col-xs-9 control-label" for="pwd">Re/Max Fee</label>
                                                                         <div class="col-xs-3">
                                                                             <input type="text" class="form-control" id="remax" placeholder="">
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+
+                                                                    <div class="form-group col-xs-12">
+                                                                        <label class="col-xs-9 control-label" for="pwd">*Misc.</label>
+                                                                        <div class="col-xs-3">
+                                                                            <input type="text" class="form-control" id="misc" name="misc" placeholder="" onchange="calculateCommission(this.value)">
                                                                         </div>
 
                                                                     </div>
