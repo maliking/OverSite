@@ -277,9 +277,9 @@ $result = $stmt->fetchAll();
                                                 echo "<td>" . $sales['firstName'] . " " . $sales['lastName'] . "</td>";
                                                 echo "<td>" . '$' . number_format($sales['InitialGross'], 0) . "</td>"; //Total
                                                 echo "<td>" . '$' . number_format($sales['brokerFee'], 0) . "</td>"; //office
-                                                echo "<td>" . '$99.00', 0) . "</td>"; //eo
-                                                echo "<td>" . '$50.00', 0) . "</td>"; //tech
-                                                echo "<td>" . '$200.00', 0) . "</td>"; //processing
+                                                echo "<td>" . '$99', 0) . "</td>"; //eo
+                                                echo "<td>" . '$50', 0) . "</td>"; //tech
+                                                echo "<td>" . '$200', 0) . "</td>"; //processing
                                                 echo "<td>" . '$' . number_format($sales['remax_ff'], 0) . "</td>"; //remax_ff
                                                 echo "<td>" . '$' . number_format($sales['misc'], 0) . "</td>"; //misc
                                                 echo "<td>" . '$' . number_format($sales['finalComm'], 0) . "</td>"; //commission
