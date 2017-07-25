@@ -325,7 +325,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     </div>
                                                                     <div class="form-group col-xs-4">
                                                                         <label class="control-label  " for="pwd">Beginning Gross Commission</label>
-                                                                        <input type="number" class="form-control" id="beg-comm" name="TYGross" placeholder="" >
+                                                                        <input type="text" class="form-control" id="beg-comm" name="TYGross" placeholder="" >
                                                                     </div>
                                                                     <div class="form-group col-xs-4">
                                                                         <label class="control-label  " for="datetimepicker4">Check Number</label>
