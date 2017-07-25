@@ -1,10 +1,10 @@
-function calculateCommission(misc)
+function calculateCommission()
 {
   var brokerFee = 0;
   var difference = 0;
   var TYGross = document.getElementById("beg-comm").value;
   var commission = document.getElementById("gross-comm").value;
-  console.log("commission");
+  var misc = document.getElementById("misc").value;
   if(TYGross <= 80000)
         {
           difference =  80000 - TYGross;
