@@ -272,21 +272,21 @@ $result = $stmt->fetchAll();
                                             <?php
                                             foreach ($result as $sales) {
                                                 echo "<tr>";
-                                                echo "<td>" . $sales['date_settled'] . "</td>";
+                                                echo "<td>" . $sales['settlementDate'] . "</td>";
                                                 echo "<td>" . $sales['address'] . "</td>";
-                                                echo "<td>" . $sales['agent'] . "</td>";
-                                                echo "<td>" . '$' . number_format($sales['total'], 0) . "</td>";
-                                                echo "<td>" . '$' . number_format($sales['office'], 0) . "</td>";
-                                                echo "<td>" . '$' . number_format($sales['eo'], 0) . "</td>";
-                                                echo "<td>" . '$' . number_format($sales['tech'], 0) . "</td>";
-                                                echo "<td>" . '$' . number_format($sales['processing'], 0) . "</td>";
-                                                echo "<td>" . '$' . number_format($sales['remax_ff'], 0) . "</td>";
-                                                echo "<td>" . '$' . number_format($sales['misc'], 0) . "</td>";
-                                                echo "<td>" . '$' . number_format($sales['commission'], 0) . "</td>";
-                                                echo "<td>" . $sales['client'] . "</td>";
-                                                echo "<td>" . '$' . number_format($sales['price'], 0) . "</td>";
-                                                echo "<td>" . $sales['listing_buyer'] . "</td>";
-                                                echo "<td>" . $sales['notes'] . "</td>";
+                                                echo "<td>" . $sales['firstName'] . " " . $sales['lastName'] . "</td>";
+                                                echo "<td>" . '$' . number_format($sales['InitialGross'], 0) . "</td>"; //Total
+                                                echo "<td>" . '$' . number_format($sales['brokerFee'], 0) . "</td>"; //office
+                                                echo "<td>" . '$99.00', 0) . "</td>"; //eo
+                                                echo "<td>" . '$50.00', 0) . "</td>"; //tech
+                                                echo "<td>" . '$200.00', 0) . "</td>"; //processing
+                                                echo "<td>" . '$' . number_format($sales['remax_ff'], 0) . "</td>"; //remax_ff
+                                                echo "<td>" . '$' . number_format($sales['misc'], 0) . "</td>"; //misc
+                                                echo "<td>" . '$' . number_format($sales['finalComm'], 0) . "</td>"; //commission
+                                                echo "<td>" . $sales['client'] . "</td>"; //client
+                                                echo "<td>" . '$' . number_format($sales['price'], 0) . "</td>"; //price
+                                                echo "<td>" . $sales['listing_buyer'] . "</td>"; //listing buyer
+                                                echo "<td>" . $sales['notes'] . "</td>"; //notes
 
                                                 echo "</tr>";
                                             }
