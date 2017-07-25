@@ -4,19 +4,50 @@ require("databaseConnection.php");
 require("keys/cred.php");
 session_start();
 $dbConn = getConnection();
-// $commId;
-// if(!isset($_GET['commId']))
-// {
-// 	$commId = $_POST['id'];
-// }
-// else
-// {
-// 	$commId = $_GET['commId'];
-// }
-// $sqlAgent = "SELECT FYGross FROM commInfo  WHERE commId = '" . $commId . "'";
-// $stmtAgent = $dbConn -> prepare($sqlAgent);
-// $stmtAgent->execute();
-// $comm = $stmtAgent->fetch();
+if(!isset($_SESSION['userId'])) 
+{
+    header("Location: index.html?error=wrong username or password");
+} 
+
+$license = $_POST['license'];
+$houseId = $_POST['propertyAddress']
+
+$agent = "SELECT * FROM UsersInfo WHERE license = '".$license."'";
+$name = $dbConn -> prepare($agent);
+$name->execute();
+$userResults = $name->fetch();
+
+$sqlHouse = "SELECT * FROM HouseInfo WHERE houseId = '" . $houseId . "'";
+$stmtHouse = $dbConn -> prepare($sqlHouse);
+$stmtHouse->execute();
+$houseResults = $stmtHouse->fetch();
+
+$sql ="INSERT INTO commInfo
+        (houseId, license, firstName, lastName, settlementDate, checkNum, address, city, state, zip, TYGross, FYGross, InitialGross, brokerFee, finalComm, misc)
+        VALUES (:houseId, :license, :firstName, :lastName, :settlementDate, :checkNum, :address, :city, :state, :zip, :TYGross, :FYGross, :InitialGross, :brokerFee, :finalComm, :misc)";
+           ;
+$namedParameters = array();
+$namedParameters[":houseId"] = $houseId;
+$namedParameters[":license"] = $license;
+$namedParameters[":firstName"] = $userResults['firstName'];
+$namedParameters[":lastName"] = $userResults['lastName'];     
+// $namedParameters[":date"] = $_POST['date'];     
+$namedParameters[":settlementDate"] = $_POST['settlementDate'];     
+$namedParameters[":checkNum"] = $_POST['checkNum'];   
+$namedParameters[":address"] = $houseResults['address'];     
+$namedParameters[":city"] = $houseResults['city'];     
+$namedParameters[":state"] = $houseResults['state']; 
+$namedParameters[":zip"] = $houseResults['zip'];
+$namedParameters[":TYGross"] = $_POST['TYGross'] + $_POST['InitialGross'];   
+$namedParameters[":FYGross"] = $_SESSION['FYGross'] + $_POST['netCommission'];
+$namedParameters[":InitialGross"] = $_POST['InitialGross'];   
+$namedParameters[":brokerFee"] = $_POST['brokerFee'];
+$namedParameters[":finalComm"] =  $_POST['netCommission']; 
+$namedParameters[":misc"] =  $_POST['miscell'];
+
+$stmt = $dbConn -> prepare($sql);
+$stmt->execute($namedParameters); 
+
 require('fpdf/fpdf.php');
  
         // $data = $_GET["agentNum"];

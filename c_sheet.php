@@ -357,7 +357,7 @@ $houses = $stmtHouse->fetchAll();
 
                                                                     <div class="form-group col-xs-3">
                                                                         <label class="control-label" for="pwd">Agent License</label>
-                                                                        <input type="text" class="form-control" id="agent" placeholder="" value="" readonly>
+                                                                        <input type="text" class="form-control" id="agent" placeholder="" name="license" value="" readonly>
                                                                     </div>
                                                                    <!--  <div class="form-group col-xs-6">
                                                                         <label class="control-label " for="pwd">Property Address</label>
@@ -470,7 +470,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     <div class="form-group col-xs-12">
                                                                         <label class="col-xs-9 control-label" for="pwd">Agent Net Commission</label>
                                                                         <div class="col-xs-3">
-                                                                            <input type="text" class="form-control" id="agent_net" name="netCommission" placeholder="" >
+                                                                            <input type="text" class="form-control" id="agent_net" name="netCommission" placeholder="" readonly>
                                                                         </div>
                                                                     </div>
                                                                     <div class="clearfix"></div>
