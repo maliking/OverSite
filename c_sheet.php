@@ -60,7 +60,7 @@ $houses = $stmtHouse->fetchAll();
 
         </style>
 
-        <script src="commAlgoJS.js"></script>
+        <script src="commAlgoJS.js?t=1500963597208"></script>
         <script>
             $(function () {
                 $('#today-date').datetimepicker({
