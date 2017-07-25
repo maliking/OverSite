@@ -4,7 +4,7 @@ function calculateCommission(misc)
   var difference = 0;
   var TYGross = document.getElementById("beg-comm").value;
   var commission = document.getElementById("gross-comm").value;
-  console.log(commission);
+  console.log("commission");
   if(TYGross <= 80000)
         {
           difference =  80000 - TYGross;
