@@ -325,7 +325,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     </div>
                                                                     <div class="form-group col-xs-4">
                                                                         <label class="control-label  " for="pwd">Beginning Gross Commission</label>
-                                                                        <input type="text" class="form-control" id="beg-comm" name="TYGross" placeholder="">
+                                                                        <input type="number" class="form-control" id="beg-comm" name="TYGross" placeholder="" readonly>
                                                                     </div>
                                                                     <div class="form-group col-xs-4">
                                                                         <label class="control-label  " for="datetimepicker4">Check Number</label>
@@ -357,7 +357,7 @@ $houses = $stmtHouse->fetchAll();
 
                                                                     <div class="form-group col-xs-3">
                                                                         <label class="control-label" for="pwd">Agent License</label>
-                                                                        <input type="text" class="form-control" id="agent" placeholder="" value="">
+                                                                        <input type="text" class="form-control" id="agent" placeholder="" value="" readonly>
                                                                     </div>
                                                                    <!--  <div class="form-group col-xs-6">
                                                                         <label class="control-label " for="pwd">Property Address</label>
@@ -398,7 +398,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     <div class="form-group col-xs-12">
                                                                         <label class="col-xs-9 control-label " for="pwd">*Gross Commission</label>
                                                                         <div class="col-xs-3">
-                                                                            <input type="text" class="form-control" id="gross-comm" placeholder="" name="InitialGross" >
+                                                                            <input type="number" class="form-control" id="gross-comm" placeholder="" name="InitialGross" >
                                                                         </div>
                                                                     </div>
                                                                     <div class="clearfix"></div>
@@ -406,7 +406,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     <div class="form-group col-xs-12">
                                                                         <label class="col-xs-9 control-label" for="pwd">Broker Fee</label>
                                                                         <div class="col-xs-3">
-                                                                            <input type="text" class="form-control" id="broker" name="brokerFee" placeholder="">
+                                                                            <input type="number" class="form-control" id="broker" name="brokerFee" placeholder="" readonly>
                                                                         </div>
 
                                                                     </div>
@@ -415,7 +415,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     <div class="form-group col-xs-12">
                                                                         <label class="col-xs-9 control-label" for="pwd">Subtotal</label>
                                                                         <div class="col-xs-3">
-                                                                            <input type="text" class="form-control" id="subtotal" placeholder="">
+                                                                            <input type="number" class="form-control" id="subtotal" placeholder="" readonly>
                                                                         </div>
 
                                                                     </div>
@@ -424,7 +424,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     <div class="form-group col-xs-12">
                                                                         <label class="col-xs-9 control-label" for="pwd">Transaction Coordinator</label>
                                                                         <div class="col-xs-3">
-                                                                            <input type="text" class="form-control" id="trans-coor" placeholder="" value="200.00">
+                                                                            <input type="number" class="form-control" id="trans-coor" placeholder="" value="200.00" readonly>
                                                                         </div>
 
                                                                     </div>
@@ -433,7 +433,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     <div class="form-group col-xs-12">
                                                                         <label class="col-xs-9 control-label" for="pwd">TC. Tech Fee</label>
                                                                         <div class="col-xs-3">
-                                                                            <input type="text" class="form-control" id="tech" placeholder="" value="50.00">
+                                                                            <input type="number" class="form-control" id="tech" placeholder="" value="50.00" readonly>
                                                                         </div>
 
                                                                     </div>
@@ -442,7 +442,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     <div class="form-group col-xs-12">
                                                                         <label class="col-xs-9 control-label" for="pwd">E&O Insurance</label>
                                                                         <div class="col-xs-3">
-                                                                            <input type="text" class="form-control" id="eo_insurance" placeholder="" value="99.00">
+                                                                            <input type="number" class="form-control" id="eo_insurance" placeholder="" value="99.00" readonly>
                                                                         </div>
 
 
@@ -452,7 +452,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     <div class="form-group col-xs-12">
                                                                         <label class="col-xs-9 control-label" for="pwd">Re/Max Fee</label>
                                                                         <div class="col-xs-3">
-                                                                            <input type="text" class="form-control" id="remax" placeholder="">
+                                                                            <input type="number" class="form-control" id="remax" placeholder="">
                                                                         </div>
 
                                                                     </div>
@@ -461,7 +461,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     <div class="form-group col-xs-12">
                                                                         <label class="col-xs-9 control-label" for="pwd">*Misc.</label>
                                                                         <div class="col-xs-3">
-                                                                            <input type="text" class="form-control" id="misc" name="misc" placeholder="" onchange="calculateCommission()">
+                                                                            <input type="number" class="form-control" id="misc" name="misc" placeholder="" onchange="calculateCommission()">
                                                                         </div>
 
                                                                     </div>
@@ -470,7 +470,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     <div class="form-group col-xs-12">
                                                                         <label class="col-xs-9 control-label" for="pwd">Agent Net Commission</label>
                                                                         <div class="col-xs-3">
-                                                                            <input type="text" class="form-control" id="agent_net" name="netCommission" placeholder="">
+                                                                            <input type="number" class="form-control" id="agent_net" name="netCommission" placeholder="" readonly>
                                                                         </div>
                                                                     </div>
                                                                     <div class="clearfix"></div>
