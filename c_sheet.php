@@ -461,7 +461,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     <div class="form-group col-xs-12">
                                                                         <label class="col-xs-9 control-label" for="pwd">*Misc.</label>
                                                                         <div class="col-xs-3">
-                                                                            <input type="text" class="form-control" id="misc" name="miscell" placeholder="" onchange="calculateCommission()">
+                                                                            <input type="text" class="form-control" id="misc" name="miscell" placeholder="" onchange="calculateCommission(this.value)">
                                                                         </div>
 
                                                                     </div>
