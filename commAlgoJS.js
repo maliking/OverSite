@@ -3,8 +3,9 @@ function calculateCommission()
   var brokerFee = 0;
   var difference = 0;
   var TYGross = document.getElementById("beg-comm").value;
-  var commission = document.getElementById("gross-comm").value;
+  var initialCommission = document.getElementById("gross-comm").value;
   var misc = document.getElementById("misc").value;
+  var commission = initialCommission;
   if(TYGross <= 80000)
         {
           difference =  80000 - TYGross;
@@ -101,8 +102,8 @@ function calculateCommission()
         }
 
         document.getElementById("broker").value = brokerFee;
-        document.getElementById("subtotal").value = commission - brokerFee;
-        document.getElementById("agent_net").value = commission - brokerFee - 349 - misc;
+        document.getElementById("subtotal").value = initialCommission - brokerFee;
+        document.getElementById("agent_net").value = initialCommission - brokerFee - 349 - misc;
 
 
 }
