@@ -470,7 +470,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     <div class="form-group col-xs-12">
                                                                         <label class="col-xs-9 control-label" for="pwd">Agent Net Commission</label>
                                                                         <div class="col-xs-3">
-                                                                            <input type="text" class="form-control" id="agent_net" name="netCommission" placeholder="" readonly>
+                                                                            <input type="text" class="form-control" id="agent_net" name="netCommission" placeholder="" >
                                                                         </div>
                                                                     </div>
                                                                     <div class="clearfix"></div>
