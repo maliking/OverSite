@@ -39,7 +39,7 @@ $pdf->Cell(0,10,'                        Agent Subtotal: $' . ($_POST['InitialGr
 $pdf->Cell(0,10,'                        Processing Fee: $200.00  Flat fee fixed ',0,1);
 $pdf->Cell(0,10,'                        TC. Tech Fee:  $50.00  Flat fee fixed ',0,1);
 $pdf->Cell(0,10,'                        E&O Insurance:  $99.00  Flat fee fixed ',0,1);
-$pdf->Cell(0,10,'                        Other Fees: $' . $_POST['misc'],0,1);
+$pdf->Cell(0,10,'                        Other Fees: $' . $_POST['miscell'],0,1);
 $pdf->Cell(0,10,' ',0,1);
 $pdf->Cell(0,10,'                        Agents Final Commission:  $' . $_POST['netCommission'],0,1);
 $pdf->Cell(0,10,'',0,1);
