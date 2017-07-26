@@ -413,6 +413,15 @@ $houses = $stmtHouse->fetchAll();
                                                                     <div class="clearfix"></div>
 
                                                                     <div class="form-group col-xs-12">
+                                                                        <label class="col-xs-9 control-label" for="pwd">Percentage</label>
+                                                                        <div class="col-xs-3">
+                                                                            <input type="text" class="form-control" id="percentage" name="percentage" placeholder="" readonly>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+
+                                                                    <div class="form-group col-xs-12">
                                                                         <label class="col-xs-9 control-label" for="pwd">Subtotal</label>
                                                                         <div class="col-xs-3">
                                                                             <input type="text" class="form-control" id="subtotal" placeholder="" readonly>

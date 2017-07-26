@@ -104,6 +104,7 @@ function calculateCommission(misc)
         }
 
         document.getElementById("broker").value = brokerFee;
+        // document.getElementById("percentage").value = ;
         document.getElementById("subtotal").value = initialCommission - brokerFee;
         document.getElementById("agent_net").value = initialCommission - brokerFee - 349 - misc;
 
