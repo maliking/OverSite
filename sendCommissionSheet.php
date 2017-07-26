@@ -23,16 +23,16 @@ $stmtHouse->execute();
 $houseResults = $stmtHouse->fetch();
 
 $sql ="INSERT INTO commInfo
-        (houseId, license, firstName, lastName, settlementDate, checkNum, address, city, state, zip, TYGross, FYGross, InitialGross, brokerFee, finalComm, misc)
-        VALUES (:houseId, :license, :firstName, :lastName, :settlementDate, :checkNum, :address, :city, :state, :zip, :TYGross, :FYGross, :InitialGross, :brokerFee, :finalComm, :misc)";
+        (houseId, license, firstName, lastName, date settlementDate, checkNum, address, city, state, zip, TYGross, FYGross, InitialGross, brokerFee, finalComm, misc)
+        VALUES (:houseId, :license, :firstName, :lastName, :date, :settlementDate, :checkNum, :address, :city, :state, :zip, :TYGross, :FYGross, :InitialGross, :brokerFee, :finalComm, :misc)";
            
 $namedParameters = array();
 $namedParameters[":houseId"] = $houseId;
 $namedParameters[":license"] = $license;
 $namedParameters[":firstName"] = $userResults['firstName'];
 $namedParameters[":lastName"] = $userResults['lastName'];     
-// $namedParameters[":date"] = $_POST['date'];     
-$namedParameters[":settlementDate"] = $_POST['settlementDate'];     
+$namedParameters[":date"] = date("d-m-Y", strtotime($_POST['today-date']));     
+$namedParameters[":settlementDate"] = date("d-m-Y", strtotime($_POST['settlementDate']));     
 $namedParameters[":checkNum"] = $_POST['checkNum'];   
 $namedParameters[":address"] = $houseResults['address'];     
 $namedParameters[":city"] = $houseResults['city'];     
