@@ -62,11 +62,11 @@ $pdf->Cell(0,10,'Check # '. $_POST['checkNum'] .'                               
 $pdf->Cell(0,10,'Settlement Date: ' . date("d-m-Y", strtotime($_POST['settlementDate'])),0,1);
 $pdf->Cell(0,10,'Agent:  ' . $_POST['agentName'],0,1);
 $pdf->Cell(0,10,'Clients:  ',0,1);
-$pdf->Cell(0,10,'Property Address: ' . $_POST['propertyAddress'],0,1);
+$pdf->Cell(0,10,'Property Address: ' . $houseResults['address'],0,1);
 $pdf->Cell(0,10,' ',0,1);
 $pdf->Cell(0,10,'                        Agent Initial Gross Commission: $' . $_POST['InitialGross'],0,1);
 $pdf->Cell(0,10,'                        Remax/Broker Fee: $' . $_POST['brokerFee'],0,1);
-$pdf->Cell(0,10,'                        Agent Subtotal: $' . ($_POST['InitialGross'] . $_POST['brokerFee']),0,1);
+$pdf->Cell(0,10,'                        Agent Subtotal: $' . ($_POST['InitialGross'] - $_POST['brokerFee']),0,1);
 $pdf->Cell(0,10,'                        Processing Fee: $200.00  Flat fee fixed ',0,1);
 $pdf->Cell(0,10,'                        TC. Tech Fee:  $50.00  Flat fee fixed ',0,1);
 $pdf->Cell(0,10,'                        E&O Insurance:  $99.00  Flat fee fixed ',0,1);
