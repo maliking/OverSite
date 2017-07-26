@@ -10,7 +10,7 @@ if(!isset($_SESSION['userId']))
 } 
 
 $license = $_POST['license'];
-$houseId = $_POST['propertyAddress']
+$houseId = $_POST['propertyAddress'];
 
 $agent = "SELECT * FROM UsersInfo WHERE license = '".$license."'";
 $name = $dbConn -> prepare($agent);
@@ -25,7 +25,7 @@ $houseResults = $stmtHouse->fetch();
 $sql ="INSERT INTO commInfo
         (houseId, license, firstName, lastName, settlementDate, checkNum, address, city, state, zip, TYGross, FYGross, InitialGross, brokerFee, finalComm, misc)
         VALUES (:houseId, :license, :firstName, :lastName, :settlementDate, :checkNum, :address, :city, :state, :zip, :TYGross, :FYGross, :InitialGross, :brokerFee, :finalComm, :misc)";
-           ;
+           
 $namedParameters = array();
 $namedParameters[":houseId"] = $houseId;
 $namedParameters[":license"] = $license;
