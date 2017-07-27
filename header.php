@@ -1,5 +1,5 @@
 <?php
-echo "<header class="main-header"> 
+echo '<header class="main-header"> 
                 <!-- Header Navbar -->
                 <nav class="navbar navbar-static-top" role="navigation">
                     <!-- Sidebar toggle button-->
@@ -112,14 +112,14 @@ echo "<header class="main-header">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                     <!-- User image in navbar-->
                                     <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                                    <span class="hidden-xs"><?php echo $_SESSION['username']; ?></span>
+                                    <span class="hidden-xs"><?php echo $_SESSION[\'username\']; ?></span>
                                 </a>
                                 <ul class="dropdown-menu">
                                     <!-- User image in the menu -->
                                     <li class="user-header">
                                         <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                                         <p>
-                                            <?php echo $_SESSION['username']; ?>
+                                            <?php echo $_SESSION[\'username\']; ?>
                                             <small>Member since Nov. 2012</small>
                                         </p>
                                     </li>
@@ -187,6 +187,6 @@ echo "<header class="main-header">
                     <!-- /.sidebar-menu -->
                 </section>
                 <!-- /.sidebar -->
-            </aside>";
+            </aside>';
 
 ?>
