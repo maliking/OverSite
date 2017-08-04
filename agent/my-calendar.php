@@ -22,14 +22,22 @@
         <script src='fullcalendar/lib/jquery.min.js'></script>
         <script src='fullcalendar/lib/moment.min.js'></script>
         <script src='fullcalendar/fullcalendar.js'></script>
-        
-        
-        
-       
+ 
     </head>
 
     <body>
        
-    </body>
 
+    <script>
+       $(document).ready(function() {
+
+    // page is now ready, initialize the calendar...
+
+    $('#calendar').fullCalendar({
+        // put your options and callbacks here
+        })
+
+    });
+       </script>
+    </body>
     </html>
