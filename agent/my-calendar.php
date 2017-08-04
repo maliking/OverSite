@@ -19,8 +19,8 @@
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         
         <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
-        <script src='lib/jquery.min.js'></script>
-        <script src='lib/moment.min.js'></script>
+        <script src='fullcalendar/lib/jquery.min.js'></script>
+        <script src='fullcalendar/lib/moment.min.js'></script>
         <script src='fullcalendar/fullcalendar.js'></script>
         
         
