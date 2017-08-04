@@ -22,6 +22,24 @@
         <script src='fullcalendar/lib/jquery.min.js'></script>
         <script src='fullcalendar/lib/moment.min.js'></script>
         <script src='fullcalendar/fullcalendar.js'></script>
+
+        <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../plugins/font-awesome/css/font-awesome.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
+    <link rel="stylesheet" href="../dist/css/skins/skin-red-light.css">
+    <link rel="stylesheet" href="../plugins/footable/css/footable.bootstrap.min.css">
+
+    <style>
+        a.dotted {
+            color: #333333;
+            border-bottom: 1px dashed #999;
+            text-decoration: none;
+        }
+
+    </style>
  
     </head>
 
