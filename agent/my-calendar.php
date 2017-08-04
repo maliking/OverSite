@@ -29,11 +29,10 @@
         <!-- NProgress -->
         <!-- <link href="../plugins/nprogress/nprogress.css" rel="stylesheet"> -->
         <!-- FullCalendar -->
-        <link href="../plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
-        <link href="../plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet">
-        <link href="../plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" media="print">
-        <link href="../plugins/fullcalendar/fullcalendar.min.js">
-        <link href="../plugins/fullcalendar/fullcalendar.js" >
+        <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js">
+        <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css">
+        <link href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css">
+       
         <script  src="https://code.jquery.com/jquery-3.2.1.js"  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="  crossorigin="anonymous"></script>
         <!-- Custom styling plus plugins -->
         <!-- <link href="../build/css/custom.min.css" rel="stylesheet"> -->
@@ -431,30 +430,9 @@
         <!-- /calendar modal -->
 
         
-        <!-- Google Analytics -->
-        <script type="text/rocketscript">
-            // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-23581568-13', 'auto'); ga('send', 'pageview');
 
-        </script>
+       
 
-        <script>
-            // jQuery(function($) {
-            //     $('.table').footable({
-
-            //     });
-            // });
-
-        </script>
-        <script>
-            // $(document).ready(function() {
-            //     $('[data-toggle="popover"]').popover({
-            //         html: true
-            //     });
-            // });
-
-        </script>
-
-        /* CALENDAR */
         <script>
         $(document).ready(function() {
 
