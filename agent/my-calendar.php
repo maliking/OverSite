@@ -240,7 +240,10 @@
             </section>
             <!-- /.sidebar -->
         </aside>
-       <div id='calendar'></div>
+         <div class="content-wrapper">
+
+            <div id='calendar'></div>
+        </div>
 
     <script>
        $(document).ready(function() {
