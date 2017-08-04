@@ -32,8 +32,8 @@
         <link href="../plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
         <link href="../plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet">
         <link href="../plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" media="print">
-        <link href="../plugins/fullcalendar/fullcalendar.min.js" rel="stylesheet">
-        <link href="../plugins/fullcalendar/fullcalendar.js" rel="stylesheet">
+        <link href="../plugins/fullcalendar/fullcalendar.min.js">
+        <link href="../plugins/fullcalendar/fullcalendar.js" >
 
         <!-- Custom styling plus plugins -->
         <link href="../build/css/custom.min.css" rel="stylesheet">
