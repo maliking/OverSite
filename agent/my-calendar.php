@@ -430,156 +430,143 @@
         <div id="fc_edit" data-toggle="modal" data-target="#CalenderModalEdit"></div>
         <!-- /calendar modal -->
 
-        <!-- REQUIRED JS SCRIPTS -->
-
-        <!-- jQuery 2.2.3 -->
-        <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
-        <!-- Bootstrap 3.3.6 -->
-        <script src="../bootstrap/js/bootstrap.min.js"></script>
-
-        <!-- Slimscroll -->
-        <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-        <!-- FastClick -->
-        <script src="../plugins/fastclick/fastclick.js"></script>
-        <!-- AdminLTE App -->
-        <script src="../dist/js/app.min.js"></script>
-        <!-- Footable -->
-        <script type="text/javascript" src="../plugins/footable/js/footable.min.js"></script>
-        <!-- FullCalendar -->
-        <!--Original link from bootstap -->
-        <!--    <script data-rocketsrc="../plugins/moment2/min/moment.min.js" type="text/rocketscript"></script>-->
-        <!--Original link from bootstap -->
-        <!--    <script data-rocketsrc="../plugins/fullcalendar2/fullcalendar.min.js" type="text/rocketscript"></script>-->
-
-        <script type="text/javascript" src="../plugins/moment2/min/moment.min.js"></script>
-        <script type="text/javascript" src="../plugins/fullcalendar2/dist/fullcalendar.min.js"></script>
+        
         <!-- Google Analytics -->
         <script type="text/rocketscript">
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-23581568-13', 'auto'); ga('send', 'pageview');
+            // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o), m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m) })(window,document,'script','https://www.google-analytics.com/analytics.js','ga'); ga('create', 'UA-23581568-13', 'auto'); ga('send', 'pageview');
 
         </script>
 
         <script>
-            jQuery(function($) {
-                $('.table').footable({
+            // jQuery(function($) {
+            //     $('.table').footable({
 
-                });
-            });
+            //     });
+            // });
 
         </script>
         <script>
-            $(document).ready(function() {
-                $('[data-toggle="popover"]').popover({
-                    html: true
-                });
-            });
+            // $(document).ready(function() {
+            //     $('[data-toggle="popover"]').popover({
+            //         html: true
+            //     });
+            // });
 
         </script>
 
         /* CALENDAR */
         <script>
-            function init_calendar() {
+        $(document).ready(function() {
 
-                if (typeof($.fn.fullCalendar) === 'undefined') {
-                    return;
-                }
-                console.log('init_calendar');
+    // page is now ready, initialize the calendar...
 
-                var date = new Date(),
-                    d = date.getDate(),
-                    m = date.getMonth(),
-                    y = date.getFullYear(),
-                    started,
-                    categoryClass;
+        $('#calendar').fullCalendar({
+        // put your options and callbacks here
+        })
 
-                var calendar = $('#calendar').fullCalendar({
-                    header: {
-                        left: 'prev,next today',
-                        center: 'title',
-                        right: 'month,agendaWeek,agendaDay,listMonth'
-                    },
-                    selectable: true,
-                    selectHelper: true,
-                    select: function(start, end, allDay) {
-                        $('#fc_create').click();
+        });
+            // function init_calendar() {
 
-                        started = start;
-                        ended = end;
+            //     if (typeof($.fn.fullCalendar) === 'undefined') {
+            //         return;
+            //     }
+            //     console.log('init_calendar');
 
-                        $(".antosubmit").on("click", function() {
-                            var title = $("#title").val();
-                            if (end) {
-                                ended = end;
-                            }
+            //     var date = new Date(),
+            //         d = date.getDate(),
+            //         m = date.getMonth(),
+            //         y = date.getFullYear(),
+            //         started,
+            //         categoryClass;
 
-                            categoryClass = $("#event_type").val();
+            //     var calendar = $('#calendar').fullCalendar({
+            //         header: {
+            //             left: 'prev,next today',
+            //             center: 'title',
+            //             right: 'month,agendaWeek,agendaDay,listMonth'
+            //         },
+            //         selectable: true,
+            //         selectHelper: true,
+            //         select: function(start, end, allDay) {
+            //             $('#fc_create').click();
 
-                            if (title) {
-                                calendar.fullCalendar('renderEvent', {
-                                        title: title,
-                                        start: started,
-                                        end: end,
-                                        allDay: allDay
-                                    },
-                                    true // make the event "stick"
-                                );
-                            }
+            //             started = start;
+            //             ended = end;
 
-                            $('#title').val('');
+            //             $(".antosubmit").on("click", function() {
+            //                 var title = $("#title").val();
+            //                 if (end) {
+            //                     ended = end;
+            //                 }
 
-                            calendar.fullCalendar('unselect');
+            //                 categoryClass = $("#event_type").val();
 
-                            $('.antoclose').click();
+            //                 if (title) {
+            //                     calendar.fullCalendar('renderEvent', {
+            //                             title: title,
+            //                             start: started,
+            //                             end: end,
+            //                             allDay: allDay
+            //                         },
+            //                         true // make the event "stick"
+            //                     );
+            //                 }
 
-                            return false;
-                        });
-                    },
-                    eventClick: function(calEvent, jsEvent, view) {
-                        $('#fc_edit').click();
-                        $('#title2').val(calEvent.title);
+            //                 $('#title').val('');
 
-                        categoryClass = $("#event_type").val();
+            //                 calendar.fullCalendar('unselect');
 
-                        $(".antosubmit2").on("click", function() {
-                            calEvent.title = $("#title2").val();
+            //                 $('.antoclose').click();
 
-                            calendar.fullCalendar('updateEvent', calEvent);
-                            $('.antoclose2').click();
-                        });
+            //                 return false;
+            //             });
+            //         },
+            //         eventClick: function(calEvent, jsEvent, view) {
+            //             $('#fc_edit').click();
+            //             $('#title2').val(calEvent.title);
 
-                        calendar.fullCalendar('unselect');
-                    },
-                    editable: true,
-                    events: [{
-                        title: 'All Day Event',
-                        start: new Date(y, m, 1)
-                    }, {
-                        title: 'Long Event',
-                        start: new Date(y, m, d - 5),
-                        end: new Date(y, m, d - 2)
-                    }, {
-                        title: 'Meeting',
-                        start: new Date(y, m, d, 10, 30),
-                        allDay: false
-                    }, {
-                        title: 'Lunch',
-                        start: new Date(y, m, d + 14, 12, 0),
-                        end: new Date(y, m, d, 14, 0),
-                        allDay: false
-                    }, {
-                        title: 'Birthday Party',
-                        start: new Date(y, m, d + 1, 19, 0),
-                        end: new Date(y, m, d + 1, 22, 30),
-                        allDay: false
-                    }, {
-                        title: 'Click for Google',
-                        start: new Date(y, m, 28),
-                        end: new Date(y, m, 29),
-                        url: 'http://google.com/'
-                    }]
-                });
+            //             categoryClass = $("#event_type").val();
 
-            };
+            //             $(".antosubmit2").on("click", function() {
+            //                 calEvent.title = $("#title2").val();
+
+            //                 calendar.fullCalendar('updateEvent', calEvent);
+            //                 $('.antoclose2').click();
+            //             });
+
+            //             calendar.fullCalendar('unselect');
+            //         },
+            //         editable: true,
+            //         events: [{
+            //             title: 'All Day Event',
+            //             start: new Date(y, m, 1)
+            //         }, {
+            //             title: 'Long Event',
+            //             start: new Date(y, m, d - 5),
+            //             end: new Date(y, m, d - 2)
+            //         }, {
+            //             title: 'Meeting',
+            //             start: new Date(y, m, d, 10, 30),
+            //             allDay: false
+            //         }, {
+            //             title: 'Lunch',
+            //             start: new Date(y, m, d + 14, 12, 0),
+            //             end: new Date(y, m, d, 14, 0),
+            //             allDay: false
+            //         }, {
+            //             title: 'Birthday Party',
+            //             start: new Date(y, m, d + 1, 19, 0),
+            //             end: new Date(y, m, d + 1, 22, 30),
+            //             allDay: false
+            //         }, {
+            //             title: 'Click for Google',
+            //             start: new Date(y, m, 28),
+            //             end: new Date(y, m, 29),
+            //             url: 'http://google.com/'
+            //         }]
+            //     });
+
+            // };
 
         </script>
     </body>
