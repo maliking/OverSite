@@ -27,16 +27,16 @@
         <link rel="stylesheet" href="../plugins/footable/css/footable.bootstrap.min.css">
 
         <!-- NProgress -->
-        <link href="../plugins/nprogress/nprogress.css" rel="stylesheet">
+        <!-- <link href="../plugins/nprogress/nprogress.css" rel="stylesheet"> -->
         <!-- FullCalendar -->
         <link href="../plugins/fullcalendar/fullcalendar.css" rel="stylesheet">
         <link href="../plugins/fullcalendar/fullcalendar.min.css" rel="stylesheet">
         <link href="../plugins/fullcalendar/fullcalendar.print.css" rel="stylesheet" media="print">
         <link href="../plugins/fullcalendar/fullcalendar.min.js">
         <link href="../plugins/fullcalendar/fullcalendar.js" >
-
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.js" integrity="sha256-tA8y0XqiwnpwmOIl3SGAcFl2RvxHjA8qp0+1uCGmRmg=" crossorigin="anonymous"></script>
         <!-- Custom styling plus plugins -->
-        <link href="../build/css/custom.min.css" rel="stylesheet">
+        <!-- <link href="../build/css/custom.min.css" rel="stylesheet"> -->
 
 
 
