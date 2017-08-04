@@ -219,7 +219,7 @@ if (!isset($_SESSION['userId'])) {
                     <li class="header">OVERVIEW</li>
                     <li class="active"><a href="./index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
 <!--                    <li><a href="signIn.php" target="_blank"><i class="fa fa-edit"></i> <span>Sign In Sheet</span></a></li>-->
-                     <li><a href="OverSite/openhouse/listings-openhouse.php" target="_blank"><i class="fa fa-home"></i> <span>Open House</span></a></li>
+                     <li><a href="../openhouse/listings-openhouse.php" target="_blank"><i class="fa fa-home"></i> <span>Open House</span></a></li>
                     <li><a href="my-calendar.php"><i class="fa fa-calendar"></i> <span>Calendar</span></a></li>
                     <!--                    WANT THE REST TO BE DROPDOW MENUS-->
                     <li class="header">PROPERTIES <span class="fa fa-chevron-down"></span></li>
