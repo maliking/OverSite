@@ -17,9 +17,11 @@
         <title>Re/Max Salinas | My Calendar</title>
 
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.print.css"></script>
+        
+        <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+        <script src='lib/jquery.min.js'></script>
+        <script src='lib/moment.min.js'></script>
+        <script src='fullcalendar/fullcalendar.js'></script>
         
         
         
