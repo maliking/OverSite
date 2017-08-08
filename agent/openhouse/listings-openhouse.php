@@ -241,7 +241,8 @@
                             <div class="box-body">
 
                                 <div class="row">
-            <?
+            <?php
+            $dbConn = getConnection();
             $sql = "SELECT status, houseId, date(dateTimes) as dateTimes, address, city, state, zip, bedrooms, bathrooms, price
                         FROM HouseInfo
                         WHERE userId = :userId";
