@@ -280,6 +280,7 @@ if (!isset($_SESSION['userId'])) {
                                         </thead>
                                         <tbody>
                                             <tr>
+                                            <!--
                                             <? /*
                                         $namedParameters = array();
                                         $namedParameters[':userId'] = $_SESSION['userId'];
@@ -301,7 +302,7 @@ if (!isset($_SESSION['userId'])) {
                                             echo "<td>$" . htmlspecialchars(number_format($result['price'])) . "</td>";
                                             */
 
-                                         ?> 
+                                         ?>  -->
 
                                                 <td>1204 Rogers Ct. Salinas, CA 94934</td>
                                                 <td>Testing</td>
