@@ -280,32 +280,8 @@ if (!isset($_SESSION['userId'])) {
                                         </thead>
                                         <tbody>
                                             <tr>
-                                            <!--
-                                            <? /*
-                                        $namedParameters = array();
-                                        $namedParameters[':userId'] = $_SESSION['userId'];
-                                        $stmt = $dbConn -> prepare($sql);
-                                        $stmt->execute($namedParameters);
-                                        //$stmt->execute();
-                                        $results = $stmt->fetchAll();
-
-                                        foreach($results as $result){
-                                            echo "<tr>";
-                                            echo "<td>" . $result['status'] . "</td>";
-                                            echo "<td>" . $result['dateTimes'] . "</td>";
-                                            echo "<td>" . $result['address'] . "</td>";
-                                            echo "<td>" . $result['city'] . "</td>";
-                                            echo "<td>" . htmlspecialchars($result['state']) . "</td>";
-                                            echo "<td>" . htmlspecialchars($result['zip']) . "</td>";
-                                            echo "<td>" . htmlspecialchars($result['bedrooms']) . "</td>";
-                                            echo "<td>" . htmlspecialchars($result['bathrooms']) . "</td>";
-                                            echo "<td>$" . htmlspecialchars(number_format($result['price'])) . "</td>";
-                                            */
-
-                                         ?>  -->
 
                                                 <td>1204 Rogers Ct. Salinas, CA 94934</td>
-                                                <td>Testing</td>
                                                 <td>Patty Hershang</td>
                                                 <td>831-382-4833</td>
                                                 <td>phershang@gmail.com</td>
