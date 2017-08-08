@@ -242,6 +242,9 @@
 
                                 <div class="row">
             <?
+            $sql = "SELECT status, houseId, date(dateTimes) as dateTimes, address, city, state, zip, bedrooms, bathrooms, price
+                        FROM HouseInfo
+                        WHERE userId = :userId";
             $namedParameters = array();
             $namedParameters[':userId'] = $_SESSION['userId'];
             $stmt = $dbConn -> prepare($sql);
@@ -259,8 +262,7 @@
                                                 <li><a href="listing-info.php">Flyer Info</a>
                                                 </li>
                                             </ul>
-                                        </li></i><img src="openhouse/placeHolder.jpg"><p>';
-                echo  $result['address'] . " " . $result['city'] . " " . $result['state'] . ", " . $result['zip'] . "</p></div>";
+                                        </li></i><img src="openhouse/placeHolder.jpg"><p>' . $result['address'] . " " . $result['city'] . " " . $result['state'] . ", " . $result['zip'] . "</p></div>";
             }
 
              ?> 
