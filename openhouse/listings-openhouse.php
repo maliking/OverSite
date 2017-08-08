@@ -267,7 +267,7 @@
             }
 
              ?> 
-                                    <div class="col-md-4">
+                                   <!-- <div class="col-md-4">
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-gear"></i></a>
                                             <ul class="dropdown-menu" role="menu">
@@ -364,7 +364,7 @@
                                                 </li>
                                             </ul>
                                         </li></i><img src="openhouse/placeHolder.jpg"><p>1234 House St. Salinas CA</p></div>
-                                </div>
+                                </div>-->
 
 
                             </div>
