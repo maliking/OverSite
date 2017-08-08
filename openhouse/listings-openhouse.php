@@ -1,10 +1,8 @@
 
 <?php
-//session_start();
-//
-//if (!isset($_SESSION['userId'])) {
-//    header("Location: http://jjp17.org/login.php");
-//}
+    require("../../databaseConnection.php");  
+    session_start();
+    $dbConn = getConnection();
 ?>
 
 
@@ -243,6 +241,32 @@
                             <div class="box-body">
 
                                 <div class="row">
+            <?php
+            $dbConn = getConnection();
+            $sql = "SELECT status, houseId, date(dateTimes) as dateTimes, address, city, state, zip, bedrooms, bathrooms, price
+                        FROM HouseInfo
+                        WHERE userId = :userId";
+            $namedParameters = array();
+            $namedParameters[':userId'] = $_SESSION['userId'];
+            $stmt = $dbConn -> prepare($sql);
+            $stmt->execute($namedParameters);
+            //$stmt->execute();
+            $results = $stmt->fetchAll();
+
+            foreach($results as $result){
+                echo '<div class="col-md-4">
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-gear"></i></a>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="create-flyer.php">Create New Flyer</a>
+                                                </li>
+                                                <li><a href="listing-info.php">Flyer Info</a>
+                                                </li>
+                                            </ul>
+                                        </li></i><img src="openhouse/placeHolder.jpg"><p>' . $result['address'] . " " . $result['city'] . " " . $result['state'] . ", " . $result['zip'] . "</p></div>";
+            }
+
+             ?> 
                                     <div class="col-md-4">
                                         <li class="dropdown">
                                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-gear"></i></a>
