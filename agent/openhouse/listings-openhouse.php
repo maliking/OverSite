@@ -261,6 +261,7 @@
                                             </ul>
                                         </li></i><img src="openhouse/placeHolder.jpg"><p>';
                 echo  $result['address'] . " " . $result['city'] . " " . $result['state'] . ", " . $result['zip'] . "</p></div>";
+            }
 
              ?> 
                                     <div class="col-md-4">
