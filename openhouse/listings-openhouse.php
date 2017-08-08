@@ -1,6 +1,6 @@
 
 <?php
-    require("../../databaseConnection.php");  
+    require("../databaseConnection.php");  
     session_start();
     $dbConn = getConnection();
 ?>
