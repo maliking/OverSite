@@ -1,5 +1,7 @@
 <?php
-session_start();
+    require("../databaseConnection.php");  
+    session_start();
+    $dbConn = getConnection();
 
 if (!isset($_SESSION['userId'])) {
     header("Location: http://jjp2017.org/login.php");
