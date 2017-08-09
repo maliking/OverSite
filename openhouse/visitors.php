@@ -1,9 +1,10 @@
 <?php
-//session_start();
-//
-//if (!isset($_SESSION['userId'])) {
-//    header("Location: http://jjp17.org/login.php");
-//}
+    require("../databaseConnection.php");  
+    session_start();
+    $dbConn = getConnection();
+    if (!isset($_SESSION['userId'])) {
+        header("Location: http://jjp17.org/login.php");
+    }
 ?>
 
 
@@ -257,6 +258,54 @@
                                                 <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Appraisal">Delete</a></th>
                                             </tr>
                                         </thead>
+
+        <?php
+
+            function getHouseAddress($houseId){
+                $dbConn = getConnection();
+                $sql = "SELECT * FROM HouseInfo WHERE houseId = :houseId";
+                $namedParameters = array();
+                $namedParameters[':houseId'] = $houseId;
+                $stmt = $dbConn -> prepare($sql);
+                $stmt->execute($namedParameters);
+                //$stmt->execute();
+                $results = $stmt->fetch();
+                return $results['address'] . ", " . $results['city'] . ", " . $results['state'] . " " . $results['zip'];
+
+            }
+            $dbConn = getConnection();
+            $sql = "SELECT * FROM BuyerInfo WHERE userId = :userId";
+            $namedParameters = array();
+            $namedParameters[':userId'] = $_SESSION['userId'];
+            $stmt = $dbConn -> prepare($sql);
+            $stmt->execute($namedParameters);
+            //$stmt->execute();
+            $results = $stmt->fetchAll();
+
+            foreach($results as $result){
+                echo "<tbody>";
+                echo "<td>" . $result['firstName'] . " " . $result['lastName'] . "</td>";
+                echo "<td>" . $result['phone'] . "</td>";
+                echo "<td>" . htmlspecialchars($result['email']) . "</td>";
+                echo "<td>" . htmlspecialchars($getHouseAddress($results['houseId'])) . "</td>";
+
+                echo "<td>
+                        <button>Call</button>
+                        <button>Text</button>
+                        <button>Forward Listing Flyer</button>
+                    </td>
+                    <td><button>View</button></td>
+                    <td>
+                        <button>Add</button>
+                        <button>Edit</button>
+
+                    </td>
+                    <td>
+                        <button class='fa fa-trash-o'>  </button>
+                    </tbody>";
+                }
+
+        ?>
                                         <tbody>
 
 
