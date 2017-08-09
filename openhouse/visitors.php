@@ -5,6 +5,14 @@
     if (!isset($_SESSION['userId'])) {
         header("Location: http://jjp17.org/login.php");
     }
+
+    if (isset ($_GET['deleteForm'])){  //checking whether we have clicked on the "Delete" button
+        $sql = "DELETE FROM BuyerInfo 
+                 WHERE buyerID = '".$_GET['buyerID']."'";
+        $stmt = $dbConn -> prepare($sql);
+        $stmt->execute();
+
+    }
 ?>
 
 
@@ -13,6 +21,21 @@
     <html>
 
     <head>
+
+        <script>
+        
+            function confirmDelete(record) {
+               // alert("hi"); // for testing
+               var deleteRecord = confirm("Are you sure you want to delete " + record + "?");
+               if(!deleteRecord){
+                   return false
+               } else {
+                   return true;
+               }
+            }
+        
+        </script> 
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Re/Max Salinas | Home</title>
@@ -299,12 +322,19 @@
                         <button>Edit</button>
 
                     </td>
-                    <td>
-                        <button class='fa fa-trash-o'>  </button>
-                    </tbody>";
-                }
-
+                    <td>";
         ?>
+                <form onsubmit="return confirmDelete('<?=$result['firstName']?>')">
+                    <input type="hidden" name="buyerID" value="<?=$result['buyerID']?>" />    
+                    <button class='fa fa-trash-o' type="submit" name="deleteForm"/>
+                </form>   
+                </td>
+                </tbody>
+            <?php    
+               } //closes foreach
+             ?> 
+
+       
                                         <tbody>
 
 
@@ -391,7 +421,7 @@
 
 
 
-                                        </tbody>
+                                        </tbody> -->
                                     </table>
                                 </div>
                                 <!-- /.box-body -->
