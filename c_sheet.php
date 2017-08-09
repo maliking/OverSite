@@ -324,7 +324,7 @@ $houses = $stmtHouse->fetchAll();
                                                                         <input type="text" data-provide="datepicker" class="form-control" id="today-date" name = "today-date" placeholder="Enter today's date">
                                                                     </div>
                                                                     <div class="form-group col-xs-4">
-                                                                        <label class="control-label  " for="pwd">Beginning Gross Commission</label>
+                                                                        <label class="control-label  " for="pwd">Beginning Gross Commission (GCYTD)</label>
                                                                         <input type="text" class="form-control" id="beg-comm" name="TYGross" placeholder="" readonly>
                                                                     </div>
                                                                     <div class="form-group col-xs-4">
