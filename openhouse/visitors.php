@@ -291,7 +291,7 @@
                     echo "<td>" . htmlspecialchars($getHouseAddress($result['houseId'])) . "</td>";
                 }
                 else {
-                    echo "<td>lol</td>"
+                    echo "<td>lol</td>";
                 }       
 
                 echo "<td>
