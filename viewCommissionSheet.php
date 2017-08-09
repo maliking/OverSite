@@ -39,6 +39,11 @@ if ($err) {
 
 $data = base64_decode($response);
 header('Content-Type: application/pdf');
+// echo $data;
+
+file_put_contents('my.pdf', $data);
+header('Content-Disposition: attachment; filename="my.pdf"');
+
 echo $data;
 ?>
 
