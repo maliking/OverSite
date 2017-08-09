@@ -34,10 +34,19 @@ curl_close($curl);
 if ($err) {
   echo "cURL Error #:" . $err;
 } else {
-  // echo $response;
+  echo $response;
 }
 
 
+
+//Decode pdf content
+$pdf_decoded = base64_decode ($response);
+//Write data back to pdf file
+$pdf = fopen ('test.pdf','w');
+fwrite ($pdf,$pdf_decoded);
+//close output file
+fclose ($pdf);
+echo 'Done';
 ?>
 
 <!DOCTYPE html>
