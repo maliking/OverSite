@@ -259,7 +259,7 @@
                                             </tr>
                                         </thead>
 
-        <?php
+        <?php/*
 
             function getHouseAddress($houseId){
                 $dbConn = getConnection();
@@ -308,7 +308,7 @@
                     <td>
                         <button class='fa fa-trash-o'>  </button>
                     </tbody>";
-                }
+                }*/
 
         ?>
                                         <tbody>
