@@ -2,6 +2,7 @@
 session_start();
 
 require 'databaseConnection.php';
+require("keys/cred.php");
 
 $dbConn = getConnection();
 $sql = "SELECT * FROM commInfo";
