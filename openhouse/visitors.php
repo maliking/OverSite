@@ -287,13 +287,7 @@
                 echo "<td>" . $result['firstName'] . " " . $result['lastName'] . "</td>";
                 echo "<td>" . $result['phone'] . "</td>";
                 echo "<td>" . htmlspecialchars($result['email']) . "</td>";
-                if($result['houseId'] != 1){
-                    echo "<td>" . htmlspecialchars(getHouseAddress($result['houseId'])) . "</td>";
-                }
-                else {
-                    echo "<td>lol</td>";
-                }       
-
+                echo "<td>" . htmlspecialchars(getHouseAddress($result['houseId'])) . "</td>";
                 echo "<td>
                         <button>Call</button>
                         <button>Text</button>
