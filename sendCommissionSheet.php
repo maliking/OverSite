@@ -102,13 +102,13 @@ $pdf->Cell(0,10,'Agent Signature                              Date              
 	  \"recipients\": {
 	  	\"signers\": [
 	  		{
-	  			\"email\": \"jodiaz@csumb.edu\",
-		  		\"name\": \"Jose Diaz\",
+	  			\"email\": \"" . $userResults['email'] . "\",
+		  		\"name\": \"" . $_POST['agentName'] . "\",
 		  		\"recipientId\": \"1\",
 		  		\"routingOrder\": \"1\"
 		  	},
 		  	{
-		  		\"email\": \"michael50974@gmail.com\",
+		  		\"email\": \"jodiaz@csumb.edu\",
 		  		\"name\": \"Jose \",
 		  		\"recipientId\": \"2\",
 		  		\"routingOrder\": \"2\"	
