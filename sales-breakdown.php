@@ -266,6 +266,7 @@ $result = $stmt->fetchAll();
                                                 <th>Price</th>
                                                 <th>Listing/Buyer</th>
                                                 <th data-breakpoints="all">Notes</th>
+                                                <th data-breakpoints="all">Commission Sheet</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -287,7 +288,7 @@ $result = $stmt->fetchAll();
                                                 echo "<td>" . '$' . number_format($sales['price'], 0) . "</td>"; //price
                                                 echo "<td>" . $sales['listing_buyer'] . "</td>"; //listing buyer
                                                 echo "<td>" . $sales['notes'] . "</td>"; //notes
-
+                                                echo '<td> <a href="viewCommissionSheet.php?comm=' . $sales['commId'] . '"> <button>View Commission Sheet</button> </a> </td>';
                                                 echo "</tr>";
                                             }
                                             ?>
