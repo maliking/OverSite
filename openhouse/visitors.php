@@ -259,7 +259,7 @@
                                             </tr>
                                         </thead>
 
-        <?php/*
+        <?php
 
             function getHouseAddress($houseId){
                 $dbConn = getConnection();
@@ -288,7 +288,7 @@
                 echo "<td>" . $result['phone'] . "</td>";
                 echo "<td>" . htmlspecialchars($result['email']) . "</td>";
                 if($result['houseId'] != 1){
-                    echo "<td>" . htmlspecialchars($getHouseAddress($result['houseId'])) . "</td>";
+                    echo "<td>" . htmlspecialchars(getHouseAddress($result['houseId'])) . "</td>";
                 }
                 else {
                     echo "<td>lol</td>";
@@ -308,7 +308,7 @@
                     <td>
                         <button class='fa fa-trash-o'>  </button>
                     </tbody>";
-                }*/
+                }
 
         ?>
                                         <tbody>
