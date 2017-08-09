@@ -41,7 +41,7 @@ if ($err) {
 header('Content-Type: application/pdf');
 
 
-echo (base64_decode($response)); 
+echo ($response); 
 ?>
 
 <!DOCTYPE html>
