@@ -287,7 +287,7 @@
                 echo "<td>" . $result['firstName'] . " " . $result['lastName'] . "</td>";
                 echo "<td>" . $result['phone'] . "</td>";
                 echo "<td>" . htmlspecialchars($result['email']) . "</td>";
-                echo "<td>" . htmlspecialchars($getHouseAddress($results['houseId'])) . "</td>";
+                echo "<td>" . htmlspecialchars($getHouseAddress($result['houseId'])) . "</td>";
 
                 echo "<td>
                         <button>Call</button>
