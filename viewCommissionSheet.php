@@ -39,7 +39,7 @@ if ($err) {
 
 
 
-echo (base64_encode($response));
+echo (base64_decode($response));
 ?>
 
 <!DOCTYPE html>
