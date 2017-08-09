@@ -269,7 +269,7 @@
                 $stmt = $dbConn -> prepare($sql);
                 $stmt->execute($namedParameters);
                 //$stmt->execute();
-                $results = $stmt->fetchAll();
+                $results = $stmt->fetch();
                 return $results['address'] . ", " . $results['city'] . ", " . $results['state'] . " " . $results['zip'];
 
             }
