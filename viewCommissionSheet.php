@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+header('Content-Type: application/pdf');
 require 'databaseConnection.php';
 require("keys/cred.php");
 
