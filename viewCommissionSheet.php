@@ -37,6 +37,9 @@ if ($err) {
   echo $response;
 }
 
+$data = base64_decode($response);
+header('Content-Type: application/pdf');
+echo $data;
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +71,6 @@ if ($err) {
 
     <body>
        
-        <iframe id="fred" style="border:1px solid #666CCC" title="PDF in an i-Frame" src="" . <?php echo $response; ?>  . "" frameborder="1" scrolling="auto" height="1100" width="850" ></iframe>
 
     </body>
 
