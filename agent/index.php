@@ -21,9 +21,10 @@ if (!isset($_SESSION['userId'])) {
 
     <link rel='stylesheet' href='fullcalendar/fullcalendar.css'>
     <script src='fullcalendar/lib/jquery.min.js'></script>
+    <script type="text/javascript"> var full = $.noConflict(true); </script>
     <script src='fullcalendar/lib/moment.min.js'></script>
     <script src='fullcalendar/fullcalendar.js'></script>
-    
+
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
@@ -626,7 +627,7 @@ if (!isset($_SESSION['userId'])) {
     <script>
         $(document).ready(function() {
             $('[data-toggle="popover"]').popover({ html: true });
-            $('#calendar').fullCalendar({ defaultView: 'agendaWeek',});
+            full('#calendar').fullCalendar({ defaultView: 'agendaWeek',});
         });
 
         
