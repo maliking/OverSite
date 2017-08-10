@@ -605,6 +605,8 @@ if (!isset($_SESSION['userId'])) {
 
     <!-- jQuery 2.2.3 -->
     <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+        <script type="text/javascript"> var original = $.noConflict(true); </script>
+
     <!-- Bootstrap 3.3.6 -->
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
@@ -625,8 +627,8 @@ if (!isset($_SESSION['userId'])) {
 
     </script>
     <script>
-        $(document).ready(function() {
-            $('[data-toggle="popover"]').popover({ html: true });
+        original(document).ready(function() {
+            original('[data-toggle="popover"]').popover({ html: true });
         });
 
         full(document).ready(function() {
