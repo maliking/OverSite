@@ -623,7 +623,16 @@ if (!isset($_SESSION['userId'])) {
             // $('#calendar').fullCalendar({ defaultView: 'agendaWeek',});
         });
 
-        
+        $(document).ready(function() {
+
+    // page is now ready, initialize the calendar...
+
+    $('#calendar').fullCalendar({
+        // put your options and callbacks here
+        defaultView: 'agendaWeek',
+        })
+
+    });
 
     
 
