@@ -32,6 +32,11 @@ if (!isset($_SESSION['userId'])) {
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+
+    <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+    <script src='fullcalendar/lib/jquery.min.js'></script>
+    <script src='fullcalendar/lib/moment.min.js'></script>
+    <script src='fullcalendar/fullcalendar.js'></script>
     <style>
         a.dotted {
             color: #333333;
@@ -568,6 +573,8 @@ if (!isset($_SESSION['userId'])) {
                                     </table>
                                 </div>   -->
                 <!-- /.box-body -->
+
+                <div id='calendar'></div>
         </div>
         <!-- /.box -->
     </div>
@@ -619,6 +626,17 @@ if (!isset($_SESSION['userId'])) {
                 html: true
             });
         });
+
+        $(document).ready(function() {
+
+    // page is now ready, initialize the calendar...
+
+    $('#calendar').fullCalendar({
+        // put your options and callbacks here
+        defaultView: 'agendaWeek',
+        })
+
+    });
 
     </script>
 </body>
