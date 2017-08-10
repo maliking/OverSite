@@ -218,7 +218,6 @@ $rank = $stmtRank->fetchAll();
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
-
                 <!-- Sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
                     <a href="index.php" class="logo">
@@ -240,8 +239,7 @@ $rank = $stmtRank->fetchAll();
                         <li><a href="c_sheet.php"><i class="fa fa-file-text-o"></i> <span>Commission sheet</span></a></li>
                         <li class="header">STATISTICS</li>
                         <li><a href="analytics.php"><i class="fa fa-line-chart"></i> <span> Analytics</span></a></li>
-                        <li><a href="agent/viewVisitors.php"><i class="fa fa-file-text-o"></i> <span>Visitors</span></a></li>
-
+                        <!-- <li><a href="agent/viewVisitors.php"><i class="fa fa-file-text-o"></i> <span>Visitors</span></a></li> -->
                     </ul>
                     <!-- /.sidebar-menu -->
                 </section>
