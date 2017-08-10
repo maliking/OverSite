@@ -33,6 +33,10 @@ if (!isset($_SESSION['userId'])) {
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
 
+    <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+        <script src='fullcalendar/lib/jquery.min.js'></script>
+        <script src='fullcalendar/lib/moment.min.js'></script>
+        <script src='fullcalendar/fullcalendar.js'></script>
     
     <style>
         a.dotted {
@@ -597,7 +601,6 @@ if (!isset($_SESSION['userId'])) {
     <!-- REQUIRED JS SCRIPTS -->
 
     <!-- jQuery 2.2.3 -->
-    <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
     <!-- Bootstrap 3.3.6 -->
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
