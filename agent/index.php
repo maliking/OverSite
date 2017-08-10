@@ -622,21 +622,13 @@ if (!isset($_SESSION['userId'])) {
     </script>
     <script>
         $(document).ready(function() {
-            $('[data-toggle="popover"]').popover({
-                html: true
-            });
+            $('[data-toggle="popover"]').popover({ html: true });
+            $('#calendar').fullCalendar({ defaultView: 'agendaWeek',});
         });
 
-        $(document).ready(function() {
+        
 
-    // page is now ready, initialize the calendar...
-
-    $('#calendar').fullCalendar({
-        // put your options and callbacks here
-        defaultView: 'agendaWeek',
-        })
-
-    });
+    
 
     </script>
 </body>
