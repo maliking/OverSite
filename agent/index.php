@@ -18,6 +18,12 @@ if (!isset($_SESSION['userId'])) {
     <title>Re/Max Salinas | Dashboard</title>
 
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+    <link rel='stylesheet' href='fullcalendar/fullcalendar.css'>
+    <script src='fullcalendar/lib/jquery.min.js'></script>
+    <script src='fullcalendar/lib/moment.min.js'></script>
+    <script src='fullcalendar/fullcalendar.js'></script>
+    
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
@@ -33,10 +39,7 @@ if (!isset($_SESSION['userId'])) {
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
 
-    <link rel='stylesheet' href='fullcalendar/fullcalendar.css'>
-    <script src='fullcalendar/lib/jquery.min.js'></script>
-    <script src='fullcalendar/lib/moment.min.js'></script>
-    <script src='fullcalendar/fullcalendar.js'></script>
+    
     <style>
         a.dotted {
             color: #333333;
