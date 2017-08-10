@@ -323,6 +323,9 @@ $houses = $stmtHouse->fetchAll();
                                                                         <label class="control-label " for="email">Date</label>
                                                                         <input type="text" data-provide="datepicker" class="form-control" id="today-date" name = "today-date" placeholder="Enter today's date">
                                                                     </div>
+
+                                                                    
+
                                                                     <div class="form-group col-xs-4">
                                                                         <label class="control-label  " for="pwd">Beginning Gross Commission (GCYTD)</label>
                                                                         <input type="text" class="form-control" id="beg-comm" name="TYGross" placeholder="" readonly>
@@ -395,6 +398,15 @@ $houses = $stmtHouse->fetchAll();
                                                                     <h3 class="panel-title"><strong>Earnings & Deductions</strong></h3>
                                                                 </div>
                                                                 <div class="panel-body">
+
+                                                                    <div class="form-group col-xs-12">
+                                                                        <label class="col-xs-9 control-label " for="pwd">*Final House Price</label>
+                                                                        <div class="col-xs-3">
+                                                                            <input type="text" class="form-control" id="housePrice" placeholder="" name="finalHousePrice" >
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="clearfix"></div>
+
                                                                     <div class="form-group col-xs-12">
                                                                         <label class="col-xs-9 control-label " for="pwd">*Gross Commission</label>
                                                                         <div class="col-xs-3">
