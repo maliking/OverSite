@@ -32,6 +32,12 @@ if (!isset($_SESSION['userId'])) {
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+
+    <link rel='stylesheet' href='fullcalendar/fullcalendar.css' />
+        <script src='fullcalendar/lib/jquery.min.js'></script>
+        <script src='fullcalendar/lib/moment.min.js'></script>
+        <script src='fullcalendar/fullcalendar.js'></script>
+    
     <style>
         a.dotted {
             color: #333333;
@@ -568,6 +574,8 @@ if (!isset($_SESSION['userId'])) {
                                     </table>
                                 </div>   -->
                 <!-- /.box-body -->
+
+                <div id='calendar'></div>
         </div>
         <!-- /.box -->
     </div>
@@ -593,7 +601,6 @@ if (!isset($_SESSION['userId'])) {
     <!-- REQUIRED JS SCRIPTS -->
 
     <!-- jQuery 2.2.3 -->
-    <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
     <!-- Bootstrap 3.3.6 -->
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
@@ -615,10 +622,22 @@ if (!isset($_SESSION['userId'])) {
     </script>
     <script>
         $(document).ready(function() {
-            $('[data-toggle="popover"]').popover({
-                html: true
-            });
+            $('[data-toggle="popover"]').popover({ html: true });
+            // $('#calendar').fullCalendar({ defaultView: 'agendaWeek',});
         });
+
+        $(document).ready(function() {
+
+    // page is now ready, initialize the calendar...
+
+    $('#calendar').fullCalendar({
+        // put your options and callbacks here
+        defaultView: 'agendaWeek',
+        })
+
+    });
+
+    
 
     </script>
 </body>

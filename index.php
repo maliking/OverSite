@@ -218,7 +218,6 @@ $rank = $stmtRank->fetchAll();
             </header>
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="main-sidebar">
-
                 <!-- Sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
                     <a href="index.php" class="logo">
@@ -240,8 +239,7 @@ $rank = $stmtRank->fetchAll();
                         <li><a href="c_sheet.php"><i class="fa fa-file-text-o"></i> <span>Commission sheet</span></a></li>
                         <li class="header">STATISTICS</li>
                         <li><a href="analytics.php"><i class="fa fa-line-chart"></i> <span> Analytics</span></a></li>
-                        <li><a href="agent/viewVisitors.php"><i class="fa fa-file-text-o"></i> <span>Visitors</span></a></li>
-
+                        <!-- <li><a href="agent/viewVisitors.php"><i class="fa fa-file-text-o"></i> <span>Visitors</span></a></li> -->
                     </ul>
                     <!-- /.sidebar-menu -->
                 </section>
@@ -437,69 +435,6 @@ $rank = $stmtRank->fetchAll();
         </div>
         <!-- /.wrapper -->
 
-
-        <div class="modal fade" id="editor-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
-            <style scoped>
-                /* provides a red astrix to denote required fields - this should be included in common stylesheet */
-                .form-group.required .control-label:after {
-                    content:"*";
-                    color:red;
-                    margin-left: 4px;
-                }
-            </style>
-            <div class="modal-dialog" role="document">
-                <form class="modal-content form-horizontal" id="editor">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-                        <h4 class="modal-title" id="editor-title"><i class="fa fa-user-plus"></i> Add a New Agent</h4>
-                    </div>
-                    <div class="modal-body">
-                        <input type="number" id="id" name="id" class="hidden"/>
-                        <div class="form-group required">
-                            <label for="address" class="col-sm-3 control-label">First Name</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="address" name="address" placeholder="First Name" required>
-                            </div>
-                        </div>
-                        <div class="form-group required">
-                            <label for="city" class="col-sm-3 control-label">Last Name</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="city" name="city" placeholder="Last Name" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="zip" class="col-sm-3 control-label">License #</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="form-control" id="zip" name="zip" placeholder="Job Title">
-                            </div>
-                        </div>
-                        <div class="form-group required">
-                            <label for="bedrooms" class="col-sm-3 control-label">Username</label>
-                            <div class="col-sm-9">
-                                <input type="number" class="form-control" id="bedrooms" name="bedrooms" placeholder="Started On" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="bathrooms" class="col-sm-3 control-label">Password</label>
-                            <div class="col-sm-9">
-                                <input type="password" class="form-control" id="bathrooms" name="bathrooms" placeholder="Date of Birth">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="sqft" class="col-sm-3 control-label">Phone Number</label>
-                            <div class="col-sm-9">
-                                <input type="number" class="form-control" id="sqft" name="sqft" placeholder="Date of Birth">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary">Save changes</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
         <!-- Main Footer -->
         <footer class="main-footer">
             <!-- To the right -->
@@ -527,77 +462,6 @@ $rank = $stmtRank->fetchAll();
         <script type="text/javascript" src="plugins/footable/js/footable.min.js"></script>
 
         <script>
-            var $modal = $('#editor-modal'),
-                    $editor = $('#editor'),
-                    $editorTitle = $('#editor-title'),
-                    ft = FooTable.init('#agent-table', {
-                        editing: {
-                            enabled: true,
-                            alwaysShow: true,
-                            addRow: function () {
-                                $modal.removeData('row');
-                                $editor[0].reset();
-                                $editorTitle.text('Add a New Agent');
-                                $modal.modal('show');
-                            },
-                            addText: "Add a New Agent",
-                            editRow: function (row) {
-                                var values = row.val();
-                                $editor.find('#id').val(values.id);
-                                $editor.find('#address').val(values.firstName);
-                                $editor.find('#city').val(values.lastName);
-                                $editor.find('#zip').val(values.jobTitle);
-                                $editor.find('#bedrooms').val(values.startedOn);
-                                $editor.find('#bathrooms').val(values.dob);
-                                $editor.find('#sqft').val(values.dob);
-                                $editor.find('#lot').val(values.dob);
-                                $editor.find('#price').val(values.dob);
-                                $editor.find('#dom').val(values.dob);
-
-
-
-                                $modal.data('row', row);
-                                $editorTitle.text('Edit row #' + values.id);
-                                $modal.modal('show');
-                            },
-                            deleteRow: function (row) {
-                                if (confirm('Are you sure you want to delete the row?')) {
-                                    row.delete();
-                                }
-                            }
-                        }
-                    }),
-                    uid = 10;
-
-            $editor.on('submit', function (e) {
-                if (this.checkValidity && !this.checkValidity())
-                    return;
-                e.preventDefault();
-                var row = $modal.data('row'),
-                        values = {
-                            id: $editor.find('#id').val(),
-                            address: $editor.find('#address').val(),
-                            city: $editor.find('#city').val(),
-                            zip: $editor.find('#zip').val(),
-                            bedrooms: $editor.find('#bedrooms').val(),
-                            bathrooms: $editor.find('#bathrooms').val(),
-                            sqft: $editor.find('#sqft').val(),
-                            lot: $editor.find('#lot').val(),
-                            price: $editor.find('#price').val(),
-                            dom: $editor.find('#dom').val(),
-
-                        };
-
-                if (row instanceof FooTable.Row) {
-                    row.val(values);
-                } else {
-                    values.id = uid++;
-                    ft.rows.add(values);
-                }
-                $modal.modal('hide');
-            });
-        </script>
-                <script>
             jQuery(function ($) {
                 $('.table').footable({
 

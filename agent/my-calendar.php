@@ -252,6 +252,7 @@ session_start();
 
     $('#calendar').fullCalendar({
         // put your options and callbacks here
+        defaultView: 'agendaWeek',
         })
 
     });
