@@ -18,13 +18,6 @@ if (!isset($_SESSION['userId'])) {
     <title>Re/Max Salinas | Dashboard</title>
 
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-
-    <link rel='stylesheet' href='fullcalendar/fullcalendar.css'>
-    <script src='fullcalendar/lib/jquery.min.js'></script>
-    <script type="text/javascript"> var full = $.noConflict(true); </script>
-    <script src='fullcalendar/lib/moment.min.js'></script>
-    <script src='fullcalendar/fullcalendar.js'></script>
-
     <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
@@ -605,15 +598,11 @@ if (!isset($_SESSION['userId'])) {
 
     <!-- jQuery 2.2.3 -->
     <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
-        
-
     <!-- Bootstrap 3.3.6 -->
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Slimscroll -->
     <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
-    <script type="text/javascript"> var original = $.noConflict(true); </script>
-    
     <!-- FastClick -->
     <script src="../plugins/fastclick/fastclick.js"></script>
     <!-- AdminLTE App -->
@@ -629,13 +618,12 @@ if (!isset($_SESSION['userId'])) {
 
     </script>
     <script>
-        original(document).ready(function() {
-            original('[data-toggle="popover"]').popover({ html: true });
+        $(document).ready(function() {
+            $('[data-toggle="popover"]').popover({ html: true });
+            // $('#calendar').fullCalendar({ defaultView: 'agendaWeek',});
         });
 
-        full(document).ready(function() {
-            full('#calendar').fullCalendar({ defaultView: 'agendaWeek',});
-        });
+        
 
     
 
