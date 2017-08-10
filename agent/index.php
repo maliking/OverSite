@@ -627,10 +627,11 @@ if (!isset($_SESSION['userId'])) {
     <script>
         $(document).ready(function() {
             $('[data-toggle="popover"]').popover({ html: true });
-            full('#calendar').fullCalendar({ defaultView: 'agendaWeek',});
         });
 
-        
+        full(document).ready(function() {
+            full('#calendar').fullCalendar({ defaultView: 'agendaWeek',});
+        });
 
     
 
