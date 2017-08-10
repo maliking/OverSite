@@ -605,13 +605,15 @@ if (!isset($_SESSION['userId'])) {
 
     <!-- jQuery 2.2.3 -->
     <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
-        <script type="text/javascript"> var original = $.noConflict(true); </script>
+        
 
     <!-- Bootstrap 3.3.6 -->
     <script src="../bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Slimscroll -->
     <script src="../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript"> var original = $.noConflict(true); </script>
+    
     <!-- FastClick -->
     <script src="../plugins/fastclick/fastclick.js"></script>
     <!-- AdminLTE App -->
