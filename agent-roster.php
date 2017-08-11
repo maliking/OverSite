@@ -212,8 +212,8 @@ $result = $stmt->fetchAll();
                     </a>
                     <!-- Sidebar Menu -->
                     <ul class="sidebar-menu">
-                        <li class="header">OVERVIEW</li>
-                        <li><a href="index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+                        <li><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+                        <li  class="active"><a href="agent-roster.php"><i class="fa fa-users"></i> <span>Agent Roster</span></a></li>
                         <li class="header">PROPERTIES</li>
                         <li><a href="inventory.php"><i class="fa fa-home"></i> <span>Current Inventory</span></a></li>
                         <li><a href="coming-soon.php"><i class="fa fa-flag"></i> <span>Coming Soon</span></a></li>
@@ -221,17 +221,70 @@ $result = $stmt->fetchAll();
                         <li class="header">TRANSACTIONS</li>
                         <li><a href="sales-breakdown.php"><i class="fa fa-list-alt"></i> <span> Sales Breakdown</span></a></li>
                         <li><a href="monthly-report.php"><i class="fa fa-file-text-o"></i> <span>Monthly Report</span></a></li>
-                        <li class="header">AGENTS</li>
-                        <li class="active"><a href="roster.php"><i class="fa fa-users"></i> <span> Roster</span></a></li>
+                        <li><a href="c_sheet.php"><i class="fa fa-file-text-o"></i> <span>Commission sheet</span></a></li>
                         <li class="header">STATISTICS</li>
-                        <li><a href="#"><i class="fa fa-home"></i> <span> Sales Breakdown</span></a></li>
-                        <li><a href="#"><i class="fa fa-archive"></i> <span>Monthly Report</span></a></li>
+                        <li><a href="analytics.php"><i class="fa fa-line-chart"></i> <span> Analytics</span></a></li>
                     </ul>
                     <!-- /.sidebar-menu -->
                 </section>
                 <!-- /.sidebar -->
             </aside>
+            <!-- Content Wrapper -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Agent Roster
+                    </h1>
+                    <ol class="breadcrumb">
+                        <li>Properties</li>
+                        <li class="active"><a href="#"><i class="fa fa-archive"></i> Current Inventory</a></li>
+                    </ol>
+                </section>
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
 
+                                <div class="box-body">
+                                    <table id="listing-table" class="table table-bordered table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Address</th>
+                                                <th>City</th>
+                                                <th>Zip</th>
+                                                <th><i class="fa fa-bed"></i></th>
+                                                <th><i class="fa fa-bath"></i></th>
+                                                <th>Sqft</th>
+                                                <th>Lot</th>
+                                                <th>Price</th>
+                                                <th>DOM <a href="#" data-toggle="tooltip" data-placement="top" title="Days on the market"><i class="fa fa-question-circle"></i></a></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            foreach ($result as $agent) {
+                                                echo "<tr>";
+
+                                                echo "<td>" . ucwords($agent['username']) . "</td>";
+
+                                            }
+                                            ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </section>
+                <!-- /.content -->
+            </div>
+            <!-- /.content-wrapper -->
             <!-- Content Wrapper -->
             <div class="content-wrapper">
                 <!-- Main content -->
@@ -240,7 +293,7 @@ $result = $stmt->fetchAll();
                     <?php
                     foreach ($result as $agent) {
                         echo '<div class="row">';
-                        echo '<div class="col-md-3">';
+                        echo '<div class="col-md-8">';
                         echo '<div class="box box-default collapsed-box">';
                         echo '<div class="box-header with-border">';
                         echo '<h3 class="box-title">' . ucwords($agent['username']) . '</h3>';

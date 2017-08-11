@@ -1,11 +1,11 @@
 <?php
 session_start();
-require("databaseConnection.php");  
+require("databaseConnection.php");
 $dbConn = getConnection();
-if(!isset($_SESSION['userId'])) 
+if(!isset($_SESSION['userId']))
 {
     header("Location: index.html?error=wrong username or password");
-} 
+}
 
 $sql = "SELECT * FROM UsersInfo ";
 $stmt = $dbConn -> prepare($sql);
@@ -80,9 +80,9 @@ $houses = $stmtHouse->fetchAll();
                 document.getElementById("agent").value = x;
 
                 var xhttp = new XMLHttpRequest();
-                xhttp.onreadystatechange = function() 
+                xhttp.onreadystatechange = function()
                 {
-                    if (this.readyState == 4 && this.status == 200) 
+                    if (this.readyState == 4 && this.status == 200)
                     {
                         var data = JSON.parse(this.responseText);
                         // alert(data.TYGross);
@@ -90,7 +90,7 @@ $houses = $stmtHouse->fetchAll();
                     }
                 };
                 xhttp.open("GET", "agentCommission.php?license=" + x, true);
-                xhttp.send(); 
+                xhttp.send();
             }
 
             function getOwners()
@@ -274,18 +274,18 @@ $houses = $stmtHouse->fetchAll();
                     </a>
                     <!-- Sidebar Menu -->
                     <ul class="sidebar-menu">
-                        <li class="header">OVERVIEW</li>
                         <li><a href="index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+                        <li><a href="agent-roster.php"><i class="fa fa-users"></i> <span>Agent Roster</span></a></li>
                         <li class="header">PROPERTIES</li>
-                        <li class="active"><a href="inventory.php"><i class="fa fa-home"></i> <span>Current Inventory</span></a></li>
+                        <li><a href="inventory.php"><i class="fa fa-home"></i> <span>Current Inventory</span></a></li>
                         <li><a href="coming-soon.php"><i class="fa fa-flag"></i> <span>Coming Soon</span></a></li>
-                        <li class="past-sales"><a href="past-sales.php"><i class="fa fa-archive"></i> <span>Past Sales</span></a></li>
+                        <li><a href="past-sales.php"><i class="fa fa-archive"></i> <span>Past Sales</span></a></li>
                         <li class="header">TRANSACTIONS</li>
                         <li><a href="sales-breakdown.php"><i class="fa fa-list-alt"></i> <span> Sales Breakdown</span></a></li>
                         <li><a href="monthly-report.php"><i class="fa fa-file-text-o"></i> <span>Monthly Report</span></a></li>
+                        <li class="active"><a href="c_sheet.php"><i class="fa fa-file-text-o"></i> <span>Commission sheet</span></a></li>
                         <li class="header">STATISTICS</li>
                         <li><a href="analytics.php"><i class="fa fa-line-chart"></i> <span> Analytics</span></a></li>
-
                     </ul>
                     <!-- /.sidebar-menu -->
                 </section>
@@ -324,7 +324,7 @@ $houses = $stmtHouse->fetchAll();
                                                                         <input type="text" data-provide="datepicker" class="form-control" id="today-date" name = "today-date" placeholder="Enter today's date">
                                                                     </div>
 
-                                                                    
+
 
                                                                     <div class="form-group col-xs-4">
                                                                         <label class="control-label  " for="pwd">Beginning Gross Commission (GCYTD)</label>
@@ -371,7 +371,7 @@ $houses = $stmtHouse->fetchAll();
                                                                         <label class="control-label " for="pwd">Property Address</label>
                                                                         <select id="houseId" onchange="getOwners()" name="propertyAddress">
                                                                         <?php
-                                                                           
+
                                                                             foreach($houses as $house)
                                                                             {
                                                                                 echo "<option value='". $house['houseId']."'>". $house['address'] . " " . $house['city'] . " " . $house['state'] . " " . $house['zip'] . "</option>";
@@ -384,7 +384,7 @@ $houses = $stmtHouse->fetchAll();
                                                                         <label class="control-label" for="pwd">Client Name(s)</label>
                                                                         <input type="text" class="form-control" id="client" placeholder="">
                                                                     </div>
-                                                                    
+
                                                                     <div class="clearfix"></div>
                                                                 </div>
                                                             </div>

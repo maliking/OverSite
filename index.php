@@ -226,9 +226,8 @@ $rank = $stmtRank->fetchAll();
                     </a>
                     <!-- Sidebar Menu -->
                     <ul class="sidebar-menu">
-                        <li class="header">OVERVIEW</li>
-                        <li class="active"><a href="#"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-                        <li><a href="signIn.php" target="_blank"><i class=""></i> <span>Sign In Sheet</span></a></li>
+                        <li class="active"><a href="index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
+                        <li><a href="agent-roster.php"><i class="fa fa-users"></i> <span>Agent Roster</span></a></li>
                         <li class="header">PROPERTIES</li>
                         <li><a href="inventory.php"><i class="fa fa-home"></i> <span>Current Inventory</span></a></li>
                         <li><a href="coming-soon.php"><i class="fa fa-flag"></i> <span>Coming Soon</span></a></li>
@@ -239,7 +238,6 @@ $rank = $stmtRank->fetchAll();
                         <li><a href="c_sheet.php"><i class="fa fa-file-text-o"></i> <span>Commission sheet</span></a></li>
                         <li class="header">STATISTICS</li>
                         <li><a href="analytics.php"><i class="fa fa-line-chart"></i> <span> Analytics</span></a></li>
-                        <!-- <li><a href="agent/viewVisitors.php"><i class="fa fa-file-text-o"></i> <span>Visitors</span></a></li> -->
                     </ul>
                     <!-- /.sidebar-menu -->
                 </section>
