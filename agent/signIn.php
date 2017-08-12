@@ -97,7 +97,7 @@
                     <input type="number" name="priceMax" min="0" placeholder="max" step="1000" />
                 </td>  <br />
         </tr>
-        <input type="hidden" name="houseId" value="253"> 
+        <input type="hidden" name="houseId" value="253"> <!-- need to change this from static-->
 
         <tr>
             <td>
