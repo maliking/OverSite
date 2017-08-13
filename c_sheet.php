@@ -31,7 +31,7 @@ $houses = $stmtHouse->fetchAll();
         <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
         <?php include "./templates-admin/default-css.php" ?>
         <!-- END TEMPLATE default-css.php INCLUDE -->
-        
+        <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
         <link rel="stylesheet" href="plugins/bootstrap-datepicker/bootstrap-datetimepicker.min.css">
         
         <style>
