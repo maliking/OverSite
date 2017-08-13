@@ -93,6 +93,13 @@ $houses = $stmtHouse->fetchAll();
                 xhttp.send(); 
             }
 
+            function setPercentage(commission)
+            {
+                var housePrice = document.getElementById("housePrice").value;
+                document.getElementById("percentage").value = (commission * 100) / housePrice;
+
+            }
+
             function getOwners()
             {
 
@@ -410,7 +417,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     <div class="form-group col-xs-12">
                                                                         <label class="col-xs-9 control-label " for="pwd">*Gross Commission</label>
                                                                         <div class="col-xs-3">
-                                                                            <input type="text" class="form-control" id="gross-comm" placeholder="" name="InitialGross" >
+                                                                            <input type="text" class="form-control" id="gross-comm" placeholder="" name="InitialGross" onchange="setPercentage(this.value)">
                                                                         </div>
                                                                     </div>
                                                                     <div class="clearfix"></div>
