@@ -77,7 +77,7 @@ $houses = $stmtHouse->fetchAll();
             function setPercentage(commission)
             {
                 var housePrice = document.getElementById("housePrice").value;
-                document.getElementById("percentage").value = (commission * 100) / housePrice;
+                document.getElementById("percentage").value = ((commission * 100) / housePrice) + " %";
 
             }
 
