@@ -319,7 +319,7 @@ $result = $stmt->fetchAll();
                                                 echo "<td>" . $house['zip'] . "</td>";
                                                 echo "<td>" . $house['bedrooms'] . "</td>";
                                                 echo "<td>" . $house['bathrooms'] . "</td>";
-                                                echo "<td>" . "NA" . "</td>";
+                                                echo "<td>" . $house['sqft'] . "</td>";
                                                 echo "<td>" . "NA" . "</td>";
                                                 echo "<td>" . '$' . number_format($house['price'], 0) . "</td>";
                                                 echo "<td>" . "NA" . "</td>";
