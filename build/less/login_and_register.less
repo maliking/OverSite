@@ -5,14 +5,18 @@
 
 .login-logo,
 .register-logo {
+  font-size: 35px;
   text-align: center;
-  margin: 20% auto 2% auto;
-  max-width: 300px;
+  margin-bottom: 25px;
+  font-weight: 300;
+  a {
+    color: #444;
+  }
 }
 
 .login-page,
 .register-page {
-  background: white;
+  background: @gray-lte;
 }
 
 .login-box,
@@ -27,15 +31,13 @@
 
 .login-box-body,
 .register-box-body {
-  background: @gray-lte;
-  padding: 50px 20px 70px 20px;
-  border-radius: 5px;
+  background: #fff;
+  padding: 20px;
   border-top: 0;
   color: #666;
   .form-control-feedback {
     color: #777;
   }
-
 }
 
 .login-box-msg,
@@ -43,4 +45,8 @@
   margin: 0;
   text-align: center;
   padding: 0 20px 20px 20px;
+}
+
+.social-auth-links {
+  margin: 10px 0;
 }

@@ -15,210 +15,21 @@ if (!isset($_SESSION['userId'])) {
         <title>Re/Max Salinas | Analytics</title>
 
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <!-- Bootstrap 3.3.6 -->
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
-        <!-- Theme style -->
-        <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-        <link rel="stylesheet" href="dist/css/skins/skin-blue-light.css">
-
-        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
+        <?php include "./templates-admin/default-css.php" ?>
+        <!-- END TEMPLATE default-css.php INCLUDE -->
     </head>
 
     <body class="hold-transition skin-blue-light sidebar-mini">
         <!-- Site Wrapper -->
         <div class="wrapper">
-            <!-- Main Header -->
-            <header class="main-header">
-                <!-- Header Navbar -->
-                <nav class="navbar navbar-static-top" role="navigation">
-                    <!-- Sidebar toggle button-->
-                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-                        <span class="sr-only">Toggle navigation</span>
-                    </a>
-                    <!-- Navbar Right Menu -->
-                    <div class="navbar-custom-menu">
-                        <ul class="nav navbar-nav">
-                            <!-- Messages: style is in dropdown.less-->
-                            <li class="dropdown messages-menu">
-                                <!-- Menu toggle button -->
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-envelope-o"></i>
-                                    <span class="label label-success">4</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="header">You have 4 messages</li>
-                                    <li>
-                                        <!-- Inner message menu -->
-                                        <ul class="menu">
-                                            <li>
-                                                <!-- Start message -->
-                                                <a href="#">
-                                                    <div class="pull-left">
-                                                        <!-- User Image -->
-                                                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                                                    </div>
-                                                    <!-- Message title and timestamp -->
-                                                    <h4>
-                                                        Support Team
-                                                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                                    </h4>
-                                                    <!-- Message content -->
-                                                    <p>Why not buy a new awesome theme?</p>
-                                                </a>
-                                            </li>
-                                            <!-- End message -->
-                                        </ul>
-                                        <!-- /.menu -->
-                                    </li>
-                                    <li class="footer"><a href="#">See All Messages</a></li>
-                                </ul>
-                            </li>
-                            <!-- /.messages-menu -->
+            <!-- BEGIN TEMPLATE header.php INCLUDE -->
+            <?php include "./templates-admin/header.php" ?>
+            <!-- END TEMPLATE header.php INCLUDE -->
 
-                            <!-- Notifications Menu -->
-                            <li class="dropdown notifications-menu">
-                                <!-- Menu toggle button -->
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-bell-o"></i>
-                                    <span class="label label-warning">10</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="header">You have 10 notifications</li>
-                                    <li>
-                                        <!-- Inner nofications menu -->
-                                        <ul class="menu">
-                                            <li>
-                                                <!-- Start notification -->
-                                                <a href="#">
-                                                    <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                                </a>
-                                            </li>
-                                            <!-- End notification -->
-                                        </ul>
-                                    </li>
-                                    <li class="footer"><a href="#">View all</a></li>
-                                </ul>
-                            </li>
-                            <!-- Tasks Menu -->
-                            <li class="dropdown tasks-menu">
-                                <!-- Menu Toggle Button -->
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-flag-o"></i>
-                                    <span class="label label-danger">9</span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li class="header">You have 9 tasks</li>
-                                    <li>
-                                        <!-- Inner tasks menu -->
-                                        <ul class="menu">
-                                            <li>
-                                                <!-- Task item -->
-                                                <a href="#">
-                                                    <!-- Task title and progress text -->
-                                                    <h3>
-                                                        Design some buttons
-                                                        <small class="pull-right">20%</small>
-                                                    </h3>
-                                                    <!-- Progress bar -->
-                                                    <div class="progress xs">
-                                                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                                                            <span class="sr-only">20% Complete</span>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                            <!-- End task item -->
-                                        </ul>
-                                    </li>
-                                    <li class="footer">
-                                        <a href="#">View all tasks</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- User Account Menu -->
-                            <li class="dropdown user user-menu">
-                                <!-- Menu Toggle Button -->
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                    <!-- User image in navbar-->
-                                    <img src="dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                                    <span class="hidden-xs"><?php echo $_SESSION['username']; ?></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <!-- User image in the menu -->
-                                    <li class="user-header">
-                                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                                        <p>
-                                            <?php echo $_SESSION['username']; ?>
-                                            <small>Member since Nov. 2012</small>
-                                        </p>
-                                    </li>
-                                    <!-- Menu Body -->
-                                    <li class="user-body">
-                                        <div class="row">
-                                            <div class="col-xs-4 text-center">
-                                                <a href="#">Followers</a>
-                                            </div>
-                                            <div class="col-xs-4 text-center">
-                                                <a href="#">Sales</a>
-                                            </div>
-                                            <div class="col-xs-4 text-center">
-                                                <a href="#">Friends</a>
-                                            </div>
-                                        </div>
-                                        <!-- /.row -->
-                                    </li>
-                                    <!-- Menu Footer-->
-                                    <li class="user-footer">
-                                        <div class="pull-left">
-                                            <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                        </div>
-                                        <div class="pull-right">
-                                            <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </li>
-                            <!-- Control Sidebar Toggle Button -->
-                            <li>
-                                <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </header>
-            <!-- Left side column. contains the logo and sidebar -->
-            <aside class="main-sidebar">
-
-                <!-- Sidebar: style can be found in sidebar.less -->
-                <section class="sidebar">
-                    <a href="index.php" class="logo">
-                        <!-- Logo -->
-                        <img class="img-responsive" src="dist/img/remax-logo.png">
-                    </a>
-                    <!-- Sidebar Menu -->
-                    <ul class="sidebar-menu">
-                        <li class="header">OVERVIEW</li>
-                        <li><a href="index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-                        <li class="header">PROPERTIES</li>
-                        <li><a href="inventory.php"><i class="fa fa-home"></i> <span>Current Inventory</span></a></li>
-                        <li><a href="coming-soon.php"><i class="fa fa-flag"></i> <span>Coming Soon</span></a></li>
-                        <li><a href="past-sales.php"><i class="fa fa-archive"></i> <span>Past Sales</span></a></li>
-                        <li class="header">TRANSACTIONS</li>
-                        <li><a href="sales-breakdown.php"><i class="fa fa-list-alt"></i> <span> Sales Breakdown</span></a></li>
-                        <li><a href="monthly-report.php"><i class="fa fa-file-text-o"></i> <span>Monthly Report</span></a></li>
-                        <li class="header">STATISTICS</li>
-                        <li class="active"><a href="analytics.php"><i class="fa fa-line-chart"></i> <span> Analytics</span></a></li>
-                    </ul>
-                    <!-- /.sidebar-menu -->
-                </section>
-                <!-- /.sidebar -->
-            </aside>
+            <!-- BEGIN TEMPLATE nav.php INCLUDE -->
+            <?php include "./templates-admin/nav.php" ?>
+            <!-- END TEMPLATE nav.php INCLUDE -->
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
@@ -288,29 +99,16 @@ if (!isset($_SESSION['userId'])) {
         </div>
         <!-- /.wrapper -->
 
-        <!-- Main Footer -->
-        <footer class="main-footer">
-            <!-- To the right -->
-            <div class="pull-right hidden-xs">
-                Powered by <a href="#">Oversite</a>
-            </div>
-            <!-- Default to the left -->
-            <strong>&copy; 2016 | <a href="#">Re/Max Salinas</a>.</strong> All rights reserved.
-        </footer>
+        <!-- BEGIN TEMPLATE default-footer.php INCLUDE -->
+        <?php include "./templates-admin/default-footer.php" ?>
+        <!-- END TEMPLATE default-footer.php INCLUDE -->
 
-        <!-- REQUIRED JS SCRIPTS -->
 
-        <!-- jQuery 2.2.3 -->
-        <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-        <!-- Bootstrap 3.3.6 -->
-        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <!-- BEGIN TEMPLATE default-js.php INCLUDE -->
+        <?php include "./templates-admin/default-js.php" ?>
+        <!-- END TEMPLATE default-js.php INCLUDE -->
 
-        <!-- Slimscroll -->
-        <script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
-        <!-- FastClick -->
-        <script src="plugins/fastclick/fastclick.js"></script>
-        <!-- AdminLTE App -->
-        <script src="dist/js/app.min.js"></script>
+        <!-- PAGE-SPECIFIC JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.min.js"></script>
 
         <script>
@@ -325,32 +123,32 @@ if (!isset($_SESSION['userId'])) {
             var lineChartData = {
                 labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
                 datasets: [{
-                        label: '2017',
-                        data: [103940, 123023, 123023, 102934, 121234, 112039, 103942, 120393, 109234, 102384, 122402, 122012],
-                        backgroundColor: 'rgba(1, 195, 32, 0.72)'
-                    }, {
-                        label: '2016',
-                        data: [124343, 102934, 129482, 103824, 129271, 103982, 102934, 110232, 112902, 102412, 113304, 129023],
-                        backgroundColor: 'rgba(81, 89, 73, 0.4)'
-                    }]
+                    label: '2017',
+                    data: [103940, 123023, 123023, 102934, 121234, 112039, 103942, 120393, 109234, 102384, 122402, 122012],
+                    backgroundColor: 'rgba(1, 195, 32, 0.72)'
+                }, {
+                    label: '2016',
+                    data: [124343, 102934, 129482, 103824, 129271, 103982, 102934, 110232, 112902, 102412, 113304, 129023],
+                    backgroundColor: 'rgba(81, 89, 73, 0.4)'
+                }]
             }
 
             var lineChartOptions = {
                 scales: {
                     yAxes: [{
-                            ticks: {
-                                beginAtZero: false,
-                                max: 150000,
-                                callback: function (value, index, values) {
-                                    if (parseInt(value) >= 1000) {
-                                        return '$' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                                    } else {
-                                        return '$' + value;
-                                    }
+                        ticks: {
+                            beginAtZero: false,
+                            max: 150000,
+                            callback: function (value, index, values) {
+                                if (parseInt(value) >= 1000) {
+                                    return '$' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                } else {
+                                    return '$' + value;
                                 }
-
                             }
-                        }]
+
+                        }
+                    }]
                 }
             }
 
@@ -368,14 +166,14 @@ if (!isset($_SESSION['userId'])) {
                 data: {
                     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
                     datasets: [{
-                            label: 'Buyer\'s',
-                            data: [504923, 340242, 402492, 604923, 400232, 360234, 504934, 604394, 540942, 604343, 405923, 503239],
-                            backgroundColor: "rgba(220,220,220,0.5)",
-                        }, {
-                            label: 'Seller\'s',
-                            data: [604032, 402392, 503924, 590423, 429321, 498243, 552843, 623203, 502934, 598493, 450294, 559823],
-                            backgroundColor: "rgba(82,154,190,0.5)",
-                        }]
+                        label: 'Buyer\'s',
+                        data: [504923, 340242, 402492, 604923, 400232, 360234, 504934, 604394, 540942, 604343, 405923, 503239],
+                        backgroundColor: "rgba(220,220,220,0.5)",
+                    }, {
+                        label: 'Seller\'s',
+                        data: [604032, 402392, 503924, 590423, 429321, 498243, 552843, 623203, 502934, 598493, 450294, 559823],
+                        backgroundColor: "rgba(82,154,190,0.5)",
+                    }]
                 },
                 options: {
                     tooltips: {
@@ -397,22 +195,22 @@ if (!isset($_SESSION['userId'])) {
                     },
                     scales: {
                         yAxes: [{
+                            beginAtZero: false,
+                            stacked: true,
+                            ticks: {
                                 beginAtZero: false,
-                                stacked: true,
-                                ticks: {
-                                    beginAtZero: false,
-                                    callback: function (value, index, values) {
-                                        if (parseInt(value) >= 1000) {
-                                            return '$' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-                                        } else {
-                                            return '$' + value;
-                                        }
+                                callback: function (value, index, values) {
+                                    if (parseInt(value) >= 1000) {
+                                        return '$' + value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                    } else {
+                                        return '$' + value;
                                     }
-                                },
-                            }],
+                                }
+                            },
+                        }],
                         xAxes: [{
-                                stacked: true
-                            }],
+                            stacked: true
+                        }],
                     }
                 }
             });

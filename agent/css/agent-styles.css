@@ -1,0 +1,5 @@
+a.dotted {
+    color: #333333;
+    border-bottom: 1px dashed #999;
+    text-decoration: none;
+}
