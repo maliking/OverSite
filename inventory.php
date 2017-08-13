@@ -56,7 +56,6 @@ $result = $stmt->fetchAll();
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="box">
-
                                 <div class="box-body">
                                     <table id="listing-table" class="table table-bordered table-striped">
                                         <thead>
@@ -86,10 +85,7 @@ $result = $stmt->fetchAll();
                                                                 <li><a href="#">$400,000+</a></li>
                                                                 <li><a href="#">$500,000+</a></li>
                                                             </ul>
-
                                                         </div>
-
-
                                                         <div class="dropdown" style="display: inline-block;margin-right: 10px;">
                                                             <button class="btn dropdown-toggle btn-xs btn-success" type="button" data-toggle="dropdown">Filter Bedrooms <span class="caret"></span></button>
                                                             <ul class="dropdown-menu">
@@ -120,37 +116,20 @@ $result = $stmt->fetchAll();
                                         </thead>
                                         <tbody>
                                             <?php
-<<<<<<< HEAD
-    foreach ($result as $house) {
-        echo "<tr>";
+                                                foreach ($result as $house) {
+                                                    echo "<tr>";
+                                                    echo "<td>" . $house['address'] . "</td>";
+                                                    echo "<td>" . $house['city'] . "</td>";
+                                                    echo "<td>" . $house['zip'] . "</td>";
+                                                    echo "<td>" . $house['bedrooms'] . "</td>";
+                                                    echo "<td>" . $house['bathrooms'] . "</td>";
+                                                    echo "<td>" . "NA" . "</td>";
+                                                    echo "<td>" . "NA" . "</td>";
+                                                    echo "<td>" . '$' . number_format($house['price'], 0) . "</td>";
+                                                    echo "<td>" . "NA" . "</td>";
+                                                    echo "</tr>";
+                                                }
 
-        echo "<td>" . $house['address'] . "</td>";
-        echo "<td>" . $house['city'] . "</td>";
-        echo "<td>" . $house['zip'] . "</td>";
-        echo "<td>" . $house['bedrooms'] . "</td>";
-        echo "<td>" . $house['bathrooms'] . "</td>";
-        echo "<td>" . "NA" . "</td>";
-        echo "<td>" . "NA" . "</td>";
-        echo "<td>" . '$' . number_format($house['price'], 0) . "</td>";
-        echo "<td>" . "NA" . "</td>";
-        echo "</tr>";
-    }
-=======
-                                            foreach ($result as $house) {
-                                                echo "<tr>";
-
-                                                echo "<td>" . $house['address'] . "</td>";
-                                                echo "<td>" . $house['city'] . "</td>";
-                                                echo "<td>" . $house['zip'] . "</td>";
-                                                echo "<td>" . $house['bedrooms'] . "</td>";
-                                                echo "<td>" . $house['bathrooms'] . "</td>";
-                                                echo "<td>" . $house['sqft'] . "</td>";
-                                                echo "<td>" . "NA" . "</td>";
-                                                echo "<td>" . '$' . number_format($house['price'], 0) . "</td>";
-                                                echo "<td>" . "NA" . "</td>";
-                                                echo "</tr>";
-                                            }
->>>>>>> 3339d79cb8f360aea5b8cd5cc423ef06c619252d
                                             ?>
                                         </tbody>
                                     </table>
@@ -256,8 +235,8 @@ $result = $stmt->fetchAll();
         <!-- BEGIN TEMPLATE default-js.php INCLUDE -->
         <?php include "./templates-admin/default-js.php" ?>
         <!-- END TEMPLATE default-js.php INCLUDE -->
+        
         <script type="text/javascript" src=".dist/js/footable.min.js"></script>
-
         <script>
             var $modal = $('#editor-modal'),
                 $editor = $('#editor'),
