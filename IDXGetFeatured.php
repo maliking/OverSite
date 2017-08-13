@@ -73,7 +73,9 @@ function inDatabase($address, $results)
                  $value = preg_replace('/[\$,]/', '', $response[$keys[$i]]['listingPrice']);
                  $value = intval($value);
                  $namedParameters[":price"] = $value;
-                 $namedParameters[":sqft"] = $response[$keys[$i]]['sqFt'];
+                 $squareFeet = preg_replace('/[\$,]/', '', $response[$keys[$i]]['sqFt']);
+                 $squareFeet = intval($squareFeet);
+                 $namedParameters[":sqft"] = $squareFeet;
                  $stmt = $dbConn -> prepare($sql);
                  $stmt->execute($namedParameters);
 
