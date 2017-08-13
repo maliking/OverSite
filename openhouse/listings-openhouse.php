@@ -262,7 +262,7 @@
                                                 </li>
                                                 <li><a href="listing-info.php">Flyer Info</a>
                                                 </li>
-                                                <li><a href="listing-info.php">Flyer Info</a>
+                                                <li><a href="listing-info.php">Sign-in</a>
                                                 </li>
                                             </ul>
                                         </li></i><img src="openhouse/placeHolder.jpg"><p>' . $result['address'] . " " . $result['city'] . " " . $result['state'] . ", " . $result['zip'] . "</p></div>";
