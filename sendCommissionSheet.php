@@ -44,8 +44,8 @@ $namedParameters[":InitialGross"] = $_POST['InitialGross'];
 $namedParameters[":brokerFee"] = $_POST['brokerFee'];
 $namedParameters[":finalComm"] =  $_POST['netCommission']; 
 $namedParameters[":misc"] =  $_POST['miscell'];
-$value = preg_replace('/[\%,]/', '', $_POST['percentage']);
-$value = floatval($value);
+// $value = preg_replace('/[\%,]/', '', $_POST['percentage']);
+$value = floatval($_POST['percentage']);
 $namedParameters[":percentage"] = $value;
 
 $stmt = $dbConn -> prepare($sql);
