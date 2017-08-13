@@ -22,9 +22,8 @@ $result = $stmt->fetchAll();
         <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
         <?php include "./templates-admin/default-css.php" ?>
         <!-- END TEMPLATE default-css.php INCLUDE -->
-<!-- PAGE-SPECIFIC CSS -->
-<link rel="stylesheet" href="./dist/css/vendor/footable.bootstrap.min.css">
-
+        <!-- PAGE-SPECIFIC CSS -->
+        <link rel="stylesheet" href="./dist/css/vendor/footable.bootstrap.min.css">
     </head>
 
     <body class="hold-transition skin-blue-light sidebar-mini">
@@ -271,9 +270,6 @@ $result = $stmt->fetchAll();
                             $editor.find('#lot').val(values.dob);
                             $editor.find('#price').val(values.dob);
                             $editor.find('#dom').val(values.dob);
-
-
-
                             $modal.data('row', row);
                             $editorTitle.text('Edit row #' + values.id);
                             $modal.modal('show');
@@ -315,52 +311,6 @@ $result = $stmt->fetchAll();
                 $modal.modal('hide');
             });
         </script>
-        <!--
-<script>
-// Listings Table Options (Current Inventory, past sales, etc)
-$(function() {
-$("#listing-table").DataTable({
-"paging": false,
-"lengthChange": true,
-"searching": true,
-"ordering": true,
-"order": [3, 'desc'],
-"info": true,
-"responsive": true,
-"autoWidth": false,
-"select": true,
-"search": {
-"smart": true
-},
-"columnDefs": [{
-"orderable": false,
-"targets": 0,
-},
-{
-responsivePriority: 1,
-targets: 0
-},
-{
-responsivePriority: 2,
-targets: 1
-},
-{
-responsivePriority: 3,
-targets: -5
-},
-{
-responsivePriority: 4,
-targets: -1
-},
-{
-responsivePriority: 5,
-targets: -4
-}
-],
-});
-});
-</script>
--->
     </body>
 
 </html>

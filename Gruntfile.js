@@ -243,7 +243,7 @@ module.exports = function (grunt) { // jshint ignore:line
     // Linting task
     grunt.registerTask('lint', ['jshint', 'csslint', 'bootlint']);
     // Concat js, and css. Then minify them.
-    grunt.registerTask('merge', ['concat', 'cssmin', 'uglify']);
+    grunt.registerTask('merge', ['less', 'image', 'concat', 'cssmin', 'uglify']);
     // The default task (running 'grunt' in console) is 'watch'
-    grunt.registerTask('default', ['less', 'image', 'watch']);
+    grunt.registerTask('default', ['watch']);
 };
