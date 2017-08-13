@@ -11,7 +11,6 @@ $stmt->execute();
 $result = $stmt->fetchAll();
 ?>
 
-
 <!DOCTYPE html>
 <html>
 
@@ -292,7 +291,7 @@ $result = $stmt->fetchAll();
                         sqft: $editor.find('#sqft').val(),
                         lot: $editor.find('#lot').val(),
                         price: $editor.find('#price').val(),
-                        dom: $editor.find('#dom').val(),
+                        dom: $editor.find('#dom').val(), 
 
                     };
 

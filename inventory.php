@@ -10,7 +10,6 @@ $stmt->execute();
 $result = $stmt->fetchAll();
 ?>
 
-
 <!DOCTYPE html>
 <html>
 
@@ -23,7 +22,7 @@ $result = $stmt->fetchAll();
         <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
         <?php include "./templates-admin/default-css.php" ?>
         <!-- END TEMPLATE default-css.php INCLUDE -->
-
+        
         <!-- PAGE-SPECIFIC CSS -->
         <link rel="stylesheet" href="./dist/css/vendor/footable.bootstrap.min.css">
     </head>
