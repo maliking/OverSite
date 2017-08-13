@@ -10,7 +10,7 @@
             <li class="header">OVERVIEW</li>
             <!-- Optionally, you can add icons to the links -->
             <li><a href="./index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-            <li><a href="#"><i class="fa fa-home"></i> <span>Open House</span></a></li>
+            <li><a href="../openhouse/index.php"><i class="fa fa-home"></i> <span>Open House</span></a></li>
             <li><a href="my-calendar.php"><i class="fa fa-calendar"></i> <span>Calendar</span></a></li>
             <li class="header-style treeview">
                 <a href="#"><span class="header-color">PROPERTIES</span>
