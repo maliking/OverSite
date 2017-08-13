@@ -59,8 +59,8 @@ function inDatabase($address, $results)
     for($i = 0; $i < sizeof($keys); $i++){
         if(!inDatabase($response[$keys[$i]]['address'], $results)) {
             $sql = "INSERT INTO HouseInfo
-	                 (userId, status, address, city, state, zip, bedrooms, bathrooms, price)
-	                 VALUES (:userId, :status, :address, :city, :state, :zip, :bedrooms, :bathrooms, :price)";
+	                 (userId, status, address, city, state, zip, bedrooms, bathrooms, price, sqft)
+	                 VALUES (:userId, :status, :address, :city, :state, :zip, :bedrooms, :bathrooms, :price, :sqft)";
                  $namedParameters = array();
                  $namedParameters[":userId"] = $_SESSION['userId'];
                  $namedParameters[":status"] = strtolower($response[$keys[$i]]['idxStatus']);
@@ -73,6 +73,7 @@ function inDatabase($address, $results)
                  $value = preg_replace('/[\$,]/', '', $response[$keys[$i]]['listingPrice']);
                  $value = intval($value);
                  $namedParameters[":price"] = $value;
+                 $namedParameters[":sqft"] = $response[$keys[$i]]['sqFt']);
                  $stmt = $dbConn -> prepare($sql);
                  $stmt->execute($namedParameters);
 
