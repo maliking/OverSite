@@ -49,7 +49,7 @@ $rank = $stmtRank->fetchAll();
     <body class="hold-transition skin-blue-light sidebar-mini">
         <!-- Site Wrapper -->
         <div class="wrapper">
-            
+
             <!-- BEGIN TEMPLATE header.php INCLUDE -->
             <?php include "./templates-admin/header.php" ?>
             <!-- END TEMPLATE header.php INCLUDE -->
@@ -247,16 +247,17 @@ $rank = $stmtRank->fetchAll();
         </div>
         <!-- /.wrapper -->
 
-<!-- BEGIN TEMPLATE default-footer.php INCLUDE -->
-<?php include "./templates-admin/default-footer.php" ?>
-<!-- END TEMPLATE default-footer.php INCLUDE -->
+        <!-- BEGIN TEMPLATE default-footer.php INCLUDE -->
+        <?php include "./templates-admin/default-footer.php" ?>
+        <!-- END TEMPLATE default-footer.php INCLUDE -->
 
-<!-- BEGIN TEMPLATE default-js.php INCLUDE -->
-<?php include "./templates-admin/default-js.php" ?>
-<!-- END TEMPLATE default-js.php INCLUDE -->
+        <!-- BEGIN TEMPLATE default-js.php INCLUDE -->
+        <?php include "./templates-admin/default-js.php" ?>
+        <!-- END TEMPLATE default-js.php INCLUDE -->
+
+        <!-- PAGE-SPECIFIC JS -->
+        <script src="./dist/js/vendor/footable.min.js"></script>
         
-<!-- PAGE-SPECIFIC JS -->
-<script src="./dist/js/vendor/footable.min.js"></script>
         <script>
             jQuery(function ($) {
                 $('.table').footable({

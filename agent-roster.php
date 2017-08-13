@@ -131,72 +131,12 @@ $result = $stmt->fetchAll();
         <?php include "./templates-admin/default-footer.php" ?>
         <!-- END TEMPLATE default-footer.php INCLUDE -->
 
-        <!-- Right control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <ul class="nav nav-tabs nav-justified control-sidebar-tabs">
-                <li class="active"><a href="#control-sidebar-home-tab" data-toggle="tab"><i class="fa fa-home"></i></a>
-                </li>
-                <li><a href="#control-sidebar-settings-tab" data-toggle="tab"><i class="fa fa-gears"></i></a></li>
-            </ul>
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <!-- Home tab content -->
-                <div class="tab-pane active" id="control-sidebar-home-tab">
-                    <h3 class="control-sidebar-heading">Recent Activity</h3>
-                    <ul class="control-sidebar-menu">
-                        <li>
-                            <a href="javascript:;">
-                                <i class="menu-icon fa fa-birthday-cake bg-red"></i>
-
-                                <div class="menu-info">
-                                    <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
-                                    <p>Will be 23 on April 24th</p>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-                    <!-- /.control-sidebar-menu -->
-                </div>
-                <!-- /.tab-pane -->
-
-                <!-- Settings tab pane -->
-                <div class="tab-pane" id="control-sidebar-stats-tab">
-                    Settings Tab Content
-                </div>
-                <!-- /.tab-pane -->
-
-                <!-- Settings tab content -->
-                <div class="tab-pane" id="control-sidebar-settings-tab">
-                    <form method="post">
-                        <h3 class="control-sidebar-heading">General Settings</h3>
-
-                        <div class="form-group">
-                            <label class="control-sidebar-subheading">
-                                Setting1
-                                <input type="checkbox" class="pull-right" checked>
-                            </label>
-                            <p>
-                                Setting details
-                            </p>
-                        </div>
-                        <!-- /.form-group -->
-                    </form>
-                </div>
-                <!-- /.tab-pane -->
-            </div>
-            <!-- /.tab-content -->
-        </aside>
-        <!-- /.control-sidebar -->
-
-        <!-- Sidebar Background -->
-        <div class="control-sidebar-bg">
-        </div>
         <!-- BEGIN TEMPLATE default-js.php INCLUDE -->
         <?php include "./templates-admin/default-js.php" ?>
         <!-- END TEMPLATE default-js.php INCLUDE -->
 
         <!-- PAGE-SPECIFIC JS -->
-        <script type="text/javascript" src="plugins/datatables/datatables.min.js"></script>
+        <script type="text/javascript" src="./dist/js/vendor/datatables.min.js"></script>
 
 
         <script>
