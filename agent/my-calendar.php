@@ -484,8 +484,15 @@ session_start();
                     event.html(val)
                     $('#external-events').prepend(event)
 
+<<<<<<< HEAD
                     //Add draggable funtionality
                     init_events(event)
+=======
+    $('#calendar').fullCalendar({
+        // put your options and callbacks here
+        defaultView: 'agendaWeek',
+        })
+>>>>>>> 3339d79cb8f360aea5b8cd5cc423ef06c619252d
 
                     //Remove event from text input
                     $('#new-event').val('')

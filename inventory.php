@@ -120,6 +120,7 @@ $result = $stmt->fetchAll();
                                         </thead>
                                         <tbody>
                                             <?php
+<<<<<<< HEAD
     foreach ($result as $house) {
         echo "<tr>";
 
@@ -134,6 +135,22 @@ $result = $stmt->fetchAll();
         echo "<td>" . "NA" . "</td>";
         echo "</tr>";
     }
+=======
+                                            foreach ($result as $house) {
+                                                echo "<tr>";
+
+                                                echo "<td>" . $house['address'] . "</td>";
+                                                echo "<td>" . $house['city'] . "</td>";
+                                                echo "<td>" . $house['zip'] . "</td>";
+                                                echo "<td>" . $house['bedrooms'] . "</td>";
+                                                echo "<td>" . $house['bathrooms'] . "</td>";
+                                                echo "<td>" . $house['sqft'] . "</td>";
+                                                echo "<td>" . "NA" . "</td>";
+                                                echo "<td>" . '$' . number_format($house['price'], 0) . "</td>";
+                                                echo "<td>" . "NA" . "</td>";
+                                                echo "</tr>";
+                                            }
+>>>>>>> 3339d79cb8f360aea5b8cd5cc423ef06c619252d
                                             ?>
                                         </tbody>
                                     </table>
