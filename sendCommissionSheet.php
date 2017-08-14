@@ -150,7 +150,7 @@ $pdf->Cell(0,10,'Agent Signature                              Date              
 	$stmt->execute($namedParameters); 
 	print_r($envId);
 	
-	// header("Location: index.php");
+	 header("Location: index.php");
 
 ?>
 

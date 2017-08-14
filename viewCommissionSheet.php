@@ -5,15 +5,15 @@ require 'databaseConnection.php';
 require("keys/cred.php");
 
 $dbConn = getConnection();
-$sql = "SELECT * FROM commInfo";
+$sql = "SELECT envelopeId FROM commInfo WHERE commId=" . $_GET['comm'];
 $stmt = $dbConn->prepare($sql);
 $stmt->execute();
-$result = $stmt->fetchAll();
+$result = $stmt->fetch();
 
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://demo.docusign.net/restapi/v2/accounts/" . $acId . "/envelopes/" . $enId . "/documents/1",
+    CURLOPT_URL => "https://demo.docusign.net/restapi/v2/accounts/" . $acId . "/envelopes/" . $result['envelopeId'] . "/documents/1",
     CURLOPT_RETURNTRANSFER => true,
     CURLOPT_ENCODING => "",
     CURLOPT_MAXREDIRS => 10,
