@@ -142,7 +142,7 @@ $pdf->Cell(0,10,'Agent Signature                              Date              
 	} else {
 		echo $response;
 	  	$envId = json_decode($response);
-		$namedParameters[':envelopeId'] = $envId['envelopeId'];
+		$namedParameters[':envelopeId'] = $envId->{'envelopeId'};
 		$stmt = $dbConn -> prepare($sql);
 		$stmt->execute($namedParameters); 
 	}
