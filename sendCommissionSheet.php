@@ -17,14 +17,19 @@ $name = $dbConn -> prepare($agent);
 $name->execute();
 $userResults = $name->fetch();
 
+$currAgent = "SELECT * FROM UsersInfo WHERE userId = '".$_SESSION['userId']."'";
+$email = $dbConn -> prepare($currAgent);
+$email->execute();
+$currAgentEmail = $email->fetch();
+
 $sqlHouse = "SELECT * FROM HouseInfo WHERE houseId = '" . $houseId . "'";
 $stmtHouse = $dbConn -> prepare($sqlHouse);
 $stmtHouse->execute();
 $houseResults = $stmtHouse->fetch();
 
 $sql ="INSERT INTO commInfo
-        (houseId, license, firstName, lastName, date, settlementDate, checkNum, address, city, state, zip, TYGross, FYGross, InitialGross, brokerFee, finalComm, misc, percentage)
-        VALUES (:houseId, :license, :firstName, :lastName, :date, :settlementDate, :checkNum, :address, :city, :state, :zip, :TYGross, :FYGross, :InitialGross, :brokerFee, :finalComm, :misc, :percentage)";
+        (houseId, license, firstName, lastName, date, settlementDate, checkNum, address, city, state, zip, TYGross, FYGross, InitialGross, brokerFee, finalComm, misc, percentage, envelopeId)
+        VALUES (:houseId, :license, :firstName, :lastName, :date, :settlementDate, :checkNum, :address, :city, :state, :zip, :TYGross, :FYGross, :InitialGross, :brokerFee, :finalComm, :misc, :percentage, :envelopeId)";
            
 $namedParameters = array();
 $namedParameters[":houseId"] = $houseId;
@@ -48,8 +53,8 @@ $namedParameters[":misc"] =  $_POST['miscell'];
 $value = floatval($_POST['percentage']);
 $namedParameters[":percentage"] = $value;
 
-$stmt = $dbConn -> prepare($sql);
-$stmt->execute($namedParameters); 
+// $stmt = $dbConn -> prepare($sql);
+// $stmt->execute($namedParameters); 
 
 require('fpdf/fpdf.php');
  
@@ -137,6 +142,11 @@ $pdf->Cell(0,10,'Agent Signature                              Date              
 	} else {
 	  echo $response;
 	}
+
+	$namedParameters[':envelopeId'] = $response['envelopeId'];
+	$stmt = $dbConn -> prepare($sql);
+	$stmt->execute($namedParameters); 
+
 	header("Location: index.php");
 
 ?>
