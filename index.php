@@ -140,7 +140,7 @@ $rank = $stmtRank->fetchAll();
                             <!-- small box -->
                             <div class="small-box bg-blue">
                                 <div class="inner">
-                                    <h3><?php echo number_format($sumEarnings['avgPercent'],0); ?><sup style="font-size: 20px">%</sup></h3>
+                                    <h3><?php echo number_format((float)$sumEarnings['avgPercent'],2 , '.', ''); ?><sup style="font-size: 20px">%</sup></h3>
 
                                     <p>Avg. Agent Commission </p>
                                 </div>
