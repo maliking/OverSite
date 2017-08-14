@@ -16,16 +16,19 @@ $stmt->execute();
 $houseStatus = $stmt->fetchAll();
 
 $dbConnEarn = getConnection();
-$sqlEarn = "SELECT AVG(finalComm) as average, SUM(finalComm) AS earnings FROM commInfo";
+$sqlEarn = "SELECT AVG(finalComm) as average, SUM(finalComm) AS earnings, AVG(percentage) AS avgPercent FROM commInfo";
 $stmtEarn = $dbConnEarn->prepare($sqlEarn);
 $stmtEarn->execute();
 $sumEarnings = $stmtEarn->fetch();
+
 
 $dbConnRank = getConnection();
 $sqlRank = "SELECT UsersInfo.firstName, UsersInfo.lastName, count(*) as sold, sum(finalComm) as YTDComm FROM UsersInfo LEFT JOIN commInfo on UsersInfo.license = commInfo.license group by UsersInfo.license order by sold Desc ";
 $stmtRank = $dbConnRank->prepare($sqlRank);
 $stmtRank->execute();
 $rank = $stmtRank->fetchAll();
+
+
 ?>
 
 <!DOCTYPE html>
@@ -137,7 +140,7 @@ $rank = $stmtRank->fetchAll();
                             <!-- small box -->
                             <div class="small-box bg-blue">
                                 <div class="inner">
-                                    <h3>2.2<sup style="font-size: 20px">%</sup></h3>
+                                    <h3><?php echo $sumEarnings['avgPercent']; ?><sup style="font-size: 20px">%</sup></h3>
 
                                     <p>Avg. Agent Commission </p>
                                 </div>
