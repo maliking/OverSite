@@ -28,8 +28,8 @@ $stmtHouse->execute();
 $houseResults = $stmtHouse->fetch();
 
 $sql ="INSERT INTO commInfo
-        (houseId, license, firstName, lastName, date, settlementDate, checkNum, address, city, state, zip, TYGross, FYGross, InitialGross, brokerFee, finalComm, misc, percentage)
-        VALUES (:houseId, :license, :firstName, :lastName, :date, :settlementDate, :checkNum, :address, :city, :state, :zip, :TYGross, :FYGross, :InitialGross, :brokerFee, :finalComm, :misc, :percentage)";
+        (houseId, license, firstName, lastName, date, settlementDate, checkNum, address, city, state, zip, TYGross, FYGross, InitialGross, brokerFee, finalComm, misc, percentage, envelopeId)
+        VALUES (:houseId, :license, :firstName, :lastName, :date, :settlementDate, :checkNum, :address, :city, :state, :zip, :TYGross, :FYGross, :InitialGross, :brokerFee, :finalComm, :misc, :percentage, :envelopeId)";
            
 $namedParameters = array();
 $namedParameters[":houseId"] = $houseId;
@@ -134,19 +134,19 @@ $pdf->Cell(0,10,'Agent Signature                              Date              
     "x-docusign-authentication: { \"Username\": \"" . $username . "\",\"Password\":\"" . $password ."\",\"IntegratorKey\":\"" . $intKey . "\" }"
   	),
 	));
-	// $response = curl_exec($curl);
-	// $err = curl_error($curl);
-	// curl_close($curl);
-	// 	if ($err) {
-	//   echo "cURL Error #:" . $err;
-	// } else {
-	// 	echo $response;
+	$response = curl_exec($curl);
+	$err = curl_error($curl);
+	curl_close($curl);
+		if ($err) {
+	  echo "cURL Error #:" . $err;
+	} else {
+		echo $response;
 	  	
-	// }
+	}
 	
-	// $envId = json_decode($response, true);
-	// $namedParameters[":envelopeId"] = $envId['envelopeId'];
-	// echo $envId['envelopeId'];
+	$envId = json_decode($response, true);
+	$namedParameters[":envelopeId"] = $envId['envelopeId'];
+	echo $envId['envelopeId'];
 	
 	header("Location: index.php");
 
