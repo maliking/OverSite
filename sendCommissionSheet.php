@@ -141,14 +141,14 @@ $pdf->Cell(0,10,'Agent Signature                              Date              
 	  echo "cURL Error #:" . $err;
 	} else {
 		echo $response;
-	  	$envId = json_decode($response, true);
-		$namedParameters[":envelopeId"] = $envId['envelopeId'];
-		echo $envId['envelopeId'];
-		$stmt = $dbConn -> prepare($sql);
-		$stmt->execute($namedParameters);
+	  	
 	}
 	
-	
+	$envId = json_decode($response, true);
+	$namedParameters[":envelopeId"] = $envId['envelopeId'];
+	echo $envId['envelopeId'];
+	$stmt = $dbConn -> prepare($sql);
+	$stmt->execute($namedParameters);
 	header("Location: index.php");
 
 ?>
