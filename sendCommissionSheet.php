@@ -145,7 +145,7 @@ $pdf->Cell(0,10,'Agent Signature                              Date              
 	}
 	
 	$envId = json_decode($response, true);
-	$namedParameters[":envelopeId"] = $response['envelopeId'];
+	$namedParameters[":envelopeId"] = $envId['envelopeId'];
 	$stmt = $dbConn -> prepare($sql);
 	$stmt->execute($namedParameters);
 	header("Location: index.php");
