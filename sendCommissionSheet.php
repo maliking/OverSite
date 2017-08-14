@@ -147,7 +147,7 @@ $pdf->Cell(0,10,'Agent Signature                              Date              
 	$stmt = $dbConn -> prepare($sql);
 	$stmt->execute($namedParameters); 
 
-	header("Location: index.php");
+	//header("Location: index.php");
 
 ?>
 
