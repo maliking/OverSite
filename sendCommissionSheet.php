@@ -53,8 +53,8 @@ $namedParameters[":misc"] =  $_POST['miscell'];
 $value = floatval($_POST['percentage']);
 $namedParameters[":percentage"] = $value;
 
-$stmt = $dbConn -> prepare($sql);
-$stmt->execute($namedParameters); 
+// $stmt = $dbConn -> prepare($sql);
+// $stmt->execute($namedParameters); 
 
 require('fpdf/fpdf.php');
  
@@ -146,9 +146,11 @@ $pdf->Cell(0,10,'Agent Signature                              Date              
 	
 	$envId = json_decode($response, true);
 	$namedParameters[":envelopeId"] = $envId['envelopeId'];
-	echo $envId['envelopeId'];
+	$stmt = $dbConn -> prepare($sql);
+	$stmt->execute($namedParameters); 
+	print_r($envId);
 	
-	header("Location: index.php");
+	// header("Location: index.php");
 
 ?>
 
