@@ -116,7 +116,7 @@ $pdf->Cell(0,10,'Agent Signature                              Date              
 		  		\"routingOrder\": \"1\"
 		  	},
 		  	{
-		  		\"email\": \"jodiaz@csumb.edu\",
+		  		\"email\": \"michael50974@gmail.com\",
 		  		\"name\": \"Jose \",
 		  		\"recipientId\": \"2\",
 		  		\"routingOrder\": \"2\"	
@@ -140,12 +140,12 @@ $pdf->Cell(0,10,'Agent Signature                              Date              
 		if ($err) {
 	  echo "cURL Error #:" . $err;
 	} else {
-		// echo $response;
+		echo $response;
 	  	$envId = json_decode($response, true);
 		$namedParameters[":envelopeId"] = $envId['envelopeId'];
 		echo $envId['envelopeId'];
-		// $stmt = $dbConn -> prepare($sql);
-		// $stmt->execute($namedParameters);
+		$stmt = $dbConn -> prepare($sql);
+		$stmt->execute($namedParameters);
 	}
 	
 	
