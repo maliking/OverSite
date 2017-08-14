@@ -1,13 +1,14 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['userId'])) {
-    header("Location: http://jjp17.org/login.php");
-}
+//session_start();
+//
+//if (!isset($_SESSION['userId'])) {
+//    header("Location: http://jjp17.org/login.php");
+//}
 ?>
 
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
+
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,6 +20,7 @@ if (!isset($_SESSION['userId'])) {
         <?php include "./templates-agent/default-css.php" ?>
         <!-- END TEMPLATE default-css.php INCLUDE -->
     </head>
+
     <body class="hold-transition skin-red-light sidebar-mini">
         <!-- Site Wrapper -->
         <div class="wrapper">
@@ -30,6 +32,9 @@ if (!isset($_SESSION['userId'])) {
             <!-- BEGIN TEMPLATE nav.php INCLUDE -->
             <?php include "./templates-agent/nav.php" ?>
             <!-- END TEMPLATE nav.php INCLUDE -->
+
+            <!-- PAGE-SPECIFIC CSS -->
+            <link rel="stylesheet" href="../dist/css/vendor/fullcalendar.min.css">
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
@@ -138,8 +143,32 @@ if (!isset($_SESSION['userId'])) {
                     </div>
                     <!-- /.row -->
                 </section>
+
+                <!-- Main content -->
+                <section class="content">
+                    <div class="row">
+                        <!-- /.col -->
+                        <div class="col-md-12">
+                            <div class="box box-primary">
+                                <div class="box-body no-padding">
+                                    <!-- THE CALENDAR -->
+                                    <div id="calendar"></div>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /. box -->
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </section>
+                <!-- /.content -->
             </div>
             <!-- /.content-wrapper -->
+        </div>
+        <!-- /.wrapper -->
+        </div>
+        <!-- /.content-wrapper -->
         </div>
         <!-- /.wrapper -->
 
@@ -151,7 +180,13 @@ if (!isset($_SESSION['userId'])) {
         <?php include "./templates-agent/default-js.php" ?>
         <!-- END TEMPLATE default-css.php INCLUDE -->
 
+
         <script type="text/javascript" src="../dist/js/vendor/footable.min.js"></script>
+
+        <!-- PAGE-SPECIFIC JS -->
+        <script src="../dist/js/vendor/moment-with-locales.min.js"></script>
+        <script src="../dist/js/vendor/fullcalendar/gcal.min.js"></script>
+        <script src="../dist/js/vendor/fullcalendar/fullcalendar.min.js"></script>
         <script>
             jQuery(function($) {
                 $('.table').footable({
@@ -161,24 +196,46 @@ if (!isset($_SESSION['userId'])) {
 
         </script>
         <script>
-            $(document).ready(function() {
-                $('[data-toggle="popover"]').popover({ html: true });
-                // $('#calendar').fullCalendar({ defaultView: 'agendaWeek',});
-            });
+            //            $(document).ready(function() {
+            //                $('[data-toggle="popover"]').popover({
+            //                    html: true
+            //                });
+            //                // $('#calendar').fullCalendar({ defaultView: 'agendaWeek',});
+            //            });
+            //
+            //            $(document).ready(function() {
+            //
+            //                // page is now ready, initialize the calendar...
+            //
+            //                $('#calendar').fullCalendar({
+            //                    // put your options and callbacks here
+            //                    defaultView: 'agendaWeek',
+            //                })
+            //
+            //            });
 
             $(document).ready(function() {
-
-                // page is now ready, initialize the calendar...
-
                 $('#calendar').fullCalendar({
-                    // put your options and callbacks here
-                    defaultView: 'agendaWeek',
-                })
-
+                    googleCalendarApiKey: 'AIzaSyA9u-pNzVjk1MRKnIiryZku88WL_1eyF4Y',
+                    events: {
+                        googleCalendarId: 'markiepeanut111@gmail.com',
+                        color: 'yellow', // an option!
+                        textColor: 'black' // an option!
+                    },
+                    editable: true,
+                    defaultView: 'agenda',
+                    duration: {
+                        days: 7
+                    }
+                    // can also specify:
+                    // - visibleRange
+                    // - dayCount
+                });
             });
-
-
 
         </script>
+
+
     </body>
-</html>
+
+    </html>
