@@ -105,7 +105,7 @@ $pdf->Cell(0,10,'Agent Signature                              Date              
 	  \"recipients\": {
 	  	\"signers\": [
 	  		{
-	  			\"email\": \"" . $userResults['email'] . "\",
+	  			\"email\": \"jodiaz@csumb.edu\",
 		  		\"name\": \"" . $_POST['agentName'] . "\",
 		  		\"recipientId\": \"1\",
 		  		\"routingOrder\": \"1\"
@@ -119,7 +119,7 @@ $pdf->Cell(0,10,'Agent Signature                              Date              
 	  		\"documents\": [
 	  		{
 	  			\"documentId\": \"1\",
-		  		\"name\": \"test.pdf\",
+		  		\"name\": \"" . $houseResults['address'] . ".pdf\",
 		  		\"documentBase64\": \"" . $doc ."\"
 		  	}],
 		  	\"status\": \"sent\"}",
@@ -129,14 +129,14 @@ $pdf->Cell(0,10,'Agent Signature                              Date              
     "x-docusign-authentication: { \"Username\": \"" . $username . "\",\"Password\":\"" . $password ."\",\"IntegratorKey\":\"" . $intKey . "\" }"
   	),
 	));
-	// $response = curl_exec($curl);
-	// $err = curl_error($curl);
-	// curl_close($curl);
-	// 	if ($err) {
-	//   echo "cURL Error #:" . $err;
-	// } else {
-	//   echo $response;
-	// }
+	$response = curl_exec($curl);
+	$err = curl_error($curl);
+	curl_close($curl);
+		if ($err) {
+	  echo "cURL Error #:" . $err;
+	} else {
+	  echo $response;
+	}
 	header("Location: index.php");
 
 ?>
