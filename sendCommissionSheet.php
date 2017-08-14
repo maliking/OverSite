@@ -28,8 +28,8 @@ $stmtHouse->execute();
 $houseResults = $stmtHouse->fetch();
 
 $sql ="INSERT INTO commInfo
-        (houseId, license, firstName, lastName, date, settlementDate, checkNum, address, city, state, zip, TYGross, FYGross, InitialGross, brokerFee, finalComm, misc, percentage, envelopeId)
-        VALUES (:houseId, :license, :firstName, :lastName, :date, :settlementDate, :checkNum, :address, :city, :state, :zip, :TYGross, :FYGross, :InitialGross, :brokerFee, :finalComm, :misc, :percentage, :envelopeId)";
+        (houseId, license, firstName, lastName, date, settlementDate, checkNum, address, city, state, zip, TYGross, FYGross, InitialGross, brokerFee, finalComm, misc, percentage)
+        VALUES (:houseId, :license, :firstName, :lastName, :date, :settlementDate, :checkNum, :address, :city, :state, :zip, :TYGross, :FYGross, :InitialGross, :brokerFee, :finalComm, :misc, :percentage)";
            
 $namedParameters = array();
 $namedParameters[":houseId"] = $houseId;
@@ -144,9 +144,9 @@ $pdf->Cell(0,10,'Agent Signature                              Date              
 	  	
 	}
 	
-	$envId = json_decode($response, true);
-	$namedParameters[":envelopeId"] = $envId['envelopeId'];
-	echo $envId['envelopeId'];
+	// $envId = json_decode($response, true);
+	// $namedParameters[":envelopeId"] = $envId['envelopeId'];
+	// echo $envId['envelopeId'];
 	$stmt = $dbConn -> prepare($sql);
 	$stmt->execute($namedParameters);
 	header("Location: index.php");
