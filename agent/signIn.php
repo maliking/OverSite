@@ -1,7 +1,7 @@
 <?php
-    require("databaseConnection.php");  
-    session_start();
-    $dbConn = getConnection();
+//    require("databaseConnection.php");  
+//    session_start();
+//    $dbConn = getConnection();
     if(!isset($_SESSION['userId'])) {
       header("Location: index.php?error=wrong username or password");
     } 
