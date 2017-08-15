@@ -14,7 +14,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Re/Max Salinas | Home</title>
+        <title>Re/Max Salinas | My Visitors</title>
 
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
@@ -47,14 +47,13 @@
                                     <table class="table table-bordered table-striped">
                                         <thead>
                                             <tr>
-                                                <th>Visitors</th>
-                                                <th data-breakpoints="all">Phone Number</th>
+                                                <th>Name</th>
+                                                <th data-breakpoints="all">Phone</th>
                                                 <th data-breakpoints="all">Email</th>
-                                                <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Approval Date">Address Visited </a></th>
-                                                <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Appraisal">Contact </a></th>
-                                                <th data-breakpoints="all">Notes</th>
-                                                <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Appraisal">Notes</a></th>
-                                                <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Appraisal">Delete</a></th>
+                                                <th data-breakpoints="xs sm">Property Viewed</th>
+                                                <th data-breakpoints="xs sm">Contact</th>
+                                                <th colspan="2" data-breakpoints="all">Notes</th>
+                                                <th data-breakpoints="xs sm">Delete</th>
                                             </tr>
                                         </thead>
                                         <tbody>
