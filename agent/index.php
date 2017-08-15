@@ -1,9 +1,9 @@
 <?php
-//session_start();
-//
-//if (!isset($_SESSION['userId'])) {
-//    header("Location: http://jjp17.org/login.php");
-//}
+session_start();
+
+if (!isset($_SESSION['userId'])) {
+    header("Location: http://jjp17.org/login.php");
+}
 ?>
 
     <!DOCTYPE html>
