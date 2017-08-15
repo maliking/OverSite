@@ -66,7 +66,7 @@ $dbConn = getConnection();
             echo "<tr>";
             echo "<td><img width=\"100px\" height=\"100px\" src=\"../../dist/img/placeholder.jpg\"></td>";
             echo "<td>";
-            echo $result['address'] . "<br>" . $result['city'] . "<br>" . $result['state'] . ", " . $result['zip'];
+            echo $result['address'] . "<br>" . $result['city'] . " " . $result['state'] . ", " . $result['zip'];
             echo "</td>";                                                
             echo "<td>
                                                     <div class=\"dropdown\">
