@@ -24,7 +24,7 @@ $dbConn = getConnection();
         <link rel="stylesheet" href="../../dist/css/vendor/footable.bootstrap.min.css">
     </head>
 
-    <body class="hold-transition skin-blue sidebar-mini">
+    <body class="hold-transition skin-black sidebar-mini">
         <!-- Site Wrapper -->
         <div class="wrapper">
             <!-- BEGIN TEMPLATE header.php INCLUDE -->
@@ -50,24 +50,25 @@ $dbConn = getConnection();
 
                                     <div class="row">
                                         <table class="table">
-                                             <?php 
-                                            foreach($results as $result) {
-                                                $dbConn = getConnection();
-                                                $sql = "SELECT status, houseId, date(dateTimes) as dateTimes, address, city, state, zip, bedrooms, bathrooms, price
-                                                                                                                                            FROM HouseInfo
-                                                                                                                                            WHERE userId = :userId";
-                                                $namedParameters = array();
-                                                $namedParameters[':userId'] = $_SESSION['userId'];
-                                                $stmt = $dbConn -> prepare($sql);
-                                                $stmt->execute($namedParameters);
-                                                //$stmt->execute();
-                                                $results = $stmt->fetchAll();
-                                                echo "<tr>";
-                                                echo "<td><img width=\"100px\" height=\"100px\" src=\"../../dist/img/placeholder.jpg\"></td>";
-                                                echo "<td>";
-                                                echo $result['address'] . $result['city'] . $result['state'] . $result['zip'];
-                                                echo "</td>";                                                
-                                                echo "<td>
+                                            <?php 
+    $dbConn = getConnection();
+        $sql = "SELECT status, houseId, date(dateTimes) as dateTimes, address, city, state, zip, bedrooms, bathrooms, price
+                        FROM HouseInfo
+                        WHERE userId = :userId";
+        $namedParameters = array();
+        $namedParameters[':userId'] = $_SESSION['userId'];
+        $stmt = $dbConn -> prepare($sql);
+        $stmt->execute($namedParameters);
+        //$stmt->execute();
+        $results = $stmt->fetchAll();
+        foreach($results as $result) {
+
+            echo "<tr>";
+            echo "<td><img width=\"100px\" height=\"100px\" src=\"../../dist/img/placeholder.jpg\"></td>";
+            echo "<td>";
+            echo $result['address'] . $result['city'] . $result['state'] . $result['zip'];
+            echo "</td>";                                                
+            echo "<td>
                                                     <div class=\"dropdown\">
                                                         <button class=\"btn btn-default dropdown-toggle\" type=\"button\" id=\"dropdownMenu1\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"true\">
                                                             Options
@@ -82,13 +83,13 @@ $dbConn = getConnection();
                                                         </ul>
                                                     </div>
                                                 </td>";
-                                                echo "</tr>";
-                                            }
-                                        ?>
+            echo "</tr>";
+        }
+                                            ?>
                                         </table>
 
 
-                                       
+
                                     </div>
 
 

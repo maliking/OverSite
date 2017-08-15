@@ -23,7 +23,7 @@
         <!-- END TEMPLATE default-css.php INCLUDE -->
     </head>
 
-    <body class="hold-transition skin-blue sidebar-mini">
+    <body class="hold-transition skin-black sidebar-mini">
         <!-- Site Wrapper -->
         <div class="wrapper">
                         <!-- BEGIN TEMPLATE header.php INCLUDE -->
