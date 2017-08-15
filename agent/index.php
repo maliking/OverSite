@@ -1,9 +1,9 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['userId'])) {
-    header("Location: http://jjp17.org/login.php");
-}
+//session_start();
+//
+//if (!isset($_SESSION['userId'])) {
+//    header("Location: http://jjp17.org/login.php");
+//}
 ?>
 
     <!DOCTYPE html>
@@ -35,6 +35,12 @@ if (!isset($_SESSION['userId'])) {
 
             <!-- PAGE-SPECIFIC CSS -->
             <link rel="stylesheet" href="../dist/css/vendor/fullcalendar.min.css">
+
+            <!-- NOTIFICATION Links-->
+            <link href="../plugins/pnotify/dist/pnotify.css" rel="stylesheet">
+            <link href="../plugins/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
+            <link href="../plugins/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
+
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
@@ -172,6 +178,9 @@ if (!isset($_SESSION['userId'])) {
         </div>
         <!-- /.wrapper -->
 
+
+
+
         <!-- BEGIN TEMPLATE default-footer.php INCLUDE -->
         <?php include "./templates-agent/default-footer.php" ?>
         <!-- END TEMPLATE default-footer.php INCLUDE -->
@@ -187,6 +196,12 @@ if (!isset($_SESSION['userId'])) {
         <script src="../dist/js/vendor/moment-with-locales.min.js"></script>
         <script src="../dist/js/vendor/fullcalendar/gcal.min.js"></script>
         <script src="../dist/js/vendor/fullcalendar/fullcalendar.min.js"></script>
+        <script type="text/javascript" src="../plugins/pnotify/dist/pnotify.js"></script>
+        <script type="text/javascript" src="../plugins/pnotify/dist/pnotify.buttons.js"></script>
+        <script type="text/javascript" src="../plugins/pnotify/dist/pnotify.nonblock.js"></script>
+
+
+
         <script>
             jQuery(function($) {
                 $('.table').footable({
@@ -230,6 +245,28 @@ if (!isset($_SESSION['userId'])) {
                     // can also specify:
                     // - visibleRange
                     // - dayCount
+                });
+            });
+
+            $(function() {
+                new PNotify({
+                    title: 'Contact Client',
+                    text: 'Must call Jane Smith @ 4:15pm.',
+                    styling: 'fontawesome'
+                });
+            });
+            $(function() {
+                new PNotify({
+                    title: 'Contact Client',
+                    text: 'Must call Mary Baker @ 4:45pm.',
+                    styling: 'fontawesome'
+                });
+            });
+             $(function() {
+                new PNotify({
+                    title: 'Contact Client',
+                    text: 'Must send email to John by 5:15pm.',
+                    styling: 'fontawesome'
                 });
             });
 
