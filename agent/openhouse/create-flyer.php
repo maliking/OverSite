@@ -8,8 +8,8 @@
 
 
 
-    <!DOCTYPE html>
-    <html>
+<!DOCTYPE html>
+<html>
 
     <head>
         <meta charset="utf-8">
@@ -17,7 +17,7 @@
         <title>Re/Max Salinas | Home</title>
 
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        
+
         <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
         <?php include "./templates-oh/default-css.php" ?>
         <!-- END TEMPLATE default-css.php INCLUDE -->
@@ -26,7 +26,7 @@
     <body class="hold-transition skin-black sidebar-mini">
         <!-- Site Wrapper -->
         <div class="wrapper">
-                        <!-- BEGIN TEMPLATE header.php INCLUDE -->
+            <!-- BEGIN TEMPLATE header.php INCLUDE -->
             <?php include "./templates-oh/header.php" ?>
             <!-- END TEMPLATE header.php INCLUDE -->
 
@@ -41,21 +41,20 @@
 
                     <section class="content-header">
                         <h1>
-
                             Create New Flyer
                         </h1>
 
                     </section>
                 </section>
             </div>
+        </div>
+        <!-- BEGIN TEMPLATE default-footer.php INCLUDE -->
+        <?php include "./templates-oh/default-footer.php" ?>
+        <!-- END TEMPLATE default-footer.php INCLUDE -->
 
-            <!-- BEGIN TEMPLATE default-footer.php INCLUDE -->
-            <?php include "./templates-oh/default-footer.php" ?>
-            <!-- END TEMPLATE default-footer.php INCLUDE -->
-
-            <!-- BEGIN TEMPLATE default-js.php INCLUDE -->
-            <?php include "./templates-oh/default-js.php" ?>
-            <!-- END TEMPLATE default-js.php INCLUDE -->
+        <!-- BEGIN TEMPLATE default-js.php INCLUDE -->
+        <?php include "./templates-oh/default-js.php" ?>
+        <!-- END TEMPLATE default-js.php INCLUDE -->
     </body>
 
-    </html>
+</html>

@@ -37,15 +37,15 @@ session_start();
                 <section>
                 </section>
             </div>
-            
-            <!-- BEGIN TEMPLATE default-footer.php INCLUDE -->
-            <?php include "./templates-oh/default-footer.php" ?>
-            <!-- END TEMPLATE default-footer.php INCLUDE -->
+        </div>
+        <!-- BEGIN TEMPLATE default-footer.php INCLUDE -->
+        <?php include "./templates-oh/default-footer.php" ?>
+        <!-- END TEMPLATE default-footer.php INCLUDE -->
 
-            <!-- BEGIN TEMPLATE default-js.php INCLUDE -->
-            <?php include "./templates-oh/default-js.php" ?>
-            <!-- END TEMPLATE default-js.php INCLUDE -->
+        <!-- BEGIN TEMPLATE default-js.php INCLUDE -->
+        <?php include "./templates-oh/default-js.php" ?>
+        <!-- END TEMPLATE default-js.php INCLUDE -->
 
-            </body>
+    </body>
 
-        </html>
+</html>
