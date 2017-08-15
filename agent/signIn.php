@@ -2,9 +2,9 @@
 //    require("databaseConnection.php");  
 //    session_start();
 //    $dbConn = getConnection();
-    if(!isset($_SESSION['userId'])) {
-      header("Location: index.php?error=wrong username or password");
-    } 
+//    if(!isset($_SESSION['userId'])) {
+//      header("Location: index.php?error=wrong username or password");
+//    } 
     //$houseId = $_GET['houseId'];
  ?>
 
