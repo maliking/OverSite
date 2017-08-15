@@ -18,13 +18,12 @@ $result = $stmt->fetchAll();
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Re/Max Salinas | Roster</title>
-
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
         <?php include "./templates-admin/default-css.php" ?>
         <!-- END TEMPLATE default-css.php INCLUDE -->
         <!-- PAGE-SPECIFIC CSS -->
-        <link rel="stylesheet" href="./dist/css/vendor/footable.bootstrap.min.css">
+        <link rel="stylesheet" href="./dist/css/vendor/footable.bootstrap.css">
 
     </head>
 
@@ -57,19 +56,18 @@ $result = $stmt->fetchAll();
 
                             <div class="box">
                                 <div class="box-body no-padding">
-                                    <table id="roster-table" class="table table-striped">
+                                    <table id="roster-table" class="table" data-editing-always-show="true">
                                         <tr>
                                             <th>Last</th>
                                             <th>First</th>
                                             <th>Commission</th>
-
                                         </tr>
                                         <?php
     foreach ($result as $agent) {
         echo '<tr>';
         echo '<td>' . ucwords($agent['username']) . '</td>';
         echo '<td>' . ucwords($agent['username']) . '</td>';
-        echo '<td>' . '<span>0.2%</span>' . '</td>';
+        echo '<td>' . '0.2%' . '</td>';
         echo '</tr>';
     }
                                         ?>
@@ -89,9 +87,51 @@ $result = $stmt->fetchAll();
             <!-- /.content-wrapper -->
         </div>
         <!-- /.wrapper -->
+        <div class="modal fade" id="editor-modal" tabindex="-1" role="dialog" aria-labelledby="editor-title">
+            <style scoped>
+                /* provides a red astrix to denote required fields - this should be included in common stylesheet */
+                .form-group.required .control-label:after {
+                    content:"*";
+                    color:red;
+                    margin-left: 4px;
+                }
+            </style>
+            <div class="modal-dialog" role="document">
+                <form class="modal-content form-horizontal" id="editor">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title" id="editor-title">Add A New Agent</h4>
+                    </div>
+                    <div class="modal-body">
+                        <input type="firstName" id="id" name="id" class="hidden"/>
+                        <div class="form-group required">
+                            <label for="firstName" class="col-sm-3 control-label">First Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
+                            </div>
+                        </div>
+                        <div class="form-group required">
+                            <label for="lastName" class="col-sm-3 control-label">Last Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="col-sm-3 control-label">Phone Number</label>
+                            <div class="col-sm-9">
+                                <input type="number" class="form-control" id="phone" name="phone" placeholder="XXX-XXX-XXXX">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </div>
 
-        
-        
+
         <!-- BEGIN TEMPLATE default-footer.php INCLUDE -->
         <?php include "./templates-admin/default-footer.php" ?>
         <!-- END TEMPLATE default-footer.php INCLUDE -->
@@ -99,42 +139,35 @@ $result = $stmt->fetchAll();
         <!-- BEGIN TEMPLATE default-js.php INCLUDE -->
         <?php include "./templates-admin/default-js.php" ?>
         <!-- END TEMPLATE default-js.php INCLUDE -->
-        
-      <!-- PAGE-SPECIFIC JS -->
-<script src="./dist/js/vendor/footable.min.js"></script>
 
-<script>
+        <!-- PAGE-SPECIFIC JS -->
+        <script src="./dist/js/vendor/footable.min.js"></script>
+        
+        <script>
             var $modal = $('#editor-modal'),
                 $editor = $('#editor'),
                 $editorTitle = $('#editor-title'),
                 ft = FooTable.init('#roster-table', {
                     editing: {
                         enabled: true,
-                        alwaysShow: true,
-                        addRow: function () {
+                        addRow: function(){
                             $modal.removeData('row');
                             $editor[0].reset();
                             $editorTitle.text('Add a New Agent');
                             $modal.modal('show');
-                        },
-                        editRow: function (row) {
+                        },                        
+                        editRow: function(row){
                             var values = row.val();
-                            $editor.find('#id').val(values.id);
-                            $editor.find('#address').val(values.firstName);
-                            $editor.find('#city').val(values.lastName);
-                            $editor.find('#zip').val(values.jobTitle);
-                            $editor.find('#bedrooms').val(values.startedOn);
-                            $editor.find('#bathrooms').val(values.dob);
-                            $editor.find('#sqft').val(values.dob);
-                            $editor.find('#lot').val(values.dob);
-                            $editor.find('#price').val(values.dob);
-                            $editor.find('#dom').val(values.dob);
+                            $editor.find('#firstName').val(values.firstName);
+                            $editor.find('#lastName').val(values.lastName);
+                            $editor.find('#phone').val(values.phone);
+
                             $modal.data('row', row);
-                            $editorTitle.text('Edit' + values.id);
+                            $editorTitle.text('Edit agent #' + values.firstName + " " + values.lastName);
                             $modal.modal('show');
                         },
-                        deleteRow: function (row) {
-                            if (confirm('Are you sure you want to delete the row?')) {
+                        deleteRow: function(row){
+                            if (confirm('Are you sure you want to delete the row?')){
                                 row.delete();
                             }
                         }
@@ -142,26 +175,17 @@ $result = $stmt->fetchAll();
                 }),
                 uid = 10;
 
-            $editor.on('submit', function (e) {
-                if (this.checkValidity && !this.checkValidity())
-                    return;
+            $editor.on('submit', function(e){
+                if (this.checkValidity && !this.checkValidity()) return;
                 e.preventDefault();
                 var row = $modal.data('row'),
                     values = {
-                        id: $editor.find('#id').val(),
-                        address: $editor.find('#address').val(),
-                        city: $editor.find('#city').val(),
-                        zip: $editor.find('#zip').val(),
-                        bedrooms: $editor.find('#bedrooms').val(),
-                        bathrooms: $editor.find('#bathrooms').val(),
-                        sqft: $editor.find('#sqft').val(),
-                        lot: $editor.find('#lot').val(),
-                        price: $editor.find('#price').val(),
-                        dom: $editor.find('#dom').val(),
-
+                        firstName: $editor.find('#firstName').val(),
+                        lastName: $editor.find('#lastName').val(),
+                        jobTitle: $editor.find('#phone').val(),
                     };
 
-                if (row instanceof FooTable.Row) {
+                if (row instanceof FooTable.Row){
                     row.val(values);
                 } else {
                     values.id = uid++;
