@@ -63,13 +63,14 @@ $result = $stmt->fetchAll();
                                             <th>Commission</th>
                                         </tr>
                                         <?php
-    foreach ($result as $agent) {
-        echo '<tr>';
-        echo '<td>' . ucwords($agent['username']) . '</td>';
-        echo '<td>' . ucwords($agent['username']) . '</td>';
-        echo '<td>' . '0.2%' . '</td>';
-        echo '</tr>';
-    }
+                                        foreach ($result as $agent) 
+                                        {
+                                            echo '<tr>';
+                                            echo '<td>' . ucwords($agent['username']) . '</td>';
+                                            echo '<td>' . ucwords($agent['username']) . '</td>';
+                                            echo '<td>' . '0.2%' . '</td>';
+                                            echo '</tr>';
+                                        }
                                         ?>
 
                                     </table>
@@ -157,7 +158,7 @@ $result = $stmt->fetchAll();
                             $modal.modal('show');
                         },                        
                         editRow: function(row){
-                            var values = row.val();
+                            var values = row;
                             $editor.find('#firstName').val(values.firstName);
                             $editor.find('#lastName').val(values.lastName);
                             $editor.find('#phone').val(values.phone);
