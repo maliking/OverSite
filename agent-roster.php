@@ -104,7 +104,7 @@ $result = $stmt->fetchAll();
                         <h4 class="modal-title" id="editor-title">Add A New Agent</h4>
                     </div>
                     <div class="modal-body">
-                        <input type="firstName" id="id" name="id" class="hidden"/>
+                        <input type="number" id="id" name="id" class="hidden"/>
                         <div class="form-group required">
                             <label for="firstName" class="col-sm-3 control-label">First Name</label>
                             <div class="col-sm-9">
@@ -158,7 +158,7 @@ $result = $stmt->fetchAll();
                             $modal.modal('show');
                         },                        
                         editRow: function(row){
-                            var values = row;
+                            var values = row.val();
                             $editor.find('#firstName').val(values.firstName);
                             $editor.find('#lastName').val(values.lastName);
                             $editor.find('#phone').val(values.phone);
