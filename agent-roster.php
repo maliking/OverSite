@@ -66,8 +66,8 @@ $result = $stmt->fetchAll();
                                         foreach ($result as $agent) 
                                         {
                                             echo '<tr>';
-                                            echo '<td data-value="' . ucwords($agent['username']) .'">' . ucwords($agent['username']) . '</td>';
-                                            echo '<td data-value="' . ucwords($agent['username']) .'">' . ucwords($agent['username']) . '</td>';
+                                            echo '<td data-value="' . ucwords($agent['username']) .'"></td>';
+                                            echo '<td data-value="' . ucwords($agent['username']) .'"></td>';
                                             echo '<td>' . '0.2%' . '</td>';
                                             echo '</tr>';
                                         }
