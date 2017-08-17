@@ -56,22 +56,8 @@ $result = $stmt->fetchAll();
 
                             <div class="box">
                                 <div class="box-body no-padding">
-                                    <table id="roster-table" class="table" data-editing-always-show="true">
-                                        <tr>
-                                            <th>Last</th>
-                                            <th>First</th>
-                                            <th>Commission</th>
-                                        </tr>
-                                        <?php
-                                        foreach ($result as $agent) 
-                                        {
-                                            echo '<tr>';
-                                            echo '<td data-value="' . ucwords($agent['username']) .'"></td>';
-                                            echo '<td data-value="' . ucwords($agent['username']) .'"></td>';
-                                            echo '<td>' . '0.2%' . '</td>';
-                                            echo '</tr>';
-                                        }
-                                        ?>
+                                    <table id="roster-table" class="table" data-editing-always-show="true" >
+                                        
 
                                     </table>
                                 </div>
@@ -105,6 +91,8 @@ $result = $stmt->fetchAll();
                     </div>
                     <div class="modal-body">
                         <input type="number" id="id" name="id" class="hidden"/>
+                        <input type="hidden" id="userId" name="id" class="hidden"/>
+
                         <div class="form-group required">
                             <label for="firstName" class="col-sm-3 control-label">First Name</label>
                             <div class="col-sm-9">
@@ -149,6 +137,8 @@ $result = $stmt->fetchAll();
                 $editor = $('#editor'),
                 $editorTitle = $('#editor-title'),
                 ft = FooTable.init('#roster-table', {
+                    "columns": $.ajax('columns.json', {dataType: 'json'}),
+                    "rows": $.ajax('getAgentRosterRows.php', {dataType: 'json'}),
                     editing: {
                         enabled: true,
                         addRow: function(){
@@ -162,15 +152,19 @@ $result = $stmt->fetchAll();
                             $editor.find('#firstName').val(values.firstName);
                             $editor.find('#lastName').val(values.lastName);
                             $editor.find('#phone').val(values.phone);
+                            $editor.find('#userId').val(values.userId);
 
                             $modal.data('row', row);
                             $editorTitle.text('Edit agent #' + values.firstName + " " + values.lastName);
                             $modal.modal('show');
                         },
                         deleteRow: function(row){
-                            if (confirm('Are you sure you want to delete the row?')){
+                            var values = row.val();
+                            if (confirm('Are you sure you want to delete agent ' + values.firstName + " " + values.lastName  + '?')){
+                                $.post( "AgentRosterFunction.php", { userId: values.userId, function: "delete"});
                                 row.delete();
                             }
+
                         }
                     }
                 }),
@@ -181,14 +175,19 @@ $result = $stmt->fetchAll();
                 e.preventDefault();
                 var row = $modal.data('row'),
                     values = {
+                        userId: $editor.find('#userId').val(),
                         firstName: $editor.find('#firstName').val(),
                         lastName: $editor.find('#lastName').val(),
                         jobTitle: $editor.find('#phone').val(),
                     };
-
-                if (row instanceof FooTable.Row){
+                var editValues = JSON.stringify(values);
+                editValues = JSON.parse(editValues);
+                if (row instanceof FooTable.Row)
+                {
+                    $.post( "AgentRosterFunction.php", { userId: editValues.userId, firstName: editValues.firstName, lastName: editValues.lastName, function: "edit"});
                     row.val(values);
                 } else {
+                    $.post( "AgentRosterFunction.php", { firstName: editValues.firstName, lastName: editValues.lastName, function: "add"});
                     values.id = uid++;
                     ft.rows.add(values);
                 }
