@@ -333,9 +333,8 @@
             <?php    
                } //closes foreach 
              ?> 
-
-       
-                                        <tbody>
+             
+                                       <tbody>
                                             <td>Patty Hershang</td>
                                             <td>831-382-4833</td>
                                             <td>phershang@gmail.com</td>
