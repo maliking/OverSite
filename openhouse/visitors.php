@@ -319,7 +319,7 @@
                     </td>
                     <td id='". $result['buyerID'] ."'>" . $dbNote . "</td>
                     <td>";
-                echo ' <button onClick=takeNote(' . $result['houseId'] . ',' . $result['buyerID'] . ',"' . rawurlencode($dbNote) . '")>Add</button>';
+                echo ' <button onClick=takeNote(' . $result['houseId'] . ',' . $result['buyerID'] . ')>Add</button>';
                 echo " <button>Edit</button>
 
                     </td>
@@ -477,9 +477,10 @@
                     });
                 });
 
-                function takeNote(house, buyer, prevNote)
+                function takeNote(house, buyer)
                 {
-                    var noteEntered = prompt("Enter Note:", decodeURIComponent(prevNote));
+                    var prevNote = $( "#" + buyer + "-detail").html();
+                    var noteEntered = prompt("Enter Note:", prevNote );
                     if (noteEntered == null || noteEntered == "") 
                     {
                         
