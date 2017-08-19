@@ -333,7 +333,7 @@
             <?php    
                } //closes foreach 
              ?> 
-             
+
                                        <tbody>
                                             <td>Patty Hershang</td>
                                             <td>831-382-4833</td>
@@ -361,7 +361,6 @@
 
                                         </tbody>
                                         <tbody>
-
 
 
                                             <td>Peter Harris</td>
