@@ -3,7 +3,7 @@
     session_start();
     $dbConn = getConnection();
     if (!isset($_SESSION['userId'])) {
-        header("Location: http://jjp17.org/login.php");
+        header("Location: http://jjp2017.org/login.php");
     }
 
     if (isset ($_GET['deleteForm'])){  //checking whether we have clicked on the "Delete" button
@@ -306,6 +306,7 @@
             $results = $stmt->fetchAll();
 
             foreach($results as $result){
+                $dbNote = $result['note'];
                 echo "<tbody>";
                 echo "<td>" . $result['firstName'] . " " . $result['lastName'] . "</td>";
                 echo "<td>" . $result['phone'] . "</td>";
@@ -316,10 +317,10 @@
                         <button>Text</button>
                         <button>Forward Listing Flyer</button>
                     </td>
-                    <td><button>View</button></td>
-                    <td>
-                        <button>Add</button>
-                        <button>Edit</button>
+                    <td id='". $result['buyerID'] ."'>" . $dbNote . "</td>
+                    <td>";
+                echo ' <button onClick=takeNote(' . $result['houseId'] . ',' . $result['buyerID'] . ')>Add</button>';
+                echo " <button>Edit</button>
 
                     </td>
                     <td>";
@@ -475,6 +476,23 @@
                     });
                 });
 
+                function takeNote(house, buyer)
+                {
+                    var prevNote = $( "#" + buyer + "-detail").html();
+                    var noteEntered = prompt("Enter Note:", prevNote );
+                    if (noteEntered == null || noteEntered == "") 
+                    {
+                        
+                    }
+                    else 
+                    {
+                        $( "#" + buyer + "-detail").html(noteEntered);
+                        // alert(houseId + " " + buyerID);
+                        $.post( "saveNote.php", {houseId:house, buyerID:buyer, note: noteEntered});
+                        
+
+                    }
+                }
             </script>
     </body>
 
