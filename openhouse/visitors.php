@@ -342,7 +342,6 @@
                                             <!--                                       <td style="display: table-cell;">Looking for 3 bed 2 bath min</td>-->
 
 
-
                                             <td>1204 Rogers Ct. Salinas, CA 94934</td>
                                             <td>
                                                 <button>Call</button>
