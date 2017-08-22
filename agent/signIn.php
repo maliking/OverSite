@@ -123,14 +123,7 @@
                 </div>
                 <div class="row">
 
-                    <div class="col-md-offset-2" style="margin-top:10px;">
-                        <label>Do we have your permission to contact you?</label>
-                        <br>
-
-                        <label><input type="radio" name="yes">&nbsp Yes, Please contact me</label>
-                        <br>
-                        <label><input type="radio" name="no">&nbsp No, Please do not contact me</label>
-                    </div>
+                   
 
                 </div>
                 <div class="row">
@@ -186,12 +179,13 @@
                                     hide_min_max: true,
                                     keyboard: true,
                                     min: 0,
-                                    max: 10,
+                                    max: 4,
                                     from: 0,
                                     to: 1,
                                     type: 'double',
                                     step: 1,
                                     prefix: "",
+                                    max_postfix: "+",
                                     grid: true
                                 });
 
@@ -202,12 +196,13 @@
                                     hide_min_max: true,
                                     keyboard: true,
                                     min: 0,
-                                    max: 10,
+                                    max: 2.5,
                                     from: 0,
                                     to: 1,
                                     type: 'double',
-                                    step: 1,
+                                    step: .5,
                                     prefix: "",
+                                    max_postfix: "+",
                                     grid: true
                                 });
 
@@ -218,7 +213,7 @@
                                     hide_min_max: true,
                                     keyboard: true,
                                     min: 100000,
-                                    max: 4000000,
+                                    max: 200000000,
                                     from: 0,
                                     to: 1,
                                     type: 'single',
