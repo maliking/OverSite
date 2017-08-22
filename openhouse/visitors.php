@@ -279,6 +279,9 @@
 
                                                 <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Appraisal">Notes</a></th>
                                                 <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip" data-placement="top" title="Appraisal">Delete</a></th>
+                                                <th data-breakpoints="all">Bedroom(s)</a></th>
+                                                <th data-breakpoints="all">Bathroom(s)</a></th>
+                                                <th data-breakpoints="all">Price</a></th>
                                             </tr>
                                         </thead>
 
@@ -330,6 +333,11 @@
                     <button class='fa fa-trash-o' type="submit" name="deleteForm"/>
                 </form>   
                 </td>
+                <?php
+                    echo "<td>Min: " . $result['bedroomsMin'] . " Max: " . $result['bedroomsMax'] . "</td>";
+                    echo "<td>Min: " . $result['bathroomsMin'] . " Max: " . $result['bathroomsMax'] . "</td>";
+                    echo "<td>Min: " . $result['priceMin'] . " Max: " . $result['priceMax'] . "</td>";
+                ?>
                 </tbody>
             <?php    
                } //closes foreach 
