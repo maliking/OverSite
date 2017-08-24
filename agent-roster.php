@@ -100,18 +100,40 @@ $result = $stmt->fetchAll();
                             </div>
                         </div>
 
-                        <div class="form-group required">
+                        <div class="form-group">
                             <label for="firstName" class="col-sm-3 control-label">First Name</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
+                                <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required readonly>
                             </div>
                         </div>
-                        <div class="form-group required">
+                        <div class="form-group">
                             <label for="lastName" class="col-sm-3 control-label">Last Name</label>
                             <div class="col-sm-9">
-                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required>
+                                <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name" required readonly>
                             </div>
                         </div>
+
+                        <div class="form-group required">
+                            <label for="firstName" class="col-sm-3 control-label">Username</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="username" name="username" placeholder="Username" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="firstName" class="col-sm-3 control-label">Password</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="password" name="password" placeholder="Password" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group required">
+                            <label for="firstName" class="col-sm-3 control-label">Email</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label for="phone" class="col-sm-3 control-label">Phone Number</label>
                             <div class="col-sm-9">
@@ -176,6 +198,10 @@ $result = $stmt->fetchAll();
                             $editor.find('#phone').val(values.phone);
                             $editor.find('#userId').val(values.userId);
 
+                            $editor.find('#license').val(values.license);
+                            $editor.find('#username').val(values.username);
+                            $editor.find('#email').val(values.email);
+
                             $modal.data('row', row);
                             $editorTitle.text('Edit agent #' + values.firstName + " " + values.lastName);
                             $modal.modal('show');
@@ -197,19 +223,24 @@ $result = $stmt->fetchAll();
                 e.preventDefault();
                 var row = $modal.data('row'),
                     values = {
+                        license: $editor.find('#license').val(),
                         userId: $editor.find('#userId').val(),
                         firstName: $editor.find('#firstName').val(),
                         lastName: $editor.find('#lastName').val(),
-                        jobTitle: $editor.find('#phone').val(),
+                        username: $editor.find('#username').val(),
+                        password: $editor.find('#password').val(),
+                        email: $editor.find('#email').val(),
+                        phone: $editor.find('#phone').val(),
+
                     };
                 var editValues = JSON.stringify(values);
                 editValues = JSON.parse(editValues);
                 if (row instanceof FooTable.Row)
                 {
-                    $.post( "AgentRosterFunction.php", { userId: editValues.userId, firstName: editValues.firstName, lastName: editValues.lastName, function: "edit"});
+                    $.post( "AgentRosterFunction.php", { userId: editValues.userId, license: editValues.license, firstName: editValues.firstName, lastName: editValues.lastName, password: editValues.password, email: editValues.email, phone: editValues.phone, function: "edit"});
                     row.val(values);
                 } else {
-                    $.post( "AgentRosterFunction.php", { firstName: editValues.firstName, lastName: editValues.lastName, function: "add"});
+                    $.post( "AgentRosterFunction.php", { userId: editValues.userId, license: editValues.license, firstName: editValues.firstName, lastName: editValues.lastName, username: editValues.username, password: editValues.password, email: editValues.email, phone: editValues.phone, function: "add"});
                     values.id = uid++;
                     ft.rows.add(values);
                 }
