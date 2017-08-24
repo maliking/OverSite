@@ -193,7 +193,7 @@ $result = $stmt->fetchAll();
                         },                        
                         editRow: function(row){
                             var values = row.val();
-                            $editor.find('#firstName').val(values.license);
+                            $editor.find('#firstName').val(values.firstName);
                             $editor.find('#lastName').val(values.lastName);
                             $editor.find('#phone').val(values.phone);
                             $editor.find('#userId').val(values.userId);
