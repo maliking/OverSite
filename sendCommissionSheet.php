@@ -235,23 +235,23 @@ $pdf->Output();
     "x-docusign-authentication: { \"Username\": \"" . $username . "\",\"Password\":\"" . $password ."\",\"IntegratorKey\":\"" . $intKey . "\" }"
   	),
 	));
-	// $response = curl_exec($curl);
-	// $err = curl_error($curl);
-	// curl_close($curl);
-	// 	if ($err) {
-	//   echo "cURL Error #:" . $err;
-	// } else {
-	// 	echo $response;
+	$response = curl_exec($curl);
+	$err = curl_error($curl);
+	curl_close($curl);
+		if ($err) {
+	  echo "cURL Error #:" . $err;
+	} else {
+		echo $response;
 	  	
-	// }
+	}
 	
-	// $envId = json_decode($response, true);
-	// $namedParameters[":envelopeId"] = $envId['envelopeId'];
-	// $stmt = $dbConn -> prepare($sql);
-	// $stmt->execute($namedParameters); 
-	// print_r($envId);
+	$envId = json_decode($response, true);
+	$namedParameters[":envelopeId"] = $envId['envelopeId'];
+	$stmt = $dbConn -> prepare($sql);
+	$stmt->execute($namedParameters); 
+	print_r($envId);
 	
-	//  header("Location: index.php");
+	 header("Location: index.php");
 
 ?>
 
