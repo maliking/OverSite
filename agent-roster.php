@@ -237,7 +237,7 @@ $result = $stmt->fetchAll();
                 editValues = JSON.parse(editValues);
                 if (row instanceof FooTable.Row)
                 {
-                    $.post( "AgentRosterFunction.php", { userId: editValues.userId, license: editValues.license, firstName: editValues.firstName, lastName: editValues.lastName, password: editValues.password, email: editValues.email, phone: editValues.phone, function: "edit"});
+                    $.post( "AgentRosterFunction.php", { userId: editValues.userId, license: editValues.license, firstName: editValues.firstName, lastName: editValues.lastName, username: editValues.username, email: editValues.email, phone: editValues.phone, function: "edit"});
                     row.val(values);
                 } else {
                     $.post( "AgentRosterFunction.php", { userId: editValues.userId, license: editValues.license, firstName: editValues.firstName, lastName: editValues.lastName, username: editValues.username, password: editValues.password, email: editValues.email, phone: editValues.phone, function: "add"});
