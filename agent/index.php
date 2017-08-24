@@ -36,6 +36,13 @@ if (!isset($_SESSION['userId'])) {
             <!-- PAGE-SPECIFIC CSS -->
             <link rel="stylesheet" href="../dist/css/vendor/fullcalendar.min.css">
 
+
+            <!--FULL CALENDAR links-->
+         
+        <?php include "./fullcalendar/links.php" ?>
+        
+
+
             <!-- NOTIFICATION Links-->
             <link href="../plugins/pnotify/dist/pnotify.css" rel="stylesheet">
             <link href="../plugins/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
@@ -200,7 +207,8 @@ if (!isset($_SESSION['userId'])) {
         <script type="text/javascript" src="../plugins/pnotify/dist/pnotify.buttons.js"></script>
         <script type="text/javascript" src="../plugins/pnotify/dist/pnotify.nonblock.js"></script>
 
-
+  <!-- Custom Theme Scripts -->
+        <script src="../build/js/custom.min.js"></script>
 
         <script>
             jQuery(function($) {
@@ -237,17 +245,94 @@ if (!isset($_SESSION['userId'])) {
                         color: 'yellow', // an option!
                         textColor: 'black' // an option!
                     },
+                    //                    header: {
+                    //                        left: 'prev, next today',
+                    //                        right: 'month, agendaWeek, agendaDay'
+                    //                    }
                     editable: true,
                     defaultView: 'agenda',
                     duration: {
                         days: 7
-                    }
+                    },
+                    selectable: true,
+                    selectHelper: true,
+                    eventLimit: true,
                     // can also specify:
                     // - visibleRange
                     // - dayCount
+                    //-------------new pasted shit below:
+                    navLinks: true, // can click day/week names to navigate views
+                    eventLimit: true, // allow "more" link when too many events
+                   
+                    select: function(start, end) {
+                        var title = prompt('Event Title:');
+                        var eventData;
+                        if (title) {
+                            eventData = {
+                                title: title,
+                                start: start,
+                                end: end
+                            };
+                            $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+                        }
+                        $('#calendar').fullCalendar('unselect');
+                    },
+
+              
+//-----------closing brackets for actual function
                 });
+
             });
 
+            var initialize_calendar;
+            initialize_calendar = function() {
+                $('.calendar').each(function() {
+                    var calendar = $(this);
+                    calendar.fullCalendar({
+                        header: {
+                            left: 'prev,next today',
+                            center: 'title',
+                            right: 'month,agendaWeek,agendaDay'
+                        },
+                        selectable: true,
+                        selectHelper: true,
+                        editable: true,
+                        eventLimit: true,
+                        events: '/events.json',
+
+                        select: function(start, end) {
+                            $.getScript('/events/new', function() {});
+
+                            calendar.fullCalendar('unselect');
+                        },
+
+                        eventDrop: function(event, delta, revertFunc) {
+                            event_data = {
+                                event: {
+                                    id: event.id,
+                                    start: event.start.format(),
+                                    end: event.end.format()
+                                }
+                            };
+                            $.ajax({
+                                url: event.update_url,
+                                data: event_data,
+                                type: 'PATCH'
+                            });
+                        },
+
+                        eventClick: function(event, jsEvent, view) {
+                            $.getScript(event.edit_url, function() {});
+                        }
+                    });
+                })
+            };
+            $(document).on('turbolinks:load', initialize_calendar);
+
+
+
+
+            //    ---------  Notification code-------------
             $(function() {
                 new PNotify({
                     title: 'Contact Client',
@@ -262,7 +347,7 @@ if (!isset($_SESSION['userId'])) {
                     styling: 'fontawesome'
                 });
             });
-             $(function() {
+            $(function() {
                 new PNotify({
                     title: 'Contact Client',
                     text: 'Must send email to John by 5:15pm.',
