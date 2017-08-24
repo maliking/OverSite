@@ -175,7 +175,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     </div>
                                                                     <div class="form-group col-xs-3">
                                                                         <label class="control-label" for="pwd">Client Name(s)</label>
-                                                                        <input type="text" class="form-control" id="client" placeholder="">
+                                                                        <input type="text" class="form-control" id="client" placeholder="" name="clients">
                                                                     </div>
                                                                     <div class="clearfix"></div>
                                                                 </div>
