@@ -94,6 +94,13 @@ $result = $stmt->fetchAll();
                         <input type="hidden" id="userId" name="id" class="hidden"/>
 
                         <div class="form-group required">
+                            <label for="license" class="col-sm-3 control-label">License</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="license" name="license" placeholder="" onchange="getLicense()" required>
+                            </div>
+                        </div>
+
+                        <div class="form-group required">
                             <label for="firstName" class="col-sm-3 control-label">First Name</label>
                             <div class="col-sm-9">
                                 <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name" required>
@@ -111,6 +118,21 @@ $result = $stmt->fetchAll();
                                 <input type="number" class="form-control" id="phone" name="phone" placeholder="XXX-XXX-XXXX">
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <label for="phone" class="col-sm-3 control-label">Issued License Date</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="issuedDate" name="issuedDate" placeholder="" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone" class="col-sm-3 control-label">License Expiration Date</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="expirationDate" name="expirationDate" placeholder="" readonly>
+                            </div>
+                        </div>
+
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Save changes</button>
@@ -193,6 +215,48 @@ $result = $stmt->fetchAll();
                 }
                 $modal.modal('hide');
             });
+
+            function getLicense()
+            {
+                lic = document.getElementById("license").value;
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () 
+                {
+                   if (this.readyState == 4 && this.status == 200) 
+                   {
+                    var response = JSON.parse(xhr.responseText);
+                    xhr.abort();
+                    //console.log(response.name);
+                    // var firstN = response.name.split(" ");
+                    // var cleanlastN = firstN[0].split(",");
+                    
+                    // document.getElementById("firstName").value = firstN[1];
+                    // document.getElementById("lastName").value = cleanlastN[0];
+                    var dateIssued = response.lic;
+                    var dateExpire = response.expirationDate;
+                    var dateExpireSplit = dateExpire.split("/");
+                    var dateExpireFormat = "20"+dateExpireSplit[2]+"-"+dateExpireSplit[0]+"-"+dateExpireSplit[1];
+                    var today = new Date();
+                    today.setHours(0,0,0,0);
+                    if( Date.parse(dateExpireFormat) <= today)
+                    {
+                        alert("Invalid license");
+                    }
+                    else
+                    {
+                        alert("Valid license");
+                    }
+                    var firstName = response.name.split(",");
+                    document.getElementById("firstName").value = firstName[1];
+                    document.getElementById("lastName").value = firstName[0];
+                    document.getElementById("issuedDate").value = dateIssued;
+                    document.getElementById("expirationDate").value = dateExpire;
+                    }
+         
+                 }
+                xhr.open("GET", "scriptToGetAgentInfo.php?license=" + lic, true);
+                xhr.send();
+            }
         </script>
     </body>
 
