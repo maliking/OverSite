@@ -1,11 +1,11 @@
 <?php
-//    require("databaseConnection.php");  
-//    session_start();
-//    $dbConn = getConnection();
-//    if(!isset($_SESSION['userId'])) {
-//      header("Location: index.php?error=wrong username or password");
-//    } 
-    //$houseId = $_GET['houseId'];
+    require("databaseConnection.php");  
+    session_start();
+    $dbConn = getConnection();
+    if(!isset($_SESSION['userId'])) {
+      header("Location: index.php?error=wrong username or password");
+    } 
+    $houseId = $_GET['houseId'];
  ?>
 
     <!DOCTYPE html>
@@ -54,11 +54,9 @@
         <?php include "./templates-agent/default-css.php" ?>
         <!-- END TEMPLATE default-css.php INCLUDE -->
 
-        <!--Slider plugins-->
-        <link href="../plugins/ionslider/ion.rangeSlider.css" rel="stylesheet">
-        <link href="../plugins/ionslider/ion.rangeSlider.skinFlat.css" rel="stylesheet">
-        <!--End Slider plugins-->
 
+        <!-- bootstrap slider -->
+        <link rel="stylesheet" href="../plugins/bootstrap-slider/slider.css">
 
     </head>
 
@@ -123,34 +121,42 @@
                 </div>
                 <div class="row">
 
-                   
+
 
                 </div>
                 <div class="row">
 
 
 
-                    <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2">
+                    <div data-slider-id="blue" class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2">
                         <p>Bedroom Range</p>
-                        <input type="text" id="bedRange" value="" name="range" />
+                        <!--                        <input type="text" id="bedRange" value="" name="range" />-->
+                        <input class="slider" type="text" value="" class="slider form-control" data-slider-min="0" data-slider-max="5" data-slider-step="1" data-slider-value="[0, 5]" data-slider-orientation="horizontal" data-slider-selection="before" data-slider-tooltip="show" data-slider-id="blue">
                     </div>
-                    <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2">
+                    <div data-slider-id="blue" class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2">
                         <p>Bathroom Range</p>
-                        <input type="text" id="bathRange" value="" name="range" />
+                        <!--                        <input type="text" id="bathRange" value="" name="range" />-->
+                        <input class="slider" type="text" value="" class="slider form-control" data-slider-min="0" data-slider-max="3.5" data-slider-step=".5" data-slider-value="[0, 3.5]" data-slider-orientation="horizontal" data-slider-selection="before" data-slider-tooltip="show" data-slider-id="blue">
                     </div>
                     <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2">
                         <p>Price Range</p>
-                        <input type="text" id="priceRange" value="" name="range" />
+                        <!--                        <input type="text" id="priceRange" value="" name="range" />-->
+                        <input class="slider" type="text" value="" class="slider form-control" data-slider-min="0" data-slider-max="2000000" data-slider-step="5000" data-slider-value="[0,2000000]" data-slider-orientation="horizontal" data-slider-selection="before" data-slider-tooltip="show" data-slider-id="blue">
+
                     </div>
+
 
                 </div>
 
                 <div class="row">
+                    <br />
+                     <br />
                     <center>
-
-                        <button type="submit" class="btn btn-success">Submit</button>
-                        <!--                  
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </center>
+
+
+
 
 
                 </div>
@@ -164,67 +170,21 @@
 
 
 
-
-        <!-- Ion.RangeSlider -->
-                        <script src="../plugins/ionslider/ion.rangeSlider.min.js"></script>
-
-
-                        <script>
-                            $("#phone").change(checkPhone);
+        <!-- Bootstrap slider -->
+        <script src="../plugins/bootstrap-slider/bootstrap-slider.js"></script>
 
 
-                            $(function() {
+        <script>
+            $("#phone").change(checkPhone);
 
-                                $("#bedRange").ionRangeSlider({
-                                    hide_min_max: true,
-                                    keyboard: true,
-                                    min: 0,
-                                    max: 4,
-                                    from: 0,
-                                    to: 1,
-                                    type: 'double',
-                                    step: 1,
-                                    prefix: "",
-                                    max_postfix: "+",
-                                    grid: true
-                                });
+            $(function() {
+                /* BOOTSTRAP SLIDER */
+                $('.slider').slider();
+            })
 
-                            });
-                            $(function() {
 
-                                $("#bathRange").ionRangeSlider({
-                                    hide_min_max: true,
-                                    keyboard: true,
-                                    min: 0,
-                                    max: 2.5,
-                                    from: 0,
-                                    to: 1,
-                                    type: 'double',
-                                    step: .5,
-                                    prefix: "",
-                                    max_postfix: "+",
-                                    grid: true
-                                });
 
-                            });
-                            $(function() {
-
-                                $("#priceRange").ionRangeSlider({
-                                    hide_min_max: true,
-                                    keyboard: true,
-                                    min: 100000,
-                                    max: 200000000,
-                                    from: 0,
-                                    to: 1,
-                                    type: 'single',
-                                    step: 5000,
-                                    prefix: "$",
-                                    grid: true
-                                });
-
-                            });
-
-                        </script>
+        </script>
 
 
 
