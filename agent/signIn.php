@@ -1,5 +1,5 @@
 <?php
-    require("databaseConnection.php");  
+    require("../databaseConnection.php");  
     session_start();
     $dbConn = getConnection();
     if(!isset($_SESSION['userId'])) {
@@ -56,7 +56,7 @@
 
 
         <!-- bootstrap slider -->
-        <link rel="stylesheet" href="../plugins/bootstrap-slider/slider.css">
+        <!--        <link rel="stylesheet" href="../plugins/bootstrap-slider/slider.css">-->
 
     </head>
 
@@ -74,7 +74,7 @@
 
 
 
-                <div class="x_title">
+                <div class="x_title" style="margin-top: 20px;">
                     <center>
                         <h3><label>Welcome! Please sign in:</label></h3>
                     </center>
@@ -82,7 +82,7 @@
 
                 </div>
 
-                <div class="row">
+                <div class="row" style="margin-top: 30px;">
 
                     <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-2">
                         <input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="First Name">
@@ -108,7 +108,7 @@
                 </div>
                 <div class="row">
 
-                    <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2">
+                    <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2" style="margin-top: 40px;">
                         <label>How soon are you looking to purchase a home?</label>
                         <select id="" class="form-control" required>
                             <option value="">1-3 months</option>
@@ -119,38 +119,62 @@
                     </div>
 
                 </div>
-                <div class="row">
-
-
-
+             
                 </div>
-                <div class="row">
+                <div class="row" style="margin-top: 20px;">
 
-
-
-                    <div data-slider-id="blue" class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2">
-                        <p>Bedroom Range</p>
-                        <!--                        <input type="text" id="bedRange" value="" name="range" />-->
-                        <input class="slider" type="text" value="" class="slider form-control" data-slider-min="0" data-slider-max="5" data-slider-step="1" data-slider-value="[0, 5]" data-slider-orientation="horizontal" data-slider-selection="before" data-slider-tooltip="show" data-slider-id="blue">
+                    <div class="col-md-4 col-sm-4 col-xs-12 col-md-offset-2">
+                        <label>Bedrooms</label>
+                        <select id="" class="form-control" required>
+                            <option value="">1</option>
+                            <option value="">2</option>
+                            <option value="">3</option>
+                            <option value="">4</option>
+                            <option value="">5</option>
+                           
+                          </select>
                     </div>
-                    <div data-slider-id="blue" class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2">
-                        <p>Bathroom Range</p>
-                        <!--                        <input type="text" id="bathRange" value="" name="range" />-->
-                        <input class="slider" type="text" value="" class="slider form-control" data-slider-min="0" data-slider-max="3.5" data-slider-step=".5" data-slider-value="[0, 3.5]" data-slider-orientation="horizontal" data-slider-selection="before" data-slider-tooltip="show" data-slider-id="blue">
+                    <div class="col-md-4 col-sm-4 col-xs-12 col-md-offset-65">
+                        <label>Bathrooms</label>
+                        <select id="" class="form-control" required>
+                            <option value="">1</option>
+                            <option value="">1.5</option>
+                            <option value="">2</option>
+                            <option value="">2.5</option>
+                            <option value="">3</option>
+                            <option value="">3.5</option>
+                            <option value="">4</option>
+                            <option value="">4.5</option>
+                          </select>
                     </div>
+                </div>
+                <div class="row" style="margin-top: 20px;">
+
+                    <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-2">
+                        <input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="Minimum Price">
+                        <span class="fa fa-dollar form-control-feedback left" aria-hidden="true"></span>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                        <input type="text" class="form-control" id="inputSuccess3" placeholder="Maximum Price">
+                        <span class="fa  fa-dollar form-control-feedback right" aria-hidden="true"></span>
+                    </div>
+                    <!--
                     <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2">
                         <p>Price Range</p>
-                        <!--                        <input type="text" id="priceRange" value="" name="range" />-->
-                        <input class="slider" type="text" value="" class="slider form-control" data-slider-min="0" data-slider-max="2000000" data-slider-step="5000" data-slider-value="[0,2000000]" data-slider-orientation="horizontal" data-slider-selection="before" data-slider-tooltip="show" data-slider-id="blue">
+                       
+                        <input class="slider" type="text" value="" class="slider form-control" data-slider-min="0" data-slider-max="200000000" data-slider-step="50000" data-slider-value="[1000000,200000000]" data-slider-orientation="horizontal" data-slider-selection="before" data-slider-tooltip="show" data-slider-id="blue">
+
 
                     </div>
+-->
 
 
                 </div>
 
                 <div class="row">
                     <br />
-                     <br />
+                    <br />
                     <center>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </center>
@@ -176,13 +200,11 @@
 
         <script>
             $("#phone").change(checkPhone);
-
-            $(function() {
-                /* BOOTSTRAP SLIDER */
-                $('.slider').slider();
-            })
-
-
+            //
+            //            $(function() {
+            //                /* BOOTSTRAP SLIDER */
+            //                $('.slider').slider();
+            //            })
 
         </script>
 
