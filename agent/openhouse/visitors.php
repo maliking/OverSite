@@ -1,5 +1,5 @@
 <?php
-    require("../databaseConnection.php");  
+    require("../../databaseConnection.php");  
     session_start();
     $dbConn = getConnection();
     if (!isset($_SESSION['userId'])) {
