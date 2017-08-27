@@ -28,8 +28,8 @@ $stmtHouse->execute();
 $houseResults = $stmtHouse->fetch();
 
 $sql ="INSERT INTO commInfo
-        (houseId, license, firstName, lastName, date, settlementDate, checkNum, address, city, state, zip, TYGross, FYGross, InitialGross, brokerFee, finalComm, misc, percentage, envelopeId)
-        VALUES (:houseId, :license, :firstName, :lastName, :date, :settlementDate, :checkNum, :address, :city, :state, :zip, :TYGross, :FYGross, :InitialGross, :brokerFee, :finalComm, :misc, :percentage, :envelopeId)";
+        (houseId, license, firstName, lastName, date, settlementDate, checkNum, address, city, state, zip, TYGross, FYGross, InitialGross, brokerFee, finalComm, misc, percentage, envelopeId, finalHousePrice)
+        VALUES (:houseId, :license, :firstName, :lastName, :date, :settlementDate, :checkNum, :address, :city, :state, :zip, :TYGross, :FYGross, :InitialGross, :brokerFee, :finalComm, :misc, :percentage, :envelopeId, :finalHousePrice)";
            
 $namedParameters = array();
 $namedParameters[":houseId"] = $houseId;
@@ -52,6 +52,7 @@ $namedParameters[":misc"] =  $_POST['miscell'];
 // $value = preg_replace('/[\%,]/', '', $_POST['percentage']);
 $value = floatval($_POST['percentage']);
 $namedParameters[":percentage"] = $value;
+$namedParameters[":finalHousePrice"] = $_POST['finalHousePrice'];
 
 // $stmt = $dbConn -> prepare($sql);
 // $stmt->execute($namedParameters); 
