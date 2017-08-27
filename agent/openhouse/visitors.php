@@ -1,10 +1,20 @@
 <?php
-//session_start();
-//
-//if (!isset($_SESSION['userId'])) {
-//    header("Location: http://jjp17.org/login.php");
-//}
+    require("../databaseConnection.php");  
+    session_start();
+    $dbConn = getConnection();
+    if (!isset($_SESSION['userId'])) {
+        header("Location: http://jjp2017.org/login.php");
+    }
+
+    if (isset ($_GET['deleteForm'])){  //checking whether we have clicked on the "Delete" button
+        $sql = "DELETE FROM BuyerInfo 
+                 WHERE buyerID = '".$_GET['buyerID']."'";
+        $stmt = $dbConn -> prepare($sql);
+        $stmt->execute();
+
+    }
 ?>
+
 
 
 
