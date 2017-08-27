@@ -1,4 +1,3 @@
-
 <?php
 require("../../databaseConnection.php");  
 session_start();
@@ -7,8 +6,8 @@ $dbConn = getConnection();
 
 
 
-<!DOCTYPE html>
-<html>
+    <!DOCTYPE html>
+    <html>
 
     <head>
         <meta charset="utf-8">
@@ -25,6 +24,147 @@ $dbConn = getConnection();
     </head>
 
     <body class="hold-transition skin-black sidebar-mini">
+        <style>
+       
+            /*            For the overlay*/
+            /*            Source for the css are links below. */
+            /*<!--    <link href="../build/css/custom.min.css" rel="stylesheet">-->*/
+            /*<!--    <link href="../build/css/custom.css" rel="stylesheet">-->*/
+            
+            .thumbnail .image {
+                height: 120px;
+                overflow: hidden
+            }
+            
+            .caption {
+                padding: 9px 5px;
+                background: #F7F7F7
+            }
+            
+            .caption p {
+                margin-bottom: 5px
+            }
+            
+            .thumbnail {
+                height: 190px;
+                overflow: hidden
+            }
+            
+            .view {
+                overflow: hidden;
+                position: relative;
+                text-align: center;
+                box-shadow: 1px 1px 2px #e6e6e6;
+                cursor: default
+            }
+            
+            .view .mask,
+            .view .content {
+                position: absolute;
+                width: 100%;
+                overflow: hidden;
+                top: 0;
+                left: 0
+            }
+            
+            .view img {
+                display: block;
+                position: relative
+            }
+            
+            .view .tools {
+                text-transform: uppercase;
+                color: #fff;
+                text-align: center;
+                position: relative;
+                font-size: 17px;
+                padding: 3px;
+                background: rgba(0, 0, 0, 0.35);
+                margin: 43px 0 0 0
+            }
+            
+            .mask.no-caption .tools {
+                margin: 90px 0 0 0
+            }
+            
+            .view .tools a {
+                display: inline-block;
+                color: #FFF;
+                font-size: 18px;
+                font-weight: 400;
+                padding: 0 4px
+            }
+            
+            .view p {
+                font-family: Georgia, serif;
+                font-style: italic;
+                font-size: 12px;
+                position: relative;
+                color: #fff;
+                padding: 10px 20px 20px;
+                text-align: center
+            }
+            
+            .view a.info {
+                display: inline-block;
+                text-decoration: none;
+                padding: 7px 14px;
+                background: #000;
+                color: #fff;
+                text-transform: uppercase;
+                box-shadow: 0 0 1px #000
+            }
+            
+            .view-first img {
+                transition: all 0.2s linear
+            }
+            
+            .view-first .mask {
+                opacity: 0;
+                background-color: rgba(0, 0, 0, 0.5);
+                transition: all 0.4s ease-in-out
+            }
+            
+            .view-first .tools {
+                transform: translateY(-100px);
+                opacity: 0;
+                transition: all 0.2s ease-in-out
+            }
+            
+            .view-first p {
+                transform: translateY(100px);
+                opacity: 0;
+                transition: all 0.2s linear
+            }
+            
+            .view-first:hover img {
+                transform: scale(1.1)
+            }
+            
+            .view-first:hover .mask {
+                opacity: 1
+            }
+            
+            .view-first:hover .tools,
+            .view-first:hover p {
+                opacity: 1;
+                transform: translateY(0px)
+            }
+            
+            .view-first:hover p {
+                transition-delay: 0.1s
+            }
+            
+            .form-group.has-feedback span {
+                display: block !important;
+            }
+            
+            .form-group .btn {
+                margin-bottom: -6px;
+            }
+            /*End css for overlay*/
+
+        </style>
         <!-- Site Wrapper -->
         <div class="wrapper">
             <!-- BEGIN TEMPLATE header.php INCLUDE -->
@@ -40,16 +180,16 @@ $dbConn = getConnection();
                 <!-- Content Header (Page header) -->
                 <section class="content">
                     <div class="row">
-                        <div class="col-xs-6">
-                            <div class="box">
-                                <div class="box-header">
-                                    <h3>Open House Listings</h3>
-                                </div>
-                                <div class="box-body">
 
-                                    <div class="row">
-                                        <table class="table">
-                                            <?php 
+                        <div class="box">
+                            <div class="box-header">
+                                <h3>Open House Listings</h3>
+                            </div>
+                            <div class="box-body">
+
+                                <div class="row">
+                                    <table class="table">
+                                        <?php 
     $dbConn = getConnection();
         $sql = "SELECT status, houseId, date(dateTimes) as dateTimes, address, city, state, zip, bedrooms, bathrooms, price
                         FROM HouseInfo
@@ -85,18 +225,75 @@ $dbConn = getConnection();
             echo "</tr>";
         }
                                             ?>
-                                        </table>
+                                    </table>
+                      
+                                    <!-- ------html example of what i want it to look like-->
+                                    <div class="col-md-4 col-sm-4 col-xs-6">
+                                        <div class="thumbnail" >
+                                            <div class="image view view-first">
+                                                <img style="width: 100%; height: 100%;  display: block;" src="listingImg/exim3.png" alt="image" />
+                                                <div class="mask">
+                                                    <p>Settings</p>
+                                                    <div class="tools tools-bottom">
+                                                        <a href="../openhouse/create-flyer.php" data-toggle="tooltip" title="Create Flyer"><i class="fa fa-paint-brush"></i></a>
+                                                        <a href="../openhouse/listing-info.php" data-toggle="tooltip" title="Listing Information"><i class="fa fa-info-circle"></i></a>
+                                                        <a href="../signIn.php" data-toggle="tooltip" title="Sign In Sheet"><i class="fa fa-edit"></i></a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="caption">
+                                                <p>321 Tynan WAY Salinas California, 93906</p>
 
 
-
+                                            </div>
+                                        </div>
                                     </div>
-
+<!-------MORE MOCK EXAMPLES:-->
+                                    <div class="col-md-4 col-sm-2 col-xs-6">
+                         <div class="thumbnail">
+                            <div class="image view view-first">
+                                <img style="width: 50%;  display: block;" src="listingImg/mockHouse.jpg" alt="image" />
+                                <div class="mask">
+                                    <p>Settings</p>
+                                    <div class="tools tools-bottom">
+                                        <a href="../openhouse/create-flyer.php" data-toggle="tooltip" title="Create Flyer"><i class="fa fa-paint-brush"></i></a>
+                                        <a href="../openhouse/listing-info.php" data-toggle="tooltip" title="Listing Information"><i class="fa fa-info-circle"></i></a>
+                                        <a href="../signIn.php" data-toggle="tooltip" title="Sign In Sheet"><i class="fa fa-edit"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="caption">
+                                <p>Address here</p>
+                            </div>
+                        </div>
+                    </div><div class="col-md-4 col-sm-2 col-xs-6">
+                         <div class="thumbnail">
+                            <div class="image view view-first">
+                                <img style="width: 50%;  display: block;" src="listingImg/mockHouse.jpg" alt="image" />
+                                <div class="mask">
+                                    <p>Settings</p>
+                                    <div class="tools tools-bottom">
+                                        <a href="../openhouse/create-flyer.php" data-toggle="tooltip" title="Create Flyer"><i class="fa fa-paint-brush"></i></a>
+                                        <a href="../openhouse/listing-info.php" data-toggle="tooltip" title="Listing Information"><i class="fa fa-info-circle"></i></a>
+                                        <a href="../signIn.php" data-toggle="tooltip" title="Sign In Sheet"><i class="fa fa-edit"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="caption">
+                                <p>Address here</p>
+                            </div>
+                        </div>
+                    </div>
+                                    <!------END example-->
 
                                 </div>
-                                <!-- /.box-body -->
+
+
                             </div>
-                            <!-- /.box -->
+                            <!-- /.box-body -->
                         </div>
+                        <!-- /.box -->
+
                         <!-- /.col -->
                     </div>
                     <!-- /.row -->
@@ -115,13 +312,21 @@ $dbConn = getConnection();
         <?php include "./templates-oh/default-js.php" ?>
         <!-- END TEMPLATE default-js.php INCLUDE -->
 
+        <!-- Custom Theme Scripts -->
+        <!--        <script src="../build/js/custom.min.js"></script>-->
+
         <script type="text/javascript" src="../../dist/js/footable.min.js"></script>
         <script>
-            jQuery(function($){
+            jQuery(function($) {
                 $('.table').footable();
             });
+
+            $(document).ready(function() {
+                $('[data-toggle="tooltip"]').tooltip();
+            });
+
         </script>
 
     </body>
 
-</html>
+    </html>
