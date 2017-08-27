@@ -100,20 +100,23 @@
                                     <div id="step-1">
                                         <h2 class="StepTitle">Step 1: Select flyer images</h2>
                                         <div class="row">
-                                            <label>
-                              <input type="checkbox" class="js-switch" /> <div class="item col-md-4 col-sm-4 col-xs-6">
+                                            <label class="item col-md-4 col-sm-4 col-xs-6">
+                              <input type="checkbox" class="js-switch" />
+<!--                                                <div class="item col-md-4 col-sm-4 col-xs-6">-->
                                                 <img src="listingImg/exim1.png" alt="img" style="width:100%;">
-                                            </div>
+<!--                                            </div>-->
                             </label>
-                                            <label>
-                              <input type="checkbox" class="js-switch" /> <div class="item col-md-4 col-sm-4 col-xs-6">
+                                            <label class="item col-md-4 col-sm-4 col-xs-6">
+                              <input type="checkbox" class="js-switch" /> 
+<!--                                                <div class="item col-md-4 col-sm-4 col-xs-6">-->
                                                 <img src="listingImg/exim2.png" alt="img" style="width:100%;">
-                                            </div>
+<!--                                            </div>-->
                             </label>
-                                            <label>
-                              <input type="checkbox" class="js-switch" /> <div class="item col-md-4 col-sm-4 col-xs-6">
+                                            <label class="item col-md-4 col-sm-4 col-xs-6">
+                              <input type="checkbox" class="js-switch" /> 
+<!--                                                <div class="item col-md-4 col-sm-4 col-xs-6">-->
                                                 <img src="listingImg/exim3.png" alt="img" style="width:100%;">
-                                            </div>
+<!--                                            </div>-->
                             </label>
                                         </div>
 
