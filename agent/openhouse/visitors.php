@@ -48,6 +48,41 @@
                 <!-- Content Header (Page header) -->
                 <section>
 
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" data-backdrop="static" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Name</h4>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="modal-body">
+
+                                    <!-- textarea -->
+                                    <div class="form-group">
+                                        <label>Additional Notes</label>
+                                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- End Modal -->
+
+
+
+
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="box">
@@ -151,7 +186,7 @@
                                                     </td>
                                                     <td><button>View</button></td>
                                                     <td>
-                                                        <button>Add</button>
+                                                        <button type="button" data-toggle="modal" data-target="#myModal">Add</button>
                                                         <button>Edit</button>
 
                                                     </td>
@@ -179,7 +214,7 @@
                                                     </td>
                                                     <td> <button>View</button></td>
                                                     <td>
-                                                        <button>Add</button>
+                                                        <button type="button" data-toggle="modal" data-target="#myModal">Add</button>
                                                         <button>Edit</button>
 
                                                     </td>
@@ -208,7 +243,7 @@
                                                     </td>
                                                     <td><button>View</button></td>
                                                     <td>
-                                                        <button>Add</button>
+                                                        <button type="button" data-toggle="modal" data-target="#myModal">Add</button>
                                                         <button>Edit</button>
 
                                                     </td>
@@ -217,7 +252,7 @@
 
 
 
-                                                </tbody> -->
+                                                </tbody>
                                     </table>
                                 </div>
                                 <!-- /.box-body -->
@@ -238,6 +273,16 @@
         <?php include "./templates-oh/default-js.php" ?>
         <!-- END TEMPLATE default-js.php INCLUDE -->
 
+        <!--Links from old visitors page-->
+        <!-- Slimscroll -->
+        <script src="../../plugins/slimScroll/jquery.slimscroll.min.js"></script>
+        <!-- FastClick -->
+        <script src="../../plugins/fastclick/fastclick.js"></script>
+        <!-- AdminLTE App -->
+        <script src="../../dist/js/adminlte.min.js"></script>
+        <!-- Footable -->
+        <script type="text/javascript" src="../../plugins/footable/js/footable.min.js"></script>
+        <!--end links from old visitors page-->
         <script>
             $(document).ready(function() {
                 $('[data-toggle="popover"]').popover({
