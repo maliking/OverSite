@@ -79,6 +79,61 @@
 
                     </div>
                     <!-- End Modal -->
+                    <!-- Modal For Viewing notes -->
+                    <div class="modal fade" id="viewNotes" data-backdrop="static" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Name</h4>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="modal-body">
+
+
+                                    <blockquote>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                                        </p>
+                                        <small>
+                                            May 19, 2017
+                                        </small>
+                                    </blockquote>
+                                    <blockquote>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                                        </p>
+                                        <small>
+                                            July 8, 2017
+                                        </small>
+                                    </blockquote> <blockquote>
+                                        <p>
+                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
+                                        </p>
+                                        <small>
+                                            August 28, 2017
+                                        </small>
+                                    </blockquote>
+
+
+
+
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- End Modal -->
+
 
 
 
@@ -184,7 +239,7 @@
                                                         <button>Text</button>
                                                         <button>Forward Listing Flyer</button>
                                                     </td>
-                                                    <td><button>View</button></td>
+                                                    <td><button type="button" data-toggle="modal" data-target="#viewNotes">View</button></td>
                                                     <td>
                                                         <button type="button" data-toggle="modal" data-target="#myModal">Add</button>
                                                         <button>Edit</button>
@@ -212,7 +267,7 @@
                                                         <button>Text</button>
                                                         <button>Forward Listing Flyer</button>
                                                     </td>
-                                                    <td> <button>View</button></td>
+                                                    <td> <button type="button" data-toggle="modal" data-target="#viewNotes">View</button></td>
                                                     <td>
                                                         <button type="button" data-toggle="modal" data-target="#myModal">Add</button>
                                                         <button>Edit</button>
@@ -241,7 +296,7 @@
                                                         <button>Text</button>
                                                         <button>Forward Listing Flyer</button>
                                                     </td>
-                                                    <td><button>View</button></td>
+                                                    <td><button type="button" data-toggle="modal" data-target="#viewNotes">View</button></td>
                                                     <td>
                                                         <button type="button" data-toggle="modal" data-target="#myModal">Add</button>
                                                         <button>Edit</button>
