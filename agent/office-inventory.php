@@ -4,6 +4,14 @@ session_start();
 if (!isset($_SESSION['userId'])) {
     header("Location: http://jjp2017.org/login.php");
 }
+
+require '../databaseConnection.php';
+
+$dbConn = getConnection();
+$sql = "SELECT address, city, state, zip FROM  HouseInfo";
+$stmt = $dbConn->prepare($sql);
+$stmt->execute();
+$result = $stmt->fetchAll();
 ?>
 <!DOCTYPE html>
 <html>
@@ -52,8 +60,10 @@ if (!isset($_SESSION['userId'])) {
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-body">
-                                    <table class="table table-bordered table-striped">
+                                    <table class="table table-bordered table-striped" id="inventory-table">
                                         <thead>
+                                            
+
                                             <tr>
                                                 <th>Property</th>
                                                 <th data-breakpoints="all">Client Name</th>
@@ -68,9 +78,9 @@ if (!isset($_SESSION['userId'])) {
                                                 <th data-breakpoints="xs sm">Notes</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1204 Rogers Ct. Salinas, CA 94934</td>
+                                        <?php
+                                            foreach ($result as $house) {
+                                            echo '<tbody><tr><td>' . $house['address'] . " " . $house['city'] . ", " . $house['state'] . " " . $house['zip']  . '</td>
                                                 <td>Patty Hershang</td>
                                                 <td>831-382-4833</td>
                                                 <td>3/1/2017
@@ -88,8 +98,10 @@ if (!isset($_SESSION['userId'])) {
                                                 <td>3/1/2017
                                                     <br> <span class="label label-default">Incomplete</span> </td>
                                                 <td>Write some notes here!</td>
-                                            </tr>
-                                        </tbody>
+                                            </tr></tbody>';
+                                        }
+                                            ?>
+                                        
                                     </table>
                                 </div>
                                 <!-- /.box-body -->
