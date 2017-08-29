@@ -4,6 +4,42 @@
 //if (!isset($_SESSION['userId'])) {
 //    header("Location: http://jjp17.org/login.php");
 //}
+
+$listingId = $_GET['id'];
+
+$url = 'https://api.idxbroker.com/clients/featured';
+
+$method = 'GET';
+
+// headers (required and optional)
+$headers = array(
+    'Content-Type: application/x-www-form-urlencoded', // required
+    'accesskey: e1Br0B5DcgaZ3@JXI9qib5', // required - replace with your own
+    'outputtype: json' // optional - overrides the preferences in our API control page
+);
+
+// set up cURL
+$handle = curl_init();
+curl_setopt($handle, CURLOPT_URL, $url);
+curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+
+// exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
+$response = curl_exec($handle);
+$code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+
+if ($code >= 200 || $code < 300) {
+    $response = json_decode($response, true);
+} else {
+    $error = $code;
+}
+
+// print_r($response);
+
+$keys = array_keys($response);
+
 ?>
 
 
@@ -100,24 +136,43 @@
                                     <div id="step-1">
                                         <h2 class="StepTitle">Step 1: Select flyer images</h2>
                                         <div class="row">
+
                                             <label class="item col-md-4 col-sm-4 col-xs-6">
-                              <input type="checkbox" class="js-switch" />
+                                                <input type="checkbox" class="js-switch" />
 <!--                                                <div class="item col-md-4 col-sm-4 col-xs-6">-->
                                                 <img src="listingImg/exim1.png" alt="img" style="width:100%;">
 <!--                                            </div>-->
-                            </label>
+                                            </label>
+
                                             <label class="item col-md-4 col-sm-4 col-xs-6">
-                              <input type="checkbox" class="js-switch" /> 
+                                                <input type="checkbox" class="js-switch" /> 
 <!--                                                <div class="item col-md-4 col-sm-4 col-xs-6">-->
                                                 <img src="listingImg/exim2.png" alt="img" style="width:100%;">
 <!--                                            </div>-->
-                            </label>
+                                                </label>
                                             <label class="item col-md-4 col-sm-4 col-xs-6">
-                              <input type="checkbox" class="js-switch" /> 
+                                                <input type="checkbox" class="js-switch" /> 
 <!--                                                <div class="item col-md-4 col-sm-4 col-xs-6">-->
                                                 <img src="listingImg/exim3.png" alt="img" style="width:100%;">
 <!--                                            </div>-->
-                            </label>
+                                            </label>
+
+                                            <?php
+                                            for($i = 0; $i < sizeof($keys); $i++)
+                                            {
+
+                                                if($response[$keys[$i]]['listingID'] == $listingId)
+                                                {
+                                                    for($j = 0; $j < (int)$response[$keys[$i]]['image']['totalCount']; $j++ )
+                                                    {
+                                                        echo '<label class="item col-md-4 col-sm-4 col-xs-6">
+                                                                <input type="checkbox" class="js-switch" /> 
+                                                                <img src="' . $response[$keys[$i]]['image'][$j]['url']  . '" style="width:100%; height:100%">
+                                                            </label>';
+                                                    }
+                                                }
+                                            }
+                                            ?>
                                         </div>
 
                                     </div>
