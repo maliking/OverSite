@@ -2,6 +2,43 @@
 require("../../databaseConnection.php");  
 session_start();
 $dbConn = getConnection();
+
+$url = 'https://api.idxbroker.com/clients/featured';
+
+    $method = 'GET';
+
+    // headers (required and optional)
+    $headers = array(
+        'Content-Type: application/x-www-form-urlencoded', // required
+        'accesskey: e1Br0B5DcgaZ3@JXI9qib5', // required - replace with your own
+        'outputtype: json' // optional - overrides the preferences in our API control page
+    );
+
+    // set up cURL
+    $handle = curl_init();
+    curl_setopt($handle, CURLOPT_URL, $url);
+    curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+
+    // exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
+    $response = curl_exec($handle);
+    $code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+
+    if ($code >= 200 || $code < 300) {
+        $response = json_decode($response, true);
+    } else {
+        $error = $code;
+    }
+
+   // print_r($response);
+
+    $keys = array_keys($response);
+
+    // for($i = 0; $i < sizeof($keys); $i++){
+    //     echo "<img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error'>";
+    // }
 ?>
 
 
@@ -200,12 +237,41 @@ $dbConn = getConnection();
         $stmt->execute($namedParameters);
         //$stmt->execute();
         $results = $stmt->fetchAll();
-        foreach($results as $result) {
+        // foreach($results as $result) {
+
+        //     echo "<tr>";
+        //     echo "<td><img width=\"100px\" height=\"100px\" src=\"../../dist/img/placeholder.jpg\"></td>";
+        //     echo "<td>";
+        //     echo $result['address'] . "<br>" . $result['city'] . " " . $result['state'] . ", " . $result['zip'];
+        //     echo "</td>";                                                
+        //     echo "<td>
+        //                                             <div class=\"dropdown\">
+        //                                                 <button class=\"btn btn-default dropdown-toggle\" type=\"button\" id=\"dropdownMenu1\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"true\">
+        //                                                     Options
+        //                                                     <span class=\"caret\"></span>
+        //                                                 </button>
+        //                                                 <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">
+        //                                                     <li><a href=\"#\">Create a New Flyer</a></li>
+        //                                                     <li><a href=\"#\">Flyer Info</a></li>
+        //                                                     <li><a href=\"#\">Sign-In</a></li>
+        //                                                     <li role=\"separator\" class=\"divider\"></li>
+        //                                                     <li><a href=\"#\">Remove</a></li>
+        //                                                 </ul>
+        //                                             </div>
+        //                                         </td>";
+        //     echo "</tr>";
+        // }
+                                           
+        for($i = 0; $i < sizeof($keys); $i++)
+        {
+        // echo "<img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error'>";
 
             echo "<tr>";
-            echo "<td><img width=\"100px\" height=\"100px\" src=\"../../dist/img/placeholder.jpg\"></td>";
+            // echo "<td><img width=\"100px\" height=\"100px\" src=\"../../dist/img/placeholder.jpg\"></td>";
+            echo "<td style=\"padding-left:10%\"><img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error' width=\"225px\" height=\"200px\"></td>";
             echo "<td>";
-            echo $result['address'] . "<br>" . $result['city'] . " " . $result['state'] . ", " . $result['zip'];
+            // echo $result['address'] . "<br>" . $result['city'] . " " . $result['state'] . ", " . $result['zip'];
+            echo $response[$keys[$i]]['address'] . "<br>" . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . ", " . $response[$keys[$i]]['zipcode'];
             echo "</td>";                                                
             echo "<td>
                                                     <div class=\"dropdown\">
@@ -223,8 +289,9 @@ $dbConn = getConnection();
                                                     </div>
                                                 </td>";
             echo "</tr>";
+
         }
-                                            ?>
+         ?>
                                     </table>
                       
                                     <!-- ------html example of what i want it to look like-->
@@ -249,11 +316,15 @@ $dbConn = getConnection();
                                         </div>
                                     </div>
 <!-------MORE MOCK EXAMPLES:-->
-                                    <div class="col-md-4 col-sm-2 col-xs-6">
+
+                <?php
+                for($i = 0; $i < 2; $i++)
+            {
+                echo '<div class="col-md-4 col-sm-2 col-xs-6">
                          <div class="thumbnail">
-                            <div class="image view view-first">
-                                <img style="width: 50%;  display: block;" src="listingImg/mockHouse.jpg" alt="image" />
-                                <div class="mask">
+                            <div class="image view view-first">';
+                echo "<img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error' width=\"50%\" height=\"100%\">";
+                echo '           <div class="mask">
                                     <p>Settings</p>
                                     <div class="tools tools-bottom">
                                         <a href="../openhouse/create-flyer.php" data-toggle="tooltip" title="Create Flyer"><i class="fa fa-paint-brush"></i></a>
@@ -266,7 +337,10 @@ $dbConn = getConnection();
                                 <p>Address here</p>
                             </div>
                         </div>
-                    </div><div class="col-md-4 col-sm-2 col-xs-6">
+                    </div>';
+                }
+                ?>
+                    <!-- <div class="col-md-4 col-sm-2 col-xs-6">
                          <div class="thumbnail">
                             <div class="image view view-first">
                                 <img style="width: 50%;  display: block;" src="listingImg/mockHouse.jpg" alt="image" />
@@ -284,6 +358,25 @@ $dbConn = getConnection();
                             </div>
                         </div>
                     </div>
+
+                    <div class="col-md-4 col-sm-2 col-xs-6">
+                         <div class="thumbnail">
+                            <div class="image view view-first">
+                                <img style="width: 50%;  display: block;" src="listingImg/mockHouse.jpg" alt="image" />
+                                <div class="mask">
+                                    <p>Settings</p>
+                                    <div class="tools tools-bottom">
+                                        <a href="../openhouse/create-flyer.php" data-toggle="tooltip" title="Create Flyer"><i class="fa fa-paint-brush"></i></a>
+                                        <a href="../openhouse/listing-info.php" data-toggle="tooltip" title="Listing Information"><i class="fa fa-info-circle"></i></a>
+                                        <a href="../signIn.php" data-toggle="tooltip" title="Sign In Sheet"><i class="fa fa-edit"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="caption">
+                                <p>Address here</p>
+                            </div>
+                        </div>
+                    </div> -->
                                     <!------END example-->
 
                                 </div>
