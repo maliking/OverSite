@@ -333,9 +333,9 @@ $url = 'https://api.idxbroker.com/clients/featured';
                                     </div>
                                 </div>
                             </div>
-                            <div class="caption">
-                                <p>Address here</p>
-                            </div>
+                            <div class="caption">';
+                            echo '    <p>' . $response[$keys[$i]]['address'] . "<br>" . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . ", " . $response[$keys[$i]]['zipcode']  . '</p>';
+                            echo '</div>
                         </div>
                     </div>';
                 }
