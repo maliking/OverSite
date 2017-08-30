@@ -2,8 +2,34 @@
 session_start();
 
 if (!isset($_SESSION['userId'])) {
-    header("Location: http://jjp17.org/login.php");
+    header("Location: http://jjp2017.org/login.php");
 }
+require '../databaseConnection.php';
+$dbConn = getConnection();
+
+$sqlLicense = "SELECT license FROM UsersInfo WHERE userId = :userId";
+
+$namedParameters = array();
+$namedParameters[':userId'] = $_SESSION['userId'];
+
+
+$licenseStmt = $dbConn->prepare($sqlLicense);
+$licenseStmt->execute($namedParameters);
+$licenseResult = $licenseStmt->fetch();
+
+
+$sql = "SELECT firstName, lastName, count(*) as sold, AVG(finalComm) as average, SUM(finalComm) AS earnings, AVG(percentage) AS avgPercent FROM commInfo WHERE license = :license GROUP BY license ";
+$parameters = array();
+$parameters[':license'] = $licenseResult['license'];
+
+$stmt = $dbConn->prepare($sql);
+$stmt->execute($parameters);
+$result = $stmt->fetch();
+
+// $sqlRank = "SELECT UsersInfo.firstName, UsersInfo.lastName, count(*) as sold, sum(finalComm) as YTDComm FROM UsersInfo LEFT JOIN commInfo on UsersInfo.license = commInfo.license group by UsersInfo.license order by sold Desc ";
+// $stmtRank = $dbConnRank->prepare($sqlRank);
+// $stmtRank->execute();
+// $rank = $stmtRank->fetchAll();
 ?>
 
     <!DOCTYPE html>
@@ -71,7 +97,7 @@ if (!isset($_SESSION['userId'])) {
                             <!-- small box -->
                             <div class="small-box bg-blue">
                                 <div class="inner">
-                                    <h3>2.2<sup style="font-size: 20px">%</sup></h3>
+                                    <h3><?php echo number_format($result['avgPercent'],2);?><sup style="font-size: 20px">%</sup></h3>
 
                                     <p>Avg. Commission </p>
                                 </div>
@@ -101,7 +127,7 @@ if (!isset($_SESSION['userId'])) {
                             <!-- small box -->
                             <div class="small-box bg-green">
                                 <div class="inner">
-                                    <h3>6</h3>
+                                    <h3><?php echo $result['sold'];?></h3>
                                     <p>Sold Listings</p>
                                 </div>
                                 <div class="icon">
@@ -115,7 +141,7 @@ if (!isset($_SESSION['userId'])) {
                             <!-- small box -->
                             <div class="small-box bg-orange">
                                 <div class="inner">
-                                    <h3><sup style="font-size: 20px">$</sup>12,232</h3>
+                                    <h3><sup style="font-size: 20px">$</sup><?php echo number_format($result['average'],2);?></h3>
                                     <p>Avg. Commission</p>
                                 </div>
                                 <div class="icon">
@@ -129,7 +155,7 @@ if (!isset($_SESSION['userId'])) {
                             <!-- small box -->
                             <div class="small-box bg-blue">
                                 <div class="inner">
-                                    <h3>2.2<sup style="font-size: 20px">%</sup></h3>
+                                    <h3><?php echo number_format($result['avgPercent'],2);?><sup style="font-size: 20px">%</sup></h3>
 
                                     <p>Avg. Commission </p>
                                 </div>
@@ -144,7 +170,7 @@ if (!isset($_SESSION['userId'])) {
                             <!-- small box -->
                             <div class="small-box bg-red">
                                 <div class="inner">
-                                    <h3><sup style="font-size: 20px">$</sup> 39,434</h3>
+                                    <h3><sup style="font-size: 20px">$</sup><?php echo number_format($result['earnings'],2);?></h3>
                                     <p>Total Gross Earnings</p>
                                 </div>
                                 <div class="icon">
