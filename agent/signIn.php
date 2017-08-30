@@ -5,7 +5,17 @@
     if(!isset($_SESSION['userId'])) {
       header("Location: index.php?error=wrong username or password");
     } 
-    $houseId = $_GET['houseId'];
+    // $houseId = $_GET['houseId'];
+
+    $sql = "SELECT houseId FROM HouseInfo WHERE listingId = :listingId";
+
+    $namedParameters = array();
+    $namedParameters[':listingId'] = $_GET['id'];
+
+
+    $stmt = $dbConn->prepare($sql);
+    $stmt->execute($namedParameters);
+    $result = $stmt->fetch();
  ?>
 
     <!DOCTYPE html>
@@ -69,10 +79,9 @@
             <center>
                 <img alt="Interesting Image" border="0" class="simage float_center" height="101" src="../dist/img/remax-logo.png" style="margin-left: 0px; margin-right: 0px;" title="Interesting Image" width="280" />
             </center>
-
             <form method="post" action="addBuyer.php">
 
-
+            <input type="hidden" name="houseId" value="<?= $result['houseId'];?>" />
 
                 <div class="x_title" style="margin-top: 20px;">
                     <center>
@@ -85,24 +94,24 @@
                 <div class="row" style="margin-top: 30px;">
 
                     <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-2">
-                        <input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="First Name">
+                        <input type="text" name="firstName" class="form-control has-feedback-left" id="inputSuccess2" placeholder="First Name">
                         <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
                     </div>
 
                     <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                        <input type="text" class="form-control" id="inputSuccess3" placeholder="Last Name">
+                        <input type="text" name="lastName" class="form-control" id="inputSuccess3" placeholder="Last Name">
                         <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
                     </div>
                 </div>
                 <div class="row">
 
                     <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-2">
-                        <input type="text" class="form-control has-feedback-left" id="inputSuccess4" placeholder="Email">
+                        <input type="text" name="email" class="form-control has-feedback-left" id="inputSuccess4" placeholder="Email">
                         <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                     </div>
 
                     <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                        <input type="text" class="form-control" id="inputSuccess5" placeholder="Phone">
+                        <input type="text" name="phone" class="form-control" id="inputSuccess5" placeholder="Phone">
                         <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
                     </div>
                 </div>
@@ -110,7 +119,7 @@
 
                     <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2" style="margin-top: 40px;">
                         <label>How soon are you looking to purchase a home?</label>
-                        <select id="" class="form-control" required>
+                        <select id="" name="howSoon" class="form-control" required>
                             <option value="">1-3 months</option>
                             <option value="">4-6 months</option>
                             <option value="">7-12 months</option>
@@ -125,7 +134,7 @@
 
                     <div class="col-md-4 col-sm-4 col-xs-12 col-md-offset-2">
                         <label>Bedrooms</label>
-                        <select id="" class="form-control" required>
+                        <select id="" name="bedroomsMax" class="form-control" required>
                             <option value="">1</option>
                             <option value="">2</option>
                             <option value="">3</option>
@@ -136,7 +145,7 @@
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12 col-md-offset-65">
                         <label>Bathrooms</label>
-                        <select id="" class="form-control" required>
+                        <select id="" name="bathroomsMax" class="form-control" required>
                             <option value="">1</option>
                             <option value="">1.5</option>
                             <option value="">2</option>
@@ -151,12 +160,12 @@
                 <div class="row" style="margin-top: 20px;">
 
                     <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-2">
-                        <input type="text" class="form-control has-feedback-left" id="inputSuccess2" placeholder="Minimum Price">
+                        <input type="text" name="priceMin" class="form-control has-feedback-left" id="inputSuccess2" placeholder="Minimum Price">
                         <span class="fa fa-dollar form-control-feedback left" aria-hidden="true"></span>
                     </div>
 
                     <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                        <input type="text" class="form-control" id="inputSuccess3" placeholder="Maximum Price">
+                        <input type="text" name="priceMax" class="form-control" id="inputSuccess3" placeholder="Maximum Price">
                         <span class="fa  fa-dollar form-control-feedback right" aria-hidden="true"></span>
                     </div>
                     <!--

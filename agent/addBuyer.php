@@ -16,7 +16,7 @@ $bathroomsMax = $_POST['bathroomsMax'];
 $bathroomsMin = $_POST['bathroomsMin'];
 $priceMax = $_POST['priceMax'];
 $priceMin = $_POST['priceMin'];
-$houseId = $_POST['houseId'];
+$houseId = (string)$_GET['houseId'];
 // $houseId = "253";
 $userId = $_SESSION['userId'];
 $sql = "INSERT INTO BuyerInfo
@@ -33,7 +33,7 @@ $namedParameters[':bathroomsMax'] = $bathroomsMax;
 $namedParameters[':bathroomsMin'] = $bathroomsMin;
 $namedParameters[':priceMax'] = $priceMax;
 $namedParameters[':priceMin'] = $priceMin;
-$namedParameters[':houseId'] = $houseId;
+$namedParameters[':houseId'] = $_POST['houseId'];
 $namedParameters[':userId'] = $userId;
 $stmt = $dbConn -> prepare($sql);
 $stmt->execute($namedParameters);
