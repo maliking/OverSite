@@ -281,7 +281,7 @@ $url = 'https://api.idxbroker.com/clients/featured';
                                                         </button>
                                                         <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">";
             echo "                                      <li><a href=\"create-flyer.php?id=" . $response[$keys[$i]]['listingID']  ."\">Create a New Flyer</a></li>";
-            echo "                                          <li><a href=\"#\">Flyer Info</a></li>
+            echo "                                          <li><a href=\"listing-info.php?id=" . $response[$keys[$i]]['listingID'] . " \">Flyer Info</a></li>
                                                             <li><a href=\"../signIn.php?id=" . $response[$keys[$i]]['listingID'] . "\">Sign-In</a></li>
                                                             <li><a href=\"exportVisitors.php?id=" . $response[$keys[$i]]['listingID'] . "\">Export Visitors</a></li>
                                                             <li role=\"separator\" class=\"divider\"></li>
