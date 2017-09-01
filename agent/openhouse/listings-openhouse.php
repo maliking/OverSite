@@ -296,7 +296,7 @@ $url = 'https://api.idxbroker.com/clients/featured';
                                     </table>
                       
                                     <!-- ------html example of what i want it to look like-->
-                                    <div class="col-md-4 col-sm-4 col-xs-6">
+                                    <div class="col-md-3 col-sm-3 col-xs-4">
                                         <div class="thumbnail" >
                                             <div class="image view view-first">
                                                 <img style="width: 100%; height: 100%;  display: block;" src="listingImg/exim3.png" alt="image" />
