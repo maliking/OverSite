@@ -281,9 +281,8 @@ $url = 'https://api.idxbroker.com/clients/featured';
                                                         </button>
                                                         <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">";
             echo "                                      <li><a href=\"create-flyer.php?id=" . $response[$keys[$i]]['listingID']  ."\">Create a New Flyer</a></li>";
-            echo "                                          <li><a href=\"listing-info.php?id=" . $response[$keys[$i]]['listingID'] . " \">Flyer Info</a></li>
-                                                            <li><a href=\"../signIn.php?id=" . $response[$keys[$i]]['listingID'] . "\">Sign-In</a></li>
-                                                            <li><a href=\"exportVisitors.php?id=" . $response[$keys[$i]]['listingID'] . "\">Export Visitors</a></li>
+            echo "                                          <li><a href=\"#\">Flyer Info</a></li>
+                                                            <li><a href=\"#\">Sign-In</a></li>
                                                             <li role=\"separator\" class=\"divider\"></li>
                                                             <li><a href=\"#\">Remove</a></li>
                                                         </ul>
@@ -295,42 +294,21 @@ $url = 'https://api.idxbroker.com/clients/featured';
          ?>
                                     </table>
                       
-                                    <!-- ------html example of what i want it to look like-->
-                                    <div class="col-md-3 col-sm-3 col-xs-4">
-                                        <div class="thumbnail" >
-                                            <div class="image view view-first">
-                                                <img style="width: 100%; height: 100%;  display: block;" src="listingImg/exim3.png" alt="image" />
-                                                <div class="mask">
-                                                    <p>Settings</p>
-                                                    <div class="tools tools-bottom">
-                                                        <a href="../openhouse/create-flyer.php" data-toggle="tooltip" title="Create Flyer"><i class="fa fa-paint-brush"></i></a>
-                                                        <a href="../openhouse/listing-info.php" data-toggle="tooltip" title="Listing Information"><i class="fa fa-info-circle"></i></a>
-                                                        <a href="../signIn.php" data-toggle="tooltip" title="Sign In Sheet"><i class="fa fa-edit"></i></a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="caption">
-                                                <p>321 Tynan WAY Salinas California, 93906</p>
-
-
-                                            </div>
-                                        </div>
-                                    </div>
-<!-------MORE MOCK EXAMPLES:-->
-
+                                   
                 <?php
                 for($i = 0; $i < 2; $i++)
             {
-                echo '<div class="col-md-4 col-sm-2 col-xs-6">
+                echo '<div class="col-md-3 col-sm-3 col-xs-4">
                          <div class="thumbnail">
                             <div class="image view view-first">';
                 echo "<img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error' width=\"50%\" height=\"100%\">";
                 echo '           <div class="mask">
-                                    <p>Settings</p>
+                                    <p>Options</p>
                                     <div class="tools tools-bottom">
                                         <a href="../openhouse/create-flyer.php" data-toggle="tooltip" title="Create Flyer"><i class="fa fa-paint-brush"></i></a>
                                         <a href="../openhouse/listing-info.php" data-toggle="tooltip" title="Listing Information"><i class="fa fa-info-circle"></i></a>
-                                        <a href="../signIn.php" data-toggle="tooltip" title="Sign In Sheet"><i class="fa fa-edit"></i></a>
+                                        <a href="../signIn.php" data-toggle="tooltip" title="Sign In Sheet"><i class="fa fa-edit"></i></a>  
+                                        <a href="#" data-toggle="tooltip" title="Remove"><i class="fa fa-trash-o"></i></a>
                                     </div>
                                 </div>
                             </div>
