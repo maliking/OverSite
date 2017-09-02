@@ -20,13 +20,14 @@ $houseId = (string)$_GET['houseId'];
 // $houseId = "253";
 $userId = $_SESSION['userId'];
 $sql = "INSERT INTO BuyerInfo
-		(firstName, lastName, email, phone, bedroomsMax, bedroomsMin, bathroomsMax, bathroomsMin, priceMax, priceMin, houseId, userId)
-		VALUES (:firstName, :lastName, :email, :phone, :bedroomsMax, :bedroomsMin, :bathroomsMax, :bathroomsMin, :priceMax, :priceMin, :houseId, :userId)";
+		(firstName, lastName, email, phone, registeredDate, bedroomsMax, bedroomsMin, bathroomsMax, bathroomsMin, priceMax, priceMin, houseId, userId)
+		VALUES (:firstName, :lastName, :email, :phone, :registeredDate, :bedroomsMax, :bedroomsMin, :bathroomsMax, :bathroomsMin, :priceMax, :priceMin, :houseId, :userId)";
 $namedParameters = array();
 $namedParameters[':firstName'] = $firstName;
 $namedParameters[':lastName'] = $lastName;
 $namedParameters[':email'] = $email;
 $namedParameters[':phone'] = $phone;
+$namedParameters['registeredDate'] = date("m/d/Y");
 $namedParameters[':bedroomsMax'] = $bedroomsMax;
 $namedParameters[':bedroomsMin'] = $bedroomsMin;
 $namedParameters[':bathroomsMax'] = $bathroomsMax;
