@@ -4,6 +4,8 @@ header("Content-Type: application/vnd.ms-excel");
 
 
 require '../../databaseConnection.php';
+$startDate = date('Y-m-d', strtotime($_GET['startDate']));
+$endDate = date('Y-m-d', strtotime($_GET['endDate']));
 $dbConn = getConnection();
 $dbConnTwo = getConnection();
 $sql = "SELECT houseId, address FROM HouseInfo WHERE listingId = :listingId";
@@ -17,10 +19,12 @@ $stmt->execute($namedParameters);
 $result = $stmt->fetch();
 
 header("Content-disposition: attachment; filename=" . $result['houseId'] . $result['address'] . ".xls");
-$sqlVisitors = "SELECT firstName, lastName, email, phone FROM BuyerInfo WHERE houseId = :houseId";
+$sqlVisitors = "SELECT firstName, lastName, email, phone FROM BuyerInfo WHERE houseId = :houseId AND registeredDate BETWEEN :startDate AND :endDate";
 
 $namedVisitors = array();
 $namedVisitors[':houseId'] = $result['houseId'];
+$namedVisitors[':startDate'] = $_GET['startDate'];
+$namedVisitors[':endDate'] = $_GET['endDate'];
 
 $stmtVisitors = $dbConnTwo->prepare($sqlVisitors);
 $stmtVisitors->execute($namedVisitors);
