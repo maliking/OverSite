@@ -135,27 +135,9 @@ $keys = array_keys($response);
 
                                     <div id="step-1">
                                         <h2 class="StepTitle">Step 1: Select flyer images</h2>
-                                        <div class="row">
+                                        <div class="row" id="imageSerialize">
 
-                                            <label class="item col-md-4 col-sm-4 col-xs-6">
-                                                <input type="checkbox" class="js-switch" />
-<!--                                                <div class="item col-md-4 col-sm-4 col-xs-6">-->
-                                                <img src="listingImg/exim1.png" alt="img" style="width:100%;">
-<!--                                            </div>-->
-                                            </label>
-
-                                            <label class="item col-md-4 col-sm-4 col-xs-6">
-                                                <input type="checkbox" class="js-switch" /> 
-<!--                                                <div class="item col-md-4 col-sm-4 col-xs-6">-->
-                                                <img src="listingImg/exim2.png" alt="img" style="width:100%;">
-<!--                                            </div>-->
-                                                </label>
-                                            <label class="item col-md-4 col-sm-4 col-xs-6">
-                                                <input type="checkbox" class="js-switch" /> 
-<!--                                                <div class="item col-md-4 col-sm-4 col-xs-6">-->
-                                                <img src="listingImg/exim3.png" alt="img" style="width:100%;">
-<!--                                            </div>-->
-                                            </label>
+                                           
 
                                             <?php
                                             for($i = 0; $i < sizeof($keys); $i++)
@@ -166,8 +148,8 @@ $keys = array_keys($response);
                                                     for($j = 0; $j < (int)$response[$keys[$i]]['image']['totalCount']; $j++ )
                                                     {
                                                         echo '<label class="item col-md-4 col-sm-4 col-xs-6">
-                                                                <input type="checkbox" class="js-switch" /> 
-                                                                <img src="' . $response[$keys[$i]]['image'][$j]['url']  . '" style="width:100%; height:100%">
+                                                                <input type="checkbox" class="js-switch" name="imageURL" value="' . $response[$keys[$i]]['image'][$j]['url']  . '"/> 
+                                                                <img src="' . $response[$keys[$i]]['image'][$j]['url']  . '" style="width:100%; height:100%" >
                                                             </label>';
                                                     }
                                                     break;
@@ -287,9 +269,45 @@ $keys = array_keys($response);
                 // Events
                 onLeaveStep: null, // triggers when leaving a step
                 onShowStep: null, // triggers when showing a step
-                onFinish: null // triggers when Finish button is clicked
+                onFinish: finishClicked // triggers when Finish button is clicked
             });
 
+            function finishClicked()
+            {
+                if($("input:checked").length > 3)
+                {
+                    alert("Only choose 3 pictures.");
+                }
+                else if($("input:checked").length < 3)
+                {
+                    alert("Choose at least 3 pictures.");
+                }
+                else
+                {
+                    var allVals = [];
+                    $('input[name="imageURL"]:checked').each(function() {
+                    allVals.push($(this).val());
+                    });
+                    // alert("Post");
+                    // console.log(allVals[0]);
+                    // alert(allVals[1]);
+                    // alert(allVals[2]);
+                    $.post( "generatePDF.php", { imageOne: allVals[0], imageTwo: allVals[1], imageThree: allVals[2]} );
+
+
+                    // console.log(allVals);
+                }
+                // $('input[name="imageURL"]:checked').each(function() {
+                //    // alert($(this).val()); 
+                //    alert();
+                // });
+
+             //    var allVals = [];
+             //     $('#imageSerialize label input :checked').each(function() {
+             //       allVals.push($(this).val());
+             //     });
+             // console.log(allVals);
+            }
         </script>
 
     </body>
