@@ -94,7 +94,9 @@ $listingId = $_GET['id'];
                             Current Flyer
                         </h1>
                         <h1 class="col-md-3 col-sm-3 col-xs-6">
-                         <a href="create-flyer.php"><button type="button" class="btn btn-danger">Create New Flyer</button></a>
+                         <?php
+                         echo '<a href="create-flyer.php?id="' . $listingId . '"><button type="button" class="btn btn-danger">Create New Flyer</button></a>';
+                         ?>
                              </h1>
 
                     </section>
@@ -189,7 +191,7 @@ $listingId = $_GET['id'];
                            <div>
                             <?php
                                 if(isset($result['flyer']))
-                                    echo '<img src="../../flyers/' . $result['flyer'] . '" alt="pdf" style="width:80%; margin-top:10px;">';
+                                    echo '<img src="../../uploadFlyers/' . $result['flyer'] . '" alt="pdf" style="width:80%; margin-top:10px;">';
                                 else{
                                     echo '<img src="listingImg/flyerPlaceHolder.png" alt="pdf" style="width:80%; margin-top:10px;">';
                                 }
