@@ -202,7 +202,7 @@ $listingId = $_GET['id'];
                                  else{
 
 
-                                 echo '<iframe id="pdf" src="../../uploadFlyers/' . $listingId . '" 
+                                 echo '<iframe id="pdf" src="../../uploadFlyers/' . $result['flyer'] . '" 
                                         style="width:600px; height:500px;" frameborder="0"></iframe>';
                                     }
                             ?>
