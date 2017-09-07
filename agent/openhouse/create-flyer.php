@@ -357,23 +357,19 @@ $keys = array_keys($response);
                      state: stateC, zip: zipC, price: priceC, description: description },
                      function(data, status)
                      {
-                        var count = 0;
-                        var maxTries = 3;
-                        var loop = true;
-                        while(loop) 
-                        {
+                        
                             try 
                             {
                                 $("#pdf").attr('src', addressC + ".pdf");
                             } 
                             catch (err) 
                             {
-                                // handle exception
-                                count++;
-                                if(count==maxTries)
-                                    loop = false;
+                                $("#pdf").attr('src', addressC + ".pdf");
                             }
-                        };
+                            finally 
+                            {
+                                $("#pdf").attr('src', addressC + ".pdf");
+                            }
 
                         
                     });
