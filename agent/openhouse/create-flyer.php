@@ -235,7 +235,7 @@ $keys = array_keys($response);
                                     else
                                     {
                                         // echo '<img src="../../uploadFlyers/' . $result['flyer'] . '" alt="pdf" style="width:80%; margin-top:10px;">';
-                                        echo '<iframe src="../../uploadFlyers/' . $result['flyer']  . '" 
+                                        echo '<iframe id="pdf" src="../../uploadFlyers/' . $result['flyer']  . '" 
                                         style="width:600px; height:500px;" frameborder="0"></iframe>';
                                     }
                                 ?>
@@ -357,7 +357,7 @@ $keys = array_keys($response);
                      state: stateC, zip: zipC, price: priceC, description: description },
                      function(data, status)
                      {
-                        alert("Data: ");
+                        $("#pdf").attr('src', addressC + ".pdf");
                     });
                     
                     alert("Flyer created!");
