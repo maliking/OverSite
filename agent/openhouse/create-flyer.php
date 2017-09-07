@@ -367,7 +367,7 @@ $keys = array_keys($response);
                             catch (SomeException e) 
                             {
                                 // handle exception
-                                if (++count == maxTries) throw e;
+                                if (++count == maxTries) break;
                             }
                         };
 
