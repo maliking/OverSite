@@ -369,7 +369,7 @@ $keys = array_keys($response);
                                 // handle exception
                                 if (++count == maxTries) throw e;
                             }
-                        }
+                        };
 
                         
                     });
