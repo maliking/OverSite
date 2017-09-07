@@ -1,7 +1,8 @@
 <?php
-
-
 require_once('../../fpdf/fpdf.php');
+require_once('../../databaseConnection.php');
+
+$dbConn = getConnection();
 
 $pdf = new FPDF();
 $pdf->AddPage("P","letter");
@@ -81,7 +82,20 @@ $pdf->Text(9,248,'915A N. Main Street, Salinas, CA 93906');
 
 $pdf->Image('remax.png', 155,236, 45,30,"png");
 
-$pdf->Output('/Applications/XAMPP/xamppfiles/htdocs/test/generateExample.pdf', 'F');
+$sql = "UPDATE HouseInfo SET flyer = :flyer WHERE listingId = :listingId";
+
+$namedParameters = array();
+$namedParameters[":flyer"] = $_POST['address'] . '.pdf';
+$namedParameters[':listingId'] = substr($_POST['mlsId'],0,-1);
+
+
+
+$stmt = $dbConn->prepare($sql);
+$stmt->execute($namedParameters);
+
+ $pdf->Output('/Applications/XAMPP/xamppfiles/htdocs/test/generateExample.pdf', 'F');
+// $pdf->Output('../../uploadFlyers/' . $_POST['address']. '.pdf', 'F');
+
 
 
 ?>

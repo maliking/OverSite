@@ -4,8 +4,20 @@
 //if (!isset($_SESSION['userId'])) {
 //    header("Location: http://jjp17.org/login.php");
 //}
-
 $listingId = $_GET['id'];
+
+require '../../databaseConnection.php';
+
+$dbConn = getConnection();
+$sql = "SELECT * FROM  HouseInfo WHERE listingId = :listingId";
+$stmt = $dbConn->prepare($sql);
+$namedParameters = array();
+$namedParameters[':listingId'] = $listingId;
+$stmt->execute($namedParameters);
+$result = $stmt->fetch();
+
+
+
 
 $url = 'https://api.idxbroker.com/clients/featured';
 
@@ -215,7 +227,17 @@ $keys = array_keys($response);
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div>
-                                <img src="listingImg/flyerPlaceHolder.png" alt="pdf" style="width:80%; margin-top:10px;">
+                                <?php
+                                    if($result['flyer'] == NULL)
+                                    {
+                                        echo '<img src="listingImg/flyerPlaceHolder.png" alt="pdf" style="width:80%; margin-top:10px;">';
+                                    }
+                                    else
+                                    {
+                                        echo '<img src="../../uploadFlyers/' . $result['flyer'] . '" alt="pdf" style="width:80%; margin-top:10px;">';
+                                    }
+                                ?>
+                                
                             </div>
                         </div>
 
