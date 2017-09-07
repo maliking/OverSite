@@ -234,7 +234,9 @@ $keys = array_keys($response);
                                     }
                                     else
                                     {
-                                        echo '<img src="../../uploadFlyers/' . $result['flyer'] . '" alt="pdf" style="width:80%; margin-top:10px;">';
+                                        // echo '<img src="../../uploadFlyers/' . $result['flyer'] . '" alt="pdf" style="width:80%; margin-top:10px;">';
+                                        echo '<iframe src="../../uploadFlyers/' . $result['flyer']  . '" 
+                                        style="width:600px; height:500px;" frameborder="0"></iframe>';
                                     }
                                 ?>
                                 
