@@ -93,8 +93,8 @@ $namedParameters[':listingId'] = substr($_POST['mlsId'],0,-1);
 $stmt = $dbConn->prepare($sql);
 $stmt->execute($namedParameters);
 
- $pdf->Output('/Applications/XAMPP/xamppfiles/htdocs/test/generateExample.pdf', 'F');
-// $pdf->Output('../../uploadFlyers/' . $_POST['address']. '.pdf', 'F');
+ // $pdf->Output('/Applications/XAMPP/xamppfiles/htdocs/test/generateExample.pdf', 'F');
+$pdf->Output('../../uploadFlyers/' . $_POST['address']. '.pdf', 'F');
 
 
 
