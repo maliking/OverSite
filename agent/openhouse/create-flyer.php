@@ -358,23 +358,11 @@ $keys = array_keys($response);
                      function(data, status)
                      {
                         
-                            try 
-                            {
-                                $("#pdf").attr('src', addressC + ".pdf");
-                            } 
-                            catch (err) 
-                            {
-                                $("#pdf").attr('src', addressC + ".pdf");
-                            }
-                            finally 
-                            {
-                                $("#pdf").attr('src', addressC + ".pdf");
-                            }
-
+                            
                         
                     });
                     
-                    alert("Flyer created!");
+                    alert("Flyer created! Refres page");
                     // console.log(allVals);
                 }
                 // $('input[name="imageURL"]:checked').each(function() {
