@@ -28,29 +28,44 @@ $pdf->SetFont('Arial');
 $pdf->SetFontSize(14);
 
 $pdf->Text(150,15,"OFFERED AT:");
-$pdf->Text(150,21,"$");
+$pdf->Text(150,21, substr($_POST['price'], 0, -1));
 
+$address = $_POST['address'] . " " . substr($_POST['city'] ,0,-1) . " " . substr($_POST['state'] ,0,-1) . " " . substr($_POST['zip'] ,0,-1);
 
 $pdf->SetTextColor(0,0,0);
-$pdf->Text(9,45,'930 PROVINCETOWN DR SALINAS CA 93906');
+$pdf->Text(9,45, $address);
 
+
+$pdf->SetTextColor(255,255,255);
 // Image(string file [, float x [, float y [, float w [, float h [, string type [, mixed link]]]]]])
 $pdf->Image($_POST['imageOne'], 9,49,160,85,'JPEG');
+
+$pdf->Image('redLeftArrow.png', 158,49,50,20,'PNG');
+$pdf->Text(170,60,substr($_POST['bedrooms'] ,0,-1). " Bedrooms");
+$pdf->Image('redLeftArrow.png', 158,71,50,20,'PNG');
+$pdf->Text(170,82,substr($_POST['bathrooms'] ,0,-1). " Bathrooms");
+$pdf->Image('redLeftArrow.png', 158,93,50,20,'PNG');
+$pdf->Text(170,104,substr($_POST['sqft'] ,0,-1). " SqFt");
+$pdf->Image('redLeftArrow.png', 158,114,50,20,'PNG');
+$pdf->Text(170,126,substr($_POST['mlsId'],0,-1));
+
 
 $pdf->Image($_POST['imageTwo'], 9,134,55,34,'JPEG');
 
 $pdf->Image($_POST['imageThree'], 64,134,54,34,'JPEG');
 
-$pdf->Image($_POST['imageTwo'], 9,168,55,34,'JPEG');
-$pdf->Image($_POST['imageTwo'], 64,168,54,34,'JPEG');
+$pdf->Image($_POST['imageFour'], 9,168,55,34,'JPEG');
+$pdf->Image($_POST['imageFive'], 64,168,54,34,'JPEG');
 
 $pdf->SetXY(120,137);
 $pdf->SetFont('Times');
 
-$pdf->SetFontSize(10);
+$pdf->SetTextColor(0,0,0);
+
+$pdf->SetFontSize(12);
 // $pdf->SetAutoPageBreak(true,0);
 // MultiCell(float w, float h, string txt [, mixed border [, string align [, boolean fill]]])
-$pdf->MultiCell(85,3.5,"Don't miss out on this charming 4 bedroom 2 bath home in a highly desired neighborhood! Inside features include high ceilings, every rooms brings in much desired natural light , the perfect blend of beautiful engineered laminate wood flooring and new carpet. An amazing floor plan, foyer entry into the spacious and bright living room highlighted by a lovely gas fireplace. The welcoming family room is adjacent to the spacious kitchen. The kitchen includes stainless steal appliances, granite counter tops, and a lovely eating area. The generous size bedrooms have plenty of closet space. The master bedroom is complete with an in suite bathroom  that has a wonderful standing shower and equipped with double sinks. The backyard in this home has been beautifully designed including stamp concrete, iron rod fencing, a gas fire pit for you to enjoy beautiful nights outdoors and an area perfect for your pets. This home and neighborhood show true pride of ownership.",0,"L");
+$pdf->MultiCell(85,4.5,$_POST['description'],0,"L");
 
 $pdf->SetFontSize(13);
 $pdf->Text(9,210,'RE/MAX Property Experts');

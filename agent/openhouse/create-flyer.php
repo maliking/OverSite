@@ -145,6 +145,7 @@ $keys = array_keys($response);
 
                                                 if($response[$keys[$i]]['listingID'] == $listingId)
                                                 {
+                                                    $index = $i;
                                                     for($j = 0; $j < (int)$response[$keys[$i]]['image']['totalCount']; $j++ )
                                                     {
                                                         echo '<label class="item col-md-4 col-sm-4 col-xs-6">
@@ -166,16 +167,21 @@ $keys = array_keys($response);
                                         <h2 class="StepTitle">Step 2: Select flyer content</h2>
                                         <div class="form-group">
                                             <label>
-                              <input type="checkbox" class="js-switch" /> $569,900
-                            </label> <br /><label>
-                              <input type="checkbox" class="js-switch" /> MLS# ML81656426
-                            </label> <br /><label>
-                              <input type="checkbox" class="js-switch" /> 3 Bed
-                            </label><br /> <label>
-                              <input type="checkbox" class="js-switch" />2 Bath
-                            </label> <br /><label>
-                              <input type="checkbox" class="js-switch" />2057 sqft
-                            </label>
+                                          <input type="checkbox" class="js-switch" name="flyerContent" value=<?php echo $response[$keys[$index]]['bedrooms']?>/> <?php echo $response[$keys[$index]]['bedrooms']?> Bedrooms
+                                        </label> 
+                                        <br />
+                                        <label>
+                                          <input type="checkbox" class="js-switch" name="flyerContent" value=<?php echo $response[$keys[$index]]['fullBaths']?>/> <?php echo $response[$keys[$index]]['fullBaths']?> Bathrooms
+                                        </label> 
+                                        <br />
+                                        <label>
+                                          <input type="checkbox" class="js-switch" name="flyerContent" value=<?php echo $response[$keys[$index]]['sqFt']?>/> <?php echo $response[$keys[$index]]['sqFt']?> SQFT
+                                        </label>
+                                        <br /> 
+                                        <label>
+                                          <input type="checkbox" class="js-switch" name="flyerContent" value=<?php echo $response[$keys[$index]]['listingID']?>/> <?php echo $response[$keys[$index]]['listingID']?> MLSID
+                                        </label> 
+                                       
 
 
                                         </div>
@@ -184,7 +190,7 @@ $keys = array_keys($response);
                                         <h2 class="StepTitle">Step 3: Select listing description</h2>
                                         <div class="form-group">
                                             <label>
-                              <input type="checkbox" class="js-switch" />  <p>Beautifully remodeled. Great neighborhood to raise a family. Designed for entertaining. Located in the desirable Harrod Homes neighborhood, this home features a grand formal living room with vaulted ceilings. The formal dining room's ceiling and wall trims make it the perfect place to dine with friends and family. The kitchen has been remodeled with new engraved cabinets, quarts counter tops, subway tile back-splash, and stainless steel appliances. The kitchen opens up to a family room with vaulted ceilings and a cozy fireplace. Spacious master bedroom with large walk-in closet and private sliding door access to backyard.</p>
+                             <?php echo '<input type="checkbox" class="js-switch" name="description" value="' . $response[$keys[$index]]['remarksConcat'] .'"/>'; ?>  <p> <?php echo $response[$keys[$index]]['remarksConcat']?></p>
                             </label>
                                             <label>
                               <input type="checkbox" class="js-switch" />No Description
@@ -201,8 +207,11 @@ $keys = array_keys($response);
 
                         </div>
 
-
-
+                        <?php echo '<input type="hidden" name="address" value="'. $response[$keys[$index]]['address'] . '" />'; ?>
+                        <input type="hidden" name="city" value=<?php echo $response[$keys[$index]]['cityName'];?>/>
+                        <input type="hidden" name="state" value=<?php echo $response[$keys[$index]]['state'];?>/>
+                        <input type="hidden" name="zip" value=<?php echo $response[$keys[$index]]['zipcode'];?>/>
+                        <input type="hidden" name="price" value=<?php echo $response[$keys[$index]]['listingPrice'];?>/>
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div>
@@ -274,27 +283,56 @@ $keys = array_keys($response);
 
             function finishClicked()
             {
-                if($("input:checked").length > 3)
+                if($("input[name='imageURL']:checked").length > 5)
                 {
-                    alert("Only choose 3 pictures.");
+                    alert("Only choose 5 pictures.");
                 }
-                else if($("input:checked").length < 3)
+                else if($("input:[name='imageURL']checked").length < 5)
                 {
-                    alert("Choose at least 3 pictures.");
+                    alert("Choose at least 5 pictures.");
                 }
+                else if($("input:[name='flyerContent']checked").length > 4)
+                {
+                    alert("Only choose 4 content options");
+                }
+                else if($("input:[name='flyerContent']checked").length < 4)
+                {
+                    alert("Choose at least 4 content options.");
+                }
+
                 else
                 {
                     var allVals = [];
+                    var flyerContent= [];
+                    var description = "";
+                    var addressC = $("input[name='address']").val();
+                    var cityC = $("input[name='city']").val();
+                    var stateC = $("input[name='state']").val();
+                    var zipC = $("input[name='zip']").val();
+                    var priceC = $("input[name='price']").val();
                     $('input[name="imageURL"]:checked').each(function() {
                     allVals.push($(this).val());
                     });
+                    $('input[name="flyerContent"]:checked').each(function() {
+                    flyerContent.push($(this).val());
+                    });
+                    if($('input[name="description"]:checked'))
+                    {
+                        description = $('input[name="description"]:checked').val();
+                    }
+                    else
+                    {
+                        description="";
+                    }
                     // alert("Post");
                     // console.log(allVals[0]);
                     // alert(allVals[1]);
                     // alert(allVals[2]);
-                    $.post( "generatePDF.php", { imageOne: allVals[0], imageTwo: allVals[1], imageThree: allVals[2]} );
+                    $.post( "generatePDF.php", { imageOne: allVals[0], imageTwo: allVals[1], imageThree: allVals[2], imageFour: allVals[3], imageFive: allVals[4],
+                     bedrooms:flyerContent[0], bathrooms: flyerContent[1], sqft: flyerContent[2], mlsId:flyerContent[3], address: addressC, city: cityC, 
+                     state: stateC, zip: zipC, price: priceC, description: description } );
 
-
+                    alert("Flyer created!");
                     // console.log(allVals);
                 }
                 // $('input[name="imageURL"]:checked').each(function() {
