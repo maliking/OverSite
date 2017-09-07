@@ -357,7 +357,21 @@ $keys = array_keys($response);
                      state: stateC, zip: zipC, price: priceC, description: description },
                      function(data, status)
                      {
-                        $("#pdf").attr('src', addressC + ".pdf");
+                        int count = 0;
+                        int maxTries = 3;
+                        while(true) {
+                            try 
+                            {
+                                $("#pdf").attr('src', addressC + ".pdf");
+                            } 
+                            catch (SomeException e) 
+                            {
+                                // handle exception
+                                if (++count == maxTries) throw e;
+                            }
+                        }
+
+                        
                     });
                     
                     alert("Flyer created!");
