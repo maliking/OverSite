@@ -364,7 +364,7 @@ $keys = array_keys($response);
                             {
                                 $("#pdf").attr('src', addressC + ".pdf");
                             } 
-                            catch (SomeException e) 
+                            catch (err) 
                             {
                                 // handle exception
                                 if (++count == maxTries) break;
