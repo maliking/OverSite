@@ -359,7 +359,9 @@ $keys = array_keys($response);
                      {
                         var count = 0;
                         var maxTries = 3;
-                        while(true) {
+                        var loop = true;
+                        while(loop) 
+                        {
                             try 
                             {
                                 $("#pdf").attr('src', addressC + ".pdf");
@@ -367,7 +369,9 @@ $keys = array_keys($response);
                             catch (err) 
                             {
                                 // handle exception
-                                if (++count == maxTries) break;
+                                count++;
+                                if(count==maxTries)
+                                    loop = false;
                             }
                         };
 
