@@ -96,6 +96,6 @@ $stmt->execute($namedParameters);
  // $pdf->Output('/Applications/XAMPP/xamppfiles/htdocs/test/generateExample.pdf', 'F');
 $pdf->Output('../../uploadFlyers/' . $_POST['address']. '.pdf', 'F');
 
-sleep(3);
+sleep(5);
 
 ?>
