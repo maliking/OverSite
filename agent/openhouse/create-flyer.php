@@ -357,9 +357,8 @@ $keys = array_keys($response);
                      state: stateC, zip: zipC, price: priceC, description: description },
                      function(data, status)
                      {
-                        alert("Data: " );
+                        alert("Data: ");
                     });
-                    );
                     
                     alert("Flyer created!");
                     // console.log(allVals);
