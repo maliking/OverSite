@@ -355,7 +355,9 @@ $keys = array_keys($response);
                     $.post( "generatePDF.php", { imageOne: allVals[0], imageTwo: allVals[1], imageThree: allVals[2], imageFour: allVals[3], imageFive: allVals[4],
                      bedrooms:flyerContent[0], bathrooms: flyerContent[1], sqft: flyerContent[2], mlsId:flyerContent[3], address: addressC, city: cityC, 
                      state: stateC, zip: zipC, price: priceC, description: description } );
-
+                    .done(function( data ) {
+                        alert( "Data Loaded: ");
+                      });
                     alert("Flyer created!");
                     // console.log(allVals);
                 }
