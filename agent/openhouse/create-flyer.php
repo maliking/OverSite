@@ -357,8 +357,8 @@ $keys = array_keys($response);
                      state: stateC, zip: zipC, price: priceC, description: description },
                      function(data, status)
                      {
-                        int count = 0;
-                        int maxTries = 3;
+                        var count = 0;
+                        var maxTries = 3;
                         while(true) {
                             try 
                             {
