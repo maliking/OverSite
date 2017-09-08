@@ -120,6 +120,7 @@
                     <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2" style="margin-top: 40px;">
                         <label>How soon are you looking to purchase a home?</label>
                         <select id="" name="howSoon" class="form-control" required>
+                            <option value="0">--Select One--</option>
                             <option value="1-3">1-3 months</option>
                             <option value="4-6">4-6 months</option>
                             <option value="7-12">7-12 months</option>
