@@ -4,6 +4,7 @@
 //if (!isset($_SESSION['userId'])) {
 //    header("Location: http://jjp17.org/login.php");
 //}
+clearstatcache();
 $listingId = $_GET['id'];
 
 require '../../databaseConnection.php';
