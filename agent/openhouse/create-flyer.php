@@ -235,6 +235,9 @@ $keys = array_keys($response);
                                     else
                                     {
                                         // echo '<img src="../../uploadFlyers/' . $result['flyer'] . '" alt="pdf" style="width:80%; margin-top:10px;">';
+
+                                        // echo '<iframe id="pdf" src="../../../test/generateExample.pdf" style="width:600px; height:500px;" frameborder="0"></iframe>">';
+
                                         echo '<iframe id="pdf" src="../../uploadFlyers/' . $result['flyer']  . '" 
                                         style="width:600px; height:500px;" frameborder="0"></iframe>';
                                     }
@@ -334,12 +337,15 @@ $keys = array_keys($response);
                     var stateC = $("input[name='state']").val();
                     var zipC = $("input[name='zip']").val();
                     var priceC = $("input[name='price']").val();
+
                     $('input[name="imageURL"]:checked').each(function() {
                     allVals.push($(this).val());
                     });
+
                     $('input[name="flyerContent"]:checked').each(function() {
                     flyerContent.push($(this).val());
                     });
+
                     if($('input[name="description"]:checked'))
                     {
                         description = $('input[name="description"]:checked').val();
@@ -352,17 +358,37 @@ $keys = array_keys($response);
                     // console.log(allVals[0]);
                     // alert(allVals[1]);
                     // alert(allVals[2]);
-                    $.post( "generatePDF.php", { imageOne: allVals[0], imageTwo: allVals[1], imageThree: allVals[2], imageFour: allVals[3], imageFive: allVals[4],
-                     bedrooms:flyerContent[0], bathrooms: flyerContent[1], sqft: flyerContent[2], mlsId:flyerContent[3], address: addressC, city: cityC, 
-                     state: stateC, zip: zipC, price: priceC, description: description },
-                     function(data, status)
-                     {
+                    // $.post( "generatePDF.php", { imageOne: allVals[0], imageTwo: allVals[1], imageThree: allVals[2], imageFour: allVals[3], imageFive: allVals[4],
+                    //  bedrooms:flyerContent[0], bathrooms: flyerContent[1], sqft: flyerContent[2], mlsId:flyerContent[3], address: addressC, city: cityC, 
+                    //  state: stateC, zip: zipC, price: priceC, description: description },
+                    //  function(data, status)
+                    //  {
                         
                             
                         
+                    // });
+                    alert("Your pdf will auto load in 5 seconds.");
+
+                    $.ajax({
+                      type: "POST",
+                      url: "generatePDF.php",
+                      data: { imageOne: allVals[0], imageTwo: allVals[1], imageThree: allVals[2], imageFour: allVals[3], imageFive: allVals[4],
+                        bedrooms:flyerContent[0], bathrooms: flyerContent[1], sqft: flyerContent[2], mlsId:flyerContent[3], address: addressC, city: cityC, 
+                        state: stateC, zip: zipC, price: priceC, description: description },
+                        success:function(data) 
+                        {
+                            // alert(data); //=== Show Success Message==
+                            // $("#pdf").attr('src','../../../test/generateExample.pdf');
+                            $("#pdf").attr('src','../../uploadFlyers/' + addressC + ".pdf")
+                        },
+                        error:function(data)
+                        {
+                        alert(data.responseText); //===Show Error Message====
+                        }
                     });
+                      
                     
-                    alert("Flyer created! Refres page");
+                    // alert("Flyer created! Refres page");
                     // console.log(allVals);
                 }
                 // $('input[name="imageURL"]:checked').each(function() {

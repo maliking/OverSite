@@ -4,6 +4,8 @@ require_once('../../databaseConnection.php');
 
 $dbConn = getConnection();
 
+try
+{
 $pdf = new FPDF();
 $pdf->AddPage("P","letter");
 $pdf->SetMargins(0,0,0);
@@ -95,7 +97,12 @@ $stmt->execute($namedParameters);
 
  // $pdf->Output('/Applications/XAMPP/xamppfiles/htdocs/test/generateExample.pdf', 'F');
 $pdf->Output('../../uploadFlyers/' . $_POST['address']. '.pdf', 'F');
-
-
+ echo 'vanilla!';
+}
+catch(Exception $e)
+{
+echo $e->getMessage();
+}
+sleep(5);
 
 ?>
