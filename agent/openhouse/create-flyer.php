@@ -368,7 +368,7 @@ $keys = array_keys($response);
                             
                         
                     // });
-                    alert("Your pdf will auto load in 5 seconds.");
+                    alert("Your pdf will auto load.");
 
                     $.ajax({
                       type: "POST",

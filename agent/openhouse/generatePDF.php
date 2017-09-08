@@ -105,6 +105,6 @@ catch(Exception $e)
 {
 echo $e->getMessage();
 }
-sleep(5);
+// sleep(5);
 
 ?>
