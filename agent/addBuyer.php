@@ -20,8 +20,8 @@ $priceMin = $_POST['priceMin'];
 // $houseId = "253";
 $userId = $_SESSION['userId'];
 $sql = "INSERT INTO BuyerInfo
-		(firstName, lastName, email, phone, registeredDate, bedroomsMax, bedroomsMin, bathroomsMax, bathroomsMin, priceMax, priceMin, houseId, userId)
-		VALUES (:firstName, :lastName, :email, :phone, :registeredDate, :bedroomsMax, :bedroomsMin, :bathroomsMax, :bathroomsMin, :priceMax, :priceMin, :houseId, :userId)";
+		(firstName, lastName, email, phone, registeredDate, bedroomsMax, bedroomsMin, bathroomsMax, bathroomsMin, priceMax, priceMin, houseId, userId, howSoon)
+		VALUES (:firstName, :lastName, :email, :phone, :registeredDate, :bedroomsMax, :bedroomsMin, :bathroomsMax, :bathroomsMin, :priceMax, :priceMin, :houseId, :userId, :howSoon)";
 $namedParameters = array();
 $namedParameters[':firstName'] = $firstName;
 $namedParameters[':lastName'] = $lastName;
@@ -36,6 +36,7 @@ $namedParameters[':priceMax'] = $priceMax;
 $namedParameters[':priceMin'] = $priceMin;
 $namedParameters[':houseId'] = $_POST['houseId'];
 $namedParameters[':userId'] = $userId;
+$namedParameters[':howSoon'] = $_POST['howSoon'];
 $stmt = $dbConn -> prepare($sql);
 $stmt->execute($namedParameters);
 //$stmt->execute();
