@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 require '../databaseConnection.php';
 require '../keys/cred.php';
 require '../twilio-php-master/Twilio/autoload.php';
@@ -30,8 +30,8 @@ $namedParameters[':phone'] = $phone;
 $namedParameters['registeredDate'] = date("Y/m/d");
 $namedParameters[':bedroomsMax'] = $bedroomsMax;
 $namedParameters[':bedroomsMin'] = $bedroomsMin;
-$namedParameters[':bathroomsMax'] = $bathroomsMax;
-$namedParameters[':bathroomsMin'] = $bathroomsMin;
+$namedParameters[':bathroomsMax'] = (float)$bathroomsMax;
+$namedParameters[':bathroomsMin'] = (float)$bathroomsMin;
 $namedParameters[':priceMax'] = $priceMax;
 $namedParameters[':priceMin'] = $priceMin;
 $namedParameters[':houseId'] = $_POST['houseId'];

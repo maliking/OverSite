@@ -1,6 +1,11 @@
 <?php
     require("../databaseConnection.php");  
     session_start();
+    if(!isset($_SESSION['listingId']))
+    {
+        $_SESSION['listingId'] = $_GET['id'];
+    }
+    
     $dbConn = getConnection();
     if(!isset($_SESSION['userId'])) {
       header("Location: index.php?error=wrong username or password");
@@ -10,7 +15,8 @@
     $sql = "SELECT houseId FROM HouseInfo WHERE listingId = :listingId";
 
     $namedParameters = array();
-    $namedParameters[':listingId'] = $_GET['id'];
+    // $namedParameters[':listingId'] = $_GET['id'];
+    $namedParameters[':listingId'] = $_SESSION['listingId'];
 
 
     $stmt = $dbConn->prepare($sql);
