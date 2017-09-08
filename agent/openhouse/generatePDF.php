@@ -1,4 +1,6 @@
 <?php
+clearstatcache();
+
 require_once('../../fpdf/fpdf.php');
 require_once('../../databaseConnection.php');
 
