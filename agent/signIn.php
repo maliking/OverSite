@@ -133,27 +133,53 @@
                 <div class="row" style="margin-top: 20px;">
 
                     <div class="col-md-4 col-sm-4 col-xs-12 col-md-offset-2">
-                        <label>Bedrooms</label>
+                        <label>Min Bedrooms</label>
+                        <select id="" name="bedroomsMin" class="form-control" required>
+                            <option value="0">--Select One--</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                           
+                          </select>
+                      </br>
+                          <label>Max Bedrooms</label>
                         <select id="" name="bedroomsMax" class="form-control" required>
-                            <option value="">1</option>
-                            <option value="">2</option>
-                            <option value="">3</option>
-                            <option value="">4</option>
-                            <option value="">5</option>
+                            <option value="0">--Select One--</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
                            
                           </select>
                     </div>
                     <div class="col-md-4 col-sm-4 col-xs-12 col-md-offset-65">
-                        <label>Bathrooms</label>
+                        <label>Min Bathrooms</label>
+                        <select id="" name="bathroomsMin" class="form-control" required>
+                            <option value="0">--Select One--</option>
+                            <option value="1">1</option>
+                            <option value="1.5">1.5</option>
+                            <option value="2">2</option>
+                            <option value="2.5">2.5</option>
+                            <option value="3">3</option>
+                            <option value="3.5">3.5</option>
+                            <option value="4">4</option>
+                            <option value="4.5">4.5</option>
+                          </select>
+                      </br>
+                          <label>Max Bathrooms</label>
                         <select id="" name="bathroomsMax" class="form-control" required>
-                            <option value="">1</option>
-                            <option value="">1.5</option>
-                            <option value="">2</option>
-                            <option value="">2.5</option>
-                            <option value="">3</option>
-                            <option value="">3.5</option>
-                            <option value="">4</option>
-                            <option value="">4.5</option>
+                            <option value="0">--Select One--</option>
+                            <option value="1">1</option>
+                            <option value="1.5">1.5</option>
+                            <option value="2">2</option>
+                            <option value="2.5">2.5</option>
+                            <option value="3">3</option>
+                            <option value="3.5">3.5</option>
+                            <option value="4">4</option>
+                            <option value="4.5">4.5</option>
                           </select>
                     </div>
                 </div>
