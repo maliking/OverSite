@@ -273,21 +273,24 @@ $url = 'https://api.idxbroker.com/clients/featured';
             // echo $result['address'] . "<br>" . $result['city'] . " " . $result['state'] . ", " . $result['zip'];
             echo $response[$keys[$i]]['address'] . "<br>" . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . ", " . $response[$keys[$i]]['zipcode'];
             echo "</td>";                                                
-            echo "<td>
-                                                    <div class=\"dropdown\">
-                                                        <button class=\"btn btn-default dropdown-toggle\" type=\"button\" id=\"dropdownMenu1\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"true\">
-                                                            Options
-                                                            <span class=\"caret\"></span>
-                                                        </button>
-                                                        <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">";
-            echo "                                      <li><a href=\"create-flyer.php?id=" . $response[$keys[$i]]['listingID']  ."\">Create a New Flyer</a></li>";
-            echo "                                          <li><a href=\"listing-info.php?id=" .$response[$keys[$i]]['listingID']  ."\">Flyer Info</a></li>
-                                                            <li><a href=\"../signIn.php?id=" . $response[$keys[$i]]['listingID']  ." \">Sign-In</a></li>
-                                                            <li role=\"separator\" class=\"divider\"></li>
-                                                            <li><a href=\"#\">Remove</a></li>
-                                                        </ul>
-                                                    </div>
-                                                </td>";
+            echo "<td>";
+            //                                         <div class=\"dropdown\">
+            //                                             <button class=\"btn btn-default dropdown-toggle\" type=\"button\" id=\"dropdownMenu1\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"true\">
+            //                                                 Options
+            //                                                 <span class=\"caret\"></span>
+            //                                             </button>
+            //                                             <ul class=\"dropdown-menu\" aria-labelledby=\"dropdownMenu1\">";
+            // echo "                                      <li><a href=\"create-flyer.php?id=" . $response[$keys[$i]]['listingID']  ."\">Create a New Flyer</a></li>";
+            // echo "                                          // <li><a href=\"listing-info.php?id=" .$response[$keys[$i]]['listingID']  ."\">Flyer Info</a></li>
+            //                                                 <li><a href=\"../signIn.php?id=" . $response[$keys[$i]]['listingID']  ." \">Sign-In</a></li>
+            //                                                 <li role=\"separator\" class=\"divider\"></li>
+            //                                                 <li><a href=\"#\">Remove</a></li>
+            //                                             </ul>
+            //                                         </div>
+            echo '<a href="create-flyer.php?id=' . $response[$keys[$i]]['listingID'] .'"><button type="button" class="btn btn-primary ">Create a New Flyer</button></a></br></br>';
+            echo '<a href=../signIn.php?id=' . $response[$keys[$i]]['listingID'] . '><button type="button" class="btn btn-primary">Sign-In</button></a></br></br>';
+            echo '<button type="button" class="btn btn-danger">Remove</button></br></br>';
+            echo "                               </td>";
             echo "</tr>";
 
         }

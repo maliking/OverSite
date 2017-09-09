@@ -134,7 +134,7 @@ $keys = array_keys($response);
           </span>
                                             </a>
                                         </li>
-                                        <li>
+                                       <!--  <li>
                                             <a href="#step-3">
                                                 <label class="stepNumber">Step 3</label>
                                                 <span class="stepDesc">
@@ -142,7 +142,7 @@ $keys = array_keys($response);
              <small>Step 3 Listing Description</small>
           </span>
                                             </a>
-                                        </li>
+                                        </li> -->
 
                                     </ul>
 
@@ -179,31 +179,37 @@ $keys = array_keys($response);
                                     <div id="step-2">
                                         <h2 class="StepTitle">Step 2: Select flyer content</h2>
                                         <div class="form-group">
+                                           
+                                              <input checked type="hidden" name="bedrooms" value=<?php echo $response[$keys[$index]]['bedrooms']?>/> 
+                                           
+                                              <input checked type="hidden" name="bathrooms" value=<?php echo $response[$keys[$index]]['fullBaths']?>/> 
+                                           
+                                              <input type="hidden" name="sqft" value=<?php echo $response[$keys[$index]]['sqFt']?>/> 
+                                    
                                             <label>
-                                          <input type="checkbox" class="js-switch" name="flyerContent" value=<?php echo $response[$keys[$index]]['bedrooms']?>/> <?php echo $response[$keys[$index]]['bedrooms']?> Bedrooms
-                                        </label> 
-                                        <br />
-                                        <label>
-                                          <input type="checkbox" class="js-switch" name="flyerContent" value=<?php echo $response[$keys[$index]]['fullBaths']?>/> <?php echo $response[$keys[$index]]['fullBaths']?> Bathrooms
-                                        </label> 
-                                        <br />
-                                        <label>
-                                          <input type="checkbox" class="js-switch" name="flyerContent" value=<?php echo $response[$keys[$index]]['sqFt']?>/> <?php echo $response[$keys[$index]]['sqFt']?> SQFT
-                                        </label>
-                                        <br /> 
-                                        <label>
-                                          <input type="checkbox" class="js-switch" name="flyerContent" value=<?php echo $response[$keys[$index]]['listingID']?>/> <?php echo $response[$keys[$index]]['listingID']?> MLSID
-                                        </label> 
-                                       
-
+                                              <input type="checkbox" class="js-switch" name="lotSize" id="lotSize" value=<?php if(((float)$response[$keys[$index]]['acres'])< 1)
+                                                                                                                                                echo (float)$response[$keys[$index]]['acres'] * 43560;
+                                                                                                                                                else
+                                                                                                                                                 echo (float)$response[$keys[$index]]['acres']; ?>/> 
+                                                                                                                                             <?php if(((float)$response[$keys[$index]]['acres'])< 1)
+                                                                                                                                                echo (float)$response[$keys[$index]]['acres'] * 43560;
+                                                                                                                                                else
+                                                                                                                                                 echo (float)$response[$keys[$index]]['acres'];?>sqFt Lot Size
+                                            </label> 
+                                        </br>
+                                         </br>
+                                            <label>
+                                           
+                                                <input type="text" id="age" value="" placeholder="Enter Age if wanted"/>
+                                            </label>
 
                                         </div>
                                     </div>
-                                    <div id="step-3">
+                                    <!-- <div id="step-3">
                                         <h2 class="StepTitle">Step 3: Select listing description</h2>
                                         <div class="form-group">
                                             <label>
-                             <?php echo '<input type="checkbox" class="js-switch" name="description" value="' . $response[$keys[$index]]['remarksConcat'] .'"/>'; ?>  <p> <?php echo $response[$keys[$index]]['remarksConcat']?></p>
+                             <?php// echo '<input type="checkbox" class="js-switch" name="description" value="' . $response[$keys[$index]]['remarksConcat'] .'"/>'; ?>  <p> <?php echo $response[$keys[$index]]['remarksConcat']?></p>
                             </label>
                                             <label>
                               <input type="checkbox" class="js-switch" />No Description
@@ -212,7 +218,7 @@ $keys = array_keys($response);
 
 
                                         </div>
-                                    </div>
+                                    </div> -->
 
                                 </div>
                                 <!-------end smart wizard-->
@@ -225,6 +231,8 @@ $keys = array_keys($response);
                         <input type="hidden" name="state" value=<?php echo $response[$keys[$index]]['state'];?>/>
                         <input type="hidden" name="zip" value=<?php echo $response[$keys[$index]]['zipcode'];?>/>
                         <input type="hidden" name="price" value=<?php echo $response[$keys[$index]]['listingPrice'];?>/>
+                        <input type="hidden" name="mlsId" value=<?php echo $listingId;?>/>
+                        <?php echo '<input type="hidden" name="description" value="' . $response[$keys[$index]]['remarksConcat'] . '" />'; ?>
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div>
@@ -237,10 +245,10 @@ $keys = array_keys($response);
                                     {
                                         // echo '<img src="../../uploadFlyers/' . $result['flyer'] . '" alt="pdf" style="width:80%; margin-top:10px;">';
 
-                                        // echo '<iframe id="pdf" src="../../../test/generateExample.pdf" style="width:600px; height:500px;" frameborder="0"></iframe>">';
+                                        echo '<iframe id="pdf" src="../../../test/generateExample.pdf" style="width:600px; height:600px;" frameborder="0"></iframe>';
 
-                                        echo '<iframe id="pdf" src="../../uploadFlyers/' . $result['flyer']  . '" 
-                                        style="width:600px; height:500px;" frameborder="0"></iframe>';
+                                        // echo '<iframe id="pdf" src="../../uploadFlyers/' . $result['flyer']  . '" 
+                                        // style="width:600px; height:500px;" frameborder="0"></iframe>';
                                     }
                                 ?>
                                 
@@ -319,25 +327,27 @@ $keys = array_keys($response);
                 {
                     alert("Choose at least 5 pictures.");
                 }
-                else if($("input:[name='flyerContent']checked").length > 4)
-                {
-                    alert("Only choose 4 content options");
-                }
-                else if($("input:[name='flyerContent']checked").length < 4)
-                {
-                    alert("Choose at least 4 content options.");
-                }
 
                 else
                 {
                     var allVals = [];
-                    var flyerContent= [];
-                    var description = "";
+                    
+                    var description = $("input[name='description']").val();
+                    var lotSize = "";
+                    var age = "";
                     var addressC = $("input[name='address']").val();
                     var cityC = $("input[name='city']").val();
                     var stateC = $("input[name='state']").val();
                     var zipC = $("input[name='zip']").val();
                     var priceC = $("input[name='price']").val();
+
+                    var bedrooms = $("input[name='bedrooms']").val();
+                    var bathrooms = $("input[name='bathrooms']").val();
+                    var squareFeet = $("input[name='sqft']").val();
+
+                    var mlsId = $("input[name='mlsId']").val();
+                    // var lotSize = $("input[name='lotSize']").val();
+
 
                     $('input[name="imageURL"]:checked').each(function() {
                     allVals.push($(this).val());
@@ -347,14 +357,16 @@ $keys = array_keys($response);
                     flyerContent.push($(this).val());
                     });
 
-                    if($('input[name="description"]:checked'))
+
+                    if($('#lotSize').is(":checked"))
                     {
-                        description = $('input[name="description"]:checked').val();
+                        lotSize = $('#lotSize').val();
                     }
-                    else
-                    {
-                        description="";
+                    else if ($('#lotSize').is(":not(:checked)") == false){
+                        lotSize = "";
                     }
+                    if($("#age").val() != "")
+                        age = $("#age").val();
                     // alert("Post");
                     // console.log(allVals[0]);
                     // alert(allVals[1]);
@@ -369,18 +381,18 @@ $keys = array_keys($response);
                         
                     // });
                     alert("Your pdf will auto load.");
-
+                    // alert(lotSize);
                     $.ajax({
                       type: "POST",
                       url: "generatePDF.php",
                       data: { imageOne: allVals[0], imageTwo: allVals[1], imageThree: allVals[2], imageFour: allVals[3], imageFive: allVals[4],
-                        bedrooms:flyerContent[0], bathrooms: flyerContent[1], sqft: flyerContent[2], mlsId:flyerContent[3], address: addressC, city: cityC, 
+                        bedrooms:bedrooms, bathrooms: bathrooms, sqft: squareFeet, lotSize:lotSize, age: age, mlsId:mlsId, address: addressC, city: cityC, 
                         state: stateC, zip: zipC, price: priceC, description: description },
                         success:function(data) 
                         {
                             // alert(data); //=== Show Success Message==
-                            // $("#pdf").attr('src','../../../test/generateExample.pdf');
-                            $("#pdf").attr('src','../../uploadFlyers/' + addressC + ".pdf")
+                            $("#pdf").attr('src','../../../test/generateExample.pdf');
+                            // $("#pdf").attr('src','../../uploadFlyers/' + addressC + ".pdf")
                         },
                         error:function(data)
                         {
