@@ -243,7 +243,7 @@ $pdf->Cell(30,5,'   $' . number_format($_POST['TYGross'] + $_POST['InitialGross'
 		if ($err) {
 	  echo "cURL Error #:" . $err;
 	} else {
-		echo $response;
+		// echo $response;
 	  	
 	}
 	
