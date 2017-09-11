@@ -161,7 +161,7 @@ $pdf->Cell(23,10,'   $99.00      ' ,0,1);
 $pdf->SetFont('Times','B');
 $pdf->Cell(69,10,'                        Remax Franchise: ',0,0);
 $pdf->SetFont('Times','U');
-$pdf->Cell(23,10,'   $00.00      ' ,0,1);
+$pdf->Cell(23,10,'   $' . number_format($_POST['remaxFee'],2) . '      ' ,0,1);
 
 $pdf->SetFont('Times','B');
 $pdf->Cell(69,10,'                        Misc: ',0,0);
