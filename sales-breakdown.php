@@ -93,8 +93,8 @@ $result = $stmt->fetchAll();
         echo "<td>" . '$' . number_format($sales['misc'], 0) . "</td>"; //misc
         echo "<td>" . '$' . number_format($sales['finalComm'], 0) . "</td>"; //commission
         echo "<td>" . $sales['clients'] . "</td>"; //client
-        echo "<td>" . '$' . number_format($sales['price'], 0) . "</td>"; //price
-        echo "<td>" . $sales['listing_buyer'] . "</td>"; //listing buyer
+        echo "<td>" . '$' . number_format($sales['finalHousePrice'], 0) . "</td>"; //price
+        echo "<td>" . $sales['clients'] . "</td>"; //listing buyer
         echo "<td>" . $sales['notes'] . "</td>"; //notes
         echo '<td> <a href="viewCommissionSheet.php?comm=' . $sales['commId'] . '" target="_blank"> <button>View Commission Sheet</button> </a> </td>';
         echo "</tr>";
