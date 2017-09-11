@@ -1,7 +1,7 @@
 <?php
 require("databaseConnection.php");
 // require("../keys/refreshKeyAdobe.php");
-// require("keys/cred.php");
+require("keys/cred.php");
 session_start();
 $dbConn = getConnection();
 if(!isset($_SESSION['userId'])) 
