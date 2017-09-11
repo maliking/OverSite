@@ -11,7 +11,15 @@ $stmt = $dbConn -> prepare($sql);
 $stmt->execute();
 $userResults = $stmt->fetch();
 
-$_SESSION['FYGross'] = $userResults['FYGross'];
+if(!isset($userResults['FYGross'] ))
+{
+	$_SESSION['FYGross'] = 0;
+}
+else
+{
+	$_SESSION['FYGross'] = $userResults['FYGross'];
+}
+
 
 echo json_encode($userResults);
 ?>

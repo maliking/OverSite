@@ -67,7 +67,18 @@ $houses = $stmtHouse->fetchAll();
                     {
                         var data = JSON.parse(this.responseText);
                         // alert(data.TYGross);
-                        document.getElementById("beg-comm").value = data.TYGross;
+                        var TYGross = data.TYGross;
+                        // alert(TYGross);
+                        if(TYGross == undefined)
+                        {
+                            document.getElementById("beg-comm").value = "0";
+                            TYGross = "";
+                        }
+                        else
+                        {
+                            document.getElementById("beg-comm").value = data.TYGross;
+                            TYGross = "";
+                        }
                     }
                 };
                 xhttp.open("GET", "agentCommission.php?license=" + x, true);
