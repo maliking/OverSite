@@ -195,8 +195,8 @@ $pdf->Cell(155,5,'                                                              
 $pdf->SetFont('Times','U');
 $pdf->Cell(30,5,'   $' . number_format($_POST['TYGross'] + $_POST['InitialGross'],2) . '      ' ,0,1);
 
-$pdf->Output();
-	// $base = $pdf->Output('','s');
+// $pdf->Output();
+	$base = $pdf->Output('','s');
 	$doc = base64_encode($base);
 	$curl = curl_init();
 	curl_setopt_array($curl, array(
