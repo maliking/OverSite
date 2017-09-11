@@ -262,7 +262,7 @@ $pdf->Cell(30,5,'   $' . number_format($_POST['TYGross'] + $_POST['InitialGross'
 }
 	// print_r($namedParameters);
 	
-	 // header("Location: index.php");
+	 header("Location: index.php");
 
 ?>
 
