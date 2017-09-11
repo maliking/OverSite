@@ -252,7 +252,7 @@ $pdf->Cell(30,5,'   $' . number_format($_POST['TYGross'] + $_POST['InitialGross'
 	$namedParameters[":envelopeId"] = $envId['envelopeId'];
 	$stmt = $dbConn -> prepare($sql);
 	// $stmt->execute($namedParameters); 
-	print_r($envId);
+	print_r($envId['envelopeId'];
 	
 	 // header("Location: index.php");
 
