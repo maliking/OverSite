@@ -160,7 +160,7 @@ $houses = $stmtHouse->fetchAll();
                                                                                 $license = "";
                                                                                     foreach($results as $result)
                                                                                     {
-                                                                                        if($result['userType'] == 0 || $result['userId'] == $_SESSION['userId'])
+                                                                                        if($result['userType'] == 0 || $result['license'] == $_SESSION['license'])
                                                                                         {}
                                                                                         else
                                                                                             echo "<option value='". $result['license']."'>". $result['firstName'] . " " . $result['lastName'] . "</option>";
