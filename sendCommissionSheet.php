@@ -251,7 +251,15 @@ $pdf->Cell(30,5,'   $' . number_format($_POST['TYGross'] + $_POST['InitialGross'
 	$envId = json_decode($response, true);
 	$namedParameters[":envelopeId"] = $envId['envelopeId'];
 	$stmt = $dbConn->prepare($sql);
+	try
+	{
+
+	
 	$stmt->execute($namedParameters); 
+	}
+	catch(PDOException $e) {
+    echo "Error: " . $e->getMessage();
+}
 	// print_r($namedParameters);
 	
 	 // header("Location: index.php");
