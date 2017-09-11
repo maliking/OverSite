@@ -252,14 +252,14 @@ $pdf->Cell(30,5,'   $' . number_format($_POST['TYGross'] + $_POST['InitialGross'
 	$namedParameters[":envelopeId"] = $envId['envelopeId'];
 	$stmt = $dbConn -> prepare($sql);
 	$stmt->execute($namedParameters); 
-	// print_r($envId);
+	print_r($envId);
 	
 	 header("Location: index.php");
 
 ?>
 
 
-<!-- <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     
 <head>
@@ -276,4 +276,4 @@ $pdf->Cell(30,5,'   $' . number_format($_POST['TYGross'] + $_POST['InitialGross'
        
     </body>
 
-</html> -->
+</html>
