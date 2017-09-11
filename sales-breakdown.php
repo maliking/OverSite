@@ -96,7 +96,7 @@ $result = $stmt->fetchAll();
         echo "<td>" . '$' . number_format($sales['price'], 0) . "</td>"; //price
         echo "<td>" . $sales['listing_buyer'] . "</td>"; //listing buyer
         echo "<td>" . $sales['notes'] . "</td>"; //notes
-        echo '<td> <a href="viewCommissionSheet.php?comm=' . $sales['commId'] . '"> <button>View Commission Sheet</button> </a> </td>';
+        echo '<td> <a href="viewCommissionSheet.php?comm=' . $sales['commId'] . '" target="_blank"> <button>View Commission Sheet</button> </a> </td>';
         echo "</tr>";
     }
                                             ?>

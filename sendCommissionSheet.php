@@ -28,8 +28,8 @@ $stmtHouse->execute();
 $houseResults = $stmtHouse->fetch();
 
 $sql ="INSERT INTO commInfo
-        (houseId, license, firstName, lastName, date, settlementDate, checkNum, address, city, state, zip, TYGross, FYGross, InitialGross, brokerFee, finalComm, remaxFee, misc, percentage, envelopeId, finalHousePrice)
-        VALUES (:houseId, :license, :firstName, :lastName, :date, :settlementDate, :checkNum, :address, :city, :state, :zip, :TYGross, :FYGross, :InitialGross, :brokerFee, :finalComm, :remaxFee, :misc, :percentage, :envelopeId, :finalHousePrice)";
+        (houseId, license, firstName, lastName, date, settlementDate, checkNum, clients, address, city, state, zip, TYGross, FYGross, InitialGross, brokerFee, finalComm, remaxFee, misc, percentage, envelopeId, finalHousePrice)
+        VALUES (:houseId, :license, :firstName, :lastName, :date, :settlementDate, :checkNum, :clients, :address, :city, :state, :zip, :TYGross, :FYGross, :InitialGross, :brokerFee, :finalComm, :remaxFee, :misc, :percentage, :envelopeId, :finalHousePrice)";
            
 $namedParameters = array();
 $namedParameters[":houseId"] = $houseId;
@@ -50,6 +50,7 @@ $namedParameters[":brokerFee"] = $_POST['brokerFee'];
 $namedParameters[":finalComm"] =  $_POST['netCommission']; 
 $namedParameters[":misc"] =  $_POST['miscell'];
 $namedParameters[":remaxFee"] = (int)$_POST['remaxFee'];
+$namedParameters[":clients"] = $_POST['clients'];
 // $value = preg_replace('/[\%,]/', '', $_POST['percentage']);
 $value = floatval($_POST['percentage']);
 $namedParameters[":percentage"] = $value;
