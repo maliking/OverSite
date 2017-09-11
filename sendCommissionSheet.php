@@ -250,9 +250,9 @@ $pdf->Cell(30,5,'   $' . number_format($_POST['TYGross'] + $_POST['InitialGross'
 	
 	$envId = json_decode($response, true);
 	$namedParameters[":envelopeId"] = $envId['envelopeId'];
-	$stmt = $dbConn -> prepare($sql);
-	// $stmt->execute($namedParameters); 
-	print_r($namedParameters);
+	$stmt = $dbConn->prepare($sql);
+	$stmt->execute($namedParameters); 
+	// print_r($namedParameters);
 	
 	 // header("Location: index.php");
 
