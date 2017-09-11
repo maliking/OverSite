@@ -49,7 +49,7 @@ $namedParameters[":InitialGross"] = $_POST['InitialGross'];
 $namedParameters[":brokerFee"] = $_POST['brokerFee'];
 $namedParameters[":finalComm"] =  $_POST['netCommission']; 
 $namedParameters[":misc"] =  $_POST['miscell'];
-$namedParameters[":remaxFee"] = $_POST['remaxFee'];
+$namedParameters[":remaxFee"] = (int)$_POST['remaxFee'];
 // $value = preg_replace('/[\%,]/', '', $_POST['percentage']);
 $value = floatval($_POST['percentage']);
 $namedParameters[":percentage"] = $value;
@@ -251,7 +251,7 @@ $pdf->Cell(30,5,'   $' . number_format($_POST['TYGross'] + $_POST['InitialGross'
 	$envId = json_decode($response, true);
 	$namedParameters[":envelopeId"] = $envId['envelopeId'];
 	$stmt = $dbConn -> prepare($sql);
-	// $stmt->execute($namedParameters); 
+	$stmt->execute($namedParameters); 
 	// print_r($envId);
 	
 	 header("Location: index.php");
