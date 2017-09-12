@@ -294,12 +294,19 @@ $keys = array_keys($response);
 
         <script type="text/javascript">
 
-            var limit = 5;
+            $('.js-switch :checkbox').change(function () {
+                var $cs = $(this).closest('.js-switch').find(':checkbox:checked');
+                if ($cs.length > 3) {
+                    this.checked = false;
+                }
+            });
+
+            /*var limit = 5;
             $('input.js-switch').on('change', function(evt) {
                if($("input[name='imageURL']:checked").length > limit) {
                    this.checked = false;
                }
-            });
+            });*/
 
             $(document).ready(function() {
                 // Initialize Smart Wizard with ajax content load and cache disabled
