@@ -72,22 +72,6 @@ $keys = array_keys($response);
         <!-- END TEMPLATE default-css.php INCLUDE -->
         <!-- Custom Theme Style ...Added for smart wizard-->
         <link href="../build/css/custom.min.css" rel="stylesheet">
-        <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script type="text/javascript">
-            /*var limit = 5;
-            $('input.js-switch').on('change', function(evt) {
-               if($("input[name='imageURL']:checked").length > limit) {
-                   this.checked = false;
-               }
-            });*/
-            $('.js-switch :checkbox').change(function () {
-                alert("Hello! I am an alert box!!");
-                var $cs = $(this).closest('.js-switch').find(':checkbox:checked');
-                if ($cs.length > 3) {
-                    this.checked = false;
-                }
-            });
-        </script>
     </head>
 
     <body class="hold-transition skin-black sidebar-mini">
@@ -143,6 +127,10 @@ $keys = array_keys($response);
                                             <a href="#step-1">
                                                 <label class="stepNumber">Step 1</label>
                                                 <span class="stepDesc">
+
+            <p>If you click on me, I will disappear.</p>
+            <p>Click me away!</p>
+            <p>Click me too!</p>
              <br />
              <small>Step 1 Select Images</small>
           </span>
@@ -468,8 +456,12 @@ $keys = array_keys($response);
             // });
             
         </script>
-        <script src="http://code.jquery.com/jquery-3.0.0.min.js"></script>
-        <script>
+        <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+            $(document).ready(function(){
+                $("p").click(function(){
+                    $(this).hide();
+                });
+            });
             /*
              * For demonstration porpuse, all JavaScript code was incorporated in
              * the HTML file. But when developing your application, your JavaScript code
