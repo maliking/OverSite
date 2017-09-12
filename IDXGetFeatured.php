@@ -19,7 +19,7 @@
 function inDatabase($address, $results)
 {
     foreach($results as $result){
-        if(strtolower($result['address']) === strtolower($address)) {
+        if(strtolower($result['address']) == strtolower($address)) {
             return true;
         }
     }

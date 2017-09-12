@@ -246,7 +246,7 @@ $keys = array_keys($response);
                                 <?php
                                     if($result['flyer'] == NULL)
                                     {
-                                        echo '<img src="listingImg/flyerPlaceHolder.png" alt="pdf" style="width:80%; margin-top:10px;">';
+                                        echo '<img id="noPdf" src="listingImg/flyerPlaceHolder.png" alt="pdf" style="width:80%; margin-top:10px;">';
                                     }
                                     else
                                     {
@@ -400,6 +400,8 @@ $keys = array_keys($response);
                             // alert(data); //=== Show Success Message==
                             // $("#pdf").attr('src','../../../test/generateExample.pdf'); //local 
                             $("#pdf").attr('src','../../uploadFlyers/' + addressC + ".pdf"); // server
+                            $("#noPdf").replaceWith('<iframe id="pdf" src="../../uploadFlyers/' + addressC  + '.pdf" 
+                                        style="width:600px; height:500px;" frameborder="0"></iframe>'); //server when no pdf found
                         },
                         error:function(data)
                         {
@@ -480,6 +482,8 @@ $keys = array_keys($response);
                     // alert(response);
                     // $("#pdf").attr('src','../../../test/' + response); //local
                     $("#pdf").attr('src','../../uploadFlyers/' + response); //server
+                    $("#noPdf").replaceWith('<iframe id="pdf" src="../../uploadFlyers/' + response + '" 
+                                        style="width:600px; height:500px;" frameborder="0"></iframe>'); //server when no pdf found
                 }).fail(function(){
                     // Here you should treat the http errors (e.g., 403, 404)
                 }).always(function(){
