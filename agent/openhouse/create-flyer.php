@@ -296,7 +296,7 @@ $keys = array_keys($response);
 
             var limit = 5;
             $('input.image-checkbox').on('change', function(evt) {
-               if($(this).siblings(':checked').length >= limit) {
+               if($("input[name='imageURL']:checked").length > limit) {
                    this.checked = false;
                }
             });
