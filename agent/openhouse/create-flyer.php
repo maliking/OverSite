@@ -101,7 +101,14 @@ $keys = array_keys($response);
                             Current Flyer
                         </h1>
 
-
+                        <h5 class="col-md-3 col-sm-3 col-xs-6">
+                            <form id="form-demo" onsubmit="return false">
+                                <p>Upload your own flyer</p>
+                                <input type="file" id="image" name="file"><br>
+                                <button id="button-send">Send</button>
+                            </form>
+                           
+                        </h5>
                     </section>
                     <section class="content">
                         <div class="col-md-6 col-sm-6 col-xs-12">
@@ -245,10 +252,10 @@ $keys = array_keys($response);
                                     {
                                         // echo '<img src="../../uploadFlyers/' . $result['flyer'] . '" alt="pdf" style="width:80%; margin-top:10px;">';
 
-                                        echo '<iframe id="pdf" src="../../../test/generateExample.pdf" style="width:600px; height:600px;" frameborder="0"></iframe>';
+                                        // echo '<iframe id="pdf" src="../../../test/' . $result['flyer'] . '" style="width:600px; height:600px;" frameborder="0"></iframe>';
 
-                                        // echo '<iframe id="pdf" src="../../uploadFlyers/' . $result['flyer']  . '" 
-                                        // style="width:600px; height:500px;" frameborder="0"></iframe>';
+                                        echo '<iframe id="pdf" src="../../uploadFlyers/' . $result['flyer']  . '" 
+                                        style="width:600px; height:500px;" frameborder="0"></iframe>';
                                     }
                                 ?>
                                 
@@ -391,8 +398,8 @@ $keys = array_keys($response);
                         success:function(data) 
                         {
                             // alert(data); //=== Show Success Message==
-                            $("#pdf").attr('src','../../../test/generateExample.pdf');
-                            // $("#pdf").attr('src','../../uploadFlyers/' + addressC + ".pdf")
+                            // $("#pdf").attr('src','../../../test/generateExample.pdf'); //local 
+                            $("#pdf").attr('src','../../uploadFlyers/' + addressC + ".pdf"); // server
                         },
                         error:function(data)
                         {
@@ -414,6 +421,70 @@ $keys = array_keys($response);
              //       allVals.push($(this).val());
              //     });
              // console.log(allVals);
+            }
+
+            // $("#sendPdf").click(function (event){
+            //     event.preventDefault();
+            //     var formData = new FormData();
+            //     formData.append('pdfFile', $('#pdfFile').prop('files')[0]);
+            //     // console.log(formData);
+            //     for (var value of formData.values()) {
+            //            console.log(formData); 
+            //         }
+            //     var ajaxUrl = "uploadFlyer.php";
+                
+            //     $.ajax({
+            //         url : ajaxUrl,
+            //         type : "POST",
+            //         data : formData,
+            //         // both 'contentType' and 'processData' parameters are
+            //         // required so that all data are correctly transferred
+            //         contentType : false,
+            //         processData : false,
+            //         cache: false,
+            //         success:function(data) 
+            //         {
+            //             alert(data);
+            //         }
+            //     });
+            // });
+            
+        </script>
+        <script src="http://code.jquery.com/jquery-3.0.0.min.js"></script>
+        <script>
+            /*
+             * For demonstration porpuse, all JavaScript code was incorporated in
+             * the HTML file. But when developing your application, your JavaScript code
+             * should be in a separated file. Check this page for more information:
+             * https://developer.yahoo.com/performance/rules.html#external
+             */
+            
+            $("#button-send").click(sendFormData);
+            
+            function sendFormData(){
+                var formData = new FormData($("#form-demo").get(0));
+                formData.append('listingId', $("input[name='mlsId']").val());
+                var ajaxUrl = "uploadFlyer.php";
+                
+                $.ajax({
+                    url : ajaxUrl,
+                    type : "POST",
+                    data : formData,
+                    // both 'contentType' and 'processData' parameters are
+                    // required so that all data are correctly transferred
+                    contentType : false,
+                    processData : false
+                }).done(function(response){
+                    // In this callback you get the AJAX response to check
+                    // if everything is right...
+                    // alert(response);
+                    // $("#pdf").attr('src','../../../test/' + response); //local
+                    $("#pdf").attr('src','../../uploadFlyers/' + response); //server
+                }).fail(function(){
+                    // Here you should treat the http errors (e.g., 403, 404)
+                }).always(function(){
+                    // alert("AJAX request finished!");
+                });
             }
         </script>
 
