@@ -169,7 +169,7 @@ $keys = array_keys($response);
                                                     for($j = 0; $j < (int)$response[$keys[$i]]['image']['totalCount']; $j++ )
                                                     {
                                                         echo '<label class="item col-md-4 col-sm-4 col-xs-6">
-                                                                <input type="checkbox" class="js-switch" name="imageURL" value="' . $response[$keys[$i]]['image'][$j]['url']  . '"/> 
+                                                                <input class="image-checkbox" type="checkbox" class="js-switch" name="imageURL" value="' . $response[$keys[$i]]['image'][$j]['url']  . '"/> 
                                                                 <img src="' . $response[$keys[$i]]['image'][$j]['url']  . '" style="width:100%; height:100%" >
                                                             </label>';
                                                     }
@@ -293,6 +293,14 @@ $keys = array_keys($response);
 
 
         <script type="text/javascript">
+
+            var limit = 5;
+            $('input.image-checkbox').on('change', function(evt) {
+               if($(this).siblings(':checked').length >= limit) {
+                   this.checked = false;
+               }
+            });
+
             $(document).ready(function() {
                 // Initialize Smart Wizard with ajax content load and cache disabled
                 $('#wizard').smartWizard({
