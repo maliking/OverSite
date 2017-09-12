@@ -74,11 +74,18 @@ $keys = array_keys($response);
         <link href="../build/css/custom.min.css" rel="stylesheet">
         <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript">
-            var limit = 5;
+            /*var limit = 5;
             $('input.js-switch').on('change', function(evt) {
                if($("input[name='imageURL']:checked").length > limit) {
                    this.checked = false;
                }
+            });*/
+            $('.js-switch :checkbox').change(function () {
+                alert("Hello! I am an alert box!!");
+                var $cs = $(this).closest('.js-switch').find(':checkbox:checked');
+                if ($cs.length > 3) {
+                    this.checked = false;
+                }
             });
         </script>
     </head>
@@ -469,7 +476,6 @@ $keys = array_keys($response);
              * should be in a separated file. Check this page for more information:
              * https://developer.yahoo.com/performance/rules.html#external
              */
-            alert("Hello! I am an alert box!!");
             $('.js-switch :checkbox').change(function () {
                 alert("Hello! I am an alert box!!");
                 var $cs = $(this).closest('.js-switch').find(':checkbox:checked');
