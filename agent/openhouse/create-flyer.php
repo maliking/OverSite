@@ -291,8 +291,7 @@ $keys = array_keys($response);
 
         <!--END Smart wizard links-->
 
-        <script src="http://code.jquery.com/jquery-3.0.0.min.js"></script> 
-        <script type="text/javascript">
+        <script src="http://code.jquery.com/jquery-3.0.0.min.js">
 
             $('.js-switch :checkbox').change(function () {
                 var $cs = $(this).closest('.js-switch').find(':checkbox:checked');
