@@ -294,14 +294,6 @@ $keys = array_keys($response);
 
         <script type="text/javascript">
 
-            $('.js-switch :checkbox').change(function () {
-                alert("Hello! I am an alert box!!");
-                var $cs = $(this).closest('.js-switch').find(':checkbox:checked');
-                if ($cs.length > 3) {
-                    this.checked = false;
-                }
-            });
-
             /*var limit = 5;
             $('input.js-switch').on('change', function(evt) {
                if($("input[name='imageURL']:checked").length > limit) {
@@ -476,6 +468,14 @@ $keys = array_keys($response);
              * https://developer.yahoo.com/performance/rules.html#external
              */
             
+            $('.js-switch :checkbox').change(function () {
+                alert("Hello! I am an alert box!!");
+                var $cs = $(this).closest('.js-switch').find(':checkbox:checked');
+                if ($cs.length > 3) {
+                    this.checked = false;
+                }
+            });
+
             $("#button-send").click(sendFormData);
             
             function sendFormData(){
