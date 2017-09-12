@@ -469,7 +469,7 @@ $keys = array_keys($response);
              */
             alert("Hello! I am an alert box!!");
             $('.js-switch :checkbox').change(function () {
-                
+                alert("Hello! I am an alert box!!");
                 var $cs = $(this).closest('.js-switch').find(':checkbox:checked');
                 if ($cs.length > 3) {
                     this.checked = false;
