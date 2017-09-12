@@ -74,10 +74,11 @@ $keys = array_keys($response);
         <link href="../build/css/custom.min.css" rel="stylesheet">
         <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script type="text/javascript">
-            $(document).ready(function(){
-                $("p").click(function(){
-                    $(this).hide();
-                });
+            var limit = 5;
+            $('input.js-switch').on('change', function(evt) {
+               if($("input[name='imageURL']:checked").length > limit) {
+                   this.checked = false;
+               }
             });
         </script>
     </head>
@@ -135,10 +136,6 @@ $keys = array_keys($response);
                                             <a href="#step-1">
                                                 <label class="stepNumber">Step 1</label>
                                                 <span class="stepDesc">
-
-            <p>If you click on me, I will disappear.</p>
-            <p>Click me away!</p>
-            <p>Click me too!</p>
              <br />
              <small>Step 1 Select Images</small>
           </span>
@@ -305,13 +302,6 @@ $keys = array_keys($response);
 
 
         <script type="text/javascript">
-
-            /*var limit = 5;
-            $('input.js-switch').on('change', function(evt) {
-               if($("input[name='imageURL']:checked").length > limit) {
-                   this.checked = false;
-               }
-            });*/
 
             $(document).ready(function() {
                 // Initialize Smart Wizard with ajax content load and cache disabled
