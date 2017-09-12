@@ -73,6 +73,13 @@ $keys = array_keys($response);
         <!-- Custom Theme Style ...Added for smart wizard-->
         <link href="../build/css/custom.min.css" rel="stylesheet">
         <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $("p").click(function(){
+                    $(this).hide();
+                });
+            });
+        </script>
     </head>
 
     <body class="hold-transition skin-black sidebar-mini">
@@ -299,12 +306,6 @@ $keys = array_keys($response);
 
         <script type="text/javascript">
 
-
-            $(document).ready(function(){
-                $("p").click(function(){
-                    $(this).hide();
-                });
-            });
             /*var limit = 5;
             $('input.js-switch').on('change', function(evt) {
                if($("input[name='imageURL']:checked").length > limit) {
