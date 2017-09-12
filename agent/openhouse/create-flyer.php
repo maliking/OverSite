@@ -127,6 +127,10 @@ $keys = array_keys($response);
                                             <a href="#step-1">
                                                 <label class="stepNumber">Step 1</label>
                                                 <span class="stepDesc">
+
+            <p>If you click on me, I will disappear.</p>
+            <p>Click me away!</p>
+            <p>Click me too!</p>
              <br />
              <small>Step 1 Select Images</small>
           </span>
@@ -169,7 +173,7 @@ $keys = array_keys($response);
                                                     for($j = 0; $j < (int)$response[$keys[$i]]['image']['totalCount']; $j++ )
                                                     {
                                                         echo '<label class="item col-md-4 col-sm-4 col-xs-6">
-                                                                <input type="checkbox" class="js-switch" name="imageURL" value="' . $response[$keys[$i]]['image'][$j]['url']  . '"/> 
+                                                                <input class="js-switch" type="checkbox" name="imageURL" value="' . $response[$keys[$i]]['image'][$j]['url']  . '"/> 
                                                                 <img src="' . $response[$keys[$i]]['image'][$j]['url']  . '" style="width:100%; height:100%" >
                                                             </label>';
                                                     }
@@ -294,6 +298,12 @@ $keys = array_keys($response);
 
         <script type="text/javascript">
 
+
+            $(document).ready(function(){
+                $("p").click(function(){
+                    $(this).hide();
+                });
+            });
             /*var limit = 5;
             $('input.js-switch').on('change', function(evt) {
                if($("input[name='imageURL']:checked").length > limit) {
