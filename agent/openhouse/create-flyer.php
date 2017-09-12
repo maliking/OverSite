@@ -291,7 +291,7 @@ $keys = array_keys($response);
 
         <!--END Smart wizard links-->
 
-
+        <script src="http://code.jquery.com/jquery-3.0.0.min.js"></script> 
         <script type="text/javascript">
 
             $('.js-switch :checkbox').change(function () {
@@ -466,7 +466,6 @@ $keys = array_keys($response);
             // });
             
         </script>
-        <script src="http://code.jquery.com/jquery-3.0.0.min.js"></script>
         <script>
             /*
              * For demonstration porpuse, all JavaScript code was incorporated in
