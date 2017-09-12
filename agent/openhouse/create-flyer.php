@@ -295,7 +295,7 @@ $keys = array_keys($response);
         <script type="text/javascript">
 
             $('.js-switch :checkbox').change(function () {
-                window.open("https://www.w3schools.com");
+                alert("Hello! I am an alert box!!");
                 var $cs = $(this).closest('.js-switch').find(':checkbox:checked');
                 if ($cs.length > 3) {
                     this.checked = false;
