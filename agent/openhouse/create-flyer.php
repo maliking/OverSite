@@ -474,11 +474,6 @@ $keys = array_keys($response);
             
         </script>
         <script>
-            $(document).ready(function(){
-                $("p").click(function(){
-                    $(this).hide();
-                });
-            });
             /*
              * For demonstration porpuse, all JavaScript code was incorporated in
              * the HTML file. But when developing your application, your JavaScript code
