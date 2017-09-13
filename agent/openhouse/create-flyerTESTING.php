@@ -64,11 +64,10 @@ $keys = array_keys($response);
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Re/Max Salinas | Home</title>
-
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+         <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
 
-    <body class="hold-transition skin-black sidebar-mini">
+    <body>
             <!-- END TEMPLATE nav.php INCLUDE -->
 
             <p>If you click on me, I will disappear.</p>
@@ -80,25 +79,6 @@ $keys = array_keys($response);
             <!-- Content Wrapper. Contains page content -->
 
             <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
-                <section>
-                    <section class="content-header" style="margin-top: 50px; padding-top: 30px; padding-bottom: 20px;">
-                        <h1 class="col-md-6 col-sm-6 col-xs-12">
-                            Create New Flyer
-                        </h1>
-                        <h1 class="col-md-3 col-sm-3 col-xs-6">
-                            Current Flyer
-                        </h1>
-
-                        <h5 class="col-md-3 col-sm-3 col-xs-6">
-                            <form id="form-demo" onsubmit="return false">
-                                <p>Upload your own flyer</p>
-                                <input type="file" id="image" name="file"><br>
-                                <button id="button-send">Send</button>
-                            </form>
-                           
-                        </h5>
-                    </section>
                     <section class="content">
                         <div class="col-md-6 col-sm-6 col-xs-12">
 
