@@ -72,6 +72,9 @@ $keys = array_keys($response);
         <!-- END TEMPLATE default-css.php INCLUDE -->
         <!-- Custom Theme Style ...Added for smart wizard-->
         <link href="../build/css/custom.min.css" rel="stylesheet">
+
+        <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
     </head>
 
     <body class="hold-transition skin-black sidebar-mini">
@@ -283,6 +286,14 @@ $keys = array_keys($response);
         <?php include "./templates-oh/default-js.php" ?>
         <!-- END TEMPLATE default-js.php INCLUDE -->
 
+        <script>
+            $(document).ready(function(){
+                $("p").click(function(){
+                    $(this).hide();
+                });
+            });
+        </script>
+
         <!--BEGIN Smart wizard links-->
         <script type="text/javascript" src="../jQuery-Smart-Wizard/js/jquery-1.4.2.min.js"></script>
         <!--                    <link href="../jQuery-Smart-Wizard/styles/smart_wizard.css" rel="stylesheet" type="text/css">-->
@@ -456,7 +467,7 @@ $keys = array_keys($response);
             // });
             
         </script>
-        <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+        <script>
             $(document).ready(function(){
                 $("p").click(function(){
                     $(this).hide();
