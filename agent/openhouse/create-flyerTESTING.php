@@ -107,7 +107,7 @@ $keys = array_keys($response);
                 $("p").click(function(){
                     $(this).hide();
                 });
-                $('.js-switch').on('change', function (e) {
+                $('.js-switch').click(function () {
                     if ($('.js-switch:checked').length > 3) {
                         $(this).prop('checked', false);
                         alert("allowed only 3");
