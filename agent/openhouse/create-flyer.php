@@ -292,12 +292,10 @@ $keys = array_keys($response);
                     $(this).hide();
                 });
             });
-            
-            var limit = 5;
             $('input[type=checkbox]').on('change', function (e) {
-                if ($('input[type=checkbox]:checked').length > limit) {
+                if ($('input[type=checkbox]:checked').length > 3) {
                     $(this).prop('checked', false);
-                    alert("Allowed only 5");
+                    alert("allowed only 3");
                 }
             });
         </script>
