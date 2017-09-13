@@ -74,6 +74,20 @@ $keys = array_keys($response);
         <link href="../build/css/custom.min.css" rel="stylesheet">
 
         <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                $("p").click(function(){
+                    $(this).hide();
+                });
+                $('.js-switch').click(function () {
+                    alert("lol");
+                    if ($('.js-switch:checked').length > 3) {
+                        $(this).prop('checked', false);
+                        alert("allowed only 3");
+                    }
+                });
+            });
+        </script>
 
     </head>
 
@@ -285,21 +299,6 @@ $keys = array_keys($response);
         <!-- BEGIN TEMPLATE default-js.php INCLUDE -->
         <?php include "./templates-oh/default-js.php" ?>
         <!-- END TEMPLATE default-js.php INCLUDE -->
-
-        <script>
-            $(document).ready(function(){
-                $("p").click(function(){
-                    $(this).hide();
-                });
-                $('.js-switch').click(function () {
-                    alert("lol");
-                    if ($('.js-switch:checked').length > 3) {
-                        $(this).prop('checked', false);
-                        alert("allowed only 3");
-                    }
-                });
-            });
-        </script>
 
         <!--BEGIN Smart wizard links-->
         <script type="text/javascript" src="../jQuery-Smart-Wizard/js/jquery-1.4.2.min.js"></script>
