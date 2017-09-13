@@ -468,13 +468,6 @@ $keys = array_keys($response);
              * should be in a separated file. Check this page for more information:
              * https://developer.yahoo.com/performance/rules.html#external
              */
-            $('.js-switch :checkbox').change(function () {
-                alert("Hello! I am an alert box!!");
-                var $cs = $(this).closest('.js-switch').find(':checkbox:checked');
-                if ($cs.length > 3) {
-                    this.checked = false;
-                }
-            });
 
             $("#button-send").click(sendFormData);
             
