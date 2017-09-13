@@ -79,9 +79,9 @@ $keys = array_keys($response);
                 $("p").click(function(){
                     $(this).hide();
                 });
-                $('.js-switch').click(function () {
-                    alert($('.js-switch :checked').length);
-                    if ($('.js-switch :checked').length > 3) {
+                $('.js-switch1').click(function () {
+                    alert($('.js-switch1 :checked').length);
+                    if ($('.js-switch1 :checked').length > 3) {
                         $(this).prop('checked', false);
                         alert("allowed only 3");
                     }
@@ -190,7 +190,7 @@ $keys = array_keys($response);
                                                     for($j = 0; $j < (int)$response[$keys[$i]]['image']['totalCount']; $j++ )
                                                     {
                                                         echo '<label class="item col-md-4 col-sm-4 col-xs-6">
-                                                                <input class="js-switch" type="checkbox" name="imageURL" value="' . $response[$keys[$i]]['image'][$j]['url']  . '"/> 
+                                                                <input class="js-switch1" type="checkbox" name="imageURL" value="' . $response[$keys[$i]]['image'][$j]['url']  . '"/> 
                                                                 <img src="' . $response[$keys[$i]]['image'][$j]['url']  . '" style="width:100%; height:100%" >
                                                             </label>';
                                                     }
