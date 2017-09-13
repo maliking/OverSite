@@ -292,6 +292,7 @@ $keys = array_keys($response);
                     $(this).hide();
                 });
                 $('input[type=checkbox]').on('change', function (e) {
+                    alert("test");
                     if ($('input[type=checkbox]:checked').length > 3) {
                         $(this).prop('checked', false);
                         alert("allowed only 3");
