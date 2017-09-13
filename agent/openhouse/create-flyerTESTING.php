@@ -71,6 +71,9 @@ $keys = array_keys($response);
     <body class="hold-transition skin-black sidebar-mini">
             <!-- END TEMPLATE nav.php INCLUDE -->
 
+            <p>If you click on me, I will disappear.</p>
+            <p>Click me away!</p>
+            <p>Click me too!</p>
 
 
 
