@@ -74,20 +74,6 @@ $keys = array_keys($response);
         <link href="../build/css/custom.min.css" rel="stylesheet">
 
         <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script>
-            $(document).ready(function(){
-                $("p").click(function(){
-                    $(this).hide();
-                });
-                $('.js-switch1').click(function () {
-                    alert($('.js-switch1 :checked').length);
-                    if ($('.js-switch1 :checked').length > 3) {
-                        $(this).prop('checked', false);
-                        alert("allowed only 3");
-                    }
-                });
-            });
-        </script>
 
     </head>
 
@@ -190,7 +176,7 @@ $keys = array_keys($response);
                                                     for($j = 0; $j < (int)$response[$keys[$i]]['image']['totalCount']; $j++ )
                                                     {
                                                         echo '<label class="item col-md-4 col-sm-4 col-xs-6">
-                                                                <input class="js-switch1" type="checkbox" name="imageURL" value="' . $response[$keys[$i]]['image'][$j]['url']  . '"/> 
+                                                                <input class="js-switch" type="checkbox" name="imageURL" value="' . $response[$keys[$i]]['image'][$j]['url']  . '"/> 
                                                                 <img src="' . $response[$keys[$i]]['image'][$j]['url']  . '" style="width:100%; height:100%" >
                                                             </label>';
                                                     }
@@ -300,15 +286,29 @@ $keys = array_keys($response);
         <?php include "./templates-oh/default-js.php" ?>
         <!-- END TEMPLATE default-js.php INCLUDE -->
 
+        <script>
+            $(document).ready(function(){
+                $("p").click(function(){
+                    $(this).hide();
+                });
+            });
+            $('input[type=checkbox]').on('change', function (e) {
+                if ($('input[type=checkbox]:checked').length > 3) {
+                    $(this).prop('checked', false);
+                    alert("allowed only 3");
+                }
+            });
+        </script>
+
         <!--BEGIN Smart wizard links-->
-        <!--<script type="text/javascript" src="../jQuery-Smart-Wizard/js/jquery-1.4.2.min.js"></script>-->
+        <script type="text/javascript" src="../jQuery-Smart-Wizard/js/jquery-1.4.2.min.js"></script>
         <!--                    <link href="../jQuery-Smart-Wizard/styles/smart_wizard.css" rel="stylesheet" type="text/css">-->
         <!--                            <link href="../jQuery-Smart-Wizard/styles/demo_style.css" rel="stylesheet" type="text/css">-->
-        <!--<script type="text/javascript" src="../jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>-->
+        <script type="text/javascript" src="../jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
 
         <!--for smart wizard css-->
         <!-- Custom Theme Scripts -->
-        <!--<script src="../build/js/custom.min.js"></script>-->
+        <script src="../build/js/custom.min.js"></script>
 
         <!--END Smart wizard links-->
 
@@ -474,6 +474,11 @@ $keys = array_keys($response);
             
         </script>
         <script>
+            $(document).ready(function(){
+                $("p").click(function(){
+                    $(this).hide();
+                });
+            });
             /*
              * For demonstration porpuse, all JavaScript code was incorporated in
              * the HTML file. But when developing your application, your JavaScript code
