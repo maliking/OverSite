@@ -79,9 +79,7 @@ $keys = array_keys($response);
 
     <body class="hold-transition skin-black sidebar-mini">
 
-           <p>If you click on me, I will disappear.</p>
-            <p>Click me away!</p>
-            <p>Click me too!</p>
+          
         <!-- Site Wrapper -->
         <div class="wrapper">
             <!-- BEGIN TEMPLATE header.php INCLUDE -->
@@ -98,8 +96,42 @@ $keys = array_keys($response);
             <!-- Content Wrapper. Contains page content -->
 
             <div class="content-wrapper">
+                <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
                 <!-- Content Header (Page header) -->
                 <section>
+                     <div class="modal fade" id="myModal" data-backdrop="static" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">PDF has been saved</h4>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="modal-body">
+
+                                    <!-- textarea -->
+                                    <div class="form-group">
+                                        <!-- <label>Additional Notes</label> -->
+                                        <!-- <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea> -->
+                                        <h3>What would you like to do now?</h3>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <?php echo '<a href=../signIn.php?id=' . $listingId . '><button type="button" class="btn btn-default">House Sing-In sheet</button></a>';?>
+                                        <a href="visitors.php"><button type="button" class="btn btn-default">Send Flyer</button></a>
+                                        <a href="listings-openhouse.php"><button type="button" class="btn btn-default">Main Page</button></a>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <!-- <button type="button" class="btn btn-default" data-dismiss="modal">Save</button> -->
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
                     <section class="content-header" style="margin-top: 50px; padding-top: 30px; padding-bottom: 20px;">
                         <h1 class="col-md-6 col-sm-6 col-xs-12">
                             Create New Flyer
@@ -259,7 +291,7 @@ $keys = array_keys($response);
                                     {
                                         // echo '<img src="../../uploadFlyers/' . $result['flyer'] . '" alt="pdf" style="width:80%; margin-top:10px;">';
 
-                                        // echo '<iframe id="pdf" src="../../../test/' . $result['flyer'] . '" style="width:600px; height:600px;" frameborder="0"></iframe>';
+                                        // echo '<iframe id="pdf" src="../../../test/' . $result['flyer'] . '" style="width:600px; height:600px;" frameborder="0"></iframe>'; //local
 
                                         echo '<iframe id="pdf" src="../../uploadFlyers/' . $result['flyer']  . '" 
                                         style="width:600px; height:500px;" frameborder="0"></iframe>';
@@ -420,9 +452,13 @@ $keys = array_keys($response);
                         success:function(data) 
                         {
                             // alert(data); //=== Show Success Message==
+
                             // $("#pdf").attr('src','../../../test/generateExample.pdf'); //local 
+
                             $("#pdf").attr('src','../../uploadFlyers/' + addressC + ".pdf"); // server
                             $("#noPdf").replaceWith('<iframe id="pdf" src="../../uploadFlyers/' + addressC  + '.pdf" style="width:600px; height:500px;" frameborder="0"></iframe>'); //server when no pdf found
+                        
+                            $('#myModal').modal('show');
                         },
                         error:function(data)
                         {
@@ -473,6 +509,10 @@ $keys = array_keys($response);
             // });
             
         </script>
+                 <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                 <!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
         <script>
             $(document).ready(function(){
                 $("p").click(function(){
@@ -505,9 +545,13 @@ $keys = array_keys($response);
                     // In this callback you get the AJAX response to check
                     // if everything is right...
                     // alert(response);
+
                     // $("#pdf").attr('src','../../../test/' + response); //local
+
                     $("#pdf").attr('src','../../uploadFlyers/' + response); //server
                     $("#noPdf").replaceWith('<iframe id="pdf" src="../../uploadFlyers/' + response + '" style="width:600px; height:500px;" frameborder="0"></iframe>'); //server when no pdf found
+                    
+                    $('#myModal').modal('show');
                 }).fail(function(){
                     // Here you should treat the http errors (e.g., 403, 404)
                 }).always(function(){
