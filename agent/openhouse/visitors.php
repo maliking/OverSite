@@ -5,13 +5,11 @@
     if (!isset($_SESSION['userId'])) {
         header("Location: http://jjp2017.org/login.php");
     }
-
     if (isset ($_GET['deleteForm'])){  //checking whether we have clicked on the "Delete" button
         $sql = "DELETE FROM BuyerInfo 
                  WHERE buyerID = '".$_GET['buyerID']."'";
         $stmt = $dbConn -> prepare($sql);
         $stmt->execute();
-
     }
 ?>
 
@@ -30,6 +28,14 @@
         <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
         <?php include "./templates-oh/default-css.php" ?>
         <!-- END TEMPLATE default-css.php INCLUDE -->
+
+     <style>
+thead{
+    background-color: white;
+}
+     </style>
+
+
     </head>
 
     <body class="hold-transition skin-black sidebar-mini">
@@ -145,7 +151,7 @@
                                     <h3>My Visitors</h3>
                                 </div>
                                 <div class="box-body">
-                                    <table class="table table-bordered table-striped">
+                                    <table class="table table-bordered table-striped" id="freeze">
                                         <thead>
                                             <tr>
                                                 <th>Visitors</th>
@@ -171,7 +177,6 @@
                                         </thead>
 
                                         <?php
-
             function getHouseAddress($houseId){
                 $dbConn = getConnection();
                 $sql = "SELECT * FROM HouseInfo WHERE houseId = :houseId";
@@ -182,7 +187,6 @@
                 //$stmt->execute();
                 $results = $stmt->fetch();
                 return $results['address'] . ", " . $results['city'] . ", " . $results['state'] . " " . $results['zip'];
-
             }
             $dbConn = getConnection();
             $sql = "SELECT * FROM BuyerInfo WHERE userId = :userId";
@@ -192,7 +196,6 @@
             $stmt->execute($namedParameters);
             //$stmt->execute();
             $results = $stmt->fetchAll();
-
             foreach($results as $result){
                 $dbNote = $result['note'];
                 echo "<tbody>";
@@ -209,7 +212,6 @@
                     <td>";
                 echo ' <button onClick=takeNote(' . $result['houseId'] . ',' . $result['buyerID'] . ')>Add</button>';
                 echo " <button>Edit</button>
-
                     </td>
                     <td>";
         ?>
@@ -338,18 +340,17 @@
         <!-- Footable -->
         <script type="text/javascript" src="../../plugins/footable/js/footable.min.js"></script>
         <!--end links from old visitors page-->
+          <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/floatthead/2.0.3/jquery.floatThead.js"></script>
         <script>
             $(document).ready(function() {
                 $('[data-toggle="popover"]').popover({
                     html: true
                 });
             });
-
             function takeNote(house, buyer) {
                 var prevNote = $("#" + buyer + "-detail").html();
                 var noteEntered = prompt("Enter Note:", prevNote);
                 if (noteEntered == null || noteEntered == "") {
-
                 } else {
                     $("#" + buyer + "-detail").html(noteEntered);
                     // alert(houseId + " " + buyerID);
@@ -358,10 +359,11 @@
                         buyerID: buyer,
                         note: noteEntered
                     });
-
-
                 }
             }
+           $('table').floatThead({
+    position: 'absolute'
+});
 
         </script>
 

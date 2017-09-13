@@ -10,9 +10,7 @@ $firstName = $_POST['firstName'];
 $lastName = $_POST['lastName'];
 $email = $_POST['email'];
 $phone = $_POST['phone'];
-$bedroomsMax = $_POST['bedroomsMax'];
 $bedroomsMin = $_POST['bedroomsMin'];
-$bathroomsMax = $_POST['bathroomsMax'];
 $bathroomsMin = $_POST['bathroomsMin'];
 $priceMax = $_POST['priceMax'];
 $priceMin = $_POST['priceMin'];
@@ -20,17 +18,15 @@ $priceMin = $_POST['priceMin'];
 // $houseId = "253";
 $userId = $_SESSION['userId'];
 $sql = "INSERT INTO BuyerInfo
-		(firstName, lastName, email, phone, registeredDate, bedroomsMax, bedroomsMin, bathroomsMax, bathroomsMin, priceMax, priceMin, houseId, userId, howSoon)
-		VALUES (:firstName, :lastName, :email, :phone, :registeredDate, :bedroomsMax, :bedroomsMin, :bathroomsMax, :bathroomsMin, :priceMax, :priceMin, :houseId, :userId, :howSoon)";
+		(firstName, lastName, email, phone, registeredDate, bedroomsMin, bathroomsMin, priceMax, priceMin, houseId, userId, howSoon)
+		VALUES (:firstName, :lastName, :email, :phone, :registeredDate, :bedroomsMin, :bathroomsMin, :priceMax, :priceMin, :houseId, :userId, :howSoon)";
 $namedParameters = array();
 $namedParameters[':firstName'] = $firstName;
 $namedParameters[':lastName'] = $lastName;
 $namedParameters[':email'] = $email;
 $namedParameters[':phone'] = $phone;
 $namedParameters['registeredDate'] = date("Y/m/d");
-$namedParameters[':bedroomsMax'] = $bedroomsMax;
 $namedParameters[':bedroomsMin'] = $bedroomsMin;
-$namedParameters[':bathroomsMax'] = (float)$bathroomsMax;
 $namedParameters[':bathroomsMin'] = (float)$bathroomsMin;
 $namedParameters[':priceMax'] = $priceMax;
 $namedParameters[':priceMin'] = $priceMin;

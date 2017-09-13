@@ -102,24 +102,26 @@
                     <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-2">
                         <input type="text" name="firstName" class="form-control has-feedback-left" id="inputSuccess2" placeholder="First Name">
                         <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
-                    </div>
 
-                    <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                    </br>
                         <input type="text" name="lastName" class="form-control" id="inputSuccess3" placeholder="Last Name">
                         <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+
                     </div>
+
+                  
                 </div>
                 <div class="row">
 
                     <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-2">
                         <input type="text" name="email" class="form-control has-feedback-left" id="inputSuccess4" placeholder="Email">
                         <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
+                    </br>
                         <input type="text" name="phone" class="form-control" id="inputSuccess5" placeholder="Phone">
                         <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
                     </div>
+
+                   
                 </div>
                 <div class="row">
 
@@ -151,7 +153,7 @@
                            
                           </select>
                       </br>
-                          <label>Min Bathrooms</label>
+                      <label>Min Bathrooms</label>
                         <select id="" name="bathroomsMin" class="form-control" required>
                             <option value="0">--Select One--</option>
                             <option value="1">1</option>
@@ -163,45 +165,21 @@
                             <option value="4">4</option>
                             <option value="4.5">4.5</option>
                           </select>
+                         
                     </div>
-                    <div class="col-md-4 col-sm-4 col-xs-12 col-md-offset-65">
-                        <label>Max Bedrooms</label>
-                        <select id="" name="bedroomsMax" class="form-control" required>
-                            <option value="0">--Select One--</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                           
-                          </select>
-                        
-                      </br>
-                          <label>Max Bathrooms</label>
-                        <select id="" name="bathroomsMax" class="form-control" required>
-                            <option value="0">--Select One--</option>
-                            <option value="1">1</option>
-                            <option value="1.5">1.5</option>
-                            <option value="2">2</option>
-                            <option value="2.5">2.5</option>
-                            <option value="3">3</option>
-                            <option value="3.5">3.5</option>
-                            <option value="4">4</option>
-                            <option value="4.5">4.5</option>
-                          </select>
-                    </div>
+                    
                 </div>
                 <div class="row" style="margin-top: 20px;">
 
                     <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-2">
                         <input type="text" name="priceMin" class="form-control has-feedback-left" id="inputSuccess2" placeholder="Minimum Price">
                         <span class="fa fa-dollar form-control-feedback left" aria-hidden="true"></span>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback">
-                        <input type="text" name="priceMax" class="form-control" id="inputSuccess3" placeholder="Maximum Price">
+                    </br>
+                         <input type="text" name="priceMax" class="form-control" id="inputSuccess3" placeholder="Maximum Price">
                         <span class="fa  fa-dollar form-control-feedback right" aria-hidden="true"></span>
                     </div>
+
+                   
                     <!--
                     <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2">
                         <p>Price Range</p>
