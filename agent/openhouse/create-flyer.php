@@ -81,7 +81,7 @@ $keys = array_keys($response);
                 });
                 $('.js-switch').click(function () {
                     alert("lol");
-                    if ($('.js-switch:checked').length > 3) {
+                    if ($('.js-switch :checked').length > 3) {
                         $(this).prop('checked', false);
                         alert("allowed only 3");
                     }
@@ -301,14 +301,14 @@ $keys = array_keys($response);
         <!-- END TEMPLATE default-js.php INCLUDE -->
 
         <!--BEGIN Smart wizard links-->
-        <script type="text/javascript" src="../jQuery-Smart-Wizard/js/jquery-1.4.2.min.js"></script>
+        <!--<script type="text/javascript" src="../jQuery-Smart-Wizard/js/jquery-1.4.2.min.js"></script>-->
         <!--                    <link href="../jQuery-Smart-Wizard/styles/smart_wizard.css" rel="stylesheet" type="text/css">-->
         <!--                            <link href="../jQuery-Smart-Wizard/styles/demo_style.css" rel="stylesheet" type="text/css">-->
-        <script type="text/javascript" src="../jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
+        <!--<script type="text/javascript" src="../jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>-->
 
         <!--for smart wizard css-->
         <!-- Custom Theme Scripts -->
-        <script src="../build/js/custom.min.js"></script>
+        <!--<script src="../build/js/custom.min.js"></script>-->
 
         <!--END Smart wizard links-->
 
