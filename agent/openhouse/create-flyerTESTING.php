@@ -113,12 +113,19 @@ $keys = array_keys($response);
              * the HTML file. But when developing your application, your JavaScript code
              * should be in a separated file. Check this page for more information:
              * https://developer.yahoo.com/performance/rules.html#external
-             */
+             
             $('.js-switch :checkbox').change(function () {
                 alert("Hello! I am an alert box!!");
                 var $cs = $(this).closest('.js-switch').find(':checkbox:checked');
                 if ($cs.length > 3) {
                     this.checked = false;
+                }
+            });*/
+
+            $('input[type=checkbox]').on('change', function (e) {
+                if ($('input[type=checkbox]:checked').length > 3) {
+                    $(this).prop('checked', false);
+                    alert("allowed only 3");
                 }
             });
         </script>
