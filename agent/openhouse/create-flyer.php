@@ -75,6 +75,10 @@ $keys = array_keys($response);
     </head>
 
     <body class="hold-transition skin-black sidebar-mini">
+
+           <p>If you click on me, I will disappear.</p>
+            <p>Click me away!</p>
+            <p>Click me too!</p>
         <!-- Site Wrapper -->
         <div class="wrapper">
             <!-- BEGIN TEMPLATE header.php INCLUDE -->
@@ -127,10 +131,6 @@ $keys = array_keys($response);
                                             <a href="#step-1">
                                                 <label class="stepNumber">Step 1</label>
                                                 <span class="stepDesc">
-
-            <p>If you click on me, I will disappear.</p>
-            <p>Click me away!</p>
-            <p>Click me too!</p>
              <br />
              <small>Step 1 Select Images</small>
           </span>
