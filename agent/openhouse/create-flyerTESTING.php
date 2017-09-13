@@ -107,8 +107,8 @@ $keys = array_keys($response);
                 $("p").click(function(){
                     $(this).hide();
                 });
-                $('input[type=checkbox]').on('change', function (e) {
-                    if ($('input[type=checkbox]:checked').length > 3) {
+                $('.js-switch').on('change', function (e) {
+                    if ($('.js-switch:checked').length > 3) {
                         $(this).prop('checked', false);
                         alert("allowed only 3");
                     }
