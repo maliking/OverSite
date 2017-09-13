@@ -80,7 +80,7 @@ $keys = array_keys($response);
                     $(this).hide();
                 });
                 $('.js-switch').click(function () {
-                    alert("lol");
+                    alert($('.js-switch :checked').length);
                     if ($('.js-switch :checked').length > 3) {
                         $(this).prop('checked', false);
                         alert("allowed only 3");
