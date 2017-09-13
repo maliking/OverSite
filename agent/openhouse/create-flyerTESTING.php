@@ -64,7 +64,7 @@ $keys = array_keys($response);
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Re/Max Salinas | Home</title>
-         <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </head>
 
     <body>
@@ -74,61 +74,9 @@ $keys = array_keys($response);
             <p>Click me away!</p>
             <p>Click me too!</p>
 
-
-
-            <!-- Content Wrapper. Contains page content -->
-
-            <div class="content-wrapper">
-                    <section class="content">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-
-
-                            <div class="row" style="margin-top:20px;">
-
-                                <!-- Smart Wizard -->
-                                <div id="wizard" class="form_wizard wizard_horizontal">
-                                    <!--class="swMain"-->
-                                    <ul class="wizard_steps anchor">
-                                        <li>
-
-                                        </li>
-                                        <li>
-                                            <a href="#step-1">
-                                                <label class="stepNumber">Step 1</label>
-                                                <span class="stepDesc">
-
             <p>If you click on me, I will disappear.</p>
             <p>Click me away!</p>
             <p>Click me too!</p>
-             <br />
-             <small>Step 1 Select Images</small>
-          </span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#step-2">
-                                                <label class="stepNumber">Step 2</label>
-                                                <span class="stepDesc">
-            <br />
-             <small>Step 2 Listing Information</small>
-          </span>
-                                            </a>
-                                        </li>
-                                       <!--  <li>
-                                            <a href="#step-3">
-                                                <label class="stepNumber">Step 3</label>
-                                                <span class="stepDesc">
-             <br />
-             <small>Step 3 Listing Description</small>
-          </span>
-                                            </a>
-                                        </li> -->
-
-                                    </ul>
-
-                                    <div id="step-1">
-                                        <h2 class="StepTitle">Step 1: Select flyer images</h2>
-                                        <div class="row" id="imageSerialize">
 
                                            
 
@@ -150,75 +98,11 @@ $keys = array_keys($response);
                                                 }
                                             }
                                             ?>
-                                        </div>
-
-                                    </div>
-
-
-
-                                    
-                                    <!-- <div id="step-3">
-                                        <h2 class="StepTitle">Step 3: Select listing description</h2>
-                                        <div class="form-group">
-                                            <label>
-                             <?php// echo '<input type="checkbox" class="js-switch" name="description" value="' . $response[$keys[$index]]['remarksConcat'] .'"/>'; ?>  <p> <?php echo $response[$keys[$index]]['remarksConcat']?></p>
-                            </label>
-                                            <label>
-                              <input type="checkbox" class="js-switch" />No Description
-                            </label>
-
-
-
-                                        </div>
-                                    </div> -->
-
-                                </div>
-                                <!-------end smart wizard-->
-                            </div>
-
-                        </div>
-
-                        <?php echo '<input type="hidden" name="address" value="'. $response[$keys[$index]]['address'] . '" />'; ?>
-                        <input type="hidden" name="city" value=<?php echo $response[$keys[$index]]['cityName'];?>/>
-                        <input type="hidden" name="state" value=<?php echo $response[$keys[$index]]['state'];?>/>
-                        <input type="hidden" name="zip" value=<?php echo $response[$keys[$index]]['zipcode'];?>/>
-                        <input type="hidden" name="price" value=<?php echo $response[$keys[$index]]['listingPrice'];?>/>
-                        <input type="hidden" name="mlsId" value=<?php echo $listingId;?>/>
-                        <?php echo '<input type="hidden" name="description" value="' . $response[$keys[$index]]['remarksConcat'] . '" />'; ?>
-
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div>
-                                <?php
-                                    if($result['flyer'] == NULL)
-                                    {
-                                        echo '<img id="noPdf" src="listingImg/flyerPlaceHolder.png" alt="pdf" style="width:80%; margin-top:10px;">';
-                                    }
-                                    else
-                                    {
-                                        // echo '<img src="../../uploadFlyers/' . $result['flyer'] . '" alt="pdf" style="width:80%; margin-top:10px;">';
-
-                                        // echo '<iframe id="pdf" src="../../../test/' . $result['flyer'] . '" style="width:600px; height:600px;" frameborder="0"></iframe>';
-
-                                        echo '<iframe id="pdf" src="../../uploadFlyers/' . $result['flyer']  . '" 
-                                        style="width:600px; height:500px;" frameborder="0"></iframe>';
-                                    }
-                                ?>
-                                
-                            </div>
-                        </div>
-
-                    </section>
-
-                </section>
-
-
-            </div>
-        </div>
 
 
 
             
-        <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+        <script>
             $(document).ready(function(){
                 $("p").click(function(){
                     $(this).hide();
