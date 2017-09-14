@@ -12,7 +12,7 @@
     } 
     // $houseId = $_GET['houseId'];
 
-    $sql = "SELECT houseId FROM HouseInfo WHERE listingId = :listingId";
+    $sql = "SELECT houseId, address FROM HouseInfo WHERE listingId = :listingId";
 
     $namedParameters = array();
     // $namedParameters[':listingId'] = $_GET['id'];
@@ -83,7 +83,7 @@
 
         <section class="content">
             <center>
-                <img alt="Interesting Image" border="0" class="simage float_center" height="101" src="../dist/img/remax-logo.png" style="margin-left: 0px; margin-right: 0px;" title="Interesting Image" width="280" />
+                <img alt="Interesting Image" border="0" class="simage float_center" height="200px" src="../dist/img/remax-logo.png" style="margin-left: 0px; margin-right: 0px;" title="Interesting Image" width="280" />
             </center>
             <form method="post" action="addBuyer.php">
 
@@ -91,7 +91,7 @@
 
                 <div class="x_title" style="margin-top: 20px;">
                     <center>
-                        <h3><label>Welcome! Please sign in:</label></h3>
+                        <h3><label>Welcome to <?php echo $result['address'];  ?></label></h3>
                     </center>
 
 

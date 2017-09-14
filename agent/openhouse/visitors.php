@@ -28,7 +28,7 @@
         <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
         <?php include "./templates-oh/default-css.php" ?>
         <!-- END TEMPLATE default-css.php INCLUDE -->
-
+         
      <style>
 thead{
     background-color: white;
@@ -203,10 +203,12 @@ thead{
                 echo "<td>" . $result['phone'] . "</td>";
                 echo "<td>" . htmlspecialchars($result['email']) . "</td>";
                 echo "<td>" . htmlspecialchars(getHouseAddress($result['houseId'])) . "</td>";
+
+                // <button>Call</button>
                 echo "<td>
-                        <button>Call</button>
+                        
                         <button>Text</button>
-                        <button>Forward Listing Flyer</button>
+                        <button>Forward Flyer</button>
                     </td>
                     <td id='". $result['buyerID'] ."'>" . $dbNote . "</td>
                     <td>";
@@ -221,8 +223,8 @@ thead{
                                             </form>
                                             </td>
                                             <?php
-                    echo "<td>Min: " . $result['bedroomsMin'] . " Max: " . $result['bedroomsMax'] . "</td>";
-                    echo "<td>Min: " . $result['bathroomsMin'] . " Max: " . $result['bathroomsMax'] . "</td>";
+                    echo "<td>Min: " . $result['bedroomsMin'] . "</td>";//. " Max: " . $result['bedroomsMax'] . "</td>";
+                    echo "<td>Min: " . $result['bathroomsMin'] . "</td>";//. " Max: " . $result['bathroomsMax'] . "</td>";
                     echo "<td>Min: " . $result['priceMin'] . " Max: " . $result['priceMax'] . "</td>";
                 ?>
                                                 </tbody>
@@ -341,11 +343,13 @@ thead{
         <script type="text/javascript" src="../../plugins/footable/js/footable.min.js"></script>
         <!--end links from old visitors page-->
           <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/floatthead/2.0.3/jquery.floatThead.js"></script>
+
         <script>
             $(document).ready(function() {
                 $('[data-toggle="popover"]').popover({
                     html: true
                 });
+                
             });
             function takeNote(house, buyer) {
                 var prevNote = $("#" + buyer + "-detail").html();
