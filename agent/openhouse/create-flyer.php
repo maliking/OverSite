@@ -349,10 +349,13 @@ $keys = array_keys($response);
             var limit = 5;
             $('input[type=checkbox]').on('change', function (e) {
                 //window.open($('input[type=checkbox]:checked').val());
+                var count = 0;
                 $('input[type=checkbox]:checked').each(function() {
-                    $('#image1').prepend('<img id="theImg" src="http://wallpaper-gallery.net/images/image/image-3.jpg" />');
+                    //$('#image1').append('<img id="theImg" src="http://wallpaper-gallery.net/images/image/image-3.jpg" />');
                     //window.open(this.value);
+                    count++;
                 });
+                alert(count);
                 /*if ($('input[type=checkbox]:checked').length > limit) {
                     $(this).prop('checked', false);
                     alert("Only 5 allowed");
