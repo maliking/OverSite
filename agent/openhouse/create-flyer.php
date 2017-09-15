@@ -181,7 +181,10 @@ $keys = array_keys($response);
              <br />
 
             <div class="selectedImages">
-                <span id="image1">
+                <p>
+                THIS IS A TEST
+                </p>
+                <span id="image1"> HELLO WORLD
                 </span>
                 <span id="image1">
                 </span>
