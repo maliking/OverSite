@@ -321,7 +321,10 @@ $keys = array_keys($response);
         <script>
             var limit = 5;
             $('input[type=checkbox]').on('change', function (e) {
-                window.open($('input[type=checkbox]:checked').val());
+                //window.open($('input[type=checkbox]:checked').val());
+                $('input[type=checkbox]:checked').each(function() {
+                   window.open(this.value);
+                });
                 /*if ($('input[type=checkbox]:checked').length > limit) {
                     $(this).prop('checked', false);
                     alert("Only 5 allowed");
