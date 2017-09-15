@@ -542,11 +542,6 @@ $keys = array_keys($response);
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
         <script>
-            $(document).ready(function(){
-                $("p").click(function(){
-                    $(this).hide();
-                });
-            });
             /*
              * For demonstration porpuse, all JavaScript code was incorporated in
              * the HTML file. But when developing your application, your JavaScript code
