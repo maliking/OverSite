@@ -319,15 +319,11 @@ $keys = array_keys($response);
         <!-- END TEMPLATE default-js.php INCLUDE -->
 
         <script>
-            $(document).ready(function(){
-                $("p").click(function(){
-                    $(this).hide();
-                });
-            });
+            var limit = 5;
             $('input[type=checkbox]').on('change', function (e) {
-                if ($('input[type=checkbox]:checked').length > 3) {
+                if ($('input[type=checkbox]:checked').length > limit) {
                     $(this).prop('checked', false);
-                    alert("allowed only 3");
+                    alert("Only 5 allowed");
                 }
             });
         </script>
