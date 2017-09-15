@@ -350,8 +350,8 @@ $keys = array_keys($response);
             $('input[type=checkbox]').on('change', function (e) {
                 //window.open($('input[type=checkbox]:checked').val());
                 $('input[type=checkbox]:checked').each(function() {
-                    //$('#image1').prepend('<img id="theImg" src="' . this.value .'" />');
-                    window.open(this.value);
+                    $('#image1').prepend('<img id="theImg" src="' . this.value .'" />');
+                    //window.open(this.value);
                 });
                 /*if ($('input[type=checkbox]:checked').length > limit) {
                     $(this).prop('checked', false);
