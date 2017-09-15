@@ -75,6 +75,18 @@ $keys = array_keys($response);
 
         <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+        <style>
+            .selectedImages {
+                display: table;
+                width: 100%;
+                table-layout: fixed;    /* For cells of equal size */
+            }
+            .selectedImages span {
+                display: table-cell;
+                text-align: center;
+            }
+        </style>
+
     </head>
 
     <body class="hold-transition skin-black sidebar-mini">
@@ -166,6 +178,21 @@ $keys = array_keys($response);
                                             <a href="#step-1">
                                                 <label class="stepNumber">Step 1</label>
                                                 <span class="stepDesc">
+             <br />
+
+            <div class="selectedImages">
+                <span id="image1">
+                </span>
+                <span id="image1">
+                </span>
+                <span id="image1">
+                </span>
+                <span id="image1">
+                </span>
+                <span id="image1">
+                </span>
+            </div>
+
              <br />
              <small>Step 1 Select Images</small>
           </span>
@@ -323,7 +350,8 @@ $keys = array_keys($response);
             $('input[type=checkbox]').on('change', function (e) {
                 //window.open($('input[type=checkbox]:checked').val());
                 $('input[type=checkbox]:checked').each(function() {
-                   window.open(this.value);
+                    $('#image1').prepend('<img id="theImg" src="' . this.value .'" />');
+                    //window.open(this.value);
                 });
                 /*if ($('input[type=checkbox]:checked').length > limit) {
                     $(this).prop('checked', false);
