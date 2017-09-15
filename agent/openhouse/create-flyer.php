@@ -323,7 +323,7 @@ $keys = array_keys($response);
             $('input[type=checkbox]').on('change', function (e) {
                 //window.open($('input[type=checkbox]:checked').val());
                 $('input[type=checkbox]:checked').each(function() {
-                   console.log(this.value);
+                   window.open(this.value);
                 });
                 /*if ($('input[type=checkbox]:checked').length > limit) {
                     $(this).prop('checked', false);
