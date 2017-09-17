@@ -351,7 +351,7 @@ $keys = array_keys($response);
                 //window.open($('input[type=checkbox]:checked').val());
                 var count = 0;
                 $('input[type=checkbox]:checked').each(function() {
-                    var imager = '#image' . count ;
+                    var imager = concat('#image', count) ;
                     //$('#image'.count).prepend('<img id="theImg" src=' . this.value . ' />');
                     alert(imager);
                     window.open(this.value);
