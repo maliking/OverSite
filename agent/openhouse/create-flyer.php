@@ -85,6 +85,10 @@ $keys = array_keys($response);
                 display: table-cell;
                 text-align: center;
             }
+
+            .theIMG {
+                zoom: 10%;
+            }
         </style>
 
     </head>
@@ -194,7 +198,7 @@ $keys = array_keys($response);
                 <div id="image4">
                 </div>
             </div>
-            
+
           </span>
                                             </a>
                                         </li>
@@ -351,7 +355,7 @@ $keys = array_keys($response);
                 //window.open($('input[type=checkbox]:checked').val());
                 var count = 0;
                 $('input[type=checkbox]:checked').each(function() {
-                    $('#image'+count).prepend('<img id="theImg" src=' + this.value + ' />');
+                    $('#image'+count).prepend('<img class="theImg" src=' + this.value + ' />');
                     //alert(imager);
                     //window.open(this.value);
                     count++;
