@@ -351,8 +351,10 @@ $keys = array_keys($response);
                 //window.open($('input[type=checkbox]:checked').val());
                 var count = 0;
                 $('input[type=checkbox]:checked').each(function() {
-                    $('#image'.count).prepend('<img id="theImg" src="' . this.value . '" />');
-                    //window.open(this.value);
+                    var imager = '#image' . count ;
+                    //$('#image'.count).prepend('<img id="theImg" src=' . this.value . ' />');
+                    window.open(imager);
+                    window.open(this.value);
                 });
                 alert(count);
                 /*if ($('input[type=checkbox]:checked').length > limit) {
