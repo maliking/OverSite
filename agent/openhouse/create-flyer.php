@@ -146,7 +146,7 @@ $keys = array_keys($response);
                     </div>
                     <section class="content-header" style="margin-top: 50px; padding-top: 30px; padding-bottom: 20px;">
                         <h1 class="col-md-6 col-sm-6 col-xs-12">
-                            Create New Flyers
+                            Create New Flyer
                         </h1>
                         <h1 class="col-md-3 col-sm-3 col-xs-6">
                             Current Flyer
@@ -180,7 +180,12 @@ $keys = array_keys($response);
                                                 <span class="stepDesc">
              <br />
 
-            <div class="selectedImages">
+
+
+             <br />
+             <small>Step 1 Select Images</small>            
+
+             <div class="selectedImages">
                 <div id="image0"></div><div id="image1"></div>
                 <div id="image2">
                 </div>
@@ -189,9 +194,7 @@ $keys = array_keys($response);
                 <div id="image4">
                 </div>
             </div>
-
-             <br />
-             <small>Step 1 Select Images</small>
+            
           </span>
                                             </a>
                                         </li>
