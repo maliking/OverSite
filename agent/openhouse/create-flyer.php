@@ -75,6 +75,22 @@ $keys = array_keys($response);
 
         <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+        <style>
+            .selectedImages {
+                display: table;
+                width: 100%;
+                table-layout: fixed;    /* For cells of equal size */
+            }
+            .selectedImages div {
+                display: table-cell;
+                text-align: center;
+            }
+
+            .theIMG {
+                -webkit-transform: scale(0.5);
+            }
+        </style>
+
     </head>
 
     <body class="hold-transition skin-black sidebar-mini">
@@ -167,7 +183,22 @@ $keys = array_keys($response);
                                                 <label class="stepNumber">Step 1</label>
                                                 <span class="stepDesc">
              <br />
-             <small>Step 1 Select Images</small>
+
+
+
+             <br />
+             <small>Step 1 Select Images</small>            
+
+             <div class="selectedImages">
+                <div id="image0"></div><div id="image1"></div>
+                <div id="image2">
+                </div>
+                <div id="image3">
+                </div>
+                <div id="image4">
+                </div>
+            </div>
+
           </span>
                                             </a>
                                         </li>
@@ -319,16 +350,21 @@ $keys = array_keys($response);
         <!-- END TEMPLATE default-js.php INCLUDE -->
 
         <script>
-            $(document).ready(function(){
-                $("p").click(function(){
-                    $(this).hide();
-                });
-            });
+            var limit = 5;
             $('input[type=checkbox]').on('change', function (e) {
-                if ($('input[type=checkbox]:checked').length > 3) {
+                //window.open($('input[type=checkbox]:checked').val());
+                var count = 0;
+                $('input[type=checkbox]:checked').each(function() {
+                    $('#image'+count).prepend('<img class="theImg" style="-webkit-transform: scale(0.1);" src=' + this.value + ' />');
+                    //alert(imager);
+                    //window.open(this.value);
+                    count++;
+                });
+                alert(count);
+                /*if ($('input[type=checkbox]:checked').length > limit) {
                     $(this).prop('checked', false);
-                    alert("allowed only 3");
-                }
+                    alert("Only 5 allowed");
+                }*/
             });
         </script>
 
@@ -514,11 +550,6 @@ $keys = array_keys($response);
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
         <script>
-            $(document).ready(function(){
-                $("p").click(function(){
-                    $(this).hide();
-                });
-            });
             /*
              * For demonstration porpuse, all JavaScript code was incorporated in
              * the HTML file. But when developing your application, your JavaScript code
