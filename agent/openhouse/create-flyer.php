@@ -87,7 +87,7 @@ $keys = array_keys($response);
             }
 
             .theIMG {
-                zoom: 10%;
+                -webkit-transform: scale(0.5);
             }
         </style>
 
