@@ -81,7 +81,7 @@ $keys = array_keys($response);
                 width: 100%;
                 table-layout: fixed;    /* For cells of equal size */
             }
-            .selectedImages span {
+            .selectedImages div {
                 display: table-cell;
                 text-align: center;
             }
@@ -181,16 +181,16 @@ $keys = array_keys($response);
              <br />
 
             <div class="selectedImages">
-                <span id="image1">
-                </span>
-                <span id="image2">
-                </span>
-                <span id="image3">
-                </span>
-                <span id="image4">
-                </span>
-                <span id="image5">
-                </span>
+                <div id="image1">
+                </div>
+                 <div id="image2">
+                </div>
+                <div id="image3">
+                </div>
+                <div id="image4">
+                </div>
+                <div id="image5">
+                </div>
             </div>
 
              <br />
@@ -351,7 +351,7 @@ $keys = array_keys($response);
                 //window.open($('input[type=checkbox]:checked').val());
                 var count = 0;
                 $('input[type=checkbox]:checked').each(function() {
-                    $('#image1').append('<img id="theImg" src="http://wallpaper-gallery.net/images/image/image-3.jpg" />');
+                    $('#image1').prepend('<img id="theImg" src="http://wallpaper-gallery.net/images/image/image-3.jpg" />');
                     //window.open(this.value);
                     count++;
                 });
