@@ -354,7 +354,7 @@ $keys = array_keys($response);
                 //window.open($('input[type=checkbox]:checked').val());
                 //var count = 0;
                 $('input[type=checkbox]:checked').each(function() {
-                    //$('#image1').append('<img id="theImg" src="http://wallpaper-gallery.net/images/image/image-3.jpg" />');
+                    $('#image1').append('<img id="theImg" src="http://wallpaper-gallery.net/images/image/image-3.jpg" />');
                     window.open(this.value);
                 });
                 /*if ($('input[type=checkbox]:checked').length > limit) {
