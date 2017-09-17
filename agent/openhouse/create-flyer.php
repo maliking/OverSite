@@ -353,7 +353,7 @@ $keys = array_keys($response);
                 $('input[type=checkbox]:checked').each(function() {
                     var imager = '#image' . count ;
                     //$('#image'.count).prepend('<img id="theImg" src=' . this.value . ' />');
-                    window.open(imager);
+                    alert(imager);
                     window.open(this.value);
                 });
                 alert(count);
