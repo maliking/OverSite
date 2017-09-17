@@ -181,15 +181,15 @@ $keys = array_keys($response);
              <br />
 
             <div class="selectedImages">
-                <div id="image1">
+                <div id="image0">
                 </div>
-                 <div id="image2">
+                 <div id="image1">
+                </div>
+                <div id="image2">
                 </div>
                 <div id="image3">
                 </div>
                 <div id="image4">
-                </div>
-                <div id="image5">
                 </div>
             </div>
 
@@ -351,9 +351,8 @@ $keys = array_keys($response);
                 //window.open($('input[type=checkbox]:checked').val());
                 var count = 0;
                 $('input[type=checkbox]:checked').each(function() {
-                    $('#image1').prepend('<img id="theImg" src="http://wallpaper-gallery.net/images/image/image-3.jpg" />');
+                    $('#image'.count).prepend('<img id="theImg" src=' . this.value . ' />');
                     //window.open(this.value);
-                    count++;
                 });
                 alert(count);
                 /*if ($('input[type=checkbox]:checked').length > limit) {
