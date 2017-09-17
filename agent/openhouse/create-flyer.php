@@ -181,10 +181,7 @@ $keys = array_keys($response);
              <br />
 
             <div class="selectedImages">
-                <div id="image0">
-                </div>
-                 <div id="image1">
-                </div>
+                <div id="image0"></div><div id="image1"></div>
                 <div id="image2">
                 </div>
                 <div id="image3">
