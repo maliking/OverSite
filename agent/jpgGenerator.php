@@ -18,23 +18,17 @@ try
 	echo '<img src=thumb.jpg height=100% >';
 
 // Twilio Code
-	try
-	{
-		$twilio_phone_number = "+18317038053";
-		$client = new Client($sid, $token);
-		$client->messages->create(
-			"8312934153",
-			array(
-				"From" => $twilio_phone_number,
-				"Body" => "Flyer",
-				"mediaUrl" => "thumb.jpg",
-				)
-			);
-	}
-	catch(Exception $e)
-	{
-		echo "error: " . $e->getMessage();
-	}
+	// $twilio_phone_number = "+18317038053";
+	// 	$client = new Client($sid, $token);
+	// 	$client->messages->create(
+	// 		"8312934153",
+	// 		array(
+	// 			"From" => $twilio_phone_number,
+	// 			"Body" => "Flyer",
+	// 			"mediaUrl" => "thumb.jpg",
+	// 			)
+	// 		);
+	
 
 }
 catch(Exception $e)
