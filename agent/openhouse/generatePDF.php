@@ -145,8 +145,19 @@ $namedParameters[':listingId'] = substr($_POST['mlsId'],0,-1);
 $stmt = $dbConn->prepare($sql);
 $stmt->execute($namedParameters);
 
-$pdf->Output('/Applications/XAMPP/xamppfiles/htdocs/test/generateExample.pdf', 'F');
-// $pdf->Output('../../uploadFlyers/' . $_POST['address']. '.pdf', 'F');
+// $pdf->Output('/Applications/XAMPP/xamppfiles/htdocs/test/generateExample.pdf', 'F');
+$pdf->Output('../../uploadFlyers/' . $_POST['address']. '.pdf', 'F');
+
+$im = new Imagick();
+
+$im->setResolution(300,300);
+$im->readimage("../../uploadFlyers/" . $_POST['address']. '.pdf[0]'); 
+$im->setImageFormat('jpeg');    
+$im->writeImage("../../uploadFlyers/" . $_POST['address'] . '.jpg'); 
+
+$im->clear(); 
+$im->destroy();
+
  echo 'vanilla!';
 }
 catch(Exception $e)
