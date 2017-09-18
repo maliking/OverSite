@@ -189,16 +189,6 @@ $keys = array_keys($response);
              <br />
              <small>Step 1 Select Images</small>            
 
-             <div class="selectedImages">
-                <div id="image0"></div><div id="image1"></div>
-                <div id="image2">
-                </div>
-                <div id="image3">
-                </div>
-                <div id="image4">
-                </div>
-            </div>
-
           </span>
                                             </a>
                                         </li>
@@ -227,7 +217,27 @@ $keys = array_keys($response);
                                         <h2 class="StepTitle">Step 1: Select flyer images</h2>
                                         <div class="row" id="imageSerialize">
 
-                                           
+
+                                            <label class="item col-md-4 col-sm-4 col-xs-6">
+                                                <div id="image0">
+                                                </div>
+                                            </label>
+                                            <label class="item col-md-4 col-sm-4 col-xs-6">
+                                                <div id="image1">
+                                                </div>
+                                            </label>
+                                            <label class="item col-md-4 col-sm-4 col-xs-6">
+                                                <div id="image2">
+                                                </div>
+                                            </label>
+                                            <label class="item col-md-4 col-sm-4 col-xs-6">
+                                                <div id="image3">
+                                                </div>
+                                            </label>           
+                                            <label class="item col-md-4 col-sm-4 col-xs-6">
+                                                <div id="image4">
+                                                </div>
+                                            </label>
 
                                             <?php
                                             for($i = 0; $i < sizeof($keys); $i++)
@@ -352,7 +362,12 @@ $keys = array_keys($response);
         <script>
             var limit = 5;
             $('input[type=checkbox]').on('change', function (e) {
-                //window.open($('input[type=checkbox]:checked').val());
+
+                ($('input[type=checkbox]:checked').length > limit) {
+                    $(this).prop('checked', false);
+                    alert("Only 5 allowed");
+                }
+
                 var count = 0;
                 $('input[type=checkbox]:checked').each(function() {
                     $('#image'+count).prepend('<img class="theImg" style="-webkit-transform: scale(0.1);" src=' + this.value + ' />');
@@ -360,11 +375,6 @@ $keys = array_keys($response);
                     //window.open(this.value);
                     count++;
                 });
-                alert(count);
-                /*if ($('input[type=checkbox]:checked').length > limit) {
-                    $(this).prop('checked', false);
-                    alert("Only 5 allowed");
-                }*/
             });
         </script>
 
