@@ -1,5 +1,5 @@
 <?php
-// clearstatcache();
+clearstatcache();
 require("../../databaseConnection.php");
 $dbConn = getConnection();
 if(isset($_FILES))
