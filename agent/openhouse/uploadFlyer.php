@@ -38,7 +38,7 @@ if(isset($_FILES))
 			$im->readimage("../../uploadFlyers/" . $_FILES['file']['name'] . '[0]'); 
 			$im->setImageFormat('jpeg');    
 			$im->writeImage(substr($_FILES['file']['name'],0,-3) . 'jpg'); 
-			if (copy(substr($_FILES['file']['name'],0,-3) . 'jpg',$targetfolder . substr($_FILES['file']['name'],0,-3) . 'jpg')) 
+			if (copy(substr($_FILES['file']['name'],0,-3) . 'jpg',$targetfolder . substr(basename($_FILES['file']['name']),0,-3) . 'jpg')) 
 			{
 			  unlink(substr($_FILES['file']['name'],0,-3) . 'jpg');
 			}
