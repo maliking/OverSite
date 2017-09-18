@@ -11,12 +11,12 @@
       header("Location: index.php?error=wrong username or password");
     } 
     // $houseId = $_GET['houseId'];
-
+    $_SESSION['listingId'] = $_GET['id'];
     $sql = "SELECT houseId, address, flyer FROM HouseInfo WHERE listingId = :listingId";
 
     $namedParameters = array();
-    $namedParameters[':listingId'] = $_GET['id'];
-    // $namedParameters[':listingId'] = $_SESSION['listingId'];
+    // $namedParameters[':listingId'] = $_GET['id'];
+    $namedParameters[':listingId'] = $_SESSION['listingId'];
 
 
     $stmt = $dbConn->prepare($sql);
