@@ -135,7 +135,7 @@ $keys = array_keys($response);
                                     </div>
 
                                     <div class="modal-footer">
-                                        <?php echo '<a href=../signIn.php?id=' . $listingId . '><button type="button" class="btn btn-default">House Sing-In sheet</button></a>';?>
+                                        <?php echo '<a href=../signIn.php?id=' . $listingId . ' target="_blank"><button type="button" class="btn btn-default">House Sign-In sheet</button></a>';?>
                                         <a href="visitors.php"><button type="button" class="btn btn-default">Send Flyer</button></a>
                                         <a href="listings-openhouse.php"><button type="button" class="btn btn-default">Main Page</button></a>
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
