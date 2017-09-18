@@ -223,7 +223,7 @@ $keys = array_keys($response);
 
                                             </label>
                                             <label class="item col-md-4 col-sm-4 col-xs-6">
-                                                <img id="image1" src="http://pngimg.com/uploads/number2/Number%202%20PNG%20images%20free%20download_PNG14918.png?i=1">
+                                                TESTING
                                             </label>
                                             <label class="item col-md-4 col-sm-4 col-xs-6">
                                                 <div id="image2">
