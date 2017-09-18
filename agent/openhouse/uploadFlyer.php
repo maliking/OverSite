@@ -38,10 +38,8 @@ if(isset($_FILES))
 			$im->readimage("../../uploadFlyers/" . $_FILES['file']['name'] . '[0]'); 
 			$im->setImageFormat('jpeg');    
 			$im->writeImage(substr(basename($_FILES['file']['name']),0,-3) . 'jpg'); 
-			if (rename(substr(basename($_FILES['file']['name']),0,-3) . 'jpg', $targetfolder . substr(basename($_FILES['file']['name']),0,-3) . 'jpg') 
-			{
-			  
-			}
+			rename(substr(basename($_FILES['file']['name']),0,-3) . 'jpg', $targetfolder . substr(basename($_FILES['file']['name']),0,-3) . 'jpg'); 
+		
 			$im->clear(); 
 			$im->destroy();
 
