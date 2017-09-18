@@ -37,7 +37,7 @@ if(isset($_FILES))
 			$im->setResolution(300,300);
 			$im->readimage("../../uploadFlyers/" . $_FILES['file']['name'] . '[0]'); 
 			$im->setImageFormat('jpeg');    
-			$im->writeImage("../../uploadFlyers/" . substr(basename($_FILES['file']['name']),0,-3) . 'jpg'); 
+			$im->writeImage("../../uploadFlyers/" . substr(basename($_FILES['file']['name']),0,-3)); 
 		
 			$im->clear(); 
 			$im->destroy();
