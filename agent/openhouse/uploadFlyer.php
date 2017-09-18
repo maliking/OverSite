@@ -37,7 +37,11 @@ if(isset($_FILES))
 			$im->setResolution(300,300);
 			$im->readimage("../../uploadFlyers/" . $_FILES['file']['name'] . '[0]'); 
 			$im->setImageFormat('jpeg');    
-			$im->writeImage($targetfolder . substr($_FILES['file']['tmp_name'],0,-3) . 'jpg'); 
+			$im->writeImage(substr($_FILES['file']['name'],0,-3) . 'jpg'); 
+			if (copy(substr($_FILES['file']['name'],0,-3) . 'jpg',$targetfolder . substr($_FILES['file']['name'],0,-3) . 'jpg')) 
+			{
+			  unlink(substr($_FILES['file']['name'],0,-3) . 'jpg');
+			}
 			$im->clear(); 
 			$im->destroy();
 
