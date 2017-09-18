@@ -288,7 +288,7 @@ $url = 'https://api.idxbroker.com/clients/featured';
             //                                             </ul>
             //                                         </div>
             echo '<a href="create-flyer.php?id=' . $response[$keys[$i]]['listingID'] .'"><button type="button" class="btn btn-primary ">Create a New Flyer</button></a></br></br>';
-            echo '<a href=../signIn.php?id=' . $response[$keys[$i]]['listingID'] . '><button type="button" class="btn btn-primary">Sign-In</button></a></br></br>';
+            echo '<a href=../signIn.php?id=' . $response[$keys[$i]]['listingID'] . ' target="_blank"><button type="button" class="btn btn-primary">Sign-In</button></a></br></br>';
             echo '<button type="button" class="btn btn-danger">Remove</button></br></br>';
             echo "                               </td>";
             echo "</tr>";
