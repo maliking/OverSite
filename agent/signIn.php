@@ -11,11 +11,14 @@
       header("Location: index.php?error=wrong username or password");
     } 
     // $houseId = $_GET['houseId'];
-    $_SESSION['listingId'] = $_GET['id'];
+    if(isset($_GET['id']))
+        $_SESSION['listingId'] = $_GET['id'];
+
     $sql = "SELECT houseId, address, flyer FROM HouseInfo WHERE listingId = :listingId";
 
     $namedParameters = array();
     // $namedParameters[':listingId'] = $_GET['id'];
+    
     $namedParameters[':listingId'] = $_SESSION['listingId'];
 
 
@@ -93,7 +96,7 @@
 
                 <div class="x_title" style="margin-top: 20px;">
                     <center>
-                        <h3><label>Welcome to <?php echo $result['address'];  ?></label></h3>
+                        <h3><label>Welcome to <?php echo $result['address'] . " " . $_SESSION['flyer'];  ?></label></h3>
                     </center>
 
 
