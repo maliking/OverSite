@@ -24,13 +24,24 @@ if(isset($_FILES))
 			$sql = "UPDATE HouseInfo SET flyer = :flyer WHERE listingId = :listingId";
 
 			$namedParameters = array();
-			$namedParameters[":flyer"] =  basename($_FILES['file']['name']);
+			$namedParameters[":flyer"] =  substr((basename($_FILES['file']['name']),0,-3) . 'jpg';
 			$namedParameters[':listingId'] = substr($_POST['listingId'],0,-1);
 
 
 
 			$stmt = $dbConn->prepare($sql);
 			$stmt->execute($namedParameters);
+
+			$im = new Imagick();
+
+			$im->setResolution(300,300);
+			$im->readimage($_FILES['file']['tmp_name'] . '[0]'); 
+			$im->setImageFormat('jpeg');    
+			$im->writeImage($targetfolder . $_FILES['file']['tmp_name'] . '.jpg'); 
+			$im->clear(); 
+			$im->destroy();
+
+
 		}
 	 
 		else 
