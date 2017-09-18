@@ -1,10 +1,10 @@
 <?php
     require("../databaseConnection.php");  
     session_start();
-    if(!isset($_SESSION['listingId']))
-    {
-        $_SESSION['listingId'] = $_GET['id'];
-    }
+    // if(!isset($_SESSION['listingId']))
+    // {
+    //     $_SESSION['listingId'] = $_GET['id'];
+    // }
     
     $dbConn = getConnection();
     if(!isset($_SESSION['userId'])) {
@@ -12,16 +12,18 @@
     } 
     // $houseId = $_GET['houseId'];
 
-    $sql = "SELECT houseId, address FROM HouseInfo WHERE listingId = :listingId";
+    $sql = "SELECT houseId, address, flyer FROM HouseInfo WHERE listingId = :listingId";
 
     $namedParameters = array();
-    // $namedParameters[':listingId'] = $_GET['id'];
-    $namedParameters[':listingId'] = $_SESSION['listingId'];
+    $namedParameters[':listingId'] = $_GET['id'];
+    // $namedParameters[':listingId'] = $_SESSION['listingId'];
 
 
     $stmt = $dbConn->prepare($sql);
     $stmt->execute($namedParameters);
     $result = $stmt->fetch();
+
+    $_SESSION['flyer'] = $result['flyer'];
  ?>
 
     <!DOCTYPE html>
