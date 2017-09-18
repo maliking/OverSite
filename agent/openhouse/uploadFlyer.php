@@ -24,7 +24,7 @@ if(isset($_FILES))
 			$sql = "UPDATE HouseInfo SET flyer = :flyer WHERE listingId = :listingId";
 
 			$namedParameters = array();
-			$namedParameters[":flyer"] =  substr((basename($_FILES['file']['name']),0,-3) . 'jpg';
+			$namedParameters[":flyer"] =  substr((basename($_FILES['file']['name']),0,-3)) . 'jpg';
 			$namedParameters[':listingId'] = substr($_POST['listingId'],0,-1);
 
 
