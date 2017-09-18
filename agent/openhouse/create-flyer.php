@@ -580,7 +580,7 @@ $keys = array_keys($response);
                     // $("#pdf").attr('src','../../../test/' + response); //local
 
                     $("#pdf").attr('src','../../uploadFlyers/' + response); //server
-                    $("#noPdf").replaceWith('<iframe id="pdf" src="../../uploadFlyers/' + response + '" style="width:600px; height:500px;" frameborder="0"></iframe>'); //server when no pdf found
+                    $("#noPdf").replaceWith('<iframe id="pdf" src="../../uploadFlyers/' + response.slice(0,-3) + 'pdf" style="width:600px; height:500px;" frameborder="0"></iframe>'); //server when no pdf found
                     
                     $('#myModal').modal('show');
                 }).fail(function(){
