@@ -324,7 +324,7 @@ $keys = array_keys($response);
 
                                         // echo '<iframe id="pdf" src="../../../test/' . $result['flyer'] . '" style="width:600px; height:600px;" frameborder="0"></iframe>'; //local
 
-                                        echo '<iframe id="pdf" src="../../uploadFlyers/' . $result['flyer']  . '" 
+                                        echo '<iframe id="pdf" src="../../uploadFlyers/' . substr ($result['flyer'],0,-3)  . 'pdf" 
                                         style="width:600px; height:500px;" frameborder="0"></iframe>';
                                     }
                                 ?>
