@@ -165,10 +165,32 @@ $keys = array_keys($response);
                            
                         </h5>
                     </section>
+
+                    
+
                     <section class="content">
+                       
                         <div class="col-md-6 col-sm-6 col-xs-12">
 
+                        <div class="col-md-6 col-sm-6 col-xs-12" style="height:70px; width:100%;">
 
+                            <div class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid;">
+                            </div>
+
+                            <div class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;">
+                            </div>
+
+                            <div class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;">
+                            </div>
+
+                            <div class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;">
+                            </div>
+
+                            <div class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;">
+                            </div>
+
+                            
+                        </div>
                             <div class="row" style="margin-top:20px;">
 
                                 <!-- Smart Wizard -->
