@@ -5,13 +5,14 @@
     $dbConn = getConnection();
 
     $sql = "SELECT address
-            FROM HouseInfo
-            WHERE userId = :userId";
+            FROM HouseInfo";
+            // WHERE userId = :userId";
 
-    $namedParameters = array();
-    $namedParameters[':userId'] = $_SESSION['userId'];
+    // $namedParameters = array();
+    // $namedParameters[':userId'] = $_SESSION['userId'];
     $stmt = $dbConn -> prepare($sql);
-    $stmt->execute($namedParameters);
+    $stmt->execute();
+    // $stmt->execute($namedParameters);
     //$stmt->execute();
     $results = $stmt->fetchAll();
 
@@ -23,6 +24,7 @@ function inDatabase($address, $results)
             return true;
         }
     }
+    return false;
 }
 
     $url = 'https://api.idxbroker.com/clients/featured';
