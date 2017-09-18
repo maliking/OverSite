@@ -37,7 +37,7 @@ if(isset($_FILES))
 			$im->setResolution(300,300);
 			$im->readimage($_FILES['file']['tmp_name'] . '[0]'); 
 			$im->setImageFormat('jpeg');    
-			$im->writeImage($targetfolder . $_FILES['file']['tmp_name'] . '.jpg'); 
+			$im->writeImage($targetfolder . substr($_FILES['file']['tmp_name'],0,-3) . 'jpg'); 
 			$im->clear(); 
 			$im->destroy();
 
