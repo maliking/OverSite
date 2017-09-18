@@ -219,8 +219,8 @@ $keys = array_keys($response);
 
 
                                             <label class="item col-md-4 col-sm-4 col-xs-6">
-                                                <div id="image0">
-                                                </div>
+                                                <img id="image0" src="https://vignette4.wikia.nocookie.net/lyricwiki/images/9/98/Number_one.png/revision/latest?cb=20080802041439g">
+
                                             </label>
                                             <label class="item col-md-4 col-sm-4 col-xs-6">
                                                 <div id="image1">
