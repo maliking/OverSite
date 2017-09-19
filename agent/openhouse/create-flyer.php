@@ -355,6 +355,7 @@ $keys = array_keys($response);
         <!-- END TEMPLATE default-js.php INCLUDE -->
 
         <script>
+            var array = [];
             var limit = 5;
             $('input[type=checkbox]').on('change', function (e) {
 
@@ -363,14 +364,31 @@ $keys = array_keys($response);
                     alert("Only 5 allowed");
                 }
 
-                var count = 0;
+            //add new checkec elements to array
+            if ($(this).attr('checked')) {
+                array.push($(this).attr('value'));
+            }
+            //remove unchecked elements
+            else {
+                for (var i = 0; i < array.length; i++) {
+                    if (array[i] == $(this).attr('value')) {
+                        array.splice(i, 1);
+                    }
+                }
+            }
+
+            for(var i = 0; i < array.length; i++){
+                $('#image'+i).attr("src", this.value);
+            }
+
+                /*var count = 0;
                 $('input[type=checkbox]:checked').each(function() {
                     //$('#image'+count).prepend('<img class="theImg" style="-webkit-transform: scale(0.1);" src=' + this.value + ' />');
                     $('#image'+count).attr("src", this.value);
                     //alert(imager);
                     //window.open(this.value);
                     count++;
-                });
+                });*/
             });
         </script>
 
