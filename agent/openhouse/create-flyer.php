@@ -234,27 +234,6 @@ $keys = array_keys($response);
                                         <h2 class="StepTitle">Step 1: Select flyer images</h2>
                                         <div class="row" id="imageSerialize">
 
-
-                                            <label class="item col-md-4 col-sm-4 col-xs-6">
-                                                <img id="image0" src="https://vignette4.wikia.nocookie.net/lyricwiki/images/9/98/Number_one.png/revision/latest?cb=20080802041439g">
-
-                                            </label>
-                                            <label class="item col-md-4 col-sm-4 col-xs-6">
-                                                TESTING
-                                            </label>
-                                            <label class="item col-md-4 col-sm-4 col-xs-6">
-                                                <div id="image2">
-                                                </div>
-                                            </label>
-                                            <label class="item col-md-4 col-sm-4 col-xs-6">
-                                                <div id="image3">
-                                                </div>
-                                            </label>           
-                                            <label class="item col-md-4 col-sm-4 col-xs-6">
-                                                <div id="image4">
-                                                </div>
-                                            </label>
-
                                             <?php
                                             for($i = 0; $i < sizeof($keys); $i++)
                                             {
@@ -386,7 +365,8 @@ $keys = array_keys($response);
 
                 var count = 0;
                 $('input[type=checkbox]:checked').each(function() {
-                    $('#image'+count).prepend('<img class="theImg" style="-webkit-transform: scale(0.1);" src=' + this.value + ' />');
+                    //$('#image'+count).prepend('<img class="theImg" style="-webkit-transform: scale(0.1);" src=' + this.value + ' />');
+                    $('#image'+count).attr("src", this.value);
                     //alert(imager);
                     //window.open(this.value);
                     count++;
