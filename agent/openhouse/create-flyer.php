@@ -174,23 +174,15 @@ $keys = array_keys($response);
 
                         <div class="col-md-6 col-sm-6 col-xs-12" style="height:70px; width:100%;">
 
-                            <div class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid;">
-                            </div>
-                                
-                            <!--<div class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;">
-                                <img id="image0" style="height:70px;" src="https://vignette4.wikia.nocookie.net/lyricwiki/images/9/98/Number_one.png/revision/latest?cb=20080802041439g">
-                            </div>-->
+                            <img id="image0" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://www.clipartbay.com/cliparts/red-number-1-clip-art-gc8rlnb.png">
 
-                            <img id="image0" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABoAAAAaCAYAAACpSkzOAAABw0lEQVRIS72W6zEEURCFv42AEIgAESACQiACRIAIEAEhEAEiQASEQATUt3XvVs/s3Mf6sV11q7Z2evr06ce5M2NNNlsTDj1Am8ARcAxsAbspuXfgC3gEnoDvWtI1IAHOgHPA3zUT5Ba4KwGWgAz8HLJ/BR4AWXg0mXlOgP3A8nAKbApIkM/E4iMxemkwOkiMdhLI9hhsDBSZCGKAau1DAr5rQoLJesBsDHQFXAKrgmS8CHYNGG9uESiWzGxa5SpV0yrYXyuxKGEEsqn3gI3Xecocb318XptYk3RATtMQDZzdB/dl8XCE5JjfhP9qQDlp98v9GwDZQBu5F0Y4YvmyjHxRvxqQY/+W4hhv4Pw70bep8uWytFRlEC86rw2oVbrMrodRLp1rMtfGyKg1DKsAVYchPzRj96hkPYyq4+3CKvsbCai0sHn6Fls/yigv7E+a0rmElSRoSasaoholKKt+UYJ0rgpjA2wsyPmCXNK6mFUuocwuOnTPcqkaBh+UbEpUY8KRmf/bLy8+xzVefCqEPcvaWFT91lWuvnkckJrJwqvcM3l/tWQk9019yx8nstDMPn+cuIP//jjpHLQ+tx5GfZEaXn+MKXAb/hyHOwAAAABJRU5ErkJggg==">
+                            <img id="image1" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://pngimg.com/uploads/number2/Number%202%20PNG%20images%20free%20download_PNG14940.png">
 
-                            <div class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;">
-                            </div>
+                            <img id="image2" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://www.clker.com/cliparts/U/4/Y/A/Y/6/number-3-button-hi.png">
 
-                            <div class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;">
-                            </div>
+                            <img id="image3" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://www.clker.com/cliparts/J/p/g/I/c/L/number-4-button-hi.png">
 
-                            <div class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;">
-                            </div>
+                            <img id="image4" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://www.clker.com/cliparts/5/P/q/M/g/J/number-5-button-hi.png">
 
                             
                         </div>
