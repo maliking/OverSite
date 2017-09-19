@@ -177,9 +177,11 @@ $keys = array_keys($response);
                             <div class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid;">
                             </div>
 
-                            <div class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;">
+                            <!--<div class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;">
                                 <img id="image0" style="height:70px;" src="https://vignette4.wikia.nocookie.net/lyricwiki/images/9/98/Number_one.png/revision/latest?cb=20080802041439g">
-                            </div>
+                            </div>-->
+
+                            <img id="image0" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="https://vignette4.wikia.nocookie.net/lyricwiki/images/9/98/Number_one.png/revision/latest?cb=20080802041439g">
 
                             <div class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;">
                             </div>
