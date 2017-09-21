@@ -371,12 +371,10 @@ $keys = array_keys($response);
                     return el.value;
                 }).get().join("\n");
 
-                var iterator = str.values();
+                str.forEach(function(element) {
+                    alert(element);
+                });
 
-                for (let letter of iterator) {
-                    alert(letter);
-                }
-                
                 $("#result").text(str).show();
             });
 /*
