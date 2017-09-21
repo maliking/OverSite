@@ -370,13 +370,14 @@ $keys = array_keys($response);
                 }).map(function(i, el) {
                     return el.value;
                 }).get().join("\n");
-                $("#result").text(str).show();
 
                 var iterator = str.values();
 
                 for (let letter of iterator) {
                     alert(letter);
                 }
+                
+                $("#result").text(str).show();
             });
 /*
             $('input[type=checkbox]').click(function () {
