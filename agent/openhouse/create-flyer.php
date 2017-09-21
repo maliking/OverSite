@@ -363,7 +363,7 @@ $keys = array_keys($response);
                     $(this).prop('checked', false);
                     alert("Only 5 allowed");
                 }
-
+                /*
                 //add new checked elements to array
                 if ($(this).attr('checked')) {
                     alert(this.value);
@@ -380,16 +380,16 @@ $keys = array_keys($response);
 
                 for(var i = 0; i < array.length; i++){
                     $('#image'+i).attr("src", array[i]);
-                }
+                }*/
 
-                /*var count = 0;
+                var count = 0;
                 $('input[type=checkbox]:checked').each(function() {
                     //$('#image'+count).prepend('<img class="theImg" style="-webkit-transform: scale(0.1);" src=' + this.value + ' />');
                     $('#image'+count).attr("src", this.value);
                     //alert(imager);
                     //window.open(this.value);
                     count++;
-                });*/
+                });
             });
         </script>
 
