@@ -372,6 +372,10 @@ $keys = array_keys($response);
                 var str = $ch.filter(":checked").map(function(i, el) {
                     return el.value;
                 }).get().join("\n");
+
+                $.each(str, function( k, v ) {
+                  alert( "Key: " + k + ", Value: " + v );
+                });
                 $("#result").text(str).show();
             });
 /*
