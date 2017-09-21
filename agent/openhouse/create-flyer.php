@@ -371,7 +371,7 @@ $keys = array_keys($response);
                     return el.value;
                 }).get().join("\n");
 
-                var splitted = str.val().split("\n");
+                alert(str);
 
                 $("#result").text(str).show();
             });
