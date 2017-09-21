@@ -365,6 +365,7 @@ $keys = array_keys($response);
                 }
                 else{
                     //add new checked elements to array
+                    alert($(this).attr('checked'));
                     if ($(this).attr('checked')) {
                         alert(this.value);
                         array.push($(this).attr('value'));
