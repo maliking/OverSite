@@ -169,7 +169,7 @@ $keys = array_keys($response);
                     
 
                     <section class="content">
-                       
+                       <div id='result'></div>
                         <div class="col-md-6 col-sm-6 col-xs-12">
 
                         <div class="col-md-6 col-sm-6 col-xs-12" style="height:70px; width:100%;">
@@ -358,6 +358,21 @@ $keys = array_keys($response);
             var array = [];
             var limit = 5;
 
+            var seq = 0;
+            $wrapper = $("#imageSerialize");
+            $ch = $('input[type="checkbox"]', $wrapper).on('click', function() {
+                $(this).data('seq', seq++);
+            });
+
+            $('input[type=checkbox]').click(function() {
+                var str = Array.prototype.sort.call($ch.filter(":checked"), function(a, b) {
+                    return $(a).data('seq') - $(b).data('seq');
+                }).map(function(i, el) {
+                    return el.value;
+                }).get().join("\n");
+                $("#result").text(str).show();
+            });
+/*
             $('input[type=checkbox]').click(function () {
                 if($('input[type=checkbox]:checked').length > limit) {
                     $(this).prop('checked', false);
@@ -380,7 +395,7 @@ $keys = array_keys($response);
                 for(var i = 0; i < array.length; i++){
                   $('#image'+i).attr("src", array[i]);
                 }  
-            });
+            });*/
 /*
             $('input[type=checkbox]').on('change', function (e) {
                
