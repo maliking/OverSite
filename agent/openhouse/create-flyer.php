@@ -379,7 +379,7 @@ $keys = array_keys($response);
                 }
 
                 for(var i = 0; i < array.length; i++){
-                    $('#image'+i).attr("src", this.value);
+                    $('#image'+i).attr("src", array[i]);
                 }
 
                 /*var count = 0;
