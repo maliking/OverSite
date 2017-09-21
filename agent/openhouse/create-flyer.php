@@ -371,7 +371,12 @@ $keys = array_keys($response);
                     return el.value;
                 }).get().join("\n");
                 $("#result").text(str).show();
-                alert(str.length);
+
+                var iterator = str.values();
+
+                for (let letter of iterator) {
+                    alert(letter);
+                }
             });
 /*
             $('input[type=checkbox]').click(function () {
