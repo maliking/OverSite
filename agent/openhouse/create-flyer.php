@@ -368,7 +368,7 @@ $keys = array_keys($response);
                 }
             });
 
-            $("input[type=button]", $wrapper).on('click', function() {
+            $('input[type=checkbox]', $wrapper).on('click', function() {
                 var str = $ch.filter(":checked").map(function(i, el) {
                     return el.value;
                 }).get().join("\n");
