@@ -364,22 +364,23 @@ $keys = array_keys($response);
                     alert("Only 5 allowed");
                 }
 
-            //add new checkec elements to array
-            if ($(this).attr('checked')) {
-                array.push($(this).attr('value'));
-            }
-            //remove unchecked elements
-            else {
-                for (var i = 0; i < array.length; i++) {
-                    if (array[i] == $(this).attr('value')) {
-                        array.splice(i, 1);
+                //add new checked elements to array
+                if ($(this).attr('checked')) {
+                    alert(this.value);
+                    array.push($(this).attr('value'));
+                }
+                //remove unchecked elements
+                else {
+                    for (var i = 0; i < array.length; i++) {
+                        if (array[i] == $(this).attr('value')) {
+                            array.splice(i, 1);
+                        }
                     }
                 }
-            }
 
-            for(var i = 0; i < array.length; i++){
-                $('#image'+i).attr("src", this.value);
-            }
+                for(var i = 0; i < array.length; i++){
+                    $('#image'+i).attr("src", this.value);
+                }
 
                 /*var count = 0;
                 $('input[type=checkbox]:checked').each(function() {
