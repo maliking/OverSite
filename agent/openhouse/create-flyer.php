@@ -358,21 +358,20 @@ $keys = array_keys($response);
             var array = [];
             var limit = 5;
 
-            var seq = 0;
-            $wrapper = $("#imageSerialize");
-            $ch = $('input[type="checkbox"]', $wrapper).on('click', function() {
-                $(this).data('seq', seq++);
+            var seq = 0,
+                $wrapper = $("#imageSerialize"),
+                $ch = $('input[type="checkbox"]', $wrapper);
+            $wrapper.on('click', 'input[type="checkbox"]', function() {
+                if (this.checked) {
+                    $ch = $ch.not(this);//remove from jQuery array
+                    Array.prototype.push.call($ch, this);//add to front of jQuery array
+                }
             });
 
-            $('input[type=checkbox]').click(function() {
-                var str = Array.prototype.sort.call($ch.filter(":checked"), function(a, b) {
-                    return $(a).data('seq') - $(b).data('seq');
-                }).map(function(i, el) {
+            $("input[type=button]", $wrapper).on('click', function() {
+                var str = $ch.filter(":checked").map(function(i, el) {
                     return el.value;
                 }).get().join("\n");
-
-                alert(str);
-
                 $("#result").text(str).show();
             });
 /*
