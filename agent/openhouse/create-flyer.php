@@ -371,6 +371,7 @@ $keys = array_keys($response);
                     return el.value;
                 }).get().join("\n");
                 $("#result").text(str).show();
+                alert(str.length);
             });
 /*
             $('input[type=checkbox]').click(function () {
