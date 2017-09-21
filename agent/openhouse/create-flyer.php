@@ -363,26 +363,23 @@ $keys = array_keys($response);
                     $(this).prop('checked', false);
                     alert("Only 5 allowed");
                 }
-                else{
-                    //add new checked elements to array
-                    alert($(this).attr('checked'));
-                    if ($(this).attr('checked')) {
-                        alert(this.value);
-                        array.push($(this).attr('value'));
-                    }
-                    //remove unchecked elements
-                    else {
-                        for (var i = 0; i < array.length; i++) {
-                            if (array[i] == $(this).attr('value')) {
-                                array.splice(i, 1);
-                            }
+                //add new checked elements to array
+                alert($(this).attr('checked'));
+                if ($(this).attr('checked')) {
+                    alert(this.value);
+                    array.push($(this).attr('value'));
+                }
+                //remove unchecked elements
+                else {
+                    for (var i = 0; i < array.length; i++) {
+                        if (array[i] == $(this).attr('value')) {
+                            array.splice(i, 1);
                         }
                     }
-
-                    for(var i = 0; i < array.length; i++){
-                        $('#image'+i).attr("src", array[i]);
-                    }
-                }   
+                }
+                for(var i = 0; i < array.length; i++){
+                  $('#image'+i).attr("src", array[i]);
+                }  
             });
 /*
             $('input[type=checkbox]').on('change', function (e) {
