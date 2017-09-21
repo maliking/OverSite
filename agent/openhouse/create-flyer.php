@@ -357,13 +357,35 @@ $keys = array_keys($response);
         <script>
             var array = [];
             var limit = 5;
-            $('input[type=checkbox]').on('change', function (e) {
 
+            $('input[type=checkbox]').click(function () {
                 if($('input[type=checkbox]:checked').length > limit) {
                     $(this).prop('checked', false);
                     alert("Only 5 allowed");
                 }
-                /*
+                else{
+                    //add new checked elements to array
+                    if ($(this).attr('checked')) {
+                        alert(this.value);
+                        array.push($(this).attr('value'));
+                    }
+                    //remove unchecked elements
+                    else {
+                        for (var i = 0; i < array.length; i++) {
+                            if (array[i] == $(this).attr('value')) {
+                                array.splice(i, 1);
+                            }
+                        }
+                    }
+
+                    for(var i = 0; i < array.length; i++){
+                        $('#image'+i).attr("src", array[i]);
+                    }
+                }   
+            });
+/*
+            $('input[type=checkbox]').on('change', function (e) {
+               
                 //add new checked elements to array
                 if ($(this).attr('checked')) {
                     alert(this.value);
@@ -380,7 +402,7 @@ $keys = array_keys($response);
 
                 for(var i = 0; i < array.length; i++){
                     $('#image'+i).attr("src", array[i]);
-                }*/
+                }
 
                 var count = 0;
                 $('input[type=checkbox]:checked').each(function() {
@@ -390,7 +412,7 @@ $keys = array_keys($response);
                     //window.open(this.value);
                     count++;
                 });
-            });
+            });*/
         </script>
 
         <!--BEGIN Smart wizard links-->
