@@ -373,12 +373,12 @@ $keys = array_keys($response);
                     return el.value;
                 }).get().join("\n");
 
-                jQuery.each($ch, function( k, v ) {
+                jQuery.each($ch.filter(":checked"), function( k, v ) {
                   alert( "Key: " + k + ", Value: " + v );
                 });
                 $("#result").text(str).show();
             });
-            
+
 /*
             $('input[type=checkbox]').click(function () {
                 if($('input[type=checkbox]:checked').length > limit) {
