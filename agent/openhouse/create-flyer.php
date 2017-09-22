@@ -373,6 +373,7 @@ $keys = array_keys($response);
                 }).get().join("\n");*/
 
                 var count = $ch.filter(":checked").length - 1;
+                alert(count);
 
                 jQuery.each($ch.filter(":checked"), function( k, v ) {
                   //alert( "Key: " + k + ", Value: " + v.value );
