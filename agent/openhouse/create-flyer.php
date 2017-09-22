@@ -374,7 +374,7 @@ $keys = array_keys($response);
                 }).get().join("\n");
 
                 jQuery.each($ch.filter(":checked"), function( k, v ) {
-                  alert( "Key: " + k + ", Value: " + v );
+                  alert( "Key: " + k + ", Value: " + v.value );
                 });
                 $("#result").text(str).show();
             });
