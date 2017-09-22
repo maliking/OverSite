@@ -378,6 +378,7 @@ $keys = array_keys($response);
                 });
                 $("#result").text(str).show();
             });
+            
 /*
             $('input[type=checkbox]').click(function () {
                 if($('input[type=checkbox]:checked').length > limit) {
