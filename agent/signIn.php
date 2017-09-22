@@ -1,10 +1,10 @@
 <?php
     require("../databaseConnection.php");  
     session_start();
-    // if(!isset($_SESSION['listingId']))
-    // {
-    //     $_SESSION['listingId'] = $_GET['id'];
-    // }
+     if(!isset($_SESSION['listingId']))
+     {
+         $_SESSION['listingId'] = $_GET['id'];
+     }
     
     $dbConn = getConnection();
     if(!isset($_SESSION['userId'])) {
@@ -104,7 +104,7 @@
 
                 <div class="row" style="margin-top: 30px;">
 
-                    <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-2">
+                    <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-4">
                         <input type="text" name="firstName" class="form-control has-feedback-left" id="inputSuccess2" placeholder="First Name">
                         <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
 
@@ -118,7 +118,7 @@
                 </div>
                 <div class="row">
 
-                    <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-2">
+                    <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-4">
                         <input type="text" name="email" class="form-control has-feedback-left" id="inputSuccess4" placeholder="Email">
                         <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
                     </br>
@@ -130,7 +130,7 @@
                 </div>
                 <div class="row">
 
-                    <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2" style="margin-top: 40px;">
+                    <div class="col-md-4 col-sm-4 col-xs-12 col-md-offset-4" style="margin-top: 40px;">
                         <label>How soon are you looking to purchase a home?</label>
                         <select id="" name="howSoon" class="form-control" required>
                             <option value="0">--Select One--</option>
@@ -146,7 +146,7 @@
                 </div>
                 <div class="row" style="margin-top: 20px;">
 
-                    <div class="col-md-4 col-sm-4 col-xs-12 col-md-offset-2">
+                    <div class="col-md-4 col-sm-4 col-xs-12 col-md-offset-4">
                         <label>Min Bedrooms</label>
                         <select id="" name="bedroomsMin" class="form-control" required>
                             <option value="0">--Select One--</option>
@@ -176,7 +176,7 @@
                 </div>
                 <div class="row" style="margin-top: 20px;">
 
-                    <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-2">
+                    <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-4">
                         <input type="text" name="priceMin" class="form-control has-feedback-left" id="inputSuccess2" placeholder="Minimum Price">
                         <span class="fa fa-dollar form-control-feedback left" aria-hidden="true"></span>
                     </br>
