@@ -1,9 +1,9 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['userId'])) {
-    header("Location: http://jjp2017.org/login.php");
-}
+//session_start();
+//
+//if (!isset($_SESSION['userId'])) {
+//    header("Location: http://jjp2017.org/login.php");
+//}
 require '../databaseConnection.php';
 $dbConn = getConnection();
 
@@ -45,6 +45,23 @@ $result = $stmt->fetch();
         <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
         <?php include "./templates-agent/default-css.php" ?>
         <!-- END TEMPLATE default-css.php INCLUDE -->
+
+        <style>
+            .example-modal .modal {
+                position: relative;
+                top: auto;
+                bottom: auto;
+                right: auto;
+                left: auto;
+                display: block;
+                z-index: 1;
+            }
+            
+            .example-modal .modal {
+                background: transparent !important;
+            }
+
+        </style>
     </head>
 
     <body class="hold-transition skin-red-light sidebar-mini">
@@ -64,9 +81,9 @@ $result = $stmt->fetch();
 
 
             <!--FULL CALENDAR links-->
-         
-        <?php include "./fullcalendar/links.php" ?>
-        
+
+            <?php include "./fullcalendar/links.php" ?>
+
 
 
             <!-- NOTIFICATION Links-->
@@ -97,7 +114,8 @@ $result = $stmt->fetch();
                             <!-- small box -->
                             <div class="small-box bg-blue">
                                 <div class="inner">
-                                    <h3><?php echo number_format($result['avgPercent'],2);?><sup style="font-size: 20px">%</sup></h3>
+                                    <h3>
+                                        <?php echo number_format($result['avgPercent'],2);?><sup style="font-size: 20px">%</sup></h3>
 
                                     <p>Avg. Commission </p>
                                 </div>
@@ -127,7 +145,9 @@ $result = $stmt->fetch();
                             <!-- small box -->
                             <div class="small-box bg-green">
                                 <div class="inner">
-                                    <h3><?php echo $result['sold'];?></h3>
+                                    <h3>
+                                        <?php echo $result['sold'];?>
+                                    </h3>
                                     <p>Sold Listings</p>
                                 </div>
                                 <div class="icon">
@@ -141,7 +161,9 @@ $result = $stmt->fetch();
                             <!-- small box -->
                             <div class="small-box bg-orange">
                                 <div class="inner">
-                                    <h3><sup style="font-size: 20px">$</sup><?php echo number_format($result['average'],2);?></h3>
+                                    <h3><sup style="font-size: 20px">$</sup>
+                                        <?php echo number_format($result['average'],2);?>
+                                    </h3>
                                     <p>Avg. Commission</p>
                                 </div>
                                 <div class="icon">
@@ -155,7 +177,8 @@ $result = $stmt->fetch();
                             <!-- small box -->
                             <div class="small-box bg-blue">
                                 <div class="inner">
-                                    <h3><?php echo number_format($result['avgPercent'],2);?><sup style="font-size: 20px">%</sup></h3>
+                                    <h3>
+                                        <?php echo number_format($result['avgPercent'],2);?><sup style="font-size: 20px">%</sup></h3>
 
                                     <p>Avg. Commission </p>
                                 </div>
@@ -170,7 +193,9 @@ $result = $stmt->fetch();
                             <!-- small box -->
                             <div class="small-box bg-red">
                                 <div class="inner">
-                                    <h3><sup style="font-size: 20px">$</sup><?php echo number_format($result['earnings'],2);?></h3>
+                                    <h3><sup style="font-size: 20px">$</sup>
+                                        <?php echo number_format($result['earnings'],2);?>
+                                    </h3>
                                     <p>Total Gross Earnings</p>
                                 </div>
                                 <div class="icon">
@@ -185,29 +210,159 @@ $result = $stmt->fetch();
 
                 <!-- Main content -->
                 <section class="content">
+                    <!--                    Example modal below for how pop ups should look on calendar-->
                     <div class="row">
-                        <!-- /.col -->
-                        <div class="col-md-12">
-                            <div class="box box-primary">
-                                <div class="box-body no-padding">
-                                    <!-- THE CALENDAR -->
-                                    <div id="calendar"></div>
+
+                        <!--MODAL AREA!!-->
+                        <div class="box-body">
+
+                          
+
+
+                            <div class="modal modal-info fade" id="modal-info">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                                            <h4 class="modal-title">John Doe</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="modal-body">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <i>Scheduled to contact:</i>
+                                                        <p> 9:15am <i>September 23, 2017</i></p>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="col-md-6">
+                                                            <p> First Name:</p>
+                                                            <p>John</p>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <p>Last Name:</p>
+                                                            <p>Doe</p>
+
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <p>Phone Number:</p>
+                                                            <p>(831)-123-4567</p>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <p>Email:</p>
+                                                            <p>jdoe@gmail.com</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-6">
+                                                            <div class="col-md-12">
+                                                                <p>Looking to purchase home within:</p>
+                                                                <p>4-6 months</p>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <p>Minimum Bed:</p>
+                                                                <p>3</p>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <p>Minimum Bath:</p>
+                                                                <p>1.5</p>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <p>Minimum Price:</p>
+                                                                <p>$120,000</p>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <p>Maximum Price:</p>
+                                                                <p>$915,000</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <div class="col-md-12">
+                                                                <p>Preapproved?</p>
+                                                                <form action="">
+                                                                    <input type="radio" name="preapproved" value="yes"> Yes<br>
+                                                                    <input type="radio" name="preapproved" value="no"> No<br>
+                                                                </form>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <i class="fa fa-calendar" id="datepicker"></i>
+                                                                <p>Schedule next call appointment for:
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <i class="fa fa-calendar" id="datepicker"></i>
+                                                                <p>Schedule in person appointment for: </p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <p> Notes made during open house:</p>
+                                                            <p> Preferres large back yard for family and 2 large dogs. Must have off street parking.</p>
+                                                            <br/>
+
+                                                        </div>
+
+
+
+                                                        <div class="col-md-12">
+                                                            <p>Additional Notes:</p>
+                                                            <textarea style="color:black;" rows="6" cols="75">
+
+                                                            </textarea>
+                                                        </div>
+
+
+                                                    </div>
+
+
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Delete Appointment</button>
+                                            <button type="button" class="btn btn-outline">Save changes</button>
+                                        </div>
+                                    </div>
+                                    <!-- /.modal-content -->
                                 </div>
-                                <!-- /.box-body -->
+                                <!-- /.modal-dialog -->
                             </div>
-                            <!-- /. box -->
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
+                            <!-- /.modal -->
+                            <div class="container">
+
+
+
+                                <!--MODAL AREA-->
+
+                            </div>
+                            <!--                    END example modal-->
+                            <div class="row">
+                                <!-- /.col -->
+                                <div class="col-md-12">
+                                    <div class="box box-primary">
+                                        <div class="box-body no-padding">
+                                            <!-- THE CALENDAR -->
+                                            <div id="calendar"></div>
+                                        </div>
+                                        <!-- /.box-body -->
+                                    </div>
+                                    <!-- /. box -->
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
                 </section>
                 <!-- /.content -->
+                </div>
+                <!-- /.content-wrapper -->
+                </div>
+                <!-- /.wrapper -->
             </div>
             <!-- /.content-wrapper -->
-        </div>
-        <!-- /.wrapper -->
-        </div>
-        <!-- /.content-wrapper -->
         </div>
         <!-- /.wrapper -->
 
@@ -233,8 +388,8 @@ $result = $stmt->fetch();
         <script type="text/javascript" src="../plugins/pnotify/dist/pnotify.buttons.js"></script>
         <script type="text/javascript" src="../plugins/pnotify/dist/pnotify.nonblock.js"></script>
 
-  <!-- Custom Theme Scripts -->
-        <script src="../build/js/custom.min.js"></script>
+        <!-- Custom Theme Scripts -->
+        <script src="build/js/custom.min.js"></script>
 
         <script>
             jQuery(function($) {
@@ -265,16 +420,29 @@ $result = $stmt->fetch();
 
             $(document).ready(function() {
                 $('#calendar').fullCalendar({
-                    googleCalendarApiKey: 'AIzaSyA9u-pNzVjk1MRKnIiryZku88WL_1eyF4Y',
-                    events: {
-                        googleCalendarId: 'markiepeanut111@gmail.com',
-                        color: 'yellow', // an option!
-                        textColor: 'black' // an option!
-                    },
-                    //                    header: {
-                    //                        left: 'prev, next today',
-                    //                        right: 'month, agendaWeek, agendaDay'
-                    //                    }
+//                        googleCalendarApiKey: 'AIzaSyA9u-pNzVjk1MRKnIiryZku88WL_1eyF4Y',
+                        events: {
+//                            googleCalendarId: 'markiepeanut111@gmail.com',
+                            color: 'yellow', // an option!
+                            textColor: 'black' // an option!
+
+                        },
+                        //                    header: {
+                        //                        left: 'prev, next today',
+                        //                        right: 'month, agendaWeek, agendaDay'
+                        //
+                        events: [
+                           {
+                            title: 'Event1',
+                            start: '2017-09-21T12:00:00',
+                               end:'2017-09-23T12:30:00'
+                           },
+                            {
+                                    title: 'Event2',
+                            start: '2017-09-24'
+                            }
+                        ],
+                    
                     editable: true,
                     defaultView: 'agenda',
                     duration: {
@@ -289,7 +457,7 @@ $result = $stmt->fetch();
                     //-------------new pasted shit below:
                     navLinks: true, // can click day/week names to navigate views
                     eventLimit: true, // allow "more" link when too many events
-                   
+
                     select: function(start, end) {
                         var title = prompt('Event Title:');
                         var eventData;
@@ -299,87 +467,109 @@ $result = $stmt->fetch();
                                 start: start,
                                 end: end
                             };
+
+
+                            
                             $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
                         }
                         $('#calendar').fullCalendar('unselect');
                     },
+eventClick: function(event, element) {
 
-              
-//-----------closing brackets for actual function
+                 $("#modal-info").modal();
+
+        
+
+    }
+
+
+                    //-----------closing brackets for actual function
                 });
 
             });
 
-            var initialize_calendar;
-            initialize_calendar = function() {
-                $('.calendar').each(function() {
-                    var calendar = $(this);
-                    calendar.fullCalendar({
-                        header: {
-                            left: 'prev,next today',
-                            center: 'title',
-                            right: 'month,agendaWeek,agendaDay'
-                        },
-                        selectable: true,
-                        selectHelper: true,
-                        editable: true,
-                        eventLimit: true,
-                        events: '/events.json',
-
-                        select: function(start, end) {
-                            $.getScript('/events/new', function() {});
-
-                            calendar.fullCalendar('unselect');
-                        },
-
-                        eventDrop: function(event, delta, revertFunc) {
-                            event_data = {
-                                event: {
-                                    id: event.id,
-                                    start: event.start.format(),
-                                    end: event.end.format()
-                                }
-                            };
-                            $.ajax({
-                                url: event.update_url,
-                                data: event_data,
-                                type: 'PATCH'
-                            });
-                        },
-
-                        eventClick: function(event, jsEvent, view) {
-                            $.getScript(event.edit_url, function() {});
-                        }
-                    });
-                })
-            };
-            $(document).on('turbolinks:load', initialize_calendar);
+            //            var initialize_calendar;
+            //            initialize_calendar = function() {
+            //                $('.calendar').each(function() {
+            //                    var calendar = $(this);
+            //                    calendar.fullCalendar({
+            //                        header: {
+            //                            left: 'prev,next today',
+            //                            center: 'title',
+            //                            right: 'month,agendaWeek,agendaDay'
+            //                        },
+            //                        selectable: true,
+            //                        selectHelper: true,
+            //                        editable: true,
+            //                        eventLimit: true,
+            //                        events: '/events.json',
+            //
+            //                        select: function(start, end) {
+            //                            $.getScript('/events/new', function() {});
+            //
+            //                            calendar.fullCalendar('unselect');
+            //                        },
+            //
+            //                        eventDrop: function(event, delta, revertFunc) {
+            //                            event_data = {
+            //                                event: {
+            //                                    id: event.id,
+            //                                    start: event.start.format(),
+            //                                    end: event.end.format()
+            //                                }
+            //                            };
+            //                            $.ajax({
+            //                                url: event.update_url,
+            //                                data: event_data,
+            //                                type: 'PATCH'
+            //                            });
+            //                        },
+            //
+            //                        eventClick: function(event, jsEvent, view) {
+            //                            $.getScript(event.edit_url, function() {});
+            //                        }
+            //                    });
+            //                })
+            //            };
+            //            $(document).on('turbolinks:load', initialize_calendar);
 
 
 
 
             //    ---------  Notification code-------------
-            $(function() {
-                new PNotify({
-                    title: 'Contact Client',
-                    text: 'Must call Jane Smith @ 4:15pm.',
-                    styling: 'fontawesome'
-                });
-            });
-            $(function() {
-                new PNotify({
-                    title: 'Contact Client',
-                    text: 'Must call Mary Baker @ 4:45pm.',
-                    styling: 'fontawesome'
-                });
-            });
-            $(function() {
+//            $(function() {
+//                new PNotify({
+//                    title: 'Contact Client',
+//                    text: 'Must call Jane Smith @ 4:15pm.',
+//                    styling: 'fontawesome'
+//                });
+//            });
+//            $(function() {
+//                new PNotify({
+//                    title: 'Contact Client',
+//                    text: 'Must call Mary Baker @ 4:45pm.',
+//                    styling: 'fontawesome'
+//                });
+//            });
+//            $(function() {
+//                new PNotify({
+//                    title: 'Contact Client',
+//                    text: 'Must send email to John by 5:15pm.',
+//                    styling: 'fontawesome'
+//                });
+//            });
+            window.setInterval(function(){ // Set interval for checking
+    var date = new Date(); // Create a Date object to find out what time it is
+    if(date.getHours() === 18 && date.getMinutes() === 49){ // Check the time
+    
                 new PNotify({
                     title: 'Contact Client',
                     text: 'Must send email to John by 5:15pm.',
                     styling: 'fontawesome'
-                });
+             
             });
+    }
+}, 60000); // Repeat every 60000 milliseconds (1 minute)
 
         </script>
 
