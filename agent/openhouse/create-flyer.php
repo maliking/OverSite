@@ -373,7 +373,7 @@ $keys = array_keys($response);
                     return el.value;
                 }).get().join("\n");
 
-                jQuery.each(ch, function( k, v ) {
+                jQuery.each($ch, function( k, v ) {
                   alert( "Key: " + k + ", Value: " + v );
                 });
                 $("#result").text(str).show();
