@@ -365,23 +365,23 @@ $keys = array_keys($response);
                     $ch = $ch.not(this);//remove from jQuery array
                     Array.prototype.push.call($ch, this);//add to front of jQuery array
                 }
-            });
 
-            $('input[type=checkbox]', $wrapper).on('click', function() {
-                /*var str = $ch.filter(":checked").map(function(i, el) {
-                    return el.value;
-                }).get().join("\n");*/
-
-                var count = $ch.filter(":checked").length - 1;
+                var count = 0;
                 alert(count);
 
                 jQuery.each($ch.filter(":checked"), function( k, v ) {
                   //alert( "Key: " + k + ", Value: " + v.value );
                   $('#image'+count).attr("src", v.value);
-                  count--;
+                  count++;
                 });
-                //$("#result").text(str).show();
             });
+/*
+            $('input[type=checkbox]', $wrapper).on('click', function() {
+                var str = $ch.filter(":checked").map(function(i, el) {
+                    return el.value;
+                }).get().join("\n");
+                //$("#result").text(str).show();
+            });*/
 
 /*
             $('input[type=checkbox]').click(function () {
