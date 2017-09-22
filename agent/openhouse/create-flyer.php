@@ -169,7 +169,6 @@ $keys = array_keys($response);
                     
 
                     <section class="content">
-                       <div id='result'></div>
                         <div class="col-md-6 col-sm-6 col-xs-12">
 
                         <div class="col-md-6 col-sm-6 col-xs-12" style="height:70px; width:100%;">
@@ -360,25 +359,26 @@ $keys = array_keys($response);
             $wrapper = $("#imageSerialize");
             $ch = $('input[type="checkbox"]', $wrapper);
             $wrapper.on('click', 'input[type="checkbox"]', function() {
+                //assure that only 5 checkboxes are clicked at max
                 if($('input[type=checkbox]:checked').length > limit) {
                     $(this).prop('checked', false);
                     alert("Only 5 allowed");
                 }
                 else{
+                    //keep track of order in which checkboxes were clicked
                     if (this.checked) {
                         $ch = $ch.not(this);//remove from jQuery array
                         Array.prototype.push.call($ch, this);//add to front of jQuery array
                     }
 
                     var count = 0;
-                    alert(count);
-
                     jQuery.each($ch.filter(":checked"), function( k, v ) {
                       //alert( "Key: " + k + ", Value: " + v.value );
-                      $('#image'+count).attr("src", v.value);
+                      $('#image'+count).attr("src", v.value);//replace number images by selected images
                       count++;
                     });
 
+                    //add back images of number instead of selected images when unchecked
                     if(count < 5){
                         if(count < 4 || count == 4){
                             $('#image4').attr("src", "http://www.clker.com/cliparts/5/P/q/M/g/J/number-5-button-hi.png");
@@ -398,64 +398,6 @@ $keys = array_keys($response);
                     }
                 }
             });
-/*
-            $('input[type=checkbox]', $wrapper).on('click', function() {
-                var str = $ch.filter(":checked").map(function(i, el) {
-                    return el.value;
-                }).get().join("\n");
-                //$("#result").text(str).show();
-            });*/
-
-/*
-            $('input[type=checkbox]').click(function () {
-                //add new checked elements to array
-                alert($(this).attr('checked'));
-                if ($(this).attr('checked')) {
-                    alert(this.value);
-                    array.push($(this).attr('value'));
-                }
-                //remove unchecked elements
-                else {
-                    for (var i = 0; i < array.length; i++) {
-                        if (array[i] == $(this).attr('value')) {
-                            array.splice(i, 1);
-                        }
-                    }
-                }
-                for(var i = 0; i < array.length; i++){
-                  $('#image'+i).attr("src", array[i]);
-                }  
-            });*/
-/*
-            $('input[type=checkbox]').on('change', function (e) {
-               
-                //add new checked elements to array
-                if ($(this).attr('checked')) {
-                    alert(this.value);
-                    array.push($(this).attr('value'));
-                }
-                //remove unchecked elements
-                else {
-                    for (var i = 0; i < array.length; i++) {
-                        if (array[i] == $(this).attr('value')) {
-                            array.splice(i, 1);
-                        }
-                    }
-                }
-
-                for(var i = 0; i < array.length; i++){
-                    $('#image'+i).attr("src", array[i]);
-                }
-
-                var count = 0;
-                $('input[type=checkbox]:checked').each(function() {
-                    //$('#image'+count).prepend('<img class="theImg" style="-webkit-transform: scale(0.1);" src=' + this.value + ' />');
-                    $('#image'+count).attr("src", this.value);
-                    //alert(imager);
-                    //window.open(this.value);
-                    count++;
-                });
-            });*/
         </script>
 
         <!--BEGIN Smart wizard links-->
