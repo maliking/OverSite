@@ -358,9 +358,8 @@ $keys = array_keys($response);
             var array = [];
             var limit = 5;
 
-            var seq = 0,
-                $wrapper = $("#imageSerialize"),
-                $ch = $('input[type="checkbox"]', $wrapper);
+            $wrapper = $("#imageSerialize");
+            $ch = $('input[type="checkbox"]', $wrapper);
             $wrapper.on('click', 'input[type="checkbox"]', function() {
                 if (this.checked) {
                     $ch = $ch.not(this);//remove from jQuery array
@@ -369,14 +368,17 @@ $keys = array_keys($response);
             });
 
             $('input[type=checkbox]', $wrapper).on('click', function() {
-                var str = $ch.filter(":checked").map(function(i, el) {
+                /*var str = $ch.filter(":checked").map(function(i, el) {
                     return el.value;
-                }).get().join("\n");
+                }).get().join("\n");*/
+
+                var count = 0;
 
                 jQuery.each($ch.filter(":checked"), function( k, v ) {
-                  alert( "Key: " + k + ", Value: " + v.value );
+                  //alert( "Key: " + k + ", Value: " + v.value );
+                  $('#image'+count).attr("src", v.value);
                 });
-                $("#result").text(str).show();
+                //$("#result").text(str).show();
             });
 
 /*
