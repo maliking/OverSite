@@ -377,6 +377,7 @@ $keys = array_keys($response);
                 jQuery.each($ch.filter(":checked"), function( k, v ) {
                   //alert( "Key: " + k + ", Value: " + v.value );
                   $('#image'+count).attr("src", v.value);
+                  count++;
                 });
                 //$("#result").text(str).show();
             });
