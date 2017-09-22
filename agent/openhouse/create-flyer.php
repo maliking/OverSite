@@ -355,25 +355,48 @@ $keys = array_keys($response);
         <!-- END TEMPLATE default-js.php INCLUDE -->
 
         <script>
-            var array = [];
             var limit = 5;
 
             $wrapper = $("#imageSerialize");
             $ch = $('input[type="checkbox"]', $wrapper);
             $wrapper.on('click', 'input[type="checkbox"]', function() {
-                if (this.checked) {
-                    $ch = $ch.not(this);//remove from jQuery array
-                    Array.prototype.push.call($ch, this);//add to front of jQuery array
+                if($('input[type=checkbox]:checked').length > limit) {
+                    $(this).prop('checked', false);
+                    alert("Only 5 allowed");
                 }
+                else{
+                    if (this.checked) {
+                        $ch = $ch.not(this);//remove from jQuery array
+                        Array.prototype.push.call($ch, this);//add to front of jQuery array
+                    }
 
-                var count = 0;
-                alert(count);
+                    var count = 0;
+                    alert(count);
 
-                jQuery.each($ch.filter(":checked"), function( k, v ) {
-                  //alert( "Key: " + k + ", Value: " + v.value );
-                  $('#image'+count).attr("src", v.value);
-                  count++;
-                });
+                    jQuery.each($ch.filter(":checked"), function( k, v ) {
+                      //alert( "Key: " + k + ", Value: " + v.value );
+                      $('#image'+count).attr("src", v.value);
+                      count++;
+                    });
+
+                    if(count < 5){
+                        if(count < 4 || count == 4){
+                            $('#image4').attr("src", "http://www.clker.com/cliparts/5/P/q/M/g/J/number-5-button-hi.png");
+                        }
+                        if(count < 3 || count == 3){
+                            $('#image3').attr("src", "http://www.clker.com/cliparts/J/p/g/I/c/L/number-4-button-hi.png");
+                        }
+                        if(count < 2 || count == 2){
+                            $('#image2').attr("src", "http://www.clker.com/cliparts/U/4/Y/A/Y/6/number-3-button-hi.png");
+                        }
+                        if(count < 1 || count == 1){
+                            $('#image1').attr("src", "http://pngimg.com/uploads/number2/Number%202%20PNG%20images%20free%20download_PNG14940.png");
+                        }
+                        if(count < 0 || count == 0){
+                            $('#image0').attr("src", "http://www.clipartbay.com/cliparts/red-number-1-clip-art-gc8rlnb.png");
+                        }
+                    }
+                }
             });
 /*
             $('input[type=checkbox]', $wrapper).on('click', function() {
@@ -385,10 +408,6 @@ $keys = array_keys($response);
 
 /*
             $('input[type=checkbox]').click(function () {
-                if($('input[type=checkbox]:checked').length > limit) {
-                    $(this).prop('checked', false);
-                    alert("Only 5 allowed");
-                }
                 //add new checked elements to array
                 alert($(this).attr('checked'));
                 if ($(this).attr('checked')) {
