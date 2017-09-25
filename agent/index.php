@@ -519,6 +519,39 @@ $result = $stmt->fetch();
 
 
 
+                    },
+
+                    eventDrop: function( event, delta, revertFunc, jsEvent, ui, view ) { 
+
+                        // alert(event.title + " end is now " + event.start.format().replace("T", " ") + " " + event.id.replace("T", " "));
+
+                        var id = event.id.replace("T", " ");
+                        var startTime = event.start.format().replace("T", " ");
+                        var endTime = event.end.format().replace("T", " ");
+
+                        if (!confirm("is this okay?")) {
+                                revertFunc();
+                            }
+                        else
+                        {
+                            $.post( "updateMeeting.php", { id: id, start: startTime, end:endTime } );
+                        }
+
+                    },
+                    eventResize: function( event, delta, revertFunc, jsEvent, ui, view ) { 
+
+                        // alert("ive been resized!!!");
+                        var id = event.id.replace("T", " ");
+                        var startTime = event.start.format().replace("T", " ");
+                        var endTime = event.end.format().replace("T", " ");
+
+                        if (!confirm("is this okay?")) {
+                            revertFunc();
+                        }
+                        else
+                        {
+                            $.post( "updateMeeting.php", { id: id, start: startTime, end:endTime } ); 
+                        }
                     }
 
 
