@@ -50,6 +50,9 @@ $result = $stmt->fetch();
                 font-size: 150%;
                 font-weight: bold;
             }
+            #modal-table {
+              color:black; 
+            }
 
         </style>
 
@@ -234,7 +237,7 @@ $result = $stmt->fetch();
                                                     <div class="box">
 
                                                         <div class="box-body no-padding">
-                                                            <table class="table table-striped">
+                                                            <table id="modal-table" class="table table-striped">
                                                                 <tr>
 
 
