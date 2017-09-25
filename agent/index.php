@@ -1,9 +1,9 @@
 <?php
-//session_start();
-//
-//if (!isset($_SESSION['userId'])) {
-//    header("Location: http://jjp2017.org/login.php");
-//}
+session_start();
+
+if (!isset($_SESSION['userId'])) {
+    header("Location: http://jjp2017.org/login.php");
+}
 require '../databaseConnection.php';
 $dbConn = getConnection();
 
