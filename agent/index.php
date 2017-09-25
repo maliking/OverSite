@@ -477,21 +477,11 @@ $result = $stmt->fetch();
             $(document).ready(function() {
                 $('#calendar').fullCalendar({
                     
-                    events: {
-                       
-                        color: 'yellow', // an option!
-                        textColor: 'black' // an option!
-
-                    },
-                   
-                    events: [{
-                            title: 'Event1',
-                            start: '2017-09-26T12:00:00',
-                            end: '2017-09-26T12:30:00'
-                        },
+                    eventSources: [
                         {
-                            title: 'Event2',
-                            start: '2017-09-24'
+                            url: 'getMeetings.php', // use the `url` property
+                            color: 'yellow',    // an option!
+                            textColor: 'black'  // an option!
                         }
                     ],
 
