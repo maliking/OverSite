@@ -16,16 +16,51 @@ $priceMax = $_POST['priceMax'];
 $priceMin = $_POST['priceMin'];
 // $houseId = (string)$_GET['houseId'];
 // $houseId = "253";
+
+$lastMeeting = "SELECT * FROM BuyerInfo ORDER BY meeting DESC LIMIT 1";
+
+$meetingStmt = $dbConn->prepare($lastMeeting);
+$meetingStmt->execute();
+$meetingResult = $meetingStmt->fetch();
+
+$latestTime = new DateTime('16:00:00');
+$lastTime = $latestTime->format('H:i:s');
+
+$meetingDateTime = new DateTime($meetingResult['meeting']);
+
+$lastMeetingDayName = $meetingDateTime->format('l');
+
+$lastMeetingTime = $meetingDateTime->format('H:i:s');
+
+$nextMeeting = $meetingDateTime->add(new DateInterval('PT15M'));
+
+$nextMeetingTime = $nextMeeting->format('H:i:s');
+
+if($lastMeetingDayName == "Friday" && $nextMeetingTime >= $lastTime)
+{
+    $nextMeeting->add(new DateInterval('P3D'));
+    $nextMeeting->setTime(8, 30, 00);
+
+}
+else if($nextMeetingTime >= $lastTime)
+{
+    $nextMeeting->add(new DateInterval('P1D'));
+    $nextMeeting->setTime(8, 30, 00);
+}
+
+
+
 $userId = $_SESSION['userId'];
 $sql = "INSERT INTO BuyerInfo
-		(firstName, lastName, email, phone, registeredDate, bedroomsMin, bathroomsMin, priceMax, priceMin, houseId, userId, howSoon)
-		VALUES (:firstName, :lastName, :email, :phone, :registeredDate, :bedroomsMin, :bathroomsMin, :priceMax, :priceMin, :houseId, :userId, :howSoon)";
+		(firstName, lastName, email, phone, registeredDate, meeting, bedroomsMin, bathroomsMin, priceMax, priceMin, houseId, userId, howSoon)
+		VALUES (:firstName, :lastName, :email, :phone, :registeredDate, :meeting, :bedroomsMin, :bathroomsMin, :priceMax, :priceMin, :houseId, :userId, :howSoon)";
 $namedParameters = array();
 $namedParameters[':firstName'] = $firstName;
 $namedParameters[':lastName'] = $lastName;
 $namedParameters[':email'] = $email;
 $namedParameters[':phone'] = $phone;
-$namedParameters['registeredDate'] = date("Y/m/d");
+$namedParameters[':registeredDate'] = date("Y/m/d");
+$namedParameters[':meeting'] = $nextMeeting->format('Y-m-d H:i:s');
 $namedParameters[':bedroomsMin'] = $bedroomsMin;
 $namedParameters[':bathroomsMin'] = (float)$bathroomsMin;
 $namedParameters[':priceMax'] = $priceMax;
