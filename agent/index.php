@@ -1,9 +1,9 @@
 <?php
-//session_start();
-//
-//if (!isset($_SESSION['userId'])) {
-//    header("Location: http://jjp2017.org/login.php");
-//}
+session_start();
+
+if (!isset($_SESSION['userId'])) {
+    header("Location: http://jjp2017.org/login.php");
+}
 require '../databaseConnection.php';
 $dbConn = getConnection();
 
@@ -45,23 +45,17 @@ $result = $stmt->fetch();
         <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
         <?php include "./templates-agent/default-css.php" ?>
         <!-- END TEMPLATE default-css.php INCLUDE -->
-
         <style>
-            .example-modal .modal {
-                position: relative;
-                top: auto;
-                bottom: auto;
-                right: auto;
-                left: auto;
-                display: block;
-                z-index: 1;
+            .modal-title {
+                font-size: 150%;
+                font-weight: bold;
             }
-            
-            .example-modal .modal {
-                background: transparent !important;
+            #modal-table {
+              color:black; 
             }
 
         </style>
+
     </head>
 
     <body class="hold-transition skin-red-light sidebar-mini">
@@ -90,6 +84,11 @@ $result = $stmt->fetch();
             <link href="../plugins/pnotify/dist/pnotify.css" rel="stylesheet">
             <link href="../plugins/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
             <link href="../plugins/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
+            
+<!-- daterange picker -->
+  <link rel="stylesheet" href="../plugins/bootstrap-daterangepicker/daterangepicker.css">
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="../plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 
 
             <!-- Content Wrapper. Contains page content -->
@@ -216,10 +215,10 @@ $result = $stmt->fetch();
                         <!--MODAL AREA!!-->
                         <div class="box-body">
 
-                          
 
 
-                            <div class="modal modal-info fade" id="modal-info">
+
+                            <div class="modal modal-primary fade" id="modal-primary">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -231,138 +230,201 @@ $result = $stmt->fetch();
                                             <div class="modal-body">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <i>Scheduled to contact:</i>
-                                                        <p> 9:15am <i>September 23, 2017</i></p>
+                                                        <i>Scheduled to contact: </i>
+                                                        <b>9:15am</b> <i>September 23, 2017</i>
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-md-12">
-                                                        <div class="col-md-6">
-                                                            <p> First Name:</p>
-                                                            <p>John</p>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <p>Last Name:</p>
-                                                            <p>Doe</p>
 
+
+                                                    <!--                                        Start Box-->
+                                                    <div class="box">
+
+                                                        <div class="box-body no-padding">
+                                                            <table id="modal-table" class="table table-striped">
+                                                                <tr>
+
+
+                                                                    <th>First Name</th>
+                                                                    <th>Last Name</th>
+
+
+                                                                </tr>
+                                                                <tr>
+
+                                                                    <td>John</td>
+                                                                    <td>
+                                                                        Doe
+                                                                    </td>
+                                                                    <tr>
+
+
+                                                                        <th>Min Bed</th>
+                                                                        <th>Min Bath</th>
+
+
+                                                                    </tr>
+                                                                    <tr>
+
+                                                                        <td>2</td>
+                                                                        <td>
+                                                                            2
+                                                                        </td>
+                                                                        <tr>
+
+
+                                                                            <th>Min Price</th>
+                                                                            <th>Max Price</th>
+
+
+                                                                        </tr>
+                                                                        <tr>
+
+                                                                            <td>$120,000</td>
+                                                                            <td>
+                                                                                $910,000
+                                                                            </td>
+
+                                                                        </tr>
+                                                                        <tr>
+
+                                                                            <th>Looking to purchase home within:</th>
+                                                                            <th>Pre-Approved?</th>
+
+                                                                        </tr>
+                                                                        <tr>
+
+                                                                            <td>3-6 months</td>
+                                                                            <td>
+                                                                                <form action="">
+                                                                                    <input type="radio" name="preapproved" value="yes"> Yes<br>
+                                                                                    <input type="radio" name="preapproved" value="no"> No<br>
+                                                                                </form>
+
+                                                                            </td>
+
+                                                                        </tr>
+                                                                        <tr>
+
+
+                                                                            <th>Notes from open house</th>
+
+
+
+                                                                        </tr>
+                                                                        <tr>
+
+                                                                            <td>
+
+                                                                                Preferes large back yard for 2 dogs.
+                                                                            </td>
+                                                                            <td>
+                                                                                <small>
+                                            May 19, 2017 12:43pm
+                                        </small>
+                                                                            </td>
+
+                                                                            <tr>
+                                                                                <td>
+                                                                                    Must have garage
+                                                                                </td>
+                                                                                <td>
+                                                                                    <small>
+                                            May 19, 2017 1:09pm
+                                        </small>
+                                                                                </td>
+
+                                                                            </tr>
+
+
+                                                                        </tr>
+                                                            <tr></tr>
+                                                                        <tr>
+
+                                                                            <th>Schedule next call appointment:</th>
+                                                                            <th>
+                                                                                <p>Schedule in person appointment:</th>
+
+                                                                        </tr>
+                                                                        <tr>
+
+                                                                            <td>
+                                                                                <i class="fa fa-calendar"></i>
+                                                                                <input type="text" class="form-control pull-right" id="datepicker">
+                                                                            </td>
+                                                                            <td>
+                                                                                <i class="fa fa-calendar"></i>
+                                                                                <input type="text" class="fa fa-calendar form-control pull-right" id="datepicker">
+                                                                            </td>
+
+                                                                        </tr>
+
+                                                            </table>
                                                         </div>
-                                                        <div class="col-md-6">
-                                                            <p>Phone Number:</p>
-                                                            <p>(831)-123-4567</p>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <p>Email:</p>
-                                                            <p>jdoe@gmail.com</p>
-                                                        </div>
+                                                        <!-- /.box-body -->
                                                     </div>
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="col-md-12">
-                                                                <p>Looking to purchase home within:</p>
-                                                                <p>4-6 months</p>
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <p>Minimum Bed:</p>
-                                                                <p>3</p>
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <p>Minimum Bath:</p>
-                                                                <p>1.5</p>
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <p>Minimum Price:</p>
-                                                                <p>$120,000</p>
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <p>Maximum Price:</p>
-                                                                <p>$915,000</p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <div class="col-md-12">
-                                                                <p>Preapproved?</p>
-                                                                <form action="">
-                                                                    <input type="radio" name="preapproved" value="yes"> Yes<br>
-                                                                    <input type="radio" name="preapproved" value="no"> No<br>
-                                                                </form>
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <i class="fa fa-calendar" id="datepicker"></i>
-                                                                <p>Schedule next call appointment for:
-                                                                </p>
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <i class="fa fa-calendar" id="datepicker"></i>
-                                                                <p>Schedule in person appointment for: </p>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-12">
-                                                            <p> Notes made during open house:</p>
-                                                            <p> Preferres large back yard for family and 2 large dogs. Must have off street parking.</p>
-                                                            <br/>
-
-                                                        </div>
+                                                    <!-- /.box -->
 
 
-
-                                                        <div class="col-md-12">
-                                                            <p>Additional Notes:</p>
-                                                            <textarea style="color:black;" rows="6" cols="75">
+                                                    <div class="col-md-12">
+                                                        <p>Additional Notes:</p>
+                                                        <textarea style="color:black;" rows="6" cols="75">
 
                                                             </textarea>
-                                                        </div>
-
 
                                                     </div>
-
 
 
                                                 </div>
 
+
+
                                             </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Delete Appointment</button>
-                                            <button type="button" class="btn btn-outline">Save changes</button>
+
                                         </div>
                                     </div>
-                                    <!-- /.modal-content -->
-                                </div>
-                                <!-- /.modal-dialog -->
-                            </div>
-                            <!-- /.modal -->
-                            <div class="container">
-
-
-
-                                <!--MODAL AREA-->
-
-                            </div>
-                            <!--                    END example modal-->
-                            <div class="row">
-                                <!-- /.col -->
-                                <div class="col-md-12">
-                                    <div class="box box-primary">
-                                        <div class="box-body no-padding">
-                                            <!-- THE CALENDAR -->
-                                            <div id="calendar"></div>
-                                        </div>
-                                        <!-- /.box-body -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Delete Appointment</button>
+                                        <button type="button" class="btn btn-outline">Save changes</button>
                                     </div>
-                                    <!-- /. box -->
                                 </div>
-                                <!-- /.col -->
+                                <!-- /.modal-content -->
                             </div>
-                            <!-- /.row -->
+                            <!-- /.modal-dialog -->
+                        </div>
+                        <!-- /.modal -->
+                        <div class="container">
+
+
+
+                            <!--MODAL AREA-->
+
+                        </div>
+                        <!--                    END example modal-->
+                        <div class="row">
+                            <!-- /.col -->
+                            <div class="col-md-12">
+                                <div class="box box-primary">
+                                    <div class="box-body no-padding">
+                                        <!-- THE CALENDAR -->
+                                        <div id="calendar"></div>
+                                    </div>
+                                    <!-- /.box-body -->
+                                </div>
+                                <!-- /. box -->
+                            </div>
+                            <!-- /.col -->
+                        </div>
+                        <!-- /.row -->
                 </section>
                 <!-- /.content -->
                 </div>
                 <!-- /.content-wrapper -->
-                </div>
-                <!-- /.wrapper -->
             </div>
-            <!-- /.content-wrapper -->
+            <!-- /.wrapper -->
+        </div>
+        <!-- /.content-wrapper -->
         </div>
         <!-- /.wrapper -->
 
@@ -391,7 +453,17 @@ $result = $stmt->fetch();
         <!-- Custom Theme Scripts -->
         <script src="build/js/custom.min.js"></script>
 
+        <!-- date-range-picker -->
+        <script src="../plugins/moment/min/moment.min.js"></script>
+        <script src="../plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+        <!-- bootstrap datepicker -->
+        <script src="../plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
         <script>
+            //Date picker
+            $('#datepicker').datepicker({
+                autoclose: true
+            })
             jQuery(function($) {
                 $('.table').footable({
 
@@ -400,49 +472,29 @@ $result = $stmt->fetch();
 
         </script>
         <script>
-            //            $(document).ready(function() {
-            //                $('[data-toggle="popover"]').popover({
-            //                    html: true
-            //                });
-            //                // $('#calendar').fullCalendar({ defaultView: 'agendaWeek',});
-            //            });
-            //
-            //            $(document).ready(function() {
-            //
-            //                // page is now ready, initialize the calendar...
-            //
-            //                $('#calendar').fullCalendar({
-            //                    // put your options and callbacks here
-            //                    defaultView: 'agendaWeek',
-            //                })
-            //
-            //            });
+        
 
             $(document).ready(function() {
                 $('#calendar').fullCalendar({
-//                        googleCalendarApiKey: 'AIzaSyA9u-pNzVjk1MRKnIiryZku88WL_1eyF4Y',
-                        events: {
-//                            googleCalendarId: 'markiepeanut111@gmail.com',
-                            color: 'yellow', // an option!
-                            textColor: 'black' // an option!
-
-                        },
-                        //                    header: {
-                        //                        left: 'prev, next today',
-                        //                        right: 'month, agendaWeek, agendaDay'
-                        //
-                        events: [
-                           {
-                            title: 'Event1',
-                            start: '2017-09-21T12:00:00',
-                               end:'2017-09-23T12:30:00'
-                           },
-                            {
-                                    title: 'Event2',
-                            start: '2017-09-24'
-                            }
-                        ],
                     
+                    events: {
+                       
+                        color: 'yellow', // an option!
+                        textColor: 'black' // an option!
+
+                    },
+                   
+                    events: [{
+                            title: 'Event1',
+                            start: '2017-09-26T12:00:00',
+                            end: '2017-09-26T12:30:00'
+                        },
+                        {
+                            title: 'Event2',
+                            start: '2017-09-24'
+                        }
+                    ],
+
                     editable: true,
                     defaultView: 'agenda',
                     duration: {
@@ -451,10 +503,7 @@ $result = $stmt->fetch();
                     selectable: true,
                     selectHelper: true,
                     eventLimit: true,
-                    // can also specify:
-                    // - visibleRange
-                    // - dayCount
-                    //-------------new pasted shit below:
+                    
                     navLinks: true, // can click day/week names to navigate views
                     eventLimit: true, // allow "more" link when too many events
 
@@ -469,107 +518,38 @@ $result = $stmt->fetch();
                             };
 
 
-                            
+
                             $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
                         }
                         $('#calendar').fullCalendar('unselect');
                     },
-eventClick: function(event, element) {
+                    eventClick: function(event, element) {
 
-                 $("#modal-info").modal();
-
-        
-
-    }
+                        $("#modal-primary").modal();
 
 
-                    //-----------closing brackets for actual function
+
+                    }
+
+
+                  
                 });
 
             });
 
-            //            var initialize_calendar;
-            //            initialize_calendar = function() {
-            //                $('.calendar').each(function() {
-            //                    var calendar = $(this);
-            //                    calendar.fullCalendar({
-            //                        header: {
-            //                            left: 'prev,next today',
-            //                            center: 'title',
-            //                            right: 'month,agendaWeek,agendaDay'
-            //                        },
-            //                        selectable: true,
-            //                        selectHelper: true,
-            //                        editable: true,
-            //                        eventLimit: true,
-            //                        events: '/events.json',
-            //
-            //                        select: function(start, end) {
-            //                            $.getScript('/events/new', function() {});
-            //
-            //                            calendar.fullCalendar('unselect');
-            //                        },
-            //
-            //                        eventDrop: function(event, delta, revertFunc) {
-            //                            event_data = {
-            //                                event: {
-            //                                    id: event.id,
-            //                                    start: event.start.format(),
-            //                                    end: event.end.format()
-            //                                }
-            //                            };
-            //                            $.ajax({
-            //                                url: event.update_url,
-            //                                data: event_data,
-            //                                type: 'PATCH'
-            //                            });
-            //                        },
-            //
-            //                        eventClick: function(event, jsEvent, view) {
-            //                            $.getScript(event.edit_url, function() {});
-            //                        }
-            //                    });
-            //                })
-            //            };
-            //            $(document).on('turbolinks:load', initialize_calendar);
+   
+            window.setInterval(function() { // Set interval for checking
+                var date = new Date(); // Create a Date object to find out what time it is
+                if (date.getHours() === 18 && date.getMinutes() === 49) { // Check the time
 
+                    new PNotify({
+                        title: 'Contact Client',
+                        text: 'Must send email to John by 5:15pm.',
+                        styling: 'fontawesome'
 
-
-
-            //    ---------  Notification code-------------
-//            $(function() {
-//                new PNotify({
-//                    title: 'Contact Client',
-//                    text: 'Must call Jane Smith @ 4:15pm.',
-//                    styling: 'fontawesome'
-//                });
-//            });
-//            $(function() {
-//                new PNotify({
-//                    title: 'Contact Client',
-//                    text: 'Must call Mary Baker @ 4:45pm.',
-//                    styling: 'fontawesome'
-//                });
-//            });
-//            $(function() {
-//                new PNotify({
-//                    title: 'Contact Client',
-//                    text: 'Must send email to John by 5:15pm.',
-//                    styling: 'fontawesome'
-//                });
-//            });
-            window.setInterval(function(){ // Set interval for checking
-    var date = new Date(); // Create a Date object to find out what time it is
-    if(date.getHours() === 18 && date.getMinutes() === 49){ // Check the time
-    
-                new PNotify({
-                    title: 'Contact Client',
-                    text: 'Must send email to John by 5:15pm.',
-                    styling: 'fontawesome'
-             
-            });
-    }
-}, 60000); // Repeat every 60000 milliseconds (1 minute)
+                    });
+                }
+            }, 60000); // Repeat every 60000 milliseconds (1 minute)
 
         </script>
 
