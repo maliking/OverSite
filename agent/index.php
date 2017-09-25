@@ -1,9 +1,9 @@
 <?php
-session_start();
-
-if (!isset($_SESSION['userId'])) {
-    header("Location: http://jjp2017.org/login.php");
-}
+//session_start();
+//
+//if (!isset($_SESSION['userId'])) {
+//    header("Location: http://jjp2017.org/login.php");
+//}
 require '../databaseConnection.php';
 $dbConn = getConnection();
 
@@ -84,7 +84,11 @@ $result = $stmt->fetch();
             <link href="../plugins/pnotify/dist/pnotify.css" rel="stylesheet">
             <link href="../plugins/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
             <link href="../plugins/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
-
+            
+<!-- daterange picker -->
+  <link rel="stylesheet" href="../plugins/bootstrap-daterangepicker/daterangepicker.css">
+  <!-- bootstrap datepicker -->
+  <link rel="stylesheet" href="../plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 
 
             <!-- Content Wrapper. Contains page content -->
