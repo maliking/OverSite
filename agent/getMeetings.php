@@ -10,7 +10,7 @@ session_start();
 require '../databaseConnection.php';
 $dbConn = getConnection();
 
-$monthMeetings = "SELECT CONCAT(firstName, ',', lastName) as title , DATE_FORMAT(meeting, '%Y-%m-%dT%H:%i:%s') as start FROM BuyerInfo WHERE MONTH(registeredDate) >=:registeredDate";
+$monthMeetings = "SELECT CONCAT(firstName, ',', lastName) as title , DATE_FORMAT(meeting, '%Y-%m-%dT%H:%i:%s') as start, ADDTIME(meeting, '00:15:00') as end FROM BuyerInfo WHERE MONTH(registeredDate) >=:registeredDate";
 
 $namedParameters = array();
 $namedParameters[':registeredDate'] = date('m');
