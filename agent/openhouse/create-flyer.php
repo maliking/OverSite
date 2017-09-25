@@ -1,9 +1,9 @@
 <?php
-//session_start();
-//
-//if (!isset($_SESSION['userId'])) {
-//    header("Location: http://jjp17.org/login.php");
-//}
+session_start();
+
+if (!isset($_SESSION['userId'])) {
+    header("Location: http://jjp17.org/login.php");
+}
 clearstatcache();
 $listingId = $_GET['id'];
 
@@ -79,23 +79,26 @@ $keys = array_keys($response);
             .selectedImages {
                 display: table;
                 width: 100%;
-                table-layout: fixed;    /* For cells of equal size */
+                table-layout: fixed;
+                /* For cells of equal size */
             }
+            
             .selectedImages div {
                 display: table-cell;
                 text-align: center;
             }
-
+            
             .theIMG {
                 -webkit-transform: scale(0.5);
             }
+
         </style>
 
     </head>
 
     <body class="hold-transition skin-black sidebar-mini">
 
-          
+
         <!-- Site Wrapper -->
         <div class="wrapper">
             <!-- BEGIN TEMPLATE header.php INCLUDE -->
@@ -112,10 +115,11 @@ $keys = array_keys($response);
             <!-- Content Wrapper. Contains page content -->
 
             <div class="content-wrapper">
+                
                 <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
                 <!-- Content Header (Page header) -->
                 <section>
-                     <div class="modal fade" id="myModal" data-backdrop="static" role="dialog">
+                    <div class="modal fade" id="myModal" data-backdrop="static" role="dialog">
                         <div class="modal-dialog">
 
                             <!-- Modal content-->
@@ -153,7 +157,9 @@ $keys = array_keys($response);
                             Create New Flyer
                         </h1>
                         <h1 class="col-md-3 col-sm-3 col-xs-6">
-                            Current Flyer
+                            Current Flyer             
+             
+                
                         </h1>
 
                         <h5 class="col-md-3 col-sm-3 col-xs-6">
@@ -162,29 +168,29 @@ $keys = array_keys($response);
                                 <input type="file" id="image" name="file"><br>
                                 <button id="button-send">Send</button>
                             </form>
-                           
+
                         </h5>
                     </section>
 
-                    
+
 
                     <section class="content">
                         <div class="col-md-6 col-sm-6 col-xs-12">
 
-                        <div class="col-md-6 col-sm-6 col-xs-12" style="height:70px; width:100%;">
+                            <div class="col-md-6 col-sm-6 col-xs-12" style="height:70px; width:100%;">
 
-                            <img id="image0" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://www.clipartbay.com/cliparts/red-number-1-clip-art-gc8rlnb.png">
+                                <img id="image0" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://www.clipartbay.com/cliparts/red-number-1-clip-art-gc8rlnb.png">
 
-                            <img id="image1" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://pngimg.com/uploads/number2/Number%202%20PNG%20images%20free%20download_PNG14940.png">
+                                <img id="image1" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://pngimg.com/uploads/number2/Number%202%20PNG%20images%20free%20download_PNG14940.png">
 
-                            <img id="image2" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://www.clker.com/cliparts/U/4/Y/A/Y/6/number-3-button-hi.png">
+                                <img id="image2" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://www.clker.com/cliparts/U/4/Y/A/Y/6/number-3-button-hi.png">
 
-                            <img id="image3" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://www.clker.com/cliparts/J/p/g/I/c/L/number-4-button-hi.png">
+                                <img id="image3" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://www.clker.com/cliparts/J/p/g/I/c/L/number-4-button-hi.png">
 
-                            <img id="image4" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://www.clker.com/cliparts/5/P/q/M/g/J/number-5-button-hi.png">
+                                <img id="image4" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://www.clker.com/cliparts/5/P/q/M/g/J/number-5-button-hi.png">
 
-                            
-                        </div>
+
+                            </div>
                             <div class="row" style="margin-top:20px;">
 
                                 <!-- Smart Wizard -->
@@ -217,7 +223,7 @@ $keys = array_keys($response);
           </span>
                                             </a>
                                         </li>
-                                       <!--  <li>
+                                        <!--  <li>
                                             <a href="#step-3">
                                                 <label class="stepNumber">Step 3</label>
                                                 <span class="stepDesc">
@@ -260,13 +266,13 @@ $keys = array_keys($response);
                                     <div id="step-2">
                                         <h2 class="StepTitle">Step 2: Select flyer content</h2>
                                         <div class="form-group">
-                                           
-                                              <input checked type="hidden" name="bedrooms" value=<?php echo $response[$keys[$index]]['bedrooms']?>/> 
-                                           
-                                              <input checked type="hidden" name="bathrooms" value=<?php echo $response[$keys[$index]]['fullBaths']?>/> 
-                                           
-                                              <input type="hidden" name="sqft" value=<?php echo $response[$keys[$index]]['sqFt']?>/> 
-                                    
+
+                                            <input checked type="hidden" name="bedrooms" value=<?php echo $response[$keys[$index]][ 'bedrooms']?>/>
+
+                                            <input checked type="hidden" name="bathrooms" value=<?php echo $response[$keys[$index]][ 'fullBaths']?>/>
+
+                                            <input type="hidden" name="sqft" value=<?php echo $response[$keys[$index]][ 'sqFt']?>/>
+
                                             <label>
                                               <input type="checkbox" class="js-switch" name="lotSize" id="lotSize" value=<?php if(((float)$response[$keys[$index]]['acres'])< 1)
                                                                                                                                                 echo (float)$response[$keys[$index]]['acres'] * 43560;
@@ -276,9 +282,9 @@ $keys = array_keys($response);
                                                                                                                                                 echo (float)$response[$keys[$index]]['acres'] * 43560;
                                                                                                                                                 else
                                                                                                                                                  echo (float)$response[$keys[$index]]['acres'];?>sqFt Lot Size
-                                            </label> 
-                                        </br>
-                                         </br>
+                                            </label>
+                                            </br>
+                                            </br>
                                             <label>
                                            
                                                 <input type="text" id="age" value="" placeholder="Enter Age if wanted"/>
@@ -308,15 +314,20 @@ $keys = array_keys($response);
                         </div>
 
                         <?php echo '<input type="hidden" name="address" value="'. $response[$keys[$index]]['address'] . '" />'; ?>
-                        <input type="hidden" name="city" value=<?php echo $response[$keys[$index]]['cityName'];?>/>
-                        <input type="hidden" name="state" value=<?php echo $response[$keys[$index]]['state'];?>/>
-                        <input type="hidden" name="zip" value=<?php echo $response[$keys[$index]]['zipcode'];?>/>
-                        <input type="hidden" name="price" value=<?php echo $response[$keys[$index]]['listingPrice'];?>/>
+                        <input type="hidden" name="city" value=<?php echo $response[$keys[$index]][ 'cityName'];?>/>
+                        <input type="hidden" name="state" value=<?php echo $response[$keys[$index]][ 'state'];?>/>
+                        <input type="hidden" name="zip" value=<?php echo $response[$keys[$index]][ 'zipcode'];?>/>
+                        <input type="hidden" name="price" value=<?php echo $response[$keys[$index]][ 'listingPrice'];?>/>
                         <input type="hidden" name="mlsId" value=<?php echo $listingId;?>/>
                         <?php echo '<input type="hidden" name="description" value="' . $response[$keys[$index]]['remarksConcat'] . '" />'; ?>
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div>
+                                 <!-- Loading (remove the following to stop the loading)-->
+            <div class="overlay">
+              <i id="loading" class="fa fa-refresh fa-spin" style='visibility: hidden;'></i>
+            </div>
+            <!-- end loading -->
                                 <?php
                                     if($result['flyer'] == NULL)
                                     {
@@ -332,7 +343,7 @@ $keys = array_keys($response);
                                         style="width:600px; height:500px;" frameborder="0"></iframe>';
                                     }
                                 ?>
-                                
+  
                             </div>
                         </div>
 
@@ -360,44 +371,44 @@ $keys = array_keys($response);
             $ch = $('input[type="checkbox"]', $wrapper);
             $wrapper.on('click', 'input[type="checkbox"]', function() {
                 //assure that only 5 checkboxes are clicked at max
-                if($('input[type=checkbox]:checked').length > limit) {
+                if ($('input[type=checkbox]:checked').length > limit) {
                     $(this).prop('checked', false);
                     alert("Only 5 allowed");
-                }
-                else{
+                } else {
                     //keep track of order in which checkboxes were clicked
                     if (this.checked) {
-                        $ch = $ch.not(this);//remove from jQuery array
-                        Array.prototype.push.call($ch, this);//add to front of jQuery array
+                        $ch = $ch.not(this); //remove from jQuery array
+                        Array.prototype.push.call($ch, this); //add to front of jQuery array
                     }
 
                     var count = 0;
-                    jQuery.each($ch.filter(":checked"), function( k, v ) {
-                      //alert( "Key: " + k + ", Value: " + v.value );
-                      $('#image'+count).attr("src", v.value);//replace number images by selected images
-                      count++;
+                    jQuery.each($ch.filter(":checked"), function(k, v) {
+                        //alert( "Key: " + k + ", Value: " + v.value );
+                        $('#image' + count).attr("src", v.value); //replace number images by selected images
+                        count++;
                     });
 
                     //add back images of number instead of selected images when unchecked
-                    if(count < 5){
-                        if(count < 4 || count == 4){
+                    if (count < 5) {
+                        if (count < 4 || count == 4) {
                             $('#image4').attr("src", "http://www.clker.com/cliparts/5/P/q/M/g/J/number-5-button-hi.png");
                         }
-                        if(count < 3 || count == 3){
+                        if (count < 3 || count == 3) {
                             $('#image3').attr("src", "http://www.clker.com/cliparts/J/p/g/I/c/L/number-4-button-hi.png");
                         }
-                        if(count < 2 || count == 2){
+                        if (count < 2 || count == 2) {
                             $('#image2').attr("src", "http://www.clker.com/cliparts/U/4/Y/A/Y/6/number-3-button-hi.png");
                         }
-                        if(count < 1 || count == 1){
+                        if (count < 1 || count == 1) {
                             $('#image1').attr("src", "http://pngimg.com/uploads/number2/Number%202%20PNG%20images%20free%20download_PNG14940.png");
                         }
-                        if(count < 0 || count == 0){
+                        if (count < 0 || count == 0) {
                             $('#image0').attr("src", "http://www.clipartbay.com/cliparts/red-number-1-clip-art-gc8rlnb.png");
                         }
                     }
                 }
             });
+
         </script>
 
         <!--BEGIN Smart wizard links-->
@@ -414,7 +425,6 @@ $keys = array_keys($response);
 
 
         <script type="text/javascript">
-
             $(document).ready(function() {
                 // Initialize Smart Wizard with ajax content load and cache disabled
                 $('#wizard').smartWizard({
@@ -446,21 +456,21 @@ $keys = array_keys($response);
                 onFinish: finishClicked // triggers when Finish button is clicked
             });
 
-            function finishClicked()
-            {
-                if($("input[name='imageURL']:checked").length > 5)
-                {
+function showLoading(){
+document.getElementById("loading").style = "visibility: visible";
+}
+function hideLoading(){
+document.getElementById("loading").style = "visibility: hidden";
+}
+            function finishClicked() {
+                  showLoading();
+                if ($("input[name='imageURL']:checked").length > 5) {
                     alert("Only choose 5 pictures.");
-                }
-                else if($("input:[name='imageURL']checked").length < 5)
-                {
+                } else if ($("input:[name='imageURL']checked").length < 5) {
                     alert("Choose at least 5 pictures.");
-                }
-
-                else
-                {
+                } else {
                     var allVals = [];
-                    
+
                     var description = $("input[name='description']").val();
                     var lotSize = "";
                     var age = "";
@@ -479,23 +489,22 @@ $keys = array_keys($response);
 
 
                     $('input[name="imageURL"]:checked').each(function() {
-                    allVals.push($(this).val());
+                        allVals.push($(this).val());
                     });
 
                     $('input[name="flyerContent"]:checked').each(function() {
-                    flyerContent.push($(this).val());
+                        flyerContent.push($(this).val());
                     });
 
 
-                    if($('#lotSize').is(":checked"))
-                    {
+                    if ($('#lotSize').is(":checked")) {
                         lotSize = $('#lotSize').val();
-                    }
-                    else if ($('#lotSize').is(":not(:checked)") == false){
+                    } else if ($('#lotSize').is(":not(:checked)") == false) {
                         lotSize = "";
                     }
-                    if($("#age").val() != "")
+                    if ($("#age").val() != ""){
                         age = $("#age").val();
+                    }
                     // alert("Post");
                     // console.log(allVals[0]);
                     // alert(allVals[1]);
@@ -505,36 +514,52 @@ $keys = array_keys($response);
                     //  state: stateC, zip: zipC, price: priceC, description: description },
                     //  function(data, status)
                     //  {
-                        
-                            
-                        
+
+
                     // });
                     alert("Your pdf will auto load.");
                     // alert(lotSize);
                     $.ajax({
-                      type: "POST",
-                      url: "generatePDF.php",
-                      data: { imageOne: allVals[0], imageTwo: allVals[1], imageThree: allVals[2], imageFour: allVals[3], imageFive: allVals[4],
-                        bedrooms:bedrooms, bathrooms: bathrooms, sqft: squareFeet, lotSize:lotSize, age: age, mlsId:mlsId, address: addressC, city: cityC, 
-                        state: stateC, zip: zipC, price: priceC, description: description },
-                        success:function(data) 
-                        {
+                        
+                        type: "POST",
+                        url: "generatePDF.php",
+                        data: {
+                            imageOne: allVals[0],
+                            imageTwo: allVals[1],
+                            imageThree: allVals[2],
+                            imageFour: allVals[3],
+                            imageFive: allVals[4],
+                            bedrooms: bedrooms,
+                            bathrooms: bathrooms,
+                            sqft: squareFeet,
+                            lotSize: lotSize,
+                            age: age,
+                            mlsId: mlsId,
+                            address: addressC,
+                            city: cityC,
+                            state: stateC,
+                            zip: zipC,
+                            price: priceC,
+                            description: description
+                        },
+                        success: function(data) {
+                             hideLoading();
                             // alert(data); //=== Show Success Message==
 
                             // $("#pdf").attr('src','../../../test/generateExample.pdf'); //local 
 
-                            $("#pdf").attr('src','../../uploadFlyers/' + addressC + ".pdf"); // server
-                            $("#noPdf").replaceWith('<iframe id="pdf" src="../../uploadFlyers/' + addressC  + '.pdf" style="width:600px; height:500px;" frameborder="0"></iframe>'); //server when no pdf found
-                        
+                            $("#pdf").attr('src', '../../uploadFlyers/' + addressC + ".pdf"); // server
+                            $("#noPdf").replaceWith('<iframe id="pdf" src="../../uploadFlyers/' + addressC + '.pdf" style="width:600px; height:500px;" frameborder="0"></iframe>'); //server when no pdf found
+
                             $('#myModal').modal('show');
                         },
-                        error:function(data)
-                        {
-                        alert(data.responseText); //===Show Error Message====
+                        error: function(data) {
+                             hideLoading();
+                            alert(data.responseText); //===Show Error Message====
                         }
                     });
-                      
-                    
+
+
                     // alert("Flyer created! Refres page");
                     // console.log(allVals);
                 }
@@ -543,11 +568,11 @@ $keys = array_keys($response);
                 //    alert();
                 // });
 
-             //    var allVals = [];
-             //     $('#imageSerialize label input :checked').each(function() {
-             //       allVals.push($(this).val());
-             //     });
-             // console.log(allVals);
+                //    var allVals = [];
+                //     $('#imageSerialize label input :checked').each(function() {
+                //       allVals.push($(this).val());
+                //     });
+                // console.log(allVals);
             }
 
             // $("#sendPdf").click(function (event){
@@ -559,7 +584,7 @@ $keys = array_keys($response);
             //            console.log(formData); 
             //         }
             //     var ajaxUrl = "uploadFlyer.php";
-                
+
             //     $.ajax({
             //         url : ajaxUrl,
             //         type : "POST",
@@ -575,11 +600,11 @@ $keys = array_keys($response);
             //         }
             //     });
             // });
-            
+
         </script>
-                 <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-                 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
         <script>
             /*
@@ -590,37 +615,38 @@ $keys = array_keys($response);
              */
 
             $("#button-send").click(sendFormData);
-            
-            function sendFormData(){
+
+            function sendFormData() {
                 var formData = new FormData($("#form-demo").get(0));
                 formData.append('listingId', $("input[name='mlsId']").val());
                 var ajaxUrl = "uploadFlyer.php";
-                
+
                 $.ajax({
-                    url : ajaxUrl,
-                    type : "POST",
-                    data : formData,
+                    url: ajaxUrl,
+                    type: "POST",
+                    data: formData,
                     // both 'contentType' and 'processData' parameters are
                     // required so that all data are correctly transferred
-                    contentType : false,
-                    processData : false
-                }).done(function(response){
+                    contentType: false,
+                    processData: false
+                }).done(function(response) {
                     // In this callback you get the AJAX response to check
                     // if everything is right...
                     // alert(response);
 
                     // $("#pdf").attr('src','../../../test/' + response); //local
 
-                    $("#pdf").attr('src','../../uploadFlyers/' + response); //server
-                    $("#noPdf").replaceWith('<iframe id="pdf" src="../../uploadFlyers/' + response.slice(0,-3) + 'pdf" style="width:600px; height:500px;" frameborder="0"></iframe>'); //server when no pdf found
-                    
+                    $("#pdf").attr('src', '../../uploadFlyers/' + response); //server
+                    $("#noPdf").replaceWith('<iframe id="pdf" src="../../uploadFlyers/' + response.slice(0, -3) + 'pdf" style="width:600px; height:500px;" frameborder="0"></iframe>'); //server when no pdf found
+
                     $('#myModal').modal('show');
-                }).fail(function(){
+                }).fail(function() {
                     // Here you should treat the http errors (e.g., 403, 404)
-                }).always(function(){
+                }).always(function() {
                     // alert("AJAX request finished!");
                 });
             }
+
         </script>
 
     </body>
