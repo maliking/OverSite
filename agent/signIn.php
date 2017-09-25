@@ -106,11 +106,11 @@
 
                     <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-4">
                         <input type="text" name="firstName" class="form-control has-feedback-left" id="inputSuccess2" placeholder="First Name">
-                        <span class="fa fa-user form-control-feedback left" aria-hidden="true"></span>
+                        <span class="form-control-feedback left" aria-hidden="true"></span>
 
                     </br>
                         <input type="text" name="lastName" class="form-control" id="inputSuccess3" placeholder="Last Name">
-                        <span class="fa fa-user form-control-feedback right" aria-hidden="true"></span>
+                        <span class="form-control-feedback right" aria-hidden="true"></span>
 
                     </div>
 
@@ -120,10 +120,10 @@
 
                     <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-4">
                         <input type="text" name="email" class="form-control has-feedback-left" id="inputSuccess4" placeholder="Email">
-                        <span class="fa fa-envelope form-control-feedback left" aria-hidden="true"></span>
+                        <span class="form-control-feedback left" aria-hidden="true"></span>
                     </br>
                         <input type="text" name="phone" class="form-control" id="inputSuccess5" placeholder="Phone">
-                        <span class="fa fa-phone form-control-feedback right" aria-hidden="true"></span>
+                        <span class=" form-control-feedback right" aria-hidden="true"></span>
                     </div>
 
                    
@@ -178,10 +178,10 @@
 
                     <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-4">
                         <input type="text" name="priceMin" class="form-control has-feedback-left" id="inputSuccess2" placeholder="Minimum Price">
-                        <span class="fa fa-dollar form-control-feedback left" aria-hidden="true"></span>
+                        <span class="form-control-feedback left" aria-hidden="true"></span>
                     </br>
                          <input type="text" name="priceMax" class="form-control" id="inputSuccess3" placeholder="Maximum Price">
-                        <span class="fa  fa-dollar form-control-feedback right" aria-hidden="true"></span>
+                        <span class="form-control-feedback right" aria-hidden="true"></span>
                     </div>
 
                    
