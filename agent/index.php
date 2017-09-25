@@ -534,7 +534,18 @@ $result = $stmt->fetch();
                             }
                         else
                         {
-                            $.post( "updateMeeting.php", { id: id, start: startTime, end:endTime } );
+                            event.id = startTime;
+                            var formData = { id: id, start: startTime, end:endTime };
+                            $.ajax({
+                                url : "updateMeeting.php",
+                                type: "POST",
+                                data : formData,
+                                success: function(data, textStatus, jqXHR)
+                                {
+                                    alert("finished");
+                                }
+                            });
+                            
                         }
 
                     },
@@ -551,6 +562,7 @@ $result = $stmt->fetch();
                         else
                         {
                             $.post( "updateMeeting.php", { id: id, start: startTime, end:endTime } ); 
+                            alert("finished");
                         }
                     }
 

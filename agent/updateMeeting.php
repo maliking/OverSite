@@ -5,13 +5,12 @@ session_start();
 require '../databaseConnection.php';
 $dbConn = getConnection();
 
-$sqlLicense = "UPDATE BuyerInfo SET meeting = :meeting WHERE ";
+$sqlLicense = "UPDATE BuyerInfo SET meeting = :newMeeting WHERE meeting = :id";
 
 $namedParameters = array();
-$namedParameters[':userId'] = $_SESSION['userId'];
-
+$namedParameters[':newMeeting'] = $_POST['start'];
+$namedParameters[':id'] = $_POST['id'];
 
 $licenseStmt = $dbConn->prepare($sqlLicense);
 $licenseStmt->execute($namedParameters);
-$licenseResult = $licenseStmt->fetch();
 ?>
