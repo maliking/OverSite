@@ -96,7 +96,7 @@
 
                 <div class="x_title" style="margin-top: 20px;">
                     <center>
-                        <h3><label>Welcome to <?php echo $result['address'] . " " . $_SESSION['flyer'];  ?></label></h3>
+                        <h3><label>Welcome to <?php echo $result['address'];  ?></label></h3>
                     </center>
 
 
