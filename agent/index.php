@@ -106,7 +106,7 @@ $result = $stmt->fetch();
                 </section>
 
                 <!-- Main content -->
-                <section class="content">
+                <section class="content" style="min-height:initial;">
                     <!-- Small boxes (Stat box) -->
                     <div class="row">
                         <div class="col-lg-2 col-xs-6">
@@ -208,12 +208,12 @@ $result = $stmt->fetch();
                 </section>
 
                 <!-- Main content -->
-                <section class="content">
+                <section class="content" >
                     <!--                    Example modal below for how pop ups should look on calendar-->
                     <div class="row">
 
                         <!--MODAL AREA!!-->
-                        <div class="box-body">
+                        <div class="box-body" >
 
 
 
@@ -402,13 +402,13 @@ $result = $stmt->fetch();
 
                         </div>
                         <!--                    END example modal-->
-                        <div class="row">
+                        <div class="row" >
                             <!-- /.col -->
-                            <div class="col-md-12">
-                                <div class="box box-primary">
-                                    <div class="box-body no-padding">
+                            <div class="col-md-12" >
+                                <div class="box box-primary" >
+                                    <div class="box-body no-padding" >
                                         <!-- THE CALENDAR -->
-                                        <div id="calendar"></div>
+                                        <div id="calendar" ></div>
                                     </div>
                                     <!-- /.box-body -->
                                 </div>
@@ -484,16 +484,25 @@ $result = $stmt->fetch();
                             textColor: 'black'  // an option!
                         }
                     ],
+                    // businessHours: {
+                    //     // days of week. an array of zero-based day of week integers (0=Sunday)
+                    //     // dow: [ 1, 2, 3, 4 ], // Monday - Thursday
 
+                    //     start: '07:30', // a start time (10am in this example)
+                    //     end: '21:00', // an end time (6pm in this example)
+                    // },
                     editable: true,
-                    defaultView: 'agenda',
+                    defaultView: 'agendaWeek',
                     duration: {
                         days: 7
                     },
                     selectable: true,
                     selectHelper: true,
                     eventLimit: true,
-                    
+                    // firstHour: 12,
+                    minTime: '07:00:00',
+                    maxTime: '21:00:00',
+                    height:"auto",
                     navLinks: true, // can click day/week names to navigate views
                     eventLimit: true, // allow "more" link when too many events
 
