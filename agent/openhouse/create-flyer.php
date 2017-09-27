@@ -418,7 +418,7 @@ $keys = array_keys($response);
                 jQuery.each($ch.filter(":checked"), function(k, v) {
                     if(itemToRemove === v.value){
                         $ch.splice($.inArray(itemToRemove, $ch),1);
-                        //$("input[type=checkbox][value='"+itemToRemove+"']").prop('unchecked',true); NEED TO UNCHECK BOX
+                        $("input[type='checkbox'][value='"+itemToRemove+"']").prop('checked',false);
                         return false;
                     }
                 });
@@ -430,7 +430,7 @@ $keys = array_keys($response);
                 jQuery.each($ch.filter(":checked"), function(k, v) {
                     if(itemToRemove === v.value){
                         $ch.splice($.inArray(itemToRemove, $ch),1);
-                        //$("input[type=checkbox][value='"+itemToRemove+"']").prop('unchecked',true); NEED TO UNCHECK BOX
+                        $("input[type='checkbox'][value='"+itemToRemove+"']").prop('checked',false);
                         return false;
                     }
                 });
@@ -442,7 +442,7 @@ $keys = array_keys($response);
                 jQuery.each($ch.filter(":checked"), function(k, v) {
                     if(itemToRemove === v.value){
                         $ch.splice($.inArray(itemToRemove, $ch),1);
-                        //$("input[type=checkbox][value='"+itemToRemove+"']").prop('unchecked',true); NEED TO UNCHECK BOX
+                        $("input[type='checkbox'][value='"+itemToRemove+"']").prop('checked',false);
                         return false;
                     }
                 });
