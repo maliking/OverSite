@@ -404,7 +404,7 @@ $keys = array_keys($response);
                     if(itemtoRemove === v.value){
                         keyToRemove = k;
                         $ch = $ch.not(this); //remove from jQuery array
-                        alert("removed");
+                        $(itemtoRemove).prop('checked', false);
                         return false;
                     }
                 });
