@@ -399,7 +399,7 @@ $keys = array_keys($response);
             });
 
             $('#selectedImages').click(function(){
-                alert('hi');
+                alert(this.value);
             });
 
         </script>
