@@ -356,6 +356,7 @@ $keys = array_keys($response);
         <script>
             function reorder(){
                     var count = 0;
+                    $ch = $('input[type="checkbox"]', $wrapper);
                     jQuery.each($ch.filter(":checked"), function(k, v) {
                         //alert( "Key: " + k + ", Value: " + v.value );
                         $('#image' + count).attr("src", v.value); //replace number images by selected images
