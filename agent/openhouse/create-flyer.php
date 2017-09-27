@@ -405,7 +405,7 @@ $keys = array_keys($response);
                 var itemToRemove = $('#image0').attr('src');
                 jQuery.each($ch.filter(":checked"), function(k, v) {
                     if(itemToRemove === v.value){
-                        $ch.splice($.inArray(itemToRemove, $ch),1);
+                        $ch.splice($.inArray(itemToRemove, $ch),0);
                         $("input[type='checkbox'][value='"+itemToRemove+"']").prop('checked',false); //NEED TO UNCHECK BOX
                         return false;
                     }
@@ -429,7 +429,7 @@ $keys = array_keys($response);
                 var itemToRemove = $('#image2').attr('src');
                 jQuery.each($ch.filter(":checked"), function(k, v) {
                     if(itemToRemove === v.value){
-                        $ch.splice($.inArray(itemToRemove, $ch),1);
+                        $ch.splice($.inArray(itemToRemove, $ch),0);
                         $("input[type='checkbox'][value='"+itemToRemove+"']").prop('checked',false);
                         return false;
                     }
@@ -441,7 +441,7 @@ $keys = array_keys($response);
                 var itemToRemove = $('#image3').attr('src');
                 jQuery.each($ch.filter(":checked"), function(k, v) {
                     if(itemToRemove === v.value){
-                        $ch.splice($.inArray(itemToRemove, $ch),1);
+                        $ch.splice($.inArray(itemToRemove, $ch),0);
                         $("input[type='checkbox'][value='"+itemToRemove+"']").prop('checked',false);
                         return false;
                     }
@@ -453,7 +453,7 @@ $keys = array_keys($response);
                 var itemToRemove = $('#image4').attr('src');
                 jQuery.each($ch.filter(":checked"), function(k, v) {
                     if(itemToRemove === v.value){
-                        $ch.splice($.inArray(itemToRemove, $ch),1);
+                        $ch.splice($.inArray(itemToRemove, $ch),0);
                         //$("input[type=checkbox][value='"+itemToRemove+"']").prop('unchecked',true); NEED TO UNCHECK BOX
                         return false;
                     }
