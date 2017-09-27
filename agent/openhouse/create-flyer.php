@@ -354,22 +354,7 @@ $keys = array_keys($response);
         <!-- END TEMPLATE default-js.php INCLUDE -->
 
         <script>
-            var limit = 5;
-
-            $wrapper = $("#imageSerialize");
-            $ch = $('input[type="checkbox"]', $wrapper);
-            $wrapper.on('click', 'input[type="checkbox"]', function() {
-                //assure that only 5 checkboxes are clicked at max
-                if ($('input[type=checkbox]:checked').length > limit) {
-                    $(this).prop('checked', false);
-                    alert("Only 5 allowed");
-                } else {
-                    //keep track of order in which checkboxes were clicked
-                    if (this.checked) {
-                        $ch = $ch.not(this); //remove from jQuery array
-                        Array.prototype.push.call($ch, this); //add to front of jQuery array
-                    }
-
+            function reorder(){
                     var count = 0;
                     jQuery.each($ch.filter(":checked"), function(k, v) {
                         //alert( "Key: " + k + ", Value: " + v.value );
@@ -395,7 +380,25 @@ $keys = array_keys($response);
                             $('#image0').attr("src", "http://www.clipartbay.com/cliparts/red-number-1-clip-art-gc8rlnb.png");
                         }
                     }
+            }
+
+            var limit = 5;
+            $wrapper = $("#imageSerialize");
+            $ch = $('input[type="checkbox"]', $wrapper);
+            $wrapper.on('click', 'input[type="checkbox"]', function() {
+                //assure that only 5 checkboxes are clicked at max
+                if ($('input[type=checkbox]:checked').length > limit) {
+                    $(this).prop('checked', false);
+                    alert("Only 5 allowed");
+                } else {
+                    //keep track of order in which checkboxes were clicked
+                    if (this.checked) {
+                        $ch = $ch.not(this); //remove from jQuery array
+                        Array.prototype.push.call($ch, this); //add to front of jQuery array
+                    }
                 }
+
+                reorder();
             });
 
             $('#image0').click(function(){
@@ -403,31 +406,60 @@ $keys = array_keys($response);
                 jQuery.each($ch.filter(":checked"), function(k, v) {
                     if(itemToRemove === v.value){
                         $ch.splice($.inArray(itemToRemove, $ch),1);
-                        $("input[type=checkbox][value='"+itemToRemove+"']").prop('unchecked',true);
+                        //$("input[type=checkbox][value='"+itemToRemove+"']").prop('unchecked',true); NEED TO UNCHECK BOX
                         return false;
                     }
                 });
+                reorder();
             });
-/*
+
             $('#image1').click(function(){
-                var itemtoRemove = $('#image1').attr('src');
-                arr.splice($.inArray(itemtoRemove, arr),1);
+                var itemToRemove = $('#image1').attr('src');
+                jQuery.each($ch.filter(":checked"), function(k, v) {
+                    if(itemToRemove === v.value){
+                        $ch.splice($.inArray(itemToRemove, $ch),1);
+                        //$("input[type=checkbox][value='"+itemToRemove+"']").prop('unchecked',true); NEED TO UNCHECK BOX
+                        return false;
+                    }
+                });
+                reorder();
             });
 
             $('#image2').click(function(){
-                var itemtoRemove = $('#image2').attr('src');
-                arr.splice($.inArray(itemtoRemove, arr),1);
+                var itemToRemove = $('#image2').attr('src');
+                jQuery.each($ch.filter(":checked"), function(k, v) {
+                    if(itemToRemove === v.value){
+                        $ch.splice($.inArray(itemToRemove, $ch),1);
+                        //$("input[type=checkbox][value='"+itemToRemove+"']").prop('unchecked',true); NEED TO UNCHECK BOX
+                        return false;
+                    }
+                });
+                reorder();
             });
 
             $('#image3').click(function(){
-                var itemtoRemove = $('#image3').attr('src');
-                arr.splice($.inArray(itemtoRemove, arr),1);
+                var itemToRemove = $('#image3').attr('src');
+                jQuery.each($ch.filter(":checked"), function(k, v) {
+                    if(itemToRemove === v.value){
+                        $ch.splice($.inArray(itemToRemove, $ch),1);
+                        //$("input[type=checkbox][value='"+itemToRemove+"']").prop('unchecked',true); NEED TO UNCHECK BOX
+                        return false;
+                    }
+                });
+                reorder();
             });
 
             $('#image4').click(function(){
-                var itemtoRemove = $('#image4').attr('src');
-                arr.splice($.inArray(itemtoRemove, arr),1);
-            });*/
+                var itemToRemove = $('#image4').attr('src');
+                jQuery.each($ch.filter(":checked"), function(k, v) {
+                    if(itemToRemove === v.value){
+                        $ch.splice($.inArray(itemToRemove, $ch),1);
+                        //$("input[type=checkbox][value='"+itemToRemove+"']").prop('unchecked',true); NEED TO UNCHECK BOX
+                        return false;
+                    }
+                });
+                reorder();
+            });
 
         </script>
 
