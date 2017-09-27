@@ -361,6 +361,7 @@ $keys = array_keys($response);
             $wrapper.on('click', 'input[type="checkbox"]', function() {
                 //assure that only 5 checkboxes are clicked at max
                 if ($('input[type=checkbox]:checked').length > limit) {
+                    alert($(this));
                     $(this).prop('checked', false);
                     alert("Only 5 allowed");
                 } else {
