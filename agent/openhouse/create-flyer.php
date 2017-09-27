@@ -361,7 +361,6 @@ $keys = array_keys($response);
             $wrapper.on('click', 'input[type="checkbox"]', function() {
                 //assure that only 5 checkboxes are clicked at max
                 if ($('input[type=checkbox]:checked').length > limit) {
-                    alert($(this));
                     $(this).prop('checked', false);
                     alert("Only 5 allowed");
                 } else {
@@ -403,7 +402,8 @@ $keys = array_keys($response);
                 var itemtoRemove = $('#image0').attr('src');
                 jQuery.each($ch.filter(":checked"), function(k, v) {
                     if(itemtoRemove === v.value){
-                        $ch = $ch.not(k); //remove from jQuery array
+                        //$ch = $ch.not(k); //remove from jQuery array
+                        $ch.splice($.inArray(itemtoRemove, $ch),1);
                         alert("found value");
                         //$(k).prop('checked', false);
                         return false;
