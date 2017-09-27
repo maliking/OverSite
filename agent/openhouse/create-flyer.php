@@ -76,17 +76,6 @@ $keys = array_keys($response);
         <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
         <style>
-            .selectedImages {
-                display: table;
-                width: 100%;
-                table-layout: fixed;
-                /* For cells of equal size */
-            }
-            
-            .selectedImages div {
-                display: table-cell;
-                text-align: center;
-            }
             
             .theIMG {
                 -webkit-transform: scale(0.5);
@@ -177,7 +166,7 @@ $keys = array_keys($response);
                     <section class="content">
                         <div class="col-md-6 col-sm-6 col-xs-12">
 
-                            <div class="col-md-6 col-sm-6 col-xs-12" style="height:70px; width:100%;">
+                            <div id="selectedImages" class="col-md-6 col-sm-6 col-xs-12" style="height:70px; width:100%;">
 
                                 <img id="image0" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://www.clipartbay.com/cliparts/red-number-1-clip-art-gc8rlnb.png">
 
@@ -408,6 +397,10 @@ $keys = array_keys($response);
                     }
                 }
             });
+
+            $('#selectedImages').click(function(){
+                alert('hi');
+            }
 
         </script>
 
