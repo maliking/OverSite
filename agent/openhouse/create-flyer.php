@@ -400,7 +400,7 @@ $keys = array_keys($response);
 
             $('#selectedImages').click(function(){
                 alert('hi');
-            }
+            });
 
         </script>
 
