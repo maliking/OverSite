@@ -399,8 +399,30 @@ $keys = array_keys($response);
             });
 
             $('#image0').click(function(){
-                alert($('#image0').attr('src'));
+                var itemtoRemove = $('#image0').attr('src');
+                $ch = $ch.not(itemtoRemove);
+                //arr.splice($.inArray(itemtoRemove, arr),1);
             });
+/*
+            $('#image1').click(function(){
+                var itemtoRemove = $('#image1').attr('src');
+                arr.splice($.inArray(itemtoRemove, arr),1);
+            });
+
+            $('#image2').click(function(){
+                var itemtoRemove = $('#image2').attr('src');
+                arr.splice($.inArray(itemtoRemove, arr),1);
+            });
+
+            $('#image3').click(function(){
+                var itemtoRemove = $('#image3').attr('src');
+                arr.splice($.inArray(itemtoRemove, arr),1);
+            });
+
+            $('#image4').click(function(){
+                var itemtoRemove = $('#image4').attr('src');
+                arr.splice($.inArray(itemtoRemove, arr),1);
+            });*/
 
         </script>
 
