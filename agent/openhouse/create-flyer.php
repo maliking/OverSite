@@ -417,7 +417,7 @@ $keys = array_keys($response);
                 var itemToRemove = $('#image1').attr('src');
                 jQuery.each($ch.filter(":checked"), function(k, v) {
                     if(itemToRemove === v.value){
-                        $ch.splice($.inArray(itemToRemove, $ch),1);
+                        $ch.splice($.inArray(itemToRemove, $ch),0);
                         $("input[type='checkbox'][value='"+itemToRemove+"']").prop('checked',false);
                         return false;
                     }
