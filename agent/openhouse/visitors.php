@@ -28,12 +28,13 @@
         <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
         <?php include "./templates-oh/default-css.php" ?>
         <!-- END TEMPLATE default-css.php INCLUDE -->
-         
-     <style>
-thead{
-    background-color: white;
-}
-     </style>
+
+        <style>
+            thead {
+                background-color: white;
+            }
+
+        </style>
 
 
     </head>
@@ -54,8 +55,8 @@ thead{
                 <!-- Content Header (Page header) -->
                 <section>
 
-                    <!-- Modal -->
-                    <div class="modal fade" id="myModal" data-backdrop="static" role="dialog">
+                    <!-- Mock add notes Modal -->
+                    <div class="modal fade" id="addNotesModal" data-backdrop="static" role="dialog">
                         <div class="modal-dialog">
 
                             <!-- Modal content-->
@@ -85,50 +86,54 @@ thead{
 
                     </div>
                     <!-- End Modal -->
-                    <!-- Modal For Viewing notes -->
-                    <div class="modal fade" id="viewNotes" data-backdrop="static" role="dialog">
-                        <div class="modal-dialog">
+                    
+  
+                    
+                    
+<!-- ---------Mock Send Flyer Modal-->
+                    
 
-                            <!-- Modal content-->
+                    
+                     <div class="modal fade" id="flyerModal" data-backdrop="static" role="dialog">
+                        <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Name</h4>
+                                    <h4 class="modal-title">Forward [Visitor Name] a flyer!</h4>
                                 </div>
                                 <!-- /.box-header -->
                                 <div class="modal-body">
-
-
-                                    <blockquote>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                                        </p>
-                                        <small>
-                                            May 19, 2017
-                                        </small>
-                                    </blockquote>
-                                    <blockquote>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                                        </p>
-                                        <small>
-                                            July 8, 2017
-                                        </small>
-                                    </blockquote> <blockquote>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.
-                                        </p>
-                                        <small>
-                                            August 28, 2017
-                                        </small>
-                                    </blockquote>
-
-
-
-
+                                    
+<div class="row">
+                                    <div class="col-md-6">
+                                      <input type="checkbox">   <img src="../openhouse/listingImg/flyerPlaceHolder.png" style="width:200px; height: 250px;"></input>
+                                    </div>       <div class="col-md-6">
+                                      <input type="checkbox">   <img src="../openhouse/listingImg/flyerPlaceHolder.png" style="width:200px; height: 250px;"></input>
+                                    </div>     
+     
+                                    </div><div class="row">
+                                    <div class="col-md-6">
+                                      <input type="checkbox">   <img src="../openhouse/listingImg/flyerPlaceHolder.png" style="width:200px; height: 250px;"></input>
+                                    </div>       <div class="col-md-6">
+                                      <input type="checkbox">   <img src="../openhouse/listingImg/flyerPlaceHolder.png" style="width:200px; height: 250px;"></input>
+                                    </div>     
+     
+                                    </div>
+                                </div>
+                                    
+                    <div class="row">
+                                      <div class="col-xs-12">
+                                       <div class="form-group">
+                                        <label>Input additional note to visitor</label>
+                                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                    </div>
+                        </div>
+                                        
+                                    </div>
 
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Send Flyer</button>
                                         
                                     </div>
 
@@ -137,9 +142,9 @@ thead{
                             </div>
                         </div>
 
-                    </div>
-                    <!-- End Modal -->
-
+                 
+  
+                    <!--   ------------ END Mock flyer modal-->
 
 
 
@@ -150,6 +155,118 @@ thead{
                                 <div class="box-header">
                                     <h3>My Visitors</h3>
                                 </div>
+                                <!-------------Mock Visitor Dropdown-------->
+<div class="container">
+  
+  <div class="panel-group">
+    <div class="panel panel-default">
+         <div class="panel-heading row">
+            <h4>
+          <a data-toggle="collapse" href="#collapse1" class="col-md-1"><i class="fa fa-plus"></i>  </a>
+                <div class="col-md-3">Open House Address 1</div></h4>
+      </div>
+      <div id="collapse1" class="panel-collapse collapse">
+        <div class="panel-body">
+            
+        <div class="panel-heading row">
+            <h4>
+          <a data-toggle="collapse" href="#collapse2" class="col-md-1"><i class="fa fa-plus"></i>  </a>
+                <div class="col-md-3">John Doe</div></h4>
+    
+            <div class="col-md-2">
+<button>Text</button>
+    </div>
+            <div class="col-md-2">
+    <button  type="button" data-toggle="modal" data-target="#flyerModal">Forward Flyer</button>
+    </div>
+            <div class="col-md-2">
+ <button class="fa fa-trash-o">  </button>
+    </div>
+             </div>
+        
+   
+      <div id="collapse2" class="panel-collapse collapse">
+        <div class="panel-body">
+          <div class="row">
+    <div class="col-md-3">
+      Phone Number: 
+    </div>
+    <div class="col-md-3">
+    Email:
+    </div> <div class="col-md-3">
+    <button>Edit</button>
+    </div>
+   
+  </div> <br><div class="row">
+    <div class="col-md-3">
+     Bed Min:
+    </div>
+    <div class="col-md-3">
+   Bath Min:
+    </div>  <div class="col-md-3">
+     Price Min:
+    </div>
+    <div class="col-md-3">
+   Price Max:
+    </div>
+   
+  </div>
+        
+             <div class="panel-body">
+      <div class="panel-heading row">
+            <h4>
+          <a data-toggle="collapse" href="#collapse3" class="col-md-1"><i class="fa fa-plus"></i>  </a>
+                <div class="col-md-3">Notes</div></h4>
+          <div class="col-md-3">
+                 <button  type="button" data-toggle="modal" data-target="#addNotesModal">
+                 Add Note</button>
+          </div>
+                
+            </div>
+      
+              <div id="collapse3" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="row">
+       <div class="col-md-6">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis sapien at erat ornare cursus vitae eu ligula. Aenean vitae risus nibh. Sed viverra rhoncus fringilla.
+                </div>
+           <div class="col-md-2">
+           -September 18, 2017 1:07pm
+                </div> <div class="col-md-3">
+                <button>Edit</button>
+        <button class="fa fa-trash-o">  </button>
+                </div>
+            </div>
+           <div class="row">
+   <div class="col-md-6">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis sapien at erat ornare cursus vitae eu ligula. Aenean vitae risus nibh. Sed viverra rhoncus fringilla.
+                </div>
+           <div class="col-md-2">
+           -September 18, 2017 1:07pm
+                </div> 
+               <div class="col-md-3">
+               <button>Edit</button>
+          <button class="fa fa-trash-o">  </button>
+                </div>
+        </div>
+       
+      </div>
+        </div>
+       
+      </div>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+         
+</div>
+    </div> 
+      
+    
+                    </div>
+                    
+                    <!-------------End Mock Visitor Dropdown-------->
                                 <div class="box-body">
                                     <table class="table table-bordered table-striped" id="freeze">
                                         <thead>
@@ -170,9 +287,8 @@ thead{
                                                 <th data-breakpoints="all">Bedroom(s)</a>
                                                 </th>
                                                 <th data-breakpoints="all">Bathroom(s)</a>
-                                                </th>
-                                                <th data-breakpoints="all">Price</a>
-                                                </th>
+                                                    <th data-breakpoints="all">Price</a>
+                                                    </th>
                                             </tr>
                                         </thead>
 
@@ -231,87 +347,9 @@ thead{
                                                 <?php    
                } //closes foreach 
              ?>
-                                                <tbody>
-                                                    <td>Patty Hershang</td>
-                                                    <td>831-382-4833</td>
-                                                    <td>phershang@gmail.com</td>
-                                                    <!--                                       <td style="display: table-cell;">Looking for 3 bed 2 bath min</td>-->
-
-                                                    <td>1204 Rogers Ct. Salinas, CA 94934</td>
-                                                    <td>
-                                                        <button>Call</button>
-                                                        <button>Text</button>
-                                                        <button>Forward Listing Flyer</button>
-                                                    </td>
-                                                    <td><button type="button" data-toggle="modal" data-target="#viewNotes">View</button></td>
-                                                    <td>
-                                                        <button type="button" data-toggle="modal" data-target="#myModal">Add</button>
-                                                        <button>Edit</button>
-
-                                                    </td>
-                                                    <td>
-                                                        <button class="fa fa-trash-o">  </button>
+                                               
 
 
-
-                                                </tbody>
-                                                <tbody>
-
-
-                                                    <td>Peter Harris</td>
-                                                    <td>831-239-6289</td>
-                                                    <td>pharris23@gmail.com</td>
-                                                    <!--                                       <td style="display: table-cell;">Looking for 3 bed 2 bath min</td>-->
-
-
-
-                                                    <td>1204 Rogers Ct. Salinas, CA 94934</td>
-                                                    <td>
-                                                        <button>Call</button>
-                                                        <button>Text</button>
-                                                        <button>Forward Listing Flyer</button>
-                                                    </td>
-                                                    <td> <button type="button" data-toggle="modal" data-target="#viewNotes">View</button></td>
-                                                    <td>
-                                                        <button type="button" data-toggle="modal" data-target="#myModal">Add</button>
-                                                        <button>Edit</button>
-
-                                                    </td>
-                                                    <td>
-                                                        <button class="fa fa-trash-o">  </button>
-
-
-
-                                                </tbody>
-                                                <tbody>
-
-
-
-                                                    <td>Tony Craver</td>
-                                                    <td>831-588-0444</td>
-                                                    <td>tcraver@yahoo.com</td>
-                                                    <!--                                       <td style="display: table-cell;">Looking for 3 bed 2 bath min</td>-->
-
-
-
-                                                    <td>1204 Rogers Ct. Salinas, CA 94934</td>
-                                                    <td>
-                                                        <button>Call</button>
-                                                        <button>Text</button>
-                                                        <button>Forward Listing Flyer</button>
-                                                    </td>
-                                                    <td><button type="button" data-toggle="modal" data-target="#viewNotes">View</button></td>
-                                                    <td>
-                                                        <button type="button" data-toggle="modal" data-target="#myModal">Add</button>
-                                                        <button>Edit</button>
-
-                                                    </td>
-                                                    <td>
-                                                        <button class="fa fa-trash-o">  </button>
-
-
-
-                                                </tbody>
                                     </table>
                                 </div>
                                 <!-- /.box-body -->
@@ -342,20 +380,20 @@ thead{
         <!-- Footable -->
         <script type="text/javascript" src="../../plugins/footable/js/footable.min.js"></script>
         <!--end links from old visitors page-->
-          <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/floatthead/2.0.3/jquery.floatThead.js"></script>
+        <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/floatthead/2.0.3/jquery.floatThead.js"></script>
 
         <script>
             $(document).ready(function() {
                 $('[data-toggle="popover"]').popover({
                     html: true
                 });
-                
+
             });
+
             function takeNote(house, buyer) {
                 var prevNote = $("#" + buyer + "-detail").html();
                 var noteEntered = prompt("Enter Note:", prevNote);
-                if (noteEntered == null || noteEntered == "") {
-                } else {
+                if (noteEntered == null || noteEntered == "") {} else {
                     $("#" + buyer + "-detail").html(noteEntered);
                     // alert(houseId + " " + buyerID);
                     $.post("saveNote.php", {
@@ -365,9 +403,10 @@ thead{
                     });
                 }
             }
-           $('table').floatThead({
-    position: 'absolute'
-});
+            $('table').floatThead({
+                position: 'absolute'
+            });
+      
 
         </script>
 
