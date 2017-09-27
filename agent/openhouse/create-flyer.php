@@ -403,7 +403,8 @@ $keys = array_keys($response);
                 jQuery.each($ch.filter(":checked"), function(k, v) {
                     if(itemtoRemove === v.value){
                         $ch = $ch.not(k); //remove from jQuery array
-                        $(k).prop('checked', false);
+                        alert("found value");
+                        //$(k).prop('checked', false);
                         return false;
                     }
                 });
