@@ -356,7 +356,6 @@ $keys = array_keys($response);
         <script>
             function reorder(){
                     var count = 0;
-                    $ch = $('input[type="checkbox"]', $wrapper);
                     jQuery.each($ch.filter(":checked"), function(k, v) {
                         //alert( "Key: " + k + ", Value: " + v.value );
                         $('#image' + count).attr("src", v.value); //replace number images by selected images
@@ -399,7 +398,7 @@ $keys = array_keys($response);
                     }
                 }
 
-                reorder();
+                reorder($ch);
             });
 
             $('#image0').click(function(){
@@ -411,7 +410,7 @@ $keys = array_keys($response);
                         return false;
                     }
                 });
-                reorder();
+                reorder($ch);
             });
 
             $('#image1').click(function(){
@@ -423,7 +422,7 @@ $keys = array_keys($response);
                         return false;
                     }
                 });
-                reorder();
+                reorder($ch);
             });
 
             $('#image2').click(function(){
@@ -435,7 +434,7 @@ $keys = array_keys($response);
                         return false;
                     }
                 });
-                reorder();
+                reorder($ch);
             });
 
             $('#image3').click(function(){
@@ -447,7 +446,7 @@ $keys = array_keys($response);
                         return false;
                     }
                 });
-                reorder();
+                reorder($ch);
             });
 
             $('#image4').click(function(){
