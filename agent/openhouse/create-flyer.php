@@ -400,7 +400,9 @@ $keys = array_keys($response);
 
             $('#image0').click(function(){
                 var itemtoRemove = $('#image0').attr('src');
-                alert(jQuery.inArray( "John", $ch ));
+                if(jQuery.inArray( "John", $ch ) != -1){
+                    alert("gone remove");
+                }
                 //$ch = $ch.not(itemtoRemove);
                 //arr.splice($.inArray(itemtoRemove, arr),1);
             });
