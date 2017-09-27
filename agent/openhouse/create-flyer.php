@@ -398,8 +398,8 @@ $keys = array_keys($response);
                 }
             });
 
-            $('#selectedImages').click(function(){
-                alert($(this).attr('src'));
+            $('#image0').click(function(){
+                alert($('#image0').attr('src'));
             });
 
         </script>
