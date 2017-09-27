@@ -399,11 +399,11 @@ $keys = array_keys($response);
             });
 
             $('#image0').click(function(){
-                var itemtoRemove = $('#image0').attr('src');
+                var itemToRemove = $('#image0').attr('src');
                 jQuery.each($ch.filter(":checked"), function(k, v) {
-                    if(itemtoRemove === v.value){
-                        $ch.splice($.inArray(itemtoRemove, $ch),1);
-                        $('input:checkbox[value="' + v.value + '"]').attr('checked', false);
+                    if(itemToRemove === v.value){
+                        $ch.splice($.inArray(itemToRemove, $ch),1);
+                        $("#imageSerialize input[id^='image0'][value="+itemToRemove+"]").prop('checked',false);
                         return false;
                     }
                 });
