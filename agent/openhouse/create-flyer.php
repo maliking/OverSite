@@ -403,7 +403,7 @@ $keys = array_keys($response);
                 jQuery.each($ch.filter(":checked"), function(k, v) {
                     if(itemToRemove === v.value){
                         $ch.splice($.inArray(itemToRemove, $ch),1);
-                        $("#imageSerialize input[id^='image0'][value="+itemToRemove+"]").prop('checked',false);
+                        $("#imageSerialize [value="+itemToRemove+"]").prop('checked',false);
                         return false;
                     }
                 });
