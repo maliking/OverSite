@@ -400,14 +400,14 @@ $keys = array_keys($response);
 
             $('#image0').click(function(){
                 var itemtoRemove = $('#image0').attr('src');
-                if(jQuery.inArray( itemtoRemove, $ch.value ) != -1){
-                    alert("gone remove");
-                }
-                else{
-                    alert("wrong");
-                }
-                //$ch = $ch.not(itemtoRemove);
-                //arr.splice($.inArray(itemtoRemove, arr),1);
+                jQuery.each($ch.filter(":checked"), function(k, v) {
+                    if(itemtoRemove === v.value){
+                        keyToRemove = k;
+                        $ch = $ch.not(this); //remove from jQuery array
+                        alert("removed");
+                        return false;
+                    }
+                });
             });
 /*
             $('#image1').click(function(){
