@@ -402,9 +402,8 @@ $keys = array_keys($response);
                 var itemtoRemove = $('#image0').attr('src');
                 jQuery.each($ch.filter(":checked"), function(k, v) {
                     if(itemtoRemove === v.value){
-                        keyToRemove = k;
-                        $ch = $ch.not(this); //remove from jQuery array
-                        $(itemtoRemove).prop('checked', false);
+                        $ch = $ch.not(k); //remove from jQuery array
+                        $(k).prop('checked', false);
                         return false;
                     }
                 });
