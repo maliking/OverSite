@@ -12,9 +12,15 @@
         <link rel="stylesheet" href="plugins/checkbox/style.css">
         <!-- Theme style -->
         <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-
         <link rel="stylesheet" href="dist/css/skins/skin-blue-light.css">
-
+        <style>
+        /* Make logo on login page smaller */ 
+        .img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+            max-width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        </style>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
