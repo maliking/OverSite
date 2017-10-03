@@ -158,7 +158,7 @@
                                 <!-------------Mock Visitor Dropdown-------->
 <div class="container">
   
-  <div class="panel-group">
+  <!-- <div class="panel-group">
     <div class="panel panel-default">
          <div class="panel-heading row">
             <h4>
@@ -261,7 +261,7 @@
   </div>
          
 </div>
-    </div> 
+    </div>  -->
       
     
                     </div>
