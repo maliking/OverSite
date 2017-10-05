@@ -33,6 +33,9 @@
             thead {
                 background-color: white;
             }
+              .panel-heading:hover {
+                background-color: rgba(192,192,192,0.5);
+            }
 
         </style>
 
@@ -87,7 +90,38 @@
                     </div>
                     <!-- End Modal -->
                     
-  
+  <!--        -----Mock text modal            -->
+                 
+                    <div class="modal fade" id="textModal" data-backdrop="static" role="dialog">
+                        <div class="modal-dialog">
+
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                    <h4 class="modal-title">Text Visitor</h4>
+                                </div>
+                                <!-- /.box-header -->
+                                <div class="modal-body">
+
+                                    <!-- textarea -->
+                                    <div class="form-group">
+                                        <label>Message to visitor:</label>
+                                        <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Send</button>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+<!--        -----END Mock text modal            -->
                     
                     
 <!-- ---------Mock Send Flyer Modal-->
@@ -154,33 +188,44 @@
                             <div class="box">
                                 <div class="box-header">
                                     <h3>My Visitors</h3>
+                                    <!-- search form -->
+      <form action="#" method="get" class="sidebar-form" >
+        <div class="input-group">
+          <input type="text" name="q" class="form-control" placeholder="Search..."style="background-color:white;">
+              <span class="input-group-btn">
+                <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
+                </button>
+              </span>
+        </div>
+      </form>
+      <!-- /.search form -->
                                 </div>
                                 <!-------------Mock Visitor Dropdown-------->
 <div class="container">
   
-  <!-- <div class="panel-group">
+   <div class="panel-group">
     <div class="panel panel-default">
          <div class="panel-heading row">
             <h4>
-          <a data-toggle="collapse" href="#collapse1" class="col-md-1"><i class="fa fa-plus"></i>  </a>
-                <div class="col-md-3">Open House Address 1</div></h4>
+          <a data-toggle="collapse" href="#collapse1" class="col-md-1"><i class="more-less fa fa-plus"></i>  </a>
+                <div class="col-md-3">Listing Address 1</div></h4>
       </div>
       <div id="collapse1" class="panel-collapse collapse">
         <div class="panel-body">
             
         <div class="panel-heading row">
             <h4>
-          <a data-toggle="collapse" href="#collapse2" class="col-md-1"><i class="fa fa-plus"></i>  </a>
-                <div class="col-md-3">John Doe</div></h4>
+          <a data-toggle="collapse" href="#collapse2" class="col-md-1"><i class="more-less fa fa-plus"></i>  </a>
+                <div  class="col-md-3">John Doe</div></h4>
     
             <div class="col-md-2">
-<button>Text</button>
+       <button type="button" data-toggle="modal" data-target="#textModal" class="btn-xs btn-primary">Text</button>
     </div>
             <div class="col-md-2">
-    <button  type="button" data-toggle="modal" data-target="#flyerModal">Forward Flyer</button>
-    </div>
+    <button class="btn-xs btn-primary"  type="button" data-toggle="modal" data-target="#flyerModal">Forward Flyer</button>
+    </div>  
             <div class="col-md-2">
- <button class="fa fa-trash-o">  </button>
+ <button type="button" class="btn-xs btn-danger"> Remove </button>
     </div>
              </div>
         
@@ -194,7 +239,10 @@
     <div class="col-md-3">
     Email:
     </div> <div class="col-md-3">
-    <button>Edit</button>
+    Date Visited:
+    </div> 
+              <div class="col-md-3">
+           <button type="button" class="btn-xs btn-primary">Edit</button>
     </div>
    
   </div> <br><div class="row">
@@ -211,14 +259,18 @@
     </div>
    
   </div>
-        
+       
+            
+           
+          
              <div class="panel-body">
       <div class="panel-heading row">
             <h4>
-          <a data-toggle="collapse" href="#collapse3" class="col-md-1"><i class="fa fa-plus"></i>  </a>
+          <a data-toggle="collapse" href="#collapse3" class="col-md-1"><i class="more-less fa fa-plus"></i>  </a>
                 <div class="col-md-3">Notes</div></h4>
           <div class="col-md-3">
-                 <button  type="button" data-toggle="modal" data-target="#addNotesModal">
+                    
+                 <button class="btn-xs btn-primary" type="button" data-toggle="modal" data-toggle="modal" data-target="#addNotesModal">
                  Add Note</button>
           </div>
                 
@@ -233,8 +285,8 @@
            <div class="col-md-2">
            -September 18, 2017 1:07pm
                 </div> <div class="col-md-3">
-                <button>Edit</button>
-        <button class="fa fa-trash-o">  </button>
+               <button type="button" class="btn-xs btn-primary">Edit</button>
+        <button type="button" class="btn-xs btn-danger"> Remove </button>
                 </div>
             </div>
            <div class="row">
@@ -245,8 +297,106 @@
            -September 18, 2017 1:07pm
                 </div> 
                <div class="col-md-3">
-               <button>Edit</button>
-          <button class="fa fa-trash-o">  </button>
+               <button type="button" class="btn-xs btn-primary">Edit</button>
+          <button type="button" class="btn-xs btn-danger"> Remove </button>
+                </div>
+        </div>
+       
+      </div>
+        </div>
+       
+      </div>
+          </div>
+        
+      </div>
+ 
+            
+        <div class="panel-heading row">
+            <h4>
+          <a data-toggle="collapse" href="#collapse5" class="col-md-1"><i class="more-less fa fa-plus"></i>  </a>
+                <div class="col-md-3">Bob Smith</div></h4>
+    
+            <div class="col-md-2">
+       <button type="button" data-target="#textModal" class="btn-xs btn-primary">Text</button>
+    </div>
+            <div class="col-md-2">
+    <button class="btn-xs btn-primary"  type="button" data-toggle="modal" data-target="#flyerModal">Forward Flyer</button>
+    </div>  
+            <div class="col-md-2">
+ <button type="button" class="btn-xs btn-danger"> Remove </button>
+    </div>
+             </div>
+        
+   
+      <div id="collapse5" class="panel-collapse collapse">
+        <div class="panel-body">
+          <div class="row">
+    <div class="col-md-3">
+      Phone Number: 
+    </div>
+    <div class="col-md-3">
+    Email:
+    </div>
+              <div class="col-md-3">
+    Date Visited:
+    </div> <div class="col-md-3">
+           <button type="button" class="btn-xs btn-primary">Edit</button>
+    </div>
+   
+  </div> <br><div class="row">
+    <div class="col-md-3">
+     Bed Min:
+    </div>
+    <div class="col-md-3">
+   Bath Min:
+    </div>  <div class="col-md-3">
+     Price Min:
+    </div>
+    <div class="col-md-3">
+   Price Max:
+    </div>
+   
+  </div>
+       
+            
+           
+          
+             <div class="panel-body">
+      <div class="panel-heading row">
+            <h4>
+          <a data-toggle="collapse" href="#collapse6" class="col-md-1"><i class="more-less fa fa-plus"></i>  </a>
+                <div class="col-md-3">Notes</div></h4>
+          <div class="col-md-3">
+                    
+                 <button class="btn-xs btn-primary" type="button" data-toggle="modal" data-target="#addNotesModal">
+                 Add Note</button>
+          </div>
+                
+            </div>
+      
+              <div id="collapse6" class="panel-collapse collapse">
+        <div class="panel-body">
+            <div class="row">
+       <div class="col-md-6">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis sapien at erat ornare cursus vitae eu ligula. Aenean vitae risus nibh. Sed viverra rhoncus fringilla.
+                </div>
+           <div class="col-md-2">
+           -September 18, 2017 1:07pm
+                </div> <div class="col-md-3">
+               <button type="button" class="btn-xs btn-primary">Edit</button>
+        <button type="button" class="btn-xs btn-danger"> Remove </button>
+                </div>
+            </div>
+           <div class="row">
+   <div class="col-md-6">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec quis sapien at erat ornare cursus vitae eu ligula. Aenean vitae risus nibh. Sed viverra rhoncus fringilla.
+                </div>
+           <div class="col-md-2">
+           -September 18, 2017 1:07pm
+                </div> 
+               <div class="col-md-3">
+               <button type="button" class="btn-xs btn-primary">Edit</button>
+          <button type="button" class="btn-xs btn-danger"> Remove </button>
                 </div>
         </div>
        
@@ -261,7 +411,7 @@
   </div>
          
 </div>
-    </div>  -->
+    </div> 
       
     
                     </div>
@@ -407,6 +557,16 @@
                 position: 'absolute'
             });
       
+             function toggleIcon(e) {
+    $(e.target)
+        .prev('.panel-heading')
+        .find(".more-less")
+        .toggleClass('fa-plus fa-minus');
+         
+}
+$('.panel-group').on('hidden.bs.collapse', toggleIcon);
+$('.panel-group').on('shown.bs.collapse', toggleIcon);
+
 
         </script>
 
