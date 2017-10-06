@@ -252,8 +252,8 @@ $result = $stmt->fetch();
                                                                 </tr>
                                                                 <tr>
 
-                                                                    <td>John</td>
-                                                                    <td>
+                                                                    <td id="firstName">John</td>
+                                                                    <td id="lastName">
                                                                         Doe
                                                                     </td>
                                                                     <tr>
@@ -266,8 +266,8 @@ $result = $stmt->fetch();
                                                                     </tr>
                                                                     <tr>
 
-                                                                        <td>2</td>
-                                                                        <td>
+                                                                        <td id="minBed">2</td>
+                                                                        <td id="minBath">
                                                                             2
                                                                         </td>
                                                                         <tr>
@@ -280,8 +280,8 @@ $result = $stmt->fetch();
                                                                         </tr>
                                                                         <tr>
 
-                                                                            <td>$120,000</td>
-                                                                            <td>
+                                                                            <td id="minPrice">$120,000</td>
+                                                                            <td id ="maxPrice">
                                                                                 $910,000
                                                                             </td>
 
@@ -294,7 +294,7 @@ $result = $stmt->fetch();
                                                                         </tr>
                                                                         <tr>
 
-                                                                            <td>3-6 months</td>
+                                                                            <td id="purchaseWithin">3-6 months</td>
                                                                             <td>
                                                                                 <form action="">
                                                                                     <input type="radio" name="preapproved" value="yes"> Yes<br>
@@ -314,17 +314,17 @@ $result = $stmt->fetch();
                                                                         </tr>
                                                                         <tr>
 
-                                                                            <td>
+                                                                            <td id="notes">
 
                                                                                 Preferes large back yard for 2 dogs.
                                                                             </td>
-                                                                            <td>
+                                                                            <!-- <td>
                                                                                 <small>
                                             May 19, 2017 12:43pm
                                         </small>
-                                                                            </td>
+                                                                            </td> -->
 
-                                                                            <tr>
+                                                                            <!-- <tr>
                                                                                 <td>
                                                                                     Must have garage
                                                                                 </td>
@@ -334,7 +334,7 @@ $result = $stmt->fetch();
                                         </small>
                                                                                 </td>
 
-                                                                            </tr>
+                                                                            </tr> -->
 
 
                                                                         </tr>
@@ -368,7 +368,7 @@ $result = $stmt->fetch();
 
                                                     <div class="col-md-12">
                                                         <p>Additional Notes:</p>
-                                                        <textarea style="color:black;" rows="6" cols="75">
+                                                        <textarea style="color:black;" rows="6" cols="60">
 
                                                             </textarea>
 
@@ -524,10 +524,32 @@ $result = $stmt->fetch();
                         $('#calendar').fullCalendar('unselect');
                     },
                     eventClick: function(event, element) {
+                        var id = event.id.replace("T", " ");
 
+                        var formData = { id: id};
+                        
+                        $.ajax({
+                                url : "getMeetingInfo.php",
+                                type: "POST",
+                                data : formData,
+                                success: function(data, textStatus, jqXHR)
+                                {
+                                    var meetingInfo = JSON.parse(data);
+                                    $('#firstName').html(meetingInfo['firstName']);
+
+                                    $('#lastName').html(meetingInfo['lastName']);
+                                    $('#minBed').html(meetingInfo['bedroomsMin']);
+                                    $('#minBath').html(meetingInfo['bathroomsMin']);
+                                    $('#minPrice').html(meetingInfo['priceMin']);
+                                    $('#maxPrice').html(meetingInfo['priceMax']);
+                                    $('#purchaseWithin').html(meetingInfo['howSoon']);
+                                    $('#notes').html(meetingInfo['note']);
+                                    
+                                    
+                                    
+                                }
+                            });
                         $("#modal-primary").modal();
-
-
 
                     },
 
