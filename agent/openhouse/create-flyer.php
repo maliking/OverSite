@@ -537,11 +537,11 @@ document.getElementById("loading").style = "visibility: hidden";
 
 
                     
-                    allVals.push($('#image0').val());
-                    allVals.push($('#image1').val());
-                    allVals.push($('#image2').val());
-                    allVals.push($('#image3').val());
-                    allVals.push($('#image4').val());
+                    allVals.push($('#image0').attr('src'));
+                    allVals.push($('#image1').attr('src'));
+                    allVals.push($('#image2').attr('src'));
+                    allVals.push($('#image3').attr('src'));
+                    allVals.push($('#image4').attr('src'));
                     
 
                     $('input[name="flyerContent"]:checked').each(function() {
@@ -569,7 +569,7 @@ document.getElementById("loading").style = "visibility: hidden";
 
 
                     // });
-                    alert("Your pdf will auto load.");
+                    // alert("Your pdf will auto load.");
                     // alert(lotSize);
                     $.ajax({
                         
