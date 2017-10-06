@@ -516,11 +516,7 @@ document.getElementById("loading").style = "visibility: hidden";
 }
             function finishClicked() {
                   showLoading();
-                if ($("input[name='imageURL']:checked").length > 5) {
-                    alert("Only choose 5 pictures.");
-                } else if ($("input:[name='imageURL']checked").length < 5) {
-                    alert("Choose at least 5 pictures.");
-                } else {
+                
                     var allVals = [];
 
                     var description = $("input[name='description']").val();
@@ -618,7 +614,7 @@ document.getElementById("loading").style = "visibility: hidden";
 
                     // alert("Flyer created! Refres page");
                     // console.log(allVals);
-                }
+                
                 // $('input[name="imageURL"]:checked').each(function() {
                 //    // alert($(this).val()); 
                 //    alert();
