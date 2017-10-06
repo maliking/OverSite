@@ -502,6 +502,7 @@ $result = $stmt->fetch();
                     // firstHour: 12,
                     minTime: '07:00:00',
                     maxTime: '21:00:00',
+                    slotDuration: '00:15:00',
                     height:"auto",
                     navLinks: true, // can click day/week names to navigate views
                     eventLimit: true, // allow "more" link when too many events
