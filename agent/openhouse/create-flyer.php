@@ -540,9 +540,13 @@ document.getElementById("loading").style = "visibility: hidden";
                     // var lotSize = $("input[name='lotSize']").val();
 
 
-                    $('input[name="imageURL"]:checked').each(function() {
-                        allVals.push($(this).val());
-                    });
+                    
+                    allVals.push($('#image0').val());
+                    allVals.push($('#image1').val());
+                    allVals.push($('#image2').val());
+                    allVals.push($('#image3').val());
+                    allVals.push($('#image4').val());
+                    
 
                     $('input[name="flyerContent"]:checked').each(function() {
                         flyerContent.push($(this).val());
