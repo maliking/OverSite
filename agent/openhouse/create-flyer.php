@@ -512,7 +512,7 @@ $keys = array_keys($response);
                 });
 
                 jQuery.each($ch.filter(":checked"), function(k, v) {
-                    alert(v.value);
+                    window.open(v.value);
                 });
               
             }
