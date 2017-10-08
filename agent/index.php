@@ -484,6 +484,20 @@ $result = $stmt->fetch();
                             textColor: 'black'  // an option!
                         }
                     ],
+                    header:{
+                        left:   'title',
+                        center: 'month,agendaWeek,agendaDay',
+                        right:  'today prev,next'
+                    },
+                    hiddenDays: [0],
+                    customButtons: {
+                                myCustomButton: {
+                                    text: 'custom!',
+                                    click: function() {
+                                        alert('clicked the custom button!');
+                                    }
+                                }
+                            },
                     // businessHours: {
                     //     // days of week. an array of zero-based day of week integers (0=Sunday)
                     //     // dow: [ 1, 2, 3, 4 ], // Monday - Thursday
@@ -574,7 +588,7 @@ $result = $stmt->fetch();
                                 data : formData,
                                 success: function(data, textStatus, jqXHR)
                                 {
-                                    alert("finished");
+                                    // alert("finished");
                                 }
                             });
                             
@@ -594,7 +608,7 @@ $result = $stmt->fetch();
                         else
                         {
                             $.post( "updateMeeting.php", { id: id, start: startTime, end:endTime } ); 
-                            alert("finished");
+                            // alert("finished");
                         }
                     }
 
