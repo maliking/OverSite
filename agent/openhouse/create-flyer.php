@@ -376,15 +376,21 @@ $keys = array_keys($response);
             function drop(ev) {
                 ev.preventDefault();
               var src = document.getElementById (ev.dataTransfer.getData ("src"));
+              if(src === "http://www.clker.com/cliparts/5/P/q/M/g/J/number-5-button-hi.png" ||
+                src === "http://www.clker.com/cliparts/J/p/g/I/c/L/number-4-button-hi.png" ||
+                srd === "http://www.clker.com/cliparts/U/4/Y/A/Y/6/number-3-button-hi.png" ||
+                src === "http://pngimg.com/uploads/number2/Number%202%20PNG%20images%20free%20download_PNG14940.png" || 
+                src === "http://www.clipartbay.com/cliparts/red-number-1-clip-art-gc8rlnb.png"){
+                return;
+              }
               var srcParent = src.parentNode;
               var tgt = ev.currentTarget.firstElementChild;
 
               ev.currentTarget.replaceChild (src, tgt);
               srcParent.appendChild (tgt);
               
-              alert("image 1 value: " + src.src);
             }
-        
+
             function reorder(){
                     var count = 0;
                     jQuery.each($ch.filter(":checked"), function(k, v) {
