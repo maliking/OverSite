@@ -502,7 +502,7 @@ $keys = array_keys($response);
               ev.currentTarget.replaceChild (src, tgt);
               srcParent.appendChild (tgt);
 
-              alert($ch[0].val();
+              alert($ch[0].src);
               
             }
         </script>
