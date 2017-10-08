@@ -472,20 +472,7 @@ $keys = array_keys($response);
                 reorder();
             });
 
-            function allowDrop(ev) {
-                ev.preventDefault();
-            }
-
-            function drag(ev) {
-                ev.dataTransfer.setData("src", ev.target.id);
-            }
-
-            function drop(ev) {
-                ev.preventDefault();
-              var src = document.getElementById (ev.dataTransfer.getData ("src"));
-              var srcParent = src.parentNode;
-              var tgt = ev.currentTarget.firstElementChild;
-
+function checkIfNumberPhotos(){
                 if(src.src == "http://www.clker.com/cliparts/5/P/q/M/g/J/number-5-button-hi.png" ||
                     src.src == "http://www.clker.com/cliparts/J/p/g/I/c/L/number-4-button-hi.png" ||
                     src.src == "http://www.clker.com/cliparts/U/4/Y/A/Y/6/number-3-button-hi.png" ||
@@ -496,17 +483,48 @@ $keys = array_keys($response);
                     tgt.src == "http://www.clker.com/cliparts/U/4/Y/A/Y/6/number-3-button-hi.png" ||
                     tgt.src == "http://pngimg.com/uploads/number2/Number%202%20PNG%20images%20free%20download_PNG14940.png" || 
                     tgt.src == "http://www.clipartbay.com/cliparts/red-number-1-clip-art-gc8rlnb.png"){
+                    return true;
+                }
+
+                else{
+                    return false;
+                }
+            }
+
+            function allowDrop(ev) {
+                if(checkIfNumberPhotos()){
                     return;
-              }
+                }
+                ev.preventDefault();
+            }
+
+            function drag(ev) {
+                if(checkIfNumberPhotos()){
+                    return;
+                }
+                ev.dataTransfer.setData("src", ev.target.id);
+            }
+
+            function drop(ev) {
+                ev.preventDefault();
+              var src = document.getElementById (ev.dataTransfer.getData ("src"));
+              var srcParent = src.parentNode;
+              var tgt = ev.currentTarget.firstElementChild;
+
+                if(checkIfNumberPhotos()){
+                    return;
+                }   
 
               ev.currentTarget.replaceChild (src, tgt);
               srcParent.appendChild (tgt);
+
+              temp1 = sr
 
               jQuery.each($ch.filter(":checked"), function(k, v) {
                     if(src.src == v.value){
                         v.value = tgt.src;
                     }
-                    if(tgt.src == v.value){
+                    elseif(tgt.src == v.value){
                         v.value = src.src;
                     }
                 });
