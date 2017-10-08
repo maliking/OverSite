@@ -525,10 +525,10 @@
             }
             elseif(isset($_GET['bathroomSort'])){
                 if($bathroomSort == 1){
-                    $sql .= "bathroomSort ASC";
+                    $sql .= "bathroomsMin ASC";
                 }
                 else{
-                    $sql .= "bathroomSort DESC";
+                    $sql .= "bathroomMin DESC";
                 }
             }
             else{
