@@ -54,7 +54,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Re/Max Salinas | My Visitors</title>
+        <title>Re/Max Salinas | My Visitorss</title>
 
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
