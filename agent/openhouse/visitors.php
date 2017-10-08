@@ -508,11 +508,11 @@
                 }
             }
             elseif(isset($_GET['addressSort'])){
-                if($bathroomSort == 1){
-                    $sql .= "bathroomsMin ASC";
+                if($addressSort == 1){
+                     $sql .= "SUBSTR(LTRIM(address), LOCATE(' ', LTRIM(address))) ASC";
                 }
                 else{
-                    $sql .= "bathroomsMin DESC";
+                    $sql .= "SUBSTR(LTRIM(address), LOCATE(' ', LTRIM(address))) DESC";
                 }
             }
             elseif(isset($_GET['bedroomSort'])){
@@ -524,11 +524,11 @@
                 }
             }
             elseif(isset($_GET['bathroomSort'])){
-                if($bedroomSort == 1){
-                    $sql .= "SUBSTR(LTRIM(address), LOCATE(' ', LTRIM(address))) ASC";
+                if($bathroomSort == 1){
+                    $sql .= "bathroomSort ASC";
                 }
                 else{
-                    $sql .= "SUBSTR(LTRIM(address), LOCATE(' ', LTRIM(address))) DESC";
+                    $sql .= "bathroomSort DESC";
                 }
             }
             else{
