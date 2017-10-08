@@ -528,7 +528,7 @@
                     $sql .= "bathroomsMin ASC";
                 }
                 else{
-                    $sql .= "bathroomMin DESC";
+                    $sql .= "bathroomsMin DESC";
                 }
             }
             else{
