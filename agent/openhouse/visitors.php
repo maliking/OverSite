@@ -498,28 +498,28 @@
                 $sql .= "lastName DESC";
             }
 
-            elseif($emailSort == 1){
+            if($emailSort == 1){
                 $sql .= "email ASC";
             }
             else{
                 $sql .= "email DESC";
             }
 
-            elseif($bedroomSort == 1){
+            if($bedroomSort == 1){
                 $sql .= "SUBSTR(LTRIM(address), LOCATE(' ', LTRIM(address))) ASC";
             }
             else{
                 $sql .= "SUBSTR(LTRIM(address), LOCATE(' ', LTRIM(address))) DESC";
             }
 
-            elseif($bathroomSort == 1){
+            if($bathroomSort == 1){
                 $sql .= "bathroomsMin ASC";
             }
             else{
                 $sql .= "bathroomsMin DESC";
             }
 
-            elseif($bedroomSort == 1){
+            if($bedroomSort == 1){
                 $sql .= "bedroomsMin ASC";
             }
             else{
