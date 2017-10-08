@@ -487,7 +487,7 @@
                 return $results['address'] . ", " . $results['city'] . ", " . $results['state'] . " " . $results['zip'];
             }*/
             $dbConn = getConnection();
-            $sql = "SELECT * FROM BuyerInfo JOIN HouseInfo WHERE userId = :userId";
+            $sql = "SELECT * FROM BuyerInfo, HouseInfo where BuyerInfo.userId = :userId AND BuyerInfo.houseId = HouseInfo.houseId";
             $namedParameters = array();
             $namedParameters[':userId'] = $_SESSION['userId'];
             $stmt = $dbConn -> prepare($sql);
