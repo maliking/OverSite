@@ -487,9 +487,6 @@
                 return $results['address'] . ", " . $results['city'] . ", " . $results['state'] . " " . $results['zip'];
             }*/
             $dbConn = getConnection();
-            if($visitorSort == 1){
-
-            }
             $sql = "SELECT * FROM BuyerInfo JOIN HouseInfo WHERE userId = :userId";
             $namedParameters = array();
             $namedParameters[':userId'] = $_SESSION['userId'];
