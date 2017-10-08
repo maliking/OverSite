@@ -502,7 +502,18 @@ $keys = array_keys($response);
               ev.currentTarget.replaceChild (src, tgt);
               srcParent.appendChild (tgt);
 
-              alert($ch[0].src);
+              jQuery.each($ch.filter(":checked"), function(k, v) {
+                    if(src.src == v.value){
+                        v.value = tgt.src;
+                    }
+                    if(tgt.src == v.value){
+                        v.value = src.src;
+                    }
+                });
+
+                jQuery.each($ch.filter(":checked"), function(k, v) {
+                    alert(v.value);
+                });
               
             }
         </script>
