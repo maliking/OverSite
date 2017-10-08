@@ -12,6 +12,15 @@
         $stmt->execute();
     }
 
+    function updateSort($sort){
+        if($sort == 1){
+            return 0;
+        }
+        else{
+            return 1;
+        }
+    }
+
     //sort variables; 1 will be alphabetical; 0 will be reverse alphabetical
     $visitorSort = 1;
     $emailSort = 1;
@@ -444,7 +453,7 @@
                                     <table class="table table-bordered table-striped" id="freeze">
                                         <thead>
                                             <tr>
-                                                <th id="visitorSort"><a class="dotted" href=<?php echo "http://jjp2017.org/agent/openhouse/visitors.php?visitorSort=" . if($visitorSort==1){return 0;} else{return 1;} ."&emailSort=" .$emailSort ?> data-toggle="tooltip" data-placement="top" title="Approval Date">Visitors</a></th>
+                                                <th id="visitorSort"><a class="dotted" href=<?php echo "http://jjp2017.org/agent/openhouse/visitors.php?visitorSort=" updateSort($visitorSort) ?> data-toggle="tooltip" data-placement="top" title="Approval Date">Visitors</a></th>
 
                                                 <th data-breakpoints="all">Phone Number</th>
                                                 <th id="emailSort" data-breakpoints="all">Email</th>
