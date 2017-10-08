@@ -54,7 +54,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Re/Max Salinas | My Visitorss</title>
+        <title>Re/Max Salinas | My Visitors</title>
 
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
@@ -219,7 +219,7 @@
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
-                                    <h3>My Visitors</h3>
+                                    <h3>My Visitorss</h3>
                                     <!-- search form -->
       <form action="#" method="get" class="sidebar-form" >
         <div class="input-group">
