@@ -491,14 +491,8 @@
                     WHERE BuyerInfo.userId = :userId 
                     AND BuyerInfo.houseId = HouseInfo.houseId
                     ORDER BY ";
-            if($visitorSort == 1){
-                $sql .= "lastName ASC";
-            }
-            else{
-                $sql .= "lastName DESC";
-            }
 
-            if($emailSort == 1){
+            /*if($emailSort == 1){
                 $sql .= "email ASC";
             }
             else{
@@ -524,6 +518,13 @@
             }
             else{
                 $sql .= "bedroomsMin DESC";
+            }*/
+
+            if($visitorSort == 1){
+                $sql .= "lastName ASC";
+            }
+            else{
+                $sql .= "lastName DESC";
             }
 
             $namedParameters = array();
