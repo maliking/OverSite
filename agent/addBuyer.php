@@ -69,7 +69,14 @@ $namedParameters[':houseId'] = $_POST['houseId'];
 $namedParameters[':userId'] = $userId;
 $namedParameters[':howSoon'] = $_POST['howSoon'];
 $stmt = $dbConn -> prepare($sql);
+try{
 $stmt->execute($namedParameters);
+}
+catch(Exception $e)
+{
+    echo 'Caught exception: ',  $e->getMessage(), "\n";
+    
+}
 //$stmt->execute();
 //$result = $stmt->fetch(); //We are expecting one record
 
