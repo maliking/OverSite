@@ -143,7 +143,7 @@ $keys = array_keys($response);
                     </div>
                     <section class="content-header" style="margin-top: 50px; padding-top: 30px; padding-bottom: 20px;">
                         <h1 class="col-md-6 col-sm-6 col-xs-12">
-                            Create New Flyer
+                            Create New Flyers
                         </h1>
                         <h1 class="col-md-3 col-sm-3 col-xs-6">
                             Current Flyer             
