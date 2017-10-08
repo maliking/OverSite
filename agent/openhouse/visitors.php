@@ -487,7 +487,45 @@
                 return $results['address'] . ", " . $results['city'] . ", " . $results['state'] . " " . $results['zip'];
             }*/
             $dbConn = getConnection();
-            $sql = "SELECT * FROM BuyerInfo, HouseInfo where BuyerInfo.userId = :userId AND BuyerInfo.houseId = HouseInfo.houseId";
+            $sql = "SELECT * FROM BuyerInfo, HouseInfo 
+                    WHERE BuyerInfo.userId = :userId 
+                    AND BuyerInfo.houseId = HouseInfo.houseId
+                    ORDER BY ";
+            if($visitorSort == 1){
+                $sql .= "lastName ASC";
+            }
+            else{
+                $sql .= "lastName DESC";
+            }
+
+            elseif($emailSort == 1){
+                $sql .= "email ASC";
+            }
+            else{
+                $sql .= "email DESC";
+            }
+
+            elseif($bedroomSort == 1){
+                $sql .= "SUBSTR(LTRIM(address), LOCATE(' ', LTRIM(address))) ASC";
+            }
+            else{
+                $sql .= "SUBSTR(LTRIM(address), LOCATE(' ', LTRIM(address))) DESC";
+            }
+
+            elseif($bathroomSort == 1){
+                $sql .= "bathroomsMin ASC";
+            }
+            else{
+                $sql .= "bathroomsMin DESC";
+            }
+
+            elseif($bedroomSort == 1){
+                $sql .= "bedroomsMin ASC";
+            }
+            else{
+                $sql .= "bedroomsMin DESC";
+            }
+
             $namedParameters = array();
             $namedParameters[':userId'] = $_SESSION['userId'];
             $stmt = $dbConn -> prepare($sql);
