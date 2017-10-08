@@ -365,6 +365,26 @@ $keys = array_keys($response);
         <!-- END TEMPLATE default-js.php INCLUDE -->
 
         <script>
+            function allowDrop(ev) {
+                ev.preventDefault();
+            }
+
+            function drag(ev) {
+                ev.dataTransfer.setData("src", ev.target.id);
+            }
+
+            function drop(ev) {
+                ev.preventDefault();
+              var src = document.getElementById (ev.dataTransfer.getData ("src"));
+              var srcParent = src.parentNode;
+              var tgt = ev.currentTarget.firstElementChild;
+
+              ev.currentTarget.replaceChild (src, tgt);
+              srcParent.appendChild (tgt);
+              
+              alert("image 1 value: " + src.src);
+            }
+        
             function reorder(){
                     var count = 0;
                     jQuery.each($ch.filter(":checked"), function(k, v) {
