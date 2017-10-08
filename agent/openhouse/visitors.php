@@ -453,7 +453,7 @@
                                     <table class="table table-bordered table-striped" id="freeze">
                                         <thead>
                                             <tr>
-                                                <th id="visitorSort"><a class="dotted" href=<?php echo "http://jjp2017.org/agent/openhouse/visitors.php?visitorSort=" updateSort($visitorSort) ?> data-toggle="tooltip" data-placement="top" title="Approval Date">Visitors</a></th>
+                                                <th id="visitorSort"><a class="dotted" href=<?php echo "http://jjp2017.org/agent/openhouse/visitors.php?visitorSort=" . updateSort($visitorSort) ?> data-toggle="tooltip" data-placement="top" title="Approval Date">Visitors</a></th>
 
                                                 <th data-breakpoints="all">Phone Number</th>
                                                 <th id="emailSort" data-breakpoints="all">Email</th>
