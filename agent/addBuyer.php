@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
 session_start();
 require '../databaseConnection.php';
 require '../keys/cred.php';
@@ -75,7 +77,7 @@ $stmt->execute($namedParameters);
 catch(Exception $e)
 {
     echo 'Caught exception: ',  $e->getMessage(), "\n";
-    
+
 }
 //$stmt->execute();
 //$result = $stmt->fetch(); //We are expecting one record
