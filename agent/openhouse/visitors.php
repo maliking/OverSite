@@ -475,7 +475,7 @@
                                         </thead>
 
                                         <?php
-            function getHouseAddress($houseId){
+            /*function getHouseAddress($houseId){
                 $dbConn = getConnection();
                 $sql = "SELECT * FROM HouseInfo WHERE houseId = :houseId";
                 $namedParameters = array();
@@ -485,9 +485,12 @@
                 //$stmt->execute();
                 $results = $stmt->fetch();
                 return $results['address'] . ", " . $results['city'] . ", " . $results['state'] . " " . $results['zip'];
-            }
+            }*/
             $dbConn = getConnection();
-            $sql = "SELECT * FROM BuyerInfo WHERE userId = :userId";
+            if($visitorSort == 1){
+
+            }
+            $sql = "SELECT * FROM BuyerInfo JOIN HouseInfo WHERE userId = :userId";
             $namedParameters = array();
             $namedParameters[':userId'] = $_SESSION['userId'];
             $stmt = $dbConn -> prepare($sql);
@@ -500,7 +503,7 @@
                 echo "<td>" . $result['firstName'] . " " . $result['lastName'] . "</td>";
                 echo "<td>" . $result['phone'] . "</td>";
                 echo "<td>" . htmlspecialchars($result['email']) . "</td>";
-                echo "<td>" . htmlspecialchars(getHouseAddress($result['houseId'])) . "</td>";
+                echo "<td>" . htmlspecialchars($results['address'] . ", " . $results['city'] . ", " . $results['state'] . " " . $results['zip']) . "</td>";
 
                 // <button>Call</button>
                 echo "<td>
