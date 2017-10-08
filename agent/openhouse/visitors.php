@@ -219,7 +219,7 @@
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
-                                    <h3>My Visitorss</h3>
+                                    <h3>My Visitors</h3>
                                     <!-- search form -->
       <form action="#" method="get" class="sidebar-form" >
         <div class="input-group">
