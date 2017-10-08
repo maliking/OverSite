@@ -168,15 +168,26 @@ $keys = array_keys($response);
 
                             <div id="selectedImages" class="col-md-6 col-sm-6 col-xs-12" style="height:70px; width:100%;">
 
-                                <img id="image0" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://www.clipartbay.com/cliparts/red-number-1-clip-art-gc8rlnb.png">
+                                <div id="image0" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img draggable="true" ondragstart="drag(event)" id="drag0" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://www.clipartbay.com/cliparts/red-number-1-clip-art-gc8rlnb.png">
+                                </div>
 
-                                <img id="image1" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://pngimg.com/uploads/number2/Number%202%20PNG%20images%20free%20download_PNG14940.png">
 
-                                <img id="image2" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://www.clker.com/cliparts/U/4/Y/A/Y/6/number-3-button-hi.png">
+                                <div id="image1" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img draggable="true" ondragstart="drag(event)" id="drag1" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://pngimg.com/uploads/number2/Number%202%20PNG%20images%20free%20download_PNG14940.png">
+                                </div>
 
-                                <img id="image3" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://www.clker.com/cliparts/J/p/g/I/c/L/number-4-button-hi.png">
+                                <div id="image2" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img draggable="true" ondragstart="drag(event)" id="drag2" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://www.clker.com/cliparts/U/4/Y/A/Y/6/number-3-button-hi.png">
+                                </div>
 
-                                <img id="image4" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://www.clker.com/cliparts/5/P/q/M/g/J/number-5-button-hi.png">
+                                <div id="image3" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img draggable="true" ondragstart="drag(event)" id="drag3" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://www.clker.com/cliparts/J/p/g/I/c/L/number-4-button-hi.png">
+                                </div>
+
+                                <div id="image4" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                <img draggable="true" ondragstart="drag(event)" id="drag4" class="col-md-2 col-sm-6 col-xs-12" style="height:70px; border:2px solid; margin-left: 10px;" src="http://www.clker.com/cliparts/5/P/q/M/g/J/number-5-button-hi.png">
+                                </div>
 
 
                             </div>
