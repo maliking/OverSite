@@ -366,10 +366,26 @@ $keys = array_keys($response);
 
         <script>
             function allowDrop(ev) {
+              var src = document.getElementById (ev.dataTransfer.getData ("src"));
+              if(src == "http://www.clker.com/cliparts/5/P/q/M/g/J/number-5-button-hi.png" ||
+                src == "http://www.clker.com/cliparts/J/p/g/I/c/L/number-4-button-hi.png" ||
+                src == "http://www.clker.com/cliparts/U/4/Y/A/Y/6/number-3-button-hi.png" ||
+                src == "http://pngimg.com/uploads/number2/Number%202%20PNG%20images%20free%20download_PNG14940.png" || 
+                src == "http://www.clipartbay.com/cliparts/red-number-1-clip-art-gc8rlnb.png"){
+                return;
+              }
                 ev.preventDefault();
             }
 
             function drag(ev) {
+              var src = document.getElementById (ev.dataTransfer.getData ("src"));
+              if(src == "http://www.clker.com/cliparts/5/P/q/M/g/J/number-5-button-hi.png" ||
+                src == "http://www.clker.com/cliparts/J/p/g/I/c/L/number-4-button-hi.png" ||
+                src == "http://www.clker.com/cliparts/U/4/Y/A/Y/6/number-3-button-hi.png" ||
+                src == "http://pngimg.com/uploads/number2/Number%202%20PNG%20images%20free%20download_PNG14940.png" || 
+                src == "http://www.clipartbay.com/cliparts/red-number-1-clip-art-gc8rlnb.png"){
+                return;
+              }
                 ev.dataTransfer.setData("src", ev.target.id);
             }
 
