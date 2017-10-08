@@ -475,8 +475,13 @@ $result = $stmt->fetch();
         {
             var id = $('#id').text();
             var newNote = $('#textArea').val();
-            
-            alert();
+            $.post("saveNoteCalendar.php", {
+                        id: id,
+                        note: newNote
+                    });
+            $('#notes').html(newNote);
+            // $('#modal-primary').modal('toggle');
+            // alert();
         }
 
             $(document).ready(function() {
@@ -564,7 +569,7 @@ $result = $stmt->fetch();
                                     $('#purchaseWithin').html(meetingInfo['howSoon']);
                                     $('#notes').html(meetingInfo['note']);
                                     $('#id').html(meetingInfo['meeting']);
-                                    
+                                    $('#textArea').append(meetingInfo['note']);
                                     
                                 }
                             });
