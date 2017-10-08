@@ -491,40 +491,48 @@
                     WHERE BuyerInfo.userId = :userId 
                     AND BuyerInfo.houseId = HouseInfo.houseId
                     ORDER BY ";
-
-            /*if($emailSort == 1){
-                $sql .= "email ASC";
+            if(isset($_GET['visitorSort'])){
+                if($visitorSort == 1){
+                    $sql .= "lastName ASC";
+                }
+                else{
+                    $sql .= "lastName DESC";
+                }
+            }
+            elseif(isset($_GET['emailSort'])){
+               if($emailSort == 1){
+                    $sql .= "email ASC";
+                }
+                else{
+                    $sql .= "email DESC";
+                }
+            }
+            elseif(isset($_GET['addressSort'])){
+                if($bathroomSort == 1){
+                    $sql .= "bathroomsMin ASC";
+                }
+                else{
+                    $sql .= "bathroomsMin DESC";
+                }
+            }
+            elseif(isset($_GET['bedroomSort'])){
+                if($bedroomSort == 1){
+                    $sql .= "bedroomsMin ASC";
+                }
+                else{
+                    $sql .= "bedroomsMin DESC";
+                }
+            }
+            elseif(isset($_GET['bathroomSort'])){
+                if($bedroomSort == 1){
+                    $sql .= "SUBSTR(LTRIM(address), LOCATE(' ', LTRIM(address))) ASC";
+                }
+                else{
+                    $sql .= "SUBSTR(LTRIM(address), LOCATE(' ', LTRIM(address))) DESC";
+                }
             }
             else{
-                $sql .= "email DESC";
-            }
-
-            if($bedroomSort == 1){
-                $sql .= "SUBSTR(LTRIM(address), LOCATE(' ', LTRIM(address))) ASC";
-            }
-            else{
-                $sql .= "SUBSTR(LTRIM(address), LOCATE(' ', LTRIM(address))) DESC";
-            }
-
-            if($bathroomSort == 1){
-                $sql .= "bathroomsMin ASC";
-            }
-            else{
-                $sql .= "bathroomsMin DESC";
-            }
-
-            if($bedroomSort == 1){
-                $sql .= "bedroomsMin ASC";
-            }
-            else{
-                $sql .= "bedroomsMin DESC";
-            }*/
-
-            if($visitorSort == 1){
-                $sql .= "lastName ASC";
-            }
-            else{
-                $sql .= "lastName DESC";
+                    $sql .= "lastName ASC";
             }
 
             $namedParameters = array();
