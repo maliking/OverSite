@@ -541,10 +541,10 @@
             });
 
             function takeNote(house, buyer) {
-                var prevNote = $("#" + buyer + "-detail").html();
+                var prevNote = $("#" + buyer).html();
                 var noteEntered = prompt("Enter Note:", prevNote);
                 if (noteEntered == null || noteEntered == "") {} else {
-                    $("#" + buyer + "-detail").html(noteEntered);
+                    $("#" + buyer).html(noteEntered);
                     // alert(houseId + " " + buyerID);
                     $.post("saveNote.php", {
                         houseId: house,

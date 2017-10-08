@@ -318,6 +318,7 @@ $result = $stmt->fetch();
 
                                                                                 Preferes large back yard for 2 dogs.
                                                                             </td>
+                                                                            <p id="id" hidden></p>
                                                                             <!-- <td>
                                                                                 <small>
                                             May 19, 2017 12:43pm
@@ -368,9 +369,7 @@ $result = $stmt->fetch();
 
                                                     <div class="col-md-12">
                                                         <p>Additional Notes:</p>
-                                                        <textarea style="color:black;" rows="6" cols="60">
-
-                                                            </textarea>
+                                                        <textarea id="textArea" style="color:black;" rows="6" cols="60"></textarea>
 
                                                     </div>
 
@@ -386,7 +385,7 @@ $result = $stmt->fetch();
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
                                         <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Delete Appointment</button>
-                                        <button type="button" class="btn btn-outline">Save changes</button>
+                                        <button type="button" class="btn btn-outline" onClick="saveMeeting()">Save changes</button>
                                     </div>
                                 </div>
                                 <!-- /.modal-content -->
@@ -472,7 +471,13 @@ $result = $stmt->fetch();
 
         </script>
         <script>
-        
+        function saveMeeting()
+        {
+            var id = $('#id').text();
+            var newNote = $('#textArea').val();
+            
+            alert();
+        }
 
             $(document).ready(function() {
                 $('#calendar').fullCalendar({
@@ -558,7 +563,7 @@ $result = $stmt->fetch();
                                     $('#maxPrice').html(meetingInfo['priceMax']);
                                     $('#purchaseWithin').html(meetingInfo['howSoon']);
                                     $('#notes').html(meetingInfo['note']);
-                                    
+                                    $('#id').html(meetingInfo['meeting']);
                                     
                                     
                                 }
