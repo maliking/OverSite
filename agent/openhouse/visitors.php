@@ -444,7 +444,7 @@
                                     <table class="table table-bordered table-striped" id="freeze">
                                         <thead>
                                             <tr>
-                                                <th id="visitorSort"><a class="dotted" href="http://jjp2017.org/agent/openhouse/visitors.php?visitorSort=<?php if($visitorSort==1){return 0;} else{return 1;} ?>&emailAddress=<php $emailSort ?>" data-toggle="tooltip" data-placement="top" title="Approval Date">Visitors</a></th>
+                                                <th id="visitorSort"><a class="dotted" href=<?php echo "http://jjp2017.org/agent/openhouse/visitors.php?visitorSort=" . if($visitorSort==1){return 0;} else{return 1;} ."&emailSort=" .$emailSort ?> data-toggle="tooltip" data-placement="top" title="Approval Date">Visitors</a></th>
 
                                                 <th data-breakpoints="all">Phone Number</th>
                                                 <th id="emailSort" data-breakpoints="all">Email</th>
