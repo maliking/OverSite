@@ -473,6 +473,9 @@ $keys = array_keys($response);
             });
 
 function checkIfNumberPhotos(){
+            var src = document.getElementById (ev.dataTransfer.getData ("src"));
+              var tgt = ev.currentTarget.firstElementChild;
+
                 if(src.src == "http://www.clker.com/cliparts/5/P/q/M/g/J/number-5-button-hi.png" ||
                     src.src == "http://www.clker.com/cliparts/J/p/g/I/c/L/number-4-button-hi.png" ||
                     src.src == "http://www.clker.com/cliparts/U/4/Y/A/Y/6/number-3-button-hi.png" ||
