@@ -96,7 +96,7 @@ $twilio_phone_number = "+18315851661";
         array(
         "From" => $twilio_phone_number,
         "Body" => "Flyer",
-        'mediaUrl' => "http://52.11.24.75/uploadFlyers/" . rawurlencode($_SESSION['flyer']),
+        'mediaUrl' => "http://52.11.24.75/uploadFlyers/" . substr(rawurlencode($_SESSION['flyer']),0,-3) . 'jpg',
         )
     );
     // }
