@@ -558,7 +558,7 @@
                 echo "<td>".
                         
                         // <button>Text</button>
-                        "<button>Forward Flyer</button>
+                        "<button onClick='openFlyerModal()'>Forward Flyer</button>
                     </td>
                     <td id='". $result['buyerID'] ."'>" . $dbNote . "</td>
                     <td>";
@@ -664,7 +664,10 @@
 }
 $('.panel-group').on('hidden.bs.collapse', toggleIcon);
 $('.panel-group').on('shown.bs.collapse', toggleIcon);
-
+function openFlyerModal()
+{
+  $('#flyerModal').modal('toggle');
+}
 
         </script>
 
