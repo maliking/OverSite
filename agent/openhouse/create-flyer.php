@@ -511,9 +511,9 @@ $keys = array_keys($response);
                     }
                 });*/
 
-                jQuery.each($ch.filter(":checked"), function(k, v) {
-                    window.open(v.value);
-                });
+                // jQuery.each($ch.filter(":checked"), function(k, v) {
+                //     window.open(v.value);
+                // });
               
             }
         </script>
@@ -747,6 +747,10 @@ document.getElementById("loading").style = "visibility: hidden";
                     $("#noPdf").replaceWith('<iframe id="pdf" src="../../uploadFlyers/' + response.slice(0, -3) + 'pdf" style="width:600px; height:500px;" frameborder="0"></iframe>'); //server when no pdf found
 
                     $('#myModal').modal('show');
+
+                    var $el = $('#image');
+                   $el.wrap('<form>').closest('form').get(0).reset();
+                   $el.unwrap();
                 }).fail(function() {
                     // Here you should treat the http errors (e.g., 403, 404)
                 }).always(function() {
