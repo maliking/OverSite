@@ -499,7 +499,8 @@ $result = $stmt->fetch();
                         center: 'month,agendaWeek,agendaDay',
                         right:  'today prev,next'
                     },
-                    hiddenDays: [0],
+                    firstDay: 6,
+                
                     customButtons: {
                                 myCustomButton: {
                                     text: 'custom!',

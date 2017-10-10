@@ -453,6 +453,7 @@
                                     <table class="table table-bordered table-striped" id="freeze">
                                         <thead>
                                             <tr>
+                                                <th data-breakpoints="all">TimeStamp</th>
                                                 <th id="visitorSort"><a class="dotted" href=<?php echo "http://jjp2017.org/agent/openhouse/visitors.php?visitorSort=" . updateSort($visitorSort) ?> data-toggle="tooltip" data-placement="top" title="Approval Date">Visitors</a></th>
 
                                                 <th data-breakpoints="all">Phone Number</th>
@@ -544,22 +545,26 @@
             foreach($results as $result){
                 $dbNote = $result['note'];
                 echo "<tbody>";
+                if($result['registeredDate'] == NULL)
+                  echo "<td>" . "</td>";
+                else
+                  echo "<td>" . date("m-d-Y", strtotime($result['registeredDate']))  . "</td>";
                 echo "<td>" . $result['firstName'] . " " . $result['lastName'] . "</td>";
                 echo "<td>" . $result['phone'] . "</td>";
                 echo "<td>" . htmlspecialchars($result['email']) . "</td>";
                 echo "<td>" . htmlspecialchars($result['address'] . ", " . $result['city'] . ", " . $result['state'] . " " . $result['zip']) . "</td>";
 
                 // <button>Call</button>
-                echo "<td>
+                echo "<td>".
                         
-                        <button>Text</button>
-                        <button>Forward Flyer</button>
+                        // <button>Text</button>
+                        "<button>Forward Flyer</button>
                     </td>
                     <td id='". $result['buyerID'] ."'>" . $dbNote . "</td>
                     <td>";
-                echo ' <button onClick=takeNote(' . $result['houseId'] . ',' . $result['buyerID'] . ')>Add</button>';
-                echo " <button>Edit</button>
-                    </td>
+                echo ' <button onClick=takeNote(' . $result['houseId'] . ',' . $result['buyerID'] . ')>Add/Edit</button>';
+                 // <button>Edit</button>
+                    echo "</td>
                     <td>";
         ?>
                                             <form onsubmit="return confirmDelete('<?=$result['firstName']?>')">
