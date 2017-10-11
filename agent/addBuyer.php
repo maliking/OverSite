@@ -21,7 +21,7 @@ $priceMin = $_POST['priceMin'];
 // $houseId = "253";
 $nextMonday = date('Y-m-d', strtotime('next monday'));
 
-$lastMeeting = "SELECT * FROM BuyerInfo WHERE CONVERT(CHAR(10),meeting,120) =" . $nextMonday . "  ORDER BY meeting DESC limit 1";
+$lastMeeting = "SELECT * FROM BuyerInfo WHERE substring(meeting,1,10) ='" . $nextMonday . "'  ORDER BY meeting DESC limit 1";
 
 $meetingStmt = $dbConn->prepare($lastMeeting);
 $meetingStmt->execute();
@@ -29,8 +29,16 @@ $meetingResult = $meetingStmt->fetch();
 
 // $latestTime = new DateTime('07:00:00');
 // $lastTime = $latestTime->format('H:i:s');
-if($meetingResult != NULL)
+if(empty($meetingResult))
 {
+    $nextMeeting = date_create_from_format('Y-m-d', $nextMonday);
+    $nextMeeting->setTime(7, 00, 00);
+
+}
+else
+{
+    
+
     $meetingDateTime = new DateTime($meetingResult['meeting']);
 
     // $lastMeetingDayName = $meetingDateTime->format('l');
@@ -40,12 +48,6 @@ if($meetingResult != NULL)
     $nextMeeting = $meetingDateTime->add(new DateInterval('PT15M'));
 
     // $nextMeetingTime = $nextMeeting->format('H:i:s');
-
-}
-else
-{
-    $nextMeeting = date_create_from_format('Y-m-d', $nextMonday);
-    $nextMeeting->setTime(7, 00, 00);
 }
 
 // if($nextMeetingTime > $lastTime && $meetingResult)
@@ -115,6 +117,7 @@ $twilio_phone_number = "+18315851661";
         'mediaUrl' => "http://52.11.24.75/uploadFlyers/" . substr(rawurlencode($_SESSION['flyer']),0,-3) . 'jpg',
         )
     );
+
     // }
     // else if($houseId == "193")
     // {
