@@ -156,17 +156,17 @@ $keys = array_keys($response);
 
                                     <div class="form-group">
                                             <label for="recipient-name" class="form-control-label">Recipient:</label>
-                                            <input type="text" class="form-control" id="recipient-name">
+                                            <input type="text" class="form-control" id="recipientPhone">
                                           </div>
                                           <div class="form-group">
                                             <label for="message-text" class="form-control-label">Message:</label>
-                                            <textarea class="form-control" id="message-text"></textarea>
+                                            <textarea class="form-control" id="flyerMessage"></textarea>
                                           </div>
 
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Send message</button>
+                                    <button type="button" class="btn btn-primary" onClick="sendTextFlyer();">Send message</button>
                                   </div>
                             </div>
                         </div>
@@ -178,7 +178,7 @@ $keys = array_keys($response);
                             Create New Flyer
                         </br></br>
                             <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#flyerModal">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" onClick="showFlyerModal();">
                           Text Flyer
                         </button>
                         </h1>
@@ -359,6 +359,7 @@ $keys = array_keys($response);
                         <input type="hidden" name="mlsId" value=<?php echo $listingId;?>/>
                         <?php echo '<input type="hidden" name="description" value="' . $response[$keys[$index]]['remarksConcat'] . '" />'; ?>
 
+                        
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             <div>
                                  <!-- Loading (remove the following to stop the loading)-->
@@ -379,6 +380,7 @@ $keys = array_keys($response);
 
                                         echo '<iframe id="pdf" src="../../uploadFlyers/' . substr ($result['flyer'],0,-3)  . 'pdf" 
                                         style="width:600px; height:500px;" frameborder="0"></iframe>';
+                                        echo "<input type='hidden' name='flyerName' value='" . substr ($result['flyer'],0,-3). "'/>";
                                     }
                                 ?>
   
@@ -796,6 +798,26 @@ document.getElementById("loading").style = "visibility: hidden";
                 });
             }
 
+            function sendTextFlyer()
+            {
+                var flyerName = $("input[name='flyerName']").val();
+                var recipientPhone = $("#recipientPhone").val();
+                var flyerMessage = $("#flyerMessage").val();
+                // alert(flyerName);
+                // alert(recipientPhone);
+                // alert(flyerMessage);
+                $.post( "sendTextFlyer.php", { phone: recipientPhone , flyer: flyerName, flyerMessage: flyerMessage })
+                  .done(function( data ) {
+                    // alert( "Data Loaded: " );
+                    
+                  });
+                $('#flyerModal').modal('hide');
+
+            }
+            function showFlyerModal()
+            {
+                $('#flyerModal').modal('show');
+            }
         </script>
 
     </body>
