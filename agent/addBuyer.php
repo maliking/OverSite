@@ -19,37 +19,53 @@ $priceMax = $_POST['priceMax'];
 $priceMin = $_POST['priceMin'];
 // $houseId = (string)$_GET['houseId'];
 // $houseId = "253";
+$nextMonday = date('Y-m-d', strtotime('next monday'));
 
-$lastMeeting = "SELECT * FROM BuyerInfo ORDER BY meeting DESC LIMIT 1";
+$lastMeeting = "SELECT * FROM BuyerInfo WHERE CONVERT(CHAR(10),meeting,120) =" . $nextMonday . "  ORDER BY meeting DESC limit 1";
 
 $meetingStmt = $dbConn->prepare($lastMeeting);
 $meetingStmt->execute();
 $meetingResult = $meetingStmt->fetch();
 
-$latestTime = new DateTime('16:00:00');
-$lastTime = $latestTime->format('H:i:s');
-
-$meetingDateTime = new DateTime($meetingResult['meeting']);
-
-$lastMeetingDayName = $meetingDateTime->format('l');
-
-$lastMeetingTime = $meetingDateTime->format('H:i:s');
-
-$nextMeeting = $meetingDateTime->add(new DateInterval('PT15M'));
-
-$nextMeetingTime = $nextMeeting->format('H:i:s');
-
-if($lastMeetingDayName == "Friday" && $nextMeetingTime >= $lastTime)
+// $latestTime = new DateTime('07:00:00');
+// $lastTime = $latestTime->format('H:i:s');
+if($meetingResult != NULL)
 {
-    $nextMeeting->add(new DateInterval('P3D'));
-    $nextMeeting->setTime(8, 30, 00);
+    $meetingDateTime = new DateTime($meetingResult['meeting']);
+
+    // $lastMeetingDayName = $meetingDateTime->format('l');
+
+    // $lastMeetingTime = $meetingDateTime->format('H:i:s');
+
+    $nextMeeting = $meetingDateTime->add(new DateInterval('PT15M'));
+
+    // $nextMeetingTime = $nextMeeting->format('H:i:s');
 
 }
-else if($nextMeetingTime >= $lastTime)
+else
 {
-    $nextMeeting->add(new DateInterval('P1D'));
-    $nextMeeting->setTime(8, 30, 00);
+    $nextMeeting = date_create_from_format('Y-m-d', $nextMonday);
+    $nextMeeting->setTime(7, 00, 00);
 }
+
+// if($nextMeetingTime > $lastTime && $meetingResult)
+// {
+//     $nextMeeting->setTime(7, 00, 00);
+// }
+
+// if($lastMeetingDayName == "Friday" && $nextMeetingTime >= $lastTime)
+// if($lastMeetingDayName == "Friday" && $nextMeetingTime)
+// {
+//     $nextMeeting->add(new DateInterval('P3D'));
+//     $nextMeeting->setTime(7, 00, 00);
+
+// }
+// else if($nextMeetingTime >= $lastTime)
+// else if($nextMeetingTime)
+// {
+//     $nextMeeting->add(new DateInterval('P1D'));
+//     $nextMeeting->setTime(8, 30, 00);
+// }
 
 
 
