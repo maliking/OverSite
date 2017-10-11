@@ -181,7 +181,7 @@ $keys = array_keys($response);
                         <div class="modal-content">
                           
                           <div class="modal-body">
-                            <p>Message Sent</p>
+                            <h3>Message Sent</h3>
                           </div>
                           
                         </div>
