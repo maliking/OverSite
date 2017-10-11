@@ -1,9 +1,7 @@
 <?php
 session_start();
 
-
 if (!isset($_SESSION['userId']) || $_SESSION['userId'] == 1) {
-
     header("Location: login.php");
 }
 
@@ -27,7 +25,6 @@ $sqlRank = "SELECT UsersInfo.firstName, UsersInfo.lastName, count(*) as sold, su
 $stmtRank = $dbConnRank->prepare($sqlRank);
 $stmtRank->execute();
 $rank = $stmtRank->fetchAll();
-
 
 ?>
 

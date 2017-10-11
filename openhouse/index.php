@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="../dist/css/skins/skin-blue.css">
     <link rel="stylesheet" href="../plugins/footable/css/footable.bootstrap.min.css">
+    <link rel="stylesheet" href="css/openhouse_styles.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>

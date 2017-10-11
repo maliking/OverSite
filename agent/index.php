@@ -161,7 +161,7 @@ $result = $stmt->fetch();
                             <div class="small-box bg-orange">
                                 <div class="inner">
                                     <h3><sup style="font-size: 20px">$</sup>
-                                        <?php echo number_format($result['average'],2);?>
+                                        <?php echo number_format($result['average'],0);?>
                                     </h3>
                                     <p>Avg. Commission</p>
                                 </div>
@@ -177,8 +177,7 @@ $result = $stmt->fetch();
                             <div class="small-box bg-blue">
                                 <div class="inner">
                                     <h3>
-                                        <?php echo number_format($result['avgPercent'],2);?><sup style="font-size: 20px">%</sup></h3>
-
+                                        <?php echo number_format($result['avgPercent'],0);?><sup style="font-size: 20px">%</sup></h3>
                                     <p>Avg. Commission </p>
                                 </div>
                                 <div class="icon">
@@ -193,7 +192,7 @@ $result = $stmt->fetch();
                             <div class="small-box bg-red">
                                 <div class="inner">
                                     <h3><sup style="font-size: 20px">$</sup>
-                                        <?php echo number_format($result['earnings'],2);?>
+                                        <?php echo number_format($result['earnings'],0);?>
                                     </h3>
                                     <p>Total Gross Earnings</p>
                                 </div>
