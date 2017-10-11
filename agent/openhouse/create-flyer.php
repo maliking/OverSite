@@ -173,6 +173,25 @@ $keys = array_keys($response);
 
                     </div>
 
+                    <!-- Modal -->
+                    <div id="messageSentModal" class="modal fade" role="dialog">
+                      <div class="modal-dialog">
+
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Message Sent</h4>
+                          </div>
+                          
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
                     <section class="content-header" style="margin-top: 50px; padding-top: 30px; padding-bottom: 20px;">
                         <h1 class="col-md-6 col-sm-6 col-xs-12">
                             Create New Flyer
@@ -809,7 +828,10 @@ document.getElementById("loading").style = "visibility: hidden";
                 $.post( "sendTextFlyer.php", { phone: recipientPhone , flyer: flyerName, flyerMessage: flyerMessage })
                   .done(function( data ) {
                     // alert( "Data Loaded: " );
-                    
+                    $('#messageSentModal').modal('show');
+
+                    setTimeout(function(){ $('#messageSentModal').modal('hide'); }, 2000);
+
                   });
                 $('#flyerModal').modal('hide');
 
