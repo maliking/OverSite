@@ -404,7 +404,7 @@ $result = $stmt->fetch();
                             <!-- /.col -->
                             <div class="col-md-12" >
                                 <div class="box box-primary" >
-                                    <div class="box-body no-padding" >
+                                    <div class="box-body no-padding" style="height:400px;">
                                         <!-- THE CALENDAR -->
                                         <div id="calendar" ></div>
                                     </div>
@@ -527,7 +527,7 @@ $result = $stmt->fetch();
                     minTime: '07:00:00',
                     maxTime: '21:00:00',
                     slotDuration: '00:15:00',
-                    height:"auto",
+                    height:"parent",
                     navLinks: true, // can click day/week names to navigate views
                     eventLimit: true, // allow "more" link when too many events
 
