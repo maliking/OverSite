@@ -16,16 +16,19 @@ use Twilio\Serialize;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class DocumentPermissionTest extends HolodeckTestCase {
-    public function testFetchRequest() {
+class DocumentPermissionTest extends HolodeckTestCase
+{
+    public function testFetchRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                   ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                   ->documentPermissions("identity")->fetch();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->documentPermissions("identity")->fetch();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -33,7 +36,8 @@ class DocumentPermissionTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -51,21 +55,23 @@ class DocumentPermissionTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->documentPermissions("identity")->fetch();
+            ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->documentPermissions("identity")->fetch();
 
         $this->assertNotNull($actual);
     }
 
-    public function testDeleteRequest() {
+    public function testDeleteRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                   ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                   ->documentPermissions("identity")->delete();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->documentPermissions("identity")->delete();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'delete',
@@ -73,28 +79,31 @@ class DocumentPermissionTest extends HolodeckTestCase {
         ));
     }
 
-    public function testDeleteResponse() {
+    public function testDeleteResponse()
+    {
         $this->holodeck->mock(new Response(
             204,
             null
         ));
 
         $actual = $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->documentPermissions("identity")->delete();
+            ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->documentPermissions("identity")->delete();
 
         $this->assertTrue($actual);
     }
 
-    public function testReadRequest() {
+    public function testReadRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                   ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                   ->documentPermissions->read();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->documentPermissions->read();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -102,7 +111,8 @@ class DocumentPermissionTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -122,13 +132,14 @@ class DocumentPermissionTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->documentPermissions->read();
+            ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->documentPermissions->read();
 
         $this->assertNotNull($actual);
     }
 
-    public function testReadFullResponse() {
+    public function testReadFullResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -159,21 +170,23 @@ class DocumentPermissionTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->documentPermissions->read();
+            ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->documentPermissions->read();
 
         $this->assertGreaterThan(0, count($actual));
     }
 
-    public function testUpdateRequest() {
+    public function testUpdateRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                   ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                   ->documentPermissions("identity")->update(True, True, True);
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->documentPermissions("identity")->update(True, True, True);
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $values = array(
             'Read' => Serialize::booleanToString(True),
@@ -189,7 +202,8 @@ class DocumentPermissionTest extends HolodeckTestCase {
         ));
     }
 
-    public function testUpdateResponse() {
+    public function testUpdateResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -207,8 +221,8 @@ class DocumentPermissionTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->sync->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->documentPermissions("identity")->update(True, True, True);
+            ->documents("ETaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->documentPermissions("identity")->update(True, True, True);
 
         $this->assertNotNull($actual);
     }

@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
+ *
  * @property string sid
  * @property string accountSid
  * @property string from
@@ -38,18 +38,20 @@ use Twilio\Version;
  * @property array links
  * @property string url
  */
-class FaxInstance extends InstanceResource {
+class FaxInstance extends InstanceResource
+{
     protected $_media = null;
 
     /**
      * Initialize the FaxInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid A string that uniquely identifies this fax.
-     * @return \Twilio\Rest\Fax\V1\FaxInstance 
+     * @return \Twilio\Rest\Fax\V1\FaxInstance
      */
-    public function __construct(Version $version, array $payload, $sid = null) {
+    public function __construct(Version $version, array $payload, $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -82,10 +84,11 @@ class FaxInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Fax\V1\FaxContext Context for this FaxInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new FaxContext(
                 $this->version,
@@ -98,20 +101,22 @@ class FaxInstance extends InstanceResource {
 
     /**
      * Fetch a FaxInstance
-     * 
+     *
      * @return FaxInstance Fetched FaxInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         return $this->proxy()->fetch();
     }
 
     /**
      * Update the FaxInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return FaxInstance Updated FaxInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         return $this->proxy()->update(
             $options
         );
@@ -119,30 +124,33 @@ class FaxInstance extends InstanceResource {
 
     /**
      * Deletes the FaxInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the media
-     * 
-     * @return \Twilio\Rest\Fax\V1\Fax\FaxMediaList 
+     *
+     * @return \Twilio\Rest\Fax\V1\Fax\FaxMediaList
      */
-    protected function getMedia() {
+    protected function getMedia()
+    {
         return $this->proxy()->media;
     }
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -157,10 +165,11 @@ class FaxInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

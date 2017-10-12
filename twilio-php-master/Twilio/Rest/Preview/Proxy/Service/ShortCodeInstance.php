@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string sid
  * @property string accountSid
  * @property string serviceSid
@@ -28,17 +28,19 @@ use Twilio\Version;
  * @property array capabilities
  * @property string url
  */
-class ShortCodeInstance extends InstanceResource {
+class ShortCodeInstance extends InstanceResource
+{
     /**
      * Initialize the ShortCodeInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid Service Sid.
      * @param string $sid Fetch by unique shortcode Sid
-     * @return \Twilio\Rest\Preview\Proxy\Service\ShortCodeInstance 
+     * @return \Twilio\Rest\Preview\Proxy\Service\ShortCodeInstance
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $serviceSid, $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -63,11 +65,12 @@ class ShortCodeInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Preview\Proxy\Service\ShortCodeContext Context for this
      *                                                             ShortCodeInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new ShortCodeContext(
                 $this->version,
@@ -81,30 +84,33 @@ class ShortCodeInstance extends InstanceResource {
 
     /**
      * Deletes the ShortCodeInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->proxy()->delete();
     }
 
     /**
      * Fetch a ShortCodeInstance
-     * 
+     *
      * @return ShortCodeInstance Fetched ShortCodeInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         return $this->proxy()->fetch();
     }
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -119,10 +125,11 @@ class ShortCodeInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

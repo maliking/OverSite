@@ -15,15 +15,18 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class DayTest extends HolodeckTestCase {
-    public function testReadRequest() {
+class DayTest extends HolodeckTestCase
+{
+    public function testReadRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->preview->bulkExports->exports("resourceType")
-                                               ->days->read();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->days->read();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -31,7 +34,8 @@ class DayTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadResponse() {
+    public function testReadResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -57,7 +61,7 @@ class DayTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->preview->bulkExports->exports("resourceType")
-                                                     ->days->read();
+            ->days->read();
 
         $this->assertNotNull($actual);
     }

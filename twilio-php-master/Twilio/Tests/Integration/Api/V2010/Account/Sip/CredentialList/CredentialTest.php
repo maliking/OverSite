@@ -15,17 +15,20 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class CredentialTest extends HolodeckTestCase {
-    public function testReadRequest() {
+class CredentialTest extends HolodeckTestCase
+{
+    public function testReadRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->sip
-                                     ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->credentials->read();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->sip
+                ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->credentials->read();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -33,7 +36,8 @@ class CredentialTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadFullResponse() {
+    public function testReadFullResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -65,14 +69,15 @@ class CredentialTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->sip
-                                           ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->credentials->read();
+            ->sip
+            ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->credentials->read();
 
         $this->assertGreaterThan(0, count($actual));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -94,23 +99,25 @@ class CredentialTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->sip
-                                           ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->credentials->read();
+            ->sip
+            ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->credentials->read();
 
         $this->assertNotNull($actual);
     }
 
-    public function testCreateRequest() {
+    public function testCreateRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->sip
-                                     ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->credentials->create("username", "password");
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->sip
+                ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->credentials->create("username", "password");
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $values = array(
             'Username' => "username",
@@ -125,7 +132,8 @@ class CredentialTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse() {
+    public function testCreateResponse()
+    {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -142,23 +150,25 @@ class CredentialTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->sip
-                                           ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->credentials->create("username", "password");
+            ->sip
+            ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->credentials->create("username", "password");
 
         $this->assertNotNull($actual);
     }
 
-    public function testFetchRequest() {
+    public function testFetchRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->sip
-                                     ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->sip
+                ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -166,7 +176,8 @@ class CredentialTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -183,23 +194,25 @@ class CredentialTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->sip
-                                           ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            ->sip
+            ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
 
         $this->assertNotNull($actual);
     }
 
-    public function testUpdateRequest() {
+    public function testUpdateRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->sip
-                                     ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->sip
+                ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'post',
@@ -207,7 +220,8 @@ class CredentialTest extends HolodeckTestCase {
         ));
     }
 
-    public function testUpdateResponse() {
+    public function testUpdateResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -224,23 +238,25 @@ class CredentialTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->sip
-                                           ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+            ->sip
+            ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
 
         $this->assertNotNull($actual);
     }
 
-    public function testDeleteRequest() {
+    public function testDeleteRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->sip
-                                     ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->sip
+                ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'delete',
@@ -248,16 +264,17 @@ class CredentialTest extends HolodeckTestCase {
         ));
     }
 
-    public function testDeleteResponse() {
+    public function testDeleteResponse()
+    {
         $this->holodeck->mock(new Response(
             204,
             null
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->sip
-                                           ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+            ->sip
+            ->credentialLists("CLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->credentials("CRaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
 
         $this->assertTrue($actual);
     }

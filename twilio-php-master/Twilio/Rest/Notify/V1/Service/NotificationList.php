@@ -18,15 +18,17 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
-class NotificationList extends ListResource {
+class NotificationList extends ListResource
+{
     /**
      * Construct the NotificationList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
-     * @return \Twilio\Rest\Notify\V1\Service\NotificationList 
+     * @return \Twilio\Rest\Notify\V1\Service\NotificationList
      */
-    public function __construct(Version $version, $serviceSid) {
+    public function __construct(Version $version, $serviceSid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -39,11 +41,12 @@ class NotificationList extends ListResource {
 
     /**
      * Create a new NotificationInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return NotificationInstance Newly created NotificationInstance
      */
-    public function create($options = array()) {
+    public function create($options = array())
+    {
         $options = new Values($options);
 
         $data = Values::of(array(
@@ -82,10 +85,11 @@ class NotificationList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Notify.V1.NotificationList]';
     }
 }

@@ -16,25 +16,27 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
+ *
  * @property string accountSid
  * @property string serviceSid
  * @property string identity
  * @property string segment
  * @property string url
  */
-class SegmentMembershipInstance extends InstanceResource {
+class SegmentMembershipInstance extends InstanceResource
+{
     /**
      * Initialize the SegmentMembershipInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The service_sid
      * @param string $identity The identity
      * @param string $segment The segment
-     * @return \Twilio\Rest\Notify\V1\Service\User\SegmentMembershipInstance 
+     * @return \Twilio\Rest\Notify\V1\Service\User\SegmentMembershipInstance
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $identity, $segment = null) {
+    public function __construct(Version $version, array $payload, $serviceSid, $identity, $segment = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -56,13 +58,14 @@ class SegmentMembershipInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Notify\V1\Service\User\SegmentMembershipContext Context
      *                                                                      for
      *                                                                      this
      *                                                                      SegmentMembershipInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new SegmentMembershipContext(
                 $this->version,
@@ -77,30 +80,33 @@ class SegmentMembershipInstance extends InstanceResource {
 
     /**
      * Deletes the SegmentMembershipInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->proxy()->delete();
     }
 
     /**
      * Fetch a SegmentMembershipInstance
-     * 
+     *
      * @return SegmentMembershipInstance Fetched SegmentMembershipInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         return $this->proxy()->fetch();
     }
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -115,10 +121,11 @@ class SegmentMembershipInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

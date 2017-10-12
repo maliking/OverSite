@@ -10,25 +10,28 @@
             <li class="header">OVERVIEW</li>
             <!-- Optionally, you can add icons to the links -->
             <li><a href="./index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
-            <li><a href="../agent/openhouse/listings-openhouse.php"><i class="fa fa-home"></i> <span>Open House</span></a></li>
+            <li><a href="../agent/openhouse/listings-openhouse.php"><i class="fa fa-home"></i>
+                    <span>Open House</span></a></li>
 
             <li class="header-style treeview">
                 <a href="#"><span class="header-color">PROPERTIES</span>
-                      <span class="pull-right-container">
+                    <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                       </span>
-                    </a>
+                </a>
                 <ul class="treeview-menu">
-                    <li><a class="dropdown-text" href="my-inventory.php"><i class="fa fa-home"></i> <span>My Inventory</span></a></li>
-                    <li><a class="dropdown-text" href="office-inventory.php"><i class="fa fa-building"></i> <span>Office Inventory</span></a></li>
+                    <li><a class="dropdown-text" href="my-inventory.php"><i class="fa fa-home"></i>
+                            <span>My Inventory</span></a></li>
+                    <li><a class="dropdown-text" href="office-inventory.php"><i class="fa fa-building"></i> <span>Office Inventory</span></a>
+                    </li>
                 </ul>
             </li>
             <li class="header-style treeview">
                 <a href="#"><span class="header-color">TRANSACTIONS</span>
-                      <span class="pull-right-container">
+                    <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                       </span>
-                    </a>
+                </a>
                 <ul class="treeview-menu">
                     <li><a href="#"><i class="fa fa-list-alt"></i> <span>Sales Breakdown</span></a></li>
                     <li><a href="#"><i class="fa fa-file-text-o"></i> <span>Monthly Report</span></a></li>
@@ -37,10 +40,10 @@
             </li>
             <li class="header-style treeview">
                 <a href="#"><span class="header-color">STATISTICS</span>
-                      <span class="pull-right-container">
+                    <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                       </span>
-                    </a>
+                </a>
                 <ul class="treeview-menu">
                     <li><a href="#"><i class="fa fa-line-chart"></i> <span> Analytics</span></a></li>
                     <li><a href="#"><i class="fa fa-money"></i> <span>My Earnings</span></a></li>

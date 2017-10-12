@@ -22,7 +22,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
+ *
  * @property \Twilio\Rest\Sync\V1\Service\DocumentList documents
  * @property \Twilio\Rest\Sync\V1\Service\SyncListList syncLists
  * @property \Twilio\Rest\Sync\V1\Service\SyncMapList syncMaps
@@ -32,7 +32,8 @@ use Twilio\Version;
  * @method \Twilio\Rest\Sync\V1\Service\SyncMapContext syncMaps(string $sid)
  * @method \Twilio\Rest\Sync\V1\Service\SyncStreamContext syncStreams(string $sid)
  */
-class ServiceContext extends InstanceContext {
+class ServiceContext extends InstanceContext
+{
     protected $_documents = null;
     protected $_syncLists = null;
     protected $_syncMaps = null;
@@ -40,12 +41,13 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Initialize the ServiceContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The sid
-     * @return \Twilio\Rest\Sync\V1\ServiceContext 
+     * @return \Twilio\Rest\Sync\V1\ServiceContext
      */
-    public function __construct(Version $version, $sid) {
+    public function __construct(Version $version, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -58,10 +60,11 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Fetch a ServiceInstance
-     * 
+     *
      * @return ServiceInstance Fetched ServiceInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -79,20 +82,22 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Deletes the ServiceInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Update the ServiceInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ServiceInstance Updated ServiceInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         $options = new Values($options);
 
         $data = Values::of(array(
@@ -118,10 +123,11 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Access the documents
-     * 
-     * @return \Twilio\Rest\Sync\V1\Service\DocumentList 
+     *
+     * @return \Twilio\Rest\Sync\V1\Service\DocumentList
      */
-    protected function getDocuments() {
+    protected function getDocuments()
+    {
         if (!$this->_documents) {
             $this->_documents = new DocumentList(
                 $this->version,
@@ -134,10 +140,11 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Access the syncLists
-     * 
-     * @return \Twilio\Rest\Sync\V1\Service\SyncListList 
+     *
+     * @return \Twilio\Rest\Sync\V1\Service\SyncListList
      */
-    protected function getSyncLists() {
+    protected function getSyncLists()
+    {
         if (!$this->_syncLists) {
             $this->_syncLists = new SyncListList(
                 $this->version,
@@ -150,10 +157,11 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Access the syncMaps
-     * 
-     * @return \Twilio\Rest\Sync\V1\Service\SyncMapList 
+     *
+     * @return \Twilio\Rest\Sync\V1\Service\SyncMapList
      */
-    protected function getSyncMaps() {
+    protected function getSyncMaps()
+    {
         if (!$this->_syncMaps) {
             $this->_syncMaps = new SyncMapList(
                 $this->version,
@@ -166,10 +174,11 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Access the syncStreams
-     * 
-     * @return \Twilio\Rest\Sync\V1\Service\SyncStreamList 
+     *
+     * @return \Twilio\Rest\Sync\V1\Service\SyncStreamList
      */
-    protected function getSyncStreams() {
+    protected function getSyncStreams()
+    {
         if (!$this->_syncStreams) {
             $this->_syncStreams = new SyncStreamList(
                 $this->version,
@@ -182,12 +191,13 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
@@ -198,13 +208,14 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments)
+    {
         $property = $this->$name;
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
@@ -215,10 +226,11 @@ class ServiceContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

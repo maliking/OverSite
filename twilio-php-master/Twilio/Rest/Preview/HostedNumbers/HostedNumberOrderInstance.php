@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string sid
  * @property string accountSid
  * @property string incomingPhoneNumberSid
@@ -36,16 +36,18 @@ use Twilio\Version;
  * @property string ccEmails
  * @property string url
  */
-class HostedNumberOrderInstance extends InstanceResource {
+class HostedNumberOrderInstance extends InstanceResource
+{
     /**
      * Initialize the HostedNumberOrderInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid HostedNumberOrder sid.
-     * @return \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderInstance 
+     * @return \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderInstance
      */
-    public function __construct(Version $version, array $payload, $sid = null) {
+    public function __construct(Version $version, array $payload, $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -76,12 +78,13 @@ class HostedNumberOrderInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext Context
      *                                                                     for this
      *                                                                     HostedNumberOrderInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new HostedNumberOrderContext(
                 $this->version,
@@ -94,29 +97,32 @@ class HostedNumberOrderInstance extends InstanceResource {
 
     /**
      * Fetch a HostedNumberOrderInstance
-     * 
+     *
      * @return HostedNumberOrderInstance Fetched HostedNumberOrderInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the HostedNumberOrderInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->proxy()->delete();
     }
 
     /**
      * Update the HostedNumberOrderInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return HostedNumberOrderInstance Updated HostedNumberOrderInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         return $this->proxy()->update(
             $options
         );
@@ -124,12 +130,13 @@ class HostedNumberOrderInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -144,10 +151,11 @@ class HostedNumberOrderInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

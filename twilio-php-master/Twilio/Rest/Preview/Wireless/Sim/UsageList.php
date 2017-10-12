@@ -15,15 +15,17 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class UsageList extends ListResource {
+class UsageList extends ListResource
+{
     /**
      * Construct the UsageList
-     * 
+     *
      * @param Version $version Version that contains the resource
      * @param string $simSid The sim_sid
-     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageList 
+     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageList
      */
-    public function __construct(Version $version, $simSid) {
+    public function __construct(Version $version, $simSid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -34,10 +36,11 @@ class UsageList extends ListResource {
 
     /**
      * Constructs a UsageContext
-     * 
-     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageContext 
+     *
+     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageContext
      */
-    public function getContext() {
+    public function getContext()
+    {
         return new UsageContext(
             $this->version,
             $this->solution['simSid']
@@ -46,10 +49,11 @@ class UsageList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Preview.Wireless.UsageList]';
     }
 }

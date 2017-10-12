@@ -15,16 +15,19 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class TaskQueuesStatisticsTest extends HolodeckTestCase {
-    public function testReadRequest() {
+class TaskQueuesStatisticsTest extends HolodeckTestCase
+{
+    public function testReadRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->taskrouter->v1->workspaces("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->taskQueues("WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                         ->taskQueuesStatistics->read();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->taskQueues("WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->taskQueuesStatistics->read();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -32,7 +35,8 @@ class TaskQueuesStatisticsTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadFullResponse() {
+    public function testReadFullResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -118,13 +122,14 @@ class TaskQueuesStatisticsTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->taskrouter->v1->workspaces("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->taskQueues("WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->taskQueuesStatistics->read();
+            ->taskQueues("WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->taskQueuesStatistics->read();
 
         $this->assertGreaterThan(0, count($actual));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -144,8 +149,8 @@ class TaskQueuesStatisticsTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->taskrouter->v1->workspaces("WSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->taskQueues("WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->taskQueuesStatistics->read();
+            ->taskQueues("WQaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->taskQueuesStatistics->read();
 
         $this->assertNotNull($actual);
     }

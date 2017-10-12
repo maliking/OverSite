@@ -15,16 +15,19 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class AssignedAddOnTest extends HolodeckTestCase {
-    public function testFetchRequest() {
+class AssignedAddOnTest extends HolodeckTestCase
+{
+    public function testFetchRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->incomingPhoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->assignedAddOns("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->incomingPhoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->assignedAddOns("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -32,7 +35,8 @@ class AssignedAddOnTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -57,21 +61,23 @@ class AssignedAddOnTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->incomingPhoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->assignedAddOns("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            ->incomingPhoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->assignedAddOns("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
 
         $this->assertNotNull($actual);
     }
 
-    public function testReadRequest() {
+    public function testReadRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->incomingPhoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->assignedAddOns->read();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->incomingPhoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->assignedAddOns->read();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -79,7 +85,8 @@ class AssignedAddOnTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadFullResponse() {
+    public function testReadFullResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -116,13 +123,14 @@ class AssignedAddOnTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->incomingPhoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->assignedAddOns->read();
+            ->incomingPhoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->assignedAddOns->read();
 
         $this->assertGreaterThan(0, count($actual));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -141,21 +149,23 @@ class AssignedAddOnTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->incomingPhoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->assignedAddOns->read();
+            ->incomingPhoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->assignedAddOns->read();
 
         $this->assertNotNull($actual);
     }
 
-    public function testCreateRequest() {
+    public function testCreateRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->incomingPhoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->assignedAddOns->create("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->incomingPhoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->assignedAddOns->create("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $values = array(
             'InstalledAddOnSid' => "XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
@@ -169,7 +179,8 @@ class AssignedAddOnTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse() {
+    public function testCreateResponse()
+    {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -194,21 +205,23 @@ class AssignedAddOnTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->incomingPhoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->assignedAddOns->create("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+            ->incomingPhoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->assignedAddOns->create("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 
         $this->assertNotNull($actual);
     }
 
-    public function testDeleteRequest() {
+    public function testDeleteRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->incomingPhoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->assignedAddOns("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->incomingPhoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->assignedAddOns("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'delete',
@@ -216,15 +229,16 @@ class AssignedAddOnTest extends HolodeckTestCase {
         ));
     }
 
-    public function testDeleteResponse() {
+    public function testDeleteResponse()
+    {
         $this->holodeck->mock(new Response(
             204,
             null
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->incomingPhoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->assignedAddOns("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+            ->incomingPhoneNumbers("PNaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->assignedAddOns("XEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
 
         $this->assertTrue($actual);
     }

@@ -16,17 +16,19 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
-class UserBindingContext extends InstanceContext {
+class UserBindingContext extends InstanceContext
+{
     /**
      * Initialize the UserBindingContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $identity The identity
      * @param string $sid The sid
-     * @return \Twilio\Rest\Notify\V1\Service\User\UserBindingContext 
+     * @return \Twilio\Rest\Notify\V1\Service\User\UserBindingContext
      */
-    public function __construct(Version $version, $serviceSid, $identity, $sid) {
+    public function __construct(Version $version, $serviceSid, $identity, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -41,10 +43,11 @@ class UserBindingContext extends InstanceContext {
 
     /**
      * Fetch a UserBindingInstance
-     * 
+     *
      * @return UserBindingInstance Fetched UserBindingInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -64,19 +67,21 @@ class UserBindingContext extends InstanceContext {
 
     /**
      * Deletes the UserBindingInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -15,15 +15,18 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class DeploymentTest extends HolodeckTestCase {
-    public function testFetchRequest() {
+class DeploymentTest extends HolodeckTestCase
+{
+    public function testFetchRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->preview->deployedDevices->fleets("FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                   ->deployments("DLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->deployments("DLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -31,7 +34,8 @@ class DeploymentTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -49,19 +53,21 @@ class DeploymentTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->preview->deployedDevices->fleets("FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                         ->deployments("DLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            ->deployments("DLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
 
         $this->assertNotNull($actual);
     }
 
-    public function testDeleteRequest() {
+    public function testDeleteRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->preview->deployedDevices->fleets("FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                   ->deployments("DLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->deployments("DLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'delete',
@@ -69,26 +75,29 @@ class DeploymentTest extends HolodeckTestCase {
         ));
     }
 
-    public function testDeleteResponse() {
+    public function testDeleteResponse()
+    {
         $this->holodeck->mock(new Response(
             204,
             null
         ));
 
         $actual = $this->twilio->preview->deployedDevices->fleets("FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                         ->deployments("DLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+            ->deployments("DLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
 
         $this->assertTrue($actual);
     }
 
-    public function testCreateRequest() {
+    public function testCreateRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->preview->deployedDevices->fleets("FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                   ->deployments->create();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->deployments->create();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'post',
@@ -96,7 +105,8 @@ class DeploymentTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse() {
+    public function testCreateResponse()
+    {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -114,19 +124,21 @@ class DeploymentTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->preview->deployedDevices->fleets("FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                         ->deployments->create();
+            ->deployments->create();
 
         $this->assertNotNull($actual);
     }
 
-    public function testReadRequest() {
+    public function testReadRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->preview->deployedDevices->fleets("FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                   ->deployments->read();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->deployments->read();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -134,7 +146,8 @@ class DeploymentTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -154,12 +167,13 @@ class DeploymentTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->preview->deployedDevices->fleets("FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                         ->deployments->read();
+            ->deployments->read();
 
         $this->assertNotNull($actual);
     }
 
-    public function testReadFullResponse() {
+    public function testReadFullResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -190,19 +204,21 @@ class DeploymentTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->preview->deployedDevices->fleets("FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                         ->deployments->read();
+            ->deployments->read();
 
         $this->assertGreaterThan(0, count($actual));
     }
 
-    public function testUpdateRequest() {
+    public function testUpdateRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->preview->deployedDevices->fleets("FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                   ->deployments("DLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->deployments("DLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'post',
@@ -210,7 +226,8 @@ class DeploymentTest extends HolodeckTestCase {
         ));
     }
 
-    public function testUpdateResponse() {
+    public function testUpdateResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -228,7 +245,7 @@ class DeploymentTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->preview->deployedDevices->fleets("FLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                         ->deployments("DLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
+            ->deployments("DLaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update();
 
         $this->assertNotNull($actual);
     }

@@ -66,8 +66,8 @@ module.exports = function (grunt) { // jshint ignore:line
                 }
             },
             "options": {
-                "sourceMap":true,
-                
+                "sourceMap": true,
+
             }
         },
 
@@ -237,7 +237,6 @@ module.exports = function (grunt) { // jshint ignore:line
     grunt.loadNpmTasks('grunt-contrib-concat');
     // Notify
     grunt.loadNpmTasks('grunt-notify');
-
 
 
     // Linting task

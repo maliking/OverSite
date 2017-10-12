@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string key
  * @property string accountSid
  * @property string serviceSid
@@ -29,18 +29,20 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property string createdBy
  */
-class SyncMapItemInstance extends InstanceResource {
+class SyncMapItemInstance extends InstanceResource
+{
     /**
      * Initialize the SyncMapItemInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The service_sid
      * @param string $mapSid The map_sid
      * @param string $key The key
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapItemInstance 
+     * @return \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapItemInstance
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $mapSid, $key = null) {
+    public function __construct(Version $version, array $payload, $serviceSid, $mapSid, $key = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -67,13 +69,14 @@ class SyncMapItemInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapItemContext Context
      *                                                                      for
      *                                                                      this
      *                                                                      SyncMapItemInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new SyncMapItemContext(
                 $this->version,
@@ -88,29 +91,32 @@ class SyncMapItemInstance extends InstanceResource {
 
     /**
      * Fetch a SyncMapItemInstance
-     * 
+     *
      * @return SyncMapItemInstance Fetched SyncMapItemInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the SyncMapItemInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->proxy()->delete();
     }
 
     /**
      * Update the SyncMapItemInstance
-     * 
+     *
      * @param array $data The data
      * @return SyncMapItemInstance Updated SyncMapItemInstance
      */
-    public function update($data) {
+    public function update($data)
+    {
         return $this->proxy()->update(
             $data
         );
@@ -118,12 +124,13 @@ class SyncMapItemInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -138,10 +145,11 @@ class SyncMapItemInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -16,16 +16,19 @@ use Twilio\Serialize;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class FeedbackSummaryTest extends HolodeckTestCase {
-    public function testCreateRequest() {
+class FeedbackSummaryTest extends HolodeckTestCase
+{
+    public function testCreateRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->calls
-                                     ->feedbackSummaries->create(new \DateTime('2008-01-02'), new \DateTime('2008-01-02'));
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->calls
+                ->feedbackSummaries->create(new \DateTime('2008-01-02'), new \DateTime('2008-01-02'));
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $values = array(
             'StartDate' => Serialize::iso8601Date(new \DateTime('2008-01-02')),
@@ -40,7 +43,8 @@ class FeedbackSummaryTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse() {
+    public function testCreateResponse()
+    {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -70,21 +74,23 @@ class FeedbackSummaryTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->calls
-                                           ->feedbackSummaries->create(new \DateTime('2008-01-02'), new \DateTime('2008-01-02'));
+            ->calls
+            ->feedbackSummaries->create(new \DateTime('2008-01-02'), new \DateTime('2008-01-02'));
 
         $this->assertNotNull($actual);
     }
 
-    public function testFetchRequest() {
+    public function testFetchRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->calls
-                                     ->feedbackSummaries("FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->calls
+                ->feedbackSummaries("FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -92,7 +98,8 @@ class FeedbackSummaryTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -122,21 +129,23 @@ class FeedbackSummaryTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->calls
-                                           ->feedbackSummaries("FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            ->calls
+            ->feedbackSummaries("FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
 
         $this->assertNotNull($actual);
     }
 
-    public function testDeleteRequest() {
+    public function testDeleteRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->calls
-                                     ->feedbackSummaries("FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->calls
+                ->feedbackSummaries("FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'delete',
@@ -144,15 +153,16 @@ class FeedbackSummaryTest extends HolodeckTestCase {
         ));
     }
 
-    public function testDeleteResponse() {
+    public function testDeleteResponse()
+    {
         $this->holodeck->mock(new Response(
             204,
             null
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->calls
-                                           ->feedbackSummaries("FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
+            ->calls
+            ->feedbackSummaries("FSaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->delete();
 
         $this->assertTrue($actual);
     }

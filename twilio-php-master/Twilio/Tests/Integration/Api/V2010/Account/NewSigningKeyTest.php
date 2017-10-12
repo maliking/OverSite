@@ -15,15 +15,18 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class NewSigningKeyTest extends HolodeckTestCase {
-    public function testCreateRequest() {
+class NewSigningKeyTest extends HolodeckTestCase
+{
+    public function testCreateRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->newSigningKeys->create();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->newSigningKeys->create();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'post',
@@ -31,7 +34,8 @@ class NewSigningKeyTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse() {
+    public function testCreateResponse()
+    {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -46,7 +50,7 @@ class NewSigningKeyTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->newSigningKeys->create();
+            ->newSigningKeys->create();
 
         $this->assertNotNull($actual);
     }

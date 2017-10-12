@@ -15,17 +15,20 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class YearlyTest extends HolodeckTestCase {
-    public function testReadRequest() {
+class YearlyTest extends HolodeckTestCase
+{
+    public function testReadRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->usage
-                                     ->records
-                                     ->yearly->read();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->usage
+                ->records
+                ->yearly->read();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -33,7 +36,8 @@ class YearlyTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadFullResponse() {
+    public function testReadFullResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -81,14 +85,15 @@ class YearlyTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->usage
-                                           ->records
-                                           ->yearly->read();
+            ->usage
+            ->records
+            ->yearly->read();
 
         $this->assertGreaterThan(0, count($actual));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -110,9 +115,9 @@ class YearlyTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->usage
-                                           ->records
-                                           ->yearly->read();
+            ->usage
+            ->records
+            ->yearly->read();
 
         $this->assertNotNull($actual);
     }

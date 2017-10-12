@@ -17,18 +17,20 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class SyncMapPermissionContext extends InstanceContext {
+class SyncMapPermissionContext extends InstanceContext
+{
     /**
      * Initialize the SyncMapPermissionContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $mapSid Sync Map SID or unique name.
      * @param string $identity Identity of the user to whom the Sync Map Permission
      *                         applies.
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionContext 
+     * @return \Twilio\Rest\Preview\Sync\Service\SyncMap\SyncMapPermissionContext
      */
-    public function __construct(Version $version, $serviceSid, $mapSid, $identity) {
+    public function __construct(Version $version, $serviceSid, $mapSid, $identity)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -43,10 +45,11 @@ class SyncMapPermissionContext extends InstanceContext {
 
     /**
      * Fetch a SyncMapPermissionInstance
-     * 
+     *
      * @return SyncMapPermissionInstance Fetched SyncMapPermissionInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -66,22 +69,24 @@ class SyncMapPermissionContext extends InstanceContext {
 
     /**
      * Deletes the SyncMapPermissionInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Update the SyncMapPermissionInstance
-     * 
+     *
      * @param boolean $read Read access.
      * @param boolean $write Write access.
      * @param boolean $manage Manage access.
      * @return SyncMapPermissionInstance Updated SyncMapPermissionInstance
      */
-    public function update($read, $write, $manage) {
+    public function update($read, $write, $manage)
+    {
         $data = Values::of(array(
             'Read' => Serialize::booleanToString($read),
             'Write' => Serialize::booleanToString($write),
@@ -106,10 +111,11 @@ class SyncMapPermissionContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

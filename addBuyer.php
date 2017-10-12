@@ -3,7 +3,9 @@
 require 'databaseConnection.php';
 require 'keys/cred.php';
 require 'twilio-php-master/Twilio/autoload.php';
+
 use Twilio\Rest\Client;
+
 session_start();
 $dbConn = getConnection();
 $firstName = $_POST['firstName'];
@@ -34,44 +36,44 @@ $namedParameters[':priceMax'] = $priceMax;
 $namedParameters[':priceMin'] = $priceMin;
 $namedParameters[':houseId'] = $houseId;
 $namedParameters[':userId'] = $userId;
-$stmt = $dbConn -> prepare($sql);
+$stmt = $dbConn->prepare($sql);
 $stmt->execute($namedParameters);
 //$stmt->execute();
 //$result = $stmt->fetch(); //We are expecting one record
 $twilio_phone_number = "+18315851661";
 // if($houseId == "89")
 // {
-    $client = new Client($sid, $token);
-    $client->messages->create(
-        $phone,
-        array(
+$client = new Client($sid, $token);
+$client->messages->create(
+    $phone,
+    array(
         "From" => $twilio_phone_number,
         "Body" => "Flyer",
         'mediaUrl' => "http://52.11.24.75/flyers/Tynan_Flyer.jpg",
-        )
-    );
-    // }
-    // else if($houseId == "193")
-    // {
-    // 	$client = new Client($sid, $token);
-    // 	$client->messages->create(
-    // 	$phone,
-    // 	array(
-    // 	"From" => $twilio_phone_number,
-    // 	"Body" => "Flyer",
-    // 	'mediaUrl' => "http://52.11.24.75/keys/declaration.jpg",
-    // 	)
-    // 	);
-    // }
-    //if (empty($result)) {
-    header("Location: Confirmation.php");
-    //}
-    /*else {
+    )
+);
+// }
+// else if($houseId == "193")
+// {
+// 	$client = new Client($sid, $token);
+// 	$client->messages->create(
+// 	$phone,
+// 	array(
+// 	"From" => $twilio_phone_number,
+// 	"Body" => "Flyer",
+// 	'mediaUrl' => "http://52.11.24.75/keys/declaration.jpg",
+// 	)
+// 	);
+// }
+//if (empty($result)) {
+header("Location: Confirmation.php");
+//}
+/*else {
 
-    $_SESSION['username']  = $result['username'];
-    $_SESSION['adminName'] = $result['firstName'] . " " . $result['lastName'];
-    $_SESSION['userId'] = $result['userId'];
-    header("Location: quiz.php");
+$_SESSION['username']  = $result['username'];
+$_SESSION['adminName'] = $result['firstName'] . " " . $result['lastName'];
+$_SESSION['userId'] = $result['userId'];
+header("Location: quiz.php");
 
-    }*/
+}*/
 ?>

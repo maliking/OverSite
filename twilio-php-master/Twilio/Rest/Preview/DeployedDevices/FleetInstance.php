@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string sid
  * @property string url
  * @property string uniqueName
@@ -29,7 +29,8 @@ use Twilio\Version;
  * @property \DateTime dateUpdated
  * @property array links
  */
-class FleetInstance extends InstanceResource {
+class FleetInstance extends InstanceResource
+{
     protected $_devices = null;
     protected $_deployments = null;
     protected $_certificates = null;
@@ -37,13 +38,14 @@ class FleetInstance extends InstanceResource {
 
     /**
      * Initialize the FleetInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid A string that uniquely identifies the Fleet.
-     * @return \Twilio\Rest\Preview\DeployedDevices\FleetInstance 
+     * @return \Twilio\Rest\Preview\DeployedDevices\FleetInstance
      */
-    public function __construct(Version $version, array $payload, $sid = null) {
+    public function __construct(Version $version, array $payload, $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -67,11 +69,12 @@ class FleetInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Preview\DeployedDevices\FleetContext Context for this
      *                                                           FleetInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new FleetContext(
                 $this->version,
@@ -84,29 +87,32 @@ class FleetInstance extends InstanceResource {
 
     /**
      * Fetch a FleetInstance
-     * 
+     *
      * @return FleetInstance Fetched FleetInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the FleetInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->proxy()->delete();
     }
 
     /**
      * Update the FleetInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return FleetInstance Updated FleetInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         return $this->proxy()->update(
             $options
         );
@@ -114,48 +120,53 @@ class FleetInstance extends InstanceResource {
 
     /**
      * Access the devices
-     * 
-     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\DeviceList 
+     *
+     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\DeviceList
      */
-    protected function getDevices() {
+    protected function getDevices()
+    {
         return $this->proxy()->devices;
     }
 
     /**
      * Access the deployments
-     * 
-     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\DeploymentList 
+     *
+     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\DeploymentList
      */
-    protected function getDeployments() {
+    protected function getDeployments()
+    {
         return $this->proxy()->deployments;
     }
 
     /**
      * Access the certificates
-     * 
-     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\CertificateList 
+     *
+     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\CertificateList
      */
-    protected function getCertificates() {
+    protected function getCertificates()
+    {
         return $this->proxy()->certificates;
     }
 
     /**
      * Access the keys
-     * 
-     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\KeyList 
+     *
+     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\KeyList
      */
-    protected function getKeys() {
+    protected function getKeys()
+    {
         return $this->proxy()->keys;
     }
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -170,10 +181,11 @@ class FleetInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

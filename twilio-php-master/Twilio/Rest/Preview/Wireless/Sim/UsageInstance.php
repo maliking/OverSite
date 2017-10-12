@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string simSid
  * @property string simUniqueName
  * @property string accountSid
@@ -28,16 +28,18 @@ use Twilio\Version;
  * @property array dataCosts
  * @property string url
  */
-class UsageInstance extends InstanceResource {
+class UsageInstance extends InstanceResource
+{
     /**
      * Initialize the UsageInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $simSid The sim_sid
-     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageInstance 
+     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageInstance
      */
-    public function __construct(Version $version, array $payload, $simSid) {
+    public function __construct(Version $version, array $payload, $simSid)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -61,11 +63,12 @@ class UsageInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Preview\Wireless\Sim\UsageContext Context for this
      *                                                        UsageInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new UsageContext(
                 $this->version,
@@ -78,11 +81,12 @@ class UsageInstance extends InstanceResource {
 
     /**
      * Fetch a UsageInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return UsageInstance Fetched UsageInstance
      */
-    public function fetch($options = array()) {
+    public function fetch($options = array())
+    {
         return $this->proxy()->fetch(
             $options
         );
@@ -90,12 +94,13 @@ class UsageInstance extends InstanceResource {
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -110,10 +115,11 @@ class UsageInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

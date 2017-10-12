@@ -16,16 +16,18 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
-class BindingContext extends InstanceContext {
+class BindingContext extends InstanceContext
+{
     /**
      * Initialize the BindingContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Notify\V1\Service\BindingContext 
+     * @return \Twilio\Rest\Notify\V1\Service\BindingContext
      */
-    public function __construct(Version $version, $serviceSid, $sid) {
+    public function __construct(Version $version, $serviceSid, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -39,10 +41,11 @@ class BindingContext extends InstanceContext {
 
     /**
      * Fetch a BindingInstance
-     * 
+     *
      * @return BindingInstance Fetched BindingInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -61,19 +64,21 @@ class BindingContext extends InstanceContext {
 
     /**
      * Deletes the BindingInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

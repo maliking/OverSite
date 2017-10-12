@@ -19,25 +19,27 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property \Twilio\Rest\Preview\Proxy\Service\Session\InteractionList interactions
  * @property \Twilio\Rest\Preview\Proxy\Service\Session\ParticipantList participants
  * @method \Twilio\Rest\Preview\Proxy\Service\Session\InteractionContext interactions(string $sid)
  * @method \Twilio\Rest\Preview\Proxy\Service\Session\ParticipantContext participants(string $sid)
  */
-class SessionContext extends InstanceContext {
+class SessionContext extends InstanceContext
+{
     protected $_interactions = null;
     protected $_participants = null;
 
     /**
      * Initialize the SessionContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid Service Sid.
      * @param string $sid A string that uniquely identifies this Session.
-     * @return \Twilio\Rest\Preview\Proxy\Service\SessionContext 
+     * @return \Twilio\Rest\Preview\Proxy\Service\SessionContext
      */
-    public function __construct(Version $version, $serviceSid, $sid) {
+    public function __construct(Version $version, $serviceSid, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -51,10 +53,11 @@ class SessionContext extends InstanceContext {
 
     /**
      * Fetch a SessionInstance
-     * 
+     *
      * @return SessionInstance Fetched SessionInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -73,20 +76,22 @@ class SessionContext extends InstanceContext {
 
     /**
      * Deletes the SessionInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Update the SessionInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return SessionInstance Updated SessionInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         $options = new Values($options);
 
         $data = Values::of(array(
@@ -113,10 +118,11 @@ class SessionContext extends InstanceContext {
 
     /**
      * Access the interactions
-     * 
-     * @return \Twilio\Rest\Preview\Proxy\Service\Session\InteractionList 
+     *
+     * @return \Twilio\Rest\Preview\Proxy\Service\Session\InteractionList
      */
-    protected function getInteractions() {
+    protected function getInteractions()
+    {
         if (!$this->_interactions) {
             $this->_interactions = new InteractionList(
                 $this->version,
@@ -130,10 +136,11 @@ class SessionContext extends InstanceContext {
 
     /**
      * Access the participants
-     * 
-     * @return \Twilio\Rest\Preview\Proxy\Service\Session\ParticipantList 
+     *
+     * @return \Twilio\Rest\Preview\Proxy\Service\Session\ParticipantList
      */
-    protected function getParticipants() {
+    protected function getParticipants()
+    {
         if (!$this->_participants) {
             $this->_participants = new ParticipantList(
                 $this->version,
@@ -147,12 +154,13 @@ class SessionContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
@@ -163,13 +171,14 @@ class SessionContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments)
+    {
         $property = $this->$name;
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
@@ -180,10 +189,11 @@ class SessionContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

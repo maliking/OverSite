@@ -2,6 +2,7 @@
 
 
 namespace Twilio\Jwt\TaskRouter;
+
 use Twilio\Jwt\JWT;
 
 
@@ -11,7 +12,8 @@ use Twilio\Jwt\JWT;
  * @author Justin Witz <justin.witz@twilio.com>
  * @license  http://creativecommons.org/licenses/MIT/ MIT
  */
-class CapabilityToken {
+class CapabilityToken
+{
     protected $accountSid;
     protected $authToken;
     private $friendlyName;
@@ -29,7 +31,8 @@ class CapabilityToken {
     protected $required = array("required" => true);
     protected $optional = array("required" => false);
 
-    public function __construct($accountSid, $authToken, $workspaceSid, $channelId, $resourceUrl = null, $overrideBaseUrl = null, $overrideBaseWSUrl = null) {
+    public function __construct($accountSid, $authToken, $workspaceSid, $channelId, $resourceUrl = null, $overrideBaseUrl = null, $overrideBaseWSUrl = null)
+    {
         $this->accountSid = $accountSid;
         $this->authToken = $authToken;
         $this->friendlyName = $channelId;
@@ -59,25 +62,30 @@ class CapabilityToken {
         $this->allow($this->resourceUrl, "GET", null, null);
     }
 
-    protected function setupResource() {
+    protected function setupResource()
+    {
 
     }
 
-    public function addPolicyDeconstructed($url, $method, $queryFilter = array(), $postFilter = array(), $allow = true) {
+    public function addPolicyDeconstructed($url, $method, $queryFilter = array(), $postFilter = array(), $allow = true)
+    {
         $policy = new Policy($url, $method, $queryFilter, $postFilter, $allow);
         array_push($this->policies, $policy);
         return $policy;
     }
 
-    public function allow($url, $method, $queryFilter = array(), $postFilter = array()) {
+    public function allow($url, $method, $queryFilter = array(), $postFilter = array())
+    {
         $this->addPolicyDeconstructed($url, $method, $queryFilter, $postFilter, true);
     }
 
-    public function deny($url, $method, $queryFilter = array(), $postFilter = array()) {
+    public function deny($url, $method, $queryFilter = array(), $postFilter = array())
+    {
         $this->addPolicyDeconstructed($url, $method, $queryFilter, $postFilter, false);
     }
 
-    private function validateJWT() {
+    private function validateJWT()
+    {
         if (!isset($this->accountSid) || substr($this->accountSid, 0, 2) != 'AC') {
             throw new \Exception("Invalid AccountSid provided: " . $this->accountSid);
         }
@@ -93,42 +101,48 @@ class CapabilityToken {
         }
     }
 
-    public function allowFetchSubresources() {
+    public function allowFetchSubresources()
+    {
         $method = 'GET';
         $queryFilter = array();
         $postFilter = array();
         $this->allow($this->resourceUrl . '/**', $method, $queryFilter, $postFilter);
     }
 
-    public function allowUpdates() {
+    public function allowUpdates()
+    {
         $method = 'POST';
         $queryFilter = array();
         $postFilter = array();
         $this->allow($this->resourceUrl, $method, $queryFilter, $postFilter);
     }
 
-    public function allowUpdatesSubresources() {
+    public function allowUpdatesSubresources()
+    {
         $method = 'POST';
         $queryFilter = array();
         $postFilter = array();
         $this->allow($this->resourceUrl . '/**', $method, $queryFilter, $postFilter);
     }
 
-    public function allowDelete() {
+    public function allowDelete()
+    {
         $method = 'DELETE';
         $queryFilter = array();
         $postFilter = array();
         $this->allow($this->resourceUrl, $method, $queryFilter, $postFilter);
     }
 
-    public function allowDeleteSubresources() {
+    public function allowDeleteSubresources()
+    {
         $method = 'DELETE';
         $queryFilter = array();
         $postFilter = array();
         $this->allow($this->resourceUrl . '/**', $method, $queryFilter, $postFilter);
     }
 
-    public function generateToken($ttl = 3600, $extraAttributes = array()) {
+    public function generateToken($ttl = 3600, $extraAttributes = array())
+    {
         $payload = array(
             'version' => $this->version,
             'friendly_name' => $this->friendlyName,

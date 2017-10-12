@@ -15,41 +15,47 @@ use Twilio\Values;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
-abstract class SyncStreamOptions {
+abstract class SyncStreamOptions
+{
     /**
      * @param string $uniqueName Stream unique name.
      * @return CreateSyncStreamOptions Options builder
      */
-    public static function create($uniqueName = Values::NONE) {
+    public static function create($uniqueName = Values::NONE)
+    {
         return new CreateSyncStreamOptions($uniqueName);
     }
 }
 
-class CreateSyncStreamOptions extends Options {
+class CreateSyncStreamOptions extends Options
+{
     /**
      * @param string $uniqueName Stream unique name.
      */
-    public function __construct($uniqueName = Values::NONE) {
+    public function __construct($uniqueName = Values::NONE)
+    {
         $this->options['uniqueName'] = $uniqueName;
     }
 
     /**
      * The unique and addressable name of this Stream. Optional, up to 256 characters long.
-     * 
+     *
      * @param string $uniqueName Stream unique name.
      * @return $this Fluent Builder
      */
-    public function setUniqueName($uniqueName) {
+    public function setUniqueName($uniqueName)
+    {
         $this->options['uniqueName'] = $uniqueName;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

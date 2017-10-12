@@ -15,15 +15,18 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class NotificationTest extends HolodeckTestCase {
-    public function testCreateRequest() {
+class NotificationTest extends HolodeckTestCase
+{
+    public function testCreateRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->notifications->create();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->notifications->create();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'post',
@@ -31,7 +34,8 @@ class NotificationTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse() {
+    public function testCreateResponse()
+    {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -63,12 +67,13 @@ class NotificationTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->notifications->create();
+            ->notifications->create();
 
         $this->assertNotNull($actual);
     }
 
-    public function testCreateDirectNotificationResponse() {
+    public function testCreateDirectNotificationResponse()
+    {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -98,7 +103,7 @@ class NotificationTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->notify->v1->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->notifications->create();
+            ->notifications->create();
 
         $this->assertNotNull($actual);
     }

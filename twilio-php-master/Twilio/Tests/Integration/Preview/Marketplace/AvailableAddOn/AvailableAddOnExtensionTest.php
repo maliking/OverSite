@@ -15,15 +15,18 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class AvailableAddOnExtensionTest extends HolodeckTestCase {
-    public function testFetchRequest() {
+class AvailableAddOnExtensionTest extends HolodeckTestCase
+{
+    public function testFetchRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->preview->marketplace->availableAddOns("XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->extensions("XFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->extensions("XFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -31,7 +34,8 @@ class AvailableAddOnExtensionTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -47,19 +51,21 @@ class AvailableAddOnExtensionTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->preview->marketplace->availableAddOns("XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                     ->extensions("XFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            ->extensions("XFaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
 
         $this->assertNotNull($actual);
     }
 
-    public function testReadRequest() {
+    public function testReadRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->preview->marketplace->availableAddOns("XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                               ->extensions->read();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->extensions->read();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -67,7 +73,8 @@ class AvailableAddOnExtensionTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadFullResponse() {
+    public function testReadFullResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -96,12 +103,13 @@ class AvailableAddOnExtensionTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->preview->marketplace->availableAddOns("XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                     ->extensions->read();
+            ->extensions->read();
 
         $this->assertGreaterThan(0, count($actual));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -121,7 +129,7 @@ class AvailableAddOnExtensionTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->preview->marketplace->availableAddOns("XBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                                     ->extensions->read();
+            ->extensions->read();
 
         $this->assertNotNull($actual);
     }

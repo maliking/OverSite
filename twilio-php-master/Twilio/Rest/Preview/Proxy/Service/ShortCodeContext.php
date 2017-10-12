@@ -16,16 +16,18 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class ShortCodeContext extends InstanceContext {
+class ShortCodeContext extends InstanceContext
+{
     /**
      * Initialize the ShortCodeContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $sid Fetch by unique shortcode Sid
-     * @return \Twilio\Rest\Preview\Proxy\Service\ShortCodeContext 
+     * @return \Twilio\Rest\Preview\Proxy\Service\ShortCodeContext
      */
-    public function __construct(Version $version, $serviceSid, $sid) {
+    public function __construct(Version $version, $serviceSid, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -39,19 +41,21 @@ class ShortCodeContext extends InstanceContext {
 
     /**
      * Deletes the ShortCodeInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Fetch a ShortCodeInstance
-     * 
+     *
      * @return ShortCodeInstance Fetched ShortCodeInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -70,10 +74,11 @@ class ShortCodeContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

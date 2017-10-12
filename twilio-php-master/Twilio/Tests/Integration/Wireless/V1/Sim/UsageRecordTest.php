@@ -15,15 +15,18 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class UsageRecordTest extends HolodeckTestCase {
-    public function testReadRequest() {
+class UsageRecordTest extends HolodeckTestCase
+{
+    public function testReadRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->wireless->v1->sims("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                       ->usageRecords->read();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->usageRecords->read();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -31,7 +34,8 @@ class UsageRecordTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -66,7 +70,7 @@ class UsageRecordTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->wireless->v1->sims("DEaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                             ->usageRecords->read();
+            ->usageRecords->read();
 
         $this->assertNotNull($actual);
     }

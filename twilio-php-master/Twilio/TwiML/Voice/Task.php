@@ -11,13 +11,15 @@ namespace Twilio\TwiML\Voice;
 
 use Twilio\TwiML\TwiML;
 
-class Task extends TwiML {
+class Task extends TwiML
+{
     /**
      * Task constructor.
-     * 
+     *
      * @param string $body TaskRouter task attributes
      */
-    public function __construct($body) {
+    public function __construct($body)
+    {
         parent::__construct('Task', $body);
     }
 }

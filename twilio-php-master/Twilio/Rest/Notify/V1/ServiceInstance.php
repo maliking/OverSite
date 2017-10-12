@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
+ *
  * @property string sid
  * @property string accountSid
  * @property string friendlyName
@@ -38,7 +38,8 @@ use Twilio\Version;
  * @property string alexaSkillId
  * @property string defaultAlexaNotificationProtocolVersion
  */
-class ServiceInstance extends InstanceResource {
+class ServiceInstance extends InstanceResource
+{
     protected $_bindings = null;
     protected $_notifications = null;
     protected $_users = null;
@@ -46,13 +47,14 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Initialize the ServiceInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The sid
-     * @return \Twilio\Rest\Notify\V1\ServiceInstance 
+     * @return \Twilio\Rest\Notify\V1\ServiceInstance
      */
-    public function __construct(Version $version, array $payload, $sid = null) {
+    public function __construct(Version $version, array $payload, $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -85,11 +87,12 @@ class ServiceInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Notify\V1\ServiceContext Context for this
      *                                               ServiceInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new ServiceContext(
                 $this->version,
@@ -102,29 +105,32 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Deletes the ServiceInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->proxy()->delete();
     }
 
     /**
      * Fetch a ServiceInstance
-     * 
+     *
      * @return ServiceInstance Fetched ServiceInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         return $this->proxy()->fetch();
     }
 
     /**
      * Update the ServiceInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ServiceInstance Updated ServiceInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         return $this->proxy()->update(
             $options
         );
@@ -132,48 +138,53 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Access the bindings
-     * 
-     * @return \Twilio\Rest\Notify\V1\Service\BindingList 
+     *
+     * @return \Twilio\Rest\Notify\V1\Service\BindingList
      */
-    protected function getBindings() {
+    protected function getBindings()
+    {
         return $this->proxy()->bindings;
     }
 
     /**
      * Access the notifications
-     * 
-     * @return \Twilio\Rest\Notify\V1\Service\NotificationList 
+     *
+     * @return \Twilio\Rest\Notify\V1\Service\NotificationList
      */
-    protected function getNotifications() {
+    protected function getNotifications()
+    {
         return $this->proxy()->notifications;
     }
 
     /**
      * Access the users
-     * 
-     * @return \Twilio\Rest\Notify\V1\Service\UserList 
+     *
+     * @return \Twilio\Rest\Notify\V1\Service\UserList
      */
-    protected function getUsers() {
+    protected function getUsers()
+    {
         return $this->proxy()->users;
     }
 
     /**
      * Access the segments
-     * 
-     * @return \Twilio\Rest\Notify\V1\Service\SegmentList 
+     *
+     * @return \Twilio\Rest\Notify\V1\Service\SegmentList
      */
-    protected function getSegments() {
+    protected function getSegments()
+    {
         return $this->proxy()->segments;
     }
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -188,10 +199,11 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

@@ -15,16 +15,19 @@ use Twilio\Http\Response;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class MemberTest extends HolodeckTestCase {
-    public function testFetchRequest() {
+class MemberTest extends HolodeckTestCase
+{
+    public function testFetchRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->queues("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->members("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->queues("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->members("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -32,7 +35,8 @@ class MemberTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -47,21 +51,23 @@ class MemberTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->queues("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->members("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
+            ->queues("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->members("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->fetch();
 
         $this->assertNotNull($actual);
     }
 
-    public function testUpdateRequest() {
+    public function testUpdateRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->queues("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->members("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("https://example.com", "GET");
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->queues("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->members("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("https://example.com", "GET");
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $values = array(
             'Url' => "https://example.com",
@@ -76,7 +82,8 @@ class MemberTest extends HolodeckTestCase {
         ));
     }
 
-    public function testUpdateResponse() {
+    public function testUpdateResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -91,21 +98,23 @@ class MemberTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->queues("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->members("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("https://example.com", "GET");
+            ->queues("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->members("CAaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")->update("https://example.com", "GET");
 
         $this->assertNotNull($actual);
     }
 
-    public function testReadRequest() {
+    public function testReadRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->queues("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                     ->members->read();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->queues("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->members->read();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -113,7 +122,8 @@ class MemberTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadFullResponse() {
+    public function testReadFullResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -143,13 +153,14 @@ class MemberTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->queues("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->members->read();
+            ->queues("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->members->read();
 
         $this->assertGreaterThan(0, count($actual));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -171,8 +182,8 @@ class MemberTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->api->v2010->accounts("ACaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->queues("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                           ->members->read();
+            ->queues("QUaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->members->read();
 
         $this->assertNotNull($actual);
     }

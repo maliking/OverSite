@@ -8,15 +8,18 @@ use Twilio\Jwt\ClientToken;
 use Twilio\Jwt\JWT;
 use Twilio\Tests\Unit\UnitTest;
 
-class ClientTokenTest extends UnitTest {
-    public function testNoPermissions() {
+class ClientTokenTest extends UnitTest
+{
+    public function testNoPermissions()
+    {
         $token = new ClientToken('AC123', 'foo');
         $payload = JWT::decode($token->generateToken(), 'foo');
         $this->assertEquals($payload->iss, "AC123");
         $this->assertEquals($payload->scope, '');
     }
 
-    public function testInboundPermissions() {
+    public function testInboundPermissions()
+    {
         $token = new ClientToken('AC123', 'foo');
         $token->allowClientIncoming("andy");
         $payload = JWT::decode($token->generateToken(), 'foo');
@@ -25,7 +28,8 @@ class ClientTokenTest extends UnitTest {
         $this->assertEquals($payload->scope, $eurl);
     }
 
-    public function testOutboundPermissions() {
+    public function testOutboundPermissions()
+    {
         $token = new ClientToken('AC123', 'foo');
         $token->allowClientOutgoing("AP123");
         $payload = JWT::decode($token->generateToken(), 'foo');;
@@ -33,7 +37,8 @@ class ClientTokenTest extends UnitTest {
         $this->assertContains($eurl, $payload->scope);
     }
 
-    public function testOutboundPermissionsParams() {
+    public function testOutboundPermissionsParams()
+    {
         $token = new ClientToken('AC123', 'foo');
         $token->allowClientOutgoing("AP123", array("foobar" => 3));
         $payload = JWT::decode($token->generateToken(), 'foo');
@@ -42,7 +47,8 @@ class ClientTokenTest extends UnitTest {
         $this->assertEquals($payload->scope, $eurl);
     }
 
-    public function testEvents() {
+    public function testEvents()
+    {
         $token = new ClientToken('AC123', 'foo');
         $token->allowEventStream();
         $payload = JWT::decode($token->generateToken(), 'foo');
@@ -52,7 +58,8 @@ class ClientTokenTest extends UnitTest {
         $this->assertEquals($payload->scope, $event_uri);
     }
 
-    public function testEventsWithFilters() {
+    public function testEventsWithFilters()
+    {
         $token = new ClientToken('AC123', 'foo');
         $token->allowEventStream(array("foobar" => "hey"));
         $payload = JWT::decode($token->generateToken(), 'foo');
@@ -63,9 +70,10 @@ class ClientTokenTest extends UnitTest {
     }
 
 
-    public function testDecode() {
+    public function testDecode()
+    {
         $token = new ClientToken('AC123', 'foo');
-        $token->allowClientOutgoing("AP123", array("foobar"=> 3));
+        $token->allowClientOutgoing("AP123", array("foobar" => 3));
         $token->allowClientIncoming("andy");
         $token->allowEventStream();
 
@@ -83,7 +91,8 @@ class ClientTokenTest extends UnitTest {
     }
 
 
-    function testDecodeWithAuthToken() {
+    function testDecodeWithAuthToken()
+    {
         try {
             $token = new ClientToken('AC123', 'foo');
             $payload = JWT::decode($token->generateToken(), 'foo');
@@ -93,14 +102,16 @@ class ClientTokenTest extends UnitTest {
         }
     }
 
-    function testClientNameValidation() {
+    function testClientNameValidation()
+    {
         $this->setExpectedException('InvalidArgumentException');
         $token = new ClientToken('AC123', 'foo');
         $token->allowClientIncoming('@');
         $this->fail('exception should have been raised');
     }
 
-    function zeroLengthNameInvalid() {
+    function zeroLengthNameInvalid()
+    {
         $this->setExpectedException('InvalidArgumentException');
         $token = new ClientToken('AC123', 'foo');
         $token->allowClientIncoming("");

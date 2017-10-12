@@ -6,7 +6,9 @@ date_default_timezone_set('America/Los_Angeles');
 require '../databaseConnection.php';
 require '../keys/cred.php';
 require '../twilio-php-master/Twilio/autoload.php';
+
 use Twilio\Rest\Client;
+
 // session_start();
 $dbConn = getConnection();
 $firstName = $_POST['firstName'];
@@ -29,15 +31,12 @@ $meetingResult = $meetingStmt->fetch();
 
 // $latestTime = new DateTime('07:00:00');
 // $lastTime = $latestTime->format('H:i:s');
-if(empty($meetingResult))
-{
+if (empty($meetingResult)) {
     $nextMeeting = date_create_from_format('Y-m-d', $nextMonday);
     $nextMeeting->setTime(7, 00, 00);
 
-}
-else
-{
-    
+} else {
+
 
     $meetingDateTime = new DateTime($meetingResult['meeting']);
 
@@ -70,7 +69,6 @@ else
 // }
 
 
-
 $userId = $_SESSION['userId'];
 $sql = "INSERT INTO BuyerInfo
 		(firstName, lastName, email, phone, registeredDate, meeting, bedroomsMin, bathroomsMin, priceMax, priceMin, houseId, userId, howSoon)
@@ -89,57 +87,52 @@ $namedParameters[':priceMin'] = $priceMin;
 $namedParameters[':houseId'] = $_POST['houseId'];
 $namedParameters[':userId'] = $userId;
 $namedParameters[':howSoon'] = $_POST['howSoon'];
-$stmt = $dbConn -> prepare($sql);
-try{
-$stmt->execute($namedParameters);
-}
-catch(Exception $e)
-{
-    echo 'Caught exception: ',  $e->getMessage(), "\n";
+$stmt = $dbConn->prepare($sql);
+try {
+    $stmt->execute($namedParameters);
+} catch (Exception $e) {
+    echo 'Caught exception: ', $e->getMessage(), "\n";
 
 }
 //$stmt->execute();
 //$result = $stmt->fetch(); //We are expecting one record
 
 
-
-
-
 $twilio_phone_number = "+18315851661";
 // if($houseId == "89")
 // {
-    $client = new Client($sid, $token);
-    $client->messages->create(
-        $phone,
-        array(
+$client = new Client($sid, $token);
+$client->messages->create(
+    $phone,
+    array(
         "From" => $twilio_phone_number,
         "Body" => "Flyer",
-        'mediaUrl' => "http://52.11.24.75/uploadFlyers/" . substr(rawurlencode($_SESSION['flyer']),0,-3) . 'jpg',
-        )
-    );
+        'mediaUrl' => "http://52.11.24.75/uploadFlyers/" . substr(rawurlencode($_SESSION['flyer']), 0, -3) . 'jpg',
+    )
+);
 
-    // }
-    // else if($houseId == "193")
-    // {
-    // 	$client = new Client($sid, $token);
-    // 	$client->messages->create(
-    // 	$phone,
-    // 	array(
-    // 	"From" => $twilio_phone_number,
-    // 	"Body" => "Flyer",
-    // 	'mediaUrl' => "http://52.11.24.75/keys/declaration.jpg",
-    // 	)
-    // 	);
-    // }
-    //if (empty($result)) {
-    header("Location: Confirmation.php");
-    //}
-    /*else {
+// }
+// else if($houseId == "193")
+// {
+// 	$client = new Client($sid, $token);
+// 	$client->messages->create(
+// 	$phone,
+// 	array(
+// 	"From" => $twilio_phone_number,
+// 	"Body" => "Flyer",
+// 	'mediaUrl' => "http://52.11.24.75/keys/declaration.jpg",
+// 	)
+// 	);
+// }
+//if (empty($result)) {
+header("Location: Confirmation.php");
+//}
+/*else {
 
-    $_SESSION['username']  = $result['username'];
-    $_SESSION['adminName'] = $result['firstName'] . " " . $result['lastName'];
-    $_SESSION['userId'] = $result['userId'];
-    header("Location: quiz.php");
+$_SESSION['username']  = $result['username'];
+$_SESSION['adminName'] = $result['firstName'] . " " . $result['lastName'];
+$_SESSION['userId'] = $result['userId'];
+header("Location: quiz.php");
 
-    }*/
+}*/
 ?>

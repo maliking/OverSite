@@ -6,7 +6,8 @@ namespace Twilio\Http;
 
 use Twilio\Exceptions\EnvironmentException;
 
-class CurlClient implements Client {
+class CurlClient implements Client
+{
     const DEFAULT_TIMEOUT = 60;
     protected $curlOptions = array();
     protected $debugHttp = false;
@@ -14,16 +15,18 @@ class CurlClient implements Client {
     public $lastRequest = null;
     public $lastResponse = null;
 
-    public function __construct(array $options = array()) {
+    public function __construct(array $options = array())
+    {
         $this->curlOptions = $options;
         $this->debugHttp = getenv('DEBUG_HTTP_TRAFFIC') === 'true';
     }
 
     public function request($method, $url, $params = array(), $data = array(),
                             $headers = array(), $user = null, $password = null,
-                            $timeout = null) {
+                            $timeout = null)
+    {
         $options = $this->options($method, $url, $params, $data, $headers,
-                                  $user, $password, $timeout);
+            $user, $password, $timeout);
 
         $this->lastRequest = $options;
         $this->lastResponse = null;
@@ -43,13 +46,13 @@ class CurlClient implements Client {
 
             $parts = explode("\r\n\r\n", $response, 3);
             list($head, $body) = ($parts[0] == 'HTTP/1.1 100 Continue')
-                               ? array($parts[1], $parts[2])
-                               : array($parts[0], $parts[1]);
+                ? array($parts[1], $parts[2])
+                : array($parts[0], $parts[1]);
 
             if ($this->debugHttp) {
                 $u = parse_url($url);
                 $hdrLine = $method . ' ' . $u['path'];
-                if (isset($u['query']) && strlen($u['query']) > 0 ) {
+                if (isset($u['query']) && strlen($u['query']) > 0) {
                     $hdrLine = $hdrLine . '?' . $u['query'];
                 }
                 error_log($hdrLine);
@@ -102,19 +105,20 @@ class CurlClient implements Client {
 
     public function options($method, $url, $params = array(), $data = array(),
                             $headers = array(), $user = null, $password = null,
-                            $timeout = null) {
+                            $timeout = null)
+    {
 
         $timeout = is_null($timeout)
             ? self::DEFAULT_TIMEOUT
             : $timeout;
         $options = $this->curlOptions + array(
-            CURLOPT_URL => $url,
-            CURLOPT_HEADER => true,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_INFILESIZE => -1,
-            CURLOPT_HTTPHEADER => array(),
-            CURLOPT_TIMEOUT => $timeout,
-        );
+                CURLOPT_URL => $url,
+                CURLOPT_HEADER => true,
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_INFILESIZE => -1,
+                CURLOPT_HTTPHEADER => array(),
+                CURLOPT_TIMEOUT => $timeout,
+            );
 
         foreach ($headers as $key => $value) {
             $options[CURLOPT_HTTPHEADER][] = "$key: $value";
@@ -162,7 +166,8 @@ class CurlClient implements Client {
         return $options;
     }
 
-    public function buildQuery($params) {
+    public function buildQuery($params)
+    {
         $parts = array();
 
         if (is_string($params)) {

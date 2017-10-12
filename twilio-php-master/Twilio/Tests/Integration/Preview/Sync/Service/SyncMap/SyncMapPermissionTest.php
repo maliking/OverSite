@@ -16,16 +16,19 @@ use Twilio\Serialize;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class SyncMapPermissionTest extends HolodeckTestCase {
-    public function testFetchRequest() {
+class SyncMapPermissionTest extends HolodeckTestCase
+{
+    public function testFetchRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->syncMapPermissions("identity")->fetch();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->syncMapPermissions("identity")->fetch();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -33,7 +36,8 @@ class SyncMapPermissionTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -51,21 +55,23 @@ class SyncMapPermissionTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->syncMapPermissions("identity")->fetch();
+            ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->syncMapPermissions("identity")->fetch();
 
         $this->assertNotNull($actual);
     }
 
-    public function testDeleteRequest() {
+    public function testDeleteRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->syncMapPermissions("identity")->delete();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->syncMapPermissions("identity")->delete();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'delete',
@@ -73,28 +79,31 @@ class SyncMapPermissionTest extends HolodeckTestCase {
         ));
     }
 
-    public function testDeleteResponse() {
+    public function testDeleteResponse()
+    {
         $this->holodeck->mock(new Response(
             204,
             null
         ));
 
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->syncMapPermissions("identity")->delete();
+            ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->syncMapPermissions("identity")->delete();
 
         $this->assertTrue($actual);
     }
 
-    public function testReadRequest() {
+    public function testReadRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->syncMapPermissions->read();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->syncMapPermissions->read();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -102,7 +111,8 @@ class SyncMapPermissionTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -122,13 +132,14 @@ class SyncMapPermissionTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->syncMapPermissions->read();
+            ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->syncMapPermissions->read();
 
         $this->assertNotNull($actual);
     }
 
-    public function testReadFullResponse() {
+    public function testReadFullResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -159,21 +170,23 @@ class SyncMapPermissionTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->syncMapPermissions->read();
+            ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->syncMapPermissions->read();
 
         $this->assertGreaterThan(0, count($actual));
     }
 
-    public function testUpdateRequest() {
+    public function testUpdateRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->syncMapPermissions("identity")->update(True, True, True);
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->syncMapPermissions("identity")->update(True, True, True);
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $values = array(
             'Read' => Serialize::booleanToString(True),
@@ -189,7 +202,8 @@ class SyncMapPermissionTest extends HolodeckTestCase {
         ));
     }
 
-    public function testUpdateResponse() {
+    public function testUpdateResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -207,8 +221,8 @@ class SyncMapPermissionTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->syncMapPermissions("identity")->update(True, True, True);
+            ->syncMaps("MPaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->syncMapPermissions("identity")->update(True, True, True);
 
         $this->assertNotNull($actual);
     }

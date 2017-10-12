@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property string sid
  * @property string uniqueName
  * @property string accountSid
@@ -42,18 +42,20 @@ use Twilio\Version;
  * @property string url
  * @property array links
  */
-class SimInstance extends InstanceResource {
+class SimInstance extends InstanceResource
+{
     protected $_usage = null;
 
     /**
      * Initialize the SimInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The sid
-     * @return \Twilio\Rest\Preview\Wireless\SimInstance 
+     * @return \Twilio\Rest\Preview\Wireless\SimInstance
      */
-    public function __construct(Version $version, array $payload, $sid = null) {
+    public function __construct(Version $version, array $payload, $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -90,10 +92,11 @@ class SimInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Preview\Wireless\SimContext Context for this SimInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new SimContext(
                 $this->version,
@@ -106,20 +109,22 @@ class SimInstance extends InstanceResource {
 
     /**
      * Fetch a SimInstance
-     * 
+     *
      * @return SimInstance Fetched SimInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         return $this->proxy()->fetch();
     }
 
     /**
      * Update the SimInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return SimInstance Updated SimInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         return $this->proxy()->update(
             $options
         );
@@ -127,21 +132,23 @@ class SimInstance extends InstanceResource {
 
     /**
      * Access the usage
-     * 
-     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageList 
+     *
+     * @return \Twilio\Rest\Preview\Wireless\Sim\UsageList
      */
-    protected function getUsage() {
+    protected function getUsage()
+    {
         return $this->proxy()->usage;
     }
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -156,10 +163,11 @@ class SimInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

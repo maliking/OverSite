@@ -11,32 +11,27 @@ $sql = "SELECT * FROM UsersInfo WHERE username = :username AND password = :passw
 $namedParameters = array();
 $namedParameters[':username'] = $username;
 $namedParameters[':password'] = $password;
-$stmt = $dbConn -> prepare($sql);
+$stmt = $dbConn->prepare($sql);
 $stmt->execute($namedParameters);
 //$stmt->execute();
 $result = $stmt->fetch(); //We are expecting one record
 
 if (empty($result)) {
-     header("Location: login.php?error=WRONG USERNAME OR PASSWORD");
-}
+    header("Location: login.php?error=WRONG USERNAME OR PASSWORD");
+} else {
 
-else {
-
-    $_SESSION['userId']  = $result['userId'];
+    $_SESSION['userId'] = $result['userId'];
     $_SESSION['username'] = $result['username'];
     $_SESSION['license'] = $result['license'];
     //$_SESSION['userName'] = $result['firstName'] . " " . $result['lastName'];
     //$_SESSION['userId'] = $result['userId'];
-    if($result['userType'] == 0) {
+    if ($result['userType'] == 0) {
         header("Location: index.php");
-    }
-
-    else if($result['userType'] == 1) {
+    } else if ($result['userType'] == 1) {
         header("Location: IDXGetFeatured.php");
     }
 
 }
-
 
 
 ?>

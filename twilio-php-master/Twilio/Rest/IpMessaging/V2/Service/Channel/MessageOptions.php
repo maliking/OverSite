@@ -12,7 +12,8 @@ namespace Twilio\Rest\IpMessaging\V2\Service\Channel;
 use Twilio\Options;
 use Twilio\Values;
 
-abstract class MessageOptions {
+abstract class MessageOptions
+{
     /**
      * @param string $from The from
      * @param string $attributes The attributes
@@ -21,7 +22,8 @@ abstract class MessageOptions {
      * @param string $lastUpdatedBy The last_updated_by
      * @return CreateMessageOptions Options builder
      */
-    public static function create($from = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE) {
+    public static function create($from = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE)
+    {
         return new CreateMessageOptions($from, $attributes, $dateCreated, $dateUpdated, $lastUpdatedBy);
     }
 
@@ -29,7 +31,8 @@ abstract class MessageOptions {
      * @param string $order The order
      * @return ReadMessageOptions Options builder
      */
-    public static function read($order = Values::NONE) {
+    public static function read($order = Values::NONE)
+    {
         return new ReadMessageOptions($order);
     }
 
@@ -41,12 +44,14 @@ abstract class MessageOptions {
      * @param string $lastUpdatedBy The last_updated_by
      * @return UpdateMessageOptions Options builder
      */
-    public static function update($body = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE) {
+    public static function update($body = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE)
+    {
         return new UpdateMessageOptions($body, $attributes, $dateCreated, $dateUpdated, $lastUpdatedBy);
     }
 }
 
-class CreateMessageOptions extends Options {
+class CreateMessageOptions extends Options
+{
     /**
      * @param string $from The from
      * @param string $attributes The attributes
@@ -54,7 +59,8 @@ class CreateMessageOptions extends Options {
      * @param \DateTime $dateUpdated The date_updated
      * @param string $lastUpdatedBy The last_updated_by
      */
-    public function __construct($from = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE) {
+    public function __construct($from = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE)
+    {
         $this->options['from'] = $from;
         $this->options['attributes'] = $attributes;
         $this->options['dateCreated'] = $dateCreated;
@@ -64,65 +70,71 @@ class CreateMessageOptions extends Options {
 
     /**
      * The from
-     * 
+     *
      * @param string $from The from
      * @return $this Fluent Builder
      */
-    public function setFrom($from) {
+    public function setFrom($from)
+    {
         $this->options['from'] = $from;
         return $this;
     }
 
     /**
      * The attributes
-     * 
+     *
      * @param string $attributes The attributes
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes) {
+    public function setAttributes($attributes)
+    {
         $this->options['attributes'] = $attributes;
         return $this;
     }
 
     /**
      * The date_created
-     * 
+     *
      * @param \DateTime $dateCreated The date_created
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated) {
+    public function setDateCreated($dateCreated)
+    {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
 
     /**
      * The date_updated
-     * 
+     *
      * @param \DateTime $dateUpdated The date_updated
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated) {
+    public function setDateUpdated($dateUpdated)
+    {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
 
     /**
      * The last_updated_by
-     * 
+     *
      * @param string $lastUpdatedBy The last_updated_by
      * @return $this Fluent Builder
      */
-    public function setLastUpdatedBy($lastUpdatedBy) {
+    public function setLastUpdatedBy($lastUpdatedBy)
+    {
         $this->options['lastUpdatedBy'] = $lastUpdatedBy;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {
@@ -133,31 +145,35 @@ class CreateMessageOptions extends Options {
     }
 }
 
-class ReadMessageOptions extends Options {
+class ReadMessageOptions extends Options
+{
     /**
      * @param string $order The order
      */
-    public function __construct($order = Values::NONE) {
+    public function __construct($order = Values::NONE)
+    {
         $this->options['order'] = $order;
     }
 
     /**
      * The order
-     * 
+     *
      * @param string $order The order
      * @return $this Fluent Builder
      */
-    public function setOrder($order) {
+    public function setOrder($order)
+    {
         $this->options['order'] = $order;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {
@@ -168,7 +184,8 @@ class ReadMessageOptions extends Options {
     }
 }
 
-class UpdateMessageOptions extends Options {
+class UpdateMessageOptions extends Options
+{
     /**
      * @param string $body The body
      * @param string $attributes The attributes
@@ -176,7 +193,8 @@ class UpdateMessageOptions extends Options {
      * @param \DateTime $dateUpdated The date_updated
      * @param string $lastUpdatedBy The last_updated_by
      */
-    public function __construct($body = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE) {
+    public function __construct($body = Values::NONE, $attributes = Values::NONE, $dateCreated = Values::NONE, $dateUpdated = Values::NONE, $lastUpdatedBy = Values::NONE)
+    {
         $this->options['body'] = $body;
         $this->options['attributes'] = $attributes;
         $this->options['dateCreated'] = $dateCreated;
@@ -186,65 +204,71 @@ class UpdateMessageOptions extends Options {
 
     /**
      * The body
-     * 
+     *
      * @param string $body The body
      * @return $this Fluent Builder
      */
-    public function setBody($body) {
+    public function setBody($body)
+    {
         $this->options['body'] = $body;
         return $this;
     }
 
     /**
      * The attributes
-     * 
+     *
      * @param string $attributes The attributes
      * @return $this Fluent Builder
      */
-    public function setAttributes($attributes) {
+    public function setAttributes($attributes)
+    {
         $this->options['attributes'] = $attributes;
         return $this;
     }
 
     /**
      * The date_created
-     * 
+     *
      * @param \DateTime $dateCreated The date_created
      * @return $this Fluent Builder
      */
-    public function setDateCreated($dateCreated) {
+    public function setDateCreated($dateCreated)
+    {
         $this->options['dateCreated'] = $dateCreated;
         return $this;
     }
 
     /**
      * The date_updated
-     * 
+     *
      * @param \DateTime $dateUpdated The date_updated
      * @return $this Fluent Builder
      */
-    public function setDateUpdated($dateUpdated) {
+    public function setDateUpdated($dateUpdated)
+    {
         $this->options['dateUpdated'] = $dateUpdated;
         return $this;
     }
 
     /**
      * The last_updated_by
-     * 
+     *
      * @param string $lastUpdatedBy The last_updated_by
      * @return $this Fluent Builder
      */
-    public function setLastUpdatedBy($lastUpdatedBy) {
+    public function setLastUpdatedBy($lastUpdatedBy)
+    {
         $this->options['lastUpdatedBy'] = $lastUpdatedBy;
         return $this;
     }
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $options = array();
         foreach ($this->options as $key => $value) {
             if ($value != Values::NONE) {

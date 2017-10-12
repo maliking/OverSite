@@ -34,28 +34,25 @@ $visitors = $stmtVisitors->fetchAll();
 $today = date("m/d/Y");
 
 
+echo 'FirstName' . "\t" . 'LastName' . "\t" . 'Title' . "\t" . 'Company' . "\t" . 'Address1' . "\t" .
+    'Address2' . "\t" . 'City' . "\t" . 'State' . "\t" . 'Zip' . "\t" . 'Country' . "\t" . 'County' . "\t" . 'BizPhone' . "\t" .
+    'HomePhone' . "\t" . 'CellPhone' . "\t" . 'Fax' . "\t" . 'Email' . "\t" . 'WebURL' . "\t" . 'Active' . "\t" .
+    'LeadPriority' . "\t" . 'AssignedTo' . "\t" . 'LeadSource' . "\t" . 'AdCode' . "\t" . 'AddedOn' . "\t" . 'ModifiedOn' . "\t" . 'Office' . "\t" . 'ContactTypes' . "\t" .
+    'Anniversary' . "\t" . 'Birthday' . "\t" . 'BizPhone2' . "\t" . 'BizPhone2Ext' . "\t" . 'CellPhone2' . "\t" . 'ClosingDate' . "\t" . 'CommissionEstimate' .
+    "\t" . 'Email2' . "\t" . 'ReferredBy' . "\t" . 'SpouseBizPhone' . "\t" . 'SpouseBizPhoneExt' . "\t" . 'SpouseCellPhone' . "\t" . 'SpouseEmail' . "\t" . 'SpouseFirstName' .
+    "\t" . 'SpouseLastName' . "\t" . 'WorkAddress' . "\t" . 'WorkCity' . "\t" . 'WorkCountry' . "\t" . 'WorkCounty' . "\t" . 'WorkState' . "\t" . 'WorkZip' . "\n";
 
-echo  'FirstName' . "\t" . 'LastName' . "\t" . 'Title'. "\t"  . 'Company'. "\t"  . 'Address1'. "\t"  .
-		'Address2'. "\t"  . 'City'. "\t"  . 'State'. "\t"  . 'Zip'. "\t"  . 'Country'. "\t"  . 'County'. "\t"  . 'BizPhone'. "\t"  .
-		'HomePhone'. "\t"  . 'CellPhone'. "\t"  . 'Fax'. "\t"  . 'Email'. "\t"  . 'WebURL'. "\t"  . 'Active'. "\t"  . 
-		'LeadPriority'. "\t"  . 'AssignedTo'. "\t"  . 'LeadSource'. "\t"  . 'AdCode'. "\t"  . 'AddedOn'. "\t"  . 'ModifiedOn'. "\t"  . 'Office'. "\t"  . 'ContactTypes'. "\t"  . 
-		'Anniversary'. "\t"  . 'Birthday'. "\t"  . 'BizPhone2'. "\t"  . 'BizPhone2Ext'. "\t"  . 'CellPhone2'. "\t"  . 'ClosingDate'. "\t"  . 'CommissionEstimate'. 
-		"\t"  . 'Email2'. "\t"  . 'ReferredBy'. "\t"  . 'SpouseBizPhone'. "\t"  . 'SpouseBizPhoneExt'. "\t"  . 'SpouseCellPhone'. "\t"  . 'SpouseEmail'. "\t"  . 'SpouseFirstName'. 
-		"\t"  . 'SpouseLastName'. "\t"  . 'WorkAddress'. "\t"  . 'WorkCity'. "\t"  . 'WorkCountry'. "\t"  . 'WorkCounty'. "\t"  . 'WorkState'. "\t"  . 'WorkZip'. "\n";
+foreach ($visitors as $visit) {
+    # code...
 
-foreach ($visitors as $visit) 
-{
-	# code...
-
-echo $visit['firstName'] . "\t" . $visit['lastName'] . "\t" . ' ' . "\t" . ' ' . "\t" . ' ' . "\t" . ' ' . "\t" . '' . 
-	 "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . $visit['phone'] . "\t" . '' . "\t" . '' . "\t" . 
-	 '' . "\t" . $visit['email'] . "\t" . '' . "\t" . 'TRUE' . "\t" . '' . "\t" . 'Jorge Edeza' . "\t" . 'Manually Entered' . "\t" . '' . "\t" .
-	 $today . "\t" . $today . "\t" . 'RE/MAX Property Experts' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' .
-	  "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' .
-	   "\t" . '' . "\t" . '' . "\t" . '' . "\n";
+    echo $visit['firstName'] . "\t" . $visit['lastName'] . "\t" . ' ' . "\t" . ' ' . "\t" . ' ' . "\t" . ' ' . "\t" . '' .
+        "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . $visit['phone'] . "\t" . '' . "\t" . '' . "\t" .
+        '' . "\t" . $visit['email'] . "\t" . '' . "\t" . 'TRUE' . "\t" . '' . "\t" . 'Jorge Edeza' . "\t" . 'Manually Entered' . "\t" . '' . "\t" .
+        $today . "\t" . $today . "\t" . 'RE/MAX Property Experts' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' .
+        "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' .
+        "\t" . '' . "\t" . '' . "\t" . '' . "\n";
 
 }
-
 
 
 ?>

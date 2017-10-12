@@ -18,14 +18,16 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
-class RatePlanList extends ListResource {
+class RatePlanList extends ListResource
+{
     /**
      * Construct the RatePlanList
-     * 
+     *
      * @param Version $version Version that contains the resource
-     * @return \Twilio\Rest\Wireless\V1\RatePlanList 
+     * @return \Twilio\Rest\Wireless\V1\RatePlanList
      */
-    public function __construct(Version $version) {
+    public function __construct(Version $version)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -41,7 +43,7 @@ class RatePlanList extends ListResource {
      * is reached.
      * The results are returned as a generator, so this operation is memory
      * efficient.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. stream()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -52,7 +54,8 @@ class RatePlanList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return \Twilio\Stream stream of results
      */
-    public function stream($limit = null, $pageSize = null) {
+    public function stream($limit = null, $pageSize = null)
+    {
         $limits = $this->version->readLimits($limit, $pageSize);
 
         $page = $this->page($limits['pageSize']);
@@ -64,7 +67,7 @@ class RatePlanList extends ListResource {
      * Reads RatePlanInstance records from the API as a list.
      * Unlike stream(), this operation is eager and will load `limit` records into
      * memory before returning.
-     * 
+     *
      * @param int $limit Upper limit for the number of records to return. read()
      *                   guarantees to never return more than limit.  Default is no
      *                   limit
@@ -75,20 +78,22 @@ class RatePlanList extends ListResource {
      *                        efficient page size, i.e. min(limit, 1000)
      * @return RatePlanInstance[] Array of results
      */
-    public function read($limit = null, $pageSize = null) {
+    public function read($limit = null, $pageSize = null)
+    {
         return iterator_to_array($this->stream($limit, $pageSize), false);
     }
 
     /**
      * Retrieve a single page of RatePlanInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param mixed $pageSize Number of records to return, defaults to 50
      * @param string $pageToken PageToken provided by the API
      * @param mixed $pageNumber Page Number, this value is simply for client state
      * @return \Twilio\Page Page of RatePlanInstance
      */
-    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE) {
+    public function page($pageSize = Values::NONE, $pageToken = Values::NONE, $pageNumber = Values::NONE)
+    {
         $params = Values::of(array(
             'PageToken' => $pageToken,
             'Page' => $pageNumber,
@@ -107,11 +112,12 @@ class RatePlanList extends ListResource {
     /**
      * Retrieve a specific page of RatePlanInstance records from the API.
      * Request is executed immediately
-     * 
+     *
      * @param string $targetUrl API-generated URL for the requested results page
      * @return \Twilio\Page Page of RatePlanInstance
      */
-    public function getPage($targetUrl) {
+    public function getPage($targetUrl)
+    {
         $response = $this->version->getDomain()->getClient()->request(
             'GET',
             $targetUrl
@@ -122,11 +128,12 @@ class RatePlanList extends ListResource {
 
     /**
      * Create a new RatePlanInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return RatePlanInstance Newly created RatePlanInstance
      */
-    public function create($options = array()) {
+    public function create($options = array())
+    {
         $options = new Values($options);
 
         $data = Values::of(array(
@@ -158,11 +165,12 @@ class RatePlanList extends ListResource {
 
     /**
      * Constructs a RatePlanContext
-     * 
+     *
      * @param string $sid The sid
-     * @return \Twilio\Rest\Wireless\V1\RatePlanContext 
+     * @return \Twilio\Rest\Wireless\V1\RatePlanContext
      */
-    public function getContext($sid) {
+    public function getContext($sid)
+    {
         return new RatePlanContext(
             $this->version,
             $sid
@@ -171,10 +179,11 @@ class RatePlanList extends ListResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         return '[Twilio.Wireless.V1.RatePlanList]';
     }
 }

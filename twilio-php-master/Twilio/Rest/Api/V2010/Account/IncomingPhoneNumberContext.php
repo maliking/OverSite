@@ -21,18 +21,20 @@ use Twilio\Version;
  * @property \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnList assignedAddOns
  * @method \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnContext assignedAddOns(string $sid)
  */
-class IncomingPhoneNumberContext extends InstanceContext {
+class IncomingPhoneNumberContext extends InstanceContext
+{
     protected $_assignedAddOns = null;
 
     /**
      * Initialize the IncomingPhoneNumberContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $accountSid The account_sid
      * @param string $sid Fetch by unique incoming-phone-number Sid
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberContext 
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumberContext
      */
-    public function __construct(Version $version, $accountSid, $sid) {
+    public function __construct(Version $version, $accountSid, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -46,11 +48,12 @@ class IncomingPhoneNumberContext extends InstanceContext {
 
     /**
      * Update the IncomingPhoneNumberInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return IncomingPhoneNumberInstance Updated IncomingPhoneNumberInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         $options = new Values($options);
 
         $data = Values::of(array(
@@ -93,10 +96,11 @@ class IncomingPhoneNumberContext extends InstanceContext {
 
     /**
      * Fetch a IncomingPhoneNumberInstance
-     * 
+     *
      * @return IncomingPhoneNumberInstance Fetched IncomingPhoneNumberInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -115,19 +119,21 @@ class IncomingPhoneNumberContext extends InstanceContext {
 
     /**
      * Deletes the IncomingPhoneNumberInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Access the assignedAddOns
-     * 
-     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnList 
+     *
+     * @return \Twilio\Rest\Api\V2010\Account\IncomingPhoneNumber\AssignedAddOnList
      */
-    protected function getAssignedAddOns() {
+    protected function getAssignedAddOns()
+    {
         if (!$this->_assignedAddOns) {
             $this->_assignedAddOns = new AssignedAddOnList(
                 $this->version,
@@ -141,12 +147,13 @@ class IncomingPhoneNumberContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
@@ -157,13 +164,14 @@ class IncomingPhoneNumberContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments)
+    {
         $property = $this->$name;
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
@@ -174,10 +182,11 @@ class IncomingPhoneNumberContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

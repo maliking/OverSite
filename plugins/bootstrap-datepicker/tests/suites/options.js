@@ -1,7 +1,8 @@
 module('Options', {
-    setup: function(){},
-    teardown: function(){
-        $('#qunit-fixture *').each(function(){
+    setup: function () {
+    },
+    teardown: function () {
+        $('#qunit-fixture *').each(function () {
             var t = $(this);
             if ('datepicker' in t.data())
                 t.datepicker('remove');
@@ -9,14 +10,14 @@ module('Options', {
     }
 });
 
-test('Autoclose', function(){
+test('Autoclose', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    autoclose: true
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                autoclose: true
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -33,31 +34,31 @@ test('Autoclose', function(){
     datesEqual(dp.viewDate, UTCDate(2012, 2, 4));
 });
 
-test('Custom date formatter functions', function(){
+test('Custom date formatter functions', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2015-09-18T00:00:00.000Z')
-                .datepicker({
-                    format: {
-                        /*
-                        Say our UI should display a week ahead,
-                        but textbox should store the actual date.
-                        This is useful if we need UI to select local dates,
-                        but store in UTC
-                        */
-                        toDisplay: function (date, format, language) {
-                            var d = new Date(date);
-                            d.setDate(d.getDate() - 7);
-                            return d.toISOString();
-                        },
-                        toValue: function (date, format, language) {
-                            var d = new Date(date);
-                            d.setDate(d.getDate() + 7);
-                            return new Date(d);
-                        }
+            .appendTo('#qunit-fixture')
+            .val('2015-09-18T00:00:00.000Z')
+            .datepicker({
+                format: {
+                    /*
+                    Say our UI should display a week ahead,
+                    but textbox should store the actual date.
+                    This is useful if we need UI to select local dates,
+                    but store in UTC
+                    */
+                    toDisplay: function (date, format, language) {
+                        var d = new Date(date);
+                        d.setDate(d.getDate() - 7);
+                        return d.toISOString();
                     },
-                    autoclose: true
-                }),
+                    toValue: function (date, format, language) {
+                        var d = new Date(date);
+                        d.setDate(d.getDate() + 7);
+                        return new Date(d);
+                    }
+                },
+                autoclose: true
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -80,14 +81,14 @@ test('Custom date formatter functions', function(){
     datesEqual(dp.viewDate, UTCDate(2015, 8, 4));
 });
 
-test('Startview: year view (integer)', function(){
+test('Startview: year view (integer)', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    startView: 1
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                startView: 1
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -100,14 +101,14 @@ test('Startview: year view (integer)', function(){
     ok(picker.find('.datepicker-centuries').is(':not(:visible)'), 'Centuries view hidden');
 });
 
-test('Startview: year view (string)', function(){
+test('Startview: year view (string)', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    startView: 'year'
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                startView: 'year'
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -120,14 +121,14 @@ test('Startview: year view (string)', function(){
     ok(picker.find('.datepicker-centuries').is(':not(:visible)'), 'Centuries view hidden');
 });
 
-test('Startview: decade view (integer)', function(){
+test('Startview: decade view (integer)', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    startView: 2
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                startView: 2
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -140,14 +141,14 @@ test('Startview: decade view (integer)', function(){
     ok(picker.find('.datepicker-centuries').is(':not(:visible)'), 'Centuries view hidden');
 });
 
-test('Startview: decade view (string)', function(){
+test('Startview: decade view (string)', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    startView: 'decade'
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                startView: 'decade'
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -160,14 +161,14 @@ test('Startview: decade view (string)', function(){
     ok(picker.find('.datepicker-centuries').is(':not(:visible)'), 'Centuries view hidden');
 });
 
-test('Startview: century view (integer)', function(){
+test('Startview: century view (integer)', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    startView: 3
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                startView: 3
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -180,14 +181,14 @@ test('Startview: century view (integer)', function(){
     ok(picker.find('.datepicker-centuries').is(':not(:visible)'), 'Centuries view hidden');
 });
 
-test('Startview: century view (string)', function(){
+test('Startview: century view (string)', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    startView: 'century'
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                startView: 'century'
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -200,14 +201,14 @@ test('Startview: century view (string)', function(){
     ok(picker.find('.datepicker-centuries').is(':not(:visible)'), 'Centuries view hidden');
 });
 
-test('Startview: millennium view (integer)', function(){
+test('Startview: millennium view (integer)', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    startView: 4
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                startView: 4
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -220,14 +221,14 @@ test('Startview: millennium view (integer)', function(){
     ok(picker.find('.datepicker-centuries').is(':visible'), 'Centuries view visible');
 });
 
-test('Startview: millennium view (string)', function(){
+test('Startview: millennium view (string)', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    startView: 'millennium'
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                startView: 'millennium'
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -240,13 +241,13 @@ test('Startview: millennium view (string)', function(){
     ok(picker.find('.datepicker-centuries').is(':visible'), 'Centuries view visible');
 });
 
-test('Today Button: today button not default', function(){
+test('Today Button: today button not default', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd'
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd'
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -256,14 +257,14 @@ test('Today Button: today button not default', function(){
     ok(picker.find('.datepicker-days tfoot .today').is(':not(:visible)'), 'Today button not visible');
 });
 
-test('Today Button: today visibility when enabled', function(){
+test('Today Button: today visibility when enabled', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    todayBtn: true
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                todayBtn: true
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -281,13 +282,13 @@ test('Today Button: today visibility when enabled', function(){
     ok(picker.find('.datepicker-years tfoot .today').is(':visible'), 'Today button visible');
 });
 
-test('Today Button: data-api', function(){
+test('Today Button: data-api', function () {
     var input = $('<input data-date-today-btn="true" />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd'
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd'
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -297,14 +298,14 @@ test('Today Button: data-api', function(){
     ok(picker.find('.datepicker-days tfoot .today').is(':visible'), 'Today button visible');
 });
 
-test('Today Button: moves to today\'s date', function(){
+test('Today Button: moves to today\'s date', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    todayBtn: true
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                todayBtn: true
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -322,16 +323,16 @@ test('Today Button: moves to today\'s date', function(){
     datesEqual(dp.dates[0], UTCDate(2012, 2, 5));
 });
 
-test('Today Button: moves to days view', function(){
+test('Today Button: moves to days view', function () {
     var viewModes = $.fn.datepicker.DPGlobal.viewModes;
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    startView: viewModes.length - 1,
-                    todayBtn: true
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                startView: viewModes.length - 1,
+                todayBtn: true
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -343,14 +344,14 @@ test('Today Button: moves to days view', function(){
     ok(picker.find('.datepicker-days tfoot .today').is(':visible'), 'Today button visible');
 });
 
-test('Today Button: "linked" selects today\'s date', function(){
+test('Today Button: "linked" selects today\'s date', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    todayBtn: "linked"
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                todayBtn: "linked"
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -368,14 +369,14 @@ test('Today Button: "linked" selects today\'s date', function(){
     datesEqual(dp.dates[0], today);
 });
 
-test('Today Highlight: today\'s date is not highlighted by default', patch_date(function(Date){
+test('Today Highlight: today\'s date is not highlighted by default', patch_date(function (Date) {
     Date.now = UTCDate(2012, 2, 15);
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd'
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd'
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -392,15 +393,15 @@ test('Today Highlight: today\'s date is not highlighted by default', patch_date(
     ok(!target.hasClass('today'), 'Tomorrow is not marked with "today" class');
 }));
 
-test('Today Highlight: today\'s date is highlighted when not active', patch_date(function(Date){
+test('Today Highlight: today\'s date is highlighted when not active', patch_date(function (Date) {
     Date.now = new Date(2012, 2, 15);
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    todayHighlight: true
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                todayHighlight: true
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -417,14 +418,14 @@ test('Today Highlight: today\'s date is highlighted when not active', patch_date
     ok(!target.hasClass('today'), 'Tomorrow is not marked with "today" class');
 }));
 
-test('Clear Button: clear visibility when enabled', function(){
+test('Clear Button: clear visibility when enabled', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    clearBtn: true
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                clearBtn: true
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -442,14 +443,14 @@ test('Clear Button: clear visibility when enabled', function(){
     ok(picker.find('.datepicker-years tfoot .clear').is(':visible'), 'Clear button visible');
 });
 
-test('Clear Button: clears input value', function(){
+test('Clear Button: clears input value', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    clearBtn: true
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                clearBtn: true
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -461,19 +462,19 @@ test('Clear Button: clears input value', function(){
     target = picker.find('.datepicker-days tfoot .clear');
     target.click();
 
-    equal(input.val(),'',"Input value has been cleared.");
+    equal(input.val(), '', "Input value has been cleared.");
     ok(picker.is(':visible'), 'Picker is visible');
 });
 
-test('Clear Button: hides datepicker if autoclose is on', function(){
+test('Clear Button: hides datepicker if autoclose is on', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    clearBtn: true,
-                    autoclose: true
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                clearBtn: true,
+                autoclose: true
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -485,17 +486,17 @@ test('Clear Button: hides datepicker if autoclose is on', function(){
     target = picker.find('.datepicker-days tfoot .clear');
     target.click();
 
-    equal(input.val(),'',"Input value has been cleared.");
+    equal(input.val(), '', "Input value has been cleared.");
     ok(picker.is(':not(:visible)'), 'Picker is hidden');
 });
 
-test('Active Toggle Default: when active date is selected it is not unset', function(){
+test('Active Toggle Default: when active date is selected it is not unset', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd'
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd'
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -514,14 +515,14 @@ test('Active Toggle Default: when active date is selected it is not unset', func
     equal(input.val(), '2012-03-05', "Input value has not been cleared.");
 });
 
-test('Active Toggle Enabled (single date): when active date is selected it is unset', function(){
+test('Active Toggle Enabled (single date): when active date is selected it is unset', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    toggleActive: true
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                toggleActive: true
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -540,14 +541,14 @@ test('Active Toggle Enabled (single date): when active date is selected it is un
     equal(input.val(), '', "Input value has been cleared.");
 });
 
-test('Active Toggle Multidate Default: when one of the active dates is selected it is unset', function(){
+test('Active Toggle Multidate Default: when one of the active dates is selected it is unset', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    multidate: true
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                multidate: true
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -573,14 +574,14 @@ test('Active Toggle Multidate Default: when one of the active dates is selected 
     equal(input.val(), '2012-03-05');
 });
 
-test('Active Toggle Disabled: when active date is selected it remains', function(){
+test('Active Toggle Disabled: when active date is selected it remains', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    toggleActive: false
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                toggleActive: false
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -601,15 +602,15 @@ test('Active Toggle Disabled: when active date is selected it remains', function
     equal(input.val(), '2012-03-05');
 });
 
-test('Active Toggle Multidate Disabled: when activeToggle is set to false, but multidate is set, the option is ignored and selecting an active date it is unset', function(){
+test('Active Toggle Multidate Disabled: when activeToggle is set to false, but multidate is set, the option is ignored and selecting an active date it is unset', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    multidate: true,
-                    toggleActive: false
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                multidate: true,
+                toggleActive: false
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -635,14 +636,14 @@ test('Active Toggle Multidate Disabled: when activeToggle is set to false, but m
     equal(input.val(), '2012-03-05');
 });
 
-test('DaysOfWeekDisabled', function(){
+test('DaysOfWeekDisabled', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-10-26')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    daysOfWeekDisabled: '1,5'
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-10-26')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                daysOfWeekDisabled: '1,5'
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -656,15 +657,15 @@ test('DaysOfWeekDisabled', function(){
     ok(target.hasClass('disabled'), 'Day of week is disabled');
 });
 
-test('DaysOfWeekHighlighted', function(){
+test('DaysOfWeekHighlighted', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-10-26')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    startDate: '2012-10-02',
-                    daysOfWeekHighlighted: '1,5'
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-10-26')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                startDate: '2012-10-02',
+                daysOfWeekHighlighted: '1,5'
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -680,14 +681,14 @@ test('DaysOfWeekHighlighted', function(){
     ok(target.hasClass('highlighted'), 'Day of week is highlighted');
 });
 
-test('DatesDisabled', function(){
+test('DatesDisabled', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-10-26')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    datesDisabled: ['2012-10-1', '2012-10-10', '2012-10-20']
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-10-26')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                datesDisabled: ['2012-10-1', '2012-10-10', '2012-10-20']
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -710,13 +711,13 @@ test('DatesDisabled', function(){
     ok(!target.hasClass('disabled'), 'Day of week is enabled');
 });
 
-test('DatesDisabled as attribute', function(){
+test('DatesDisabled as attribute', function () {
     var input = $('<input data-date-dates-disabled="2012-10-1,2012-10-10,2012-10-20" />')
-                .appendTo('#qunit-fixture')
-                .val('2012-10-26')
-                .datepicker({
-                    format: 'yyyy-mm-dd'
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-10-26')
+            .datepicker({
+                format: 'yyyy-mm-dd'
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -739,10 +740,10 @@ test('DatesDisabled as attribute', function(){
     ok(!target.hasClass('disabled'), 'Day of week is enabled');
 });
 
-test('BeforeShowDay', function(){
+test('BeforeShowDay', function () {
 
-    var beforeShowDay = function(date) {
-        switch (date.getDate()){
+    var beforeShowDay = function (date) {
+        switch (date.getDate()) {
             case 25:
                 return {
                     tooltip: 'Example tooltip',
@@ -755,17 +756,17 @@ test('BeforeShowDay', function(){
             case 28:
                 return false;
             case 30:
-                return { content: "foo" + date.getDate() }
+                return {content: "foo" + date.getDate()}
         }
     };
 
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-10-26')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    beforeShowDay: beforeShowDay
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-10-26')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                beforeShowDay: beforeShowDay
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -788,18 +789,18 @@ test('BeforeShowDay', function(){
     ok(target.text() == "foo30", '30th has custom content');
 });
 
-test('BeforeShowMonth regress .day content', function() {
+test('BeforeShowMonth regress .day content', function () {
     var input = $('<input />')
-        .appendTo('#qunit-fixture')
-        .val('2012-10-26')
-        .datepicker({
-            format: 'yyyy-mm-dd',
-            beforeShowDay: function(date) {
-                return {
-                    content: '<strong>foo123</strong>'
-                };
-            }
-        }),
+            .appendTo('#qunit-fixture')
+            .val('2012-10-26')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                beforeShowDay: function (date) {
+                    return {
+                        content: '<strong>foo123</strong>'
+                    };
+                }
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -921,7 +922,7 @@ test('beforeShowDecade', function () {
     var input = $('<input />')
             .appendTo('#qunit-fixture')
             .val('03/05/2012')
-            .datepicker({ beforeShowDecade: beforeShowDecade }),
+            .datepicker({beforeShowDecade: beforeShowDecade}),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -966,7 +967,7 @@ test('beforeShowCentury', function () {
     var input = $('<input />')
             .appendTo('#qunit-fixture')
             .val('03/05/2012')
-            .datepicker({ beforeShowCentury: beforeShowCentury }),
+            .datepicker({beforeShowCentury: beforeShowCentury}),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -991,14 +992,14 @@ test('beforeShowCentury', function () {
     ok(!target.hasClass('disabled'), '2700, 9th is enabled');
 });
 
-test('Orientation: values are parsed correctly', function(){
+test('Orientation: values are parsed correctly', function () {
 
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-10-26')
-                .datepicker({
-                    format: 'yyyy-mm-dd'
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-10-26')
+            .datepicker({
+                format: 'yyyy-mm-dd'
+            }),
         dp = input.data('datepicker');
 
     equal(dp.o.orientation.x, 'auto');
@@ -1069,14 +1070,14 @@ test('Orientation: values are parsed correctly', function(){
     equal(dp.o.orientation.y, 'top', '"top bar"');
 });
 
-test('startDate', function(){
+test('startDate', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-10-26')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    startDate: new Date(2012, 9, 26)
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-10-26')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                startDate: new Date(2012, 9, 26)
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -1090,14 +1091,14 @@ test('startDate', function(){
     ok(!target.hasClass('disabled'), 'Next day is enabled');
 });
 
-test('endDate', function(){
+test('endDate', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-10-26')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    endDate: new Date(2012, 9, 26)
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-10-26')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                endDate: new Date(2012, 9, 26)
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -1111,14 +1112,14 @@ test('endDate', function(){
     ok(target.hasClass('disabled'), 'Next day is disabled');
 });
 
-test('Multidate', function(){
+test('Multidate', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    multidate: true
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                multidate: true
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -1156,14 +1157,14 @@ test('Multidate', function(){
     equal(input.val(), '2012-03-05,2012-03-12');
 });
 
-test('Multidate with limit', function(){
+test('Multidate with limit', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    multidate: 2
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                multidate: 2
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -1202,15 +1203,15 @@ test('Multidate with limit', function(){
     equal(input.val(), '2012-03-12,2012-03-17');
 });
 
-test('Multidate Separator', function(){
+test('Multidate Separator', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    multidate: true,
-                    multidateSeparator: ' '
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                multidate: true,
+                multidateSeparator: ' '
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -1238,8 +1239,7 @@ test("Picker is shown on input focus when showOnFocus is not defined", function 
     var input = $('<input />')
             .appendTo('#qunit-fixture')
             .val('2014-01-01')
-            .datepicker({
-            }),
+            .datepicker({}),
         dp = input.data('datepicker'),
         picker = dp.picker;
 
@@ -1283,30 +1283,30 @@ test("Picker is hidden on input focus when showOnFocus is false", function () {
 
 });
 
-test('Container', function(){
+test('Container', function () {
     var testContainer = $('<div class="date-picker-container"/>')
             .appendTo('#qunit-fixture'),
         input = $('<input />')
             .appendTo('#qunit-fixture')
-                .val('2012-10-26')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    container: '.date-picker-container',
-                    startDate: new Date(2012, 9, 26)
-                }),
+            .val('2012-10-26')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                container: '.date-picker-container',
+                startDate: new Date(2012, 9, 26)
+            }),
         dp = input.data('datepicker'),
         target = dp.picker;
     input.focus();
     equal(target.parent()[0], testContainer[0], 'Container is not the testContainer that was specificed');
 });
 
-test('Default View Date (Object)', function(){
+test('Default View Date (Object)', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    defaultViewDate: { year: 1977, month: 04, day: 25 }
-                }),
+            .appendTo('#qunit-fixture')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                defaultViewDate: {year: 1977, month: 04, day: 25}
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -1316,13 +1316,13 @@ test('Default View Date (Object)', function(){
     equal(picker.find('.datepicker-days thead .datepicker-switch').text(), 'May 1977');
 });
 
-test('Default View Date (Date)', function(){
+test('Default View Date (Date)', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    defaultViewDate: new Date(1977, 4, 25)
-                }),
+            .appendTo('#qunit-fixture')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                defaultViewDate: new Date(1977, 4, 25)
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -1332,13 +1332,13 @@ test('Default View Date (Date)', function(){
     equal(picker.find('.datepicker-days thead .datepicker-switch').text(), 'May 1977');
 });
 
-test('Default View Date (String)', function(){
+test('Default View Date (String)', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    defaultViewDate: "1977-05-24"
-                }),
+            .appendTo('#qunit-fixture')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                defaultViewDate: "1977-05-24"
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -1348,14 +1348,14 @@ test('Default View Date (String)', function(){
     equal(picker.find('.datepicker-days thead .datepicker-switch').text(), 'May 1977');
 });
 
-test('Immediate Updates', function(){
+test('Immediate Updates', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2014-01-01')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    immediateUpdates: true
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2014-01-01')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                immediateUpdates: true
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker;
 
@@ -1387,10 +1387,10 @@ test('Immediate Updates', function(){
 
 test('forceParse: false on enter on invalid date', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('123456789')
-                .datepicker({forceParse: false})
-                .focus();
+        .appendTo('#qunit-fixture')
+        .val('123456789')
+        .datepicker({forceParse: false})
+        .focus();
 
     input.trigger({
         type: 'keydown',
@@ -1403,10 +1403,10 @@ test('forceParse: false on enter on invalid date', function () {
 
 test('forceParse: false on mousedown on invalid date', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('123456789')
-                .datepicker({forceParse: false})
-                .focus();
+        .appendTo('#qunit-fixture')
+        .val('123456789')
+        .datepicker({forceParse: false})
+        .focus();
 
     $(document).trigger({
         type: 'mousedown'
@@ -1417,7 +1417,7 @@ test('forceParse: false on mousedown on invalid date', function () {
 
 //datepicker-dropdown
 
-test('Enable on readonly options (default)', function(){
+test('Enable on readonly options (default)', function () {
     var input = $('<input readonly="readonly" />')
             .appendTo('#qunit-fixture')
             .datepicker({format: "dd-mm-yyyy"}),
@@ -1429,7 +1429,7 @@ test('Enable on readonly options (default)', function(){
     ok(picker.is(':visible'));
 });
 
-test('Enable on readonly options (false)', function(){
+test('Enable on readonly options (false)', function () {
     var input = $('<input readonly="readonly" />')
             .appendTo('#qunit-fixture')
             .datepicker({
@@ -1444,7 +1444,7 @@ test('Enable on readonly options (false)', function(){
     ok(!picker.is(':visible'));
 });
 
-test('Startview: year view visible after date pick', function(){
+test('Startview: year view visible after date pick', function () {
     var input = $('<input />')
             .appendTo('#qunit-fixture')
             .datepicker({
@@ -1474,7 +1474,7 @@ test('Startview: year view visible after date pick', function(){
     ok(picker.find('.datepicker-years').is(':visible'), 'Years view visible');
 });
 
-test('Title: none', function(){
+test('Title: none', function () {
     var input = $('<input />')
             .appendTo('#qunit-fixture')
             .datepicker({
@@ -1491,7 +1491,7 @@ test('Title: none', function(){
     ok(target.is(':not(:visible)'), 'Title is hidden');
 });
 
-test('Title: with value', function(){
+test('Title: with value', function () {
     var input = $('<input />')
             .appendTo('#qunit-fixture')
             .datepicker({
@@ -1510,13 +1510,13 @@ test('Title: with value', function(){
     equal(target.text(), 'Some Title');
 });
 
-test('i18n: Leverage i18n titleFormat when available.', patch_date(function(Date){
+test('i18n: Leverage i18n titleFormat when available.', patch_date(function (Date) {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2015年04月21日')
-                .datepicker({
-                    language: 'zh-CN'
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2015年04月21日')
+            .datepicker({
+                language: 'zh-CN'
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker;
 
@@ -1524,13 +1524,13 @@ test('i18n: Leverage i18n titleFormat when available.', patch_date(function(Date
     equal(picker.find('.datepicker-days thead .datepicker-switch').text(), '2015年04月', 'Title is in Chinese: 2015年04月');
 }));
 
-test('i18n: Leverage English (default) i18n titleFormat when translation key for specified language is not available.', patch_date(function(Date){
+test('i18n: Leverage English (default) i18n titleFormat when translation key for specified language is not available.', patch_date(function (Date) {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('04/21/2015')
-                .datepicker({
-                    language: 'aa-BB'
-                }),
+            .appendTo('#qunit-fixture')
+            .val('04/21/2015')
+            .datepicker({
+                language: 'aa-BB'
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker;
 
@@ -1538,7 +1538,7 @@ test('i18n: Leverage English (default) i18n titleFormat when translation key for
     equal(picker.find('.datepicker-days thead .datepicker-switch').text(), 'April 2015', 'Title is in default format: April 2015');
 }));
 
-test('Z-index Offset: none', function(){
+test('Z-index Offset: none', function () {
     var input = $('<input />')
             .appendTo('#qunit-fixture')
             .datepicker(),
@@ -1552,7 +1552,7 @@ test('Z-index Offset: none', function(){
     equal(picker.css('z-index'), 244, 'Picker Z-index offset is respected.');
 });
 
-test('Z-index Offset: with value', function(){
+test('Z-index Offset: with value', function () {
     var input = $('<input />')
             .appendTo('#qunit-fixture')
             .datepicker({
@@ -1568,7 +1568,7 @@ test('Z-index Offset: with value', function(){
     equal(picker.css('z-index'), 1234, 'Picker Z-index offset is respected.');
 });
 
-test('templates', function(){
+test('templates', function () {
     var input = $('<input />')
             .appendTo('#qunit-fixture')
             .datepicker({
@@ -1607,15 +1607,15 @@ test('Nav arrow html templates with span tag', function () {
 
 test('Nav arrow html templates .prev click', function () {
     var input = $('<input />')
-        .appendTo('#qunit-fixture')
-        .val('2012-10-26')
-        .datepicker({
-            format: 'yyyy-mm-dd',
-            startView: 1,
-            templates: {
-                leftArrow: '<i></i>'
-            }
-        }),
+            .appendTo('#qunit-fixture')
+            .val('2012-10-26')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                startView: 1,
+                templates: {
+                    leftArrow: '<i></i>'
+                }
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -1626,16 +1626,16 @@ test('Nav arrow html templates .prev click', function () {
     equal(target.text(), '2011');
 });
 
-test('Visibility of the prev and next arrows for decade/century/millenium views with startDate and endDate', function(){
+test('Visibility of the prev and next arrows for decade/century/millenium views with startDate and endDate', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('01/01/2015')
-                .datepicker({
-                    format: 'dd/mm/yyyy',
-                    startView: 2,
-                    startDate: '01/12/2014',
-                    endDate: '01/12/2016'
-                }),
+            .appendTo('#qunit-fixture')
+            .val('01/01/2015')
+            .datepicker({
+                format: 'dd/mm/yyyy',
+                startView: 2,
+                startDate: '01/12/2014',
+                endDate: '01/12/2016'
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -1660,20 +1660,20 @@ test('Visibility of the prev and next arrows for decade/century/millenium views 
     ok(target.hasClass('disabled'), 'Next switcher is hidden');
 });
 
-test('date cells (outdated)', function(){
+test('date cells (outdated)', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .datepicker(),
+            .appendTo('#qunit-fixture')
+            .datepicker(),
         dp = input.data('datepicker'),
         picker = dp.picker;
 
     input.focus();
-    picker.find('.datepicker-days .day').each(function(){
+    picker.find('.datepicker-days .day').each(function () {
         ok(this.hasAttribute('data-date'));
     });
 });
 
-test('keepEmptyValues: none (default is false)', function() {
+test('keepEmptyValues: none (default is false)', function () {
     var proxy_element = $('<div />').appendTo('#qunit-fixture'),
         input_from = $('<input />').val('2016-04-01').appendTo('#qunit-fixture'),
         input_to = $('<input />').appendTo('#qunit-fixture'),
@@ -1690,7 +1690,7 @@ test('keepEmptyValues: none (default is false)', function() {
     equal(input_to.val(), '2016-03-27', 'Input_from value should be distributed.');
 });
 
-test('keepEmptyValues: true', function() {
+test('keepEmptyValues: true', function () {
     var proxy_element = $('<div />').appendTo('#qunit-fixture'),
         input_from = $('<input />').val('2016-04-01').appendTo('#qunit-fixture'),
         input_to = $('<input />').appendTo('#qunit-fixture'),
@@ -1708,12 +1708,12 @@ test('keepEmptyValues: true', function() {
     equal(input_to.val(), '', 'Input_from value should not be distributed.');
 });
 
-test('maxViewMode and navigation switch', function(){
+test('maxViewMode and navigation switch', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .datepicker({
-                    maxViewMode: 0
-                }),
+            .appendTo('#qunit-fixture')
+            .datepicker({
+                maxViewMode: 0
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker;
 
@@ -1723,27 +1723,27 @@ test('maxViewMode and navigation switch', function(){
     ok(picker.find('.datepicker-days').is(':visible'), 'Days view visible');
 });
 
-test('updateViewDate', function() {
+test('updateViewDate', function () {
     expect(8);
 
     var input = $('<input value="08/03/1990"/>')
-                .appendTo('#qunit-fixture')
-                .datepicker({
-                  defaultViewDate: {
+            .appendTo('#qunit-fixture')
+            .datepicker({
+                defaultViewDate: {
                     year: 1945,
                     month: 4,
                     day: 8
-                  },
-                  updateViewDate: false
-                })
-                .on('changeMonth', function() {
-                  var msg = shouldTriggerChangeMonth ? 'changeMonth must be triggered' : 'changeMonth must not be triggered';
-                  ok(shouldTriggerChangeMonth, msg);
-                })
-                .on('changeYear', function() {
-                  var msg = shouldTriggerChangeYear ? 'changeYear must be triggered' : 'changeYear must not be triggered';
-                  ok(shouldTriggerChangeYear, msg);
-                }),
+                },
+                updateViewDate: false
+            })
+            .on('changeMonth', function () {
+                var msg = shouldTriggerChangeMonth ? 'changeMonth must be triggered' : 'changeMonth must not be triggered';
+                ok(shouldTriggerChangeMonth, msg);
+            })
+            .on('changeYear', function () {
+                var msg = shouldTriggerChangeYear ? 'changeYear must be triggered' : 'changeYear must not be triggered';
+                ok(shouldTriggerChangeYear, msg);
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         shouldTriggerChangeMonth = false,
@@ -1765,13 +1765,13 @@ test('updateViewDate', function() {
     picker.find('.datepicker-months tbody .month:first').click();
     equal(monthShown.text(), 'January 1946', 'changing year must still be possible'); // and must trigger `changeYear` and `changeMonth` events
 });
-test('Week Days: Week days default visibility (or enabled)', function(){
+test('Week Days: Week days default visibility (or enabled)', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd'
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd'
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;
@@ -1779,14 +1779,14 @@ test('Week Days: Week days default visibility (or enabled)', function(){
     input.focus();
     ok(picker.find('.dow').length > 0, 'Week days added to view');
 });
-test('Week Days: Week days visibility when disabled', function(){
+test('Week Days: Week days visibility when disabled', function () {
     var input = $('<input />')
-                .appendTo('#qunit-fixture')
-                .val('2012-03-05')
-                .datepicker({
-                    format: 'yyyy-mm-dd',
-                    showWeekDays: false
-                }),
+            .appendTo('#qunit-fixture')
+            .val('2012-03-05')
+            .datepicker({
+                format: 'yyyy-mm-dd',
+                showWeekDays: false
+            }),
         dp = input.data('datepicker'),
         picker = dp.picker,
         target;

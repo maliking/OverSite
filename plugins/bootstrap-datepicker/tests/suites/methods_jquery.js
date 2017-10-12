@@ -1,23 +1,23 @@
 module('Methods (jQuery)', {
-    setup: function(){
+    setup: function () {
         this.$inputs = $('<input><input>')
             .datepicker()
             .appendTo('#qunit-fixture');
     },
-    teardown: function(){
-        this.$inputs.each(function(){
+    teardown: function () {
+        this.$inputs.each(function () {
             $.data(this, 'datepicker').picker.remove();
         });
     }
 });
 
-test('Methods', function(){
+test('Methods', function () {
     [
         'show',
         'hide',
         'setValue',
         'place'
-    ].forEach($.proxy(function(index, value){
+    ].forEach($.proxy(function (index, value) {
         var returnedObject = this.$inputs.datepicker(value);
 
         strictEqual(returnedObject, this.$inputs, "is jQuery element");

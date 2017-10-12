@@ -17,17 +17,19 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class SyncListItemContext extends InstanceContext {
+class SyncListItemContext extends InstanceContext
+{
     /**
      * Initialize the SyncListItemContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $serviceSid The service_sid
      * @param string $listSid The list_sid
      * @param integer $index The index
-     * @return \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemContext 
+     * @return \Twilio\Rest\Preview\Sync\Service\SyncList\SyncListItemContext
      */
-    public function __construct(Version $version, $serviceSid, $listSid, $index) {
+    public function __construct(Version $version, $serviceSid, $listSid, $index)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -42,10 +44,11 @@ class SyncListItemContext extends InstanceContext {
 
     /**
      * Fetch a SyncListItemInstance
-     * 
+     *
      * @return SyncListItemInstance Fetched SyncListItemInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -65,20 +68,22 @@ class SyncListItemContext extends InstanceContext {
 
     /**
      * Deletes the SyncListItemInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Update the SyncListItemInstance
-     * 
+     *
      * @param array $data The data
      * @return SyncListItemInstance Updated SyncListItemInstance
      */
-    public function update($data) {
+    public function update($data)
+    {
         $data = Values::of(array(
             'Data' => Serialize::json_object($data),
         ));
@@ -101,10 +106,11 @@ class SyncListItemContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

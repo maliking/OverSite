@@ -17,15 +17,17 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
  */
-class HostedNumberOrderContext extends InstanceContext {
+class HostedNumberOrderContext extends InstanceContext
+{
     /**
      * Initialize the HostedNumberOrderContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid HostedNumberOrder sid.
-     * @return \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext 
+     * @return \Twilio\Rest\Preview\HostedNumbers\HostedNumberOrderContext
      */
-    public function __construct(Version $version, $sid) {
+    public function __construct(Version $version, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -38,10 +40,11 @@ class HostedNumberOrderContext extends InstanceContext {
 
     /**
      * Fetch a HostedNumberOrderInstance
-     * 
+     *
      * @return HostedNumberOrderInstance Fetched HostedNumberOrderInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -59,20 +62,22 @@ class HostedNumberOrderContext extends InstanceContext {
 
     /**
      * Deletes the HostedNumberOrderInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Update the HostedNumberOrderInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return HostedNumberOrderInstance Updated HostedNumberOrderInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         $options = new Values($options);
 
         $data = Values::of(array(
@@ -100,10 +105,11 @@ class HostedNumberOrderContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

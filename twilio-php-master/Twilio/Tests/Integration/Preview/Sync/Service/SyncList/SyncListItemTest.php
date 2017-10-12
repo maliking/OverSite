@@ -16,16 +16,19 @@ use Twilio\Serialize;
 use Twilio\Tests\HolodeckTestCase;
 use Twilio\Tests\Request;
 
-class SyncListItemTest extends HolodeckTestCase {
-    public function testFetchRequest() {
+class SyncListItemTest extends HolodeckTestCase
+{
+    public function testFetchRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->syncListItems(1)->fetch();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->syncListItems(1)->fetch();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -33,7 +36,8 @@ class SyncListItemTest extends HolodeckTestCase {
         ));
     }
 
-    public function testFetchResponse() {
+    public function testFetchResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -53,21 +57,23 @@ class SyncListItemTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->syncListItems(1)->fetch();
+            ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->syncListItems(1)->fetch();
 
         $this->assertNotNull($actual);
     }
 
-    public function testDeleteRequest() {
+    public function testDeleteRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->syncListItems(1)->delete();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->syncListItems(1)->delete();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'delete',
@@ -75,28 +81,31 @@ class SyncListItemTest extends HolodeckTestCase {
         ));
     }
 
-    public function testDeleteResponse() {
+    public function testDeleteResponse()
+    {
         $this->holodeck->mock(new Response(
             204,
             null
         ));
 
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->syncListItems(1)->delete();
+            ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->syncListItems(1)->delete();
 
         $this->assertTrue($actual);
     }
 
-    public function testCreateRequest() {
+    public function testCreateRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->syncListItems->create("{}");
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->syncListItems->create("{}");
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $values = array(
             'Data' => Serialize::json_object("{}"),
@@ -110,7 +119,8 @@ class SyncListItemTest extends HolodeckTestCase {
         ));
     }
 
-    public function testCreateResponse() {
+    public function testCreateResponse()
+    {
         $this->holodeck->mock(new Response(
             201,
             '
@@ -130,21 +140,23 @@ class SyncListItemTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->syncListItems->create("{}");
+            ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->syncListItems->create("{}");
 
         $this->assertNotNull($actual);
     }
 
-    public function testReadRequest() {
+    public function testReadRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->syncListItems->read();
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->syncListItems->read();
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $this->assertRequest(new Request(
             'get',
@@ -152,7 +164,8 @@ class SyncListItemTest extends HolodeckTestCase {
         ));
     }
 
-    public function testReadEmptyResponse() {
+    public function testReadEmptyResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -172,13 +185,14 @@ class SyncListItemTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->syncListItems->read();
+            ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->syncListItems->read();
 
         $this->assertNotNull($actual);
     }
 
-    public function testReadFullResponse() {
+    public function testReadFullResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -211,21 +225,23 @@ class SyncListItemTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->syncListItems->read();
+            ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->syncListItems->read();
 
         $this->assertGreaterThan(0, count($actual));
     }
 
-    public function testUpdateRequest() {
+    public function testUpdateRequest()
+    {
         $this->holodeck->mock(new Response(500, ''));
 
         try {
             $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                        ->syncListItems(1)->update("{}");
-        } catch (DeserializeException $e) {}
-          catch (TwilioException $e) {}
+                ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+                ->syncListItems(1)->update("{}");
+        } catch (DeserializeException $e) {
+        } catch (TwilioException $e) {
+        }
 
         $values = array(
             'Data' => Serialize::json_object("{}"),
@@ -239,7 +255,8 @@ class SyncListItemTest extends HolodeckTestCase {
         ));
     }
 
-    public function testUpdateResponse() {
+    public function testUpdateResponse()
+    {
         $this->holodeck->mock(new Response(
             200,
             '
@@ -259,8 +276,8 @@ class SyncListItemTest extends HolodeckTestCase {
         ));
 
         $actual = $this->twilio->preview->sync->services("ISaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
-                                              ->syncListItems(1)->update("{}");
+            ->syncLists("ESaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
+            ->syncListItems(1)->update("{}");
 
         $this->assertNotNull($actual);
     }

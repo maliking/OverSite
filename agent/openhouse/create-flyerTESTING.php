@@ -18,8 +18,6 @@ $stmt->execute($namedParameters);
 $result = $stmt->fetch();
 
 
-
-
 $url = 'https://api.idxbroker.com/clients/featured';
 
 $method = 'GET';
@@ -56,79 +54,72 @@ $keys = array_keys($response);
 ?>
 
 
+<!DOCTYPE html>
+<html>
 
-    <!DOCTYPE html>
-    <html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Re/Max Salinas | Home</title>
+    <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
 
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Re/Max Salinas | Home</title>
-        <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    </head>
+<body>
+<!-- END TEMPLATE nav.php INCLUDE -->
 
-    <body>
-            <!-- END TEMPLATE nav.php INCLUDE -->
+<p>If you click on me, I will disappear.</p>
+<p>Click me away!</p>
+<p>Click me too!</p>
 
-            <p>If you click on me, I will disappear.</p>
-            <p>Click me away!</p>
-            <p>Click me too!</p>
+<p>If you click on me, I will disappear.</p>
+<p>Click me away!</p>
+<p>Click me too!</p>
 
-            <p>If you click on me, I will disappear.</p>
-            <p>Click me away!</p>
-            <p>Click me too!</p>
 
-                                           
+<?php
+for ($i = 0; $i < sizeof($keys); $i++) {
 
-                                            <?php
-                                            for($i = 0; $i < sizeof($keys); $i++)
-                                            {
-
-                                                if($response[$keys[$i]]['listingID'] == $listingId)
-                                                {
-                                                    $index = $i;
-                                                    for($j = 0; $j < (int)$response[$keys[$i]]['image']['totalCount']; $j++ )
-                                                    {
-                                                        echo '<label class="item col-md-4 col-sm-4 col-xs-6">
-                                                                <input class="js-switch" type="checkbox" name="imageURL" value="' . $response[$keys[$i]]['image'][$j]['url']  . '"/> 
-                                                                <img src="' . $response[$keys[$i]]['image'][$j]['url']  . '" style="width:100%; height:100%" >
+    if ($response[$keys[$i]]['listingID'] == $listingId) {
+        $index = $i;
+        for ($j = 0; $j < (int)$response[$keys[$i]]['image']['totalCount']; $j++) {
+            echo '<label class="item col-md-4 col-sm-4 col-xs-6">
+                                                                <input class="js-switch" type="checkbox" name="imageURL" value="' . $response[$keys[$i]]['image'][$j]['url'] . '"/> 
+                                                                <img src="' . $response[$keys[$i]]['image'][$j]['url'] . '" style="width:100%; height:100%" >
                                                             </label>';
-                                                    }
-                                                    break;
-                                                }
-                                            }
-                                            ?>
+        }
+        break;
+    }
+}
+?>
 
 
+<script>
+    $(document).ready(function () {
+        $("p").click(function () {
+            $(this).hide();
+        });
+        $('.js-switch').click(function () {
+            if ($('.js-switch:checked').length > 3) {
+                $(this).prop('checked', false);
+                alert("allowed only 3");
+            }
+        });
+    });
+    /*
+     * For demonstration porpuse, all JavaScript code was incorporated in
+     * the HTML file. But when developing your application, your JavaScript code
+     * should be in a separated file. Check this page for more information:
+     * https://developer.yahoo.com/performance/rules.html#external
 
-            
-        <script>
-            $(document).ready(function(){
-                $("p").click(function(){
-                    $(this).hide();
-                });
-                $('.js-switch').click(function () {
-                    if ($('.js-switch:checked').length > 3) {
-                        $(this).prop('checked', false);
-                        alert("allowed only 3");
-                    }
-                });
-            });
-            /*
-             * For demonstration porpuse, all JavaScript code was incorporated in
-             * the HTML file. But when developing your application, your JavaScript code
-             * should be in a separated file. Check this page for more information:
-             * https://developer.yahoo.com/performance/rules.html#external
-             
-            $('.js-switch :checkbox').change(function () {
-                alert("Hello! I am an alert box!!");
-                var $cs = $(this).closest('.js-switch').find(':checkbox:checked');
-                if ($cs.length > 3) {
-                    this.checked = false;
-                }
-            });*/
-        </script>
+    $('.js-switch :checkbox').change(function () {
+        alert("Hello! I am an alert box!!");
+        var $cs = $(this).closest('.js-switch').find(':checkbox:checked');
+        if ($cs.length > 3) {
+            this.checked = false;
+        }
+    });*/
+</script>
 
-    </body>
+</body>
 
-    </html>
+</html>

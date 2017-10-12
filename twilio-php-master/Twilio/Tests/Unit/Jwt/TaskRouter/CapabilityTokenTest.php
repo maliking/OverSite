@@ -10,8 +10,10 @@ use Twilio\Jwt\TaskRouter\WorkerCapability;
 use Twilio\Jwt\TaskRouter\WorkspaceCapability;
 use Twilio\Tests\Unit\UnitTest;
 
-class CapabilityTokenTest extends UnitTest {
-    public function testDefaultWorker() {
+class CapabilityTokenTest extends UnitTest
+{
+    public function testDefaultWorker()
+    {
         $workerCapability = new WorkerCapability('AC123', 'foobar', 'WS456', 'WK789');
         $token = $workerCapability->generateToken();
         $payload = JWT::decode($token, 'foobar');
@@ -63,7 +65,8 @@ class CapabilityTokenTest extends UnitTest {
         $this->assertEquals(true, $policies[5]->allow);
     }
 
-    public function testAllowWorkerUpdates() {
+    public function testAllowWorkerUpdates()
+    {
         $workerCapability = new WorkerCapability('AC123', 'foobar', 'WS456', 'WK789');
         $workerCapability->allowActivityUpdates();
         $token = $workerCapability->generateToken();
@@ -86,7 +89,8 @@ class CapabilityTokenTest extends UnitTest {
         $this->assertEquals(true, $policies[6]->allow);
     }
 
-    public function testAllowReservationUpdates() {
+    public function testAllowReservationUpdates()
+    {
         $workerCapability = new WorkerCapability('AC123', 'foobar', 'WS456', 'WK789');
         $workerCapability->allowActivityUpdates();
         $workerCapability->allowReservationUpdates();
@@ -116,7 +120,8 @@ class CapabilityTokenTest extends UnitTest {
         $this->assertEquals(true, $policies[8]->allow);
     }
 
-    public function testDefaultWorkspace() {
+    public function testDefaultWorkspace()
+    {
         $workspaceCapability = new WorkspaceCapability('AC123', 'foobar', 'WS456');
         $token = $workspaceCapability->generateToken();
         $payload = JWT::decode($token, 'foobar');
@@ -149,7 +154,8 @@ class CapabilityTokenTest extends UnitTest {
         $this->assertEquals(true, $policies[2]->allow);
     }
 
-    public function testWorkspaceFetchAll() {
+    public function testWorkspaceFetchAll()
+    {
         $workspaceCapability = new WorkspaceCapability('AC123', 'foobar', 'WS456');
         $workspaceCapability->allowFetchSubresources();
         $token = $workspaceCapability->generateToken();
@@ -189,7 +195,8 @@ class CapabilityTokenTest extends UnitTest {
         $this->assertEquals(true, $policies[3]->allow);
     }
 
-    public function testDefaultTaskQueue() {
+    public function testDefaultTaskQueue()
+    {
         $taskQueueCapability = new TaskQueueCapability('AC123', 'foobar', 'WS456', 'WQ789');
         $token = $taskQueueCapability->generateToken();
         $payload = JWT::decode($token, 'foobar');

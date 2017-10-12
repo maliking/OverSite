@@ -18,7 +18,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
+ *
  * @property string sid
  * @property string accountSid
  * @property string friendlyName
@@ -40,20 +40,22 @@ use Twilio\Version;
  * @property string url
  * @property array links
  */
-class ServiceInstance extends InstanceResource {
+class ServiceInstance extends InstanceResource
+{
     protected $_phoneNumbers = null;
     protected $_shortCodes = null;
     protected $_alphaSenders = null;
 
     /**
      * Initialize the ServiceInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $sid The sid
-     * @return \Twilio\Rest\Messaging\V1\ServiceInstance 
+     * @return \Twilio\Rest\Messaging\V1\ServiceInstance
      */
-    public function __construct(Version $version, array $payload, $sid = null) {
+    public function __construct(Version $version, array $payload, $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -88,11 +90,12 @@ class ServiceInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Messaging\V1\ServiceContext Context for this
      *                                                  ServiceInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new ServiceContext(
                 $this->version,
@@ -105,11 +108,12 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Update the ServiceInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return ServiceInstance Updated ServiceInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         return $this->proxy()->update(
             $options
         );
@@ -117,57 +121,63 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Fetch a ServiceInstance
-     * 
+     *
      * @return ServiceInstance Fetched ServiceInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the ServiceInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->proxy()->delete();
     }
 
     /**
      * Access the phoneNumbers
-     * 
-     * @return \Twilio\Rest\Messaging\V1\Service\PhoneNumberList 
+     *
+     * @return \Twilio\Rest\Messaging\V1\Service\PhoneNumberList
      */
-    protected function getPhoneNumbers() {
+    protected function getPhoneNumbers()
+    {
         return $this->proxy()->phoneNumbers;
     }
 
     /**
      * Access the shortCodes
-     * 
-     * @return \Twilio\Rest\Messaging\V1\Service\ShortCodeList 
+     *
+     * @return \Twilio\Rest\Messaging\V1\Service\ShortCodeList
      */
-    protected function getShortCodes() {
+    protected function getShortCodes()
+    {
         return $this->proxy()->shortCodes;
     }
 
     /**
      * Access the alphaSenders
-     * 
-     * @return \Twilio\Rest\Messaging\V1\Service\AlphaSenderList 
+     *
+     * @return \Twilio\Rest\Messaging\V1\Service\AlphaSenderList
      */
-    protected function getAlphaSenders() {
+    protected function getAlphaSenders()
+    {
         return $this->proxy()->alphaSenders;
     }
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -182,10 +192,11 @@ class ServiceInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

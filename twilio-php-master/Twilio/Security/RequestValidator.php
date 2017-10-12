@@ -4,15 +4,18 @@
 namespace Twilio\Security;
 
 
-class RequestValidator {
+class RequestValidator
+{
 
     protected $authToken;
 
-    function __construct($authToken) {
+    function __construct($authToken)
+    {
         $this->authToken = $authToken;
     }
 
-    public function computeSignature($url, $data = array()) {
+    public function computeSignature($url, $data = array())
+    {
         // sort the array by keys
         ksort($data);
 
@@ -28,7 +31,8 @@ class RequestValidator {
         return base64_encode(hash_hmac("sha1", $url, $this->authToken, true));
     }
 
-    public function validate($expectedSignature, $url, $data = array()) {
+    public function validate($expectedSignature, $url, $data = array())
+    {
         return self::compare(
             $this->computeSignature($url, $data),
             $expectedSignature
@@ -43,7 +47,8 @@ class RequestValidator {
      * @return bool True if $a == $b, false otherwise.
      */
     public
-    static function compare($a, $b) {
+    static function compare($a, $b)
+    {
         $result = true;
 
         if (strlen($a) != strlen($b)) {

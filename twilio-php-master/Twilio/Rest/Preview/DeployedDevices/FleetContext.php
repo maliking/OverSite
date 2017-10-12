@@ -21,7 +21,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains preview products that are subject to change. Use them with caution. If you currently do not have developer preview access, please contact help@twilio.com.
- * 
+ *
  * @property \Twilio\Rest\Preview\DeployedDevices\Fleet\DeviceList devices
  * @property \Twilio\Rest\Preview\DeployedDevices\Fleet\DeploymentList deployments
  * @property \Twilio\Rest\Preview\DeployedDevices\Fleet\CertificateList certificates
@@ -31,7 +31,8 @@ use Twilio\Version;
  * @method \Twilio\Rest\Preview\DeployedDevices\Fleet\CertificateContext certificates(string $sid)
  * @method \Twilio\Rest\Preview\DeployedDevices\Fleet\KeyContext keys(string $sid)
  */
-class FleetContext extends InstanceContext {
+class FleetContext extends InstanceContext
+{
     protected $_devices = null;
     protected $_deployments = null;
     protected $_certificates = null;
@@ -39,12 +40,13 @@ class FleetContext extends InstanceContext {
 
     /**
      * Initialize the FleetContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid A string that uniquely identifies the Fleet.
-     * @return \Twilio\Rest\Preview\DeployedDevices\FleetContext 
+     * @return \Twilio\Rest\Preview\DeployedDevices\FleetContext
      */
-    public function __construct(Version $version, $sid) {
+    public function __construct(Version $version, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -57,10 +59,11 @@ class FleetContext extends InstanceContext {
 
     /**
      * Fetch a FleetInstance
-     * 
+     *
      * @return FleetInstance Fetched FleetInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -78,20 +81,22 @@ class FleetContext extends InstanceContext {
 
     /**
      * Deletes the FleetInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->version->delete('delete', $this->uri);
     }
 
     /**
      * Update the FleetInstance
-     * 
+     *
      * @param array|Options $options Optional Arguments
      * @return FleetInstance Updated FleetInstance
      */
-    public function update($options = array()) {
+    public function update($options = array())
+    {
         $options = new Values($options);
 
         $data = Values::of(array(
@@ -115,10 +120,11 @@ class FleetContext extends InstanceContext {
 
     /**
      * Access the devices
-     * 
-     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\DeviceList 
+     *
+     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\DeviceList
      */
-    protected function getDevices() {
+    protected function getDevices()
+    {
         if (!$this->_devices) {
             $this->_devices = new DeviceList(
                 $this->version,
@@ -131,10 +137,11 @@ class FleetContext extends InstanceContext {
 
     /**
      * Access the deployments
-     * 
-     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\DeploymentList 
+     *
+     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\DeploymentList
      */
-    protected function getDeployments() {
+    protected function getDeployments()
+    {
         if (!$this->_deployments) {
             $this->_deployments = new DeploymentList(
                 $this->version,
@@ -147,10 +154,11 @@ class FleetContext extends InstanceContext {
 
     /**
      * Access the certificates
-     * 
-     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\CertificateList 
+     *
+     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\CertificateList
      */
-    protected function getCertificates() {
+    protected function getCertificates()
+    {
         if (!$this->_certificates) {
             $this->_certificates = new CertificateList(
                 $this->version,
@@ -163,10 +171,11 @@ class FleetContext extends InstanceContext {
 
     /**
      * Access the keys
-     * 
-     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\KeyList 
+     *
+     * @return \Twilio\Rest\Preview\DeployedDevices\Fleet\KeyList
      */
-    protected function getKeys() {
+    protected function getKeys()
+    {
         if (!$this->_keys) {
             $this->_keys = new KeyList(
                 $this->version,
@@ -179,12 +188,13 @@ class FleetContext extends InstanceContext {
 
     /**
      * Magic getter to lazy load subresources
-     * 
+     *
      * @param string $name Subresource to return
      * @return \Twilio\ListResource The requested subresource
      * @throws \Twilio\Exceptions\TwilioException For unknown subresources
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (property_exists($this, '_' . $name)) {
             $method = 'get' . ucfirst($name);
             return $this->$method();
@@ -195,13 +205,14 @@ class FleetContext extends InstanceContext {
 
     /**
      * Magic caller to get resource contexts
-     * 
+     *
      * @param string $name Resource to return
      * @param array $arguments Context parameters
      * @return \Twilio\InstanceContext The requested resource context
      * @throws \Twilio\Exceptions\TwilioException For unknown resource
      */
-    public function __call($name, $arguments) {
+    public function __call($name, $arguments)
+    {
         $property = $this->$name;
         if (method_exists($property, 'getContext')) {
             return call_user_func_array(array($property, 'getContext'), $arguments);
@@ -212,10 +223,11 @@ class FleetContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

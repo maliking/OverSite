@@ -17,7 +17,7 @@ use Twilio\Version;
 
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
- * 
+ *
  * @property string sid
  * @property string accountSid
  * @property string serviceSid
@@ -33,17 +33,19 @@ use Twilio\Version;
  * @property string url
  * @property array links
  */
-class BindingInstance extends InstanceResource {
+class BindingInstance extends InstanceResource
+{
     /**
      * Initialize the BindingInstance
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param mixed[] $payload The response payload
      * @param string $serviceSid The service_sid
      * @param string $sid The sid
-     * @return \Twilio\Rest\Notify\V1\Service\BindingInstance 
+     * @return \Twilio\Rest\Notify\V1\Service\BindingInstance
      */
-    public function __construct(Version $version, array $payload, $serviceSid, $sid = null) {
+    public function __construct(Version $version, array $payload, $serviceSid, $sid = null)
+    {
         parent::__construct($version);
 
         // Marshaled Properties
@@ -73,11 +75,12 @@ class BindingInstance extends InstanceResource {
     /**
      * Generate an instance context for the instance, the context is capable of
      * performing various actions.  All instance actions are proxied to the context
-     * 
+     *
      * @return \Twilio\Rest\Notify\V1\Service\BindingContext Context for this
      *                                                       BindingInstance
      */
-    protected function proxy() {
+    protected function proxy()
+    {
         if (!$this->context) {
             $this->context = new BindingContext(
                 $this->version,
@@ -91,30 +94,33 @@ class BindingInstance extends InstanceResource {
 
     /**
      * Fetch a BindingInstance
-     * 
+     *
      * @return BindingInstance Fetched BindingInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         return $this->proxy()->fetch();
     }
 
     /**
      * Deletes the BindingInstance
-     * 
+     *
      * @return boolean True if delete succeeds, false otherwise
      */
-    public function delete() {
+    public function delete()
+    {
         return $this->proxy()->delete();
     }
 
     /**
      * Magic getter to access properties
-     * 
+     *
      * @param string $name Property to access
      * @return mixed The requested property
      * @throws TwilioException For unknown properties
      */
-    public function __get($name) {
+    public function __get($name)
+    {
         if (array_key_exists($name, $this->properties)) {
             return $this->properties[$name];
         }
@@ -129,10 +135,11 @@ class BindingInstance extends InstanceResource {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";

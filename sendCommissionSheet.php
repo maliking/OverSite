@@ -4,51 +4,50 @@ require("databaseConnection.php");
 require("keys/cred.php");
 session_start();
 $dbConn = getConnection();
-if(!isset($_SESSION['userId'])) 
-{
+if (!isset($_SESSION['userId'])) {
     header("Location: index.html?error=wrong username or password");
-} 
+}
 
 $license = $_POST['license'];
 $houseId = $_POST['propertyAddress'];
 
-$agent = "SELECT * FROM UsersInfo WHERE license = '".$license."'";
-$name = $dbConn -> prepare($agent);
+$agent = "SELECT * FROM UsersInfo WHERE license = '" . $license . "'";
+$name = $dbConn->prepare($agent);
 $name->execute();
 $userResults = $name->fetch();
 
-$currAgent = "SELECT * FROM UsersInfo WHERE userId = '".$_SESSION['userId']."'";
-$email = $dbConn -> prepare($currAgent);
+$currAgent = "SELECT * FROM UsersInfo WHERE userId = '" . $_SESSION['userId'] . "'";
+$email = $dbConn->prepare($currAgent);
 $email->execute();
 $currAgentEmail = $email->fetch();
 
 $sqlHouse = "SELECT * FROM HouseInfo WHERE houseId = '" . $houseId . "'";
-$stmtHouse = $dbConn -> prepare($sqlHouse);
+$stmtHouse = $dbConn->prepare($sqlHouse);
 $stmtHouse->execute();
 $houseResults = $stmtHouse->fetch();
 
-$sql ="INSERT INTO commInfo
+$sql = "INSERT INTO commInfo
         (houseId, license, firstName, lastName, date, settlementDate, checkNum, clients, address, city, state, zip, TYGross, FYGross, InitialGross, brokerFee, finalComm, remaxFee, misc, percentage, envelopeId, finalHousePrice)
         VALUES (:houseId, :license, :firstName, :lastName, :date, :settlementDate, :checkNum, :clients, :address, :city, :state, :zip, :TYGross, :FYGross, :InitialGross, :brokerFee, :finalComm, :remaxFee, :misc, :percentage, :envelopeId, :finalHousePrice)";
-           
+
 $namedParameters = array();
 $namedParameters[":houseId"] = $houseId;
 $namedParameters[":license"] = $license;
 $namedParameters[":firstName"] = $userResults['firstName'];
-$namedParameters[":lastName"] = $userResults['lastName'];     
-$namedParameters[":date"] = date("Y-m-d", strtotime($_POST['today-date']));     
-$namedParameters[":settlementDate"] = date("Y-m-d", strtotime($_POST['settlementDate']));     
-$namedParameters[":checkNum"] = $_POST['checkNum'];   
-$namedParameters[":address"] = $houseResults['address'];     
-$namedParameters[":city"] = $houseResults['city'];     
-$namedParameters[":state"] = $houseResults['state']; 
+$namedParameters[":lastName"] = $userResults['lastName'];
+$namedParameters[":date"] = date("Y-m-d", strtotime($_POST['today-date']));
+$namedParameters[":settlementDate"] = date("Y-m-d", strtotime($_POST['settlementDate']));
+$namedParameters[":checkNum"] = $_POST['checkNum'];
+$namedParameters[":address"] = $houseResults['address'];
+$namedParameters[":city"] = $houseResults['city'];
+$namedParameters[":state"] = $houseResults['state'];
 $namedParameters[":zip"] = $houseResults['zip'];
-$namedParameters[":TYGross"] = (int)$_POST['TYGross'] + $_POST['InitialGross'];   
+$namedParameters[":TYGross"] = (int)$_POST['TYGross'] + $_POST['InitialGross'];
 $namedParameters[":FYGross"] = $_SESSION['FYGross'] + $_POST['netCommission'];
-$namedParameters[":InitialGross"] = $_POST['InitialGross'];   
+$namedParameters[":InitialGross"] = $_POST['InitialGross'];
 $namedParameters[":brokerFee"] = $_POST['brokerFee'];
-$namedParameters[":finalComm"] =  $_POST['netCommission']; 
-$namedParameters[":misc"] =  $_POST['miscell'];
+$namedParameters[":finalComm"] = $_POST['netCommission'];
+$namedParameters[":misc"] = $_POST['miscell'];
 $namedParameters[":remaxFee"] = (int)$_POST['remaxFee'];
 $namedParameters[":clients"] = $_POST['clients'];
 // $value = preg_replace('/[\%,]/', '', $_POST['percentage']);
@@ -60,9 +59,9 @@ $namedParameters[":finalHousePrice"] = $_POST['finalHousePrice'];
 // $stmt->execute($namedParameters); 
 
 require('fpdf/fpdf.php');
- 
-        // $data = $_GET["agentNum"];
-       
+
+// $data = $_GET["agentNum"];
+
 $pdf = new FPDF();
 $pdf->AddPage();
 
@@ -72,143 +71,142 @@ $pdf->Rect(5, 5, 200, 285, 'D');
 // $pdf->SetLineWidth(.3);
 // $pdf->Rect(10, 11, 97, 8, 'D');
 
-$pdf->SetFont('Times','B');
+$pdf->SetFont('Times', 'B');
 $pdf->SetFontSize(12);
 
 $pdf->SetLineWidth(.3);
-$pdf->Cell(96,10,'Re/MAX Property Experts Commission Breakdown',1,0);
-$pdf->Cell(10,10, '',0,0);
-$pdf->Cell(0,10, '                       Check # '. $_POST['checkNum'],'B',1);
+$pdf->Cell(96, 10, 'Re/MAX Property Experts Commission Breakdown', 1, 0);
+$pdf->Cell(10, 10, '', 0, 0);
+$pdf->Cell(0, 10, '                       Check # ' . $_POST['checkNum'], 'B', 1);
 
 
-
-$pdf->Cell(166,10,'                                                                                                   Beginning Gross Check Amount: ',0,0);
-$pdf->SetFont('Times','U');
-$pdf->Cell(5,10,'$' . number_format($_POST['TYGross'],2) . ' ',0,1);
-
-$pdf->SetFont('Times','B');
-$pdf->Cell(15,10,'Date: ',0,0);
+$pdf->Cell(166, 10, '                                                                                                   Beginning Gross Check Amount: ', 0, 0);
 $pdf->SetFont('Times', 'U');
-$pdf->Cell(30,10,'     ' . date("d-m-Y", strtotime($_POST['today-date'])) . '       ',0,1);
+$pdf->Cell(5, 10, '$' . number_format($_POST['TYGross'], 2) . ' ', 0, 1);
 
-$pdf->Cell(10,3, '',0,1);
-
-$pdf->SetFont('Times','B');
-$pdf->Cell(35,10,'Settlement Date: ',0,0);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(15, 10, 'Date: ', 0, 0);
 $pdf->SetFont('Times', 'U');
-$pdf->Cell(30,10,'     ' . date("d-m-Y", strtotime($_POST['settlementDate'])) . '       ',0,1);
+$pdf->Cell(30, 10, '     ' . date("d-m-Y", strtotime($_POST['today-date'])) . '       ', 0, 1);
 
-$pdf->Cell(10,3, '',0,1);
+$pdf->Cell(10, 3, '', 0, 1);
 
-$pdf->SetFont('Times','B');
-$pdf->Cell(17,10,'Agent: ',0,0);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(35, 10, 'Settlement Date: ', 0, 0);
 $pdf->SetFont('Times', 'U');
-$pdf->Cell(50,10,'     ' . $userResults['firstName'] . ' ' . $userResults['lastName'] . '      ',0,1);
+$pdf->Cell(30, 10, '     ' . date("d-m-Y", strtotime($_POST['settlementDate'])) . '       ', 0, 1);
 
-$pdf->Cell(10,3, '',0,1);
+$pdf->Cell(10, 3, '', 0, 1);
 
-$pdf->SetFont('Times','B');
-$pdf->Cell(18,10,'Clients: ',0,0);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(17, 10, 'Agent: ', 0, 0);
 $pdf->SetFont('Times', 'U');
-$pdf->Cell(50,10,'     ' . $_POST['clients'] . '     ',0,1);
+$pdf->Cell(50, 10, '     ' . $userResults['firstName'] . ' ' . $userResults['lastName'] . '      ', 0, 1);
 
-$pdf->Cell(10,3, '',0,1);
+$pdf->Cell(10, 3, '', 0, 1);
 
-$pdf->SetFont('Times','B');
-$pdf->Cell(37,10,'Property Address: ',0,0);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(18, 10, 'Clients: ', 0, 0);
 $pdf->SetFont('Times', 'U');
-$pdf->Cell(50,10,'   ' . $houseResults['address'] . ', ' . $houseResults['city'] . ', ' . $houseResults['state'] . ', ' . $houseResults['zip'] . '      ',0,1);
+$pdf->Cell(50, 10, '     ' . $_POST['clients'] . '     ', 0, 1);
 
-$pdf->Cell(0,5,' ',0,1);
+$pdf->Cell(10, 3, '', 0, 1);
 
-$pdf->SetFont('Times','B');
-$pdf->Cell(69,10,'                        Gross Check Amount: ',0,0);
-$pdf->SetFont('Times','U');
-$pdf->Cell(23,10,'   $' . number_format($_POST['InitialGross'],2) . '      ' ,0,1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(37, 10, 'Property Address: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(50, 10, '   ' . $houseResults['address'] . ', ' . $houseResults['city'] . ', ' . $houseResults['state'] . ', ' . $houseResults['zip'] . '      ', 0, 1);
+
+$pdf->Cell(0, 5, ' ', 0, 1);
+
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(69, 10, '                        Gross Check Amount: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(23, 10, '   $' . number_format($_POST['InitialGross'], 2) . '      ', 0, 1);
 
 // $pdf->Cell(0,2,' ',0,1);
 
-$pdf->SetFont('Times','B');
-$pdf->Cell(69,10,'                        Remax/Broker Fee: ',0,0);
-$pdf->SetFont('Times','U');
-$pdf->Cell(23,10,'   $' . number_format($_POST['brokerFee'],2) . '      ' ,0,1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(69, 10, '                        Remax/Broker Fee: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(23, 10, '   $' . number_format($_POST['brokerFee'], 2) . '      ', 0, 1);
 
-$pdf->SetFont('Times','B');
-$pdf->Cell(69,10,'                        Total Fees: ',0,0);
-$pdf->SetFont('Times','U');
-$pdf->Cell(23,10,'   $' . number_format($_POST['brokerFee'],2) . '      ' ,0,1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(69, 10, '                        Total Fees: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(23, 10, '   $' . number_format($_POST['brokerFee'], 2) . '      ', 0, 1);
 
-$pdf->SetFont('Times','B');
-$pdf->Cell(69,10,'                        Subtotal: ',0,0);
-$pdf->SetFont('Times','U');
-$pdf->Cell(23,10,'   $' . number_format(($_POST['InitialGross'] - $_POST['brokerFee']),2) . '      ' ,0,1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(69, 10, '                        Subtotal: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(23, 10, '   $' . number_format(($_POST['InitialGross'] - $_POST['brokerFee']), 2) . '      ', 0, 1);
 
-$pdf->SetFont('Times','B');
-$pdf->Cell(69,10,'                        Processing Fee: ',0,0);
-$pdf->SetFont('Times','U');
-$pdf->Cell(23,10,'   $200.00      ' ,0,1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(69, 10, '                        Processing Fee: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(23, 10, '   $200.00      ', 0, 1);
 
-$pdf->SetFont('Times','B');
-$pdf->Cell(69,10,'                        TC. Tech Fee: ',0,0);
-$pdf->SetFont('Times','U');
-$pdf->Cell(23,10,'   $50.00      ' ,0,1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(69, 10, '                        TC. Tech Fee: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(23, 10, '   $50.00      ', 0, 1);
 
-$pdf->SetFont('Times','B');
-$pdf->Cell(69,10,'                        E&O Insurance: ',0,0);
-$pdf->SetFont('Times','U');
-$pdf->Cell(23,10,'   $99.00      ' ,0,1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(69, 10, '                        E&O Insurance: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(23, 10, '   $99.00      ', 0, 1);
 
-$pdf->SetFont('Times','B');
-$pdf->Cell(69,10,'                        Remax Franchise: ',0,0);
-$pdf->SetFont('Times','U');
-$pdf->Cell(23,10,'   $' . number_format($_POST['remaxFee'],2) . '      ' ,0,1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(69, 10, '                        Remax Franchise: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(23, 10, '   $' . number_format($_POST['remaxFee'], 2) . '      ', 0, 1);
 
-$pdf->SetFont('Times','B');
-$pdf->Cell(69,10,'                        Misc: ',0,0);
-$pdf->SetFont('Times','U');
-$pdf->Cell(23,10,'   $' . number_format($_POST['miscell'],2) . '      ' ,0,1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(69, 10, '                        Misc: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(23, 10, '   $' . number_format($_POST['miscell'], 2) . '      ', 0, 1);
 
-$pdf->SetFont('Times','B');
-$pdf->Cell(69,10,'                        Agent Commission: ',0,0);
-$pdf->SetFont('Times','U');
-$pdf->Cell(23,10,'   $' . number_format($_POST['netCommission'],2) . '      ' ,0,1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(69, 10, '                        Agent Commission: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(23, 10, '   $' . number_format($_POST['netCommission'], 2) . '      ', 0, 1);
 
 
-$pdf->Cell(0,10,'',0,1);
-$pdf->SetFont('Times','I',14);
-$pdf->Cell(7,10,'   I, ',0,0);
-$pdf->SetFont('Times','U',14);
-$pdf->Cell(41,10,'                                ',0,0);
+$pdf->Cell(0, 10, '', 0, 1);
+$pdf->SetFont('Times', 'I', 14);
+$pdf->Cell(7, 10, '   I, ', 0, 0);
+$pdf->SetFont('Times', 'U', 14);
+$pdf->Cell(41, 10, '                                ', 0, 0);
 $pdf->SetFont('Times');
-$pdf->Cell(20,10,', have READ & APPROVED this Commission Worksheet.  ',0,1);
+$pdf->Cell(20, 10, ', have READ & APPROVED this Commission Worksheet.  ', 0, 1);
 
 $pdf->SetFontSize(12);
-$pdf->Cell(0,30,'',0,1);
+$pdf->Cell(0, 30, '', 0, 1);
 
-$pdf->Cell(75,10,' Agent Signature                               Date  ','T',0);
-$pdf->Cell(32,10,'      ',0,0);
-$pdf->Cell(84,10,' Owner and/or Broker Signature               Date  ','T',1);
+$pdf->Cell(75, 10, ' Agent Signature                               Date  ', 'T', 0);
+$pdf->Cell(32, 10, '      ', 0, 0);
+$pdf->Cell(84, 10, ' Owner and/or Broker Signature               Date  ', 'T', 1);
 
-$pdf->Cell(0,13,'',0,1);
+$pdf->Cell(0, 13, '', 0, 1);
 
-$pdf->SetFont('Times','B');
-$pdf->Cell(155,5,'                                                                                                      New Gross Commission: ',0,0);
-$pdf->SetFont('Times','U');
-$pdf->Cell(30,5,'   $' . number_format($_POST['TYGross'] + $_POST['InitialGross'],2) . '      ' ,0,1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(155, 5, '                                                                                                      New Gross Commission: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(30, 5, '   $' . number_format($_POST['TYGross'] + $_POST['InitialGross'], 2) . '      ', 0, 1);
 
 // $pdf->Output();
-	$base = $pdf->Output('','s');
-	$doc = base64_encode($base);
-	$curl = curl_init();
-	curl_setopt_array($curl, array(
-	  CURLOPT_URL => "https://demo.docusign.net/restapi/v2/accounts/2837693/envelopes",
-	  CURLOPT_RETURNTRANSFER => true,
-	  CURLOPT_ENCODING => "",
-	  CURLOPT_MAXREDIRS => 10,
-	  CURLOPT_TIMEOUT => 30,
-	  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-	  CURLOPT_CUSTOMREQUEST => "POST",
-	  CURLOPT_POSTFIELDS => "{
+$base = $pdf->Output('', 's');
+$doc = base64_encode($base);
+$curl = curl_init();
+curl_setopt_array($curl, array(
+    CURLOPT_URL => "https://demo.docusign.net/restapi/v2/accounts/2837693/envelopes",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "POST",
+    CURLOPT_POSTFIELDS => "{
 	  \"emailSubject\":\"DocuSign REST API Quickstart Sample\",
 	  \"emailBlurb\": \"Shows how to create and send an envelope from a document.\",
 	  \"recipients\": {
@@ -229,60 +227,58 @@ $pdf->Cell(30,5,'   $' . number_format($_POST['TYGross'] + $_POST['InitialGross'
 	  		{
 	  			\"documentId\": \"1\",
 		  		\"name\": \"" . $houseResults['address'] . ".pdf\",
-		  		\"documentBase64\": \"" . $doc ."\"
+		  		\"documentBase64\": \"" . $doc . "\"
 		  	}],
 		  	\"status\": \"sent\"}",
-	  CURLOPT_HTTPHEADER => array(
-    "accept: application/json",
-    "content-type: application/json",
-    "x-docusign-authentication: { \"Username\": \"" . $username . "\",\"Password\":\"" . $password ."\",\"IntegratorKey\":\"" . $intKey . "\" }"
-  	),
-	));
-	$response = curl_exec($curl);
-	$err = curl_error($curl);
-	curl_close($curl);
-		if ($err) {
-	  echo "cURL Error #:" . $err;
-	} 
-	// else {
-		// echo $response;
-	  	
-	// }
-	
-	$envId = json_decode($response, true);
-	$namedParameters[":envelopeId"] = $envId['envelopeId'];
-	$stmt = $dbConn->prepare($sql);
-	try
-	{
+    CURLOPT_HTTPHEADER => array(
+        "accept: application/json",
+        "content-type: application/json",
+        "x-docusign-authentication: { \"Username\": \"" . $username . "\",\"Password\":\"" . $password . "\",\"IntegratorKey\":\"" . $intKey . "\" }"
+    ),
+));
+$response = curl_exec($curl);
+$err = curl_error($curl);
+curl_close($curl);
+if ($err) {
+    echo "cURL Error #:" . $err;
+}
+// else {
+// echo $response;
 
-	
-	$stmt->execute($namedParameters); 
-	}
-	catch(PDOException $e) {
+// }
+
+$envId = json_decode($response, true);
+$namedParameters[":envelopeId"] = $envId['envelopeId'];
+$stmt = $dbConn->prepare($sql);
+try {
+
+
+    $stmt->execute($namedParameters);
+} catch (PDOException $e) {
     echo "Error: " . $e->getMessage();
 }
-	// print_r($namedParameters);
-	
-	 header("Location: index.php");
+// print_r($namedParameters);
+
+header("Location: index.php");
 
 ?>
 
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-    
+
 <head>
     <title>Commission Sheet</title>
-    
-    
-    <meta charset = "utf-8"/>
 
- 
+
+    <meta charset="utf-8"/>
+
+
 </head>
-    
 
-    <body>
-       
-    </body>
+
+<body>
+
+</body>
 
 </html>

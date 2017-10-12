@@ -8,7 +8,7 @@
  *         Pass any option as data-option="value"
  */
 
-+ function ($) {
++function ($) {
     'use strict'
 
     var DataKey = 'lte.tree'

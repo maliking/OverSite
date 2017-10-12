@@ -5,7 +5,7 @@
 <!-- Theme style -->
 <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
 <link rel="stylesheet" href="../dist/css/skins/skin-red-light.min.css">
-<link rel="stylesheet" href="./css/agent-styles.css"> 
+<link rel="stylesheet" href="./css/agent-styles.css">
 
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>

@@ -16,15 +16,17 @@ use Twilio\Version;
 /**
  * PLEASE NOTE that this class contains beta products that are subject to change. Use them with caution.
  */
-class CommandContext extends InstanceContext {
+class CommandContext extends InstanceContext
+{
     /**
      * Initialize the CommandContext
-     * 
+     *
      * @param \Twilio\Version $version Version that contains the resource
      * @param string $sid The sid
-     * @return \Twilio\Rest\Wireless\V1\CommandContext 
+     * @return \Twilio\Rest\Wireless\V1\CommandContext
      */
-    public function __construct(Version $version, $sid) {
+    public function __construct(Version $version, $sid)
+    {
         parent::__construct($version);
 
         // Path Solution
@@ -37,10 +39,11 @@ class CommandContext extends InstanceContext {
 
     /**
      * Fetch a CommandInstance
-     * 
+     *
      * @return CommandInstance Fetched CommandInstance
      */
-    public function fetch() {
+    public function fetch()
+    {
         $params = Values::of(array());
 
         $payload = $this->version->fetch(
@@ -58,10 +61,11 @@ class CommandContext extends InstanceContext {
 
     /**
      * Provide a friendly representation
-     * 
+     *
      * @return string Machine friendly representation
      */
-    public function __toString() {
+    public function __toString()
+    {
         $context = array();
         foreach ($this->solution as $key => $value) {
             $context[] = "$key=$value";
