@@ -84,6 +84,7 @@ if (!isset($_SESSION['userId'])) {
                                                                     data-placement="top"
                                                                     title="Close of Escrow">COE </a></th>
                                     <th data-breakpoints="xs sm">Notes</th>
+                                    <th data-breakpoints="xs sm">Open House</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -118,6 +119,9 @@ if (!isset($_SESSION['userId'])) {
                                     <td>3/1/17
                                         <br> <span class="label label-default">Incomplete</span></td>
                                     <td>Write some notes here!</td>
+                                    <td><a href="openhouse/listings-openhouse.php"><button class="label label-primary">Prepare for open house</button></a>
+                                    <button class="label label-danger">Remove</button>
+                                    </td>
                                 </tr>
                                 </tbody>
                             </table>
