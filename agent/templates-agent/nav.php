@@ -15,7 +15,7 @@
                     <span>Open House</span></a></li>
 -->
             <li><a href="../agent/my-calendar.php"><i class="fa fa-calendar"></i>
-                    <span>Calendar</span></a></li>
+                    <span>My Appointments</span></a></li>
 
 
             <li class="header-style treeview">
