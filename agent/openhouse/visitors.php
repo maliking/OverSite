@@ -87,125 +87,35 @@ if (isset($_GET['bathroomSort'])) {
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
-        <section>
+        <section class="content-header">
+            <h1>
+                My Visitors
+            </h1>
+        </section>
 
-            <!-- Mock add notes Modal -->
-            <div class="modal fade" id="addNotesModal" data-backdrop="static" role="dialog">
-                <div class="modal-dialog">
 
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Name</h4>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="modal-body">
+        <!-- Mock add notes Modal -->
+        <div class="modal fade" id="addNotesModal" data-backdrop="static" role="dialog">
+            <div class="modal-dialog">
 
-                            <!-- textarea -->
-                            <div class="form-group">
-                                <label>Additional Notes</label>
-                                <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
-                            </div>
-
-                        </div>
-
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Name</h4>
                     </div>
-                </div>
+                    <!-- /.box-header -->
+                    <div class="modal-body">
 
-            </div>
-            <!-- End Modal -->
-
-            <!--        -----Mock text modal            -->
-
-            <div class="modal fade" id="textModal" data-backdrop="static" role="dialog">
-                <div class="modal-dialog">
-
-                    <!-- Modal content-->
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Text Visitor</h4>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="modal-body">
-
-                            <!-- textarea -->
-                            <div class="form-group">
-                                <label>Message to visitor:</label>
-                                <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                            </div>
-
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">Send</button>
-                            </div>
-
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-            <!--        -----END Mock text modal            -->
-
-
-            <!-- ---------Mock Send Flyer Modal-->
-
-
-            <div class="modal fade" id="flyerModal" data-backdrop="static" role="dialog">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Forward [Visitor Name] a flyer!</h4>
-                        </div>
-                        <!-- /.box-header -->
-                        <div class="modal-body">
-
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <input type="checkbox"> <img src="../openhouse/listingImg/flyerPlaceHolder.png"
-                                                                 style="width:200px; height: 250px;"></input>
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="checkbox"> <img src="../openhouse/listingImg/flyerPlaceHolder.png"
-                                                                 style="width:200px; height: 250px;"></input>
-                                </div>
-
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <input type="checkbox"> <img src="../openhouse/listingImg/flyerPlaceHolder.png"
-                                                                 style="width:200px; height: 250px;"></input>
-                                </div>
-                                <div class="col-md-6">
-                                    <input type="checkbox"> <img src="../openhouse/listingImg/flyerPlaceHolder.png"
-                                                                 style="width:200px; height: 250px;"></input>
-                                </div>
-
-                            </div>
-                        </div>
-
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <div class="form-group">
-                                    <label>Input additional note to visitor</label>
-                                    <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
-                                </div>
-                            </div>
-
+                        <!-- textarea -->
+                        <div class="form-group">
+                            <label>Additional Notes</label>
+                            <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
                         </div>
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Send Flyer</button>
-
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
                         </div>
 
                     </div>
@@ -213,10 +123,105 @@ if (isset($_GET['bathroomSort'])) {
                 </div>
             </div>
 
+        </div>
+        <!-- End Modal -->
 
-            <!--   ------------ END Mock flyer modal-->
+        <!--        -----Mock text modal            -->
+
+        <div class="modal fade" id="textModal" data-backdrop="static" role="dialog">
+            <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Text Visitor</h4>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="modal-body">
+
+                        <!-- textarea -->
+                        <div class="form-group">
+                            <label>Message to visitor:</label>
+                            <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Send</button>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <!--        -----END Mock text modal            -->
 
 
+        <!-- ---------Mock Send Flyer Modal-->
+
+
+        <div class="modal fade" id="flyerModal" data-backdrop="static" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Forward [Visitor Name] a flyer!</h4>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="modal-body">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="checkbox"> <img src="../openhouse/listingImg/flyerPlaceHolder.png"
+                                                             style="width:200px; height: 250px;"></input>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="checkbox"> <img src="../openhouse/listingImg/flyerPlaceHolder.png"
+                                                             style="width:200px; height: 250px;"></input>
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="checkbox"> <img src="../openhouse/listingImg/flyerPlaceHolder.png"
+                                                             style="width:200px; height: 250px;"></input>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="checkbox"> <img src="../openhouse/listingImg/flyerPlaceHolder.png"
+                                                             style="width:200px; height: 250px;"></input>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label>Input additional note to visitor</label>
+                                <textarea class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Send Flyer</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <!--   ------------ END Mock flyer modal-->
+
+        <section class="content">
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box">
@@ -244,7 +249,7 @@ if (isset($_GET['bathroomSort'])) {
                                         <h4>
                                             <a data-toggle="collapse" href="#collapse1" class="col-md-1"><i
                                                         class="more-less fa fa-plus"></i> </a>
-                                            <div class="col-md-3">Listing Address 1</div>
+                                            <div class="col-md-11">Listing Address 1</div>
                                         </h4>
                                     </div>
                                     <div id="collapse1" class="panel-collapse collapse">
