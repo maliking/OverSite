@@ -99,12 +99,12 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- User image in navbar--><img src="./dist/img/user2-160x160.jpg" class="user-image"
-                                                         alt="User Image"> <span class="hidden-xs">Agent</span> </a>
+                                                         alt="User Image"> <span class="hidden-xs">Admin</span> </a>
                     <ul class="dropdown-menu">
                         <!-- User image in the menu -->
                         <li class="user-header"><img src="./dist/img/user2-160x160.jpg" class="img-circle"
                                                      alt="User Image">
-                            <p> Agent
+                            <p> Admin
                                 <small>Member since Nov. 2012</small>
                             </p>
                         </li>

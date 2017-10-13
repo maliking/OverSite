@@ -34,7 +34,7 @@ if (!isset($_SESSION['userId'])) {
 
 </head>
 
-<body class="hold-transition skin-blue-light sidebar-mini">
+<body class="hold-transition skin-black sidebar-mini">
 <!-- Site Wrapper -->
 <div class="wrapper">
     <!-- BEGIN TEMPLATE header.php INCLUDE -->

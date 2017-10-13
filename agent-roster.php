@@ -27,7 +27,7 @@ $result = $stmt->fetchAll();
 
 </head>
 
-<body class="hold-transition skin-blue-light sidebar-mini">
+<body class="hold-transition skin-black sidebar-mini">
 <!-- Site Wrapper -->
 <div class="wrapper">
     <!-- BEGIN TEMPLATE header.php INCLUDE -->
@@ -184,13 +184,16 @@ $result = $stmt->fetchAll();
 <script src="./dist/js/vendor/footable.min.js"></script>
 
 <script>
+
     jQuery(function ($) {
-        $('.table').footable();
-    });
-    var $modal = $('#editor-modal'),
-        $editor = $('#editor'),
-        $editorTitle = $('#editor-title'),
-        ft = FooTable.init('#roster-table', {
+
+        var $modal = $('#editor-modal'),
+            $editor = $('#editor'),
+            $editorTitle = $('#editor-title');
+
+
+
+        $('.table').footable({
             "columns": $.ajax('columns.json', {dataType: 'json'}),
             "rows": $.ajax('getAgentRosterRows.php', {dataType: 'json'}),
             "filtering": {
@@ -199,15 +202,18 @@ $result = $stmt->fetchAll();
             "sorting": {
                 "enabled": true
             },
-            editing: {
-                enabled: true,
-                addRow: function () {
+            "paging": {
+                "enabled": true
+            },
+            "editing": {
+                "enabled": true,
+                "addRow": function () {
                     $modal.removeData('row');
                     $editor[0].reset();
                     $editorTitle.text('Add a New Agent');
                     $modal.modal('show');
                 },
-                editRow: function (row) {
+                "editRow": function (row) {
                     var values = row.val();
                     $editor.find('#firstName').val(values.firstName);
                     $editor.find('#lastName').val(values.lastName);
@@ -222,64 +228,167 @@ $result = $stmt->fetchAll();
                     $editorTitle.text('Edit ' + values.firstName + " " + values.lastName);
                     $modal.modal('show');
                 },
-                deleteRow: function (row) {
+                "deleteRow": function (row) {
                     var values = row.val();
                     if (confirm('Are you sure you want to delete agent ' + values.firstName + " " + values.lastName + '?')) {
                         $.post("AgentRosterFunction.php", {userId: values.userId, function: "delete"});
                         row.delete();
                     }
-
                 }
             }
-        }),
+        }), // table.footable
+
         uid = 10;
+        $editor.on('submit', function (e) {
+            if (this.checkValidity && !this.checkValidity()) return;
+            e.preventDefault();
 
-    $editor.on('submit', function (e) {
-        if (this.checkValidity && !this.checkValidity()) return;
-        e.preventDefault();
-        var row = $modal.data('row'),
-            values = {
-                license: $editor.find('#license').val(),
-                userId: $editor.find('#userId').val(),
-                firstName: $editor.find('#firstName').val(),
-                lastName: $editor.find('#lastName').val(),
-                username: $editor.find('#username').val(),
-                password: $editor.find('#password').val(),
-                email: $editor.find('#email').val(),
-                phone: $editor.find('#phone').val(),
 
-            };
-        var editValues = JSON.stringify(values);
-        editValues = JSON.parse(editValues);
-        if (row instanceof FooTable.Row) {
-            $.post("AgentRosterFunction.php", {
-                userId: editValues.userId,
-                license: editValues.license,
-                firstName: editValues.firstName,
-                lastName: editValues.lastName,
-                username: editValues.username,
-                email: editValues.email,
-                phone: editValues.phone,
-                function: "edit"
-            });
-            row.val(values);
-        } else {
-            $.post("AgentRosterFunction.php", {
-                userId: editValues.userId,
-                license: editValues.license,
-                firstName: editValues.firstName,
-                lastName: editValues.lastName,
-                username: editValues.username,
-                password: editValues.password,
-                email: editValues.email,
-                phone: editValues.phone,
-                function: "add"
-            });
-            values.id = uid++;
-            ft.rows.add(values);
-        }
-        $modal.modal('hide');
-    });
+            var row = $modal.data('row'),
+                values = {
+                    license: $editor.find('#license').val(),
+                    userId: $editor.find('#userId').val(),
+                    firstName: $editor.find('#firstName').val(),
+                    lastName: $editor.find('#lastName').val(),
+                    username: $editor.find('#username').val(),
+                    password: $editor.find('#password').val(),
+                    email: $editor.find('#email').val(),
+                    phone: $editor.find('#phone').val(),
+
+                };
+
+            var editValues = JSON.stringify(values);
+            editValues = JSON.parse(editValues);
+
+
+            if (row instanceof FooTable.Row) {
+                $.post("AgentRosterFunction.php", {
+                    userId: editValues.userId,
+                    license: editValues.license,
+                    firstName: editValues.firstName,
+                    lastName: editValues.lastName,
+                    username: editValues.username,
+                    email: editValues.email,
+                    phone: editValues.phone,
+                    function: "edit"
+                });
+                row.val(values);
+            } else {
+                $.post("AgentRosterFunction.php", {
+                    userId: editValues.userId,
+                    license: editValues.license,
+                    firstName: editValues.firstName,
+                    lastName: editValues.lastName,
+                    username: editValues.username,
+                    password: editValues.password,
+                    email: editValues.email,
+                    phone: editValues.phone,
+                    function: "add"
+                });
+                values.id = uid++;
+                ft.rows.add(values);
+            }
+            $modal.modal('hide');
+        });
+    }); // jquery
+
+
+
+//
+//
+//    var $modal = $('#editor-modal'),
+//        $editor = $('#editor'),
+//        $editorTitle = $('#editor-title'),
+//        ft = FooTable.init('#roster-table', {
+//            "columns": $.ajax('columns.json', {dataType: 'json'}),
+//            "rows": $.ajax('getAgentRosterRows.php', {dataType: 'json'}),
+//            "filtering": {
+//                "enabled": true
+//            },
+//            "sorting": {
+//                "enabled": true
+//            },
+//            editing: {
+//                enabled: true,
+//                addRow: function () {
+//                    $modal.removeData('row');
+//                    $editor[0].reset();
+//                    $editorTitle.text('Add a New Agent');
+//                    $modal.modal('show');
+//                },
+//                editRow: function (row) {
+//                    var values = row.val();
+//                    $editor.find('#firstName').val(values.firstName);
+//                    $editor.find('#lastName').val(values.lastName);
+//                    $editor.find('#phone').val(values.phone);
+//                    $editor.find('#userId').val(values.userId);
+//
+//                    $editor.find('#license').val(values.license);
+//                    $editor.find('#username').val(values.username);
+//                    $editor.find('#email').val(values.email);
+//
+//                    $modal.data('row', row);
+//                    $editorTitle.text('Edit ' + values.firstName + " " + values.lastName);
+//                    $modal.modal('show');
+//                },
+//                deleteRow: function (row) {
+//                    var values = row.val();
+//                    if (confirm('Are you sure you want to delete agent ' + values.firstName + " " + values.lastName + '?')) {
+//                        $.post("AgentRosterFunction.php", {userId: values.userId, function: "delete"});
+//                        row.delete();
+//                    }
+//
+//                }
+//            }
+//        }),
+//        uid = 10;
+//
+//    $editor.on('submit', function (e) {
+//        if (this.checkValidity && !this.checkValidity()) return;
+//        e.preventDefault();
+//        var row = $modal.data('row'),
+//            values = {
+//                license: $editor.find('#license').val(),
+//                userId: $editor.find('#userId').val(),
+//                firstName: $editor.find('#firstName').val(),
+//                lastName: $editor.find('#lastName').val(),
+//                username: $editor.find('#username').val(),
+//                password: $editor.find('#password').val(),
+//                email: $editor.find('#email').val(),
+//                phone: $editor.find('#phone').val(),
+//
+//            };
+//        var editValues = JSON.stringify(values);
+//        editValues = JSON.parse(editValues);
+//        if (row instanceof FooTable.Row) {
+//            $.post("AgentRosterFunction.php", {
+//                userId: editValues.userId,
+//                license: editValues.license,
+//                firstName: editValues.firstName,
+//                lastName: editValues.lastName,
+//                username: editValues.username,
+//                email: editValues.email,
+//                phone: editValues.phone,
+//                function: "edit"
+//            });
+//            row.val(values);
+//        } else {
+//            $.post("AgentRosterFunction.php", {
+//                userId: editValues.userId,
+//                license: editValues.license,
+//                firstName: editValues.firstName,
+//                lastName: editValues.lastName,
+//                username: editValues.username,
+//                password: editValues.password,
+//                email: editValues.email,
+//                phone: editValues.phone,
+//                function: "add"
+//            });
+//            values.id = uid++;
+//            ft.rows.add(values);
+//        }
+//        $modal.modal('hide');
+//    });
 
     function getLicense() {
         lic = document.getElementById("license").value;
