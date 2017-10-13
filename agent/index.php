@@ -56,6 +56,15 @@ $result = $stmt->fetch();
         }
 
     </style>
+    <!-- NOTIFICATION Links-->
+    <link href="../plugins/pnotify/dist/pnotify.css" rel="stylesheet">
+    <link href="../plugins/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
+    <link href="../plugins/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
+
+    <!-- daterange picker -->
+    <link rel="stylesheet" href="../plugins/bootstrap-daterangepicker/daterangepicker.css">
+    <!-- bootstrap datepicker -->
+    <link rel="stylesheet" href="../plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 
 </head>
 
@@ -75,36 +84,12 @@ $result = $stmt->fetch();
     <link rel="stylesheet" href="../dist/css/vendor/fullcalendar.min.css">
 
 
-    <!--FULL CALENDAR links-->
 
     <?php include "./fullcalendar/links.php" ?>
 
 
-    <!-- NOTIFICATION Links-->
-    <link href="../plugins/pnotify/dist/pnotify.css" rel="stylesheet">
-    <link href="../plugins/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
-    <link href="../plugins/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
-
-    <!-- daterange picker -->
-    <link rel="stylesheet" href="../plugins/bootstrap-daterangepicker/daterangepicker.css">
-    <!-- bootstrap datepicker -->
-    <link rel="stylesheet" href="../plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-
-
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                Agent Dashboard
-                <small>Week Overview</small>
-            </h1>
-            <ol class="breadcrumb">
-                <li>Overview</li>
-                <li class="active"><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-            </ol>
-        </section>
-
         <!-- Main content -->
         <section class="content" style="min-height:initial;">
             <!-- Small boxes (Stat box) -->
@@ -212,15 +197,8 @@ $result = $stmt->fetch();
                 </div>
             </div>
             <!-- /.row -->
-        </section>
-
-        <!-- Main content -->
-        <section class="content">
-            <!--                    Example modal below for how pop ups should look on calendar-->
-            <div class="row">
 
                 <!--MODAL AREA!!-->
-                <div class="box-body">
 
 
                     <div class="modal modal-primary fade" id="modal-primary">
@@ -404,10 +382,9 @@ $result = $stmt->fetch();
                         <!-- /.modal-content -->
                     </div>
                     <!-- /.modal-dialog -->
-                </div>
+
                 <!-- /.modal -->
                 <div class="container">
-
 
                     <!--MODAL AREA-->
 
