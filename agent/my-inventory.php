@@ -59,9 +59,10 @@ if (!isset($_SESSION['userId'])) {
                                 <thead>
                                 <tr>
                                     <th>Property</th>
-                                    <th data-breakpoints="all">Client Name</th>
-                                    <th data-breakpoints="all">Client Number</th>
-                                    <th data-breakpoints="all">Client Email</th>
+                                    <th data-breakpoints="all">Client</th>
+                                    <th data-breakpoints="all">Prepare for Open House  </th>
+                                   
+                                    
                                     <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                     data-placement="top"
                                                                     title="Approval Date">Aprv. </a></th>
@@ -84,15 +85,31 @@ if (!isset($_SESSION['userId'])) {
                                                                     data-placement="top"
                                                                     title="Close of Escrow">COE </a></th>
                                     <th data-breakpoints="xs sm">Notes</th>
-                                    <th data-breakpoints="xs sm">Open House</th>
+                                   
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
                                     <td>1204 Rogers Ct. Salinas, CA 94934</td>
-                                    <td>Patty Hershang</td>
-                                    <td>831-382-4833</td>
-                                    <td>phershang@gmail.com</td>
+                                    
+                                    
+                                    <td>
+                                        Patty Hershang  <br> 
+                                        831-382-4833 <br>  
+                                        phershang@gmail.com
+                                    </td>
+                                    <td>
+                                          <button type="button" class="label label-primary">View current flyer</button><!--allows for pop up of flyer, if no flyer then just text saying: you currently do not have a flyer for this listing"-->
+                 <a href="openhouse/create-flyer.php">    <button type="button" class="label label-primary">Create new flyer</button></a>
+                            <a href="signIn.php"> <button type="button" class="label label-primary">Sign in sheet</button></a>
+                        <a href="openhouse/singleListingVisitors.php"> <button type="button" class="label label-primary">Listing visitors</button></a>
+                                      
+                                    </td>
+                                  
+                                    
+                                    
+                                    
+                                    
                                     <td>3/1/17
                                         <br> <span class="label label-success">Done! <i
                                                     class="fa fa-check-circle-o"></i></span></td>
@@ -119,9 +136,7 @@ if (!isset($_SESSION['userId'])) {
                                     <td>3/1/17
                                         <br> <span class="label label-default">Incomplete</span></td>
                                     <td>Write some notes here!</td>
-                                    <td><a href="openhouse/listings-openhouse.php"><button class="label label-primary">Prepare for open house</button></a>
-                                    <button class="label label-danger">Remove</button>
-                                    </td>
+                                  
                                 </tr>
                                 </tbody>
                             </table>
