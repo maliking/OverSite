@@ -45,13 +45,26 @@ $result = $stmt->fetch();
         <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
         <?php include "./templates-agent/default-css.php" ?>
         <!-- END TEMPLATE default-css.php INCLUDE -->
-       
+        <style>
+            .modal-title {
+                font-size: 150%;
+                font-weight: bold;
+            }
+            
+            #modal-table {
+                color: black;
+            }
+
+        </style>
         <!-- NOTIFICATION Links-->
         <link href="../plugins/pnotify/dist/pnotify.css" rel="stylesheet">
         <link href="../plugins/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
         <link href="../plugins/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
 
-      
+        <!-- daterange picker -->
+        <link rel="stylesheet" href="../plugins/bootstrap-daterangepicker/daterangepicker.css">
+        <!-- bootstrap datepicker -->
+        <link rel="stylesheet" href="../plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 
     </head>
 
@@ -79,6 +92,7 @@ $result = $stmt->fetch();
             <div class="content-wrapper">
                 <!-- Main content -->
                 <section class="content" style="min-height:initial;">
+                    <!-- Content Wrapper. Contains page content -->
                     <!-- Small boxes (Stat box) -->
                     <div class="row">
                         <div class="col-lg-2 col-xs-6">
@@ -183,183 +197,216 @@ $result = $stmt->fetch();
                     </div>
                     <!-- /.row -->
 
-              
+
+                    <!--MODAL AREA!!-->
+
+
+                    <div class="modal modal-primary fade" id="modal-primary">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">John Doe</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="modal-body">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <i>Scheduled to contact: </i>
+                                                <b>9:15am</b> <i>September 23, 2017</i>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+
+                                            <!--                                        Start Box-->
+                                            <div class="box">
+
+                                                <div class="box-body no-padding">
+                                                    <table id="modal-table" class="table table-striped">
+                                                        <tr>
+
+
+                                                            <th>First Name</th>
+                                                            <th>Last Name</th>
+
+
+                                                        </tr>
+                                                        <tr>
+
+                                                            <td id="firstName">John</td>
+                                                            <td id="lastName">
+                                                                Doe
+                                                            </td>
+                                                            <tr>
+
+
+                                                                <th>Min Bed</th>
+                                                                <th>Min Bath</th>
+
+
+                                                            </tr>
+                                                            <tr>
+
+                                                                <td id="minBed">2</td>
+                                                                <td id="minBath">
+                                                                    2
+                                                                </td>
+                                                                <tr>
+
+
+                                                                    <th>Min Price</th>
+                                                                    <th>Max Price</th>
+
+
+                                                                </tr>
+                                                                <tr>
+
+                                                                    <td id="minPrice">$120,000</td>
+                                                                    <td id="maxPrice">
+                                                                        $910,000
+                                                                    </td>
+
+                                                                </tr>
+                                                                <tr>
+
+                                                                    <th>Looking to purchase home within:</th>
+                                                                    <th>Pre-Approved?</th>
+
+                                                                </tr>
+                                                                <tr>
+
+                                                                    <td id="purchaseWithin">3-6 months</td>
+                                                                    <td>
+                                                                        <form action="">
+                                                                            <input type="radio" name="preapproved" value="yes"> Yes
+                                                                            <br>
+                                                                            <input type="radio" name="preapproved" value="no"> No
+                                                                            <br>
+                                                                        </form>
+
+                                                                    </td>
+
+                                                                </tr>
+                                                                <tr>
+
+
+                                                                    <th>Notes from open house</th>
+
+
+                                                                </tr>
+                                                                <tr>
+
+                                                                    <td id="notes">
+
+                                                                        Preferes large back yard for 2 dogs.
+                                                                    </td>
+                                                                    <p id="id" hidden></p>
+                                                                    <!-- <td>
+                                                                <small>
+                            May 19, 2017 12:43pm
+                        </small>
+                                                            </td> -->
+
+                                                                    <!-- <tr>
+                                                                <td>
+                                                                    Must have garage
+                                                                </td>
+                                                                <td>
+                                                                    <small>
+                            May 19, 2017 1:09pm
+                        </small>
+                                                                </td>
+
+                                                            </tr> -->
+
+
+                                                                </tr>
+                                                                <tr></tr>
+                                                                <tr>
+
+                                                                    <th>Schedule next call appointment:</th>
+                                                                    <th>
+                                                                        <p>Schedule in person appointment:</th>
+
+                                                                </tr>
+                                                                <tr>
+
+                                                                    <td>
+                                                                        <i class="fa fa-calendar"></i>
+                                                                        <input type="text" class="form-control pull-right" id="datepicker">
+                                                                    </td>
+                                                                    <td>
+                                                                        <i class="fa fa-calendar"></i>
+                                                                        <input type="text" class="fa fa-calendar form-control pull-right" id="datepicker">
+                                                                    </td>
+
+                                                                </tr>
+
+                                                    </table>
+                                                </div>
+                                                <!-- /.box-body -->
+                                            </div>
+                                            <!-- /.box -->
+
+
+                                            <div class="col-md-12">
+                                                <p>Additional Notes:</p>
+                                                <textarea id="textArea" style="color:black;" rows="6" cols="60"></textarea>
+
+                                            </div>
+
+
+                                        </div>
+
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close
+                                </button>
+                                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Delete
+                                    Appointment
+                                </button>
+                                <button type="button" class="btn btn-outline" onClick="saveMeeting()">Save changes
+                                </button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+
+                    <!-- /.modal -->
+                    <div class="container">
+
+                        <!--MODAL AREA-->
+
+                    </div>
                     <!--                    END example modal-->
                     <div class="row">
                         <!-- /.col -->
-
-
-                        <div class="col-md-4">
-                            <!-- TO DO List -->
+                        <div class="col-md-12">
                             <div class="box box-primary">
-                                <div class="box-header">
-                                    <i class="ion ion-clipboard"></i>
-
-                                    <h3 class="box-title">To Do: Today</h3>
-
-                                    <div class="box-tools pull-right">
-                                        <ul class="pagination pagination-sm inline">
-                                            <li><a href="#">&laquo;</a></li>
-                                            <li><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">&raquo;</a></li>
-                                        </ul>
-                                    </div>
+                                <div class="box-body no-padding" style="height:600px;">
+                                    <!-- THE CALENDAR -->
+                                    <div id="calendar"></div>
                                 </div>
-                                <!-- /.box-header -->
-                                <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
-                                <ul class="todo-list"  style="height: 300px;">
-                                    <li>
-                                        <!-- drag handle -->
-                                        <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                                        <!-- checkbox -->
-                                        <input type="checkbox" value="">
-                                        <!-- todo text -->
-                                        <span class="text">Call Patty Hershang</span>
-                                        <!-- Emphasis label -->
-                                        <small class="label label-danger"><i class="fa fa-clock-o"></i>1:30 pm </small>
-                                        <!-- General tools such as edit or delete-->
-                                        <div class="tools">
-                                            <i class="fa fa-edit"></i>
-                                            <i class="fa fa-trash-o"></i>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                                        <input type="checkbox" value="">
-                                        <span class="text">Email Rob</span>
-                                      
-                                        <div class="tools">
-                                            <i class="fa fa-edit"></i>
-                                            <i class="fa fa-trash-o"></i>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                                        <input type="checkbox" value="">
-                                        <span class="text">Call Cindy </span>
-                                        <small class="label label-warning"><i class="fa fa-clock-o"></i> 4:30 pm </small>
-                                        <div class="tools">
-                                            <i class="fa fa-edit"></i>
-                                            <i class="fa fa-trash-o"></i>
-                                        </div>
-                                    </li>
-                                    <li>
-                                       
-
-                                </ul>
-
                                 <!-- /.box-body -->
-                                <div class="box-footer clearfix no-border">
-                                    <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
-                                </div>
                             </div>
+                            <!-- /. box -->
                         </div>
-                        <!-- /.box -->
-                        <div class="col-md-4">
-                            <!-- TO DO List -->
-                            <div class="box box-primary">
-                                <div class="box-header">
-                                    <i class="ion ion-clipboard"></i>
-
-                                    <h3 class="box-title">To Do: Tomorrow</h3>
-
-                                    <div class="box-tools pull-right">
-                                        <ul class="pagination pagination-sm inline">
-                                            <li><a href="#">&laquo;</a></li>
-                                            <li><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">&raquo;</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- /.box-header -->
-                                <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
-                                <ul class="todo-list" style="height: 300px;">
-                                    <li>
-                                        <!-- drag handle -->
-                                        <span class="handle">
-                        <i class="fa fa-ellipsis-v"></i>
-                        <i class="fa fa-ellipsis-v"></i>
-                      </span>
-                                        <!-- checkbox -->
-                                        <input type="checkbox" value="">
-                                        <!-- todo text -->
-                                        <span class="text">Pay Re/Max fee</span>
-                                        <!-- Emphasis label -->
-                                        <small class="label label-warning"><i class="fa fa-clock-o"></i> 1 Day</small>
-                                        <!-- General tools such as edit or delete-->
-                                        <div class="tools">
-                                            <i class="fa fa-edit"></i>
-                                            <i class="fa fa-trash-o"></i>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        
-                                </ul>
-
-                                <!-- /.box-body -->
-                                <div class="box-footer clearfix no-border">
-                                    <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.box -->
-
-                        <div class="col-md-4">
-                            <!-- TO DO List -->
-                            <div class="box box-primary">
-                                <div class="box-header">
-                                    <i class="ion ion-clipboard"></i>
-
-                                    <h3 class="box-title">To Do: Rest of week</h3>
-
-                                    <div class="box-tools pull-right">
-                                        <ul class="pagination pagination-sm inline">
-                                            <li><a href="#">&laquo;</a></li>
-                                            <li><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">&raquo;</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <!-- /.box-header -->
-                                <!-- See dist/js/pages/dashboard.js to activate the todoList plugin -->
-                                <ul class="todo-list" style="height: 300px;">
-                                   
-                                </ul>
-
-                                <!-- /.box-body -->
-                                <div class="box-footer clearfix no-border">
-                                    <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.box -->
-
-
-
-                        <!-- /. box -->
-
-                        <!-- /.row -->
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
                 </section>
                 <!-- /.content -->
-                </div>
-                <!-- /.content-wrapper -->
             </div>
-            <!-- /.wrapper -->
+            <!-- /.content-wrapper -->
+        </div>
+        <!-- /.wrapper -->
         </div>
         <!-- /.content-wrapper -->
         </div>
@@ -395,7 +442,172 @@ $result = $stmt->fetch();
         <script src="../plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
         <script>
-           
+            //Date picker
+            $('#datepicker').datepicker({
+                autoclose: true
+            })
+            jQuery(function($) {
+                $('.table').footable({});
+            });
+
+        </script>
+        <script>
+            function saveMeeting() {
+                var id = $('#id').text();
+                var newNote = $('#textArea').val();
+                $.post("saveNoteCalendar.php", {
+                    id: id,
+                    note: newNote
+                });
+                $('#notes').html(newNote);
+                // $('#modal-primary').modal('toggle');
+                // alert();
+            }
+
+            $(document).ready(function() {
+                $('#calendar').fullCalendar({
+
+                    eventSources: [{
+                        url: 'getMeetings.php', // use the `url` property
+                        color: 'yellow', // an option!
+                        textColor: 'black' // an option!
+                    }],
+                    header: {
+                        left: 'title',
+                        right: 'month,basicWeek,basicDay'
+                    },
+                    firstDay: 6,
+
+                    customButtons: {
+                        myCustomButton: {
+                            text: 'custom!',
+                            click: function() {
+                                alert('clicked the custom button!');
+                            }
+                        }
+                    },
+                    // businessHours: {
+                    //     // days of week. an array of zero-based day of week integers (0=Sunday)
+                    //     // dow: [ 1, 2, 3, 4 ], // Monday - Thursday
+
+                    //     start: '07:30', // a start time (10am in this example)
+                    //     end: '21:00', // an end time (6pm in this example)
+                    // },
+                    editable: true,
+                    defaultView: 'basicWeek',
+                    duration: {
+                        days: 7
+                    },
+                    selectable: true,
+                    selectHelper: true,
+                    eventLimit: true,
+                    // firstHour: 12,
+                    minTime: '07:00:00',
+                    maxTime: '21:00:00',
+                    slotDuration: '00:15:00',
+                    height: "parent",
+                    navLinks: true, // can click day/week names to navigate views
+                    eventLimit: true, // allow "more" link when too many events
+
+                    select: function(start, end) {
+                        var title = prompt('Event Title:');
+                        var eventData;
+                        if (title) {
+                            eventData = {
+                                title: title,
+                                start: start,
+                                end: end
+                            };
+
+
+                            $('#calendar').fullCalendar('renderEvent', eventData, true); // stick? = true
+                        }
+                        $('#calendar').fullCalendar('unselect');
+                    },
+                    eventClick: function(event, element) {
+                        var id = event.id.replace("T", " ");
+
+                        var formData = {
+                            id: id
+                        };
+
+                        $.ajax({
+                            url: "getMeetingInfo.php",
+                            type: "POST",
+                            data: formData,
+                            success: function(data, textStatus, jqXHR) {
+                                var meetingInfo = JSON.parse(data);
+                                $('#firstName').html(meetingInfo['firstName']);
+
+                                $('#lastName').html(meetingInfo['lastName']);
+                                $('#minBed').html(meetingInfo['bedroomsMin']);
+                                $('#minBath').html(meetingInfo['bathroomsMin']);
+                                $('#minPrice').html(meetingInfo['priceMin']);
+                                $('#maxPrice').html(meetingInfo['priceMax']);
+                                $('#purchaseWithin').html(meetingInfo['howSoon']);
+                                $('#notes').html(meetingInfo['note']);
+                                $('#id').html(meetingInfo['meeting']);
+                                $('#textArea').append(meetingInfo['note']);
+
+                            }
+                        });
+                        $("#modal-primary").modal();
+
+                    },
+
+                    eventDrop: function(event, delta, revertFunc, jsEvent, ui, view) {
+
+                        // alert(event.title + " end is now " + event.start.format().replace("T", " ") + " " + event.id.replace("T", " "));
+
+                        var id = event.id.replace("T", " ");
+                        var startTime = event.start.format().replace("T", " ");
+                        var endTime = event.end.format().replace("T", " ");
+
+                        if (!confirm("is this okay?")) {
+                            revertFunc();
+                        } else {
+                            event.id = startTime;
+                            var formData = {
+                                id: id,
+                                start: startTime,
+                                end: endTime
+                            };
+                            $.ajax({
+                                url: "updateMeeting.php",
+                                type: "POST",
+                                data: formData,
+                                success: function(data, textStatus, jqXHR) {
+                                    // alert("finished");
+                                }
+                            });
+
+                        }
+
+                    },
+                    eventResize: function(event, delta, revertFunc, jsEvent, ui, view) {
+
+                        // alert("ive been resized!!!");
+                        var id = event.id.replace("T", " ");
+                        var startTime = event.start.format().replace("T", " ");
+                        var endTime = event.end.format().replace("T", " ");
+
+                        if (!confirm("is this okay?")) {
+                            revertFunc();
+                        } else {
+                            $.post("updateMeeting.php", {
+                                id: id,
+                                start: startTime,
+                                end: endTime
+                            });
+                            // alert("finished");
+                        }
+                    }
+
+
+                });
+
+            });
+
 
             window.setInterval(function() { // Set interval for checking
                 var date = new Date(); // Create a Date object to find out what time it is
@@ -409,16 +621,6 @@ $result = $stmt->fetch();
                     });
                 }
             }, 60000); // Repeat every 60000 milliseconds (1 minute)
-
-            $('.todo-list').todoList({
-                onCheck: function(checkbox) {
-                    // Do something when the checkbox is checked
-                },
-                onUnCheck: function(checkbox) {
-                    // Do something after the checkbox has been unchecked
-                },
-               
-            })
 
         </script>
 
