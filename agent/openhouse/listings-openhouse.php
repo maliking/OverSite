@@ -257,29 +257,7 @@ $keys = array_keys($response);
                             </table>
 
 
-                            <?php
-                            for ($i = 0; $i < 2; $i++) {
-                                echo '<div class="col-md-3 col-sm-3 col-xs-4">
-                         <div class="thumbnail">
-                            <div class="image view view-first">';
-                                echo "<img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error' width=\"50%\" height=\"100%\">";
-                                echo '           <div class="mask">
-                                    <p>Options</p>
-                                    <div class="tools tools-bottom">
-                                        <a href="../openhouse/create-flyer.php" data-toggle="tooltip" title="Create Flyer"><i class="fa fa-paint-brush"></i></a>
-                                        <a href="../signIn.php" data-toggle="tooltip" title="Sign In Sheet"><i class="fa fa-edit"></i></a> 
-                                        <a href="../openhouse/singleListingVisitors.php" data-toggle="tooltip" title="Visitors"><i class="fa fa-male"></i></a>  
-                                        <a href="#" data-toggle="tooltip" title="Remove"><i class="fa fa-trash-o"></i></a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="caption">';
-                                echo '    <p>' . $response[$keys[$i]]['address'] . "<br>" . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . ", " . $response[$keys[$i]]['zipcode'] . '</p>';
-                                echo '</div>
-                        </div>
-                    </div>';
-                            }
-                            ?>
+                           
 
                         </div>
 
@@ -316,9 +294,6 @@ $keys = array_keys($response);
         $('.table').footable();
     });
 
-    $(document).ready(function () {
-        $('[data-toggle="tooltip"]').tooltip();
-    });
 
 </script>
 
