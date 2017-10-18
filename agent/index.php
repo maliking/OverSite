@@ -474,10 +474,10 @@ $result = $stmt->fetch();
                     }],
                     header: {
                         left: 'title',
-                        right: 'month,basicWeek,basicDay'
+                        center: 'month,agendaWeek,basicDay',
+                        right: 'today prev,next'
                     },
                     firstDay: 6,
-
                     customButtons: {
                         myCustomButton: {
                             text: 'custom!',
@@ -494,7 +494,7 @@ $result = $stmt->fetch();
                     //     end: '21:00', // an end time (6pm in this example)
                     // },
                     editable: true,
-                    defaultView: 'basicWeek',
+                    defaultView: 'agendaWeek',
                     duration: {
                         days: 7
                     },
