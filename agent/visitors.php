@@ -404,7 +404,7 @@ if (isset($_GET['bathroomSort'])) {
                         </div>
 
                         <!-------------End Mock Visitor Dropdown-------->
-                        
+                        <div id="table-scroll">
                             <table class="table table-bordered table-striped" id="freeze" style="overflow: auto;">
                                 <thead>
                                 <tr>
@@ -550,7 +550,7 @@ if (isset($_GET['bathroomSort'])) {
 
 
                             </table>
-                       
+                       </div>
                         <!-- /.box-body -->
                     </div>
                     <!-- /.box -->
