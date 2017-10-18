@@ -281,12 +281,113 @@ $result = $stmt->fetch();
                         <!--MODAL AREA-->
 
                     </div>
+                     <div class="row">
+                        <div class="col-lg-2 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-blue">
+                                <div class="inner">
+                                    <h3>
+                                        <?php echo number_format($result['avgPercent'], 2); ?><sup style="font-size: 20px">%</sup></h3>
+
+                                    <p>Avg. Commission </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-percent"></i>
+                                </div>
+                                <a href="#" class="small-box-footer"><i class="fa fa-chevron-up "></i> <span class="text-lime">5%</span>
+                            than last year</a>
+
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-2 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+                                    <h3>2</h3>
+                                    <p>Pending Listings</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-clock-o"></i>
+                                </div>
+                                <a href="#" class="small-box-footer"><i class="fa fa-chevron-up "></i> <span class="text-lime">5%</span>
+                            than last year</a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-2 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-green">
+                                <div class="inner">
+                                    <h3>
+                                        <?php echo $result['sold']; ?>
+                                    </h3>
+                                    <p>Sold Listings</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-tag"></i>
+                                </div>
+                                <a href="#" class="small-box-footer"><i class="fa fa-chevron-up "></i> <span class="text-lime">8%</span>
+                            than last year</a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-2 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-orange">
+                                <div class="inner">
+                                    <h3><sup style="font-size: 20px">$</sup>
+                                        <?php echo number_format($result['average'], 0); ?>
+                                    </h3>
+                                    <p>Avg. Commission</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-money"></i>
+                                </div>
+                                <a href="#" class="small-box-footer"><i class="fa fa-chevron-down "></i> <span class="text-red">3%</span>
+                            than last year</a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-2 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-blue">
+                                <div class="inner">
+                                    <h3>
+                                        <?php echo number_format($result['avgPercent'], 0); ?><sup style="font-size: 20px">%</sup></h3>
+                                    <p>Avg. Commission </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-percent"></i>
+                                </div>
+                                <a href="#" class="small-box-footer"><i class="fa fa-chevron-down "></i> <span class="text-red">1%</span>
+                            than last year</a>
+                            </div>
+                        </div>
+                        <!-- ./col -->
+                        <div class="col-lg-2 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-red">
+                                <div class="inner">
+                                    <h3><sup style="font-size: 20px">$</sup>
+                                        <?php echo number_format($result['earnings'], 0); ?>
+                                    </h3>
+                                    <p>Total Gross Earnings</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="fa fa-bank"></i>
+                                </div>
+                                <a href="#" class="small-box-footer"><i class="fa fa-chevron-up "></i> <span class="text-lime">11%</span>
+                            than last year</a>
+                            </div>
+                        </div>
+                    </div>
                     <!--                    END example modal-->
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-md-12">
                             <div class="box box-primary">
-                                <div class="box-body no-padding" style="height:600px;">
+                                <div class="box-body no-padding" style="height:520px;">
                                     <!-- THE CALENDAR -->
                                     <div id="calendar"></div>
                                 </div>
@@ -370,7 +471,7 @@ $result = $stmt->fetch();
                     }],
                     header: {
                         left: 'title',
-                        center: 'month,agendaWeek,agendaDay',
+                        center: 'month,agendaWeek,agendaDay,basicWeek',
                         right: 'today prev,next'
                     },
                     firstDay: 6,

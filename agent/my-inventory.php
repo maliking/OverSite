@@ -6,6 +6,40 @@ $dbConn = getConnection();
 if (!isset($_SESSION['userId'])) {
     header("Location: http://jjp2017.org/login.php");
 }
+
+$url = 'https://api.idxbroker.com/clients/featured';
+
+$method = 'GET';
+
+// headers (required and optional)
+$headers = array(
+    'Content-Type: application/x-www-form-urlencoded', // required
+    'accesskey: e1Br0B5DcgaZ3@JXI9qib5', // required - replace with your own
+    'outputtype: json' // optional - overrides the preferences in our API control page
+);
+
+// set up cURL
+$handle = curl_init();
+curl_setopt($handle, CURLOPT_URL, $url);
+curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+
+// exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
+$response = curl_exec($handle);
+$code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+
+if ($code >= 200 || $code < 300) {
+    $response = json_decode($response, true);
+} else {
+    $error = $code;
+}
+
+// print_r($response);
+
+$keys = array_keys($response);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -51,103 +85,81 @@ if (!isset($_SESSION['userId'])) {
         </section>
         <!-- Main content -->
         <section class="content">
-            <div class="row">
+           <div class="row">
                 <div class="col-xs-12">
                     <div class="box">
-                        <div class="box-body">
-                            <table class="table table-bordered table-striped">
-                                <thead>
-                                <tr>
-                                    <th>Property</th>
-                                    <th data-breakpoints="all">Client</th>
-                                    <th data-breakpoints="all">Prepare for Open House  </th>
-                                   
-                                    
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top"
-                                                                    title="Approval Date">Aprv. </a></th>
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top" title="Earnest Money Deposit">EMD </a>
-                                    </th>
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top" title="Disclosures">Disc. </a>
-                                    </th>
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top" title="Inspection">Insp. </a>
-                                    </th>
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top" title="Appraisal">Appr. </a>
-                                    </th>
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top"
-                                                                    title="Loan Contingencies">LC </a></th>
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top"
-                                                                    title="Close of Escrow">COE </a></th>
-                                    <th data-breakpoints="xs sm">Notes</th>
-                                   
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>1204 Rogers Ct. Salinas, CA 94934</td>
-                                    
-                                    
-                                    <td>
-                                        Patty Hershang  <br> 
-                                        831-382-4833 <br>  
-                                        phershang@gmail.com
-                                    </td>
-                                    <td>
-                                          <button type="button" class="label label-primary">View current flyer</button><!--allows for pop up of flyer, if no flyer then just text saying: you currently do not have a flyer for this listing"-->
-                 <a href="openhouse/create-flyer.php">    <button type="button" class="label label-primary">Create new flyer</button></a>
-                            <a href="signIn.php"> <button type="button" class="label label-primary">Sign in sheet</button></a>
-                        <a href="openhouse/singleListingVisitors.php"> <button type="button" class="label label-primary">Listing visitors</button></a>
-                                      
-                                    </td>
-                                  
-                                    
-                                    
-                                    
-                                    
-                                    <td>3/1/17
-                                        <br> <span class="label label-success">Done! <i
-                                                    class="fa fa-check-circle-o"></i></span></td>
-                                    <td>3/1/17
-                                        <br> <span class="label label-success">Done! <i
-                                                    class="fa fa-check-circle-o"></i></span></td>
-                                    <td>3/1/17 <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
-                                                  data-toggle="popover" data-Oplacement="right"
-                                                  data-content="<b>Completed:</b> 3/4/17"><i
-                                                    class="fa fa-chevron-circle-right"></i></a>
-                                        <br> <span class="label label-danger">Overdue</span></td>
-                                    <td>3/1/17 <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
-                                                  data-toggle="popover" data-Oplacement="right"
-                                                  data-content="<b>Completed:</b> 3/4/17"><i
-                                                    class="fa fa-chevron-circle-right"></i></a>
-                                        <br> <span class="label label-warning">Due in 8d</span></td>
-                                    <td>3/1/17 <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
-                                                  data-toggle="popover" data-Oplacement="right"
-                                                  data-content="<b>Completed:</b> 3/4/17"><i
-                                                    class="fa fa-chevron-circle-right"></i></a>
-                                        <br> <span class="label label-warning">Due in 8d</span></td>
-                                    <td>3/1/17
-                                        <br> <span class="label label-default">Incomplete</span></td>
-                                    <td>3/1/17
-                                        <br> <span class="label label-default">Incomplete</span></td>
-                                    <td>Write some notes here!</td>
-                                  
-                                </tr>
-                                </tbody>
-                            </table>
+                        <div class="box-header">
+                            <h3>Open House Listings</h3>
                         </div>
-                        <!-- /.box-body -->
+                        <div class="box-body">
+
+
+                            <table class="table">
+                                <?php
+                                $dbConn = getConnection();
+                                $sql = "SELECT status, houseId, date(dateTimes) as dateTimes, address, city, state, zip, bedrooms, bathrooms, price
+                        FROM HouseInfo
+                        WHERE userId = :userId";
+                                $namedParameters = array();
+                                $namedParameters[':userId'] = $_SESSION['userId'];
+                                $stmt = $dbConn->prepare($sql);
+                                $stmt->execute($namedParameters);
+                                $results = $stmt->fetchAll();
+
+                                for ($i = 0; $i < sizeof($keys); $i++) {
+                                    echo "<tr>";
+                                    echo "<td style=\"padding-left:10%\"><img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error' width=\"225px\" height=\"200px\"></td>";
+                                    echo "<td>";
+                                    echo $response[$keys[$i]]['address'] . "<br>" . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . ", " . $response[$keys[$i]]['zipcode'];
+                                    echo "</td>";
+                                    echo "<td>";
+
+                                    echo '<a href="openhouse/create-flyer.php?id=' . $response[$keys[$i]]['listingID'] . '"><button type="button" class="btn btn-primary ">Create a New Flyer</button></a></br></br>';
+                                    echo '<a href=signIn.php?id=' . $response[$keys[$i]]['listingID'] . ' target="_blank"><button type="button" class="btn btn-primary">Sign-In</button></a></br></br>';
+                                    echo '<a href="openhouse/singleListingVisitors.php?id=' . $response[$keys[$i]]['listingID'] . '"><button type="button" class="btn btn-primary ">Listing Visitors</button></a></br></br>';
+                                    echo '<button type="button" class="btn btn-danger">Remove</button></br></br>';
+                                    echo "                               </td>";
+                                    echo "</tr>";
+
+                                }
+                                ?>
+                            </table>
+
+
+                            <?php
+                    //         for ($i = 0; $i < 2; $i++) {
+                    //             echo '<div class="col-md-3 col-sm-3 col-xs-4">
+                    //      <div class="thumbnail">
+                    //         <div class="image view view-first">';
+                    //             echo "<img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error' width=\"50%\" height=\"100%\">";
+                    //             echo '           <div class="mask">
+                    //                 <p>Options</p>
+                    //                 <div class="tools tools-bottom">
+                    //                     <a href="../openhouse/create-flyer.php" data-toggle="tooltip" title="Create Flyer"><i class="fa fa-paint-brush"></i></a>
+                    //                     <a href="../openhouse/listing-info.php" data-toggle="tooltip" title="Listing Information"><i class="fa fa-info-circle"></i></a>
+                    //                     <a href="../signIn.php" data-toggle="tooltip" title="Sign In Sheet"><i class="fa fa-edit"></i></a>  
+                    //                     <a href="#" data-toggle="tooltip" title="Remove"><i class="fa fa-trash-o"></i></a>
+                    //                 </div>
+                    //             </div>
+                    //         </div>
+                    //         <div class="caption">';
+                    //             echo '    <p>' . $response[$keys[$i]]['address'] . "<br>" . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . ", " . $response[$keys[$i]]['zipcode'] . '</p>';
+                    //             echo '</div>
+                    //     </div>
+                    // </div>';
+                    //         }
+                            ?>
+
+                        </div>
+
+
                     </div>
-                    <!-- /.box -->
+                    <!-- /.box-body -->
                 </div>
-                <!-- /.col -->
+                <!-- /.box -->
             </div>
-            <!-- /.row -->
+            <!-- /.col -->
+    </div>
         </section>
     </div>
     <!-- /.content-wrapper -->
