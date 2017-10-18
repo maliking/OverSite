@@ -405,7 +405,7 @@ if (isset($_GET['bathroomSort'])) {
 
                         <!-------------End Mock Visitor Dropdown-------->
                         
-                            <table class="table table-bordered table-striped" id="freeze" style="table-layout: inherit;">
+                            <table class="table table-bordered table-striped" id="freeze" style="overflow: auto;">
                                 <thead>
                                 <tr>
                                     <th data-breakpoints="all">TimeStamp</th>
