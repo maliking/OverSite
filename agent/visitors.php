@@ -404,8 +404,8 @@ if (isset($_GET['bathroomSort'])) {
                         </div>
 
                         <!-------------End Mock Visitor Dropdown-------->
-                        <div class="box-body">
-                            <table class="table table-bordered table-striped" id="freeze">
+                        
+                            <table class="table table-bordered table-striped" id="freeze" style="width: parent;">
                                 <thead>
                                 <tr>
                                     <th data-breakpoints="all">TimeStamp</th>
@@ -550,7 +550,7 @@ if (isset($_GET['bathroomSort'])) {
 
 
                             </table>
-                        </div>
+                       
                         <!-- /.box-body -->
                     </div>
                     <!-- /.box -->
