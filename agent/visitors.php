@@ -595,6 +595,49 @@ $keys = array_keys($response);
                 <!-- /.content -->
             </div>
             <!-- /.content-wrapper -->
+            <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Enter Export Dates</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <span>Start Date:  </span><input id="startDate" type="date" data-date-inline-picker="false"
+                                                     data-date-open-on-focus="true"/>
+                </div>
+                <div class="form-group">
+                    <span>End Date:  </span><input id="endDate" type="date" data-date-inline-picker="false"
+                                                   data-date-open-on-focus="true"/>
+                </div>
+
+                <div class="form-group">
+                    <span>Select House:  </span>
+                    <select id="house">
+                        <option>--Select One--</option>
+                        <option value="all">All</option>
+                        <?php
+                        for ($i = 0; $i < sizeof($keys); $i++) {
+                            echo '<option value=' . $response[$keys[$i]]['listingID'] . '>' . $response[$keys[$i]]['address'] .
+                                " " . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . ", " .
+                                $response[$keys[$i]]['zipcode'] . '</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="downloadVisitors">Download
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
         </div>
         <!-- /.wrapper -->
         </div>
@@ -662,9 +705,10 @@ $keys = array_keys($response);
 
         $("#myModal").modal();
     });
+
     $('#downloadVisitors').click(function () {
         // alert($('#startDate').val());
-        // alert($('#endDate').val());
+         // alert($('#endDate').val());
 
         window.location = "openhouse/exportVisitors.php?id=" + $("#house").val() + "&startDate=" + $('#startDate').val() + "&endDate=" + $('#endDate').val();
     });
@@ -672,49 +716,7 @@ $keys = array_keys($response);
         </script>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
 
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Enter Export Dates</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <span>Start Date:  </span><input id="startDate" type="date" data-date-inline-picker="false"
-                                                     data-date-open-on-focus="true"/>
-                </div>
-                <div class="form-group">
-                    <span>End Date:  </span><input id="endDate" type="date" data-date-inline-picker="false"
-                                                   data-date-open-on-focus="true"/>
-                </div>
-
-                <div class="form-group">
-                    <span>Select House:  </span>
-                    <select id="house">
-                        <option>--Select One--</option>
-                        <option value="all">All</option>
-                        <?php
-                        for ($i = 0; $i < sizeof($keys); $i++) {
-                            echo '<option value=' . $response[$keys[$i]]['listingID'] . '>' . $response[$keys[$i]]['address'] .
-                                " " . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . ", " .
-                                $response[$keys[$i]]['zipcode'] . '</option>';
-                        }
-                        ?>
-                    </select>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" id="downloadVisitors">Download
-                </button>
-            </div>
-        </div>
-
-    </div>
-</div>
     </body>
 
     </html>

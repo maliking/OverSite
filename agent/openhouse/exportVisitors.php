@@ -10,30 +10,30 @@ $dbConn = getConnection();
 $dbConnTwo = getConnection();
 if($_GET['id'] != "all")
 {
-$sql = "SELECT houseId, address FROM HouseInfo WHERE listingId = :listingId";
+    $sql = "SELECT houseId, address FROM HouseInfo WHERE listingId = :listingId";
 
-$namedParameters = array();
-$namedParameters[':listingId'] = $_GET['id'];
+    $namedParameters = array();
+    $namedParameters[':listingId'] = $_GET['id'];
 
 
-$stmt = $dbConn->prepare($sql);
-$stmt->execute($namedParameters);
-$result = $stmt->fetch();
+    $stmt = $dbConn->prepare($sql);
+    $stmt->execute($namedParameters);
+    $result = $stmt->fetch();
 
-header("Content-disposition: attachment; filename=" . $result['houseId'] . $result['address'] . ".xls");
-$sqlVisitors = "SELECT firstName, lastName, email, phone FROM BuyerInfo WHERE houseId = :houseId AND registeredDate BETWEEN :startDate AND :endDate";
+    header("Content-disposition: attachment; filename=" . $result['houseId'] . $result['address'] . ".xls");
+    $sqlVisitors = "SELECT firstName, lastName, email, phone FROM BuyerInfo WHERE houseId = :houseId AND registeredDate BETWEEN :startDate AND :endDate";
 
-$namedVisitors = array();
-$namedVisitors[':houseId'] = $result['houseId'];
-$namedVisitors[':startDate'] = $_GET['startDate'];
-$namedVisitors[':endDate'] = $_GET['endDate'];
+    $namedVisitors = array();
+    $namedVisitors[':houseId'] = $result['houseId'];
+    $namedVisitors[':startDate'] = $_GET['startDate'];
+    $namedVisitors[':endDate'] = $_GET['endDate'];
 
-$stmtVisitors = $dbConnTwo->prepare($sqlVisitors);
-$stmtVisitors->execute($namedVisitors);
+    $stmtVisitors = $dbConnTwo->prepare($sqlVisitors);
+    $stmtVisitors->execute($namedVisitors);
 }
 else
 {
-    header("Content-disposition: attachment; filename=allVisitors.xls");
+    header("Content-disposition: attachment; filename='allVisitors.xls'");
     $sqlVisitors = "SELECT firstName, lastName, email, phone FROM BuyerInfo WHERE registeredDate BETWEEN :startDate AND :endDate";
     $namedVisitors = array();
     $namedVisitors[':startDate'] = $_GET['startDate'];
