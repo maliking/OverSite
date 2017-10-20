@@ -26,7 +26,7 @@
             </li>
 
 
-            <li><a href="../signIn.php" target="_blank"><i class="fa fa-edit"></i> <span>Sign In Sheet</span></a></li>
+            <?php echo '<li><a href=../signIn.php?id=' . $listingId  . ' target="_blank"><i class="fa fa-edit"></i> <span>Sign In Sheet</span></a></li>'; ?>
             <li><a href="#"><i class="fa fa-globe"></i> <span>Geofencing</span></a></li>
             <li><a href="../index.php"><i class="fa fa-arrow-left"></i> <span>Return to Agent Dashboard</span></a></li>
         </ul>
