@@ -6,12 +6,44 @@ if (!isset($_SESSION['userId'])) {
 }
 
 require '../databaseConnection.php';
-
 $dbConn = getConnection();
-$sql = "SELECT address, city, state, zip FROM  HouseInfo";
-$stmt = $dbConn->prepare($sql);
-$stmt->execute();
-$result = $stmt->fetchAll();
+// $dbConn = getConnection();
+// $sql = "SELECT address, city, state, zip FROM  HouseInfo";
+// $stmt = $dbConn->prepare($sql);
+// $stmt->execute();
+// $result = $stmt->fetchAll();
+$url = 'https://api.idxbroker.com/clients/featured';
+
+$method = 'GET';
+
+// headers (required and optional)
+$headers = array(
+    'Content-Type: application/x-www-form-urlencoded', // required
+    'accesskey: e1Br0B5DcgaZ3@JXI9qib5', // required - replace with your own
+    'outputtype: json' // optional - overrides the preferences in our API control page
+);
+
+// set up cURL
+$handle = curl_init();
+curl_setopt($handle, CURLOPT_URL, $url);
+curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+
+// exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
+$response = curl_exec($handle);
+$code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+
+if ($code >= 200 || $code < 300) {
+    $response = json_decode($response, true);
+} else {
+    $error = $code;
+}
+
+// print_r($response);
+
+$keys = array_keys($response);
 ?>
 <!DOCTYPE html>
 <html>
@@ -60,58 +92,72 @@ $result = $stmt->fetchAll();
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-body">
+                            <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
                             <table class="table table-bordered table-striped" id="inventory-table">
                                 <thead>
 
 
                                 <tr>
-                                    <th>Property</th>
-                                    <th data-breakpoints="all">Client Name</th>
-                                    <th data-breakpoints="all">Client Number</th>
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top"
-                                                                    title="Approved Date">Aprv. </a></th>
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top" title="Earnest Money Deposit">EMD </a>
-                                    </th>
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top" title="Inspection">Insp. </a>
-                                    </th>
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top" title="Disclosures">Disc. </a>
-                                    </th>
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top"
-                                                                    title="Contingencies">Cont. </a></th>
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top" title="Appraisal">Appr. </a>
-                                    </th>
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top"
-                                                                    title="Close of Escrow">COE </a></th>
-                                    <th data-breakpoints="xs sm">Notes</th>
+                                    <th>Agent</th>
+                                    <th data-breakpoints="all">Client</th>
+                                    <th data-breakpoints="xs sm">Property</th>
+                                    <th data-breakpoints="xs sm">Bedroom</th>
+                                    <th data-breakpoints="xs sm">Bathroom</th>
+                                    <th data-breakpoints="xs sm">Price</th>
+                                    <th data-breakpoints="xs sm"></th>
+
                                 </tr>
                                 </thead>
                                 <?php
-                                foreach ($result as $house) {
-                                    echo '<tbody><tr><td>' . $house['address'] . " " . $house['city'] . ", " . $house['state'] . " " . $house['zip'] . '</td>
-                                                <td>Patty Hershang</td>
-                                                <td>831-382-4833</td>
-                                                <td>3/1/2017
-                                                    <br> <span class="label label-success">Done! <i class="fa fa-check-circle-o"></i></span> </td>
-                                                <td>3/1/2017
-                                                    <br> <span class="label label-success">Done! <i class="fa fa-check-circle-o"></i></span> </td>
-                                                <td>3/1/2017
-                                                    <br> <span class="label label-danger">Overdue</span> </td>
-                                                <td>3/1/2017
-                                                    <br> <span class="label label-warning">Due in 8d</span> </td>
-                                                <td>3/1/2017
-                                                    <br> <span class="label label-warning">Due in 14d</span> </td>
-                                                <td>3/1/2017
-                                                    <br> <span class="label label-default">Incomplete</span> </td>
-                                                <td>3/1/2017
-                                                    <br> <span class="label label-default">Incomplete</span> </td>
-                                                <td>Write some notes here!</td>
+                                // foreach ($result as $house) {
+                                for ($i = 0; $i < sizeof($keys); $i++) {
+
+                                    if(!isset($response[$keys[$i]]['bedrooms']))
+                                    {
+                                        $bedrooms = "0";
+                                    }
+                                    else
+                                    {
+                                        $bedrooms = $response[$keys[$i]]['bedrooms'];
+                                    }
+                                    if(!isset($response[$keys[$i]]['totalBaths']))
+                                    {
+                                        $bathrooms = "0";
+                                    }
+                                    else
+                                    {
+                                        $bathrooms = $response[$keys[$i]]['totalBaths'];
+                                    }   
+
+                                    echo '<tbody><tr><td>Jorge Edeza</td>
+                                                <td>Images</td>
+                                                <td> ' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] .  ' </td>
+                                                <td>' . $bedrooms . '</td>
+                                                <td>'. $bathrooms .'</td>
+                                                <td>'.$response[$keys[$i]]['listingPrice'] .'</td>
+                                                <td ><a href="https://maps.google.com/?q=' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] . '" target="_blank"><button >View on Map</button></a></td>
+                                                
                                             </tr></tbody>';
                                 }
                                 ?>
