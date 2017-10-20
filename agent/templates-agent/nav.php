@@ -40,9 +40,9 @@
                       </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-list-alt"></i> <span>Sales Breakdown</span></a></li>
-                    <li><a href="#"><i class="fa fa-file-text-o"></i> <span>Monthly Report</span></a></li>
-                    <li><a href="#"><i class="fa fa-archive"></i> <span>Past Sales</span></a></li>
+                    <li><a href="salesBreakdown.php"><i class="fa fa-list-alt"></i> <span>Sales Breakdown</span></a></li>
+                    <li><a href="monthlyReport.php"><i class="fa fa-file-text-o"></i> <span>Monthly Report</span></a></li>
+                    <li><a href="pastSales.php"><i class="fa fa-archive"></i> <span>Past Sales</span></a></li>
                 </ul>
             </li>
             <li class="header-style treeview">
@@ -52,8 +52,8 @@
                       </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-line-chart"></i> <span> Analytics</span></a></li>
-                    <li><a href="#"><i class="fa fa-money"></i> <span>My Earnings</span></a></li>
+                    <li><a href="analytics.php"><i class="fa fa-line-chart"></i> <span> Analytics</span></a></li>
+                    <li><a href="myEarnings.php"><i class="fa fa-money"></i> <span>My Earnings</span></a></li>
                 </ul>
             </li>
         </ul>
