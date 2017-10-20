@@ -8,6 +8,8 @@ $startDate = date('Y-m-d', strtotime($_GET['startDate']));
 $endDate = date('Y-m-d', strtotime($_GET['endDate']));
 $dbConn = getConnection();
 $dbConnTwo = getConnection();
+if($_GET['id'] != "all")
+{
 $sql = "SELECT houseId, address FROM HouseInfo WHERE listingId = :listingId";
 
 $namedParameters = array();
@@ -28,6 +30,17 @@ $namedVisitors[':endDate'] = $_GET['endDate'];
 
 $stmtVisitors = $dbConnTwo->prepare($sqlVisitors);
 $stmtVisitors->execute($namedVisitors);
+}
+else
+{
+    header("Content-disposition: attachment; filename=allVisitors.xls");
+    $sqlVisitors = "SELECT firstName, lastName, email, phone FROM BuyerInfo WHERE registeredDate BETWEEN :startDate AND :endDate";
+    $namedVisitors = array();
+    $namedVisitors[':startDate'] = $_GET['startDate'];
+    $namedVisitors[':endDate'] = $_GET['endDate'];
+    $stmtVisitors = $dbConnTwo->prepare($sqlVisitors);
+    $stmtVisitors->execute($namedVisitors);
+}
 $visitors = $stmtVisitors->fetchAll();
 
 

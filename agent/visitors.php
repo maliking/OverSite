@@ -43,6 +43,38 @@ if (isset($_GET['bedroomSort'])) {
 if (isset($_GET['bathroomSort'])) {
     $bathroomSort = $_GET['bathroomSort'];
 }
+$url = 'https://api.idxbroker.com/clients/featured';
+
+$method = 'GET';
+
+// headers (required and optional)
+$headers = array(
+    'Content-Type: application/x-www-form-urlencoded', // required
+    'accesskey: e1Br0B5DcgaZ3@JXI9qib5', // required - replace with your own
+    'outputtype: json' // optional - overrides the preferences in our API control page
+);
+
+// set up cURL
+$handle = curl_init();
+curl_setopt($handle, CURLOPT_URL, $url);
+curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+
+// exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
+$response = curl_exec($handle);
+$code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+
+if ($code >= 200 || $code < 300) {
+    $response = json_decode($response, true);
+} else {
+    $error = $code;
+}
+
+// print_r($response);
+
+$keys = array_keys($response);
 ?>
 
     <!DOCTYPE html>
@@ -51,7 +83,7 @@ if (isset($_GET['bathroomSort'])) {
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Re/Max Salinas | Calendar</title>
+        <title>Re/Max Salinas | My Visitors</title>
 
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -112,6 +144,7 @@ if (isset($_GET['bathroomSort'])) {
                     <div class="box">
                         <div class="box-header">
                             <h3>My Visitors</h3>
+                            <button id="exportVisitors">Export</button>
                             <!-- search form -->
                             <form action="#" method="get" class="sidebar-form">
                                 <div class="input-group">
@@ -625,10 +658,63 @@ if (isset($_GET['bathroomSort'])) {
     function openFlyerModal() {
         $('#flyerModal').modal('toggle');
     }
+    $('#exportVisitors').click(function () {
+
+        $("#myModal").modal();
+    });
+    $('#downloadVisitors').click(function () {
+        // alert($('#startDate').val());
+        // alert($('#endDate').val());
+
+        window.location = "openhouse/exportVisitors.php?id=" + $("#house").val() + "&startDate=" + $('#startDate').val() + "&endDate=" + $('#endDate').val();
+    });
        
         </script>
 
+<!-- Modal -->
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
 
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Enter Export Dates</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <span>Start Date:  </span><input id="startDate" type="date" data-date-inline-picker="false"
+                                                     data-date-open-on-focus="true"/>
+                </div>
+                <div class="form-group">
+                    <span>End Date:  </span><input id="endDate" type="date" data-date-inline-picker="false"
+                                                   data-date-open-on-focus="true"/>
+                </div>
+
+                <div class="form-group">
+                    <span>Select House:  </span>
+                    <select id="house">
+                        <option>--Select One--</option>
+                        <option value="all">All</option>
+                        <?php
+                        for ($i = 0; $i < sizeof($keys); $i++) {
+                            echo '<option value=' . $response[$keys[$i]]['listingID'] . '>' . $response[$keys[$i]]['address'] .
+                                " " . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . ", " .
+                                $response[$keys[$i]]['zipcode'] . '</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="downloadVisitors">Download
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
     </body>
 
     </html>
