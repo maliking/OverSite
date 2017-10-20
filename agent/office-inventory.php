@@ -120,12 +120,13 @@ $keys = array_keys($response);
 
                                 <tr>
                                     <th>Agent</th>
-                                    <th data-breakpoints="all">Client</th>
-                                    <th data-breakpoints="xs sm">Property</th>
-                                    <th data-breakpoints="xs sm">Bedroom</th>
-                                    <th data-breakpoints="xs sm">Bathroom</th>
-                                    <th data-breakpoints="xs sm">Price</th>
-                                    <th data-breakpoints="xs sm"></th>
+                                    <th>Client</th>
+                                    <th>Property</th>
+                                    <th>Bedroom</th>
+                                    <th>Bathroom</th>
+                                    <th>Price</th>
+                                    <th>House Images</th>
+                                    <th></th>
 
                                 </tr>
                                 </thead>
@@ -156,6 +157,8 @@ $keys = array_keys($response);
                                                 <td>' . $bedrooms . '</td>
                                                 <td>'. $bathrooms .'</td>
                                                 <td>'.$response[$keys[$i]]['listingPrice'] .'</td>
+                                                <td ><a href="viewHouseImages.php?id=' . $response[$keys[$i]]['listingID'] . '" target="_blank"><button >View</button></a></td>
+
                                                 <td ><a href="https://maps.google.com/?q=' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] . '" target="_blank"><button >View on Map</button></a></td>
                                                 
                                             </tr></tbody>';
