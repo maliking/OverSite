@@ -2,7 +2,7 @@
 <aside class="main-sidebar">
     <!-- Sidebar: style can be found in sidebar.less -->
     <section class="sidebar">
-        <a href="listings-openhouse.php" class="logo">
+        <a href="../index.php" class="logo">
             <!-- Logo -->
             <img class="img-responsive" src="../../dist/img/remax-logo.png">
         </a>
