@@ -106,7 +106,7 @@ $keys = array_keys($response);
                                     <th>Bathroom</th>
                                     <th>Price</th>
                                     <th>House Images</th>
-                                    <th></th>
+                                    <th>Map</th>
 
                                 </tr>
                                 </thead>
