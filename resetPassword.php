@@ -40,6 +40,7 @@ else
 
 	    $namedParameters = array();
 	    $namedParameters[":password"] = sha1($_POST['password']);
+	    $namedParameters[":license"] = $_POST['license'];
 	    $stmt = $dbConn->prepare($sql);
 		$stmt->execute($namedParameters);
 	}
