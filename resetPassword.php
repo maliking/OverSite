@@ -43,6 +43,7 @@ else
 	    $namedParameters[":license"] = $_POST['license'];
 	    $stmt = $dbConn->prepare($sql);
 		$stmt->execute($namedParameters);
+		echo json_encode("Success");	
 	}
 	else
 	{
