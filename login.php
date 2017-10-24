@@ -144,7 +144,7 @@ function resetPassword()
     .done(function( data ) {
         var info = JSON.parse(data);
         // alert(info);
-        if(info.equals("Error") == true)
+        if(info == "Error")
         {
             alert( "Password could not be reset. Wrong code.");
         }

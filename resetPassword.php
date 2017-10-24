@@ -44,10 +44,12 @@ else
 	    $stmt = $dbConn->prepare($sql);
 		$stmt->execute($namedParameters);
 		echo json_encode("Success");	
+		session_destroy(); 
 	}
 	else
 	{
 		echo json_encode("Error");	
+		session_destroy(); 
 	}
 	// echo json_encode($_SESSION['tempCode']);
 }
