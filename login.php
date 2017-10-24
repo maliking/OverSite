@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -29,6 +32,36 @@
 </head>
 
 <body class="hold-transition login-page">
+    <!-- Trigger the modal with a button -->
+<!-- Modal -->
+<div id="resetModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Enter your CalBRE License</h4>
+      </div>
+      <div class="modal-body">
+        CalBRE License: <input type="text" id="license" name="license">
+        <button type="button" class="btn btn-default" onclick="submitLicense()">Submit</button>
+        </br>
+        </br>
+        Code: <input type="text" id="code" name="code" disabled>
+        </br>
+        New Password: <input type="text" id="password" name="password" disabled>
+        </br>
+        <button type="button" id="resetButton" class="btn btn-default" data-dismiss="modal" onclick="resetPassword()" disabled>Reset</button>
+      </div>
+      <div class="modal-footer">
+        
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 <div class="login-box">
     <div class="login-logo">
         <img src="dist/img/remax-logo.png" class="img-responsive">
@@ -61,7 +94,7 @@
             </div>
         </form>
         <div class="pull-right" style="text-align:right">
-            <a href="#">I forgot my password</a><br>
+            <a href="#" onClick="forgotPassword(); return false;" >I forgot my password</a><br>
             <a href="register.html" class="text-center">Not an admin?</a>
         </div>
     </div>
@@ -79,6 +112,50 @@
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="bootstrap/js/bootstrap.min.js"></script>
+<script>
+
+function forgotPassword()
+{
+    $('#resetModal').modal('toggle');
+}
+
+
+function submitLicense()
+{
+    var license = $('#license').val();
+    // alert(license);
+    $.post( "resetPassword.php", { license: license, code: " ", password: ""} )
+    .done(function( data ) {
+    alert( "Code has been sent to your phone.");
+    $("#code").prop('disabled', false);
+    $("#password").prop('disabled', false);
+    $("#resetButton").prop('disabled', false);
+  });
+
+
+}
+function resetPassword()
+{
+    var license = $('#license').val();
+    var code = $('#code').val();
+    var newPassword = $('#password').val();
+
+    $.post( "resetPassword.php", { license: license, code: code, password: newPassword } )
+    .done(function( data ) {
+        var info = JSON.parse(data);
+        // alert(info);
+        if(info.equals("Error") == true)
+        {
+            alert( "Password could not be reset. Wrong code.");
+        }
+        else
+        {
+            alert( "Password has been reset.");
+        }
+  });
+}
+
+</script>
 </body>
 
 </html>
