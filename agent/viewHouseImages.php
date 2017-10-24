@@ -58,6 +58,9 @@ $mlsId = $_GET['id'];
         <!-- END TEMPLATE default-css.php INCLUDE -->
         <link href="lightbox2/dist/css/lightbox.css" rel="stylesheet">
         <script src="lightbox2/dist/js/lightbox-plus-jquery.js"></script>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+
         <style>
             .modal-title {
                 font-size: 150%;
@@ -75,6 +78,9 @@ $mlsId = $_GET['id'];
                 padding-bottom: 50px;
                 padding-right: 50px;
             }
+
+            .mySlides {display:none}
+            .demo {cursor:pointer}
         </style>
         <!-- NOTIFICATION Links-->
         <link href="../plugins/pnotify/dist/pnotify.css" rel="stylesheet">
@@ -112,33 +118,85 @@ $mlsId = $_GET['id'];
             <div class="content-wrapper">
                 <!-- Main content -->
                 <section class="content" style="min-height:initial;">
-                    <div style="overflow:auto; height:600px">
+                    <!-- <div style="overflow:auto; height:600px">
                         <table>
-                            <tr>
+                            <tr> -->
 
                      <?php
                                 // foreach ($result as $house) {
-                                for ($i = 0; $i < sizeof($keys); $i++) {
+                                // for ($i = 0; $i < sizeof($keys); $i++) {
 
-                                    if($response[$keys[$i]]['listingID'] == $mlsId)
-                                    {
-                                        for ($j = 0; $j < $response[$keys[$i]]['mlsPhotoCount']; $j++) 
-                                        {
-                                            if($j % 6 == 0 )
-                                                echo '</tr><tr>';
-                                            echo '<td><a href="' . $response[$keys[$i]]['image'][$j]['url'] .'" data-lightbox="image' . $j . '"><img src="' . $response[$keys[$i]]['image'][$j]['url'] .'" style="width:150px;height:150px;" ></a></td>';
+                                //     if($response[$keys[$i]]['listingID'] == $mlsId)
+                                //     {
+                                //         for ($j = 0; $j < $response[$keys[$i]]['mlsPhotoCount']; $j++) 
+                                //         {
+                                //             if($j % 6 == 0 )
+                                //                 echo '</tr><tr>';
+                                //             echo '<td><a href="' . $response[$keys[$i]]['image'][$j]['url'] .'" data-lightbox="image' . $j . '"><img src="' . $response[$keys[$i]]['image'][$j]['url'] .'" style="width:150px;height:150px;" ></a></td>';
                                             
-                                        }
-                                        break;
+                                //         }
+                                //         break;
 
-                                    }
+                                //     }
 
                                     
-                                }
+                                // }
                                 ?>
-                            </tr>
+                                
+                                <div class="w3-container" style=" width:100%; height:700px">
+                                <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)" style="position:sticky;">&#10094;</button>
+                                <button class="w3-button w3-display-right w3-black" onclick="plusDivs(+1)" style="position:sticky; left:100%;">&#10095;</button>
+                                    <?php
+                                        for ($i = 0; $i < sizeof($keys); $i++) 
+                                        {
+                                            if($response[$keys[$i]]['listingID'] == $mlsId)
+                                            {
+                                                for ($j = 0; $j < $response[$keys[$i]]['mlsPhotoCount']; $j++) 
+                                                {
+                                                    echo '<img class="mySlides" src="' . $response[$keys[$i]]['image'][$j]['url']  . '" style="width:100%; height: 500px">';
+                                                }
+                                                break;
+                                            }
+                                        }
+                                    ?>
+                                  <!-- <img class="mySlides" src="img_nature_wide.jpg" style="width:100%">
+                                  <img class="mySlides" src="img_fjords_wide.jpg" style="width:100%">
+                                  <img class="mySlides" src="img_mountains_wide.jpg" style="width:100%">
+ -->
+                                  <div class="w3-section" style="overflow:auto; height: 200px;">
+
+                                    <?php
+                                    for ($i = 0; $i < sizeof($keys); $i++) 
+                                        {
+                                            if($response[$keys[$i]]['listingID'] == $mlsId)
+                                            {
+                                                for ($j = 0; $j < $response[$keys[$i]]['mlsPhotoCount']; $j++) 
+                                                {
+                                                    echo '<div class="w3-col s2">
+                                                      <img class="demo w3-opacity w3-hover-opacity-off w3-padding" src="' . $response[$keys[$i]]['image'][$j]['url'] . '" style="width:100%" onclick="currentDiv(' . ($j + 1). ')">
+                                                    </div>';
+                                                }
+                                                break;
+                                            }
+                                        }
+                                    ?>
+                                    <!-- <div class="w3-col s4">
+                                      <img class="demo w3-opacity w3-hover-opacity-off" src="img_nature_wide.jpg" style="width:100%" onclick="currentDiv(1)">
+                                    </div>
+                                    <div class="w3-col s4">
+                                      <img class="demo w3-opacity w3-hover-opacity-off" src="img_fjords_wide.jpg" style="width:100%" onclick="currentDiv(2)">
+                                    </div>
+                                    <div class="w3-col s4">
+                                      <img class="demo w3-opacity w3-hover-opacity-off" src="img_mountains_wide.jpg" style="width:100%" onclick="currentDiv(3)">
+                                    </div> -->
+
+
+                                  </div>
+                                </div>
+                            
+                            <!-- </tr>
                             </table>
-                            </div>
+                            </div> -->
                    
                 </section>
                 <!-- /.content -->
@@ -182,7 +240,32 @@ $mlsId = $_GET['id'];
 
         <script>
            
-           
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+          showDivs(slideIndex += n);
+        }
+
+        function currentDiv(n) {
+          showDivs(slideIndex = n);
+        }
+
+        function showDivs(n) {
+          var i;
+          var x = document.getElementsByClassName("mySlides");
+          var dots = document.getElementsByClassName("demo");
+          if (n > x.length) {slideIndex = 1}
+          if (n < 1) {slideIndex = x.length}
+          for (i = 0; i < x.length; i++) {
+             x[i].style.display = "none";
+          }
+          for (i = 0; i < dots.length; i++) {
+             dots[i].className = dots[i].className.replace(" w3-opacity-off", "");
+          }
+          x[slideIndex-1].style.display = "block";
+          dots[slideIndex-1].className += " w3-opacity-off";
+        }
 
         </script>
 
