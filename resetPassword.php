@@ -13,7 +13,7 @@ $sql = "SELECT phone FROM  UsersInfo WHERE license = :license";
 $namedParameters = array();
 $namedParameters[':license'] = $_POST['license'];
 $stmt = $dbConn->prepare($sql);
-$stmt->execute();
+$stmt->execute($namedParameters);
 $result = $stmt->fetch();
 
 
