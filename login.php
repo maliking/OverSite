@@ -50,7 +50,7 @@ session_start();
         </br>
         Code: <input type="text" id="code" name="code" disabled>
         </br>
-        New Password: <input type="text" id="password" name="password" disabled>
+        New Password: <input type="password" id="password" name="password" disabled>
         </br>
         <button type="button" id="resetButton" class="btn btn-default" data-dismiss="modal" onclick="resetPassword()" disabled>Reset</button>
       </div>
