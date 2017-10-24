@@ -95,7 +95,6 @@ session_start();
         </form>
         <div class="pull-right" style="text-align:right">
             <a href="#" onClick="forgotPassword(); return false;" >I forgot my password</a><br>
-            <a href="register.html" class="text-center">Not an admin?</a>
         </div>
     </div>
     <div class="row" style="margin-top: 10px">
