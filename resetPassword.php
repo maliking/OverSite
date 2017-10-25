@@ -36,7 +36,7 @@ else
 {
 	if($_POST['code'] == $_SESSION['tempCode'])
 	{
-		$sql = "UPDATE UsersInfo SET password = :password WHERE license = :license";
+		$sql = "UPDATE UsersInfo SET password = :password WHERE license = :license AND userType = 1";
 
 	    $namedParameters = array();
 	    $namedParameters[":password"] = sha1($_POST['password']);
