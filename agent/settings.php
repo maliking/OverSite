@@ -7,7 +7,7 @@ if (!isset($_SESSION['userId'])) {
 require '../databaseConnection.php';
 $dbConn = getConnection();
 
-$sqlLicense = "SELECT license FROM UsersInfo WHERE userId = :userId";
+$sqlLicense = "SELECT * FROM UsersInfo WHERE userId = :userId";
 
 $namedParameters = array();
 $namedParameters[':userId'] = $_SESSION['userId'];
@@ -16,6 +16,8 @@ $namedParameters[':userId'] = $_SESSION['userId'];
 $licenseStmt = $dbConn->prepare($sqlLicense);
 $licenseStmt->execute($namedParameters);
 $licenseResult = $licenseStmt->fetch();
+
+$_SESSION['license'] = $licenseResult['license'];
 //
 //
 //$sql = "";
@@ -78,7 +80,7 @@ $licenseResult = $licenseStmt->fetch();
 <div class="box box-primary">
             <div class="box-body box-profile">
               <img class="profile-user-img img-responsive img-circle" src="../dist/img/user2-160x160.jpg" alt="User profile picture">
-              <h3 class="profile-username text-center">John Doe</h3>
+              <h3 class="profile-username text-center"><?php echo $licenseResult['firstName'] . " " . $licenseResult['lastName']; ?></h3>
            
                 <ul class="nav nav-pills nav-stacked admin-menu" >
                     <li class="active"><a href="" data-target-id="profile"><i class="glyphicon glyphicon-user"></i> Profile</a></li>
@@ -96,7 +98,7 @@ $licenseResult = $licenseStmt->fetch();
                         <h3 class="panel-title">Name</h3>
                     </div>
                     <div class="panel-body">
-                        John Doe
+                        <?php echo $licenseResult['firstName'] . " " . $licenseResult['lastName']; ?>
                     </div>
                 </div>
                 <div class="panel panel-primary" style="margin: 1em;">
@@ -104,7 +106,7 @@ $licenseResult = $licenseStmt->fetch();
                         <h3 class="panel-title">Email</h3>
                     </div>
                     <div class="panel-body">
-                        jdoe@remax.net
+                        <?php echo $licenseResult['email']; ?>
                     </div>
                 </div>
                 <div class="panel panel-primary" style="margin: 1em;">
@@ -113,7 +115,7 @@ $licenseResult = $licenseStmt->fetch();
 
                     </div>
                     <div class="panel-body">
-                        123456
+                        <?php echo $licenseResult['license']; ?>
                     </div>
                 </div>
 
@@ -121,7 +123,7 @@ $licenseResult = $licenseStmt->fetch();
 
 
             <div class="col-md-9  admin-content" id="change-password">
-                <form action="/password" method="post">
+                <!-- <form action="/password" method="post"> -->
 
            
                     <div class="panel panel-primary" style="margin: 1em;">
@@ -157,13 +159,13 @@ $licenseResult = $licenseStmt->fetch();
                         <div class="panel-body">
                             <div class="form-group">
                                 <div class="pull-left">
-                                    <input type="submit" class="form-control btn btn-primary" name="submit" id="submit">
+                                    <button type="button" class="form-control btn btn-primary" name="reset" id="reset" onclick="resetPassword()">Reset</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
-                </form>
+               <!--  </form> -->
             </div>
     
         </div>
@@ -195,24 +197,41 @@ $licenseResult = $licenseStmt->fetch();
 
 
         <script>
- $(document).ready(function()
-      {
-        var navItems = $('.admin-menu li > a');
-        var navListItems = $('.admin-menu li');
-        var allWells = $('.admin-content');
-        var allWellsExceptFirst = $('.admin-content:not(:first)');
-        allWellsExceptFirst.hide();
-        navItems.click(function(e)
+        $(document).ready(function()
         {
-            e.preventDefault();
-            navListItems.removeClass('active');
-            $(this).closest('li').addClass('active');
-            allWells.hide();
-            var target = $(this).attr('data-target-id');
-            $('#' + target).show();
-        });
+            var navItems = $('.admin-menu li > a');
+            var navListItems = $('.admin-menu li');
+            var allWells = $('.admin-content');
+            var allWellsExceptFirst = $('.admin-content:not(:first)');
+            allWellsExceptFirst.hide();
+            navItems.click(function(e)
+            {
+                e.preventDefault();
+                navListItems.removeClass('active');
+                $(this).closest('li').addClass('active');
+                allWells.hide();
+                var target = $(this).attr('data-target-id');
+                $('#' + target).show();
+            });
         });
 
+        function resetPassword()
+        {
+            var newPassword = $('#new_password').val();
+            var confirmPassword = $('#confirm_password').val();
+            
+            if(newPassword == confirmPassword)
+            {
+                $.post( "resetPassword.php", { newPassword: newPassword} )
+                .done(function( data ) {
+                alert( "Password has been reset.");
+              });
+            }
+            else
+            {
+                alert("Passwords do not match.");
+            }
+        }
         </script>
        
 
