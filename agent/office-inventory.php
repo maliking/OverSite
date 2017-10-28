@@ -100,7 +100,6 @@ $keys = array_keys($response);
 
                                 <tr>
                                     <th>Agent</th>
-                                    <th>Client</th>
                                     <th>Property</th>
                                     <th>Bedroom</th>
                                     <th>Bathroom</th>
@@ -132,7 +131,6 @@ $keys = array_keys($response);
                                     }   
 
                                     echo '<tbody><tr><td>Jorge Edeza</td>
-                                                <td>Images</td>
                                                 <td> ' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] .  ' </td>
                                                 <td>' . $bedrooms . '</td>
                                                 <td>'. $bathrooms .'</td>
