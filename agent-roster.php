@@ -298,12 +298,13 @@ if(isset($_GET['username'])){
                     lastName: editValues.lastName,
                     username: editValues.username,
                     password: editValues.password,
-                    email: editValues.email,
+                    
                     phone: editValues.phone,
                     function: "add"
                 });
                 $.post("emailNewAgent.php", {
                     username: editValues.username,
+                    email: editValues.email,
                     password: editValues.password
                 });
                 values.id = uid++;

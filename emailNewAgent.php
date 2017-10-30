@@ -1,6 +1,7 @@
 <?php 
 
 	if(isset($_POST['username'])){
+		$email = $_POST['email'];
 	    // The message
 	    $message = "Login URL: jjp2017.php\r\n
 	                Username: " . $_POST['username'] . "\r\n
@@ -10,9 +11,9 @@
 	    $message = wordwrap($message, 70, "\r\n");
 
 	    // Send
-	    mail('caffeinated@example.com', 'Oversite Login Information', $message);
+	    mail($email, 'Oversite Login Information', $message);
 	}
 
-	echo "<a href='https://www.w3schools.com'>title</a>";
+	//echo "<a href='https://www.w3schools.com'>title</a>";
 
 ?>
