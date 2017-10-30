@@ -13,4 +13,6 @@
 	    mail('caffeinated@example.com', 'Oversite Login Information', $message);
 	}
 
+	alert("test");
+
 ?>
