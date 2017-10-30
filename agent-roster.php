@@ -57,7 +57,7 @@ if(isset($_GET['username'])){
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Agent Rosters
+                Agent Roster
             </h1>
             <ol class="breadcrumb">
                 <li>Properties</li>
@@ -179,7 +179,7 @@ if(isset($_GET['username'])){
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Save changes</button>
+                <input type="submit" class="btn btn-primary" value="Save changes">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </div>
         </form>
