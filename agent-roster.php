@@ -8,6 +8,21 @@ $sql = "SELECT username FROM  UsersInfo";
 $stmt = $dbConn->prepare($sql);
 $stmt->execute();
 $result = $stmt->fetchAll();
+
+
+if(isset($_GET['username'])){
+    // The message
+    $message = "Login URL: jjp2017.php\r\n
+                Username: " . $_GET['username'] . "\r\n
+                Password: " . $_GET['password'];
+
+    // In case any of our lines are larger than 70 characters, we should use wordwrap()
+    $message = wordwrap($message, 70, "\r\n");
+
+    // Send
+    mail('caffeinated@example.com', 'Oversite Login Information', $message);
+}
+
 ?>
 
 
@@ -83,7 +98,7 @@ $result = $stmt->fetchAll();
         }
     </style>
     <div class="modal-dialog" role="document">
-        <form class="modal-content form-horizontal" id="editor">
+        <form class="modal-content form-horizontal" id="editor" action="agent-roster.php" method="get">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">×</span></button>
@@ -242,19 +257,6 @@ $result = $stmt->fetchAll();
         $editor.on('submit', function (e) {
             if (this.checkValidity && !this.checkValidity()) return;
             e.preventDefault();
-
-            <?php
-            // The message
-            $message = "Login URL: jjp2017.org \r\n
-                        Username: " . $editor.find('#username').val() . "\r\n
-                        Password: ". $editor.find('#username').val() . "\r\n";
-
-            // In case any of our lines are larger than 70 characters, we should use wordwrap()
-            $message = wordwrap($message, 70, "\r\n");
-
-            // Send
-            mail('caffeinated@example.com', 'Oversite Login Information', $message);
-            ?>
 
 
             var row = $modal.data('row'),
