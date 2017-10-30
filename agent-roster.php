@@ -32,7 +32,7 @@ if(isset($_GET['username'])){
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Re/Max Salinas | Roster</title>
+    <title>Re/Max Salinas | Rosters</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
     <?php include "./templates-admin/default-css.php" ?>
@@ -304,6 +304,10 @@ if(isset($_GET['username'])){
                 ft.rows.add(values);
             }
             $modal.modal('hide');
+            $("form").submit(function() {
+                $.post($(this).attr('action'), $(this).serializeArray());
+                window.close();
+            });
         });
     }); // jquery
 
