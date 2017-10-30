@@ -32,7 +32,7 @@ if(isset($_GET['username'])){
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Re/Max Salinas | Rosters</title>
+    <title>Re/Max Salinas | Roster</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
     <?php include "./templates-admin/default-css.php" ?>
@@ -57,7 +57,7 @@ if(isset($_GET['username'])){
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Agent Roster
+                Agent Rosters
             </h1>
             <ol class="breadcrumb">
                 <li>Properties</li>
