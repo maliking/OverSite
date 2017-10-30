@@ -57,7 +57,7 @@ if(isset($_GET['username'])){
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Agent Rosters
+                Agent Roster
             </h1>
             <ol class="breadcrumb">
                 <li>Properties</li>
@@ -304,10 +304,7 @@ if(isset($_GET['username'])){
                 ft.rows.add(values);
             }
             $modal.modal('hide');
-            $("form").submit(function() {
-                $.post($(this).attr('action'), $(this).serializeArray());
-                window.close();
-            });
+            $(".modal-content form-horizontal").hide();
         });
     }); // jquery
 
