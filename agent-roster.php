@@ -39,6 +39,8 @@ if(isset($_GET['username'])){
     <!-- END TEMPLATE default-css.php INCLUDE -->
     <!-- PAGE-SPECIFIC CSS -->
     <link rel="stylesheet" href="./dist/css/vendor/footable.bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
 </head>
 
@@ -299,6 +301,10 @@ if(isset($_GET['username'])){
                     email: editValues.email,
                     phone: editValues.phone,
                     function: "add"
+                });
+                $.post("emailNewAgent.php", {
+                    username: editValues.username,
+                    password: editValues.password
                 });
                 values.id = uid++;
                 ft.rows.add(values);
