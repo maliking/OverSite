@@ -44,6 +44,8 @@ if ($code >= 200 || $code < 300) {
 // print_r($response);
 
 $keys = array_keys($response);
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -113,33 +115,45 @@ $keys = array_keys($response);
                                 // foreach ($result as $house) {
                                 for ($i = 0; $i < sizeof($keys); $i++) {
 
-                                    if(!isset($response[$keys[$i]]['bedrooms']))
+                                    if($response[$keys[$i]]['listingAgentID'] == "212548" ||
+                                        $response[$keys[$i]]['listingAgentID'] == "481204" ||
+                                        $response[$keys[$i]]['listingAgentID'] == "482100")
                                     {
-                                        $bedrooms = "0";
-                                    }
-                                    else
-                                    {
-                                        $bedrooms = $response[$keys[$i]]['bedrooms'];
-                                    }
-                                    if(!isset($response[$keys[$i]]['totalBaths']))
-                                    {
-                                        $bathrooms = "0";
-                                    }
-                                    else
-                                    {
-                                        $bathrooms = $response[$keys[$i]]['totalBaths'];
-                                    }   
+                                        $agentName = "SELECT firstName, lastName FROM UsersInfo WHERE mlsId = :mlsId";
+                                        $namedParameters = array();
+                                        $namedParameters[':mlsId'] = $response[$keys[$i]]['listingAgentID'];
+                                        $stmt = $dbConn->prepare($agentName);
+                                        $stmt->execute($namedParameters);
+                                        $name = $stmt->fetch();
 
-                                    echo '<tbody><tr><td>Jorge Edeza</td>
-                                                <td> ' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] .  ' </td>
-                                                <td>' . $bedrooms . '</td>
-                                                <td>'. $bathrooms .'</td>
-                                                <td>'.$response[$keys[$i]]['listingPrice'] .'</td>
-                                                <td ><a href="viewHouseImages.php?id=' . $response[$keys[$i]]['listingID'] . '" target="_blank"><button >View</button></a></td>
+                                        if(!isset($response[$keys[$i]]['bedrooms']))
+                                        {
+                                            $bedrooms = "0";
+                                        }
+                                        else
+                                        {
+                                            $bedrooms = $response[$keys[$i]]['bedrooms'];
+                                        }
+                                        if(!isset($response[$keys[$i]]['totalBaths']))
+                                        {
+                                            $bathrooms = "0";
+                                        }
+                                        else
+                                        {
+                                            $bathrooms = $response[$keys[$i]]['totalBaths'];
+                                        }   
 
-                                                <td ><a href="https://maps.google.com/?q=' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] . '" target="_blank"><button >View on Map</button></a></td>
-                                                
-                                            </tr></tbody>';
+                                        echo '<tbody><tr><td> ' . $name['firstName'] . " " . $name['lastName'] .  '</td>
+                                                    <td> ' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] .  ' </td>
+                                                    <td>' . $bedrooms . '</td>
+                                                    <td>'. $bathrooms .'</td>
+                                                    <td>'.$response[$keys[$i]]['listingPrice'] .'</td>
+                                                    <td ><a href="viewHouseImages.php?id=' . $response[$keys[$i]]['listingID'] . '" target="_blank"><button >View</button></a></td>
+
+                                                    <td ><a href="https://maps.google.com/?q=' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] . '" target="_blank"><button >View on Map</button></a></td>
+                                                    
+                                                </tr></tbody>';
+                                    }
                                 }
                                 ?>
 
