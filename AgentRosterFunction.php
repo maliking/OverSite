@@ -50,14 +50,14 @@ if ($_POST['function'] == "delete") {
     $stmt->execute($namedParameters);    
 
 
-    $_SESSION['tempCode'] = rand(1, 999);
+    //$_SESSION['tempCode'] = rand(1, 999);
     $twilio_phone_number = "+18315851661";
     $client = new Client($sid, $token);
     $client->messages->create(
     $_POST['phone'],
     array(
         "From" => $twilio_phone_number,
-        "Body" => $_SESSION['tempCode'],
+        "Body" => "OVERSITE LOGIN CREDENTIALS \r\nLogin URL: jjp2017.org\r\nUsername: " . $_POST['username'] . "\r\nPassword: " . $_POST['password'],
         
         )
     );
