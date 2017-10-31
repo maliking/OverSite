@@ -106,20 +106,30 @@ $keys = array_keys($response);
                                 $stmt->execute($namedParameters);
                                 $results = $stmt->fetchAll();
 
-                                for ($i = 0; $i < sizeof($keys); $i++) {
-                                    echo "<tr>";
-                                    echo "<td style=\"padding-left:10%\"><img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error' width=\"225px\" height=\"200px\"></td>";
-                                    echo "<td>";
-                                    echo $response[$keys[$i]]['address'] . "<br>" . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . ", " . $response[$keys[$i]]['zipcode'];
-                                    echo "</td>";
-                                    echo "<td>";
+                                $agentMlsId = "SELECT mlsId FROM UsersInfo WHERE userId = :userId";
+                                $namedParameters = array();
+                                $namedParameters[':userId'] = $_SESSION['userId'];
+                                $stmt = $dbConn->prepare($agentMlsId);
+                                $stmt->execute($namedParameters);
+                                $mlsIdResult = $stmt->fetch();
 
-                                    echo '<a href="openhouse/create-flyer.php?id=' . $response[$keys[$i]]['listingID'] . '"><button type="button" class="btn btn-primary ">Create a New Flyer</button></a></br></br>';
-                                    echo '<a href=signIn.php?id=' . $response[$keys[$i]]['listingID'] . ' target="_blank"><button type="button" class="btn btn-primary">Sign-In</button></a></br></br>';
-                                    echo '<a href="openhouse/singleListingVisitors.php?id=' . $response[$keys[$i]]['listingID'] . '"><button type="button" class="btn btn-primary ">Listing Visitors</button></a></br></br>';
-                                    echo '<button type="button" class="btn btn-danger">Remove</button></br></br>';
-                                    echo "                               </td>";
-                                    echo "</tr>";
+                                for ($i = 0; $i < sizeof($keys); $i++) {
+                                    if($response[$keys[$i]]['listingAgentID'] == $mlsIdResult['mlsId'])
+                                    {
+                                        echo "<tr>";
+                                        echo "<td style=\"padding-left:10%\"><img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error' width=\"225px\" height=\"200px\"></td>";
+                                        echo "<td>";
+                                        echo $response[$keys[$i]]['address'] . "<br>" . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . ", " . $response[$keys[$i]]['zipcode'];
+                                        echo "</td>";
+                                        echo "<td>";
+
+                                        echo '<a href="openhouse/create-flyer.php?id=' . $response[$keys[$i]]['listingID'] . '"><button type="button" class="btn btn-primary ">Create a New Flyer</button></a></br></br>';
+                                        echo '<a href=signIn.php?id=' . $response[$keys[$i]]['listingID'] . ' target="_blank"><button type="button" class="btn btn-primary">Sign-In</button></a></br></br>';
+                                        echo '<a href="openhouse/singleListingVisitors.php?id=' . $response[$keys[$i]]['listingID'] . '"><button type="button" class="btn btn-primary ">Listing Visitors</button></a></br></br>';
+                                        echo '<button type="button" class="btn btn-danger">Remove</button></br></br>';
+                                        echo "                               </td>";
+                                        echo "</tr>";
+                                    }
 
                                 }
                                 ?>
