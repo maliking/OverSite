@@ -7,7 +7,6 @@ require 'twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
 require 'databaseConnection.php';
 
-require 'databaseConnection.php';
 $dbConn = getConnection();
 
 if ($_POST['function'] == "delete") {
