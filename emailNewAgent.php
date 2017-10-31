@@ -3,7 +3,7 @@
 	if(isset($_POST['username'])){
 		$email = $_POST['email'];
 	    // The message
-	    $message = "\r\nLogin URL: jjp2017.org\r\n
+	    $message = "\r\n 		Login URL: jjp2017.org\r\n
 	                Username: " . $_POST['username'] . "\r\n
 	                Password: " . $_POST['password'];
 
