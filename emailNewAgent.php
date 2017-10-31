@@ -11,7 +11,7 @@
 	    $message = wordwrap($message, 70, "\r\n");
 
 	    // Send
-	    mail($email, 'Oversite Login Information', $message);
+	    mail($email, 'Oversite Login Credentials', $message);
 	}
 
 	//echo "<a href='https://www.w3schools.com'>title</a>";
