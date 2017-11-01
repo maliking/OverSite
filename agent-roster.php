@@ -9,20 +9,6 @@ $stmt = $dbConn->prepare($sql);
 $stmt->execute();
 $result = $stmt->fetchAll();
 
-
-if(isset($_GET['username'])){
-    // The message
-    $message = "Login URL: jjp2017.php\r\n
-                Username: " . $_GET['username'] . "\r\n
-                Password: " . $_GET['password'];
-
-    // In case any of our lines are larger than 70 characters, we should use wordwrap()
-    $message = wordwrap($message, 70, "\r\n");
-
-    // Send
-    mail('caffeinated@example.com', 'Oversite Login Information', $message);
-}
-
 ?>
 
 
@@ -413,6 +399,17 @@ if(isset($_GET['username'])){
 //        $modal.modal('hide');
 //    });
 
+    //generate random password
+    function generatePassword() {
+        var length = 6,
+            characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+            password = "";
+        for (var i = 0, n = charset.length; i < length; ++i) {
+            password += charset.charAt(Math.floor(Math.random() * n));
+        }
+        return password;
+    }
+
     function getLicense() {
         lic = document.getElementById("license").value;
         var xhr = new XMLHttpRequest();
@@ -443,6 +440,10 @@ if(isset($_GET['username'])){
                 document.getElementById("lastName").value = firstName[0];
                 document.getElementById("issuedDate").value = dateIssued;
                 document.getElementById("expirationDate").value = dateExpire;
+
+                //check if username is already taken
+                document.getElementById("username").value =  firstName[0].substring(0, 1) + firstName[0].substring(0, 4);
+                document.getElementById("password").value = generatePassword();
             }
 
         }
