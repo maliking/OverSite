@@ -410,6 +410,19 @@ $result = $stmt->fetchAll();
         return password;
     }
 
+    //WORKING ON CHECKING IF USERNAME IS NOT ALREADY TAKEN IF NOT ADD A VARIBLE TO HAVE IT AVAILABLE
+    /*function checkIfAvailableUsername(proposedUsername) {
+        $dbConn = getConnection();
+        $sql = "SELECT username FROM UsersInfo";
+        $stmt = $dbConn->prepare($sql);
+        $stmt->execute();
+        $usernames = $stmt->fetchAll();
+    }
+
+    function addCharacter(proposedUsername) {
+
+    }*/
+
     function getLicense() {
         lic = document.getElementById("license").value;
         var xhr = new XMLHttpRequest();
@@ -442,7 +455,15 @@ $result = $stmt->fetchAll();
                 document.getElementById("expirationDate").value = dateExpire;
 
                 //check if username is already taken
-                document.getElementById("username").value =  firstName[0].substring(0, 1) + firstName[0].substring(0, 4);
+                var proposedUsername =  firstName[0].substring(0, 1) + firstName[0].substring(0, 4);
+                /*var available = false;
+
+                while(!available){
+                    available = checkIfAvailableUsername(proposedUsername);
+                    proposedUsername = addCharacter(proposedUsername);
+                }*/
+
+                document.getElementById("username").value = proposedUsername;
                 document.getElementById("password").value = generatePassword();
             }
 
