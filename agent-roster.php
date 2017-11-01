@@ -404,8 +404,8 @@ $result = $stmt->fetchAll();
         var length = 6,
             characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
             password = "";
-        for (var i = 0, n = charset.length; i < length; ++i) {
-            password += charset.charAt(Math.floor(Math.random() * n));
+        for (var i = 0, n = characters.length; i < length; ++i) {
+            password += characters.charAt(Math.floor(Math.random() * n));
         }
         return password;
     }
