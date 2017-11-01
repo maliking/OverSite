@@ -18,7 +18,7 @@ $phone = $_POST['phone'];
 $bedroomsMin = $_POST['bedroomsMin'];
 $bathroomsMin = $_POST['bathroomsMin'];
 $priceMax = $_POST['priceMax'];
-$priceMin = $_POST['priceMin'];
+// $priceMin = $_POST['priceMin'];
 // $houseId = (string)$_GET['houseId'];
 // $houseId = "253";
 $nextMonday = date('Y-m-d', strtotime('next monday'));
@@ -71,8 +71,8 @@ if (empty($meetingResult)) {
 
 $userId = $_SESSION['userId'];
 $sql = "INSERT INTO BuyerInfo
-		(firstName, lastName, email, phone, registeredDate, meeting, bedroomsMin, bathroomsMin, priceMax, priceMin, houseId, userId, howSoon)
-		VALUES (:firstName, :lastName, :email, :phone, :registeredDate, :meeting, :bedroomsMin, :bathroomsMin, :priceMax, :priceMin, :houseId, :userId, :howSoon)";
+		(firstName, lastName, email, phone, registeredDate, meeting, bedroomsMin, bathroomsMin, priceMax, houseId, userId, howSoon)
+		VALUES (:firstName, :lastName, :email, :phone, :registeredDate, :meeting, :bedroomsMin, :bathroomsMin, :priceMax, :houseId, :userId, :howSoon)";
 $namedParameters = array();
 $namedParameters[':firstName'] = $firstName;
 $namedParameters[':lastName'] = $lastName;
@@ -83,7 +83,7 @@ $namedParameters[':meeting'] = $nextMeeting->format('Y-m-d H:i:s');
 $namedParameters[':bedroomsMin'] = $bedroomsMin;
 $namedParameters[':bathroomsMin'] = (float)$bathroomsMin;
 $namedParameters[':priceMax'] = $priceMax;
-$namedParameters[':priceMin'] = $priceMin;
+// $namedParameters[':priceMin'] = $priceMin;
 $namedParameters[':houseId'] = $_POST['houseId'];
 $namedParameters[':userId'] = $userId;
 $namedParameters[':howSoon'] = $_POST['howSoon'];
