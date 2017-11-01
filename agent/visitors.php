@@ -131,7 +131,90 @@ $keys = array_keys($response);
 
             <!-- PAGE-SPECIFIC CSS -->
             
+            <!-- Modal -->
+  <div class="modal fade" id="addLeadModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Lead</h4>
+        </div>
+        <div class="modal-body">
 
+          <input type="text" name="firstName" class="form-control has-feedback-left" id="inputSuccess2"
+                       placeholder="First Name">
+                <span class="form-control-feedback left" aria-hidden="true"></span>
+
+                </br>
+                <input type="text" name="lastName" class="form-control" id="inputSuccess3" placeholder="Last Name">
+                </br>
+                <input type="text" name="email" class="form-control has-feedback-left" id="inputSuccess4"
+                       placeholder="Email">
+                </br>
+                <input type="text" name="phone" class="form-control" id="inputSuccess5" placeholder="Phone">
+                </br>
+                 <label>How soon are you looking to purchase a home?</label>
+                <select id="" name="howSoon" class="form-control" required>
+                    <option value="0">--Select One--</option>
+                    <option value="1-3">1-3 months</option>
+                    <option value="4-6">4-6 months</option>
+                    <option value="7-12">7-12 months</option>
+                    <option value="Visit">Just visiting</option>
+                </select>
+
+                </br>
+                <label>Price</label>
+                <select id="" name="price" class="form-control" required>
+                    <option value="0">--Select One--</option>
+                    <option value="100000">$100,000</option>
+                    <option value="200000">$200,000</option>
+                    <option value="300000">$300,000</option>
+                    <option value="400000">$400,000</option>
+                    <option value="500000">$500,000</option>
+                    <option value="600000">$600,000</option>
+                    <option value="700000">$700,000</option>
+                    <option value="800000">$800,000</option>
+                    <option value="900000">$900,000</option>
+                    <option value="1000000">$1,000,000+</option>
+                </select>
+
+                </br>
+
+                 <label>Min Bedrooms</label>
+                <select id="" name="bedroomsMin" class="form-control" required>
+                    <option value="0">--Select One--</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+
+                </select>
+                </br>
+                <label>Min Bathrooms</label>
+                <select id="" name="bathroomsMin" class="form-control" required>
+                    <option value="0">--Select One--</option>
+                    <option value="1">1</option>
+                    <option value="1.5">1.5</option>
+                    <option value="2">2</option>
+                    <option value="2.5">2.5</option>
+                    <option value="3">3</option>
+                    <option value="3.5">3.5</option>
+                    <option value="4">4</option>
+                    <option value="4.5">4.5</option>
+                </select>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" >Save</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
@@ -438,6 +521,7 @@ $keys = array_keys($response);
 
                         <!-------------End Mock Visitor Dropdown-------->
                         <div id="table-scroll" style="overflow: auto;">
+                        <button type="button" class="btn btn-success" style="float: right;" onClick="addLead()">Add Lead</button>
                             <table class="table table-bordered table-striped" id="freeze" >
                                 <thead>
                                 <tr>
@@ -499,7 +583,7 @@ $keys = array_keys($response);
                                 $dbConn = getConnection();
                                 $sql = "SELECT * FROM BuyerInfo, HouseInfo 
                     WHERE BuyerInfo.userId = :userId 
-                    AND BuyerInfo.houseId = HouseInfo.houseId
+                    AND BuyerInfo.houseId = HouseInfo.houseId OR BuyerInfo.houseId = '0'
                     ORDER BY ";
                                 if (isset($_GET['visitorSort'])) {
                                     if ($visitorSort == 1) {
@@ -713,6 +797,10 @@ $keys = array_keys($response);
         window.location = "openhouse/exportVisitors.php?id=" + $("#house").val() + "&startDate=" + $('#startDate').val() + "&endDate=" + $('#endDate').val();
     });
        
+       function addLead()
+       {
+        $('#addLeadModal').modal('toggle');
+       }
         </script>
 
 <!-- Modal -->
