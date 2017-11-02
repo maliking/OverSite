@@ -1,3 +1,10 @@
+<?php
+
+$currAgent = "SELECT * FROM UsersInfo WHERE userId = '" . $_SESSION['userId'] . "'";
+$email = $dbConn->prepare($currAgent);
+$email->execute();
+$agentInfo = $email->fetch();
+?>
 <!-- Main Header -->
 <header class="main-header">
     <!-- Header Navbar -->
@@ -99,7 +106,7 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- User image in navbar--><img src="./dist/img/user2-160x160.jpg" class="user-image"
-                                                         alt="User Image"> <span class="hidden-xs">Admin</span> </a>
+                                                         alt="User Image"> <span class="hidden-xs"><?php echo $agentInfo['firstName'] . " " . $agentInfo['lastName'] . " #" . $agentInfo['license'];?></span> </a>
                     <ul class="dropdown-menu">
                         <!-- User image in the menu -->
                         <li class="user-header"><img src="./dist/img/user2-160x160.jpg" class="img-circle"
