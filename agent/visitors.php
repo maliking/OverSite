@@ -5,6 +5,7 @@ if (!isset($_SESSION['userId'])) {
     header("Location: http://jjp2017.org/login.php");
 }
 require '../databaseConnection.php';
+$dbConn = getConnection();
 if (isset ($_GET['deleteForm'])) {  //checking whether we have clicked on the "Delete" button
     $sql = "DELETE FROM BuyerInfo 
                  WHERE buyerID = '" . $_GET['buyerID'] . "'";
@@ -208,7 +209,7 @@ $keys = array_keys($response);
 
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-default" >Save</button>
+            <button type="button" class="btn btn-default" onClick="addLead()">Save</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -521,7 +522,7 @@ $keys = array_keys($response);
 
                         <!-------------End Mock Visitor Dropdown-------->
                         <div id="table-scroll" style="overflow: auto;">
-                        <button type="button" class="btn btn-success" style="float: right;" onClick="addLead()">Add Lead</button>
+                        <button type="button" class="btn btn-success" style="float: right;" onClick="leadModal()">Add Lead</button>
                             <table class="table table-bordered table-striped" id="freeze" >
                                 <thead>
                                 <tr>
@@ -580,10 +581,10 @@ $keys = array_keys($response);
                                     $results = $stmt->fetch();
                                     return $results['address'] . ", " . $results['city'] . ", " . $results['state'] . " " . $results['zip'];
                                 }*/
-                                $dbConn = getConnection();
+                                
                                 $sql = "SELECT * FROM BuyerInfo, HouseInfo 
                     WHERE BuyerInfo.userId = :userId 
-                    AND BuyerInfo.houseId = HouseInfo.houseId OR BuyerInfo.houseId = '0'
+                    AND BuyerInfo.houseId = HouseInfo.houseId
                     ORDER BY ";
                                 if (isset($_GET['visitorSort'])) {
                                     if ($visitorSort == 1) {
@@ -635,8 +636,15 @@ $keys = array_keys($response);
                                     echo "<td>" . $result['firstName'] . " " . $result['lastName'] . "</td>";
                                     echo "<td>" . $result['phone'] . "</td>";
                                     echo "<td>" . htmlspecialchars($result['email']) . "</td>";
-                                    echo "<td>" . htmlspecialchars($result['address'] . ", " . $result['city'] . ", " . $result['state'] . " " . $result['zip']) . "</td>";
+                                    if(htmlspecialchars($result['address']) == "Lead")
+                                    {
+                                        echo "<td>" . htmlspecialchars($result['address']) . "</td>";
 
+                                    }
+                                    else
+                                    {
+                                        echo "<td>" . htmlspecialchars($result['address'] . ", " . $result['city'] . ", " . $result['state'] . " " . $result['zip']) . "</td>";
+                                    }
                                     // <button>Call</button>
                                     echo "<td>" .
 
@@ -737,7 +745,7 @@ $keys = array_keys($response);
         <!-- BEGIN TEMPLATE default-js.php INCLUDE -->
         <?php include "./templates-agent/default-js.php" ?>
         <!-- END TEMPLATE default-css.php INCLUDE -->
-
+<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
 <script type='text/javascript'
         src="https://cdnjs.cloudflare.com/ajax/libs/floatthead/2.0.3/jquery.floatThead.js"></script>
 
@@ -797,10 +805,49 @@ $keys = array_keys($response);
         window.location = "openhouse/exportVisitors.php?id=" + $("#house").val() + "&startDate=" + $('#startDate').val() + "&endDate=" + $('#endDate').val();
     });
        
-       function addLead()
+       function leadModal()
        {
         $('#addLeadModal').modal('toggle');
        }
+
+
+       function addLead()
+       {
+            var firstName = $('input[name=firstName]').val();
+            var lastName = $('input[name=lastName]').val();
+            var email = $('input[name=email]').val();
+            var phone = $('input[name=phone]').val();
+            var howSoon = $('select[name=howSoon]').val();
+            var price = $('select[name=price]').val();
+            var minBed = $('select[name=bedroomsMin]').val();
+            var minBath = $('select[name=bathroomsMin]').val();
+            // alert(firstName);
+            // alert(lastName);
+            // alert(email);
+            // alert(phone);
+            // alert(howSoon);
+            // alert(price);
+            // alert(minBed);
+            // alert(minBath);
+            // $('input[name=firstName]').val("");
+
+            $.post( "addLead.php", { firstName: firstName, lastName: lastName, email: email, phone: phone, howSoon: howSoon, price: price, bedroomsMin: minBed, bathroomsMin: minBath})
+            .done(function( data ) {
+            alert("lead Added");
+            $('input[name=firstName]').val("");
+            $('input[name=lastName]').val("");
+            $('input[name=email]').val("");
+            $('input[name=phone]').val("");
+            $('input[name=howSoon]').val("");
+            $('input[name=price]').val("");
+            $('input[name=bedroomsMin]').val("");
+            $('input[name=bathroomsMin]').val("");
+            $('#addLeadModal').modal('toggle');
+            location.reload(true);
+            });
+            
+       }
+
         </script>
 
 <!-- Modal -->
