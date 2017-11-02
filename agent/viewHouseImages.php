@@ -144,6 +144,20 @@ $mlsId = $_GET['id'];
                                 ?>
                                 
                                 <div class="w3-container" style=" width:100%; height:700px">
+                                    <div>
+                                        <?php
+                                        for ($i = 0; $i < sizeof($keys); $i++) 
+                                        {
+                                            if($response[$keys[$i]]['listingID'] == $mlsId)
+                                            {
+                                                echo $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] . "</br>";
+                                                echo "Bedrooms: " . $response[$keys[$i]]['bedrooms'] . "&nbsp&nbsp Bathrooms: " . $response[$keys[$i]]['fullBaths'] . "." . $response[$keys[$i]]['partialBaths'] . "&nbsp&nbsp SqFt: " . $response[$keys[$i]]['sqFt'];
+                                                break;
+                                            }
+                                                
+                                        }
+                                        ?>
+                                    </div>
                                 <button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)" style="position:sticky;">&#10094;</button>
                                 <button class="w3-button w3-display-right w3-black" onclick="plusDivs(+1)" style="position:sticky; left:100%;">&#10095;</button>
                                     <?php
