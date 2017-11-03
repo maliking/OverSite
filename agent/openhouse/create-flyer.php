@@ -407,7 +407,7 @@ $keys = array_keys($response);
                             // echo '<img src="../../uploadFlyers/' . $result['flyer'] . '" alt="pdf" style="width:80%; margin-top:10px;">';
 
                             // echo '<iframe id="pdf" src="../../../test/' . $result['flyer'] . '" style="width:600px; height:600px;" frameborder="0"></iframe>'; //local
-                            echo '<img id="noPdf" src="listingImg/flyerPlaceHolder.png" alt="pdf" style="width:80%; margin-top:10px;">';
+                            
                             echo '<iframe id="pdf" src="../../uploadFlyers/' . substr($result['flyer'], 0, -3) . 'pdf" 
                                         style="width:600px; height:500px;" frameborder="0"></iframe>';
                             echo "<input type='hidden' name='flyerName' value='" . substr($result['flyer'], 0, -3) . "'/>";
