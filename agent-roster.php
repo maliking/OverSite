@@ -214,7 +214,7 @@ $result = $stmt->fetchAll();
                     $modal.removeData('row');
                     $editor[0].reset();
                     $editorTitle.text('Add a New Agent');
-                    $modal.modal('show');
+                    $modal.modal('toggle');
                 },
                 "editRow": function (row) {
                     var values = row.val();
@@ -295,6 +295,7 @@ $result = $stmt->fetchAll();
                 });
                 values.id = uid++;
                 ft.rows.add(values);
+                alert("Agent Added");
             }
             $modal.modal('hide');
             $(".modal-content form-horizontal").hide();
