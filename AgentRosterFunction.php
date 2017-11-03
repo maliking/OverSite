@@ -57,7 +57,7 @@ if ($_POST['function'] == "delete") {
     $_POST['phone'],
     array(
         "From" => $twilio_phone_number,
-        "Body" => "OVERSITE LOGIN CREDENTIALS \r\nLogin URL: jjp2017.org\r\nUsername: " . $_POST['username'] . "\r\nPassword: " . $_POST['password'],
+        "Body" => "OVERSITE LOGIN CREDENTIALS \r\nLogin URL: www.oversite.cc\r\nUsername: " . $_POST['username'] . "\r\nPassword: " . $_POST['password'],
         
         )
     );
