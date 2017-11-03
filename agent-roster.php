@@ -439,7 +439,7 @@ $result = $stmt->fetchAll();
     }
 
     function addCharacter(proposedUsername) {
-        characters = "0123456789"
+        characters = "0123456789";
         proposedUsername += characters.charAt(Math.floor(Math.random() * characters.length));
         return proposedUsername;
     }
