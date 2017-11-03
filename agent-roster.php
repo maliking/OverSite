@@ -417,11 +417,12 @@ $result = $stmt->fetchAll();
     //WORKING ON CHECKING IF USERNAME IS NOT ALREADY TAKEN IF NOT ADD A VARIBLE TO HAVE IT AVAILABLE
     function checkIfAvailableUsername(proposedUsername) {
         var availableUsername = false;
-         $.ajax({
+        jQuery.ajax({
                 type: "get",
                 url: "verifyUsernameAvailability.php",
                 dataType: "json",
                 data: {"proposedUsername": proposedUsername},
+                alert("Terstinf");
                 success: function(data,status) {
                     alert(data['exists']);
                     //proposed username does not exist and therefore we can move forward
@@ -432,7 +433,7 @@ $result = $stmt->fetchAll();
                 complete: function(data,status) { //optional, used for debugging purposes
                       alert(status);
                 }
-             });
+            });
 
          return availableUsername;
 
