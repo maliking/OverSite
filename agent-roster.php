@@ -301,6 +301,7 @@ $result = $stmt->fetchAll();
             $modal.modal('hide');
             $(".modal-content form-horizontal").hide();
             header('Location: http://jjp2017.org/agent-roster.php');
+            die();
         });
     }); // jquery
 
@@ -404,9 +405,9 @@ $result = $stmt->fetchAll();
 
     //generate random password
     function generatePassword() {
-        var length = 6,
-            characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
-            password = "";
+        var length = 6;
+        var characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        var password = "";
         for (var i = 0, n = characters.length; i < length; ++i) {
             password += characters.charAt(Math.floor(Math.random() * n));
         }
@@ -414,17 +415,34 @@ $result = $stmt->fetchAll();
     }
 
     //WORKING ON CHECKING IF USERNAME IS NOT ALREADY TAKEN IF NOT ADD A VARIBLE TO HAVE IT AVAILABLE
-    /*function checkIfAvailableUsername(proposedUsername) {
-        $dbConn = getConnection();
-        $sql = "SELECT username FROM UsersInfo";
-        $stmt = $dbConn->prepare($sql);
-        $stmt->execute();
-        $usernames = $stmt->fetchAll();
+    function checkIfAvailableUsername(proposedUsername) {
+        var availableUsername = false;
+         $.ajax({
+                type: "get",
+                url: "verifyUsernameAvailability.php",
+                dataType: "json",
+                data: {"proposedUsername": proposedUsername},
+                success: function(data,status) {
+                    //alert(data['exists']);
+                    //proposed username does not exist and therefore we can move forward
+                    if(!data['exists']) {
+                        availableUsername = true;
+                    }
+                },
+                complete: function(data,status) { //optional, used for debugging purposes
+                     // alert(status);
+                }
+             });
+
+         return availableUsername;
+
     }
 
     function addCharacter(proposedUsername) {
-
-    }*/
+        characters = "0123456789"
+        proposedPassword += characters.charAt(Math.floor(Math.random() * characters.length));
+        return proposedPassword;
+    }
 
     function getLicense() {
         lic = document.getElementById("license").value;
@@ -459,12 +477,12 @@ $result = $stmt->fetchAll();
 
                 //check if username is already taken
                 var proposedUsername =  firstName[0].substring(0, 1) + firstName[0].substring(0, 4);
-                /*var available = false;
+                var available = false;
 
                 while(!available){
                     available = checkIfAvailableUsername(proposedUsername);
                     proposedUsername = addCharacter(proposedUsername);
-                }*/
+                }
 
                 document.getElementById("username").value = proposedUsername;
                 document.getElementById("password").value = generatePassword();
