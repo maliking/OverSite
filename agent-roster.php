@@ -298,6 +298,7 @@ $result = $stmt->fetchAll();
             }
             $modal.modal('hide');
             $(".modal-content form-horizontal").hide();
+            header('Location: http://jjp2017.org/agent-roster.php');
         });
     }); // jquery
 
