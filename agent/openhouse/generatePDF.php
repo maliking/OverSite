@@ -128,7 +128,7 @@ $infoResult = $info->fetch();
     $pdf->Text(9, 210, 'RE/MAX Property Experts');
     $pdf->Image($infoResult['picture'], 9, 212, 20, 30, "jpg");
 
-    $pdf->Text(30, 216, $infoResult['firstName'] . " " . $infoResult['lastName']);
+    $pdf->Text(30, 216, $infoResult['firstName'] . ' ' . $infoResult['lastName']);
     $pdf->Text(30, 221, 'Broker Associate and Owner');
     $pdf->Text(30, 226, '831-751-6900 Office Phone');
     $pdf->Text(30, 231, $infoResult['phone'] . ' Mobile Phone');
