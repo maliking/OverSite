@@ -196,7 +196,7 @@ $result = $stmt->fetchAll();
 
 
 
-        $('.table').footable({
+        var ft = $('.table').footable({
             "columns": $.ajax('columns.json', {dataType: 'json'}),
             "rows": $.ajax('getAgentRosterRows.php', {dataType: 'json'}),
             "filtering": {
