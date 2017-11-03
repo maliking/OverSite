@@ -423,7 +423,7 @@ $result = $stmt->fetchAll();
                 dataType: "json",
                 data: {"proposedUsername": proposedUsername},
                 success: function(data,status) {
-                    //alert(data['exists']);
+                    alert(data['exists']);
                     //proposed username does not exist and therefore we can move forward
                     if(!data['exists']) {
                         availableUsername = true;
