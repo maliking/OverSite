@@ -4,7 +4,7 @@ session_start();
 require 'databaseConnection.php';
 
 $dbConn = getConnection();
-$sql = "SELECT * FROM  UsersInfo";
+$sql = "SELECT * FROM  UsersInfo WHERE userType = 0 AND userId != :userId";
 $stmt = $dbConn->prepare($sql);
 $stmt->execute();
 $result = $stmt->fetchAll();
