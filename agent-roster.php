@@ -404,7 +404,7 @@ $result = $stmt->fetchAll();
 //    });
 
     //generate random password
-    /*function generatePassword() {
+    function generatePassword() {
         var length = 6;
         var characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         var password = "";
@@ -415,7 +415,7 @@ $result = $stmt->fetchAll();
     }
 
     //WORKING ON CHECKING IF USERNAME IS NOT ALREADY TAKEN IF NOT ADD A VARIBLE TO HAVE IT AVAILABLE
-    function checkIfAvailableUsername(proposedUsername) {
+    /*function checkIfAvailableUsername(proposedUsername) {
         var availableUsername = false;
         jQuery.ajax({
                 type: "get",
