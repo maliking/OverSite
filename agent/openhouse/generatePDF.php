@@ -7,7 +7,10 @@ require_once('../../databaseConnection.php');
 
 $dbConn = getConnection();
 
-$agentInfo = "SELECT * FROM UsersInfo WHERE userId = :userId";
+
+
+try {
+    $agentInfo = "SELECT * FROM UsersInfo WHERE userId = :userId";
 
 $namedParameters = array();
 $namedParameters[':userId'] = $_SESSION['userId'];
@@ -16,8 +19,6 @@ $namedParameters[':userId'] = $_SESSION['userId'];
 $info = $dbConn->prepare($agentInfo);
 $info->execute($namedParameters);
 $infoResult = $info->fetch();
-
-try {
     $pdf = new FPDF();
     $pdf->AddPage("P", "letter");
     $pdf->SetMargins(0, 0, 0);
