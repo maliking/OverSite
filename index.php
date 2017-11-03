@@ -1,11 +1,11 @@
 <?php
 session_start();
 echo($_SESSION['userType']);
-if (!isset($_SESSION['userId']) || !isset($_SESSION['userType'])) {
+if (!isset($_SESSION['userId']) ) {
     header("Location: login.php");
 }
 
-if($_SESSION['userType'] == 1){
+if($_SESSION['userType'] == "1"){
     header("Location: agent/index.php");
 }
 
