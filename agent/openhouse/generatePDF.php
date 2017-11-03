@@ -2,14 +2,15 @@
 session_start();
 clearstatcache();
 
-require_once('../../fpdf/fpdf.php');
-require_once('../../databaseConnection.php');
 
-$dbConn = getConnection();
 
 
 
 try {
+    require_once('../../fpdf/fpdf.php');
+require_once('../../databaseConnection.php');
+
+$dbConn = getConnection();
     $agentInfo = "SELECT * FROM UsersInfo WHERE userId = :userId";
 
 $namedParameters = array();
