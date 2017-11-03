@@ -6,6 +6,16 @@ require_once('../../databaseConnection.php');
 
 $dbConn = getConnection();
 
+$agentInfo = "SELECT * FROM UsersInfo WHERE userId = :userId";
+
+$namedParameters = array();
+$namedParameters[':userId'] = $_SESSION['userId'];
+
+
+$info = $dbConn->prepare($agentInfo);
+$info->execute($namedParameters);
+$infoResult = $info->fetch();
+
 try {
     $pdf = new FPDF();
     $pdf->AddPage("P", "letter");
@@ -114,13 +124,13 @@ try {
 
     $pdf->SetFontSize(13);
     $pdf->Text(9, 210, 'RE/MAX Property Experts');
-    $pdf->Image('jorge.jpg', 9, 212, 20, 30, "jpg");
+    $pdf->Image($infoResult['picture'], 9, 212, 20, 30, "jpg");
 
-    $pdf->Text(30, 216, 'Jorge Edeza');
+    $pdf->Text(30, 216, $infoResult['firstName'] . " " . $infoResult['lastName']);
     $pdf->Text(30, 221, 'Broker Associate and Owner');
-    $pdf->Text(30, 226, 'Office Phone');
-    $pdf->Text(30, 231, 'Mobile Phone');
-    $pdf->Text(30, 236, 'Email');
+    $pdf->Text(30, 226, '831-751-6900 Office Phone');
+    $pdf->Text(30, 231, $infoResult['phone'] . ' Mobile Phone');
+    $pdf->Text(30, 236, $infoResult['email'] . ' Email');
     $pdf->Text(30, 241, 'www.PropertyExperts.Remax.com');
     $pdf->Text(9, 248, '915A N. Main Street, Salinas, CA 93906');
 
