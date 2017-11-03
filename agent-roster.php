@@ -45,7 +45,7 @@ $result = $stmt->fetchAll();
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Agent Roster
+                Agent Rosters
             </h1>
             <ol class="breadcrumb">
                 <li>Properties</li>
@@ -482,7 +482,7 @@ $result = $stmt->fetchAll();
                 while(!available){
                     available = checkIfAvailableUsername(proposedUsername);
                     proposedUsername = addCharacter(proposedUsername);
-                    alert(available);
+                    //alert(available);
                 }
 
                 document.getElementById("username").value = proposedUsername;
