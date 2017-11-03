@@ -196,7 +196,8 @@ $result = $stmt->fetchAll();
 
 
 
-        $('.table').footable({
+        // var ft = $('.table').footable({
+            var ft = FooTable.init('.table',{
             "columns": $.ajax('columns.json', {dataType: 'json'}),
             "rows": $.ajax('getAgentRosterRows.php', {dataType: 'json'}),
             "filtering": {
@@ -214,7 +215,7 @@ $result = $stmt->fetchAll();
                     $modal.removeData('row');
                     $editor[0].reset();
                     $editorTitle.text('Add a New Agent');
-                    $modal.modal('show');
+                    $modal.modal('toggle');
                 },
                 "editRow": function (row) {
                     var values = row.val();
@@ -284,7 +285,7 @@ $result = $stmt->fetchAll();
                     lastName: editValues.lastName,
                     username: editValues.username,
                     password: editValues.password,
-                    
+                    email: editValues.email,
                     phone: editValues.phone,
                     function: "add"
                 });
@@ -293,8 +294,9 @@ $result = $stmt->fetchAll();
                     email: editValues.email,
                     password: editValues.password
                 });
-                values.id = uid++;
+                // values.id = uid++;
                 ft.rows.add(values);
+                alert("Agent Added");
             }
             $modal.modal('hide');
             $(".modal-content form-horizontal").hide();
