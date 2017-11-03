@@ -293,7 +293,7 @@ $result = $stmt->fetchAll();
                     email: editValues.email,
                     password: editValues.password
                 });
-                values.id = uid++;
+                // values.id = uid++;
                 ft.rows.add(values);
                 alert("Agent Added");
             }
