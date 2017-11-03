@@ -1,7 +1,7 @@
 <?php
 session_start();
-
-if (!isset($_SESSION['userId'])) {
+echo($_SESSION['userType']);
+if (!isset($_SESSION['userId']) || $_SESSION['userType'] == 1) {
     header("Location: login.php");
 }
 
