@@ -404,7 +404,7 @@ $result = $stmt->fetchAll();
 //    });
 
     //generate random password
-    function generatePassword() {
+    /*function generatePassword() {
         var length = 6;
         var characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
         var password = "";
@@ -422,7 +422,6 @@ $result = $stmt->fetchAll();
                 url: "verifyUsernameAvailability.php",
                 dataType: "json",
                 data: {"proposedUsername": proposedUsername},
-                alert("Terstinf");
                 success: function(data,status) {
                     alert(data['exists']);
                     //proposed username does not exist and therefore we can move forward
@@ -443,7 +442,7 @@ $result = $stmt->fetchAll();
         characters = "0123456789";
         proposedUsername += characters.charAt(Math.floor(Math.random() * characters.length));
         return proposedUsername;
-    }
+    }*/
 
     function getLicense() {
         lic = document.getElementById("license").value;
@@ -478,13 +477,13 @@ $result = $stmt->fetchAll();
 
                 //check if username is already taken
                 var proposedUsername =  firstName[0].substring(0, 1) + firstName[0].substring(0, 4);
-                var available = false;
+                /*var available = false;
 
                 while(!available){
                     available = checkIfAvailableUsername(proposedUsername);
                     proposedUsername = addCharacter(proposedUsername);
                     //alert(available);
-                }
+                }*/
 
                 document.getElementById("username").value = proposedUsername;
                 document.getElementById("password").value = generatePassword();
