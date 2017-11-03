@@ -23,6 +23,7 @@ if (empty($result)) {
     $_SESSION['userId'] = $result['userId'];
     $_SESSION['username'] = $result['username'];
     $_SESSION['license'] = $result['license'];
+    $_SESSION['userType'] = $result['userType'];
     //$_SESSION['userName'] = $result['firstName'] . " " . $result['lastName'];
     //$_SESSION['userId'] = $result['userId'];
     if ($result['userType'] == 0) {
