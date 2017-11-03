@@ -285,7 +285,7 @@ $result = $stmt->fetchAll();
                     lastName: editValues.lastName,
                     username: editValues.username,
                     password: editValues.password,
-                    
+                    email: editValues.email,
                     phone: editValues.phone,
                     function: "add"
                 });
