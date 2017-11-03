@@ -440,8 +440,8 @@ $result = $stmt->fetchAll();
 
     function addCharacter(proposedUsername) {
         characters = "0123456789"
-        proposedPassword += characters.charAt(Math.floor(Math.random() * characters.length));
-        return proposedPassword;
+        proposedUsername += characters.charAt(Math.floor(Math.random() * characters.length));
+        return proposedUsername;
     }
 
     function getLicense() {
