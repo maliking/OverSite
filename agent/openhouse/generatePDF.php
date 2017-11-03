@@ -2,12 +2,7 @@
 session_start();
 clearstatcache();
 
-
-
-
-
-try {
-    require_once('../../fpdf/fpdf.php');
+require_once('../../fpdf/fpdf.php');
 require_once('../../databaseConnection.php');
 
 $dbConn = getConnection();
@@ -20,6 +15,11 @@ $namedParameters[':userId'] = $_SESSION['userId'];
 $info = $dbConn->prepare($agentInfo);
 $info->execute($namedParameters);
 $infoResult = $info->fetch();
+
+
+
+try {
+    
     $pdf = new FPDF();
     $pdf->AddPage("P", "letter");
     $pdf->SetMargins(0, 0, 0);

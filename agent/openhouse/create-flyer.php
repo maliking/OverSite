@@ -719,7 +719,7 @@ $keys = array_keys($response);
             },
             success: function (data) {
                 hideLoading();
-                alert(data); //=== Show Success Message==
+                // alert(data); //=== Show Success Message==
 
                 // $("#pdf").attr('src','../../../test/generateExample.pdf'); //local
 
