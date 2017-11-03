@@ -9,7 +9,7 @@
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
             <!--            <li class="active"><a href="index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>-->
-            <li><a href="listings-openhouse.php"><i class="fa fa-home"></i> <span>Listings</span></a></li>
+            <li><a href="../my-inventory.php"><i class="fa fa-home"></i> <span>Listings</span></a></li>
             <!-- <li><a href="visitors.php"><i class="fa fa-male"></i> <span>My Visitors</span></a></li> -->
 
             <li class="header-style treeview">
