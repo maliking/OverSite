@@ -719,7 +719,7 @@ $keys = array_keys($response);
             },
             success: function (data) {
                 hideLoading();
-                // alert(data); //=== Show Success Message==
+                alert(data); //=== Show Success Message==
 
                 // $("#pdf").attr('src','../../../test/generateExample.pdf'); //local
 
@@ -809,7 +809,7 @@ $keys = array_keys($response);
         }).done(function (response) {
             // In this callback you get the AJAX response to check
             // if everything is right...
-             alert(response);
+            // alert(response);
 
             // $("#pdf").attr('src','../../../test/' + response); //local
 
