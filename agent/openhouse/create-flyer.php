@@ -407,8 +407,8 @@ $keys = array_keys($response);
                             // echo '<img src="../../uploadFlyers/' . $result['flyer'] . '" alt="pdf" style="width:80%; margin-top:10px;">';
 
                             // echo '<iframe id="pdf" src="../../../test/' . $result['flyer'] . '" style="width:600px; height:600px;" frameborder="0"></iframe>'; //local
-                            
-                            echo '<iframe id="pdf" src="../../uploadFlyers/' . substr($result['flyer'], 0, -3) . 'pdf" 
+
+                            echo '<iframe id="pdf" src="http://52.11.25.75/uploadFlyers/' . substr($result['flyer'], 0, -3) . 'pdf" 
                                         style="width:600px; height:500px;" frameborder="0"></iframe>';
                             echo "<input type='hidden' name='flyerName' value='" . substr($result['flyer'], 0, -3) . "'/>";
                         }
@@ -727,7 +727,7 @@ $keys = array_keys($response);
                 // $("#pdf").attr('src','../../../test/generateExample.pdf'); //local
 
                 $("#pdf").attr('src', '../../uploadFlyers/' + addressC + ".pdf"); // server
-                $("#noPdf").replaceWith('<iframe id="pdf" src="../../uploadFlyers/' + addressC + '.pdf" style="width:600px; height:500px;" frameborder="0"></iframe>'); //server when no pdf found
+                $("#noPdf").replaceWith('<iframe id="pdf" src="http://52.11.24.75/uploadFlyers/' + addressC + '.pdf" style="width:600px; height:500px;" frameborder="0"></iframe>'); //server when no pdf found
 
                 $('#myModal').modal('show');
             },
@@ -817,7 +817,7 @@ $keys = array_keys($response);
             // $("#pdf").attr('src','../../../test/' + response); //local
 
             $("#pdf").attr('src', '../../uploadFlyers/' + response); //server
-            $("#noPdf").replaceWith('<iframe id="pdf" src="../../uploadFlyers/' + response.slice(0, -3) + 'pdf" style="width:600px; height:500px;" frameborder="0"></iframe>'); //server when no pdf found
+            $("#noPdf").replaceWith('<iframe id="pdf" src="http://51.11.24.75/uploadFlyers/' + response.slice(0, -3) + 'pdf" style="width:600px; height:500px;" frameborder="0"></iframe>'); //server when no pdf found
 
             $('#myModal').modal('show');
 
