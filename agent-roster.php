@@ -430,7 +430,7 @@ $result = $stmt->fetchAll();
                     }
                 },
                 complete: function(data,status) { //optional, used for debugging purposes
-                     // alert(status);
+                      alert(status);
                 }
              });
 
@@ -482,6 +482,7 @@ $result = $stmt->fetchAll();
                 while(!available){
                     available = checkIfAvailableUsername(proposedUsername);
                     proposedUsername = addCharacter(proposedUsername);
+                    alert(available);
                 }
 
                 document.getElementById("username").value = proposedUsername;
