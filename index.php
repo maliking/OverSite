@@ -5,6 +5,10 @@ if (!isset($_SESSION['userId']) || !isset($_SESSION['userType'])) {
     header("Location: login.php");
 }
 
+if($_SESSION['userType'] == 1){
+    header("Location: agent/index.php");
+}
+
 require 'databaseConnection.php';
 
 $dbConn = getConnection();
