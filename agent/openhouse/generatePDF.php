@@ -1,4 +1,5 @@
 <?php
+session_start();
 clearstatcache();
 
 require_once('../../fpdf/fpdf.php');
