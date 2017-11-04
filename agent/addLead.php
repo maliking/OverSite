@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-// date_default_timezone_set('America/Los_Angeles');
+date_default_timezone_set('America/Los_Angeles');
 require '../databaseConnection.php';
 
 
