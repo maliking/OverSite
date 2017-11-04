@@ -1,4 +1,6 @@
 <?php
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
 require("../databaseConnection.php");
 session_start();
 $dbConn = getConnection();
@@ -104,7 +106,7 @@ $addedListingsResults = $addedListings->fetchAll();
 
                             <table class="table">
                                 <?php
-                                $dbConn = getConnection();
+                                // $dbConn = getConnection();
                                 $sql = "SELECT status, houseId, date(dateTimes) as dateTimes, address, city, state, zip, bedrooms, bathrooms, price
                         FROM HouseInfo
                         WHERE userId = :userId";
@@ -140,7 +142,7 @@ $addedListingsResults = $addedListings->fetchAll();
                                     }
 
                                 }
-                                foreach ($addedListingsResults as $addHouse) 
+                                foreach($addedListingsResults as $addHouse) 
                                 {
                                     echo "<tr>";
                                         //echo "<td style=\"padding-left:10%\"><img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error' width=\"225px\" height=\"200px\"></td>";
