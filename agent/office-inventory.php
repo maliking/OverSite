@@ -117,7 +117,8 @@ $keys = array_keys($response);
 
                                     if($response[$keys[$i]]['listingAgentID'] == "212548" ||
                                         $response[$keys[$i]]['listingAgentID'] == "481204" ||
-                                        $response[$keys[$i]]['listingAgentID'] == "482100")
+                                        $response[$keys[$i]]['listingAgentID'] == "482100" ||
+                                        $response[$keys[$i]]['listingAgentID'] == "5071883")
                                     {
                                         $agentName = "SELECT firstName, lastName FROM UsersInfo WHERE mlsId = :mlsId";
                                         $namedParameters = array();
