@@ -127,8 +127,14 @@ try {
 
     $pdf->SetFontSize(13);
     $pdf->Text(9, 210, 'RE/MAX Property Experts');
-    $pdf->Image($infoResult['picture'], 9, 212, 20, 30, "jpg");
-
+    if($infoResult['picture'] != NULL)
+    {
+        $pdf->Image($infoResult['picture'], 9, 212, 20, 30, "jpg");
+    }
+    else
+    {
+        
+    }
     $pdf->Text(30, 216, $infoResult['firstName'] . ' ' . $infoResult['lastName']);
     $pdf->Text(30, 221, 'Broker Associate and Owner');
     $pdf->Text(30, 226, '831-751-6900 Office Phone');
