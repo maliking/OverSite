@@ -142,7 +142,7 @@ $addedListingsResults = $addedListings->fetchAll();
 
                                 }
                                 foreach($addedListingsResults as $addHouse) 
-                                // {
+                                {
                                 //     echo "<tr>";
                                 //         //echo "<td style=\"padding-left:10%\"><img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error' width=\"225px\" height=\"200px\"></td>";
                                 //         echo "<td>";
