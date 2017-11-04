@@ -42,7 +42,7 @@ $keys = array_keys($response);
 
 $getAddedListings = "SELECT * FROM HouseInfo WHERE status = added AND userId = :userId";
 $namedParameters = array();
-$namedParameters[':userId'];
+$namedParameters[':userId'] = $_SESSION['userId'];
 $addedListings = $dbConn->prepare($getAddedListings);
 $addedListings->execute($namedParameters);
 $addedListingsResults = $addedListings->fetchAll();
