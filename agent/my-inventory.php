@@ -1,7 +1,5 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
 require("../databaseConnection.php");
 session_start();
 $dbConn = getConnection();
@@ -49,7 +47,7 @@ $namedParameters[':userId'] = $_SESSION['userId'];
 $namedParameters[':status'] = "added";
 $addedListings = $dbConn->prepare($getAddedListings);
 $addedListings->execute($namedParameters);
-$addedListingsResults = $addedListings->fetchAll();
+// $addedListingsResults = $addedListings->fetchAll();
 
 ?>
 <!DOCTYPE html>
@@ -143,22 +141,22 @@ $addedListingsResults = $addedListings->fetchAll();
                                     }
 
                                 }
-                                foreach($addedListingsResults as $addHouse) 
-                                {
-                                    echo "<tr>";
-                                        //echo "<td style=\"padding-left:10%\"><img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error' width=\"225px\" height=\"200px\"></td>";
-                                        echo "<td>";
-                                        echo $addHouse['address'] . "<br>" . $addHouse['city'] . " " . $addHouse['state'] . ", " . $addHouse'zip'];
-                                        echo "</td>";
-                                        echo "<td>";
+                                // foreach($addedListingsResults as $addHouse) 
+                                // {
+                                //     echo "<tr>";
+                                //         //echo "<td style=\"padding-left:10%\"><img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error' width=\"225px\" height=\"200px\"></td>";
+                                //         echo "<td>";
+                                //         echo $addHouse['address'] . "<br>" . $addHouse['city'] . " " . $addHouse['state'] . ", " . $addHouse'zip'];
+                                //         echo "</td>";
+                                //         echo "<td>";
 
-                                        // echo '<a href="openhouse/create-flyer.php?id=' . $response[$keys[$i]]['listingID'] . '"><button type="button" class="btn btn-primary ">Create a New Flyer</button></a></br></br>';
-                                        echo '<a href=signIn.php?id=' . $addHouse['listingId'] . ' target="_blank"><button type="button" class="btn btn-primary">Sign-In</button></a></br></br>';
-                                        echo '<a href="openhouse/singleListingVisitors.php?id=' . $addHouse['listingId'] . '"><button type="button" class="btn btn-primary ">Listing Visitors</button></a></br></br>';
-                                        echo '<button type="button" class="btn btn-danger">Remove</button></br></br>';
-                                        echo "                               </td>";
-                                        echo "</tr>";
-                                }
+                                //         // echo '<a href="openhouse/create-flyer.php?id=' . $response[$keys[$i]]['listingID'] . '"><button type="button" class="btn btn-primary ">Create a New Flyer</button></a></br></br>';
+                                //         echo '<a href=signIn.php?id=' . $addHouse['listingId'] . ' target="_blank"><button type="button" class="btn btn-primary">Sign-In</button></a></br></br>';
+                                //         echo '<a href="openhouse/singleListingVisitors.php?id=' . $addHouse['listingId'] . '"><button type="button" class="btn btn-primary ">Listing Visitors</button></a></br></br>';
+                                //         echo '<button type="button" class="btn btn-danger">Remove</button></br></br>';
+                                //         echo "                               </td>";
+                                //         echo "</tr>";
+                                // }
                                 ?>
                             </table>
 
