@@ -115,11 +115,7 @@ $keys = array_keys($response);
                                 // foreach ($result as $house) {
                                 for ($i = 0; $i < sizeof($keys); $i++) {
 
-                                    if($response[$keys[$i]]['listingAgentID'] == "212548" ||
-                                        $response[$keys[$i]]['listingAgentID'] == "481204" ||
-                                        $response[$keys[$i]]['listingAgentID'] == "482100" ||
-                                        $response[$keys[$i]]['listingAgentID'] == "5071883")
-                                    {
+                                    
                                         $agentName = "SELECT firstName, lastName FROM UsersInfo WHERE mlsId = :mlsId";
                                         $namedParameters = array();
                                         $namedParameters[':mlsId'] = $response[$keys[$i]]['listingAgentID'];
@@ -154,7 +150,7 @@ $keys = array_keys($response);
                                                     <td ><a href="https://maps.google.com/?q=' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] . '" target="_blank"><button >View on Map</button></a></td>
                                                     
                                                 </tr></tbody>';
-                                    }
+                                    
                                 }
                                 ?>
 
