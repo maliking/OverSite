@@ -47,7 +47,7 @@ $namedParameters[':userId'] = $_SESSION['userId'];
 $namedParameters[':status'] = "added";
 $addedListings = $dbConn->prepare($getAddedListings);
 $addedListings->execute($namedParameters);
-// $addedListingsResults = $addedListings->fetchAll();
+$addedListingsResults = $addedListings->fetchAll();
 
 ?>
 <!DOCTYPE html>
