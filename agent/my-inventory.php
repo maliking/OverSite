@@ -40,6 +40,13 @@ if ($code >= 200 || $code < 300) {
 
 $keys = array_keys($response);
 
+$getAddedListings = "SELECT * FROM HouseInfo WHERE status = 'added' AND userId = :userId";
+$namedParameters = array();
+$namedParameters[':userId'];
+$addedListings = $dbConn->prepare($getAddedListings);
+$addedListings->execute($namedParameters);
+$addedListingsResults = $addedListings->fetchAll();
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -131,6 +138,22 @@ $keys = array_keys($response);
                                         echo "</tr>";
                                     }
 
+                                }
+                                foreach ($addedListingsResults as $addHouse) 
+                                {
+                                    echo "<tr>";
+                                        //echo "<td style=\"padding-left:10%\"><img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error' width=\"225px\" height=\"200px\"></td>";
+                                        echo "<td>";
+                                        echo $addHouse['address'] . "<br>" . $addHouse['city'] . " " . $addHouse['state'] . ", " . $addHouse'zip'];
+                                        echo "</td>";
+                                        echo "<td>";
+
+                                        // echo '<a href="openhouse/create-flyer.php?id=' . $response[$keys[$i]]['listingID'] . '"><button type="button" class="btn btn-primary ">Create a New Flyer</button></a></br></br>';
+                                        echo '<a href=signIn.php?id=' . $addHouse['listingId'] . ' target="_blank"><button type="button" class="btn btn-primary">Sign-In</button></a></br></br>';
+                                        echo '<a href="openhouse/singleListingVisitors.php?id=' . $addHouse['listingId'] . '"><button type="button" class="btn btn-primary ">Listing Visitors</button></a></br></br>';
+                                        echo '<button type="button" class="btn btn-danger">Remove</button></br></br>';
+                                        echo "                               </td>";
+                                        echo "</tr>";
                                 }
                                 ?>
                             </table>
