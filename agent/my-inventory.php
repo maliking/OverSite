@@ -141,7 +141,7 @@ $addedListingsResults = $addedListings->fetchAll();
                                     }
 
                                 }
-                                // foreach($addedListingsResults as $addHouse) 
+                                foreach($addedListingsResults as $addHouse) 
                                 // {
                                 //     echo "<tr>";
                                 //         //echo "<td style=\"padding-left:10%\"><img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error' width=\"225px\" height=\"200px\"></td>";
@@ -156,7 +156,7 @@ $addedListingsResults = $addedListings->fetchAll();
                                 //         echo '<button type="button" class="btn btn-danger">Remove</button></br></br>';
                                 //         echo "                               </td>";
                                 //         echo "</tr>";
-                                // }
+                                }
                                 ?>
                             </table>
 
