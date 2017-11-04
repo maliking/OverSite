@@ -146,7 +146,7 @@ $addedListingsResults = $addedListings->fetchAll();
                                     echo "<tr>";
                                         //echo "<td style=\"padding-left:10%\"><img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error' width=\"225px\" height=\"200px\"></td>";
                                         echo "<td>";
-                                        echo $addHouse['address'] . "<br>" . $addHouse['city'] . " " . $addHouse['state'] . ", " . $addHouse'zip'];
+                                        echo $addHouse['address'] . "<br>" . $addHouse['city'] . " " . $addHouse['state'] . ", " . $addHouse['zip'];
                                         echo "</td>";
                                         echo "<td>";
 
