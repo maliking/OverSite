@@ -639,7 +639,7 @@ $keys = array_keys($response);
                                     echo "<td>" . $result['firstName'] . " " . $result['lastName'] . "</td>";
                                     echo "<td>" . $result['phone'] . "</td>";
                                     echo "<td>" . htmlspecialchars($result['email']) . "</td>";
-                                    if(htmlspecialchars($result['address']) == "Lead")
+                                    if($result['address'] == "Lead")
                                     {
                                         echo "<td>" . htmlspecialchars($result['address']) . "</td>";
 
