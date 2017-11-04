@@ -584,7 +584,7 @@ $keys = array_keys($response);
                                 
                                 $sql = "SELECT * FROM BuyerInfo, HouseInfo 
                     WHERE BuyerInfo.userId = :userId 
-                    AND BuyerInfo.houseId = HouseInfo.houseId OR BuyerInfo.userId = :userId AND HouseInfo.houseId = '0'
+                    AND BuyerInfo.houseId = HouseInfo.houseId OR BuyerInfo.userId = :userId AND BuyerInfo.houseId = '0'
                     ORDER BY ";
                                 if (isset($_GET['visitorSort'])) {
                                     if ($visitorSort == 1) {
