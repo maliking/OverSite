@@ -40,7 +40,7 @@ if ($code >= 200 || $code < 300) {
 
 $keys = array_keys($response);
 
-$getAddedListings = "SELECT * FROM HouseInfo WHERE status = 'added' AND userId = :userId";
+$getAddedListings = "SELECT * FROM HouseInfo WHERE status = added AND userId = :userId";
 $namedParameters = array();
 $namedParameters[':userId'];
 $addedListings = $dbConn->prepare($getAddedListings);
