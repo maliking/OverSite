@@ -582,10 +582,13 @@ $keys = array_keys($response);
                                     return $results['address'] . ", " . $results['city'] . ", " . $results['state'] . " " . $results['zip'];
                                 }*/
                                 
-                                $sql = "SELECT * FROM BuyerInfo, HouseInfo 
-                    WHERE BuyerInfo.userId = :userId 
-                    AND BuyerInfo.houseId = HouseInfo.houseId OR BuyerInfo.userId = :userId AND BuyerInfo.houseId = '0'
-                    ORDER BY ";
+                    //             $sql = "SELECT * FROM BuyerInfo, HouseInfo 
+                    // WHERE BuyerInfo.userId = :userId 
+                    // AND BuyerInfo.houseId = HouseInfo.houseId OR BuyerInfo.userId = :userId AND BuyerInfo.houseId = '0'
+                    // ORDER BY ";
+                                $sql = "SELECT BuyerInfo.*, HouseInfo.address as address, HouseInfo.city as city, HouseInfo.state as state, HouseInfo.zip as zip
+                                FROM BuyerInfo LEFT JOIN HouseInfo ON BuyerInfo.houseId = HouseInfo.houseId 
+                                where BuyerInfo.userId = :userId; ORDER BY ";
                                 if (isset($_GET['visitorSort'])) {
                                     if ($visitorSort == 1) {
                                         $sql .= "lastName ASC";
