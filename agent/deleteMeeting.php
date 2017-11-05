@@ -10,7 +10,7 @@ $namedParameters = array();
 $namedParameters[':id'] = $_POST['id'];
 $namedParameters[':meeting'] = '0000-00-00 00:00:00';
 
-$meetingStmt = $dbConn->prepare($meetingInfo);
+$meetingStmt = $dbConn->prepare($deleteMeeting);
 $meetingStmt->execute($namedParameters);
 
 
