@@ -214,7 +214,7 @@ $result = $stmt->fetch();
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <i>Scheduled to contact: </i>
-                                                <b>9:15am</b> <i>September 23, 2017</i>
+                                                <b id="meetingTime">9:15am</b> <i id="meetingDay">September 23, 2017</i>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -565,6 +565,9 @@ $result = $stmt->fetch();
                                 $('#notes').html(meetingInfo['note']);
                                 $('#id').html(meetingInfo['meeting']);
                                 $('#textArea').append(meetingInfo['note']);
+
+                                $('#meetingTime').html(meetingInfo['meetingFormat'].substring(10,15));
+                                $('#meetingDay').html(meetingInfo['meetingFormat'].substring(0,10));
 
                             }
                         });
