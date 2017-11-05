@@ -480,6 +480,11 @@ $result = $stmt->fetch();
 
             function deleteMeeting()
             {
+                var id = $('#id').text();
+                $.post("deleteMeeting.php", {
+                    id: id,
+                });
+
                 alert("meeting deleted");
             }
 
