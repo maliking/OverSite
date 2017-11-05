@@ -207,7 +207,7 @@ $result = $stmt->fetch();
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">John Doe</h4>
+                                    <h4 class="modal-title" id="titleName">John Doe</h4>
                                 </div>
                                 <div class="modal-body">
                                     <div class="modal-body">
@@ -239,6 +239,19 @@ $result = $stmt->fetch();
                                                             <td id="lastName">
                                                                 Doe
                                                             </td>
+                                                        </tr>
+
+                                                        <tr>
+
+                                                            <th>Phone</th>
+                                        
+                                                        </tr>
+
+                                                        <tr>
+
+                                                            <th id="phone"></th>
+                                        
+                                                        </tr>
                                                             <tr>
 
 
@@ -253,6 +266,7 @@ $result = $stmt->fetch();
                                                                 <td id="minBath">
                                                                     2
                                                                 </td>
+                                                            </tr>
                                                                 <tr>
 
 
@@ -537,9 +551,12 @@ $result = $stmt->fetch();
                             data: formData,
                             success: function(data, textStatus, jqXHR) {
                                 var meetingInfo = JSON.parse(data);
+                                $('#titleName').html(meetingInfo['firstName'] + " " + meetingInfo['lastName']);
+
                                 $('#firstName').html(meetingInfo['firstName']);
 
                                 $('#lastName').html(meetingInfo['lastName']);
+                                $('#phone').html(meetingInfo['phone']);
                                 $('#minBed').html(meetingInfo['bedroomsMin']);
                                 $('#minBath').html(meetingInfo['bathroomsMin']);
                                 $('#minPrice').html(meetingInfo['priceMin']);
