@@ -382,7 +382,7 @@ $result = $stmt->fetch();
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close
                                 </button>
-                                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Delete
+                                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal" onClick="deleteMeeting()">Delete
                                     Appointment
                                 </button>
                                 <button type="button" class="btn btn-outline" onClick="saveMeeting()">Save changes
@@ -476,6 +476,11 @@ $result = $stmt->fetch();
                 $('#notes').html(newNote);
                 // $('#modal-primary').modal('toggle');
                 // alert();
+            }
+
+            function deleteMeeting()
+            {
+                alert("meeting deleted");
             }
 
             $(document).ready(function() {
