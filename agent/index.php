@@ -566,7 +566,7 @@ $result = $stmt->fetch();
                                 $('#id').html(meetingInfo['meeting']);
                                 $('#textArea').append(meetingInfo['note']);
 
-                                $('#meetingTime').html(meetingInfo['meetingFormat'].substring(10,15));
+                                $('#meetingTime').html(meetingInfo['meetingFormat'].substring(10,16));
                                 $('#meetingDay').html(meetingInfo['meetingFormat'].substring(0,10));
 
                             }
