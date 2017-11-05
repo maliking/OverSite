@@ -8,7 +8,7 @@ $deleteMeeting = "UPDATE BuyerInfo SET meeting = :meeting WHERE meeting = :id";
 
 $namedParameters = array();
 $namedParameters[':id'] = $_POST['id'];
-$namedParameters[':meeting'] = new DateTime('0000-00-00 00:00:00');
+$namedParameters[':meeting'] = '0000-00-00 00:00:00';
 
 $meetingStmt = $dbConn->prepare($meetingInfo);
 $meetingStmt->execute($namedParameters);
