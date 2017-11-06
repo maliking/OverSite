@@ -484,7 +484,7 @@ $result = $stmt->fetch();
                 $.post("deleteMeeting.php", {
                     id: id,
                 });
-                $('#calendar').fullCalendar('removeEvents', id);
+                $('#calendar').fullCalendar('removeEvents', [,id]);
                 alert("meeting deleted");
             }
 
