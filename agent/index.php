@@ -7,7 +7,7 @@ if (!isset($_SESSION['userId'])) {
 require '../databaseConnection.php';
 $dbConn = getConnection();
 
-$sqlLicense = "SELECT license FROM UsersInfo WHERE userId = :userId";
+$sqlLicense = "SELECT license, mlsId FROM UsersInfo WHERE userId = :userId";
 
 $namedParameters = array();
 $namedParameters[':userId'] = $_SESSION['userId'];
@@ -30,6 +30,46 @@ $result = $stmt->fetch();
 // $stmtRank = $dbConnRank->prepare($sqlRank);
 // $stmtRank->execute();
 // $rank = $stmtRank->fetchAll();
+$url = 'https://api.idxbroker.com/clients/featured';
+
+$method = 'GET';
+
+// headers (required and optional)
+$headers = array(
+    'Content-Type: application/x-www-form-urlencoded', // required
+    'accesskey: e1Br0B5DcgaZ3@JXI9qib5', // required - replace with your own
+    'outputtype: json' // optional - overrides the preferences in our API control page
+);
+
+// set up cURL
+$handle = curl_init();
+curl_setopt($handle, CURLOPT_URL, $url);
+curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+
+// exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
+$response = curl_exec($handle);
+$code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+
+if ($code >= 200 || $code < 300) {
+    $response = json_decode($response, true);
+} else {
+    $error = $code;
+}
+
+// print_r($response);
+
+$keys = array_keys($response);
+$pendingListings = 0
+for($i = 0; $i < sizeof($keys); $i++) 
+{
+    if($response[$keys[$i]]['listingID'] == $licenseResult['mlsId'])
+    {
+        $pendingListings++;
+    }
+}
 ?>
 
     <!DOCTYPE html>
@@ -117,7 +157,7 @@ $result = $stmt->fetch();
                             <!-- small box -->
                             <div class="small-box bg-yellow">
                                 <div class="inner">
-                                    <h3>2</h3>
+                                    <h3><?php echo $pendingListings; ?></h3>
                                     <p>Pending Listings</p>
                                 </div>
                                 <div class="icon">
