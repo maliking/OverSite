@@ -484,8 +484,8 @@ $result = $stmt->fetch();
                 // $.post("deleteMeeting.php", {
                 //     id: id,
                 // });
-                $('#calendar').fullCalendar('removeEvents', id);
-                alert(id);
+                $('#calendar').fullCalendar('removeEvents', id.replace(" ", "T" ));
+                // alert(id);
                 alert("meeting deleted");
             }
 
@@ -583,7 +583,7 @@ $result = $stmt->fetch();
                             }
                         });
                         $("#modal-primary").modal();
-                        alert(event.id);
+                        // alert(event.id);
 
                     },
 
