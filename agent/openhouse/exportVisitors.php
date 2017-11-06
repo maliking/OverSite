@@ -66,8 +66,8 @@ echo 'FirstName' . "\t" . 'LastName' . "\t" . 'Title' . "\t" . 'Company' . "\t" 
 foreach ($visitors as $visit) {
     # code...
 
-    echo $visit['firstName'] . "\t" . $visit['lastName'] . "\t" . ' ' . "\t" . ' ' . "\t" . $visit['address'] . $visit['city'] . $visit['state'] . 
-        $visit['zip']  . "\t" . ' ' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . $visit['phone'] . "\t" . '' . "\t" . '' . "\t" .
+    echo $visit['firstName'] . "\t" . $visit['lastName'] . "\t" . ' ' . "\t" . ' ' . "\t" . $visit['address'] . ", " . $visit['city'] . " " . $visit['state'] . 
+        " " . $visit['zip']  . "\t" . ' ' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . $visit['phone'] . "\t" . '' . "\t" . '' . "\t" .
         '' . "\t" . $visit['email'] . "\t" . '' . "\t" . 'TRUE' . "\t" . '' . "\t" . 'Jorge Edeza' . "\t" . 'Manually Entered' . "\t" . '' . "\t" .
         $today . "\t" . $today . "\t" . 'RE/MAX Property Experts' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' .
         "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' .
