@@ -13,6 +13,17 @@ if (isset ($_GET['deleteForm'])) {  //checking whether we have clicked on the "D
     $stmt->execute();
 }
 
+$sqlMlsId = "SELECT  mlsId FROM UsersInfo WHERE userId = :userId";
+
+$namedParameters = array();
+$namedParameters[':userId'] = $_SESSION['userId'];
+
+
+$mlsIdStmt = $dbConn->prepare($sqlMlsId);
+$mlsIdStmt->execute($namedParameters);
+$mlsIdResult = $mlsIdStmt->fetch();
+
+
 function updateSort($sort)
 {
     if ($sort == 1) {
@@ -630,7 +641,6 @@ $keys = array_keys($response);
                                 //$stmt->execute();
                                 $results = $stmt->fetchAll();
 
-                                $agentMlsId = $results['mlsId'];
                                 foreach ($results as $result) {
                                     $dbNote = $result['note'];
                                     echo "<tbody>";
@@ -719,9 +729,9 @@ $keys = array_keys($response);
                         <?php
                         for ($i = 0; $i < sizeof($keys); $i++) 
                         {
-                            if($agentMlsId == $response[$keys[$i]]['listingAgentID'])
+                            if($mlsIdResult['mlsId'] == $response[$keys[$i]]['listingAgentID'])
                             {
-                                
+
                                 echo '<option value=' . $response[$keys[$i]]['listingID'] . '>' . $response[$keys[$i]]['address'] .
                                     " " . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . ", " .
                                     $response[$keys[$i]]['zipcode'] . '</option>';
