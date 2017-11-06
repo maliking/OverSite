@@ -17,6 +17,9 @@ $licenseStmt = $dbConn->prepare($sqlLicense);
 $licenseStmt->execute($namedParameters);
 $licenseResult = $licenseStmt->fetch();
 
+
+
+
 $addedHouses = "SELECT count(*) as added FROM HouseInfo WHERE userId = :userID AND status = :status";
 $addedHouseParam = array();
 $addedHouseParam[':userId'] = $_SESSION['userId'];
@@ -25,6 +28,8 @@ $addedHouseParam[':status'] = "added";
 $addedHousesStmt = $dbConn->prepare($addedHouses);
 $addedHousesStmt->execute($addedHouseParam);
 $addedHouseResults = $addedHousesStmt->fetch();
+
+
 
 
 $sql = "SELECT firstName, lastName, count(*) as sold, AVG(finalComm) as average, SUM(finalComm) AS earnings, AVG(percentage) AS avgPercent FROM commInfo WHERE license = :license GROUP BY license ";
@@ -71,7 +76,7 @@ if ($code >= 200 || $code < 300) {
 // print_r($response);
 
 $keys = array_keys($response);
-$pendingListings = $addedHouseResults['added'];
+$pendingListings = (int)$addedHouseResults['added'];
 for($i = 0; $i < sizeof($keys); $i++) 
 {
     if($response[$keys[$i]]['listingAgentID'] == $licenseResult['mlsId'])
