@@ -609,7 +609,7 @@ $keys = array_keys($response);
                     // ORDER BY ";
                                 $sql = "SELECT BuyerInfo.*, HouseInfo.address as address, HouseInfo.city as city, HouseInfo.state as state, HouseInfo.zip as zip
                                 FROM BuyerInfo LEFT JOIN HouseInfo ON BuyerInfo.houseId = HouseInfo.houseId 
-                                where BuyerInfo.userId = :userId; ORDER BY ";
+                                where BuyerInfo.userId = :userId ORDER BY ";
                                 if (isset($_GET['visitorSort'])) {
                                     if ($visitorSort == 1) {
                                         $sql .= "lastName ASC";
@@ -760,7 +760,8 @@ $keys = array_keys($response);
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" id="downloadVisitors">Download
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="downloadAllLeads">All Leads</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="downloadVisitors">Download</button>
                 </button>
             </div>
         </div>
@@ -840,6 +841,10 @@ $keys = array_keys($response);
          // alert($('#endDate').val());
 
         window.location = "openhouse/exportVisitors.php?id=" + $("#house").val() + "&startDate=" + $('#startDate').val() + "&endDate=" + $('#endDate').val();
+    });
+
+    $('#downloadAllLeads').click(function () {
+        window.location = "openhouse/exportVisitors.php?id=all" + "&startDate=" + $('#startDate').val() + "&endDate=" + $('#endDate').val();
     });
        
        function leadModal()
