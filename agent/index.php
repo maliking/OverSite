@@ -65,7 +65,7 @@ $keys = array_keys($response);
 $pendingListings = 0;
 for($i = 0; $i < sizeof($keys); $i++) 
 {
-    if($response[$keys[$i]]['listingID'] == $licenseResult['mlsId'])
+    if($response[$keys[$i]]['listingAgentID'] == $licenseResult['mlsId'])
     {
         $pendingListings++;
     }
