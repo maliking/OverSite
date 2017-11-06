@@ -629,6 +629,8 @@ $keys = array_keys($response);
                                 $stmt->execute($namedParameters);
                                 //$stmt->execute();
                                 $results = $stmt->fetchAll();
+
+                                $agentMlsId = $results['mlsId'];
                                 foreach ($results as $result) {
                                     $dbNote = $result['note'];
                                     echo "<tbody>";
@@ -715,10 +717,15 @@ $keys = array_keys($response);
                         <option>--Select One--</option>
                         <option value="all">All</option>
                         <?php
-                        for ($i = 0; $i < sizeof($keys); $i++) {
-                            echo '<option value=' . $response[$keys[$i]]['listingID'] . '>' . $response[$keys[$i]]['address'] .
-                                " " . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . ", " .
-                                $response[$keys[$i]]['zipcode'] . '</option>';
+                        for ($i = 0; $i < sizeof($keys); $i++) 
+                        {
+                            if($agentMlsId == $response[$keys[$i]]['listingAgentID'])
+                            {
+                                
+                                echo '<option value=' . $response[$keys[$i]]['listingID'] . '>' . $response[$keys[$i]]['address'] .
+                                    " " . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . ", " .
+                                    $response[$keys[$i]]['zipcode'] . '</option>';
+                            }
                         }
                         ?>
                     </select>
