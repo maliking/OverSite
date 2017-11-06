@@ -151,7 +151,8 @@ $mlsId = $_GET['id'];
                                             if($response[$keys[$i]]['listingID'] == $mlsId)
                                             {
                                                 echo $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] . "</br>";
-                                                echo "Bedrooms: " . $response[$keys[$i]]['bedrooms'] . "&nbsp&nbsp Bathrooms: " . $response[$keys[$i]]['fullBaths'] . "." . $response[$keys[$i]]['partialBaths'] . "&nbsp&nbsp SqFt: " . $response[$keys[$i]]['sqFt'];
+                                                echo "Bedrooms: " . $response[$keys[$i]]['bedrooms'] . "&nbsp&nbsp Bathrooms: " . $response[$keys[$i]]['fullBaths']
+                                                . "." . $response[$keys[$i]]['partialBaths'] . "&nbsp&nbsp SqFt: " . $response[$keys[$i]]['sqFt'] . "&nbsp&nbsp Price: " . $response[$keys[$i]]['listingPrice'];
                                                 break;
                                             }
                                                 
