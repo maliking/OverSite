@@ -750,9 +750,9 @@ $keys = array_keys($response);
 
                         for($j = 0; $j < $houses; $j++) 
                         {
-                            echo '<option value=' . $house[$j]['listingId'] . '>' . $house[$j]['address'] .
-                                " " . $house[$j]['city'] . " " . $house[$j]['state'] . ", " .
-                                $house[$j]['zip'] . '</option>';
+                            echo '<option value=' . $addedHouseResults[$j]['listingId'] . '>' . $addedHouseResults[$j]['address'] .
+                                " " . $addedHouseResults[$j]['city'] . " " . $addedHouseResults[$j]['state'] . ", " .
+                                $addedHouseResults[$j]['zip'] . '</option>';
                         }
                         ?>
                     </select>
