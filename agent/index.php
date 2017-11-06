@@ -481,10 +481,11 @@ $result = $stmt->fetch();
             function deleteMeeting()
             {
                 var id = $('#id').text();
-                $.post("deleteMeeting.php", {
-                    id: id,
-                });
+                // $.post("deleteMeeting.php", {
+                //     id: id,
+                // });
                 $('#calendar').fullCalendar('removeEvents', id);
+                alert(id);
                 alert("meeting deleted");
             }
 
@@ -582,6 +583,7 @@ $result = $stmt->fetch();
                             }
                         });
                         $("#modal-primary").modal();
+                        alert(event.id);
 
                     },
 
