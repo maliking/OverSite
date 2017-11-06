@@ -746,11 +746,11 @@ $keys = array_keys($response);
                             }
                         }
 
-                        for ($i = 0; $i < sizeof($addedHouseResults); $i++) 
+                        foreach($addedHouseResults as $house) 
                         {
-                            echo '<option value=' . $addedHouseResults['listingId'] . '>' . $addedHouseResults['address'] .
-                                " " . $addedHouseResults[$keys[$i]]['city'] . " " . $addedHouseResults['state'] . ", " .
-                                $addedHouseResults['zip'] . '</option>';
+                            echo '<option value=' . $house['listingId'] . '>' . $house['address'] .
+                                " " . $house['city'] . " " . $house['state'] . ", " .
+                                $house['zip'] . '</option>';
                         }
                         ?>
                     </select>
