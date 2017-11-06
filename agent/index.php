@@ -20,7 +20,7 @@ $licenseResult = $licenseStmt->fetch();
 
 
 
-$addedHouses = "SELECT count(*) as added FROM HouseInfo WHERE userId = :userID AND status = :status";
+$addedHouses = "SELECT count(*) as added FROM HouseInfo WHERE userId = :userId AND status = :status";
 $addedHouseParam = array();
 $addedHouseParam[':userId'] = $_SESSION['userId'];
 $addedHouseParam[':status'] = "added";
