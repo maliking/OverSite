@@ -62,7 +62,7 @@ if ($code >= 200 || $code < 300) {
 // print_r($response);
 
 $keys = array_keys($response);
-$pendingListings = 0
+$pendingListings = 0;
 for($i = 0; $i < sizeof($keys); $i++) 
 {
     if($response[$keys[$i]]['listingID'] == $licenseResult['mlsId'])
