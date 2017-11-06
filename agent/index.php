@@ -466,6 +466,7 @@ $result = $stmt->fetch();
 
         </script>
         <script>
+        var calendarMeetings = $('#calendar');
             function saveMeeting() {
                 var id = $('#id').text();
                 var newNote = $('#textArea').val();
@@ -489,7 +490,7 @@ $result = $stmt->fetch();
             }
 
             $(document).ready(function() {
-                var calendarMeetings = $('#calendar').fullCalendar({
+                $('#calendar').fullCalendar({
 
                     eventSources: [{
                         url: 'getMeetings.php', // use the `url` property
