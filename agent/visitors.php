@@ -23,6 +23,14 @@ $mlsIdStmt = $dbConn->prepare($sqlMlsId);
 $mlsIdStmt->execute($namedParameters);
 $mlsIdResult = $mlsIdStmt->fetch();
 
+$addedHouses = "SELECT * FROM HouseInfo WHERE userId = :userId AND status = :status";
+$addedHouseParam = array();
+$addedHouseParam[':userId'] = $_SESSION['userId'];
+$addedHouseParam[':status'] = "added";
+
+$addedHousesStmt = $dbConn->prepare($addedHouses);
+$addedHousesStmt->execute($addedHouseParam);
+$addedHouseResults = $addedHousesStmt->fetch();
 
 function updateSort($sort)
 {
@@ -736,6 +744,13 @@ $keys = array_keys($response);
                                     " " . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . ", " .
                                     $response[$keys[$i]]['zipcode'] . '</option>';
                             }
+                        }
+
+                        for ($i = 0; $i < sizeof($addedHouseResults); $i++) 
+                        {
+                            echo '<option value=' . $addedHouseResults['listingId'] . '>' . $addedHouseResults['address'] .
+                                " " . $addedHouseResults[$keys[$i]]['city'] . " " . $addedHouseResults['state'] . ", " .
+                                $addedHouseResults['zip'] . '</option>';
                         }
                         ?>
                     </select>
