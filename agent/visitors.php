@@ -30,7 +30,9 @@ $addedHouseParam[':status'] = "added";
 
 $addedHousesStmt = $dbConn->prepare($addedHouses);
 $addedHousesStmt->execute($addedHouseParam);
-$addedHouseResults = $addedHousesStmt->fetch();
+$addedHouseResults = $addedHousesStmt->fetchAll();
+
+$houses = $addedHousesStmt->rowCount();
 
 function updateSort($sort)
 {
@@ -746,11 +748,11 @@ $keys = array_keys($response);
                             }
                         }
 
-                        foreach($addedHouseResults as $house) 
+                        for($j = 0; $j < $houses; $j++) 
                         {
-                            echo '<option value=' . $house['listingId'] . '>' . $house['address'] .
-                                " " . $house['city'] . " " . $house['state'] . ", " .
-                                $house['zip'] . '</option>';
+                            echo '<option value=' . $house[$j]['listingId'] . '>' . $house[$j]['address'] .
+                                " " . $house[$j]['city'] . " " . $house[$j]['state'] . ", " .
+                                $house[$j]['zip'] . '</option>';
                         }
                         ?>
                     </select>
