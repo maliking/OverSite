@@ -466,7 +466,6 @@ $result = $stmt->fetch();
 
         </script>
         <script>
-        var calendarMeetings = $('#calendar');
             function saveMeeting() {
                 var id = $('#id').text();
                 var newNote = $('#textArea').val();
@@ -485,7 +484,7 @@ $result = $stmt->fetch();
                 $.post("deleteMeeting.php", {
                     id: id,
                 });
-                calendarMeetings( 'removeEvents', id);
+                $('#calendar').fullCalendar('removeEvents', id);
                 alert("meeting deleted");
             }
 
