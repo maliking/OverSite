@@ -484,12 +484,12 @@ $result = $stmt->fetch();
                 $.post("deleteMeeting.php", {
                     id: id,
                 });
-
+                calendarMeetings( 'removeEvents', id);
                 alert("meeting deleted");
             }
 
             $(document).ready(function() {
-                $('#calendar').fullCalendar({
+                var calendarMeetings = $('#calendar').fullCalendar({
 
                     eventSources: [{
                         url: 'getMeetings.php', // use the `url` property
