@@ -24,25 +24,21 @@ function updateSort($sort)
 
 //sort variables; 1 will be alphabetical; 0 will be reverse alphabetical
 $agentSort = 1;
-$emailSort = 1;
-$addressSort = 1;
 $bedroomSort = 1;
 $bathroomSort = 1;
+$priceSort = 1;
 
 if (isset($_GET['agentSort'])) {
     $agentSort = $_GET['agentSort'];
-}
-if (isset($_GET['emailSort'])) {
-    $emailSort = $_GET['emailSort'];
-}
-if (isset($_GET['addressSort'])) {
-    $addressSort = $_GET['addressSort'];
 }
 if (isset($_GET['bedroomSort'])) {
     $bedroomSort = $_GET['bedroomSort'];
 }
 if (isset($_GET['bathroomSort'])) {
     $bathroomSort = $_GET['bathroomSort'];
+}
+if (isset($_GET['priceSort'])) {
+    $emailSort = $_GET['priceSort'];
 }
 
 
@@ -135,12 +131,11 @@ $keys = array_keys($response);
 
 
                                 <tr>
-                                    <th id="visitorSort"><a class="dotted" href=<?php echo "http://jjp2017.org/agent/openhouse/visitors.php?visitorSort=" . updateSort($visitorSort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Agent</a></th>
-                                    <th>Agent</th>
+                                    <th id="visitorSort"><a class="dotted" href=<?php echo "http://jjp2017.org/agent/office-inventory.php?agentSort=" . updateSort($agentSort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Agent</a></th>
                                     <th>Property</th>
-                                    <th>Bedroom</th>
-                                    <th>Bathroom</th>
-                                    <th>Price</th>
+                                    <th id="bedroomSort"><a class="dotted" href=<?php echo "http://jjp2017.org/agent/office-inventory.php?bedroomSort=" . updateSort($bedroomSort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Bedroom</a></th>
+                                    <th id="bathroomSort"><a class="dotted" href=<?php echo "http://jjp2017.org/agent/office-inventory.php?bathroomSort=" . updateSort($bathroomSort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Bathroom</a></th>
+                                    <th id="priceSort"><a class="dotted" href=<?php echo "http://jjp2017.org/agent/office-inventory.php?priceSort=" . updateSort($priceSort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Price</a></th>
                                     <th>House Images</th>
                                     <th>Map</th>
 
