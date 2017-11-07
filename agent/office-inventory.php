@@ -12,6 +12,40 @@ $dbConn = getConnection();
 // $stmt = $dbConn->prepare($sql);
 // $stmt->execute();
 // $result = $stmt->fetchAll();
+
+function updateSort($sort)
+{
+    if ($sort == 1) {
+        return 0;
+    } else {
+        return 1;
+    }
+}
+
+//sort variables; 1 will be alphabetical; 0 will be reverse alphabetical
+$agentSort = 1;
+$emailSort = 1;
+$addressSort = 1;
+$bedroomSort = 1;
+$bathroomSort = 1;
+
+if (isset($_GET['agentSort'])) {
+    $agentSort = $_GET['agentSort'];
+}
+if (isset($_GET['emailSort'])) {
+    $emailSort = $_GET['emailSort'];
+}
+if (isset($_GET['addressSort'])) {
+    $addressSort = $_GET['addressSort'];
+}
+if (isset($_GET['bedroomSort'])) {
+    $bedroomSort = $_GET['bedroomSort'];
+}
+if (isset($_GET['bathroomSort'])) {
+    $bathroomSort = $_GET['bathroomSort'];
+}
+
+
 $url = 'https://api.idxbroker.com/clients/featured';
 
 $method = 'GET';
@@ -101,6 +135,7 @@ $keys = array_keys($response);
 
 
                                 <tr>
+                                    <th id="visitorSort"><a class="dotted" href=<?php echo "http://jjp2017.org/agent/openhouse/visitors.php?visitorSort=" . updateSort($visitorSort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Agent</a></th>
                                     <th>Agent</th>
                                     <th>Property</th>
                                     <th>Bedroom</th>
