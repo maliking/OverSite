@@ -38,7 +38,7 @@ if (isset($_GET['bathroomSort'])) {
     $bathroomSort = $_GET['bathroomSort'];
 }
 if (isset($_GET['priceSort'])) {
-    $emailSort = $_GET['priceSort'];
+    $priceSort = $_GET['priceSort'];
 }
 
 
