@@ -19,7 +19,7 @@ $result = $stmt->fetch();
 
 $mail = new PHPMailer;
 $mail->setFrom($result['email'], $result['firstName'] . " " . $result['lastName']);
-$mail->addAddress($_POST['email']);
+$mail->addAddress($_POST['email'], "name");
 $mail->Subject  =  "Flyer from " . substr($_POST['flyer']), 0, -1);
 $mail->Body     = $_POST['flyerMessage'] ;
 // $mail->addAttachment("../../uploadFlyers/" . rawurlencode($_POST['flyer']) . 'jpg')
