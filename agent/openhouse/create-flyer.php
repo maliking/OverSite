@@ -157,8 +157,12 @@ $keys = array_keys($response);
                         <div class="modal-body">
 
                             <div class="form-group">
-                                <label for="recipient-name" class="form-control-label">Recipient:</label>
-                                <input type="text" class="form-control" id="recipientPhone">
+                                <label for="recipient-name" class="form-control-label">Phone Number:</label>
+                                <input type="text" class="form-control" id="recipientPhone" placeholder="Phone number">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="form-control-label">Email:</label>
+                                <input type="text" class="form-control" id="recipientEmail" placeholder="Email">
                             </div>
                             <div class="form-group">
                                 <label for="message-text" class="form-control-label">Message:</label>
@@ -834,11 +838,15 @@ $keys = array_keys($response);
     function sendTextFlyer() {
         var flyerName = $("input[name='flyerName']").val();
         var recipientPhone = $("#recipientPhone").val();
+        var recipientEmail = $("#recipientEmail").val();
         var flyerMessage = $("#flyerMessage").val();
         // alert(flyerName);
         // alert(recipientPhone);
         // alert(flyerMessage);
-        $.post("sendTextFlyer.php", {phone: recipientPhone, flyer: flyerName, flyerMessage: flyerMessage})
+        if(recipientPhone != "")
+        {
+            // alert(recipientPhone);
+            $.post("sendTextFlyer.php", {phone: recipientPhone, flyer: flyerName, flyerMessage: flyerMessage})
             .done(function (data) {
                 // alert( "Data Loaded: " );
                 $('#messageSentModal').modal('show');
@@ -848,6 +856,23 @@ $keys = array_keys($response);
                 }, 2000);
 
             });
+        }
+        if(recipientEmail != "")
+        {
+            // alert(recipientEmail);
+            $.post("sendEmailFlyer.php", {email: recipientEmail, flyer: flyerName, flyerMessage: flyerMessage})
+            .done(function (data) {
+                // alert( "Data Loaded: " );
+                $('#messageSentModal').modal('show');
+
+                setTimeout(function () {
+                    $('#messageSentModal').modal('hide');
+                }, 2000);
+
+            });
+        }
+        
+       
         $('#flyerModal').modal('hide');
 
     }
