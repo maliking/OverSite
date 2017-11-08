@@ -3,6 +3,9 @@
 // 'mediaUrl' => "http://52.11.24.75/uploadFlyers/" . rawurlencode($_POST['flyer']) . 'jpg',
 
 require '../../PHPMailer/src/PHPMailer.php'; 
+require '../../PHPMailer/src/Exception.php'; 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 $mail = new PHPMailer;
 $mail->setFrom('jodiaz@csumb.edu', 'Your Name');
