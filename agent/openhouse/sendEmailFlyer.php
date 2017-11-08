@@ -6,9 +6,9 @@ require '../../PHPMailer/src/PHPMailer.php';
 
 $mail = new PHPMailer;
 $mail->setFrom('jodiaz@csumb.edu', 'Your Name');
-$mail->addAddress($_POST['email'], 'My Friend');
+$mail->addAddress('jodiaz@csumb.edu', 'My Friend');
 $mail->Subject  =  "Flyer from house";
-$mail->Body     = $_POST['flyerMessage'] ;
+$mail->Body     = "testing";
 // $mail->addAttachment("../../uploadFlyers/" . $_POST['flyer'] . 'jpg')
 if(!$mail->send()) {
   echo 'Message was not sent.';
