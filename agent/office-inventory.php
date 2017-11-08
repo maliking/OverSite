@@ -131,7 +131,7 @@ $keys = array_keys($response);
 
 
                                 <tr>
-                                    <th id="visitorSort"><a class="dotted" href=<?php echo "www.oversite.cc/agent/office-inventory.php?agentSort=" . updateSort($agentSort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Agent</a></th>
+                                    <th id="visitorSort"><a class="dotted" href=<?php echo "http://www.oversite.cc/agent/office-inventory.php?agentSort=" . updateSort($agentSort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Agent</a></th>
                                     <th>Property</th>
                                     <th id="bedroomSort"><a class="dotted" href=<?php echo "www.oversite.cc/agent/office-inventory.php?bedroomSort=" . updateSort($bedroomSort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Bedroom</a></th>
                                     <th id="bathroomSort"><a class="dotted" href=<?php echo "www.oversite.cc/agent/office-inventory.php?bathroomSort=" . updateSort($bathroomSort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Bathroom</a></th>
