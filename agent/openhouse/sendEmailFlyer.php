@@ -9,10 +9,10 @@ use PHPMailer\PHPMailer\Exception;
 
 $mail = new PHPMailer;
 $mail->setFrom('jodiaz@csumb.edu', 'Your Name');
-$mail->addAddress('jodiaz@csumb.edu', 'My Friend');
+$mail->addAddress($_POST['email'], 'My Friend');
 $mail->Subject  =  "Flyer from house";
-$mail->Body     = "testing";
-// $mail->addAttachment("../../uploadFlyers/" . $_POST['flyer'] . 'jpg')
+$mail->Body     = $_POST['flyerMessage'] ;
+$mail->addAttachment("../../uploadFlyers/" . $_POST['flyer'] . 'jpg')
 if(!$mail->send()) {
   echo 'Message was not sent.';
   echo 'Mailer error: ' . $mail->ErrorInfo;
