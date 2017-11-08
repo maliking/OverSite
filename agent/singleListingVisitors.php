@@ -15,7 +15,7 @@ if (isset ($_GET['deleteForm'])) {  //checking whether we have clicked on the "D
 
 $addedHouses = "SELECT houseId FROM HouseInfo WHERE listingId = :listingId";
 $addedHouseParam = array();
-$addedHouseParam[':listingId'] = $_GET['id'];
+$addedHouseParam[':listingId'] = substr($_GET['id'],0,-1);
 
 $addedHousesStmt = $dbConn->prepare($addedHouses);
 $addedHousesStmt->execute($addedHouseParam);
