@@ -5,7 +5,7 @@
 require '../../PHPMailer/src/PHPMailer.php'; 
 
 $mail = new PHPMailer;
-$mail->setFrom('from@example.com', 'Your Name');
+$mail->setFrom('jodiaz@csumb.edu', 'Your Name');
 $mail->addAddress($_POST['email'], 'My Friend');
 $mail->Subject  =  "Flyer from house";
 $mail->Body     = $_POST['flyerMessage'] ;
