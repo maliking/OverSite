@@ -132,7 +132,7 @@ if($email != "")
     $mail->setFrom($result['email'], $result['firstName'] . " " . $result['lastName']);
     $mail->addAddress($_POST['email']);
     $mail->Subject  =  "Flyer from " . substr(rawurlencode($_SESSION['flyer']), 0, -4);
-    $mail->Body     = $_POST['flyerMessage'] ;
+    $mail->Body     = "Flyer from " . substr(rawurlencode($_SESSION['flyer']), 0, -4) ;
     // $mail->addAttachment("../../uploadFlyers/" . rawurlencode($_POST['flyer']) . 'jpg')
     $mail->addStringAttachment(file_get_contents("http://52.11.24.75/uploadFlyers/" . substr(rawurlencode($_SESSION['flyer']), 0, -3) . 'jpg'), substr(rawurlencode($_SESSION['flyer']), 0, -3) . 'jpg');
     if(!$mail->send()) {
