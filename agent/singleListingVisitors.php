@@ -15,7 +15,7 @@ if (isset ($_GET['deleteForm'])) {  //checking whether we have clicked on the "D
 
 $addedHouses = "SELECT houseId FROM HouseInfo WHERE listingId = :listingId";
 $addedHouseParam = array();
-$addedHouseParam[':listingId'] = substr($_GET['id'],0,-1);
+$addedHouseParam[':listingId'] = $_GET['id'];
 
 $addedHousesStmt = $dbConn->prepare($addedHouses);
 $addedHousesStmt->execute($addedHouseParam);
@@ -596,7 +596,7 @@ $keys = array_keys($response);
                     // ORDER BY ";
                                 $sql = "SELECT BuyerInfo.*, HouseInfo.address as address, HouseInfo.city as city, HouseInfo.state as state, HouseInfo.zip as zip
                                 FROM BuyerInfo LEFT JOIN HouseInfo ON BuyerInfo.houseId = HouseInfo.houseId 
-                                where BuyerInfo.userId = :userId AND HouseInfo.houseId = :houseId ORDER BY ";
+                                where BuyerInfo.userId = :userId AND BuyerInfo.houseId = :houseId ORDER BY ";
                                 if (isset($_GET['visitorSort'])) {
                                     if ($visitorSort == 1) {
                                         $sql .= "lastName ASC";
