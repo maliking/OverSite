@@ -42,10 +42,11 @@ else
     // $sqlVisitors = "SELECT firstName, lastName, email, phone FROM BuyerInfo WHERE registeredDate BETWEEN :startDate AND :endDate";
     $sqlVisitors = "SELECT BuyerInfo.*, HouseInfo.address as address, HouseInfo.city as city, HouseInfo.state as state, HouseInfo.zip as zip
                                 FROM BuyerInfo LEFT JOIN HouseInfo ON BuyerInfo.houseId = HouseInfo.houseId 
-                                where BuyerInfo.registeredDate BETWEEN :startDate AND :endDate ORDER BY address";
+                                where BuyerInfo.userId = :userId AND BuyerInfo.registeredDate BETWEEN :startDate AND :endDate ORDER BY address";
     $namedVisitors = array();
     $namedVisitors[':startDate'] = $_GET['startDate'];
     $namedVisitors[':endDate'] = $_GET['endDate'];
+    $namedParameters[':userId'] = $_SESSION['userId'];
     $stmtVisitors = $dbConnTwo->prepare($sqlVisitors);
     $stmtVisitors->execute($namedVisitors);
 }
