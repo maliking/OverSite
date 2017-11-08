@@ -7,6 +7,12 @@ require '../databaseConnection.php';
 require '../keys/cred.php';
 require '../twilio-php-master/Twilio/autoload.php';
 
+require '../../PHPMailer/src/PHPMailer.php'; 
+require '../../PHPMailer/src/Exception.php'; 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+
 use Twilio\Rest\Client;
 
 // session_start();
@@ -97,19 +103,45 @@ try {
 //$stmt->execute();
 //$result = $stmt->fetch(); //We are expecting one record
 
+if($phone != "")
+{
+    $twilio_phone_number = "+18315851661";
+    // if($houseId == "89")
+    // {
+    $client = new Client($sid, $token);
+    $client->messages->create(
+        $phone,
+        array(
+            "From" => $twilio_phone_number,
+            "Body" => "Flyer",
+            'mediaUrl' => "http://52.11.24.75/uploadFlyers/" . substr(rawurlencode($_SESSION['flyer']), 0, -3) . 'jpg',
+        )
+    );
+}
 
-$twilio_phone_number = "+18315851661";
-// if($houseId == "89")
-// {
-$client = new Client($sid, $token);
-$client->messages->create(
-    $phone,
-    array(
-        "From" => $twilio_phone_number,
-        "Body" => "Flyer",
-        'mediaUrl' => "http://52.11.24.75/uploadFlyers/" . substr(rawurlencode($_SESSION['flyer']), 0, -3) . 'jpg',
-    )
-);
+if($email != "")
+{
+    $agentEmailSql = "SELECT firstName, lastName, email FROM UsersInfo WHERE userId = :userId";
+    $stmt = $dbConn->prepare($agentEmailSql);
+    $namedParameters = array();
+    $namedParameters[':userId'] = $_SESSION['userId'];
+    $stmt->execute($namedParameters);
+    $result = $stmt->fetch();
+
+    $mail = new PHPMailer;
+    $mail->setFrom($result['email'], $result['firstName'] . " " . $result['lastName']);
+    $mail->addAddress($_POST['email']);
+    $mail->Subject  =  "Flyer from " . substr(rawurlencode($_SESSION['flyer']), 0, -4);
+    $mail->Body     = $_POST['flyerMessage'] ;
+    // $mail->addAttachment("../../uploadFlyers/" . rawurlencode($_POST['flyer']) . 'jpg')
+    $mail->addStringAttachment(file_get_contents("http://52.11.24.75/uploadFlyers/" . substr(rawurlencode($_SESSION['flyer']), 0, -3) . 'jpg'), substr(rawurlencode($_SESSION['flyer']), 0, -3) . 'jpg');
+    if(!$mail->send()) {
+      echo 'Message was not sent.';
+      echo 'Mailer error: ' . $mail->ErrorInfo;
+    } else {
+      echo 'Message has been sent.';
+    }
+}
 
 // }
 // else if($houseId == "193")
