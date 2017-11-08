@@ -46,7 +46,7 @@ else
     $namedVisitors = array();
     $namedVisitors[':startDate'] = $_GET['startDate'];
     $namedVisitors[':endDate'] = $_GET['endDate'];
-    $namedParameters[':userId'] = $_SESSION['userId'];
+    $namedParameters[':userId'] = $_SESSION[':userId'];
     $stmtVisitors = $dbConnTwo->prepare($sqlVisitors);
     $stmtVisitors->execute($namedVisitors);
 }
