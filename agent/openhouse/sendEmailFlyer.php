@@ -9,6 +9,7 @@ require '../../PHPMailer/src/Exception.php';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
+$dbConn = getConnection();
 $agentEmailSql = "SELECT firstName, lastName, email FROM UsersInfo WHERE userId = :userId";
 $stmt = $dbConn->prepare($agentEmailSql);
 $namedParameters = array();
@@ -18,7 +19,7 @@ $result = $stmt->fetch();
 
 $mail = new PHPMailer;
 $mail->setFrom($result['email'], $result['firstName'] . " " . $result['lastName']);
-$mail->addAddress($_POST['email'], 'name');
+$mail->addAddress($_POST['email']);
 $mail->Subject  =  "Flyer from " . substr($_POST['flyer']), 0, -1);
 $mail->Body     = $_POST['flyerMessage'] ;
 // $mail->addAttachment("../../uploadFlyers/" . rawurlencode($_POST['flyer']) . 'jpg')
