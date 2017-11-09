@@ -105,6 +105,26 @@ function bedroomDESC($a, $b)
     return strcmp($b["bedrooms"], $a["bedrooms"]);
 }
 
+function propertyASC($a, $b)
+{
+    return strcmp(SUBSTR(LTRIM($a["address"]), LOCATE(' ', LTRIM($a["address"]))), SUBSTR(LTRIM($b["address"]), LOCATE(' ', LTRIM($b["address"]))));
+}
+
+function propertyDESC($a, $b)
+{
+    return strcmp(SUBSTR(LTRIM($b["address"]), LOCATE(' ', LTRIM($b["address"]))), SUBSTR(LTRIM($a["address"]), LOCATE(' ', LTRIM($a["address"]))));
+}
+
+function agentASC($a, $b)
+{
+    return strcmp($a["bedrooms"], $b["bedrooms"]);
+}
+
+function agentDESC($a, $b)
+{
+    return strcmp($b["bedrooms"], $a["bedrooms"]);
+}
+
 
 if (isset($_GET['agentSort'])) {
         if ($agentSort == 1) {
