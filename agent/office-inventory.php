@@ -95,6 +95,16 @@ function bathroomDESC($a, $b)
     return strcmp($b["totalBaths"], $a["totalBaths"]);
 }
 
+function bedroomASC($a, $b)
+{
+    return strcmp($a["bedrooms"], $b["bedrooms"]);
+}
+
+function bedroomDESC($a, $b)
+{
+    return strcmp($b["bedrooms"], $a["bedrooms"]);
+}
+
 
 if (isset($_GET['agentSort'])) {
         if ($agentSort == 1) {
