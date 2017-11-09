@@ -75,12 +75,52 @@ if ($code >= 200 || $code < 300) {
     $error = $code;
 }
 
-function cmp($a, $b)
+function priceASC($a, $b)
 {
     return strcmp($a["listingPrice"], $b["listingPrice"]);
 }
 
-usort($response, "cmp");
+function priceDESC($a, $b)
+{
+    return strcmp($b["listingPrice"], $a["listingPrice"]);
+}
+
+
+if (isset($_GET['agentSort'])) {
+        if ($agentSort == 1) {
+            usort($response, "agentASC");
+        } else {
+            usort($response, "agentDESC");
+        }
+} elseif (isset($_GET['propertySort'])) {
+        if ($propertySort == 1) {
+            usort($response, "propertyASC");
+        } else {
+            usort($response, "propertyDESC");
+        }
+} elseif (isset($_GET['priceSort'])) {
+        if ($priceSort == 1) {
+            usort($response, "priceASC");
+            //$sql .= "SUBSTR(LTRIM(address), LOCATE(' ', LTRIM(address))) ASC";
+        } else {
+            usort($response, "priceDESC");
+            //$sql .= "SUBSTR(LTRIM(address), LOCATE(' ', LTRIM(address))) DESC";
+            }
+} elseif (isset($_GET['bedroomSort'])) {
+        if ($bedroomSort == 1) {
+            usort($response, "bedroomASC");
+        } else {
+            usort($response, "bedroomDESC");
+        }
+} elseif (isset($_GET['bathroomSort'])) {
+        if ($bathroomSort == 1) {
+            usort($response, "bathroomASC");
+        } else {
+            usort($response, "bathroomDESC");
+        }
+} else {
+        usort($response, "priceASC"); //CHANGE IT TO AGENT WHEN COMPLETE
+}
 
 // print_r($response);
 
