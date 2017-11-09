@@ -85,6 +85,16 @@ function priceDESC($a, $b)
     return strcmp($b["listingPrice"], $a["listingPrice"]);
 }
 
+function bathroomASC($a, $b)
+{
+    return strcmp($a["totalBaths"], $b["totalBaths"]);
+}
+
+function bathroomDESC($a, $b)
+{
+    return strcmp($b["totalBaths"], $a["totalBaths"]);
+}
+
 
 if (isset($_GET['agentSort'])) {
         if ($agentSort == 1) {
