@@ -75,6 +75,13 @@ if ($code >= 200 || $code < 300) {
     $error = $code;
 }
 
+function cmp($a, $b)
+{
+    return strcmp($a["listingPrice"], $b["listingPrice"]);
+}
+
+usort($response, "cmp");
+
 // print_r($response);
 
 $keys = array_keys($response);
