@@ -24,12 +24,16 @@ function updateSort($sort)
 
 //sort variables; 1 will be alphabetical; 0 will be reverse alphabetical
 $agentSort = 1;
+$propertySort = 1;
 $bedroomSort = 1;
 $bathroomSort = 1;
 $priceSort = 1;
 
 if (isset($_GET['agentSort'])) {
     $agentSort = $_GET['agentSort'];
+}
+if (isset($_GET['propertySort'])) {
+    $propertySort = $_GET['propertySort'];
 }
 if (isset($_GET['bedroomSort'])) {
     $bedroomSort = $_GET['bedroomSort'];
@@ -132,7 +136,7 @@ $keys = array_keys($response);
 
                                 <tr>
                                     <th id="visitorSort"><a class="dotted" href=<?php echo "http://www.oversite.cc/agent/office-inventory.php?agentSort=" . updateSort($agentSort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Agent</a></th>
-                                    <th>Property</th>
+                                    <th id="propertySort"><a class="dotted" href=<?php echo "http://www.oversite.cc/agent/office-inventory.php?propertySort=" . updateSort($propertySort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Property</a></th>
                                     <th id="bedroomSort"><a class="dotted" href=<?php echo "http://www.oversite.cc/agent/office-inventory.php?bedroomSort=" . updateSort($bedroomSort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Bedroom</a></th>
                                     <th id="bathroomSort"><a class="dotted" href=<?php echo "http://www.oversite.cc/agent/office-inventory.php?bathroomSort=" . updateSort($bathroomSort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Bathroom</a></th>
                                     <th id="priceSort"><a class="dotted" href=<?php echo "http://www.oversite.cc/agent/office-inventory.php?priceSort=" . updateSort($priceSort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Price</a></th>
