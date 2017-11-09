@@ -75,6 +75,22 @@ if ($code >= 200 || $code < 300) {
     $error = $code;
 }
 
+$keys = array_keys($response);
+for ($i = 0; $i < sizeof($keys); $i++) {
+
+                                    
+                                        $agentName = "SELECT firstName, lastName FROM UsersInfo WHERE mlsId = :mlsId";
+                                        $namedParameters = array();
+                                        $namedParameters[':mlsId'] = $response[$keys[$i]]['listingAgentID'];
+                                        $stmt = $dbConn->prepare($agentName);
+                                        $stmt->execute($namedParameters);
+                                        $name = $stmt->fetch();
+    array_push($response[$keys[$i]]['agentName'], $name['firstName'] . " " . $name['lastName']);              
+
+}
+
+
+
 function priceASC($a, $b)
 {
     return strcmp($a["listingPrice"], $b["listingPrice"]);
@@ -134,9 +150,9 @@ if (isset($_GET['agentSort'])) {
         }
 } elseif (isset($_GET['propertySort'])) {
         if ($propertySort == 1) {
-            usort($response, "propertyASC");
+            //usort($response, "propertyASC");
         } else {
-            usort($response, "propertyDESC");
+            //usort($response, "propertyDESC");
         }
 } elseif (isset($_GET['priceSort'])) {
         if ($priceSort == 1) {
