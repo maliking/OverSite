@@ -11,7 +11,7 @@ $dbConn = getConnection();
 // 		WHERE ORDER BY agentFirstName ";
 $sql = "SELECT BuyerInfo.*, UsersInfo.firstName as agentFirstName, UsersInfo.lastName as agentLastName FROM BuyerInfo 
 		LEFT JOIN UsersInfo ON UsersInfo.userId = BuyerInfo.userId 
-		WHERE BuyerInfo.priceMax <= :morePrice AND BuyerInfo.bedroomsMin >= :moreBedrooms AND BuyerInfo.bathroomsMin >= :moreBathrooms
+		WHERE BuyerInfo.priceMax <= :morePrice AND BuyerInfo.bedroomsMin <= :moreBedrooms AND BuyerInfo.bathroomsMin <= :moreBathrooms
 		ORDER BY BuyerInfo.priceMax DESC LIMIT 5";
 
 $namedParameters = array();
