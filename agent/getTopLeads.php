@@ -15,7 +15,7 @@ $sql = "SELECT BuyerInfo.*, UsersInfo.firstName as agentFirstName, UsersInfo.las
 		ORDER BY BuyerInfo.priceMax DESC LIMIT 5";
 
 $namedParameters = array();
-$namedParameters[':morePrice'] = (int)$_POST['price'] + 50000;
+$namedParameters[':morePrice'] = $_POST['price'] + 50000;
 $namedParameters[':moreBedrooms'] = $_POST['bedrooms'] ;
 $namedParameters[':moreBathrooms'] = $_POST['bathrooms'] ;
 $stmt = $dbConn->prepare($sql);
