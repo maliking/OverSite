@@ -16,8 +16,8 @@ $sql = "SELECT BuyerInfo.*, UsersInfo.firstName as agentFirstName, UsersInfo.las
 
 $namedParameters = array();
 $namedParameters[':morePrice'] = (int)$_POST['price'] + 50000;
-$namedParameters[':moreBedrooms'] = (int)$_POST['bedrooms'] ;
-$namedParameters[':moreBathrooms'] = (int)$_POST['bathrooms'] ;
+$namedParameters[':moreBedrooms'] = $_POST['bedrooms'] ;
+$namedParameters[':moreBathrooms'] = $_POST['bathrooms'] ;
 $stmt = $dbConn->prepare($sql);
 $stmt->execute($namedParameters);
 //$stmt->execute();
