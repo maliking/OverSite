@@ -309,11 +309,14 @@ $.post( "getTopLeads.php", { price: price, bedrooms: bedrooms, bathrooms: bathro
   .done(function( data ) {
     var leadData = JSON.parse(data);
     // alert(leadData );
-    $('#agentName' + i).text("Not Available");
-     $('#buyerId' + i).text("Not Available");
-     $('#price' + i).text("Not Available");
-     $('#minBed' + i).text("Not Available");
-     $('#minBath' + i).text("Not Available");
+    for(var i = 0; i < 5; i++ )
+    {
+        $('#agentName' + i).text("Not Available");
+         $('#buyerId' + i).text("Not Available");
+         $('#price' + i).text("Not Available");
+         $('#minBed' + i).text("Not Available");
+         $('#minBath' + i).text("Not Available");
+    }
     for(var i = 0; i < 5; i++ )
     {
          // $('#lead' + i).text("Agent: " + leadData[i]['agentFirstName'] + "&nbsp" + leadData[i]['agentLastName'] + "   BuyerId: " + leadData[i]['buyerID'] + "   Min-Bathrooms: " + 
