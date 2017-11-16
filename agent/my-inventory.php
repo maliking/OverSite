@@ -93,6 +93,58 @@ $addedListingsResults = $addedListings->fetchAll();
             </ol>
         </section>
         <!-- Main content -->
+
+        <!-- Modal -->
+  <div class="modal fade bd-example-modal-lg" id="matchLeads" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Top 5 Leads</h4>
+        </div>
+        <div class="modal-body">
+          1: <strong>Agent: </strong><span id="agentName0">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>BuyerID: </strong><span id="buyerId0">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Price: </strong><span id="price0">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Min-Bedroom: </strong><span id="minBed0">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Min-Bathroom: </strong><span id="minBath0">Not Available</span>
+
+</br></br>
+
+          2: <strong>Agent: </strong><span id="agentName1">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>BuyerID: </strong><span id="buyerId1">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Price: </strong><span id="price1">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Min-Bedroom: </strong><span id="minBed1">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Min-Bathroom: </strong><span id="minBath1">Not Available</span>
+</br></br>
+          3: <strong>Agent: </strong><span id="agentName2">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>BuyerID: </strong><span id="buyerId2">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Price: </strong><span id="price2">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Min-Bedroom: </strong><span id="minBed2">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Min-Bathroom: </strong><span id="minBath2">Not Available</span>
+</br></br>
+          4: <strong>Agent: </strong><span id="agentName3">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>BuyerID: </strong><span id="buyerId3">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Price: </strong><span id="price3">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Min-Bedroom: </strong><span id="minBed3">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Min-Bathroom: </strong><span id="minBath3">Not Available</span>
+</br></br>
+          5: <strong>Agent: </strong><span id="agentName4">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>BuyerID: </strong><span id="buyerId4">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Price: </strong><span id="price4">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Min-Bedroom: </strong><span id="minBed4">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Min-Bathroom: </strong><span id="minBath4">Not Available</span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
         <section class="content">
            <div class="row">
                 <div class="col-xs-12">
@@ -135,6 +187,23 @@ $addedListingsResults = $addedListings->fetchAll();
                                         echo '<a href="openhouse/create-flyer.php?id=' . $response[$keys[$i]]['listingID'] . '"><button type="button" class="btn btn-primary ">Create a New Flyer</button></a></br></br>';
                                         echo '<a href=signIn.php?id=' . $response[$keys[$i]]['listingID'] . ' target="_blank"><button type="button" class="btn btn-primary">Sign-In</button></a></br></br>';
                                         echo '<a href="singleListingVisitors.php?id=' . $response[$keys[$i]]['listingID'] . '"><button type="button" class="btn btn-primary ">Listing Visitors</button></a></br></br>';
+                                        if(!isset($response[$keys[$i]]['bedrooms']))
+                                        {
+                                            $houseBedrooms = 0;
+                                        }
+                                        else
+                                        {
+                                            $houseBedrooms = $response[$keys[$i]]['bedrooms'];
+                                        }
+                                        if(!isset($response[$keys[$i]]['totalBaths']))
+                                        {
+                                            $houseBaths = 0;
+                                        }
+                                        else
+                                        {
+                                            $houseBaths = $response[$keys[$i]]['totalBaths'];
+                                        }
+                                        echo '<button type="button" class="btn btn-primary" onClick="matchLeadsModal(' . $response[$keys[$i]]['rntLsePrice'] . "," . $houseBedrooms . "," . $houseBaths . ')">Top 5 Leads</button></br></br>';
                                         echo '<button type="button" class="btn btn-danger">Remove</button></br></br>';
                                         echo "                               </td>";
                                         echo "</tr>";
@@ -153,6 +222,7 @@ $addedListingsResults = $addedListings->fetchAll();
                                         // echo '<a href="openhouse/create-flyer.php?id=' . $response[$keys[$i]]['listingID'] . '"><button type="button" class="btn btn-primary ">Create a New Flyer</button></a></br></br>';
                                         echo '<a href=signIn.php?id=' . $addHouse['listingId'] . ' target="_blank"><button type="button" class="btn btn-primary">Sign-In</button></a></br></br>';
                                         echo '<a href="singleListingVisitors.php?id=' . $addHouse['listingId'] . '"><button type="button" class="btn btn-primary ">Listing Visitors</button></a></br></br>';
+                                        echo '<button type="button" class="btn btn-primary" onClick="matchLeadsModal(' . $addHouse['price'] . "," . $addHouse['bedrooms'] . "," . $addHouse['bathrooms'] . ')">Top 5 Leads</button></br></br>';
                                         echo '<button type="button" class="btn btn-danger">Remove</button></br></br>';
                                         echo "                               </td>";
                                         echo "</tr>";
@@ -212,6 +282,8 @@ $addedListingsResults = $addedListings->fetchAll();
 <!-- PAGE-SPECIFIC JS -->
 <!-- Footable -->
 <script src="../dist/js/vendor/footable.min.js"></script>
+
+
 <script>
     jQuery(function ($) {
         $('.table').footable({});
@@ -223,6 +295,39 @@ $addedListingsResults = $addedListings->fetchAll();
             html: true
         });
     });
+
+    function matchLeadsModal(price,bedrooms,bathrooms)
+    {
+        // $.post( "getTopLeads.php", { price: price, bedrooms: bedrooms, bathrooms: bathrooms}, function( data ) 
+        // {
+        //   // console.log( data.name ); // John
+        //   // console.log( data.time ); // 2pm
+        //   console.log("data");
+
+        // }, "json");
+$.post( "getTopLeads.php", { price: price, bedrooms: bedrooms, bathrooms: bathrooms})
+  .done(function( data ) {
+    var leadData = JSON.parse(data);
+    // alert(leadData );
+    for(var i = 0; i < 5; i++ )
+    {
+         // $('#lead' + i).text("Agent: " + leadData[i]['agentFirstName'] + "&nbsp" + leadData[i]['agentLastName'] + "   BuyerId: " + leadData[i]['buyerID'] + "   Min-Bathrooms: " + 
+         //    leadData[i]['bathroomsMin'] + "   Min-Bedrooms: " + leadData[i]['bedroomsMin'] + "   Price: " + leadData[i]['priceMax']);
+
+         $('#agentName' + i).text(leadData[i]['agentFirstName'] + " " + leadData[i]['agentLastName']);
+         $('#buyerId' + i).text(leadData[i]['buyerID']);
+         $('#price' + i).text(leadData[i]['priceMax']);
+         $('#minBed' + i).text(leadData[i]['bedroomsMin']);
+         $('#minBath' + i).text(leadData[i]['bathroomsMin']);
+
+         
+    }
+  });
+        // alert(mlsId);
+        $('#matchLeads').modal('show');
+
+
+    }
 </script>
 </body>
 
