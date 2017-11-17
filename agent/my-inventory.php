@@ -177,17 +177,7 @@ $addedListingsResults = $addedListings->fetchAll();
                                 for ($i = 0; $i < sizeof($keys); $i++) {
                                     if($response[$keys[$i]]['listingAgentID'] == $mlsIdResult['mlsId'])
                                     {
-                                        echo "<tr>";
-                                        echo "<td style=\"padding-left:10%\"><img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error' width=\"225px\" height=\"200px\"></td>";
-                                        echo "<td>";
-                                        echo $response[$keys[$i]]['address'] . "<br>" . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . ", " . $response[$keys[$i]]['zipcode'];
-                                        echo "</td>";
-                                        echo "<td>";
-
-                                        echo '<a href="openhouse/create-flyer.php?id=' . $response[$keys[$i]]['listingID'] . '"><button type="button" class="btn btn-primary ">Create a New Flyer</button></a></br></br>';
-                                        echo '<a href=signIn.php?id=' . $response[$keys[$i]]['listingID'] . ' target="_blank"><button type="button" class="btn btn-primary">Sign-In</button></a></br></br>';
-                                        echo '<a href="singleListingVisitors.php?id=' . $response[$keys[$i]]['listingID'] . '"><button type="button" class="btn btn-primary ">Listing Visitors</button></a></br></br>';
-                                        if(!isset($response[$keys[$i]]['bedrooms']))
+                                      if(!isset($response[$keys[$i]]['bedrooms']))
                                         {
                                             $houseBedrooms = 0;
                                         }
@@ -203,6 +193,23 @@ $addedListingsResults = $addedListings->fetchAll();
                                         {
                                             $houseBaths = $response[$keys[$i]]['totalBaths'];
                                         }
+                                        echo "<tr>";
+                                        echo "<td style=\"padding-left:10%\"><img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error' width=\"225px\" height=\"200px\"></td>";
+                                        echo "<td>";
+                                        echo $response[$keys[$i]]['address'] . "<br>" . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . ", " . $response[$keys[$i]]['zipcode'];
+                                        echo "<br><br>";
+                                        echo "Price: $" . number_format($response[$keys[$i]]['rntLsePrice']);
+                                        echo "<br>";
+                                        echo "Bath: " . $houseBaths;
+                                        echo "<br>";
+                                        echo "Bed: " . $houseBedrooms;
+                                        echo "</td>";
+                                        echo "<td>";
+
+                                        echo '<a href="openhouse/create-flyer.php?id=' . $response[$keys[$i]]['listingID'] . '"><button type="button" class="btn btn-primary ">Create a New Flyer</button></a></br></br>';
+                                        echo '<a href=signIn.php?id=' . $response[$keys[$i]]['listingID'] . ' target="_blank"><button type="button" class="btn btn-primary">Sign-In</button></a></br></br>';
+                                        echo '<a href="singleListingVisitors.php?id=' . $response[$keys[$i]]['listingID'] . '"><button type="button" class="btn btn-primary ">Listing Visitors</button></a></br></br>';
+                                        
                                         echo '<button type="button" class="btn btn-primary" onClick="matchLeadsModal(' . $response[$keys[$i]]['rntLsePrice'] . "," . $houseBedrooms . "," . $houseBaths . ')">Top 5 Leads</button></br></br>';
                                         echo '<button type="button" class="btn btn-danger">Remove</button></br></br>';
                                         echo "                               </td>";
