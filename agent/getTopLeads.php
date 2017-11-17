@@ -11,11 +11,12 @@ $dbConn = getConnection();
 // 		WHERE ORDER BY agentFirstName ";
 $sql = "SELECT BuyerInfo.*, UsersInfo.firstName as agentFirstName, UsersInfo.lastName as agentLastName FROM BuyerInfo 
 		LEFT JOIN UsersInfo ON UsersInfo.userId = BuyerInfo.userId 
-		WHERE BuyerInfo.priceMax <= :morePrice AND BuyerInfo.bedroomsMin <= :moreBedrooms AND BuyerInfo.bathroomsMin <= :moreBathrooms
+		WHERE BuyerInfo.priceMax BETWEEN :lessPrice AND :morePrice AND BuyerInfo.bedroomsMin <= :moreBedrooms AND BuyerInfo.bathroomsMin <= :moreBathrooms
 		ORDER BY BuyerInfo.priceMax DESC LIMIT 5";
 
 $namedParameters = array();
-$namedParameters[':morePrice'] = $_POST['price'] + 50000;
+$namedParameters[':morePrice'] = $_POST['price'] + 70000;
+$namedParameters[':morePrice'] = $_POST['price'] - 50000;
 $namedParameters[':moreBedrooms'] = $_POST['bedrooms'] ;
 $namedParameters[':moreBathrooms'] = $_POST['bathrooms'] ;
 $stmt = $dbConn->prepare($sql);

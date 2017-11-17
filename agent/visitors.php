@@ -547,6 +547,7 @@ $keys = array_keys($response);
                             <table class="table table-bordered table-striped" id="freeze" >
                                 <thead>
                                 <tr>
+                                    <th data-breakpoints="all">Lead ID</th>
                                     <th data-breakpoints="all">TimeStamp</th>
                                     <th id="visitorSort"><a class="dotted"
                                                             href=<?php echo "http://jjp2017.org/agent/openhouse/visitors.php?visitorSort=" . updateSort($visitorSort) ?> data-toggle="tooltip"
@@ -654,6 +655,7 @@ $keys = array_keys($response);
                                 foreach ($results as $result) {
                                     $dbNote = $result['note'];
                                     echo "<tbody>";
+                                    echo "<td>" . $result['buyerID'] . "</td>";
                                     if ($result['registeredDate'] == NULL)
                                         echo "<td>" . "</td>";
                                     else
