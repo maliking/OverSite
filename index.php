@@ -1,6 +1,6 @@
 <?php
 session_start();
-echo($_SESSION['userType']);
+// echo($_SESSION['userType']);
 if (!isset($_SESSION['userId']) ) {
     header("Location: login.php");
 }
