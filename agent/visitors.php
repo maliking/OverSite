@@ -154,7 +154,7 @@ $keys = array_keys($response);
             <!-- PAGE-SPECIFIC CSS -->
             
             <!-- Modal -->
-  <div class="modal fade" id="addLeadModal" role="dialog">
+  <div class="modal fade bd-example-modal-lg" id="addLeadModal" role="dialog">
     <div class="modal-dialog">
     
       <!-- Modal content-->
@@ -240,6 +240,35 @@ $keys = array_keys($response);
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-default" onClick="addLead()">Save</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+<!-- Modal -->
+  <div class="modal fade" id="visitorHouseMatchModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Houses Matched</h4>
+        </div>
+        <div class="modal-body">
+          1. <span id="house0"></span>
+          <br><br>
+          2. <span id="house1"></span>
+          <br><br>
+          3. <span id="house2"></span>
+          <br><br>
+          4. <span id="house3"></span>
+          <br><br>
+          5. <span id="house4"></span>
+        </div>
+        <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
@@ -551,7 +580,7 @@ $keys = array_keys($response);
                         </div>
 
                         <!-------------End Mock Visitor Dropdown-------->
-                        <div id="table-scroll" style="overflow: auto;">
+                        <div id="table-scroll" style="overflow: auto;" >
                         <button type="button" class="btn btn-success" style="float: right;" onClick="leadModal()">Add Lead</button>
                             <table class="table table-bordered table-striped" id="freeze" >
                                 <thead>
@@ -663,7 +692,10 @@ $keys = array_keys($response);
                                         echo "<td>" . "</td>";
                                     else
                                         echo "<td>" . date("m-d-Y", strtotime($result['registeredDate'])) . "</td>";
-                                    echo "<td>" . $result['firstName'] . " " . $result['lastName'] . "</td>";
+                                    echo "<td><span style='border-bottom: 1px dotted #000000;  text-decoration: none;' 
+                                    onClick='showHouseMatchModal(" .$result['priceMax'] . "," . $result['bedroomsMin'] . "," . $result['bathroomsMin'] . ")'>" 
+                                    . $result['firstName'] . " " . $result['lastName'] . "</span></td>";
+
                                     echo "<td>" . $result['phone'] . "</td>";
                                     echo "<td>" . htmlspecialchars($result['email']) . "</td>";
                                     if($result['address'] == "Lead")
@@ -895,6 +927,30 @@ $keys = array_keys($response);
             
        }
 
+       function showHouseMatchModal(price,bed,bath)
+       {
+        for(var i = 0; i < 5; i++ )
+        {
+            $('#house' + i).text(" ");
+        }
+        $.post( "getHouseMatch.php", {price: price, bed: bed, bath: bath})
+        .done(function( data ) {
+        var houseData = JSON.parse(data);
+        // alert(data);
+        for(var i = 0; i < 5; i++ )
+        {
+            $('#house' + i).text("Not Available");
+        }
+        for(var i = 0; i < 5; i++ )
+        {
+             $('#house' + i).text("Agent: " + houseData[i]['listingAgentID'] + " --- " + houseData[i]['address'] + ", " + houseData[i]['cityName'] + ", " + houseData[i]['state'] + ", " + houseData[i]['zipcode']);
+
+        }
+        });
+
+        $('#visitorHouseMatchModal').modal('toggle');
+
+       }
         </script>
 
 <!-- Modal -->
