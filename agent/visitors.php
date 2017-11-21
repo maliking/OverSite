@@ -559,40 +559,34 @@ $keys = array_keys($response);
                                     <th data-breakpoints="all">Lead ID</th>
                                     <th data-breakpoints="all">TimeStamp</th>
                                     <th id="visitorSort"><a class="dotted"
-                                                            href=<?php echo "http://jjp2017.org/agent/openhouse/visitors.php?visitorSort=" . updateSort($visitorSort) ?> data-toggle="tooltip"
+                                                            href=<?php echo "http://www.oversite.cc/agent/openhouse/visitors.php?visitorSort=" . updateSort($visitorSort) ?> data-toggle="tooltip"
                                                             data-placement="top" title="Approval Date">Visitors</a></th>
 
                                     <th data-breakpoints="all">Phone Number</th>
                                     <th id="emailSort" data-breakpoints="all"><a class="dotted"
-                                                                                 href=<?php echo "http://jjp2017.org/agent/openhouse/visitors.php?emailSort=" . updateSort($emailSort) ?> data-toggle="tooltip"
+                                                                                 href=<?php echo "http://www.oversite.cc/agent/openhouse/visitors.php?emailSort=" . updateSort($emailSort) ?> data-toggle="tooltip"
                                                                                  data-placement="top"
                                                                                  title="Approval Date">Email</a></th>
 
 
                                     <th id="addressSort" data-breakpoints="xs sm"><a class="dotted"
-                                                                                     href=<?php echo "http://jjp2017.org/agent/openhouse/visitors.php?addressSort=" . updateSort($addressSort) ?> data-toggle="tooltip"
+                                                                                     href=<?php echo "http://www.oversite.cc/agent/openhouse/visitors.php?addressSort=" . updateSort($addressSort) ?> data-toggle="tooltip"
                                                                                      data-placement="top"
                                                                                      title="Approval Date">Address
                                             Visited </a></th>
 
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top" title="Appraisal">Contact </a>
-                                    </th>
+                                    <th data-breakpoints="xs sm">Contact </th>
                                     <th data-breakpoints="all">Notes</th>
 
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top" title="Appraisal">Notes</a>
-                                    </th>
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top" title="Appraisal">Delete</a>
-                                    </th>
+                                    <th data-breakpoints="xs sm">Notes</th>
+                                    <th data-breakpoints="xs sm">Delete</th>
                                     <th id="bedroomSort" data-breakpoints="all"><a class="dotted"
-                                                                                   href=<?php echo "http://jjp2017.org/agent/openhouse/visitors.php?bedroomSort=" . updateSort($bedroomSort) ?> data-toggle="tooltip"
+                                                                                   href=<?php echo "http://www.oversite.cc/agent/openhouse/visitors.php?bedroomSort=" . updateSort($bedroomSort) ?> data-toggle="tooltip"
                                                                                    data-placement="top"
                                                                                    title="Approval Date">Bedroom(s)</a>
                                     </th>
                                     <th id="bathroomSort" data-breakpoints="all"><a class="dotted"
-                                                                                    href=<?php echo "http://jjp2017.org/agent/openhouse/visitors.php?bathroomSort=" . updateSort($bathroomSort) ?> data-toggle="tooltip"
+                                                                                    href=<?php echo "http://www.oversite.cc/agent/openhouse/visitors.php?bathroomSort=" . updateSort($bathroomSort) ?> data-toggle="tooltip"
                                                                                     data-placement="top"
                                                                                     title="Approval Date">Bathroom(s)</a>
                                     <th data-breakpoints="all">Price</a>
