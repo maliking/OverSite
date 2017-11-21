@@ -291,8 +291,7 @@ $keys = array_keys($response);
                             <!-- search form -->
                             <form action="#" method="get" class="sidebar-form">
                                 <div class="input-group">
-                                    <input type="text" name="q" class="form-control" placeholder="Search..."
-                                           style="background-color:white;">
+                                    <input type="text" name="q" class="form-control" placeholder="Search..." style="background-color:white;" id="searchBar" onkeyup="barSearch()">
                                     <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
@@ -929,28 +928,53 @@ $keys = array_keys($response);
 
        function showHouseMatchModal(price,bed,bath)
        {
-        for(var i = 0; i < 5; i++ )
-        {
-            $('#house' + i).text(" ");
-        }
-        $.post( "getHouseMatch.php", {price: price, bed: bed, bath: bath})
-        .done(function( data ) {
-        var houseData = JSON.parse(data);
-        // alert(data);
-        for(var i = 0; i < 5; i++ )
-        {
-            $('#house' + i).text("Not Available");
-        }
-        for(var i = 0; i < 5; i++ )
-        {
-             $('#house' + i).text("Agent: " + houseData[i]['listingAgentID'] + " --- " + houseData[i]['address'] + ", " + houseData[i]['cityName'] + ", " + houseData[i]['state'] + ", " + houseData[i]['zipcode']);
+            for(var i = 0; i < 5; i++ )
+            {
+                $('#house' + i).text(" ");
+            }
+            $.post( "getHouseMatch.php", {price: price, bed: bed, bath: bath})
+            .done(function( data ) {
+            var houseData = JSON.parse(data);
+            // alert(data);
+            for(var i = 0; i < 5; i++ )
+            {
+                $('#house' + i).text("Not Available");
+            }
+            for(var i = 0; i < 5; i++ )
+            {
+                 $('#house' + i).text("Agent: " + houseData[i]['listingAgentID'] + " --- " +
+                  houseData[i]['address'] + ", " + houseData[i]['cityName'] + ", " + houseData[i]['state'] + ", " + houseData[i]['zipcode']);
 
-        }
-        });
+            }
+            });
 
-        $('#visitorHouseMatchModal').modal('toggle');
+            $('#visitorHouseMatchModal').modal('toggle');
 
        }
+
+       function barSearch() 
+       {
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("searchBar");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("freeze");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) 
+          {
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) 
+            {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) 
+              {
+                tr[i].style.display = "";
+              } else 
+              {
+                tr[i].style.display = "none";
+              }
+            }       
+          }
+        }
+
         </script>
 
 <!-- Modal -->
