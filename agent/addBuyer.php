@@ -192,28 +192,28 @@ $houseResult = $houseStmt->fetch();
 $messageForLeadAgent = "Recent Lead, " . $firstName . " " . $lastName . ", matches with the folowing houses: \n";
 
 $match = 1;
-// for ($i = 0; $i < sizeof($keys); $i++) 
+for ($i = 0; $i < sizeof($keys); $i++) 
 // {
-//     if($priceMax >= ($response[$keys[$i]]['rntLsePrice'] - 50000) && $priceMax <= ($response[$keys[$i]]['rntLsePrice'] + 70000))
-//     {
-//         if(!isset($response[$keys[$i]]['bedrooms']))
-//         {
-//             $houseBedrooms = 0;
-//         }
-//         else
-//         {
-//             $houseBedrooms = $response[$keys[$i]]['bedrooms'];
-//         }
-//         if(!isset($response[$keys[$i]]['totalBaths']))
-//         {
-//             $houseBaths = 0;
-//         }
-//         else
-//         {
-//             $houseBaths = $response[$keys[$i]]['totalBaths'];
-//         }
-//         if($houseBaths >= $bathroomsMin && $houseBedrooms >= $bedroomsMin )
-//         {
+    if($priceMax >= ($response[$keys[$i]]['rntLsePrice'] - 50000) && $priceMax <= ($response[$keys[$i]]['rntLsePrice'] + 70000))
+    {
+        if(!isset($response[$keys[$i]]['bedrooms']))
+        {
+            $houseBedrooms = 0;
+        }
+        else
+        {
+            $houseBedrooms = $response[$keys[$i]]['bedrooms'];
+        }
+        if(!isset($response[$keys[$i]]['totalBaths']))
+        {
+            $houseBaths = 0;
+        }
+        else
+        {
+            $houseBaths = $response[$keys[$i]]['totalBaths'];
+        }
+        if($houseBaths >= $bathroomsMin && $houseBedrooms >= $bedroomsMin )
+        {
 //             $sqlMlsId = "SELECT  firstName, lastName, phone FROM UsersInfo WHERE mlsId = :mlsId";
 
 //             $namedParameters = array();
@@ -246,10 +246,10 @@ $match = 1;
 
 //             $lastBuyerId
 //             $match++;
-//         }
-//     }
+        }
+    }
 
-// }
+}
 
 // if($match > 1)
 // {
