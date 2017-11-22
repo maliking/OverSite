@@ -1,6 +1,6 @@
 <?php
-// error_reporting(E_ALL);
-// ini_set('display_errors', 'On');
+error_reporting(E_ALL);
+ini_set('display_errors', 'On');
 session_start();
 date_default_timezone_set('America/Los_Angeles');
 require '../databaseConnection.php';
@@ -15,10 +15,9 @@ use PHPMailer\PHPMailer\Exception;
 
 use Twilio\Rest\Client;
 
-//////////////////////////////////////////////////////
+
 $url = 'https://api.idxbroker.com/clients/featured';
 
-$method = 'GET';
 
 // headers (required and optional)
 $headers = array(
@@ -44,10 +43,9 @@ if ($code >= 200 || $code < 300) {
     $error = $code;
 }
 
-// print_r($response);
 
 $keys = array_keys($response);
-/////////////////////////////////////////////////////////////
+
 
 // session_start();
 $dbConn = getConnection();
