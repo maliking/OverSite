@@ -229,20 +229,20 @@ for ($i = 0; $i < sizeof($keys); $i++)
             $messageForLeadAgent .= $match . ". " . $mlsIdResult['firstName'] . " " . $mlsIdResult['lastName'] .
             " --- " . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . " \n";
 
-//             $twilio_phone_number = "+18315851661";
+            $twilio_phone_number = "+18315851661";
 //             // if($houseId == "89")
 //             // {
             
-//             // $client = new Client($sid, $token);
-//             // $client->messages->create(
-//             //     //$mlsIdResult['phone']
-//             //     "8312934153",
-//             //     array(
-//             //         "From" => $twilio_phone_number,
-//             //         "Body" => $firstName . " " . $lastName . " has a potential lead, BuyerId: " . $lastBuyerId . ", for your listing: " .
-//             //          $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'],
-//             //     )
-//             // );
+            $client = new Client($sid, $token);
+            $client->messages->create(
+                //$mlsIdResult['phone']
+                "8312934153",
+                array(
+                    "From" => $twilio_phone_number,
+                    "Body" => $firstName . " " . $lastName . " has a potential lead, BuyerId: " . $lastBuyerId . ", for your listing: " .
+                     $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'],
+                )
+            );
 
             // $lastBuyerId
             $match++;
