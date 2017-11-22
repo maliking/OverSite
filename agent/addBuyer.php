@@ -193,7 +193,7 @@ $messageForLeadAgent = "Recent Lead, " . $firstName . " " . $lastName . ", match
 
 $match = 1;
 for ($i = 0; $i < sizeof($keys); $i++) 
-// {
+{
     if($priceMax >= ($response[$keys[$i]]['rntLsePrice'] - 50000) && $priceMax <= ($response[$keys[$i]]['rntLsePrice'] + 70000))
     {
         if(!isset($response[$keys[$i]]['bedrooms']))
