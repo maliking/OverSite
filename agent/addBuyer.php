@@ -214,20 +214,20 @@ for ($i = 0; $i < sizeof($keys); $i++)
         }
         if($houseBaths >= $bathroomsMin && $houseBedrooms >= $bedroomsMin )
         {
-//             $sqlMlsId = "SELECT  firstName, lastName, phone FROM UsersInfo WHERE mlsId = :mlsId";
+            $sqlMlsId = "SELECT  firstName, lastName, phone FROM UsersInfo WHERE mlsId = :mlsId";
 
-//             $namedParameters = array();
-//             $namedParameters[':mlsId'] = $response[$keys[$i]]['listingAgentID'];
+            $namedParameters = array();
+            $namedParameters[':mlsId'] = $response[$keys[$i]]['listingAgentID'];
 
 
-//             $mlsIdStmt = $dbConn->prepare($sqlMlsId);
-//             $mlsIdStmt->execute($namedParameters);
-//             $mlsIdResult = $mlsIdStmt->fetch();
+            $mlsIdStmt = $dbConn->prepare($sqlMlsId);
+            $mlsIdStmt->execute($namedParameters);
+            $mlsIdResult = $mlsIdStmt->fetch();
 
-//             $response[$keys[$i]]['listingAgentID'] = $mlsIdResult['firstName'] . " " . $mlsIdResult['lastName'];
+            $response[$keys[$i]]['listingAgentID'] = $mlsIdResult['firstName'] . " " . $mlsIdResult['lastName'];
 
-//             $messageForLeadAgent .= $match . ". " . $mlsIdResult['firstName'] . " " . $mlsIdResult['lastName'] .
-//             " --- " . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . " \n";
+            $messageForLeadAgent .= $match . ". " . $mlsIdResult['firstName'] . " " . $mlsIdResult['lastName'] .
+            " --- " . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . " \n";
 
 //             $twilio_phone_number = "+18315851661";
 //             // if($houseId == "89")
@@ -244,8 +244,8 @@ for ($i = 0; $i < sizeof($keys); $i++)
 //             //     )
 //             // );
 
-//             $lastBuyerId
-//             $match++;
+            // $lastBuyerId
+            $match++;
         }
     }
 
