@@ -130,7 +130,7 @@ $namedParameters[':howSoon'] = $_POST['howSoon'];
 $stmt = $dbConn->prepare($sql);
 try {
     $stmt->execute($namedParameters);
-    $lastBuyerId = $stmt->fetch();
+    $lastBuyerId = $stmt->lastInsertId();
 } catch (Exception $e) {
     echo 'Caught exception: ', $e->getMessage(), "\n";
 
@@ -240,7 +240,7 @@ for ($i = 0; $i < sizeof($keys); $i++)
                 "8312934153",
                 array(
                     "From" => $twilio_phone_number,
-                    "Body" => $firstName . " " . $lastName . " has a potential lead, BuyerId: " . $lastBuyerId['buyerId'] . ", for your listing: " .
+                    "Body" => $firstName . " " . $lastName . " has a potential lead, BuyerId: " . $lastBuyerId . ", for your listing: " .
                      $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'],
                 )
             );
