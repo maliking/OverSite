@@ -251,21 +251,21 @@ for ($i = 0; $i < sizeof($keys); $i++)
 
 }
 
-// if($match > 1)
-// {
-    // $twilio_phone_number = "+18315851661";
-    // // if($houseId == "89")
-    // // {
-    // $client = new Client($sid, $token);
-    // $client->messages->create(
-    //     //$result['phone']
-    //     "8312934153",
-    //     array(
-    //         "From" => $twilio_phone_number,
-    //         "Body" => $messageForLeadAgent,
-    //     )
-    // );
-// }
+if($match > 1)
+{
+    $twilio_phone_number = "+18315851661";
+    // if($houseId == "89")
+    // {
+    $client = new Client($sid, $token);
+    $client->messages->create(
+        //$result['phone']
+        "8312934153",
+        array(
+            "From" => $twilio_phone_number,
+            "Body" => $messageForLeadAgent,
+        )
+    );
+}
 
 
 // }
