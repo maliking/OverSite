@@ -15,6 +15,40 @@ use PHPMailer\PHPMailer\Exception;
 
 use Twilio\Rest\Client;
 
+//////////////////////////////////////////////////////
+$url = 'https://api.idxbroker.com/clients/featured';
+
+$method = 'GET';
+
+// headers (required and optional)
+$headers = array(
+    'Content-Type: application/x-www-form-urlencoded', // required
+    'accesskey: e1Br0B5DcgaZ3@JXI9qib5', // required - replace with your own
+    'outputtype: json' // optional - overrides the preferences in our API control page
+);
+
+$handle = curl_init();
+curl_setopt($handle, CURLOPT_URL, $url);
+curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+
+// exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
+$response = curl_exec($handle);
+$code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+
+if ($code >= 200 || $code < 300) {
+    $response = json_decode($response, true);
+} else {
+    $error = $code;
+}
+
+// print_r($response);
+
+$keys = array_keys($response);
+/////////////////////////////////////////////////////////////
+
 // session_start();
 $dbConn = getConnection();
 $firstName = $_POST['firstName'];
@@ -96,6 +130,7 @@ $namedParameters[':howSoon'] = $_POST['howSoon'];
 $stmt = $dbConn->prepare($sql);
 try {
     $stmt->execute($namedParameters);
+    $lastBuyerId = $stmt->fetch();
 } catch (Exception $e) {
     echo 'Caught exception: ', $e->getMessage(), "\n";
 
@@ -119,14 +154,16 @@ if($phone != "")
     );
 }
 
-if($email != "")
-{
-    $agentEmailSql = "SELECT firstName, lastName, email FROM UsersInfo WHERE userId = :userId";
+    $agentEmailSql = "SELECT firstName, lastName, email, phone FROM UsersInfo WHERE userId = :userId";
     $stmt = $dbConn->prepare($agentEmailSql);
     $namedParameters = array();
     $namedParameters[':userId'] = $_SESSION['userId'];
     $stmt->execute($namedParameters);
     $result = $stmt->fetch();
+
+if($email != "")
+{
+    
 
     $mail = new PHPMailer;
     $mail->setFrom($result['email'], $result['firstName'] . " " . $result['lastName']);
@@ -142,6 +179,95 @@ if($email != "")
       echo 'Message has been sent.';
     }
 }
+
+$listingId = $_SESSION['listingId'];
+
+$houseInfo = "SELECT * FROM HouseInfo WHERE listingId = :listingId";
+$houseStmt = $dbConn->prepare($houseInfo);
+
+$houseParameters = array();
+$houseParameters[':listingId'] = $listingId;
+$houseStmt->execute($houseParameters);
+
+$houseResult = $houseStmt->fetch();
+
+$messageForLeadAgent = "Recent Lead, " . $firstName . " " . $lastName . ", matches with the folowing houses: \n";
+
+$match = 1;
+for ($i = 0; $i < sizeof($keys); $i++) 
+{
+    if($priceMax >= ($response[$keys[$i]]['rntLsePrice'] - 50000) && $priceMax <= ($response[$keys[$i]]['rntLsePrice'] + 70000))
+    {
+        if(!isset($response[$keys[$i]]['bedrooms']))
+        {
+            $houseBedrooms = 0;
+        }
+        else
+        {
+            $houseBedrooms = $response[$keys[$i]]['bedrooms'];
+        }
+        if(!isset($response[$keys[$i]]['totalBaths']))
+        {
+            $houseBaths = 0;
+        }
+        else
+        {
+            $houseBaths = $response[$keys[$i]]['totalBaths'];
+        }
+        if($houseBaths >= $bathroomsMin && $houseBedrooms >= $bedroomsMin )
+        {
+            $sqlMlsId = "SELECT  firstName, lastName, phone FROM UsersInfo WHERE mlsId = :mlsId";
+
+            $namedParameters = array();
+            $namedParameters[':mlsId'] = $response[$keys[$i]]['listingAgentID'];
+
+
+            $mlsIdStmt = $dbConn->prepare($sqlMlsId);
+            $mlsIdStmt->execute($namedParameters);
+            $mlsIdResult = $mlsIdStmt->fetch();
+
+            $response[$keys[$i]]['listingAgentID'] = $mlsIdResult['firstName'] . " " . $mlsIdResult['lastName'];
+
+            $messageForLeadAgent .= $match . ". " . $mlsIdResult['firstName'] . " " . $mlsIdResult['lastName'] .
+            " --- " . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . " \n";
+
+            $twilio_phone_number = "+18315851661";
+            // if($houseId == "89")
+            // {
+            $client = new Client($sid, $token);
+            $client->messages->create(
+                //$mlsIdResult['phone']
+                "8312934153",
+                array(
+                    "From" => $twilio_phone_number,
+                    "Body" => $firstName . " " . $lastName . " has a potential lead, BuyerId: " . $lastBuyerId . ", for your listing: " .
+                     $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'],
+                )
+            );
+
+            $lastBuyerId
+            $match++;
+        }
+    }
+
+}
+
+if($match > 1)
+{
+    $twilio_phone_number = "+18315851661";
+    // if($houseId == "89")
+    // {
+    $client = new Client($sid, $token);
+    $client->messages->create(
+        //$result['phone']
+        "8312934153",
+        array(
+            "From" => $twilio_phone_number,
+            "Body" => $messageForLeadAgent,
+        )
+    );
+}
+
 
 // }
 // else if($houseId == "193")
