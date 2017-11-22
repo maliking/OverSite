@@ -235,8 +235,7 @@ for ($i = 0; $i < sizeof($keys); $i++)
             
             $client = new Client($sid, $token);
             $client->messages->create(
-                //$mlsIdResult['phone']
-                "8312934153",
+                $mlsIdResult['phone'],
                 array(
                     "From" => $twilio_phone_number,
                     "Body" => $result['firstName'] . " " . $result['lastName'] . " has a potential lead, BuyerId: " . $lastBuyerId . ", for your listing: " .
@@ -258,8 +257,7 @@ if($match > 1)
     // {
     $client = new Client($sid, $token);
     $client->messages->create(
-        //$result['phone']
-        "8312934153",
+        $result['phone'],
         array(
             "From" => $twilio_phone_number,
             "Body" => $messageForLeadAgent,
