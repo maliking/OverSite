@@ -239,7 +239,7 @@ for ($i = 0; $i < sizeof($keys); $i++)
                 "8312934153",
                 array(
                     "From" => $twilio_phone_number,
-                    "Body" => $firstName . " " . $lastName . " has a potential lead, BuyerId: " . $lastBuyerId . ", for your listing: " .
+                    "Body" => $result['firstName'] . " " . $result['lastName'] . " has a potential lead, BuyerId: " . $lastBuyerId . ", for your listing: " .
                      $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'],
                 )
             );
