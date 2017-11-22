@@ -189,7 +189,7 @@ $houseStmt->execute($houseParameters);
 
 $houseResult = $houseStmt->fetch();
 
-$messageForLeadAgent = "Recent Lead, " . $firstName . " " . $lastName . ", matches with the folowing houses: \n";
+$messageForLeadAgent = "Recent Lead, " . $firstName . " " . $lastName . ", matches with the following houses: \n";
 
 $match = 1;
 for ($i = 0; $i < sizeof($keys); $i++) 
@@ -227,7 +227,7 @@ for ($i = 0; $i < sizeof($keys); $i++)
             $response[$keys[$i]]['listingAgentID'] = $mlsIdResult['firstName'] . " " . $mlsIdResult['lastName'];
 
             $messageForLeadAgent .= $match . ". " . $mlsIdResult['firstName'] . " " . $mlsIdResult['lastName'] .
-            " --- " . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . " \n";
+            " --- " . $response[$keys[$i]]['address'] . ", " . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['zipcode'] " \n";
 
             $twilio_phone_number = "+18315851661";
 //             // if($houseId == "89")
