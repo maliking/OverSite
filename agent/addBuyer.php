@@ -1,6 +1,6 @@
 <?php
 error_reporting(E_ALL);
-ini_set('display_startup_errors', 1);
+ini_set('display_errors', 1);
 session_start();
 date_default_timezone_set('America/Los_Angeles');
 require '../databaseConnection.php';
@@ -178,81 +178,81 @@ if($email != "")
     }
 }
 
-$listingId = $_SESSION['listingId'];
+// $listingId = $_SESSION['listingId'];
 
-$houseInfo = "SELECT * FROM HouseInfo WHERE listingId = :listingId";
-$houseStmt = $dbConn->prepare($houseInfo);
+// $houseInfo = "SELECT * FROM HouseInfo WHERE listingId = :listingId";
+// $houseStmt = $dbConn->prepare($houseInfo);
 
-$houseParameters = array();
-$houseParameters[':listingId'] = $listingId;
-$houseStmt->execute($houseParameters);
+// $houseParameters = array();
+// $houseParameters[':listingId'] = $listingId;
+// $houseStmt->execute($houseParameters);
 
-$houseResult = $houseStmt->fetch();
+// $houseResult = $houseStmt->fetch();
 
-$messageForLeadAgent = "Recent Lead, " . $firstName . " " . $lastName . ", matches with the folowing houses: \n";
+// $messageForLeadAgent = "Recent Lead, " . $firstName . " " . $lastName . ", matches with the folowing houses: \n";
 
-$match = 1;
-for ($i = 0; $i < sizeof($keys); $i++) 
-{
-    if($priceMax >= ($response[$keys[$i]]['rntLsePrice'] - 50000) && $priceMax <= ($response[$keys[$i]]['rntLsePrice'] + 70000))
-    {
-        if(!isset($response[$keys[$i]]['bedrooms']))
-        {
-            $houseBedrooms = 0;
-        }
-        else
-        {
-            $houseBedrooms = $response[$keys[$i]]['bedrooms'];
-        }
-        if(!isset($response[$keys[$i]]['totalBaths']))
-        {
-            $houseBaths = 0;
-        }
-        else
-        {
-            $houseBaths = $response[$keys[$i]]['totalBaths'];
-        }
-        if($houseBaths >= $bathroomsMin && $houseBedrooms >= $bedroomsMin )
-        {
-            $sqlMlsId = "SELECT  firstName, lastName, phone FROM UsersInfo WHERE mlsId = :mlsId";
+// $match = 1;
+// for ($i = 0; $i < sizeof($keys); $i++) 
+// {
+//     if($priceMax >= ($response[$keys[$i]]['rntLsePrice'] - 50000) && $priceMax <= ($response[$keys[$i]]['rntLsePrice'] + 70000))
+//     {
+//         if(!isset($response[$keys[$i]]['bedrooms']))
+//         {
+//             $houseBedrooms = 0;
+//         }
+//         else
+//         {
+//             $houseBedrooms = $response[$keys[$i]]['bedrooms'];
+//         }
+//         if(!isset($response[$keys[$i]]['totalBaths']))
+//         {
+//             $houseBaths = 0;
+//         }
+//         else
+//         {
+//             $houseBaths = $response[$keys[$i]]['totalBaths'];
+//         }
+//         if($houseBaths >= $bathroomsMin && $houseBedrooms >= $bedroomsMin )
+//         {
+//             $sqlMlsId = "SELECT  firstName, lastName, phone FROM UsersInfo WHERE mlsId = :mlsId";
 
-            $namedParameters = array();
-            $namedParameters[':mlsId'] = $response[$keys[$i]]['listingAgentID'];
+//             $namedParameters = array();
+//             $namedParameters[':mlsId'] = $response[$keys[$i]]['listingAgentID'];
 
 
-            $mlsIdStmt = $dbConn->prepare($sqlMlsId);
-            $mlsIdStmt->execute($namedParameters);
-            $mlsIdResult = $mlsIdStmt->fetch();
+//             $mlsIdStmt = $dbConn->prepare($sqlMlsId);
+//             $mlsIdStmt->execute($namedParameters);
+//             $mlsIdResult = $mlsIdStmt->fetch();
 
-            $response[$keys[$i]]['listingAgentID'] = $mlsIdResult['firstName'] . " " . $mlsIdResult['lastName'];
+//             $response[$keys[$i]]['listingAgentID'] = $mlsIdResult['firstName'] . " " . $mlsIdResult['lastName'];
 
-            $messageForLeadAgent .= $match . ". " . $mlsIdResult['firstName'] . " " . $mlsIdResult['lastName'] .
-            " --- " . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . " \n";
+//             $messageForLeadAgent .= $match . ". " . $mlsIdResult['firstName'] . " " . $mlsIdResult['lastName'] .
+//             " --- " . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . " \n";
 
-            $twilio_phone_number = "+18315851661";
-            // if($houseId == "89")
-            // {
+//             $twilio_phone_number = "+18315851661";
+//             // if($houseId == "89")
+//             // {
             
-            // $client = new Client($sid, $token);
-            // $client->messages->create(
-            //     //$mlsIdResult['phone']
-            //     "8312934153",
-            //     array(
-            //         "From" => $twilio_phone_number,
-            //         "Body" => $firstName . " " . $lastName . " has a potential lead, BuyerId: " . $lastBuyerId . ", for your listing: " .
-            //          $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'],
-            //     )
-            // );
+//             // $client = new Client($sid, $token);
+//             // $client->messages->create(
+//             //     //$mlsIdResult['phone']
+//             //     "8312934153",
+//             //     array(
+//             //         "From" => $twilio_phone_number,
+//             //         "Body" => $firstName . " " . $lastName . " has a potential lead, BuyerId: " . $lastBuyerId . ", for your listing: " .
+//             //          $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'],
+//             //     )
+//             // );
 
-            $lastBuyerId
-            $match++;
-        }
-    }
+//             $lastBuyerId
+//             $match++;
+//         }
+//     }
 
-}
+// }
 
-if($match > 1)
-{
+// if($match > 1)
+// {
     // $twilio_phone_number = "+18315851661";
     // // if($houseId == "89")
     // // {
@@ -265,7 +265,7 @@ if($match > 1)
     //         "Body" => $messageForLeadAgent,
     //     )
     // );
-}
+// }
 
 
 // }
