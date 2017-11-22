@@ -178,20 +178,20 @@ if($email != "")
     }
 }
 
-// $listingId = $_SESSION['listingId'];
+$listingId = $_SESSION['listingId'];
 
-// $houseInfo = "SELECT * FROM HouseInfo WHERE listingId = :listingId";
-// $houseStmt = $dbConn->prepare($houseInfo);
+$houseInfo = "SELECT * FROM HouseInfo WHERE listingId = :listingId";
+$houseStmt = $dbConn->prepare($houseInfo);
 
-// $houseParameters = array();
-// $houseParameters[':listingId'] = $listingId;
-// $houseStmt->execute($houseParameters);
+$houseParameters = array();
+$houseParameters[':listingId'] = $listingId;
+$houseStmt->execute($houseParameters);
 
-// $houseResult = $houseStmt->fetch();
+$houseResult = $houseStmt->fetch();
 
-// $messageForLeadAgent = "Recent Lead, " . $firstName . " " . $lastName . ", matches with the folowing houses: \n";
+$messageForLeadAgent = "Recent Lead, " . $firstName . " " . $lastName . ", matches with the folowing houses: \n";
 
-// $match = 1;
+$match = 1;
 // for ($i = 0; $i < sizeof($keys); $i++) 
 // {
 //     if($priceMax >= ($response[$keys[$i]]['rntLsePrice'] - 50000) && $priceMax <= ($response[$keys[$i]]['rntLsePrice'] + 70000))
