@@ -128,7 +128,7 @@ $namedParameters[':howSoon'] = $_POST['howSoon'];
 $stmt = $dbConn->prepare($sql);
 try {
     $stmt->execute($namedParameters);
-    $lastBuyerId = $stmt->lastInsertId();
+    $lastBuyerId = $dbConn->lastInsertId();
 } catch (Exception $e) {
     echo 'Caught exception: ', $e->getMessage(), "\n";
 
