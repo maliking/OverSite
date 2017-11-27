@@ -31,6 +31,8 @@
                             <span>My Inventory</span></a></li>
                     <li><a class="dropdown-text" href="office-inventory.php"><i class="fa fa-building"></i> <span>Office Inventory</span></a>
                     </li>
+                    <li><a class="dropdown-text" href="inputNewListing.php"><i class="fa fa-upload"></i> <span>Input New  Listing</span></a>
+                    </li>
                 </ul>
             </li>
             <li class="header-style treeview">
