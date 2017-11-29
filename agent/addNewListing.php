@@ -54,10 +54,36 @@ foreach ($_FILES["housePictures"]["error"] as $key => $error) {
         $tmp_name = $_FILES["housePictures"]["tmp_name"][$key];
         // basename() may prevent filesystem traversal attacks;
         // further validation/sanitation of the filename may be appropriate
+        $folder = "../addedHouses/"
+        
+
         $name = basename($_FILES["housePictures"]["name"][$key]);
-        // move_uploaded_file($tmp_name, "data/$name");
-        echo $name . "<br><br>";
+        $target = $folder . $name;
+
+        move_uploaded_file($tmp_name, $target);
+        // echo $name . "<br><br>";
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ?>
