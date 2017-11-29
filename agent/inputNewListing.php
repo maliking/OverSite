@@ -5,7 +5,7 @@ session_start();
 $dbConn = getConnection();
 
 if (!isset($_SESSION['userId'])) {
-    header("Location: http://jjp2017.org/login.php");
+    header("Location: http://www.oversite.cc/login.php");
 }
 
 ?>
@@ -15,7 +15,7 @@ if (!isset($_SESSION['userId'])) {
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Re/Max Salinas | My Inventory</title>
+        <title>Re/Max Salinas | New Listing</title>
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
         <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
@@ -30,6 +30,11 @@ if (!isset($_SESSION['userId'])) {
     height: 400px;
     overflow: auto; /* Or scroll, depending on your needs*/
     background-color: #D3D3D3;
+}
+
+img{
+    height: 200px;
+    width: 200px;
 }
         </style>
     </head>
@@ -71,7 +76,7 @@ if (!isset($_SESSION['userId'])) {
  <div class="box-body">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <form action="sendCommissionSheet.php" method="post">
+                                    <form action="addNewListing.php" method="post" enctype="multipart/form-data">
                                         <div class="container">
                                            
                                                     
@@ -164,7 +169,7 @@ if (!isset($_SESSION['userId'])) {
                                                         <div class="panel-body">
                                                             <div class="form-group col-xs-12">
                                                               
-                                    <input type="file" multiple id="gallery-photo-add">
+                                    <input type="file" name="housePictures[]" multiple id="gallery-photo-add">
                                                                 <br>
                                     <div class="gallery" id="gallery"></div>
 
