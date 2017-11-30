@@ -48,12 +48,13 @@ $sql = "INSERT INTO HouseInfo (userId, status, address, city, state, zip, bedroo
         $stmt = $dbConn->prepare($sql);
         // $stmt->execute($namedParameters);
 
-        $filename = '../addedHouses/'. $address;
+        $filename = realpath('../addedHouses/'. $address);
 
         if (!file_exists($filename)) 
         {
             mkdir("../addedHouses/" . $address, 0700);
         }
+
 
 foreach ($_FILES["housePictures"]["error"] as $key => $error) {
     if ($error == UPLOAD_ERR_OK) {
@@ -64,7 +65,7 @@ foreach ($_FILES["housePictures"]["error"] as $key => $error) {
         
 
         $name = basename($_FILES["housePictures"]["name"][$key]);
-        $target = $folder . $name;
+        $target = realpath($folder . $name);
         // echo $name;
         if (move_uploaded_file($tmp_name, $target)) {
             echo "uploaded" . "<br>";
