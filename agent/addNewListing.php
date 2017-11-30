@@ -50,7 +50,7 @@ $sql = "INSERT INTO HouseInfo (userId, status, address, city, state, zip, bedroo
 
         $filename = realpath('../addedHouses/'. $address);
 
-        if (!file_exists($filename)) 
+        if (is_dir($filename)) 
         {
             mkdir(realpath("../addedHouses/" . $address), 0700);
         }
