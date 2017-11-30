@@ -52,7 +52,7 @@ $sql = "INSERT INTO HouseInfo (userId, status, address, city, state, zip, bedroo
 
         if (!file_exists($filename)) 
         {
-            mkdir("../addedHouses/" . $address, 0700);
+            mkdir(realpath("../addedHouses/" . $address), 0700);
         }
 
 $total = count($_FILES['housePictures']['name']);
