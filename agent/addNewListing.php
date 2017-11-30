@@ -71,7 +71,7 @@ for($i=0; $i<$total; $i++)
         $target = $folder . $name;
         // echo $name;
   
-    if(move_uploaded_file($tmpFilePath, $newFilePath)) 
+    if(move_uploaded_file($$tmp_name, $target)) 
     {
 
       //Handle other code here
