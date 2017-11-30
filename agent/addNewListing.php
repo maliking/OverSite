@@ -48,11 +48,11 @@ $sql = "INSERT INTO HouseInfo (userId, status, address, city, state, zip, bedroo
         $stmt = $dbConn->prepare($sql);
         // $stmt->execute($namedParameters);
 
-        $filename = realpath('../addedHouses/'. $address);
+        $filename = '../addedHouses/'. $address;
 
         // if (is_dir($filename)) 
         // {
-            mkdir("../addedHouses/hello", 0700);
+            mkdir($filename, 0700);
         // }
 
 $total = count($_FILES['housePictures']['name']);
@@ -68,7 +68,7 @@ for($i=0; $i<$total; $i++)
         
 
         $name = basename($_FILES["housePictures"]["name"][$i]);
-        $target = realpath($folder . $name);
+        $target = $folder . $name;
         // echo $name;
   
     if(move_uploaded_file($tmpFilePath, $newFilePath)) 
