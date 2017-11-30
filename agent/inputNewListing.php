@@ -169,7 +169,7 @@ img{
                                                         <div class="panel-body">
                                                             <div class="form-group col-xs-12">
                                                               
-                                    <input type="file" name="housePictures[]" multiple id="gallery-photo-add">
+                                    <input type="file" name="housePictures[]" multiple id="gallery-photo-add" enctype="multipart/form-data">
                                                                 <br>
                                     <div class="gallery" id="gallery"></div>
 

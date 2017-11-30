@@ -65,7 +65,7 @@ foreach ($_FILES["housePictures"]["error"] as $key => $error) {
 
         $name = basename($_FILES["housePictures"]["name"][$key]);
         $target = $folder . $name;
-        echo $name;
+        // echo $name;
         if (move_uploaded_file($tmp_name, $target)) {
             echo "uploaded" . "<br>";
         }
