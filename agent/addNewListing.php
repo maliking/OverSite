@@ -46,7 +46,7 @@ $sql = "INSERT INTO HouseInfo (userId, status, address, city, state, zip, bedroo
         $squareFeet = intval($squareFeet);
         $namedParameters[":sqft"] = $squareFeet;
         $stmt = $dbConn->prepare($sql);
-        // $stmt->execute($namedParameters);
+        $stmt->execute($namedParameters);
 
         $filename = '../addedHouses/'. $address;
 
