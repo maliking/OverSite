@@ -46,15 +46,21 @@ $sql = "INSERT INTO HouseInfo (userId, status, address, city, state, zip, bedroo
         $squareFeet = intval($squareFeet);
         $namedParameters[":sqft"] = $squareFeet;
         $stmt = $dbConn->prepare($sql);
-        $stmt->execute($namedParameters);
+        // $stmt->execute($namedParameters);
 
+        $filename = '../addedHouses/'. $address;
+
+        if (!file_exists($filename)) 
+        {
+            mkdir("../addedHouses/" . $address, 0700);
+        }
 
 foreach ($_FILES["housePictures"]["error"] as $key => $error) {
     if ($error == UPLOAD_ERR_OK) {
         $tmp_name = $_FILES["housePictures"]["tmp_name"][$key];
         // basename() may prevent filesystem traversal attacks;
         // further validation/sanitation of the filename may be appropriate
-        $folder = "../addedHouses/"
+        $folder = "../addedHouses/" . $address . "/";
         
 
         $name = basename($_FILES["housePictures"]["name"][$key]);
@@ -64,6 +70,8 @@ foreach ($_FILES["housePictures"]["error"] as $key => $error) {
         // echo $name . "<br><br>";
     }
 }
+
+echo "finished";
 
 
 
