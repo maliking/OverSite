@@ -84,6 +84,8 @@ for($i=0; $i<$total; $i++)
   
 }
 
+header('Location: http://www.oversite.cc/agent/my-inventory.php');
+
 // foreach ($_FILES["housePictures"]["error"] as $key => $error) {
 //     if ($error == UPLOAD_ERR_OK) {
 //         $tmp_name = $_FILES["housePictures"]["tmp_name"][$key];
