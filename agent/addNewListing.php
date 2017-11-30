@@ -55,24 +55,52 @@ $sql = "INSERT INTO HouseInfo (userId, status, address, city, state, zip, bedroo
             mkdir("../addedHouses/" . $address, 0700);
         }
 
+$total = count($_FILES['housePictures']['name']);
 
-foreach ($_FILES["housePictures"]["error"] as $key => $error) {
-    if ($error == UPLOAD_ERR_OK) {
-        $tmp_name = $_FILES["housePictures"]["tmp_name"][$key];
+
+for($i=0; $i<$total; $i++) 
+{
+
+            $tmp_name = $_FILES["housePictures"]["tmp_name"][$i];
         // basename() may prevent filesystem traversal attacks;
         // further validation/sanitation of the filename may be appropriate
         $folder = "../addedHouses/" . $address . "/";
         
 
-        $name = basename($_FILES["housePictures"]["name"][$key]);
+        $name = basename($_FILES["housePictures"]["name"][$i]);
         $target = realpath($folder . $name);
         // echo $name;
-        if (move_uploaded_file($tmp_name, $target)) {
-            echo "uploaded" . "<br>";
-        }
-        // echo $name . "<br><br>";
+  
+    if(move_uploaded_file($tmpFilePath, $newFilePath)) 
+    {
+
+      //Handle other code here
+
+        echo "uploaded" . "<br>";
     }
+    else{
+        echo "failed <br><br>";
+    }
+  
 }
+
+// foreach ($_FILES["housePictures"]["error"] as $key => $error) {
+//     if ($error == UPLOAD_ERR_OK) {
+//         $tmp_name = $_FILES["housePictures"]["tmp_name"][$key];
+//         // basename() may prevent filesystem traversal attacks;
+//         // further validation/sanitation of the filename may be appropriate
+//         $folder = "../addedHouses/" . $address . "/";
+        
+
+//         $name = basename($_FILES["housePictures"]["name"][$key]);
+//         $target = realpath($folder . $name);
+//         // echo $name;
+//         if (move_uploaded_file($tmp_name, $target)) {
+//             echo "uploaded" . "<br>";
+//         }
+//         // echo $name . "<br><br>";
+//     }
+// }
 
 echo "finished";
 
