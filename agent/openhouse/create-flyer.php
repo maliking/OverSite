@@ -387,7 +387,7 @@ else
                                 }
                                 else
                                 {
-                                    $directory = "../addedHouses/" . $result['address'] . "/";
+                                    $directory = "http://www.oversite.cc/addedHouses/" . $result['address'] . "/";
                                     $files = scandir($directory);
 
                                     $imageCount = count($files);
