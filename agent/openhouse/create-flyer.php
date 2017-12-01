@@ -401,7 +401,7 @@ else
 
                                         echo '<label class="item col-md-4 col-sm-4 col-xs-6">
                                             <input class="js-switch" type="checkbox" name="imageURL" value="' . $website . '"/> 
-                                            <img src="' . $directory . $files[$i] . '" style="width:100%; height:100%" >
+                                            <img src="' . $website . '" style="width:100%; height:100%" >
                                         </label>';
                                     }
 
