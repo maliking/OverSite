@@ -390,7 +390,7 @@ else
                                     }
                                 else
                                 {
-                                    $directory = "http://www.oversite.cc/addedHouses/" . $address . "/";
+                                    $directory = "../addedHouses/" . $address . "/";
                                     $files = scandir ($directory);
 
                                     $imageCount = count($files);
