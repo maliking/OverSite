@@ -371,20 +371,23 @@ else
                                     <?php
                                     if($listingId[0] == 'M')
                                     {
-                                    for ($i = 0; $i < sizeof($keys); $i++) {
+                                        for ($i = 0; $i < sizeof($keys); $i++) 
+                                        {
 
-                                        if ($response[$keys[$i]]['listingID'] == $listingId) {
-                                            $index = $i;
-                                            for ($j = 0; $j < (int)$response[$keys[$i]]['image']['totalCount']; $j++) {
-                                                echo '<label class="item col-md-4 col-sm-4 col-xs-6">
-                                                                <input class="js-switch" type="checkbox" name="imageURL" value="' . $response[$keys[$i]]['image'][$j]['url'] . '"/> 
-                                                                <img src="' . $response[$keys[$i]]['image'][$j]['url'] . '" style="width:100%; height:100%" >
-                                                            </label>';
+                                            if ($response[$keys[$i]]['listingID'] == $listingId) 
+                                            {
+                                                $index = $i;
+                                                for ($j = 0; $j < (int)$response[$keys[$i]]['image']['totalCount']; $j++) 
+                                                {
+                                                    echo '<label class="item col-md-4 col-sm-4 col-xs-6">
+                                                                    <input class="js-switch" type="checkbox" name="imageURL" value="' . $response[$keys[$i]]['image'][$j]['url'] . '"/> 
+                                                                    <img src="' . $response[$keys[$i]]['image'][$j]['url'] . '" style="width:100%; height:100%" >
+                                                                </label>';
+                                                }
+                                                break;
                                             }
-                                            break;
                                         }
                                     }
-                                }
                                 else
                                 {
                                     $directory = "http://www.oversite.cc/addedHouses/" . $result['address'] . "/";
@@ -394,8 +397,8 @@ else
                                     for($i = 2; $i < $imageCount; $i++)
                                     {
                                         echo '<label class="item col-md-4 col-sm-4 col-xs-6">
-                                            <input class="js-switch" type="checkbox" name="imageURL" value="' . $directory . $files[$i] . '"/> 
-                                            <img src="' . $directory . $files[$i] . '" style="width:100%; height:100%" >
+                                            <input class="js-switch" type="checkbox" name="imageURL" value="' . $directory . $files[2] . '"/> 
+                                            <img src="' . $directory . $files[2] . '" style="width:100%; height:100%" >
                                         </label>';
                                     }
 
