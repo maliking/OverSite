@@ -56,7 +56,7 @@ try {
 
     $pdf->SetTextColor(255, 255, 255);
 // Image(string file [, float x [, float y [, float w [, float h [, string type [, mixed link]]]]]])
-    $pdf->Image($_POST['imageOne'], 9, 49, 160, 85, 'JPEG');
+    $pdf->Image($_POST['imageOne'], 9, 49, 160, 85);
 
     if (($_POST['lotSize'] == "") && ($_POST['age'] != "")) {
         $pdf->Image('redLeftArrow.png', 158, 49, 50, 20, 'PNG');
@@ -108,12 +108,12 @@ try {
     }
 
 
-    $pdf->Image($_POST['imageTwo'], 9, 134, 55, 34, 'JPEG');
+    $pdf->Image($_POST['imageTwo'], 9, 134, 55, 34);
 
-    $pdf->Image($_POST['imageThree'], 64, 134, 54, 34, 'JPEG');
+    $pdf->Image($_POST['imageThree'], 64, 134, 54, 34 );
 
-    $pdf->Image($_POST['imageFour'], 9, 168, 55, 34, 'JPEG');
-    $pdf->Image($_POST['imageFive'], 64, 168, 54, 34, 'JPEG');
+    $pdf->Image($_POST['imageFour'], 9, 168, 55, 34 );
+    $pdf->Image($_POST['imageFive'], 64, 168, 54, 34);
 
     $pdf->SetXY(120, 137);
     $pdf->SetFont('Times');
