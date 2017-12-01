@@ -390,6 +390,7 @@ else
                                     }
                                 else
                                 {
+                                    $website = "http://www.oversite.cc/addedHouses/" . $address . "/";
                                     $directory = "../../addedHouses/" . $address . "/";
                                     $files = scandir ($directory);
 
@@ -397,7 +398,7 @@ else
                                     for($i = 2; $i < $imageCount; $i++)
                                     {
                                         echo '<label class="item col-md-4 col-sm-4 col-xs-6">
-                                            <input class="js-switch" type="checkbox" name="imageURL" value="' . $directory . $files[$i] . '"/> 
+                                            <input class="js-switch" type="checkbox" name="imageURL" value="' . $website . $files[$i] . '"/> 
                                             <img src="' . $directory . $files[$i] . '" style="width:100%; height:100%" >
                                         </label>';
                                     }
