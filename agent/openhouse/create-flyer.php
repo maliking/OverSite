@@ -8,49 +8,103 @@ clearstatcache();
 $listingId = $_GET['id'];
 
 require '../../databaseConnection.php';
-
 $dbConn = getConnection();
-$sql = "SELECT * FROM  HouseInfo WHERE listingId = :listingId";
-$stmt = $dbConn->prepare($sql);
-$namedParameters = array();
-$namedParameters[':listingId'] = $listingId;
-$stmt->execute($namedParameters);
-$result = $stmt->fetch();
+if($listingId[0] == 'M')
+{
+
+    $sql = "SELECT * FROM  HouseInfo WHERE listingId = :listingId";
+    $stmt = $dbConn->prepare($sql);
+    $namedParameters = array();
+    $namedParameters[':listingId'] = $listingId;
+    $stmt->execute($namedParameters);
+    $result = $stmt->fetch();
 
 
-$url = 'https://api.idxbroker.com/clients/featured';
+    $url = 'https://api.idxbroker.com/clients/featured';
 
-$method = 'GET';
+    $method = 'GET';
 
-// headers (required and optional)
-$headers = array(
-    'Content-Type: application/x-www-form-urlencoded', // required
-    'accesskey: e1Br0B5DcgaZ3@JXI9qib5', // required - replace with your own
-    'outputtype: json' // optional - overrides the preferences in our API control page
-);
+    // headers (required and optional)
+    $headers = array(
+        'Content-Type: application/x-www-form-urlencoded', // required
+        'accesskey: e1Br0B5DcgaZ3@JXI9qib5', // required - replace with your own
+        'outputtype: json' // optional - overrides the preferences in our API control page
+    );
 
-// set up cURL
-$handle = curl_init();
-curl_setopt($handle, CURLOPT_URL, $url);
-curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
-curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+    // set up cURL
+    $handle = curl_init();
+    curl_setopt($handle, CURLOPT_URL, $url);
+    curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
 
-// exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
-$response = curl_exec($handle);
-$code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+    // exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
+    $response = curl_exec($handle);
+    $code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
 
-if ($code >= 200 || $code < 300) {
-    $response = json_decode($response, true);
-} else {
-    $error = $code;
+    if ($code >= 200 || $code < 300) {
+        $response = json_decode($response, true);
+    } else {
+        $error = $code;
+    }
+
+    // print_r($response);
+
+    $keys = array_keys($response);
+    for ($i = 0; $i < sizeof($keys); $i++) 
+    {
+        if ($response[$keys[$i]]['listingID'] == $listingId) 
+        {
+            $index = $i;
+            break;
+        }
+    }
+    $bedrooms = $response[$keys[$index]]['bedrooms'];
+    $bathrooms = $response[$keys[$index]]['fullBaths'];
+    $sqFt = $response[$keys[$index]]['sqFt'];
+
+    if (((float)$response[$keys[$index]]['acres']) < 1)
+        $acres =  (float)$response[$keys[$index]]['acres'] * 43560;
+    else
+        $acres =  (float)$response[$keys[$index]]['acres'];
+
+    
+    $address = $response[$keys[$index]]['address'];
+    $city = $response[$keys[$index]]['cityName'];
+    $state = $response[$keys[$index]]['state'];
+    $zip = $response[$keys[$index]]['zipcode'];
+    $price = $response[$keys[$index]]['listingPrice'];
+    $remarks = $response[$keys[$index]]['remarksConcat'];
 }
+else
+{
+    $sql = "SELECT * FROM  HouseInfo WHERE houseId = :houseId";
+    $stmt = $dbConn->prepare($sql);
+    $namedParameters = array();
+    $namedParameters[':houseId'] = $listingId;
+    $stmt->execute($namedParameters);
+    $result = $stmt->fetch();
 
-// print_r($response);
-
-$keys = array_keys($response);
-
+    $bedrooms = $result['bedrooms'];
+    $bathrooms = $result['bathrooms'];
+    $sqFt = $result['sqft'];
+    if($sqFt >= 43560)
+    {
+        $acres = $sqFt/43560;    
+    }
+    else
+    {
+        $acres = $sqFt;
+    }
+    
+    $address = $result['address'];
+    $city = $result['city'];
+    $state = $result['state'];
+    $zip = $result['zip'];
+    $price = $result['price'];
+    $remarks = " ";
+}
 ?>
 
 
@@ -315,6 +369,8 @@ $keys = array_keys($response);
                                 <div class="row" id="imageSerialize">
 
                                     <?php
+                                    if($listingId[0] == 'M')
+                                    {
                                     for ($i = 0; $i < sizeof($keys); $i++) {
 
                                         if ($response[$keys[$i]]['listingID'] == $listingId) {
@@ -328,6 +384,22 @@ $keys = array_keys($response);
                                             break;
                                         }
                                     }
+                                }
+                                else
+                                {
+                                    $directory = "../addedHouses/" . $result['address'] . "/";
+                                    $files = scandir($directory);
+
+                                    $imageCount = count($files);
+                                    for($i = 2; $i < $imageCount; $i++)
+                                    {
+                                        echo '<label class="item col-md-4 col-sm-4 col-xs-6">
+                                            <input class="js-switch" type="checkbox" name="imageURL" value="' . $directory . $files[$i] . '"/> 
+                                            <img src="' . $directory . $files[$i] . '" style="width:100%; height:100%" >
+                                        </label>';
+                                    }
+
+                                }
                                     ?>
                                 </div>
 
@@ -339,24 +411,18 @@ $keys = array_keys($response);
                                 <div class="form-group">
 
                                     <input checked type="hidden" name="bedrooms"
-                                           value=<?php echo $response[$keys[$index]]['bedrooms'] ?>/>
+                                           value=<?php echo $bedrooms; ?>/>
 
                                     <input checked type="hidden" name="bathrooms"
-                                           value=<?php echo $response[$keys[$index]]['fullBaths'] ?>/>
+                                           value=<?php echo $bathrooms; ?>/>
 
                                     <input type="hidden" name="sqft"
-                                           value=<?php echo $response[$keys[$index]]['sqFt'] ?>/>
+                                           value=<?php echo $sqFt; ?>/>
 
                                     <label>
                                         <input type="checkbox" class="js-switch" name="lotSize" id="lotSize"
-                                               value=<?php if (((float)$response[$keys[$index]]['acres']) < 1)
-                                            echo (float)$response[$keys[$index]]['acres'] * 43560;
-                                        else
-                                            echo (float)$response[$keys[$index]]['acres']; ?>/>
-                                        <?php if (((float)$response[$keys[$index]]['acres']) < 1)
-                                            echo (float)$response[$keys[$index]]['acres'] * 43560;
-                                        else
-                                            echo (float)$response[$keys[$index]]['acres']; ?>sqFt Lot Size
+                                               value=<?php echo $acres; ?>/>
+                                        <?php echo $acres; ?>sqFt Lot Size
                                     </label>
                                     </br>
                                     </br>
@@ -388,13 +454,13 @@ $keys = array_keys($response);
 
                 </div>
 
-                <?php echo '<input type="hidden" name="address" value="' . $response[$keys[$index]]['address'] . '" />'; ?>
-                <input type="hidden" name="city" value=<?php echo $response[$keys[$index]]['cityName']; ?>/>
-                <input type="hidden" name="state" value=<?php echo $response[$keys[$index]]['state']; ?>/>
-                <input type="hidden" name="zip" value=<?php echo $response[$keys[$index]]['zipcode']; ?>/>
-                <input type="hidden" name="price" value=<?php echo $response[$keys[$index]]['listingPrice']; ?>/>
+                <?php echo '<input type="hidden" name="address" value="' . $address . '" />'; ?>
+                <input type="hidden" name="city" value=<?php echo $city; ?>/>
+                <input type="hidden" name="state" value=<?php echo $state; ?>/>
+                <input type="hidden" name="zip" value=<?php echo $zip; ?>/>
+                <input type="hidden" name="price" value=<?php echo $price; ?>/>
                 <input type="hidden" name="mlsId" value=<?php echo $listingId; ?>/>
-                <?php echo '<input type="hidden" name="description" value="' . $response[$keys[$index]]['remarksConcat'] . '" />'; ?>
+                <?php echo '<input type="hidden" name="description" value="' . $remarks . '" />'; ?>
 
 
                 <div class="col-md-6 col-sm-6 col-xs-12">
