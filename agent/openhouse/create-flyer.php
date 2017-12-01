@@ -394,13 +394,13 @@ else
                                     $files = scandir ($directory);
 
                                     $imageCount = count($files);
-                                    for($i = 2; $i <= $imageCount; $i++)
-                                    {
+                                    // for($i = 2; $i <= $imageCount; $i++)
+                                    // {
                                         echo '<label class="item col-md-4 col-sm-4 col-xs-6">
                                             <input class="js-switch" type="checkbox" name="imageURL" value="' . $directory . $files[2] . '"/> 
                                             <img src="' . $directory . $files[2] . '" style="width:100%; height:100%" >
                                         </label>';
-                                    }
+                                    // }
 
                                 }
                                     ?>
