@@ -397,7 +397,7 @@ else
                                     $imageCount = count($files);
                                     for($i = 2; $i < $imageCount; $i++)
                                     {
-                                        $website = "http://www.oversite.cc/addedHouses/" . rawurlencode($address) . "/" . $files[$i];
+                                        $website = "http://www.oversite.cc/addedHouses/" . rawurlencode($address) . "/" . rawurlencode($files[$i]);
 
                                         echo '<label class="item col-md-4 col-sm-4 col-xs-6">
                                             <input class="js-switch" type="checkbox" name="imageURL" value="' . $website . '"/> 
