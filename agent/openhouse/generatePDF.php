@@ -60,7 +60,7 @@ try {
     if($mlsId[0] == 'M')
         $pdf->Image($_POST['imageOne'], 9, 49, 160, 85, 'JPG');
     else
-        $pdf->Image($_POST['imageOne'], 9, 49, 160, 85, strtoupper(substr($_POST['imageOne'], -3)));
+        $pdf->Image(substr($_POST['imageOne'],0,-3), 9, 49, 160, 85, strtoupper(substr($_POST['imageOne'], -3)));
 
     if (($_POST['lotSize'] == "") && ($_POST['age'] != "")) {
         $pdf->Image('redLeftArrow.png', 158, 49, 50, 20, 'PNG');
@@ -122,12 +122,12 @@ if($mlsId[0] == 'M')
 }
 else
 {
-    $pdf->Image($_POST['imageTwo'], 9, 134, 55, 34, strtoupper(substr($_POST['imageTwo'], -3)));
+    $pdf->Image(substr($_POST['imageTwo'],0,-3), 9, 134, 55, 34, strtoupper(substr($_POST['imageTwo'], -3)));
 
-    $pdf->Image($_POST['imageThree'], 64, 134, 54, 34, strtoupper(substr($_POST['imageThree'], -3)));
+    $pdf->Image(substr($_POST['imageThree'],0,-3), 64, 134, 54, 34, strtoupper(substr($_POST['imageThree'], -3)));
 
-    $pdf->Image($_POST['imageFour'], 9, 168, 55, 34, strtoupper(substr($_POST['imageFour'], -3)));
-    $pdf->Image($_POST['imageFive'], 64, 168, 54, 34, strtoupper(substr($_POST['imageFive'], -3)));   
+    $pdf->Image(substr($_POST['imageFour'],0,-3), 9, 168, 55, 34, strtoupper(substr($_POST['imageFour'], -3)));
+    $pdf->Image(substr($_POST['imageFive'],0,-3), 64, 168, 54, 34, strtoupper(substr($_POST['imageFive'], -3)));   
 }
     $pdf->SetXY(120, 137);
     $pdf->SetFont('Times');
