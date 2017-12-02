@@ -229,7 +229,7 @@ $addedListingsResults = $addedListings->fetchAll();
                                         echo "<td>";
 
                                         echo '<a href="openhouse/create-flyer.php?id=' . $addHouse['houseId'] . '"><button type="button" class="btn btn-primary ">Create a New Flyer</button></a></br></br>';
-                                        echo '<a href=signIn.php?id=' . $addHouse['listingId'] . ' target="_blank"><button type="button" class="btn btn-primary">Sign-In</button></a></br></br>';
+                                        echo '<a href=signIn.php?id=' . $addHouse['houseId'] . ' target="_blank"><button type="button" class="btn btn-primary">Sign-In</button></a></br></br>';
                                         echo '<a href="singleListingVisitors.php?id=' . $addHouse['listingId'] . '"><button type="button" class="btn btn-primary ">Listing Visitors</button></a></br></br>';
                                         echo '<button type="button" class="btn btn-primary" onClick="matchLeadsModal(' . $addHouse['price'] . "," . $addHouse['bedrooms'] . "," . $addHouse['bathrooms'] . ')">Top 5 Leads</button></br></br>';
                                         echo '<button type="button" class="btn btn-danger">Remove</button></br></br>';
