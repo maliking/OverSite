@@ -56,7 +56,8 @@ try {
 
     $pdf->SetTextColor(255, 255, 255);
 // Image(string file [, float x [, float y [, float w [, float h [, string type [, mixed link]]]]]])
-    if($_POST['mlsId'][0] == 'M')
+    $mlsId = $_POST['mlsId'];
+    if($mlsId[0] == 'M')
         $pdf->Image($_POST['imageOne'], 9, 49, 160, 85, 'JPG');
     else
         $pdf->Image($_POST['imageOne'], 9, 49, 160, 85, strtoupper(substr($_POST['imageOne'], -3)));
@@ -110,7 +111,7 @@ try {
         $pdf->Text(170, 126, substr($_POST['sqft'], 0, -1) . " SqFt");
     }
 
-if($_POST['mlsId'][0] == 'M')
+if($mlsId[0] == 'M')
 {
     $pdf->Image($_POST['imageTwo'], 9, 134, 55, 34, 'JPG');
 
