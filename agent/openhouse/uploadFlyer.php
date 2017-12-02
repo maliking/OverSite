@@ -18,7 +18,10 @@ if (isset($_FILES)) {
         if (move_uploaded_file($_FILES['file']['tmp_name'], $targetfolder)) {
             // echo "The file ". basename( $_FILES['file']['name']). " is uploaded";
             echo basename($_FILES['file']['name']);
-            $sql = "UPDATE HouseInfo SET flyer = :flyer WHERE listingId = :listingId";
+            if($_POST['mlsId'][0] == 'M')
+                $sql = "UPDATE HouseInfo SET flyer = :flyer WHERE listingId = :listingId";
+            else
+                $sql = "UPDATE HouseInfo SET flyer = :flyer WHERE houseId = :listingId";
 
             $namedParameters = array();
             $namedParameters[":flyer"] = substr(basename($_FILES['file']['name']), 0, -3) . 'jpg';
