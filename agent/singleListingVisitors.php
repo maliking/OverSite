@@ -13,7 +13,10 @@ if (isset ($_GET['deleteForm'])) {  //checking whether we have clicked on the "D
     $stmt->execute();
 }
 
-$addedHouses = "SELECT houseId FROM HouseInfo WHERE listingId = :listingId";
+if($_GET['id'][0] == 'M')
+    $addedHouses = "SELECT houseId FROM HouseInfo WHERE listingId = :listingId";
+else
+    $addedHouses = "SELECT houseId FROM HouseInfo WHERE houseId = :listingId";
 $addedHouseParam = array();
 $addedHouseParam[':listingId'] = $_GET['id'];
 
