@@ -102,7 +102,7 @@
                                                          alt="User Image"> <span class="hidden-xs">Agent</span> </a>
                     <ul class="dropdown-menu">
                         <!-- User image in the menu -->
-                        <li class="user-header"><img src=<?php echo "\"../". $agentInfo['picture'] . "\""; ?>  class="img-circle"
+                        <li class="user-header"><img src=<?php echo "\"". $agentInfo['picture'] . "\""; ?>  class="img-circle"
                                                      alt="User Image">
                             <p> Agent
                                 <small>Member since Nov. 2012</small>
