@@ -31,7 +31,7 @@ $agentInfo = $email->fetch();
                                     <!-- Start message -->
                                     <a href="#">
                                         <div class="pull-left">
-                                            <!-- User Image --><img src="../dist/img/user2-160x160.jpg"
+                                            <!-- User Image --><img src=<?php echo "\"www.oversite.cc/agent.openhouse/". $agentInfo['picture'] . "\""; ?>
                                                                     class="img-circle" alt="User Image"></div>
                                         <!-- Message title and timestamp -->
                                         <h4>
