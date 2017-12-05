@@ -23,7 +23,7 @@
                                     <!-- Start message -->
                                     <a href="#">
                                         <div class="pull-left">
-                                            <!-- User Image --><img src="../../dist/img/user2-160x160.jpg"
+                                            <!-- User Image --><img src=<?php echo "\"../". $agentInfo['picture'] . "\""; ?> 
                                                                     class="img-circle" alt="User Image"></div>
                                         <!-- Message title and timestamp -->
                                         <h4>
@@ -102,7 +102,7 @@
                                                          alt="User Image"> <span class="hidden-xs">Agent</span> </a>
                     <ul class="dropdown-menu">
                         <!-- User image in the menu -->
-                        <li class="user-header"><img src="../../dist/img/user2-160x160.jpg" class="img-circle"
+                        <li class="user-header"><img src=<?php echo "\"../". $agentInfo['picture'] . "\""; ?>  class="img-circle"
                                                      alt="User Image">
                             <p> Agent
                                 <small>Member since Nov. 2012</small>
