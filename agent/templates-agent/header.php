@@ -106,7 +106,7 @@ $agentInfo = $email->fetch();
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <!-- User image in navbar--><img src=<?php echo "../". $agentInfo['picture']; ?> class="user-image"
+                        <!-- User image in navbar--><img src=<?php echo "\"../". $agentInfo['picture'] . "\""; ?> class="user-image"
                                                          alt="User Image"> <span class="hidden-xs"><?php echo $agentInfo['firstName'] . " " . $agentInfo['lastName'] . " #" . $agentInfo['license'];?></span> </a>
                     <ul class="dropdown-menu">
                         <!-- User image in the menu -->
