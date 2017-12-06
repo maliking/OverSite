@@ -164,7 +164,7 @@ $keys = array_keys($response);
           <h4 class="modal-title">Add Lead</h4>
         </div>
         <div class="modal-body">
-
+<form action="addLead.php" method="POST">
           <input type="text" name="firstName" class="form-control has-feedback-left" id="inputSuccess2"
                        placeholder="First Name">
                 <span class="form-control-feedback left" aria-hidden="true"></span>
@@ -189,7 +189,7 @@ $keys = array_keys($response);
                 </br>
                 <label>Price</label>
                 <select id="" name="price" class="form-control" required>
-                    <option value="0">--Select One--</option>
+                    <option value="">--Select One--</option>
                     <option value="100000">$100,000</option>
                     <option value="150000">$150,000</option>
                     <option value="200000">$200,000</option>
@@ -215,7 +215,7 @@ $keys = array_keys($response);
 
                  <label>Min Bedrooms</label>
                 <select id="" name="bedroomsMin" class="form-control" required>
-                    <option value="0">--Select One--</option>
+                    <option value="">--Select One--</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -226,7 +226,7 @@ $keys = array_keys($response);
                 </br>
                 <label>Min Bathrooms</label>
                 <select id="" name="bathroomsMin" class="form-control" required>
-                    <option value="0">--Select One--</option>
+                    <option value="">--Select One--</option>
                     <option value="1">1</option>
                     <option value="1.5">1.5</option>
                     <option value="2">2</option>
@@ -237,10 +237,12 @@ $keys = array_keys($response);
                     <option value="4.5">4.5</option>
                 </select>
 
+                <button type="submit" class="btn btn-default" >Save</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</form>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-default" onClick="addLead()">Save</button>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            
         </div>
       </div>
       

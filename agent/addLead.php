@@ -38,6 +38,7 @@ $namedParameters[':howSoon'] = $_POST['howSoon'];
 $stmt = $dbConn->prepare($sql);
 try {
     $stmt->execute($namedParameters);
+    header('Location: visitors.php');
 } catch (Exception $e) {
     echo 'Caught exception: ', $e->getMessage(), "\n";
 
