@@ -148,7 +148,7 @@ $_SESSION['flyer'] = $result['flyer'];
                 </br>
                 <label>Price</label>
                 <select id="" name="price" class="form-control" required>
-                    <option value="0">--Select One--</option>
+                    <option value="">--Select One--</option>
                     <option value="100000">$100,000</option>
                     <option value="150000">$150,000</option>
                     <option value="200000">$200,000</option>
@@ -180,7 +180,7 @@ $_SESSION['flyer'] = $result['flyer'];
             <div class="col-md-4 col-sm-4 col-xs-12 col-md-offset-4">
                 <label>Bedrooms</label>
                 <select id="" name="bedroomsMin" class="form-control" required>
-                    <option value="0">--Select One--</option>
+                    <option value="">--Select One--</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -191,7 +191,7 @@ $_SESSION['flyer'] = $result['flyer'];
                 </br>
                 <label>Bathrooms</label>
                 <select id="" name="bathroomsMin" class="form-control" required>
-                    <option value="0">--Select One--</option>
+                    <option value="">--Select One--</option>
                     <option value="1">1</option>
                     <option value="1.5">1.5</option>
                     <option value="2">2</option>
