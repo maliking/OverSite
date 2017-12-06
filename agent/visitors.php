@@ -236,14 +236,12 @@ $keys = array_keys($response);
                     <option value="4">4</option>
                     <option value="4.5">4.5</option>
                 </select>
-
+            </br></br>
                 <button type="submit" class="btn btn-default" >Save</button>
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 </form>
         </div>
-        <div class="modal-footer">
-            
-        </div>
+       
       </div>
       
     </div>
