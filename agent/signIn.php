@@ -12,7 +12,7 @@ if (!isset($_SESSION['userId'])) {
 // $houseId = $_GET['houseId'];
 if (isset($_GET['id']))
     $_SESSION['listingId'] = $_GET['id'];
-if($listingId[0] == 'M')
+if($_SESSION['listingId'][0] == 'M')
 {
     $sql = "SELECT houseId, address, flyer FROM HouseInfo WHERE listingId = :listingId";
 }
