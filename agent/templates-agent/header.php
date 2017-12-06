@@ -31,7 +31,10 @@ $agentInfo = $email->fetch();
                                     <!-- Start message -->
                                     <a href="#">
                                         <div class="pull-left">
-                                            <!-- User Image --><img src="../dist/img/user2-160x160.jpg"
+                                            <!-- User Image --><img src=<?php if(isset($agentInfo['picture']))
+                                                                    echo "\"openhouse/". $agentInfo['picture'] . "\""; 
+                                                                else
+                                                                    echo "\"../dist/img/user2-160x160.jpg\""; ?>
                                                                     class="img-circle" alt="User Image"></div>
                                         <!-- Message title and timestamp -->
                                         <h4>
@@ -106,11 +109,17 @@ $agentInfo = $email->fetch();
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <!-- User image in navbar--><img src=<?php echo "\"../". $agentInfo['picture'] . "\""; ?> class="user-image"
+                        <!-- User image in navbar--><img src=<?php if(isset($agentInfo['picture']))
+                                                                    echo "\"openhouse/". $agentInfo['picture'] . "\""; 
+                                                                else
+                                                                    echo "\"../dist/img/user2-160x160.jpg\""; ?> class="user-image"
                                                          alt="User Image"> <span class="hidden-xs"><?php echo $agentInfo['firstName'] . " " . $agentInfo['lastName'] . " #" . $agentInfo['license'];?></span> </a>
                     <ul class="dropdown-menu">
                         <!-- User image in the menu -->
-                        <li class="user-header"><img src="../dist/img/user2-160x160.jpg" class="img-circle"
+                        <li class="user-header"><img src=<?php if(isset($agentInfo['picture']))
+                                                                    echo "\"openhouse/". $agentInfo['picture'] . "\""; 
+                                                                else
+                                                                    echo "\"../dist/img/user2-160x160.jpg\""; ?> class="img-circle"
                                                      alt="User Image">
                             <p> Agent
                                 <small>Member since Nov. 2012</small>
