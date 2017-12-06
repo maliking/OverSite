@@ -178,7 +178,7 @@ $_SESSION['flyer'] = $result['flyer'];
         <div class="row" style="margin-top: 20px;">
 
             <div class="col-md-4 col-sm-4 col-xs-12 col-md-offset-4">
-                <label>Min Bedrooms</label>
+                <label>Bedrooms</label>
                 <select id="" name="bedroomsMin" class="form-control" required>
                     <option value="0">--Select One--</option>
                     <option value="1">1</option>
@@ -189,7 +189,7 @@ $_SESSION['flyer'] = $result['flyer'];
 
                 </select>
                 </br>
-                <label>Min Bathrooms</label>
+                <label>Bathrooms</label>
                 <select id="" name="bathroomsMin" class="form-control" required>
                     <option value="0">--Select One--</option>
                     <option value="1">1</option>
