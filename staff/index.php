@@ -62,7 +62,7 @@ $dbConn = getConnection();
             </h1>
             <ol class="breadcrumb">
                 <li>Overview</li>
-                <li class="active"><a href="#"><i class="fa fa-dashboard"></i> Admin Dashboard</a></li>
+                <li class="active"><a href="#"><i class="fa fa-dashboard"></i> Staff Dashboard</a></li>
             </ol>
         </section>
 
