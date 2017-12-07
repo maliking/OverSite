@@ -8,7 +8,9 @@ if (!isset($_SESSION['userId']) ) {
 if($_SESSION['userType'] == "1"){
     header("Location: agent/index.php");
 }
-
+if($_SESSION['userType'] == "2"){
+    header("Location: staff/index.php");
+}
 require 'databaseConnection.php';
 
 $dbConn = getConnection();
