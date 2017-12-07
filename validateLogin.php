@@ -30,6 +30,8 @@ if (empty($result)) {
         header("Location: index.php");
     } else if ($result['userType'] == 1) {
         header("Location: IDXGetFeatured.php");
+    } else if($result['userType'] == 2) {
+        header("Location: staff/index.php");
     }
 
 }
