@@ -6,6 +6,10 @@
         <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
             <span class="sr-only">Toggle navigation</span>
         </a>
+
+        <!-- Temporary button for easy switching -->
+        <a href="../index.php" style="margin-top: 8px; margin-left: 10px" class="btn btn-primary">Switch to Admin</a>
+
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
@@ -99,12 +103,12 @@
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- User image in navbar--><img src="../dist/img/user2-160x160.jpg" class="user-image"
-                                                         alt="User Image"> <span class="hidden-xs">Agent</span> </a>
+                                                         alt="User Image"> <span class="hidden-xs"><?=$_SESSION['username'];?></span> </a>
                     <ul class="dropdown-menu">
                         <!-- User image in the menu -->
                         <li class="user-header"><img src="../dist/img/user2-160x160.jpg" class="img-circle"
                                                      alt="User Image">
-                            <p> Agent
+                            <p> <?=$_SESSION['username'];?>
                                 <small>Member since Nov. 2012</small>
                             </p>
                         </li>
