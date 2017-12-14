@@ -50,7 +50,7 @@ $parameters[':notes'] = "";
 $stmt = $dbConn->prepare($insertSql);
 $stmt->execute($parameters);
 
-$insertSql = "INSERT INTO transactions (houseId, address, transType, clientName, clientNum, accDay, emdDays,
+$buyerSql = "INSERT INTO transactions (houseId, address, transType, clientName, clientNum, accDay, emdDays,
 						 sellerDiscDays, buyerDiscDays, genInspecDays, termiteInspecDays, septicInspecDays, waterInspecDays, 
 						 appraisalDays, appraisalOrdered, appraisalComp, lcDays, coeDays, notes) 
 VALUES (:houseId, :address, :transType, :clientName, :clientNum, :accDay, :emdDays, :sellerDiscDays, :buyerDiscDays, :genInspecDays, :termiteInspecDays, 
@@ -78,7 +78,7 @@ $parameters[':lcDays'] = "21";
 $parameters[':coeDays'] = "30";
 $parameters[':notes'] = "";
 
-$stmt = $dbConn->prepare($insertSql);
-$stmt->execute($parameters);
+$buyerstmt = $dbConn->prepare($buyerSql);
+$buyerstmt->execute($parameters);
 
 ?>
