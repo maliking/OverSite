@@ -463,14 +463,15 @@ for($i = 0; $i < sizeof($keys); $i++)
                             <table class="table table-bordered table-striped" >
                                 <thead>
                                 <tr>
-                                    <th>Agent</th>
+                                    <th>Type</th>
+                                    <th>Client</th>
                                     <th>Property</th>
                                     
-                                    <th data-breakpoints="all">Agent Number</th>
-                                    <th data-breakpoints="all">Agent Email</th>
+                                    <th data-breakpoints="all">Client Number</th>
+                                    <th data-breakpoints="all">Client Email</th>
                                     <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                     data-placement="top"
-                                                                    title="Approval Date">Aprv. </a></th>
+                                                                    title="Accepted Date">Acc. </a></th>
                                     <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                     data-placement="top" title="Earnest Money Deposit">EMD </a>
                                     </th>
@@ -498,6 +499,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                 <tbody>
                                 <tr>
 
+                                    <td>L/B</td>
                                     <td>Test Agent Name</td>
                                     <td>Test Address</td>
                                     <td>Test Phone number</td>
