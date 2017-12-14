@@ -40,6 +40,13 @@ $stmt = $dbConn->prepare($sql);
 $stmt->execute($parameters);
 $result = $stmt->fetch();
 
+$sqlTransactions = "SELECT * FROM transactions WHERE userId = :userId";
+$transParameters = array();
+$transParameters[':userId'] = $_SESSION['userId'];
+$transStmt = $dbConn->prepare($sqlTransactions);
+$transStmt->execute($transParameters);
+$transResults = $transStmt->fetchAll();
+
 // $sqlRank = "SELECT UsersInfo.firstName, UsersInfo.lastName, count(*) as sold, sum(finalComm) as YTDComm FROM UsersInfo LEFT JOIN commInfo on UsersInfo.license = commInfo.license group by UsersInfo.license order by sold Desc ";
 // $stmtRank = $dbConnRank->prepare($sqlRank);
 // $stmtRank->execute();
@@ -476,7 +483,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                                     data-placement="top" title="Earnest Money Deposit">EMD </a>
                                     </th>
                                     <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top" title="Disclosures">Disc. </a>
+                                                                    data-placement="top" title="Disclosures">Seller Disc. </a>
                                     </th>
 
                                     <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
@@ -497,25 +504,30 @@ for($i = 0; $i < sizeof($keys); $i++)
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
+                                    <?php
 
-                                    <td>L/B</td>
-                                    <td>Test Agent Name</td>
-                                    <td>Test Address</td>
-                                    <td>Test Phone number</td>
+                                    foreach ($transResults as $trans) {
+                                        # code...
+                                        $day = $trans['accDay'];
+                                    
+                                        echo '<td>' . $trans['transType']  . '</td>
+                                    <td>' . $trans['clientName'] . '</td>
+                                    <td>' . $trans['address'] . '</td>
+                                    <td>' . $trans['clientNum'] . '</td>
                                     <td>Test Email</td>
 
-                                    <td>3/1/17
+                                    <td>' . date('m/d/y', strtotime($day)) . '
                                         <br>
                                         <span class="label label-success">Done! <i
                                                     class="fa fa-check-circle-o"></i></span>
                                     </td>
-                                    <td>3/1/17
+                                    <td>' . date('m/d/y', strtotime($day . ' + '. $trans['emdDays'] . ' days' )) . '
                                         <br>
                                         <span class="label label-success">Done! <i
                                                     class="fa fa-check-circle-o"></i></span>
                                     </td>
-                                    <td>3/1/17 <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
+                                    <td>' . date('m/d/y', strtotime($day . ' + '. $trans['sellerDiscDays'] . ' days' )) . '
+                                    <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
                                                   data-toggle="popover" data-Oplacement="right"
                                                   data-content="<b>Completed:</b> 3/4/17"><i
                                                     class="fa fa-chevron-circle-right"></i></a>
@@ -523,7 +535,8 @@ for($i = 0; $i < sizeof($keys); $i++)
                                         <span class="label label-danger">Overdue</span>
                                     </td>
 
-                                    <td>3/1/17 <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
+                                    <td>' . date('m/d/y', strtotime($day . ' + '. $trans['genInspecDays'] . ' days' )) . '
+                                     <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
                                                   data-toggle="popover" data-Oplacement="right"
                                                   data-content="<b>Completed:</b> 3/4/17"><i
                                                     class="fa fa-chevron-circle-right"></i></a>
@@ -531,7 +544,8 @@ for($i = 0; $i < sizeof($keys); $i++)
                                         <span class="label label-warning">Due in 8d</span>
                                     </td>
 
-                                    <td>3/1/17 <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
+                                    <td>' . date('m/d/y', strtotime($day . ' + '. $trans['appraisalDays'] . ' days' )) . '
+                                     <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
                                                   data-toggle="popover" data-Oplacement="right"
                                                   data-content="<b>Completed:</b> 3/4/17"><i
                                                     class="fa fa-chevron-circle-right"></i></a>
@@ -539,16 +553,21 @@ for($i = 0; $i < sizeof($keys); $i++)
                                         <span class="label label-warning">Due in 8d</span>
                                     </td>
 
-                                    <td>3/1/17
+                                    <td>' . date('m/d/y', strtotime($day . ' + '. $trans['lcDays'] . ' days' )) . '
                                         <br>
                                         <span class="label label-default">Incomplete</span>
                                     </td>
-                                    <td>3/1/17
+                                    <td>' . date('m/d/y', strtotime($day . ' + '. $trans['coeDays'] . ' days' )) . '
                                         <br>
                                         <span class="label label-default">Incomplete</span>
                                     </td>
                                     <td>Write some notes here!</td>
-                                </tr>
+                                </tr>';
+                            }
+                                    ?>
+                                <tr>
+
+                                    
                                 </tbody>
                             </table>
                         </div>
