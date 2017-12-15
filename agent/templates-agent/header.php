@@ -113,10 +113,6 @@ $agentInfo = $email->fetch();
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-<<<<<<< HEAD
-                        <!-- User image in navbar--><img src="../dist/img/user2-160x160.jpg" class="user-image"
-                                                         alt="User Image"> <span class="hidden-xs"><?=$_SESSION['username'];?></span> </a>
-=======
                         <!-- User image in navbar--><img src=<?php if(isset($agentInfo['picture']))
                                                                     echo "\"openhouse/". $agentInfo['picture'] . "\""; 
                                                                 else
