@@ -1,9 +1,12 @@
 <?php
-
 $currAgent = "SELECT * FROM UsersInfo WHERE userId = '" . $_SESSION['userId'] . "'";
 $email = $dbConn->prepare($currAgent);
 $email->execute();
 $agentInfo = $email->fetch();
+
+
+$activePage = basename($_SERVER['PHP_SELF'], ".php");
+
 ?>
 <!-- Main Header -->
 <header class="main-header">
