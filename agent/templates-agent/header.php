@@ -16,7 +16,7 @@ $agentInfo = $email->fetch();
         </a>
 
         <!-- Temporary button for easy switching -->
-        <a href="../index.php" style="margin-top: 8px; margin-left: 10px" class="btn btn-primary">Switch to Admin</a>
+        <a href="../../index.php" style="margin-top: 8px; margin-left: 10px" class="btn btn-primary">Switch to Admin</a>
 
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
