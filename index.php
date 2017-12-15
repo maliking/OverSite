@@ -92,8 +92,6 @@ $rank = $stmtRank->fetchAll();
                         <div class="icon">
                             <i class="fa fa-flash"></i>
                         </div>
-                        <a href="#" class="small-box-footer"><i class="fa fa-chevron-up "></i> <span class="text-lime">2%</span>
-                            than last year</a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -107,8 +105,6 @@ $rank = $stmtRank->fetchAll();
                         <div class="icon">
                             <i class="fa fa-clock-o"></i>
                         </div>
-                        <a href="#" class="small-box-footer"><i class="fa fa-chevron-up "></i> <span class="text-lime">5%</span>
-                            than last year</a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -122,8 +118,6 @@ $rank = $stmtRank->fetchAll();
                         <div class="icon">
                             <i class="fa fa-tag"></i>
                         </div>
-                        <a href="#" class="small-box-footer"><i class="fa fa-chevron-up "></i> <span class="text-lime">8%</span>
-                            than last year</a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -139,8 +133,6 @@ $rank = $stmtRank->fetchAll();
                         <div class="icon">
                             <i class="fa fa-money"></i>
                         </div>
-                        <a href="#" class="small-box-footer"><i class="fa fa-chevron-down "></i> <span class="text-red">3%</span>
-                            than last year</a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -157,8 +149,6 @@ $rank = $stmtRank->fetchAll();
                         <div class="icon">
                             <i class="fa fa-percent"></i>
                         </div>
-                        <a href="#" class="small-box-footer"><i class="fa fa-chevron-down "></i> <span class="text-red">1%</span>
-                            than last year</a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -175,8 +165,6 @@ $rank = $stmtRank->fetchAll();
                         <div class="icon">
                             <i class="fa fa-bank"></i>
                         </div>
-                        <a href="#" class="small-box-footer"><i class="fa fa-chevron-up "></i> <span class="text-lime">11%</span>
-                            than last year</a>
                     </div>
                 </div>
             </div>
