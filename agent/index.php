@@ -161,12 +161,12 @@ for($i = 0; $i < sizeof($keys); $i++)
                             <div class="small-box bg-blue">
                                 <div class="inner">
                                     <h3>
-                                        <?php echo number_format($result['avgPercent'], 2); ?><sup style="font-size: 20px">%</sup></h3>
+                                        <sup style="font-size: 20px">$</sup></h3>0
 
-                                    <p>Avg. Commission </p>
+                                    <p>Listing Commission</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fa fa-percent"></i>
+                                    <i class="fa fa-dollar"></i>
                                 </div>
                                 <a href="#" class="small-box-footer"><i class="fa fa-chevron-up "></i> <span class="text-lime">5%</span>
                             than last year</a>
@@ -178,11 +178,11 @@ for($i = 0; $i < sizeof($keys); $i++)
                             <!-- small box -->
                             <div class="small-box bg-yellow">
                                 <div class="inner">
-                                    <h3><?php echo $pendingListings; ?></h3>
-                                    <p>Pending Listings</p>
+                                    <h3><?php echo number_format($result['avgPercent'], 2); ?><sup style="font-size: 20px">%</sup></h3></h3>
+                                    <p>Listing Commission</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fa fa-clock-o"></i>
+                                    <i class="fa fa-percent"></i>
                                 </div>
                                 <a href="#" class="small-box-footer"><i class="fa fa-chevron-up "></i> <span class="text-lime">5%</span>
                             than last year</a>
@@ -194,12 +194,12 @@ for($i = 0; $i < sizeof($keys); $i++)
                             <div class="small-box bg-green">
                                 <div class="inner">
                                     <h3>
-                                        <?php echo $result['sold']; ?>
+                                        <sup style="font-size: 20px">$</sup></h3>0
                                     </h3>
-                                    <p>Sold Listings</p>
+                                    <p>Buyer Commission</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fa fa-tag"></i>
+                                    <i class="fa fa-dollar"></i>
                                 </div>
                                 <a href="#" class="small-box-footer"><i class="fa fa-chevron-up "></i> <span class="text-lime">8%</span>
                             than last year</a>
@@ -213,10 +213,10 @@ for($i = 0; $i < sizeof($keys); $i++)
                                     <h3><sup style="font-size: 20px">$</sup>
                                         <?php echo number_format($result['average'], 0); ?>
                                     </h3>
-                                    <p>Avg. Commission</p>
+                                    <p>Buyer Commission</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fa fa-money"></i>
+                                    <i class="fa fa-percent"></i>
                                 </div>
                                 <a href="#" class="small-box-footer"><i class="fa fa-chevron-down "></i> <span class="text-red">3%</span>
                             than last year</a>
@@ -229,10 +229,10 @@ for($i = 0; $i < sizeof($keys); $i++)
                                 <div class="inner">
                                     <h3>
                                         <?php echo number_format($result['avgPercent'], 0); ?><sup style="font-size: 20px">%</sup></h3>
-                                    <p>Avg. Commission </p>
+                                    <p>Active Listings</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fa fa-percent"></i>
+                                    <i class="fa fa-flash"></i>
                                 </div>
                                 <a href="#" class="small-box-footer"><i class="fa fa-chevron-down "></i> <span class="text-red">1%</span>
                             than last year</a>
