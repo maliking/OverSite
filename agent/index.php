@@ -161,8 +161,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                             <div class="small-box bg-blue">
                                 <div class="inner">
                                     <h3>
-                                        <sup style="font-size: 20px">$</sup></h3>0
-
+                                        <sup style="font-size: 20px">$</sup>0</h3>
                                     <p>Listing Commission</p>
                                 </div>
                                 <div class="icon">
@@ -194,7 +193,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                             <div class="small-box bg-green">
                                 <div class="inner">
                                     <h3>
-                                        <sup style="font-size: 20px">$</sup></h3>0
+                                        <sup style="font-size: 20px">$</sup>0</h3>
                                     </h3>
                                     <p>Buyer Commission</p>
                                 </div>
