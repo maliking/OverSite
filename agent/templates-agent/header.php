@@ -1,3 +1,11 @@
+<?php
+
+$currAgent = "SELECT * FROM UsersInfo WHERE userId = '" . $_SESSION['userId'] . "'";
+$email = $dbConn->prepare($currAgent);
+$email->execute();
+$agentInfo = $email->fetch();
+?>
+
 <!-- Main Header -->
 <header class="main-header">
     <!-- Header Navbar -->
@@ -27,7 +35,10 @@
                                     <!-- Start message -->
                                     <a href="#">
                                         <div class="pull-left">
-                                            <!-- User Image --><img src="../dist/img/user2-160x160.jpg"
+                                            <!-- User Image --><img src=<?php if(isset($agentInfo['picture']))
+                                                                    echo "\"openhouse/". $agentInfo['picture'] . "\""; 
+                                                                else
+                                                                    echo "\"../dist/img/user2-160x160.jpg\""; ?>
                                                                     class="img-circle" alt="User Image"></div>
                                         <!-- Message title and timestamp -->
                                         <h4>
@@ -102,11 +113,22 @@
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+<<<<<<< HEAD
                         <!-- User image in navbar--><img src="../dist/img/user2-160x160.jpg" class="user-image"
                                                          alt="User Image"> <span class="hidden-xs"><?=$_SESSION['username'];?></span> </a>
+=======
+                        <!-- User image in navbar--><img src=<?php if(isset($agentInfo['picture']))
+                                                                    echo "\"openhouse/". $agentInfo['picture'] . "\""; 
+                                                                else
+                                                                    echo "\"../dist/img/user2-160x160.jpg\""; ?> class="user-image"
+                                                         alt="User Image"> <span class="hidden-xs"><?php echo $agentInfo['firstName'] . " " . $agentInfo['lastName'] . " #" . $agentInfo['license'];?></span> </a>
+>>>>>>> 13a1407ea03e401803f0341437070d5847ff3b0f
                     <ul class="dropdown-menu">
                         <!-- User image in the menu -->
-                        <li class="user-header"><img src="../dist/img/user2-160x160.jpg" class="img-circle"
+                        <li class="user-header"><img src=<?php if(isset($agentInfo['picture']))
+                                                                    echo "\"openhouse/". $agentInfo['picture'] . "\""; 
+                                                                else
+                                                                    echo "\"../dist/img/user2-160x160.jpg\""; ?> class="img-circle"
                                                      alt="User Image">
                             <p> <?=$_SESSION['username'];?>
                                 <small>Member since Nov. 2012</small>

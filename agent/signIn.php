@@ -12,9 +12,14 @@ if (!isset($_SESSION['userId'])) {
 // $houseId = $_GET['houseId'];
 if (isset($_GET['id']))
     $_SESSION['listingId'] = $_GET['id'];
-
-$sql = "SELECT houseId, address, flyer FROM HouseInfo WHERE listingId = :listingId";
-
+if($_SESSION['listingId'][0] == 'M')
+{
+    $sql = "SELECT houseId, address, flyer FROM HouseInfo WHERE listingId = :listingId";
+}
+else
+{
+    $sql = "SELECT houseId, address, flyer FROM HouseInfo WHERE houseId = :listingId";
+}
 $namedParameters = array();
 // $namedParameters[':listingId'] = $_GET['id'];
 
@@ -139,6 +144,32 @@ $_SESSION['flyer'] = $result['flyer'];
                     <option value="7-12">7-12 months</option>
                     <option value="Visit">Just visiting</option>
                 </select>
+
+                </br>
+                <label>Price</label>
+                <select id="" name="price" class="form-control" required>
+                    <option value="">--Select One--</option>
+                    <option value="100000">$100,000</option>
+                    <option value="150000">$150,000</option>
+                    <option value="200000">$200,000</option>
+                    <option value="250000">$250,000</option>
+                    <option value="300000">$300,000</option>
+                    <option value="350000">$350,000</option>
+                    <option value="400000">$400,000</option>
+                    <option value="450000">$450,000</option>
+                    <option value="500000">$500,000</option>
+                    <option value="550000">$550,000</option>
+                    <option value="600000">$600,000</option>
+                    <option value="650000">$650,000</option>
+                    <option value="700000">$700,000</option>
+                    <option value="750000">$750,000</option>
+                    <option value="800000">$800,000</option>
+                    <option value="850000">$850,000</option>
+                    <option value="900000">$900,000</option>
+                    <option value="950000">$950,000</option>
+                    <option value="1000000">$1,000,000+</option>
+                </select>
+
             </div>
 
         </div>
@@ -147,9 +178,9 @@ $_SESSION['flyer'] = $result['flyer'];
         <div class="row" style="margin-top: 20px;">
 
             <div class="col-md-4 col-sm-4 col-xs-12 col-md-offset-4">
-                <label>Min Bedrooms</label>
+                <label>Bedrooms</label>
                 <select id="" name="bedroomsMin" class="form-control" required>
-                    <option value="0">--Select One--</option>
+                    <option value="">--Select One--</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -158,9 +189,9 @@ $_SESSION['flyer'] = $result['flyer'];
 
                 </select>
                 </br>
-                <label>Min Bathrooms</label>
+                <label>Bathrooms</label>
                 <select id="" name="bathroomsMin" class="form-control" required>
-                    <option value="0">--Select One--</option>
+                    <option value="">--Select One--</option>
                     <option value="1">1</option>
                     <option value="1.5">1.5</option>
                     <option value="2">2</option>
@@ -176,14 +207,14 @@ $_SESSION['flyer'] = $result['flyer'];
         </div>
         <div class="row" style="margin-top: 20px;">
 
-            <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-4">
+            <!-- <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-4">
                 <input type="text" name="priceMin" class="form-control has-feedback-left" id="inputSuccess2"
                        placeholder="Minimum Price">
                 <span class="form-control-feedback left" aria-hidden="true"></span>
                 </br>
                 <input type="text" name="priceMax" class="form-control" id="inputSuccess3" placeholder="Maximum Price">
                 <span class="form-control-feedback right" aria-hidden="true"></span>
-            </div>
+            </div> -->
 
 
             <!--

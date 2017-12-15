@@ -1,12 +1,25 @@
 <?php
+session_start();
 clearstatcache();
 
 require_once('../../fpdf/fpdf.php');
 require_once('../../databaseConnection.php');
 
 $dbConn = getConnection();
+    $agentInfo = "SELECT * FROM UsersInfo WHERE userId = :userId";
+
+$namedParameters = array();
+$namedParameters[':userId'] = $_SESSION['userId'];
+
+
+$info = $dbConn->prepare($agentInfo);
+$info->execute($namedParameters);
+$infoResult = $info->fetch();
+
+
 
 try {
+    
     $pdf = new FPDF();
     $pdf->AddPage("P", "letter");
     $pdf->SetMargins(0, 0, 0);
@@ -43,7 +56,11 @@ try {
 
     $pdf->SetTextColor(255, 255, 255);
 // Image(string file [, float x [, float y [, float w [, float h [, string type [, mixed link]]]]]])
-    $pdf->Image($_POST['imageOne'], 9, 49, 160, 85, 'JPEG');
+    $mlsId = $_POST['mlsId'];
+    if($mlsId[0] == 'M')
+        $pdf->Image($_POST['imageOne'], 9, 49, 160, 85, 'JPG');
+    else
+        $pdf->Image($_POST['imageOne'], 9, 49, 160, 85, strtoupper(substr($_POST['imageOne'], -3)));
 
     if (($_POST['lotSize'] == "") && ($_POST['age'] != "")) {
         $pdf->Image('redLeftArrow.png', 158, 49, 50, 20, 'PNG');
@@ -94,14 +111,24 @@ try {
         $pdf->Text(170, 126, substr($_POST['sqft'], 0, -1) . " SqFt");
     }
 
+if($mlsId[0] == 'M')
+{
+    $pdf->Image($_POST['imageTwo'], 9, 134, 55, 34, 'JPG');
 
-    $pdf->Image($_POST['imageTwo'], 9, 134, 55, 34, 'JPEG');
+    $pdf->Image($_POST['imageThree'], 64, 134, 54, 34, 'JPG');
 
-    $pdf->Image($_POST['imageThree'], 64, 134, 54, 34, 'JPEG');
+    $pdf->Image($_POST['imageFour'], 9, 168, 55, 34, 'JPG');
+    $pdf->Image($_POST['imageFive'], 64, 168, 54, 34, 'JPG');
+}
+else
+{
+    $pdf->Image($_POST['imageTwo'], 9, 134, 55, 34, strtoupper(substr($_POST['imageTwo'], -3)));
 
-    $pdf->Image($_POST['imageFour'], 9, 168, 55, 34, 'JPEG');
-    $pdf->Image($_POST['imageFive'], 64, 168, 54, 34, 'JPEG');
+    $pdf->Image($_POST['imageThree'], 64, 134, 54, 34, strtoupper(substr($_POST['imageThree'], -3)));
 
+    $pdf->Image($_POST['imageFour'], 9, 168, 55, 34, strtoupper(substr($_POST['imageFour'], -3)));
+    $pdf->Image($_POST['imageFive'], 64, 168, 54, 34, strtoupper(substr($_POST['imageFive'], -3)));   
+}
     $pdf->SetXY(120, 137);
     $pdf->SetFont('Times');
 
@@ -114,24 +141,38 @@ try {
 
     $pdf->SetFontSize(13);
     $pdf->Text(9, 210, 'RE/MAX Property Experts');
-    $pdf->Image('jorge.jpg', 9, 212, 20, 30, "jpg");
-
-    $pdf->Text(30, 216, 'Jorge Edeza');
+    if($infoResult['picture'] != NULL)
+    {
+        $pdf->Image($infoResult['picture'], 9, 212, 20, 30, "jpg");
+    }
+    else
+    {
+        
+    }
+    $pdf->Text(30, 216, $infoResult['firstName'] . ' ' . $infoResult['lastName']);
     $pdf->Text(30, 221, 'Broker Associate and Owner');
-    $pdf->Text(30, 226, 'Office Phone');
-    $pdf->Text(30, 231, 'Mobile Phone');
-    $pdf->Text(30, 236, 'Email');
+    $pdf->Text(30, 226, '831-751-6900 Office Phone');
+    $pdf->Text(30, 231, $infoResult['phone'] . ' Mobile Phone');
+    $pdf->Text(30, 236, $infoResult['email'] . ' Email');
     $pdf->Text(30, 241, 'www.PropertyExperts.Remax.com');
     $pdf->Text(9, 248, '915A N. Main Street, Salinas, CA 93906');
 
     $pdf->Image('remax.png', 155, 236, 45, 30, "png");
 
-    $sql = "UPDATE HouseInfo SET flyer = :flyer WHERE listingId = :listingId";
-
+    if($_POST['mlsId'][0] == 'M')
+    {
+        $sql = "UPDATE HouseInfo SET flyer = :flyer WHERE listingId = :listingId";
+    }
+    else
+    {
+        $sql = "UPDATE HouseInfo SET flyer = :flyer WHERE houseId = :listingId";
+    }
     $namedParameters = array();
     $namedParameters[":flyer"] = $_POST['address'] . '.pdf';
-    $namedParameters[':listingId'] = substr($_POST['mlsId'], 0, -1);
 
+    
+    $namedParameters[':listingId'] = substr($_POST['mlsId'], 0, -1);
+    
 
     $stmt = $dbConn->prepare($sql);
     $stmt->execute($namedParameters);

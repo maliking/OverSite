@@ -8,6 +8,7 @@ $sql = "SELECT username FROM  UsersInfo";
 $stmt = $dbConn->prepare($sql);
 $stmt->execute();
 $result = $stmt->fetchAll();
+
 ?>
 
 
@@ -24,6 +25,8 @@ $result = $stmt->fetchAll();
     <!-- END TEMPLATE default-css.php INCLUDE -->
     <!-- PAGE-SPECIFIC CSS -->
     <link rel="stylesheet" href="./dist/css/vendor/footable.bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 
 </head>
 
@@ -42,7 +45,7 @@ $result = $stmt->fetchAll();
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Agent Roster
+                Agent Rosters
             </h1>
             <ol class="breadcrumb">
                 <li>Properties</li>
@@ -83,7 +86,7 @@ $result = $stmt->fetchAll();
         }
     </style>
     <div class="modal-dialog" role="document">
-        <form class="modal-content form-horizontal" id="editor">
+        <form class="modal-content form-horizontal" id="editor" action="agent-roster.php" method="get">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
                             aria-hidden="true">×</span></button>
@@ -164,7 +167,7 @@ $result = $stmt->fetchAll();
 
             </div>
             <div class="modal-footer">
-                <button type="submit" class="btn btn-primary">Save changes</button>
+                <input type="submit" class="btn btn-primary" value="Save changes">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
             </div>
         </form>
@@ -193,7 +196,8 @@ $result = $stmt->fetchAll();
 
 
 
-        $('.table').footable({
+        // var ft = $('.table').footable({
+            var ft = FooTable.init('.table',{
             "columns": $.ajax('columns.json', {dataType: 'json'}),
             "rows": $.ajax('getAgentRosterRows.php', {dataType: 'json'}),
             "filtering": {
@@ -211,7 +215,7 @@ $result = $stmt->fetchAll();
                     $modal.removeData('row');
                     $editor[0].reset();
                     $editorTitle.text('Add a New Agent');
-                    $modal.modal('show');
+                    $modal.modal('toggle');
                 },
                 "editRow": function (row) {
                     var values = row.val();
@@ -285,10 +289,19 @@ $result = $stmt->fetchAll();
                     phone: editValues.phone,
                     function: "add"
                 });
-                values.id = uid++;
+                $.post("emailNewAgent.php", {
+                    username: editValues.username,
+                    email: editValues.email,
+                    password: editValues.password
+                });
+                // values.id = uid++;
                 ft.rows.add(values);
+                alert("Agent Added");
             }
             $modal.modal('hide');
+            $(".modal-content form-horizontal").hide();
+            header('Location: http://jjp2017.org/agent-roster.php');
+            die();
         });
     }); // jquery
 
@@ -390,6 +403,47 @@ $result = $stmt->fetchAll();
 //        $modal.modal('hide');
 //    });
 
+    //generate random password
+    function generatePassword() {
+        var length = 6;
+        var characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+        var password = "";
+        for (var i = 0, n = characters.length; i < length; ++i) {
+            password += characters.charAt(Math.floor(Math.random() * n));
+        }
+        return password;
+    }
+
+    //WORKING ON CHECKING IF USERNAME IS NOT ALREADY TAKEN IF NOT ADD A VARIBLE TO HAVE IT AVAILABLE
+    /*function checkIfAvailableUsername(proposedUsername) {
+        var availableUsername = false;
+        jQuery.ajax({
+                type: "get",
+                url: "verifyUsernameAvailability.php",
+                dataType: "json",
+                data: {"proposedUsername": proposedUsername},
+                success: function(data,status) {
+                    alert(data['exists']);
+                    //proposed username does not exist and therefore we can move forward
+                    if(!data['exists']) {
+                        availableUsername = true;
+                    }
+                },
+                complete: function(data,status) { //optional, used for debugging purposes
+                      alert(status);
+                }
+            });
+
+         return availableUsername;
+
+    }
+
+    function addCharacter(proposedUsername) {
+        characters = "0123456789";
+        proposedUsername += characters.charAt(Math.floor(Math.random() * characters.length));
+        return proposedUsername;
+    }*/
+
     function getLicense() {
         lic = document.getElementById("license").value;
         var xhr = new XMLHttpRequest();
@@ -420,6 +474,19 @@ $result = $stmt->fetchAll();
                 document.getElementById("lastName").value = firstName[0];
                 document.getElementById("issuedDate").value = dateIssued;
                 document.getElementById("expirationDate").value = dateExpire;
+
+                //check if username is already taken
+                var proposedUsername =  firstName[0].substring(0, 1) + firstName[0].substring(0, 4);
+                /*var available = false;
+
+                while(!available){
+                    available = checkIfAvailableUsername(proposedUsername);
+                    proposedUsername = addCharacter(proposedUsername);
+                    //alert(available);
+                }*/
+
+                document.getElementById("username").value = proposedUsername;
+                document.getElementById("password").value = generatePassword();
             }
 
         }

@@ -1,13 +1,59 @@
 <?php
+// session_start();
+
+// require 'databaseConnection.php';
+
+// $dbConn = getConnection();
+// $sql = "SELECT * FROM HouseInfo";
+// $stmt = $dbConn->prepare($sql);
+// $stmt->execute();
+// $result = $stmt->fetchAll();
+
 session_start();
 
-require 'databaseConnection.php';
+if (!isset($_SESSION['userId'])) {
+    header("Location: http://jjp2017.org/login.php");
+}
 
+require 'databaseConnection.php';
 $dbConn = getConnection();
-$sql = "SELECT * FROM HouseInfo";
-$stmt = $dbConn->prepare($sql);
-$stmt->execute();
-$result = $stmt->fetchAll();
+// $dbConn = getConnection();
+// $sql = "SELECT address, city, state, zip FROM  HouseInfo";
+// $stmt = $dbConn->prepare($sql);
+// $stmt->execute();
+// $result = $stmt->fetchAll();
+$url = 'https://api.idxbroker.com/clients/featured';
+
+$method = 'GET';
+
+// headers (required and optional)
+$headers = array(
+    'Content-Type: application/x-www-form-urlencoded', // required
+    'accesskey: e1Br0B5DcgaZ3@JXI9qib5', // required - replace with your own
+    'outputtype: json' // optional - overrides the preferences in our API control page
+);
+
+// set up cURL
+$handle = curl_init();
+curl_setopt($handle, CURLOPT_URL, $url);
+curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+
+// exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
+$response = curl_exec($handle);
+$code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+
+if ($code >= 200 || $code < 300) {
+    $response = json_decode($response, true);
+} else {
+    $error = $code;
+}
+
+// print_r($response);
+
+$keys = array_keys($response);
 ?>
 
 <!DOCTYPE html>
@@ -56,39 +102,64 @@ $result = $stmt->fetchAll();
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-body">
-                            <table class="table table-bordered table-striped" data-filtering="true" data-sorting="true">
+                             <table class="table table-bordered table-striped" id="inventory-table">
                                 <thead>
+
+
                                 <tr>
-                                    <th>Address</th>
-                                    <th>City</th>
-                                    <th>Zip</th>
-                                    <th><i class="fa fa-bed"></i></th>
-                                    <th><i class="fa fa-bath"></i></th>
-                                    <th>Sqft</th>
-                                    <th>Lot</th>
+                                    <th>Agent</th>
+                                    <th>Property</th>
+                                    <th>Bedroom</th>
+                                    <th>Bathroom</th>
                                     <th>Price</th>
-                                    <th>DOM <a href="#" data-toggle="tooltip" data-placement="top"
-                                               title="Days on the market"><i class="fa fa-question-circle"></i></a></th>
+                                    <th>House Images</th>
+                                    <th>Map</th>
+
                                 </tr>
                                 </thead>
-
-                                <tbody>
                                 <?php
-                                foreach ($result as $house) {
-                                    echo "<tr>";
-                                    echo "<td>" . $house['address'] . "</td>";
-                                    echo "<td>" . $house['city'] . "</td>";
-                                    echo "<td>" . $house['zip'] . "</td>";
-                                    echo "<td>" . $house['bedrooms'] . "</td>";
-                                    echo "<td>" . $house['bathrooms'] . "</td>";
-                                    echo "<td>" . $house['sqft'] . "</td>";
-                                    echo "<td>" . "NA" . "</td>";
-                                    echo "<td>" . '$' . number_format($house['price'], 0) . "</td>";
-                                    echo "<td>" . "NA" . "</td>";
-                                    echo "</tr>";
+                                // foreach ($result as $house) {
+                                for ($i = 0; $i < sizeof($keys); $i++) {
+
+                                    
+                                        $agentName = "SELECT firstName, lastName FROM UsersInfo WHERE mlsId = :mlsId";
+                                        $namedParameters = array();
+                                        $namedParameters[':mlsId'] = $response[$keys[$i]]['listingAgentID'];
+                                        $stmt = $dbConn->prepare($agentName);
+                                        $stmt->execute($namedParameters);
+                                        $name = $stmt->fetch();
+
+                                        if(!isset($response[$keys[$i]]['bedrooms']))
+                                        {
+                                            $bedrooms = "0";
+                                        }
+                                        else
+                                        {
+                                            $bedrooms = $response[$keys[$i]]['bedrooms'];
+                                        }
+                                        if(!isset($response[$keys[$i]]['totalBaths']))
+                                        {
+                                            $bathrooms = "0";
+                                        }
+                                        else
+                                        {
+                                            $bathrooms = $response[$keys[$i]]['totalBaths'];
+                                        }   
+
+                                        echo '<tbody><tr><td> ' . $name['firstName'] . " " . $name['lastName'] .  '</td>
+                                                    <td> ' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] .  ' </td>
+                                                    <td>' . $bedrooms . '</td>
+                                                    <td>'. $bathrooms .'</td>
+                                                    <td>'.$response[$keys[$i]]['listingPrice'] .'</td>
+                                                    <td ><a href="viewHouseImages.php?id=' . $response[$keys[$i]]['listingID'] . '" target="_blank"><button >View</button></a></td>
+
+                                                    <td ><a href="https://maps.google.com/?q=' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] . '" target="_blank"><button >View on Map</button></a></td>
+                                                    
+                                                </tr></tbody>';
+                                    
                                 }
                                 ?>
-                                </tbody>
+
                             </table>
                         </div>
                         <!-- /.box-body -->

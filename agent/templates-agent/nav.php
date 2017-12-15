@@ -18,7 +18,7 @@
                     <span>My Appointments</span></a></li>
 
              <li><a href="../agent/visitors.php"><i class="fa fa-visitors"></i>
-                    <span>Visitors</span></a></li>
+                    <span>My Visitors/Leads</span></a></li>
 
             <li class="header-style treeview">
                 <a href="#"><span class="header-color">PROPERTIES</span>
@@ -30,6 +30,8 @@
                     <li><a class="dropdown-text" href="my-inventory.php"><i class="fa fa-home"></i>
                             <span>My Inventory</span></a></li>
                     <li><a class="dropdown-text" href="office-inventory.php"><i class="fa fa-building"></i> <span>Office Inventory</span></a>
+                    </li>
+                    <li><a class="dropdown-text" href="inputNewListing.php"><i class="fa fa-upload"></i> <span>Input New  Listing</span></a>
                     </li>
                 </ul>
             </li>

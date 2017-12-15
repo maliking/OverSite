@@ -12,6 +12,40 @@ $dbConn = getConnection();
 // $stmt = $dbConn->prepare($sql);
 // $stmt->execute();
 // $result = $stmt->fetchAll();
+
+function updateSort($sort)
+{
+    if ($sort == 1) {
+        return 0;
+    } else {
+        return 1;
+    }
+}
+
+//sort variables; 1 will be alphabetical; 0 will be reverse alphabetical
+$agentSort = 1;
+$propertySort = 1;
+$bedroomSort = 1;
+$bathroomSort = 1;
+$priceSort = 1;
+
+if (isset($_GET['agentSort'])) {
+    $agentSort = $_GET['agentSort'];
+}
+if (isset($_GET['propertySort'])) {
+    $propertySort = $_GET['propertySort'];
+}
+if (isset($_GET['bedroomSort'])) {
+    $bedroomSort = $_GET['bedroomSort'];
+}
+if (isset($_GET['bathroomSort'])) {
+    $bathroomSort = $_GET['bathroomSort'];
+}
+if (isset($_GET['priceSort'])) {
+    $priceSort = $_GET['priceSort'];
+}
+
+
 $url = 'https://api.idxbroker.com/clients/featured';
 
 $method = 'GET';
@@ -41,9 +75,114 @@ if ($code >= 200 || $code < 300) {
     $error = $code;
 }
 
+$keys = array_keys($response);
+for ($i = 0; $i < sizeof($keys); $i++) {
+
+                                    
+                                        $agentName = "SELECT firstName, lastName FROM UsersInfo WHERE mlsId = :mlsId";
+                                        $namedParameters = array();
+                                        $namedParameters[':mlsId'] = $response[$keys[$i]]['listingAgentID'];
+                                        $stmt = $dbConn->prepare($agentName);
+                                        $stmt->execute($namedParameters);
+                                        $name = $stmt->fetch();
+    array_push($response[$keys[$i]]['agentName'], $name['firstName'] . " " . $name['lastName']);              
+
+}
+
+
+
+function priceASC($a, $b)
+{
+    return strcmp($a["listingPrice"], $b["listingPrice"]);
+}
+
+function priceDESC($a, $b)
+{
+    return strcmp($b["listingPrice"], $a["listingPrice"]);
+}
+
+function bathroomASC($a, $b)
+{
+    return strcmp($a["totalBaths"], $b["totalBaths"]);
+}
+
+function bathroomDESC($a, $b)
+{
+    return strcmp($b["totalBaths"], $a["totalBaths"]);
+}
+
+function bedroomASC($a, $b)
+{
+    return strcmp($a["bedrooms"], $b["bedrooms"]);
+}
+
+function bedroomDESC($a, $b)
+{
+    return strcmp($b["bedrooms"], $a["bedrooms"]);
+}
+
+function propertyASC($a, $b)
+{
+    return strcmp(SUBSTR(LTRIM($a["address"]), LOCATE(' ', LTRIM($a["address"]))), SUBSTR(LTRIM($b["address"]), LOCATE(' ', LTRIM($b["address"]))));
+}
+
+function propertyDESC($a, $b)
+{
+    return strcmp(SUBSTR(LTRIM($b["address"]), LOCATE(' ', LTRIM($b["address"]))), SUBSTR(LTRIM($a["address"]), LOCATE(' ', LTRIM($a["address"]))));
+}
+
+function agentASC($a, $b)
+{
+    return strcmp($a["bedrooms"], $b["bedrooms"]);
+}
+
+function agentDESC($a, $b)
+{
+    return strcmp($b["bedrooms"], $a["bedrooms"]);
+}
+
+
+if (isset($_GET['agentSort'])) {
+        if ($agentSort == 1) {
+            usort($response, "agentASC");
+        } else {
+            usort($response, "agentDESC");
+        }
+} elseif (isset($_GET['propertySort'])) {
+        if ($propertySort == 1) {
+            //usort($response, "propertyASC");
+        } else {
+            //usort($response, "propertyDESC");
+        }
+} elseif (isset($_GET['priceSort'])) {
+        if ($priceSort == 1) {
+            usort($response, "priceASC");
+            //$sql .= "SUBSTR(LTRIM(address), LOCATE(' ', LTRIM(address))) ASC";
+        } else {
+            usort($response, "priceDESC");
+            //$sql .= "SUBSTR(LTRIM(address), LOCATE(' ', LTRIM(address))) DESC";
+            }
+} elseif (isset($_GET['bedroomSort'])) {
+        if ($bedroomSort == 1) {
+            usort($response, "bedroomASC");
+        } else {
+            usort($response, "bedroomDESC");
+        }
+} elseif (isset($_GET['bathroomSort'])) {
+        if ($bathroomSort == 1) {
+            usort($response, "bathroomASC");
+        } else {
+            usort($response, "bathroomDESC");
+        }
+} else {
+        usort($response, "priceASC"); //CHANGE IT TO AGENT WHEN COMPLETE
+}
+
 // print_r($response);
 
 $keys = array_keys($response);
+
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -99,12 +238,11 @@ $keys = array_keys($response);
 
 
                                 <tr>
-                                    <th>Agent</th>
-                                    <th>Client</th>
-                                    <th>Property</th>
-                                    <th>Bedroom</th>
-                                    <th>Bathroom</th>
-                                    <th>Price</th>
+                                    <th id="visitorSort"><a class="dotted" href=<?php echo "http://www.oversite.cc/agent/office-inventory.php?agentSort=" . updateSort($agentSort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Agent</a></th>
+                                    <th id="propertySort"><a class="dotted" href=<?php echo "http://www.oversite.cc/agent/office-inventory.php?propertySort=" . updateSort($propertySort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Property</a></th>
+                                    <th id="bedroomSort"><a class="dotted" href=<?php echo "http://www.oversite.cc/agent/office-inventory.php?bedroomSort=" . updateSort($bedroomSort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Bedroom</a></th>
+                                    <th id="bathroomSort"><a class="dotted" href=<?php echo "http://www.oversite.cc/agent/office-inventory.php?bathroomSort=" . updateSort($bathroomSort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Bathroom</a></th>
+                                    <th id="priceSort"><a class="dotted" href=<?php echo "http://www.oversite.cc/agent/office-inventory.php?priceSort=" . updateSort($priceSort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Price</a></th>
                                     <th>House Images</th>
                                     <th>Map</th>
 
@@ -114,34 +252,42 @@ $keys = array_keys($response);
                                 // foreach ($result as $house) {
                                 for ($i = 0; $i < sizeof($keys); $i++) {
 
-                                    if(!isset($response[$keys[$i]]['bedrooms']))
-                                    {
-                                        $bedrooms = "0";
-                                    }
-                                    else
-                                    {
-                                        $bedrooms = $response[$keys[$i]]['bedrooms'];
-                                    }
-                                    if(!isset($response[$keys[$i]]['totalBaths']))
-                                    {
-                                        $bathrooms = "0";
-                                    }
-                                    else
-                                    {
-                                        $bathrooms = $response[$keys[$i]]['totalBaths'];
-                                    }   
+                                    
+                                        $agentName = "SELECT firstName, lastName FROM UsersInfo WHERE mlsId = :mlsId";
+                                        $namedParameters = array();
+                                        $namedParameters[':mlsId'] = $response[$keys[$i]]['listingAgentID'];
+                                        $stmt = $dbConn->prepare($agentName);
+                                        $stmt->execute($namedParameters);
+                                        $name = $stmt->fetch();
 
-                                    echo '<tbody><tr><td>Jorge Edeza</td>
-                                                <td>Images</td>
-                                                <td> ' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] .  ' </td>
-                                                <td>' . $bedrooms . '</td>
-                                                <td>'. $bathrooms .'</td>
-                                                <td>'.$response[$keys[$i]]['listingPrice'] .'</td>
-                                                <td ><a href="viewHouseImages.php?id=' . $response[$keys[$i]]['listingID'] . '" target="_blank"><button >View</button></a></td>
+                                        if(!isset($response[$keys[$i]]['bedrooms']))
+                                        {
+                                            $bedrooms = "0";
+                                        }
+                                        else
+                                        {
+                                            $bedrooms = $response[$keys[$i]]['bedrooms'];
+                                        }
+                                        if(!isset($response[$keys[$i]]['totalBaths']))
+                                        {
+                                            $bathrooms = "0";
+                                        }
+                                        else
+                                        {
+                                            $bathrooms = $response[$keys[$i]]['totalBaths'];
+                                        }   
 
-                                                <td ><a href="https://maps.google.com/?q=' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] . '" target="_blank"><button >View on Map</button></a></td>
-                                                
-                                            </tr></tbody>';
+                                        echo '<tbody><tr><td> ' . $name['firstName'] . " " . $name['lastName'] .  '</td>
+                                                    <td> ' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] .  ' </td>
+                                                    <td>' . $bedrooms . '</td>
+                                                    <td>'. $bathrooms .'</td>
+                                                    <td>'.$response[$keys[$i]]['listingPrice'] .'</td>
+                                                    <td ><a href="viewHouseImages.php?id=' . $response[$keys[$i]]['listingID'] . '" target="_blank"><button >View</button></a></td>
+
+                                                    <td ><a href="https://maps.google.com/?q=' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] . '" target="_blank"><button >View on Map</button></a></td>
+                                                    
+                                                </tr></tbody>';
+                                    
                                 }
                                 ?>
 

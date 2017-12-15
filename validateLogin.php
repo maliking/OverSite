@@ -23,12 +23,15 @@ if (empty($result)) {
     $_SESSION['userId'] = $result['userId'];
     $_SESSION['username'] = $result['username'];
     $_SESSION['license'] = $result['license'];
+    $_SESSION['userType'] = $result['userType'];
     //$_SESSION['userName'] = $result['firstName'] . " " . $result['lastName'];
     //$_SESSION['userId'] = $result['userId'];
     if ($result['userType'] == 0) {
         header("Location: index.php");
     } else if ($result['userType'] == 1) {
         header("Location: IDXGetFeatured.php");
+    } else if($result['userType'] == 2) {
+        header("Location: staff/index.php");
     }
 
 }

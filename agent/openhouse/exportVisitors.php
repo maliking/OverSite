@@ -2,6 +2,8 @@
 
 header("Content-Type: application/vnd.ms-excel");
 
+session_start();
+
 
 require '../../databaseConnection.php';
 $startDate = date('Y-m-d', strtotime($_GET['startDate']));
@@ -21,8 +23,11 @@ if($_GET['id'] != "all")
     $result = $stmt->fetch();
 
     header("Content-disposition: attachment; filename=" . $result['houseId'] . $result['address'] . ".xls");
-    $sqlVisitors = "SELECT firstName, lastName, email, phone FROM BuyerInfo WHERE houseId = :houseId AND registeredDate BETWEEN :startDate AND :endDate";
+    // $sqlVisitors = "SELECT firstName, lastName, email, phone FROM BuyerInfo WHERE houseId = :houseId AND registeredDate BETWEEN :startDate AND :endDate";
 
+    $sqlVisitors = "SELECT BuyerInfo.*, HouseInfo.address as address, HouseInfo.city as city, HouseInfo.state as state, HouseInfo.zip as zip
+                                FROM BuyerInfo LEFT JOIN HouseInfo ON BuyerInfo.houseId = HouseInfo.houseId 
+                                where BuyerInfo.houseId = :houseId AND BuyerInfo.registeredDate BETWEEN :startDate AND :endDate";
     $namedVisitors = array();
     $namedVisitors[':houseId'] = $result['houseId'];
     $namedVisitors[':startDate'] = $_GET['startDate'];
@@ -34,10 +39,14 @@ if($_GET['id'] != "all")
 else
 {
     header("Content-disposition: attachment; filename='allVisitors.xls'");
-    $sqlVisitors = "SELECT firstName, lastName, email, phone FROM BuyerInfo WHERE registeredDate BETWEEN :startDate AND :endDate";
+    // $sqlVisitors = "SELECT firstName, lastName, email, phone FROM BuyerInfo WHERE registeredDate BETWEEN :startDate AND :endDate";
+    $sqlVisitors = "SELECT BuyerInfo.*, HouseInfo.address as address, HouseInfo.city as city, HouseInfo.state as state, HouseInfo.zip as zip
+                                FROM BuyerInfo LEFT JOIN HouseInfo ON BuyerInfo.houseId = HouseInfo.houseId 
+                                where BuyerInfo.userId = :userId AND BuyerInfo.registeredDate BETWEEN :startDate AND :endDate ORDER BY address";
     $namedVisitors = array();
     $namedVisitors[':startDate'] = $_GET['startDate'];
     $namedVisitors[':endDate'] = $_GET['endDate'];
+    $namedVisitors[':userId'] = $_SESSION['userId'];
     $stmtVisitors = $dbConnTwo->prepare($sqlVisitors);
     $stmtVisitors->execute($namedVisitors);
 }
@@ -58,8 +67,8 @@ echo 'FirstName' . "\t" . 'LastName' . "\t" . 'Title' . "\t" . 'Company' . "\t" 
 foreach ($visitors as $visit) {
     # code...
 
-    echo $visit['firstName'] . "\t" . $visit['lastName'] . "\t" . ' ' . "\t" . ' ' . "\t" . ' ' . "\t" . ' ' . "\t" . '' .
-        "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . $visit['phone'] . "\t" . '' . "\t" . '' . "\t" .
+    echo $visit['firstName'] . "\t" . $visit['lastName'] . "\t" . ' ' . "\t" . ' ' . "\t" . $visit['address'] . ", " . $visit['city'] . " " . $visit['state'] . 
+        " " . $visit['zip']  . "\t" . ' ' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . $visit['phone'] . "\t" . '' . "\t" . '' . "\t" .
         '' . "\t" . $visit['email'] . "\t" . '' . "\t" . 'TRUE' . "\t" . '' . "\t" . 'Jorge Edeza' . "\t" . 'Manually Entered' . "\t" . '' . "\t" .
         $today . "\t" . $today . "\t" . 'RE/MAX Property Experts' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' .
         "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' . "\t" . '' .

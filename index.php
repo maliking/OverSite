@@ -1,10 +1,16 @@
 <?php
 session_start();
-
-if (!isset($_SESSION['userId']) || $_SESSION['userId'] == 1) {
+// echo($_SESSION['userType']);
+if (!isset($_SESSION['userId']) ) {
     header("Location: login.php");
 }
 
+if($_SESSION['userType'] == "1"){
+    header("Location: agent/index.php");
+}
+if($_SESSION['userType'] == "2"){
+    header("Location: staff/index.php");
+}
 require 'databaseConnection.php';
 
 $dbConn = getConnection();

@@ -8,49 +8,103 @@ clearstatcache();
 $listingId = $_GET['id'];
 
 require '../../databaseConnection.php';
-
 $dbConn = getConnection();
-$sql = "SELECT * FROM  HouseInfo WHERE listingId = :listingId";
-$stmt = $dbConn->prepare($sql);
-$namedParameters = array();
-$namedParameters[':listingId'] = $listingId;
-$stmt->execute($namedParameters);
-$result = $stmt->fetch();
+if($listingId[0] == 'M')
+{
+
+    $sql = "SELECT * FROM  HouseInfo WHERE listingId = :listingId";
+    $stmt = $dbConn->prepare($sql);
+    $namedParameters = array();
+    $namedParameters[':listingId'] = $listingId;
+    $stmt->execute($namedParameters);
+    $result = $stmt->fetch();
 
 
-$url = 'https://api.idxbroker.com/clients/featured';
+    $url = 'https://api.idxbroker.com/clients/featured';
 
-$method = 'GET';
+    $method = 'GET';
 
-// headers (required and optional)
-$headers = array(
-    'Content-Type: application/x-www-form-urlencoded', // required
-    'accesskey: e1Br0B5DcgaZ3@JXI9qib5', // required - replace with your own
-    'outputtype: json' // optional - overrides the preferences in our API control page
-);
+    // headers (required and optional)
+    $headers = array(
+        'Content-Type: application/x-www-form-urlencoded', // required
+        'accesskey: e1Br0B5DcgaZ3@JXI9qib5', // required - replace with your own
+        'outputtype: json' // optional - overrides the preferences in our API control page
+    );
 
-// set up cURL
-$handle = curl_init();
-curl_setopt($handle, CURLOPT_URL, $url);
-curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
-curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+    // set up cURL
+    $handle = curl_init();
+    curl_setopt($handle, CURLOPT_URL, $url);
+    curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+    curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+    curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
 
-// exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
-$response = curl_exec($handle);
-$code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+    // exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
+    $response = curl_exec($handle);
+    $code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
 
-if ($code >= 200 || $code < 300) {
-    $response = json_decode($response, true);
-} else {
-    $error = $code;
+    if ($code >= 200 || $code < 300) {
+        $response = json_decode($response, true);
+    } else {
+        $error = $code;
+    }
+
+    // print_r($response);
+
+    $keys = array_keys($response);
+    for ($i = 0; $i < sizeof($keys); $i++) 
+    {
+        if ($response[$keys[$i]]['listingID'] == $listingId) 
+        {
+            $index = $i;
+            break;
+        }
+    }
+    $bedrooms = $response[$keys[$index]]['bedrooms'];
+    $bathrooms = $response[$keys[$index]]['fullBaths'];
+    $sqFt = $response[$keys[$index]]['sqFt'];
+
+    if (((float)$response[$keys[$index]]['acres']) < 1)
+        $acres =  (float)$response[$keys[$index]]['acres'] * 43560;
+    else
+        $acres =  (float)$response[$keys[$index]]['acres'];
+
+    
+    $address = $response[$keys[$index]]['address'];
+    $city = $response[$keys[$index]]['cityName'];
+    $state = $response[$keys[$index]]['state'];
+    $zip = $response[$keys[$index]]['zipcode'];
+    $price = $response[$keys[$index]]['listingPrice'];
+    $remarks = $response[$keys[$index]]['remarksConcat'];
 }
+else
+{
+    $sql = "SELECT * FROM  HouseInfo WHERE houseId = :houseId";
+    $stmt = $dbConn->prepare($sql);
+    $namedParameters = array();
+    $namedParameters[':houseId'] = $listingId;
+    $stmt->execute($namedParameters);
+    $result = $stmt->fetch();
 
-// print_r($response);
-
-$keys = array_keys($response);
-
+    $bedrooms = $result['bedrooms'];
+    $bathrooms = $result['bathrooms'];
+    $sqFt = $result['sqft'];
+    if($sqFt >= 43560)
+    {
+        $acres = $sqFt/43560;    
+    }
+    else
+    {
+        $acres = $sqFt;
+    }
+    
+    $address = $result['address'];
+    $city = $result['city'];
+    $state = $result['state'];
+    $zip = $result['zip'];
+    $price = $result['price'];
+    $remarks = " ";
+}
 ?>
 
 
@@ -60,6 +114,9 @@ $keys = array_keys($response);
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="-1" />
     <title>Re/Max Salinas | Home</title>
 
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -154,8 +211,12 @@ $keys = array_keys($response);
                         <div class="modal-body">
 
                             <div class="form-group">
-                                <label for="recipient-name" class="form-control-label">Recipient:</label>
-                                <input type="text" class="form-control" id="recipientPhone">
+                                <label for="recipient-name" class="form-control-label">Phone Number:</label>
+                                <input type="text" class="form-control" id="recipientPhone" placeholder="Phone number">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="form-control-label">Email:</label>
+                                <input type="text" class="form-control" id="recipientEmail" placeholder="Email">
                             </div>
                             <div class="form-group">
                                 <label for="message-text" class="form-control-label">Message:</label>
@@ -308,19 +369,43 @@ $keys = array_keys($response);
                                 <div class="row" id="imageSerialize">
 
                                     <?php
-                                    for ($i = 0; $i < sizeof($keys); $i++) {
+                                    if($listingId[0] == 'M')
+                                    {
+                                        for ($i = 0; $i < sizeof($keys); $i++) 
+                                        {
 
-                                        if ($response[$keys[$i]]['listingID'] == $listingId) {
-                                            $index = $i;
-                                            for ($j = 0; $j < (int)$response[$keys[$i]]['image']['totalCount']; $j++) {
-                                                echo '<label class="item col-md-4 col-sm-4 col-xs-6">
-                                                                <input class="js-switch" type="checkbox" name="imageURL" value="' . $response[$keys[$i]]['image'][$j]['url'] . '"/> 
-                                                                <img src="' . $response[$keys[$i]]['image'][$j]['url'] . '" style="width:100%; height:100%" >
-                                                            </label>';
+                                            if ($response[$keys[$i]]['listingID'] == $listingId) 
+                                            {
+                                                $index = $i;
+                                                for ($j = 0; $j < (int)$response[$keys[$i]]['image']['totalCount']; $j++) 
+                                                {
+                                                    echo '<label class="item col-md-4 col-sm-4 col-xs-6">
+                                                                    <input class="js-switch" type="checkbox" name="imageURL" value="' . $response[$keys[$i]]['image'][$j]['url'] . '"/> 
+                                                                    <img src="' . $response[$keys[$i]]['image'][$j]['url'] . '" style="width:100%; height:100%" >
+                                                                </label>';
+                                                }
+                                                break;
                                             }
-                                            break;
                                         }
                                     }
+                                else
+                                {
+                                    
+                                    $directory = "../../addedHouses/" . $address . "/";
+                                    $files = scandir ($directory);
+
+                                    $imageCount = count($files);
+                                    for($i = 2; $i < $imageCount; $i++)
+                                    {
+                                        $website = "http://www.oversite.cc/addedHouses/" . rawurlencode($address) . "/" . rawurlencode($files[$i]);
+
+                                        echo '<label class="item col-md-4 col-sm-4 col-xs-6">
+                                            <input class="js-switch" type="checkbox" name="imageURL" value="' . $website . '"/> 
+                                            <img src="' . $website . '" style="width:100%; height:100%" >
+                                        </label>';
+                                    }
+
+                                }
                                     ?>
                                 </div>
 
@@ -332,24 +417,18 @@ $keys = array_keys($response);
                                 <div class="form-group">
 
                                     <input checked type="hidden" name="bedrooms"
-                                           value=<?php echo $response[$keys[$index]]['bedrooms'] ?>/>
+                                           value=<?php echo $bedrooms; ?>/>
 
                                     <input checked type="hidden" name="bathrooms"
-                                           value=<?php echo $response[$keys[$index]]['fullBaths'] ?>/>
+                                           value=<?php echo $bathrooms; ?>/>
 
                                     <input type="hidden" name="sqft"
-                                           value=<?php echo $response[$keys[$index]]['sqFt'] ?>/>
+                                           value=<?php echo $sqFt; ?>/>
 
                                     <label>
                                         <input type="checkbox" class="js-switch" name="lotSize" id="lotSize"
-                                               value=<?php if (((float)$response[$keys[$index]]['acres']) < 1)
-                                            echo (float)$response[$keys[$index]]['acres'] * 43560;
-                                        else
-                                            echo (float)$response[$keys[$index]]['acres']; ?>/>
-                                        <?php if (((float)$response[$keys[$index]]['acres']) < 1)
-                                            echo (float)$response[$keys[$index]]['acres'] * 43560;
-                                        else
-                                            echo (float)$response[$keys[$index]]['acres']; ?>sqFt Lot Size
+                                               value=<?php echo $acres; ?>/>
+                                        <?php echo $acres; ?>sqFt Lot Size
                                     </label>
                                     </br>
                                     </br>
@@ -381,13 +460,13 @@ $keys = array_keys($response);
 
                 </div>
 
-                <?php echo '<input type="hidden" name="address" value="' . $response[$keys[$index]]['address'] . '" />'; ?>
-                <input type="hidden" name="city" value=<?php echo $response[$keys[$index]]['cityName']; ?>/>
-                <input type="hidden" name="state" value=<?php echo $response[$keys[$index]]['state']; ?>/>
-                <input type="hidden" name="zip" value=<?php echo $response[$keys[$index]]['zipcode']; ?>/>
-                <input type="hidden" name="price" value=<?php echo $response[$keys[$index]]['listingPrice']; ?>/>
+                <?php echo '<input type="hidden" name="address" value="' . $address . '" />'; ?>
+                <input type="hidden" name="city" value=<?php echo $city; ?>/>
+                <input type="hidden" name="state" value=<?php echo $state; ?>/>
+                <input type="hidden" name="zip" value=<?php echo $zip; ?>/>
+                <input type="hidden" name="price" value=<?php echo $price; ?>/>
                 <input type="hidden" name="mlsId" value=<?php echo $listingId; ?>/>
-                <?php echo '<input type="hidden" name="description" value="' . $response[$keys[$index]]['remarksConcat'] . '" />'; ?>
+                <?php echo '<input type="hidden" name="description" value="' . $remarks . '" />'; ?>
 
 
                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -405,7 +484,7 @@ $keys = array_keys($response);
 
                             // echo '<iframe id="pdf" src="../../../test/' . $result['flyer'] . '" style="width:600px; height:600px;" frameborder="0"></iframe>'; //local
 
-                            echo '<iframe id="pdf" src="../../uploadFlyers/' . substr($result['flyer'], 0, -3) . 'pdf" 
+                            echo '<iframe id="pdf" src="http://52.11.24.75/uploadFlyers/' . substr($result['flyer'], 0, -3) . 'pdf" 
                                         style="width:600px; height:500px;" frameborder="0"></iframe>';
                             echo "<input type='hidden' name='flyerName' value='" . substr($result['flyer'], 0, -3) . "'/>";
                         }
@@ -724,7 +803,7 @@ $keys = array_keys($response);
                 // $("#pdf").attr('src','../../../test/generateExample.pdf'); //local
 
                 $("#pdf").attr('src', '../../uploadFlyers/' + addressC + ".pdf"); // server
-                $("#noPdf").replaceWith('<iframe id="pdf" src="../../uploadFlyers/' + addressC + '.pdf" style="width:600px; height:500px;" frameborder="0"></iframe>'); //server when no pdf found
+                $("#noPdf").replaceWith('<iframe id="pdf" src="http://52.11.24.75/uploadFlyers/' + addressC + '.pdf" style="width:600px; height:500px;" frameborder="0"></iframe>'); //server when no pdf found
 
                 $('#myModal').modal('show');
             },
@@ -814,7 +893,7 @@ $keys = array_keys($response);
             // $("#pdf").attr('src','../../../test/' + response); //local
 
             $("#pdf").attr('src', '../../uploadFlyers/' + response); //server
-            $("#noPdf").replaceWith('<iframe id="pdf" src="../../uploadFlyers/' + response.slice(0, -3) + 'pdf" style="width:600px; height:500px;" frameborder="0"></iframe>'); //server when no pdf found
+            $("#noPdf").replaceWith('<iframe id="pdf" src="http://51.11.24.75/uploadFlyers/' + response.slice(0, -3) + 'pdf" style="width:600px; height:500px;" frameborder="0"></iframe>'); //server when no pdf found
 
             $('#myModal').modal('show');
 
@@ -831,11 +910,15 @@ $keys = array_keys($response);
     function sendTextFlyer() {
         var flyerName = $("input[name='flyerName']").val();
         var recipientPhone = $("#recipientPhone").val();
+        var recipientEmail = $("#recipientEmail").val();
         var flyerMessage = $("#flyerMessage").val();
         // alert(flyerName);
         // alert(recipientPhone);
         // alert(flyerMessage);
-        $.post("sendTextFlyer.php", {phone: recipientPhone, flyer: flyerName, flyerMessage: flyerMessage})
+        if(recipientPhone != "")
+        {
+            // alert(recipientPhone);
+            $.post("sendTextFlyer.php", {phone: recipientPhone, flyer: flyerName, flyerMessage: flyerMessage})
             .done(function (data) {
                 // alert( "Data Loaded: " );
                 $('#messageSentModal').modal('show');
@@ -845,6 +928,23 @@ $keys = array_keys($response);
                 }, 2000);
 
             });
+        }
+        if(recipientEmail != "")
+        {
+            // alert(recipientEmail);
+            $.post("sendEmailFlyer.php", {email: recipientEmail, flyer: flyerName, flyerMessage: flyerMessage})
+            .done(function (data) {
+                // alert( "Data Loaded: " );
+                $('#messageSentModal').modal('show');
+
+                setTimeout(function () {
+                    $('#messageSentModal').modal('hide');
+                }, 2000);
+
+            });
+        }
+        
+       
         $('#flyerModal').modal('hide');
 
     }

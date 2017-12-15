@@ -1,4 +1,5 @@
 <?php
+
 require("../databaseConnection.php");
 session_start();
 $dbConn = getConnection();
@@ -39,6 +40,14 @@ if ($code >= 200 || $code < 300) {
 // print_r($response);
 
 $keys = array_keys($response);
+
+$getAddedListings = "SELECT * FROM HouseInfo WHERE status = :status AND userId = :userId";
+$namedParameters = array();
+$namedParameters[':userId'] = $_SESSION['userId'];
+$namedParameters[':status'] = "added";
+$addedListings = $dbConn->prepare($getAddedListings);
+$addedListings->execute($namedParameters);
+$addedListingsResults = $addedListings->fetchAll();
 
 ?>
 <!DOCTYPE html>
@@ -84,6 +93,58 @@ $keys = array_keys($response);
             </ol>
         </section>
         <!-- Main content -->
+
+        <!-- Modal -->
+  <div class="modal fade bd-example-modal-lg" id="matchLeads" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Top 5 Leads</h4>
+        </div>
+        <div class="modal-body">
+          1: <strong>Agent: </strong><span id="agentName0">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>BuyerID: </strong><span id="buyerId0">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Price: </strong><span id="price0">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Min-Bedroom: </strong><span id="minBed0">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Min-Bathroom: </strong><span id="minBath0">Not Available</span>
+
+</br></br>
+
+          2: <strong>Agent: </strong><span id="agentName1">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>BuyerID: </strong><span id="buyerId1">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Price: </strong><span id="price1">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Min-Bedroom: </strong><span id="minBed1">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Min-Bathroom: </strong><span id="minBath1">Not Available</span>
+</br></br>
+          3: <strong>Agent: </strong><span id="agentName2">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>BuyerID: </strong><span id="buyerId2">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Price: </strong><span id="price2">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Min-Bedroom: </strong><span id="minBed2">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Min-Bathroom: </strong><span id="minBath2">Not Available</span>
+</br></br>
+          4: <strong>Agent: </strong><span id="agentName3">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>BuyerID: </strong><span id="buyerId3">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Price: </strong><span id="price3">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Min-Bedroom: </strong><span id="minBed3">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Min-Bathroom: </strong><span id="minBath3">Not Available</span>
+</br></br>
+          5: <strong>Agent: </strong><span id="agentName4">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>BuyerID: </strong><span id="buyerId4">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Price: </strong><span id="price4">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Min-Bedroom: </strong><span id="minBed4">Not Available</span>&nbsp&nbsp&nbsp
+          <strong>Min-Bathroom: </strong><span id="minBath4">Not Available</span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
         <section class="content">
            <div class="row">
                 <div class="col-xs-12">
@@ -96,7 +157,7 @@ $keys = array_keys($response);
 
                             <table class="table">
                                 <?php
-                                $dbConn = getConnection();
+                                // $dbConn = getConnection();
                                 $sql = "SELECT status, houseId, date(dateTimes) as dateTimes, address, city, state, zip, bedrooms, bathrooms, price
                         FROM HouseInfo
                         WHERE userId = :userId";
@@ -106,21 +167,76 @@ $keys = array_keys($response);
                                 $stmt->execute($namedParameters);
                                 $results = $stmt->fetchAll();
 
+                                $agentMlsId = "SELECT mlsId FROM UsersInfo WHERE userId = :userId";
+                                $namedParameters = array();
+                                $namedParameters[':userId'] = $_SESSION['userId'];
+                                $stmt = $dbConn->prepare($agentMlsId);
+                                $stmt->execute($namedParameters);
+                                $mlsIdResult = $stmt->fetch();
+
                                 for ($i = 0; $i < sizeof($keys); $i++) {
+                                    if($response[$keys[$i]]['listingAgentID'] == $mlsIdResult['mlsId'])
+                                    {
+                                      if(!isset($response[$keys[$i]]['bedrooms']))
+                                        {
+                                            $houseBedrooms = 0;
+                                        }
+                                        else
+                                        {
+                                            $houseBedrooms = $response[$keys[$i]]['bedrooms'];
+                                        }
+                                        if(!isset($response[$keys[$i]]['totalBaths']))
+                                        {
+                                            $houseBaths = 0;
+                                        }
+                                        else
+                                        {
+                                            $houseBaths = $response[$keys[$i]]['totalBaths'];
+                                        }
+                                        echo "<tr>";
+                                        echo "<td style=\"padding-left:10%\"><img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error' width=\"225px\" height=\"200px\"></td>";
+                                        echo "<td>";
+                                        echo $response[$keys[$i]]['address'] . "<br>" . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . ", " . $response[$keys[$i]]['zipcode'];
+                                        echo "<br><br>";
+                                        echo "Price: $" . number_format($response[$keys[$i]]['rntLsePrice']);
+                                        echo "<br>";
+                                        echo "Bath: " . $houseBaths;
+                                        echo "<br>";
+                                        echo "Bed: " . $houseBedrooms;
+                                        echo "</td>";
+                                        echo "<td>";
+
+                                        echo '<a href="openhouse/create-flyer.php?id=' . $response[$keys[$i]]['listingID'] . '"><button type="button" class="btn btn-primary ">Create a New Flyer</button></a></br></br>';
+                                        echo '<a href=signIn.php?id=' . $response[$keys[$i]]['listingID'] . ' target="_blank"><button type="button" class="btn btn-primary">Sign-In</button></a></br></br>';
+                                        echo '<a href="singleListingVisitors.php?id=' . $response[$keys[$i]]['listingID'] . '"><button type="button" class="btn btn-primary ">Listing Visitors</button></a></br></br>';
+                                        
+                                        echo '<button type="button" class="btn btn-primary" onClick="matchLeadsModal(' . $response[$keys[$i]]['rntLsePrice'] . "," . $houseBedrooms . "," . $houseBaths . ')">Top 5 Leads</button></br></br>';
+                                        echo '<button type="button" class="btn btn-primary" onClick="addTransaction(\'' . $response[$keys[$i]]['listingID'] . '\')">In-Contract</button></br></br>';
+                                        echo '<button type="button" class="btn btn-danger">Remove</button></br></br>';
+                                        echo "                               </td>";
+                                        echo "</tr>";
+                                    }
+
+                                }
+                                foreach($addedListingsResults as $addHouse) 
+                                {
+                                    $directory = "../addedHouses/" . $addHouse['address'] . "/";
+                                    $files = scandir ($directory);
                                     echo "<tr>";
-                                    echo "<td style=\"padding-left:10%\"><img src='" . $response[$keys[$i]]['image']['0']['url'] . "' alt='error' width=\"225px\" height=\"200px\"></td>";
-                                    echo "<td>";
-                                    echo $response[$keys[$i]]['address'] . "<br>" . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . ", " . $response[$keys[$i]]['zipcode'];
-                                    echo "</td>";
-                                    echo "<td>";
+                                        echo "<td style=\"padding-left:10%\"><img src='" . $directory . $files[2] . "' alt='error' width=\"225px\" height=\"200px\"></td>";
+                                        echo "<td>";
+                                        echo $addHouse['address'] . "<br>" . $addHouse['city'] . " " . $addHouse['state'] . ", " . $addHouse['zip'];
+                                        echo "</td>";
+                                        echo "<td>";
 
-                                    echo '<a href="openhouse/create-flyer.php?id=' . $response[$keys[$i]]['listingID'] . '"><button type="button" class="btn btn-primary ">Create a New Flyer</button></a></br></br>';
-                                    echo '<a href=signIn.php?id=' . $response[$keys[$i]]['listingID'] . ' target="_blank"><button type="button" class="btn btn-primary">Sign-In</button></a></br></br>';
-                                    echo '<a href="openhouse/singleListingVisitors.php?id=' . $response[$keys[$i]]['listingID'] . '"><button type="button" class="btn btn-primary ">Listing Visitors</button></a></br></br>';
-                                    echo '<button type="button" class="btn btn-danger">Remove</button></br></br>';
-                                    echo "                               </td>";
-                                    echo "</tr>";
-
+                                        echo '<a href="openhouse/create-flyer.php?id=' . $addHouse['houseId'] . '"><button type="button" class="btn btn-primary ">Create a New Flyer</button></a></br></br>';
+                                        echo '<a href=signIn.php?id=' . $addHouse['houseId'] . ' target="_blank"><button type="button" class="btn btn-primary">Sign-In</button></a></br></br>';
+                                        echo '<a href="singleListingVisitors.php?id=' . $addHouse['houseId'] . '"><button type="button" class="btn btn-primary ">Listing Visitors</button></a></br></br>';
+                                        echo '<button type="button" class="btn btn-primary" onClick="matchLeadsModal(' . $addHouse['price'] . "," . $addHouse['bedrooms'] . "," . $addHouse['bathrooms'] . ')">Top 5 Leads</button></br></br>';
+                                        echo '<button type="button" class="btn btn-primary" onClick="addTransaction(' . $addHouse['houseId'] . ')">In-Contract</button></br></br>';
+                                        echo '<button type="button" class="btn btn-danger">Remove</button></br></br>';
+                                        echo "                               </td>";
+                                        echo "</tr>";
                                 }
                                 ?>
                             </table>
@@ -177,6 +293,8 @@ $keys = array_keys($response);
 <!-- PAGE-SPECIFIC JS -->
 <!-- Footable -->
 <script src="../dist/js/vendor/footable.min.js"></script>
+
+
 <script>
     jQuery(function ($) {
         $('.table').footable({});
@@ -188,6 +306,61 @@ $keys = array_keys($response);
             html: true
         });
     });
+
+    function matchLeadsModal(price,bedrooms,bathrooms)
+    {
+        // $.post( "getTopLeads.php", { price: price, bedrooms: bedrooms, bathrooms: bathrooms}, function( data ) 
+        // {
+        //   // console.log( data.name ); // John
+        //   // console.log( data.time ); // 2pm
+        //   console.log("data");
+
+        // }, "json");
+$.post( "getTopLeads.php", { price: price, bedrooms: bedrooms, bathrooms: bathrooms})
+  .done(function( data ) {
+    var leadData = JSON.parse(data);
+    // alert(leadData );
+    for(var i = 0; i < 5; i++ )
+    {
+        $('#agentName' + i).text("Not Available");
+         $('#buyerId' + i).text("Not Available");
+         $('#price' + i).text("Not Available");
+         $('#minBed' + i).text("Not Available");
+         $('#minBath' + i).text("Not Available");
+    }
+    for(var i = 0; i < 5; i++ )
+    {
+         // $('#lead' + i).text("Agent: " + leadData[i]['agentFirstName'] + "&nbsp" + leadData[i]['agentLastName'] + "   BuyerId: " + leadData[i]['buyerID'] + "   Min-Bathrooms: " + 
+         //    leadData[i]['bathroomsMin'] + "   Min-Bedrooms: " + leadData[i]['bedroomsMin'] + "   Price: " + leadData[i]['priceMax']);
+
+         $('#agentName' + i).text(leadData[i]['agentFirstName'] + " " + leadData[i]['agentLastName']);
+         $('#buyerId' + i).text(leadData[i]['buyerID']);
+         $('#price' + i).text(leadData[i]['priceMax']);
+         $('#minBed' + i).text(leadData[i]['bedroomsMin']);
+         $('#minBath' + i).text(leadData[i]['bathroomsMin']);
+
+         
+    }
+  });
+        // alert(mlsId);
+        $('#matchLeads').modal('show');
+
+
+    }
+
+    function addTransaction(houseId)
+    {
+        // alert(houseId);
+        $.post( "addTransaction.php", { houseId: houseId})
+  .done(function( data ) {
+    
+    alert("House In-contract. Will reflect on Dashboard.");
+  });
+
+        
+
+
+    }
 </script>
 </body>
 

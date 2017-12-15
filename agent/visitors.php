@@ -5,12 +5,34 @@ if (!isset($_SESSION['userId'])) {
     header("Location: http://jjp2017.org/login.php");
 }
 require '../databaseConnection.php';
+$dbConn = getConnection();
 if (isset ($_GET['deleteForm'])) {  //checking whether we have clicked on the "Delete" button
     $sql = "DELETE FROM BuyerInfo 
                  WHERE buyerID = '" . $_GET['buyerID'] . "'";
     $stmt = $dbConn->prepare($sql);
     $stmt->execute();
 }
+
+$sqlMlsId = "SELECT  mlsId FROM UsersInfo WHERE userId = :userId";
+
+$namedParameters = array();
+$namedParameters[':userId'] = $_SESSION['userId'];
+
+
+$mlsIdStmt = $dbConn->prepare($sqlMlsId);
+$mlsIdStmt->execute($namedParameters);
+$mlsIdResult = $mlsIdStmt->fetch();
+
+$addedHouses = "SELECT * FROM HouseInfo WHERE userId = :userId AND status = :status";
+$addedHouseParam = array();
+$addedHouseParam[':userId'] = $_SESSION['userId'];
+$addedHouseParam[':status'] = "added";
+
+$addedHousesStmt = $dbConn->prepare($addedHouses);
+$addedHousesStmt->execute($addedHouseParam);
+$addedHouseResults = $addedHousesStmt->fetchAll();
+
+$houses = $addedHousesStmt->rowCount();
 
 function updateSort($sort)
 {
@@ -131,7 +153,128 @@ $keys = array_keys($response);
 
             <!-- PAGE-SPECIFIC CSS -->
             
+            <!-- Modal -->
+  <div class="modal fade bd-example-modal-lg" id="addLeadModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Add Lead</h4>
+        </div>
+        <div class="modal-body">
+<form action="addLead.php" method="POST">
+          <input type="text" name="firstName" class="form-control has-feedback-left" id="inputSuccess2"
+                       placeholder="First Name">
+                <span class="form-control-feedback left" aria-hidden="true"></span>
 
+                </br>
+                <input type="text" name="lastName" class="form-control" id="inputSuccess3" placeholder="Last Name">
+                </br>
+                <input type="text" name="email" class="form-control has-feedback-left" id="inputSuccess4"
+                       placeholder="Email">
+                </br>
+                <input type="text" name="phone" class="form-control" id="inputSuccess5" placeholder="Phone">
+                </br>
+                 <label>How soon are you looking to purchase a home?</label>
+                <select id="" name="howSoon" class="form-control" required>
+                    <option value="0">--Select One--</option>
+                    <option value="1-3">1-3 months</option>
+                    <option value="4-6">4-6 months</option>
+                    <option value="7-12">7-12 months</option>
+                    <option value="Visit">Just visiting</option>
+                </select>
+
+                </br>
+                <label>Price</label>
+                <select id="" name="price" class="form-control" required>
+                    <option value="">--Select One--</option>
+                    <option value="100000">$100,000</option>
+                    <option value="150000">$150,000</option>
+                    <option value="200000">$200,000</option>
+                    <option value="250000">$250,000</option>
+                    <option value="300000">$300,000</option>
+                    <option value="350000">$350,000</option>
+                    <option value="400000">$400,000</option>
+                    <option value="450000">$450,000</option>
+                    <option value="500000">$500,000</option>
+                    <option value="550000">$550,000</option>
+                    <option value="600000">$600,000</option>
+                    <option value="650000">$650,000</option>
+                    <option value="700000">$700,000</option>
+                    <option value="750000">$750,000</option>
+                    <option value="800000">$800,000</option>
+                    <option value="850000">$850,000</option>
+                    <option value="900000">$900,000</option>
+                    <option value="950000">$950,000</option>
+                    <option value="1000000">$1,000,000+</option>
+                </select>
+
+                </br>
+
+                 <label>Min Bedrooms</label>
+                <select id="" name="bedroomsMin" class="form-control" required>
+                    <option value="">--Select One--</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+
+                </select>
+                </br>
+                <label>Min Bathrooms</label>
+                <select id="" name="bathroomsMin" class="form-control" required>
+                    <option value="">--Select One--</option>
+                    <option value="1">1</option>
+                    <option value="1.5">1.5</option>
+                    <option value="2">2</option>
+                    <option value="2.5">2.5</option>
+                    <option value="3">3</option>
+                    <option value="3.5">3.5</option>
+                    <option value="4">4</option>
+                    <option value="4.5">4.5</option>
+                </select>
+            </br></br>
+                <button type="submit" class="btn btn-default" >Save</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</form>
+        </div>
+       
+      </div>
+      
+    </div>
+  </div>
+
+<!-- Modal -->
+  <div class="modal fade" id="visitorHouseMatchModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Houses Matched</h4>
+        </div>
+        <div class="modal-body">
+          1. <span id="house0"></span>
+          <br><br>
+          2. <span id="house1"></span>
+          <br><br>
+          3. <span id="house2"></span>
+          <br><br>
+          4. <span id="house3"></span>
+          <br><br>
+          5. <span id="house4"></span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
@@ -148,8 +291,7 @@ $keys = array_keys($response);
                             <!-- search form -->
                             <form action="#" method="get" class="sidebar-form">
                                 <div class="input-group">
-                                    <input type="text" name="q" class="form-control" placeholder="Search..."
-                                           style="background-color:white;">
+                                    <input type="text" name="q" class="form-control" placeholder="Search..." style="background-color:white;" id="searchBar" onkeyup="barSearch()">
                                     <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
@@ -437,46 +579,42 @@ $keys = array_keys($response);
                         </div>
 
                         <!-------------End Mock Visitor Dropdown-------->
-                        <div id="table-scroll" style="overflow: auto;">
+                        <div id="table-scroll" style="overflow: auto;" >
+                        <button type="button" class="btn btn-success" style="float: right;" onClick="leadModal()">Add Lead</button>
                             <table class="table table-bordered table-striped" id="freeze" >
                                 <thead>
                                 <tr>
+                                    <th data-breakpoints="all">Lead ID</th>
                                     <th data-breakpoints="all">TimeStamp</th>
                                     <th id="visitorSort"><a class="dotted"
-                                                            href=<?php echo "http://jjp2017.org/agent/openhouse/visitors.php?visitorSort=" . updateSort($visitorSort) ?> data-toggle="tooltip"
+                                                            href=<?php echo "http://www.oversite.cc/agent/visitors.php?visitorSort=" . updateSort($visitorSort) ?> data-toggle="tooltip"
                                                             data-placement="top" title="Approval Date">Visitors</a></th>
 
                                     <th data-breakpoints="all">Phone Number</th>
                                     <th id="emailSort" data-breakpoints="all"><a class="dotted"
-                                                                                 href=<?php echo "http://jjp2017.org/agent/openhouse/visitors.php?emailSort=" . updateSort($emailSort) ?> data-toggle="tooltip"
+                                                                                 href=<?php echo "http://www.oversite.cc/agent/visitors.php?emailSort=" . updateSort($emailSort) ?> data-toggle="tooltip"
                                                                                  data-placement="top"
                                                                                  title="Approval Date">Email</a></th>
 
 
                                     <th id="addressSort" data-breakpoints="xs sm"><a class="dotted"
-                                                                                     href=<?php echo "http://jjp2017.org/agent/openhouse/visitors.php?addressSort=" . updateSort($addressSort) ?> data-toggle="tooltip"
+                                                                                     href=<?php echo "http://www.oversite.cc/agent/visitors.php?addressSort=" . updateSort($addressSort) ?> data-toggle="tooltip"
                                                                                      data-placement="top"
                                                                                      title="Approval Date">Address
                                             Visited </a></th>
 
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top" title="Appraisal">Contact </a>
-                                    </th>
+                                    <th data-breakpoints="xs sm">Contact </th>
                                     <th data-breakpoints="all">Notes</th>
 
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top" title="Appraisal">Notes</a>
-                                    </th>
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top" title="Appraisal">Delete</a>
-                                    </th>
+                                    <th data-breakpoints="xs sm">Notes</th>
+                                    <th data-breakpoints="xs sm">Delete</th>
                                     <th id="bedroomSort" data-breakpoints="all"><a class="dotted"
-                                                                                   href=<?php echo "http://jjp2017.org/agent/openhouse/visitors.php?bedroomSort=" . updateSort($bedroomSort) ?> data-toggle="tooltip"
+                                                                                   href=<?php echo "http://www.oversite.cc/agent/visitors.php?bedroomSort=" . updateSort($bedroomSort) ?> data-toggle="tooltip"
                                                                                    data-placement="top"
                                                                                    title="Approval Date">Bedroom(s)</a>
                                     </th>
                                     <th id="bathroomSort" data-breakpoints="all"><a class="dotted"
-                                                                                    href=<?php echo "http://jjp2017.org/agent/openhouse/visitors.php?bathroomSort=" . updateSort($bathroomSort) ?> data-toggle="tooltip"
+                                                                                    href=<?php echo "http://www.oversite.cc/agent/visitors.php?bathroomSort=" . updateSort($bathroomSort) ?> data-toggle="tooltip"
                                                                                     data-placement="top"
                                                                                     title="Approval Date">Bathroom(s)</a>
                                     <th data-breakpoints="all">Price</a>
@@ -496,11 +634,14 @@ $keys = array_keys($response);
                                     $results = $stmt->fetch();
                                     return $results['address'] . ", " . $results['city'] . ", " . $results['state'] . " " . $results['zip'];
                                 }*/
-                                $dbConn = getConnection();
-                                $sql = "SELECT * FROM BuyerInfo, HouseInfo 
-                    WHERE BuyerInfo.userId = :userId 
-                    AND BuyerInfo.houseId = HouseInfo.houseId
-                    ORDER BY ";
+                                
+                    //             $sql = "SELECT * FROM BuyerInfo, HouseInfo 
+                    // WHERE BuyerInfo.userId = :userId 
+                    // AND BuyerInfo.houseId = HouseInfo.houseId OR BuyerInfo.userId = :userId AND BuyerInfo.houseId = '0'
+                    // ORDER BY ";
+                                $sql = "SELECT BuyerInfo.*, HouseInfo.address as address, HouseInfo.city as city, HouseInfo.state as state, HouseInfo.zip as zip
+                                FROM BuyerInfo LEFT JOIN HouseInfo ON BuyerInfo.houseId = HouseInfo.houseId 
+                                where BuyerInfo.userId = :userId ORDER BY ";
                                 if (isset($_GET['visitorSort'])) {
                                     if ($visitorSort == 1) {
                                         $sql .= "lastName ASC";
@@ -541,18 +682,30 @@ $keys = array_keys($response);
                                 $stmt->execute($namedParameters);
                                 //$stmt->execute();
                                 $results = $stmt->fetchAll();
+
                                 foreach ($results as $result) {
                                     $dbNote = $result['note'];
                                     echo "<tbody>";
+                                    echo "<td>" . $result['buyerID'] . "</td>";
                                     if ($result['registeredDate'] == NULL)
                                         echo "<td>" . "</td>";
                                     else
                                         echo "<td>" . date("m-d-Y", strtotime($result['registeredDate'])) . "</td>";
-                                    echo "<td>" . $result['firstName'] . " " . $result['lastName'] . "</td>";
+                                    echo "<td><span style='border-bottom: 1px dotted #000000;  text-decoration: none;' 
+                                    onClick='showHouseMatchModal(" .$result['priceMax'] . "," . $result['bedroomsMin'] . "," . $result['bathroomsMin'] . ")'>" 
+                                    . $result['firstName'] . " " . $result['lastName'] . "</span></td>";
+
                                     echo "<td>" . $result['phone'] . "</td>";
                                     echo "<td>" . htmlspecialchars($result['email']) . "</td>";
-                                    echo "<td>" . htmlspecialchars($result['address'] . ", " . $result['city'] . ", " . $result['state'] . " " . $result['zip']) . "</td>";
+                                    if($result['address'] == "Lead")
+                                    {
+                                        echo "<td>" . htmlspecialchars($result['address']) . "</td>";
 
+                                    }
+                                    else
+                                    {
+                                        echo "<td>" . htmlspecialchars($result['address'] . ", " . $result['city'] . ", " . $result['state'] . " " . $result['zip']) . "</td>";
+                                    }
                                     // <button>Call</button>
                                     echo "<td>" .
 
@@ -620,10 +773,22 @@ $keys = array_keys($response);
                         <option>--Select One--</option>
                         <option value="all">All</option>
                         <?php
-                        for ($i = 0; $i < sizeof($keys); $i++) {
-                            echo '<option value=' . $response[$keys[$i]]['listingID'] . '>' . $response[$keys[$i]]['address'] .
-                                " " . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . ", " .
-                                $response[$keys[$i]]['zipcode'] . '</option>';
+                        for ($i = 0; $i < sizeof($keys); $i++) 
+                        {
+                            if($mlsIdResult['mlsId'] == $response[$keys[$i]]['listingAgentID'])
+                            {
+
+                                echo '<option value=' . $response[$keys[$i]]['listingID'] . '>' . $response[$keys[$i]]['address'] .
+                                    " " . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . ", " .
+                                    $response[$keys[$i]]['zipcode'] . '</option>';
+                            }
+                        }
+
+                        for($j = 0; $j < $houses; $j++) 
+                        {
+                            echo '<option value=' . $addedHouseResults[$j]['listingId'] . '>' . $addedHouseResults[$j]['address'] .
+                                " " . $addedHouseResults[$j]['city'] . " " . $addedHouseResults[$j]['state'] . ", " .
+                                $addedHouseResults[$j]['zip'] . '</option>';
                         }
                         ?>
                     </select>
@@ -631,7 +796,8 @@ $keys = array_keys($response);
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" id="downloadVisitors">Download
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="downloadAllLeads">All Leads</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" id="downloadVisitors">Download</button>
                 </button>
             </div>
         </div>
@@ -653,7 +819,7 @@ $keys = array_keys($response);
         <!-- BEGIN TEMPLATE default-js.php INCLUDE -->
         <?php include "./templates-agent/default-js.php" ?>
         <!-- END TEMPLATE default-css.php INCLUDE -->
-
+<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
 <script type='text/javascript'
         src="https://cdnjs.cloudflare.com/ajax/libs/floatthead/2.0.3/jquery.floatThead.js"></script>
 
@@ -712,7 +878,103 @@ $keys = array_keys($response);
 
         window.location = "openhouse/exportVisitors.php?id=" + $("#house").val() + "&startDate=" + $('#startDate').val() + "&endDate=" + $('#endDate').val();
     });
+
+    $('#downloadAllLeads').click(function () {
+        window.location = "openhouse/exportVisitors.php?id=all" + "&startDate=" + $('#startDate').val() + "&endDate=" + $('#endDate').val();
+    });
        
+       function leadModal()
+       {
+        $('#addLeadModal').modal('toggle');
+       }
+
+
+       function addLead()
+       {
+            var firstName = $('input[name=firstName]').val();
+            var lastName = $('input[name=lastName]').val();
+            var email = $('input[name=email]').val();
+            var phone = $('input[name=phone]').val();
+            var howSoon = $('select[name=howSoon]').val();
+            var price = $('select[name=price]').val();
+            var minBed = $('select[name=bedroomsMin]').val();
+            var minBath = $('select[name=bathroomsMin]').val();
+            // alert(firstName);
+            // alert(lastName);
+            // alert(email);
+            // alert(phone);
+            // alert(howSoon);
+            // alert(price);
+            // alert(minBed);
+            // alert(minBath);
+            // $('input[name=firstName]').val("");
+
+            $.post( "addLead.php", { firstName: firstName, lastName: lastName, email: email, phone: phone, howSoon: howSoon, price: price, bedroomsMin: minBed, bathroomsMin: minBath})
+            .done(function( data ) {
+            alert("lead Added");
+            $('input[name=firstName]').val("");
+            $('input[name=lastName]').val("");
+            $('input[name=email]').val("");
+            $('input[name=phone]').val("");
+            $('input[name=howSoon]').val("");
+            $('input[name=price]').val("");
+            $('input[name=bedroomsMin]').val("");
+            $('input[name=bathroomsMin]').val("");
+            $('#addLeadModal').modal('toggle');
+            location.reload(true);
+            });
+            
+       }
+
+       function showHouseMatchModal(price,bed,bath)
+       {
+            for(var i = 0; i < 5; i++ )
+            {
+                $('#house' + i).text(" ");
+            }
+            $.post( "getHouseMatch.php", {price: price, bed: bed, bath: bath})
+            .done(function( data ) {
+            var houseData = JSON.parse(data);
+            // alert(data);
+            for(var i = 0; i < 5; i++ )
+            {
+                $('#house' + i).text("Not Available");
+            }
+            for(var i = 0; i < 5; i++ )
+            {
+                 $('#house' + i).text("Agent: " + houseData[i]['listingAgentID'] + " --- " +
+                  houseData[i]['address'] + ", " + houseData[i]['cityName'] + ", " + houseData[i]['state'] + ", " + houseData[i]['zipcode']);
+
+            }
+            });
+
+            $('#visitorHouseMatchModal').modal('toggle');
+
+       }
+
+       function barSearch() 
+       {
+          var input, filter, table, tr, td, i;
+          input = document.getElementById("searchBar");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("freeze");
+          tr = table.getElementsByTagName("tr");
+          for (i = 0; i < tr.length; i++) 
+          {
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) 
+            {
+              if (td.innerHTML.toUpperCase().indexOf(filter) > -1) 
+              {
+                tr[i].style.display = "";
+              } else 
+              {
+                tr[i].style.display = "none";
+              }
+            }       
+          }
+        }
+
         </script>
 
 <!-- Modal -->

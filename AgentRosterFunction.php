@@ -1,7 +1,12 @@
 <?php
 session_start();
 
+require 'keys/cred.php';
+require 'twilio-php-master/Twilio/autoload.php';
+
+use Twilio\Rest\Client;
 require 'databaseConnection.php';
+
 $dbConn = getConnection();
 
 if ($_POST['function'] == "delete") {
@@ -41,9 +46,21 @@ if ($_POST['function'] == "delete") {
     $namedParameters[":phone"] = $_POST['phone'];
     $namedParameters[":license"] = $_POST['license'];
 
-
     $stmt = $dbConn->prepare($sql);
-    $stmt->execute($namedParameters);
+    $stmt->execute($namedParameters);    
+
+
+    //$_SESSION['tempCode'] = rand(1, 999);
+    $twilio_phone_number = "+18315851661";
+    $client = new Client($sid, $token);
+    $client->messages->create(
+    $_POST['phone'],
+    array(
+        "From" => $twilio_phone_number,
+        "Body" => "OVERSITE LOGIN CREDENTIALS \r\nLogin URL: www.oversite.cc\r\nUsername: " . $_POST['username'] . "\r\nPassword: " . $_POST['password'],
+        
+        )
+    );
 }
 
 ?>

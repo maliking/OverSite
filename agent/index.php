@@ -7,7 +7,7 @@ if (!isset($_SESSION['userId'])) {
 require '../databaseConnection.php';
 $dbConn = getConnection();
 
-$sqlLicense = "SELECT license FROM UsersInfo WHERE userId = :userId";
+$sqlLicense = "SELECT license, mlsId FROM UsersInfo WHERE userId = :userId";
 
 $namedParameters = array();
 $namedParameters[':userId'] = $_SESSION['userId'];
@@ -18,6 +18,20 @@ $licenseStmt->execute($namedParameters);
 $licenseResult = $licenseStmt->fetch();
 
 
+
+
+$addedHouses = "SELECT count(*) as added FROM HouseInfo WHERE userId = :userId AND status = :status";
+$addedHouseParam = array();
+$addedHouseParam[':userId'] = $_SESSION['userId'];
+$addedHouseParam[':status'] = "added";
+
+$addedHousesStmt = $dbConn->prepare($addedHouses);
+$addedHousesStmt->execute($addedHouseParam);
+$addedHouseResults = $addedHousesStmt->fetch();
+
+
+
+
 $sql = "SELECT firstName, lastName, count(*) as sold, AVG(finalComm) as average, SUM(finalComm) AS earnings, AVG(percentage) AS avgPercent FROM commInfo WHERE license = :license GROUP BY license ";
 $parameters = array();
 $parameters[':license'] = $licenseResult['license'];
@@ -26,10 +40,57 @@ $stmt = $dbConn->prepare($sql);
 $stmt->execute($parameters);
 $result = $stmt->fetch();
 
+$sqlTransactions = "SELECT * FROM transactions WHERE userId = :userId";
+$transParameters = array();
+$transParameters[':userId'] = $_SESSION['userId'];
+$transStmt = $dbConn->prepare($sqlTransactions);
+$transStmt->execute($transParameters);
+$transResults = $transStmt->fetchAll();
+
 // $sqlRank = "SELECT UsersInfo.firstName, UsersInfo.lastName, count(*) as sold, sum(finalComm) as YTDComm FROM UsersInfo LEFT JOIN commInfo on UsersInfo.license = commInfo.license group by UsersInfo.license order by sold Desc ";
 // $stmtRank = $dbConnRank->prepare($sqlRank);
 // $stmtRank->execute();
 // $rank = $stmtRank->fetchAll();
+$url = 'https://api.idxbroker.com/clients/featured';
+
+$method = 'GET';
+
+// headers (required and optional)
+$headers = array(
+    'Content-Type: application/x-www-form-urlencoded', // required
+    'accesskey: e1Br0B5DcgaZ3@JXI9qib5', // required - replace with your own
+    'outputtype: json' // optional - overrides the preferences in our API control page
+);
+
+// set up cURL
+$handle = curl_init();
+curl_setopt($handle, CURLOPT_URL, $url);
+curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+
+// exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
+$response = curl_exec($handle);
+$code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+
+if ($code >= 200 || $code < 300) {
+    $response = json_decode($response, true);
+} else {
+    $error = $code;
+}
+
+// print_r($response);
+
+$keys = array_keys($response);
+$pendingListings = (int)$addedHouseResults['added'];
+for($i = 0; $i < sizeof($keys); $i++) 
+{
+    if($response[$keys[$i]]['listingAgentID'] == $licenseResult['mlsId'])
+    {
+        $pendingListings++;
+    }
+}
 ?>
 
     <!DOCTYPE html>
@@ -117,7 +178,7 @@ $result = $stmt->fetch();
                             <!-- small box -->
                             <div class="small-box bg-yellow">
                                 <div class="inner">
-                                    <h3>2</h3>
+                                    <h3><?php echo $pendingListings; ?></h3>
                                     <p>Pending Listings</p>
                                 </div>
                                 <div class="icon">
@@ -207,14 +268,14 @@ $result = $stmt->fetch();
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">John Doe</h4>
+                                    <h4 class="modal-title" id="titleName">John Doe</h4>
                                 </div>
                                 <div class="modal-body">
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <i>Scheduled to contact: </i>
-                                                <b>9:15am</b> <i>September 23, 2017</i>
+                                                <b id="meetingTime">9:15am</b> <i id="meetingDay">September 23, 2017</i>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -239,6 +300,19 @@ $result = $stmt->fetch();
                                                             <td id="lastName">
                                                                 Doe
                                                             </td>
+                                                        </tr>
+
+                                                        <tr>
+
+                                                            <th>Phone</th>
+                                        
+                                                        </tr>
+
+                                                        <tr>
+
+                                                            <th id="phone"></th>
+                                        
+                                                        </tr>
                                                             <tr>
 
 
@@ -253,6 +327,7 @@ $result = $stmt->fetch();
                                                                 <td id="minBath">
                                                                     2
                                                                 </td>
+                                                            </tr>
                                                                 <tr>
 
 
@@ -368,7 +443,7 @@ $result = $stmt->fetch();
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close
                                 </button>
-                                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Delete
+                                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal" onClick="deleteMeeting()">Delete
                                     Appointment
                                 </button>
                                 <button type="button" class="btn btn-outline" onClick="saveMeeting()">Save changes
@@ -385,11 +460,119 @@ $result = $stmt->fetch();
                         <!--MODAL AREA-->
 
                     </div>
+
+
                     <!--                    END example modal-->
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-md-12">
+                            <div class="box">
+                            <table class="table table-bordered table-striped" >
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Client</th>
+                                    <th>Property</th>
+                                    
+                                    <th data-breakpoints="all">Client Number</th>
+                                    <th data-breakpoints="all">Client Email</th>
+                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
+                                                                    data-placement="top"
+                                                                    title="Accepted Date">Acc. </a></th>
+                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
+                                                                    data-placement="top" title="Earnest Money Deposit">EMD </a>
+                                    </th>
+                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
+                                                                    data-placement="top" title="Disclosures">Seller Disc. </a>
+                                    </th>
+
+                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
+                                                                    data-placement="top" title="Inspection">Insp. </a>
+                                    </th>
+
+                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
+                                                                    data-placement="top" title="Appraisal">Appr. </a>
+                                    </th>
+
+                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
+                                                                    data-placement="top"
+                                                                    title="Loan Contingencies">LC </a></th>
+                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
+                                                                    data-placement="top"
+                                                                    title="Close of Escrow">COE </a></th>
+                                    <th data-breakpoints="xs sm">Notes</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+
+                                    foreach ($transResults as $trans) {
+                                        # code...
+                                        $day = $trans['accDay'];
+                                    
+                                        echo '<td>' . $trans['transType']  . '</td>
+                                    <td>' . $trans['clientName'] . '</td>
+                                    <td>' . $trans['address'] . '</td>
+                                    <td>' . $trans['clientNum'] . '</td>
+                                    <td>Test Email</td>
+
+                                    <td>' . date('m/d/y', strtotime($day)) . '
+                                        <br>
+                                        <span class="label label-success">Done! <i
+                                                    class="fa fa-check-circle-o"></i></span>
+                                    </td>
+                                    <td>' . date('m/d/y', strtotime($day . ' + '. $trans['emdDays'] . ' days' )) . '
+                                        <br>
+                                        <span class="label label-success">Done! <i
+                                                    class="fa fa-check-circle-o"></i></span>
+                                    </td>
+                                    <td>' . date('m/d/y', strtotime($day . ' + '. $trans['sellerDiscDays'] . ' days' )) . '
+                                    <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
+                                                  data-toggle="popover" data-Oplacement="right"
+                                                  data-content="<b>Completed:</b> 3/4/17"><i
+                                                    class="fa fa-chevron-circle-right"></i></a>
+                                        <br>
+                                        <span class="label label-danger">Overdue</span>
+                                    </td>
+
+                                    <td>' . date('m/d/y', strtotime($day . ' + '. $trans['genInspecDays'] . ' days' )) . '
+                                     <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
+                                                  data-toggle="popover" data-Oplacement="right"
+                                                  data-content="<b>Completed:</b> 3/4/17"><i
+                                                    class="fa fa-chevron-circle-right"></i></a>
+                                        <br>
+                                        <span class="label label-warning">Due in 8d</span>
+                                    </td>
+
+                                    <td>' . date('m/d/y', strtotime($day . ' + '. $trans['appraisalDays'] . ' days' )) . '
+                                     <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
+                                                  data-toggle="popover" data-Oplacement="right"
+                                                  data-content="<b>Completed:</b> 3/4/17"><i
+                                                    class="fa fa-chevron-circle-right"></i></a>
+                                        <br>
+                                        <span class="label label-warning">Due in 8d</span>
+                                    </td>
+
+                                    <td>' . date('m/d/y', strtotime($day . ' + '. $trans['lcDays'] . ' days' )) . '
+                                        <br>
+                                        <span class="label label-default">Incomplete</span>
+                                    </td>
+                                    <td>' . date('m/d/y', strtotime($day . ' + '. $trans['coeDays'] . ' days' )) . '
+                                        <br>
+                                        <span class="label label-default">Incomplete</span>
+                                    </td>
+                                    <td>Write some notes here!</td>
+                                </tr>';
+                            }
+                                    ?>
+                                <tr>
+
+                                    
+                                </tbody>
+                            </table>
+                        </div>
                             <div class="box box-primary">
+
                                 <div class="box-body no-padding" style="height:600px;">
                                     <!-- THE CALENDAR -->
                                     <div id="calendar"></div>
@@ -462,6 +645,17 @@ $result = $stmt->fetch();
                 $('#notes').html(newNote);
                 // $('#modal-primary').modal('toggle');
                 // alert();
+            }
+
+            function deleteMeeting()
+            {
+                var id = $('#id').text();
+                $.post("deleteMeeting.php", {
+                    id: id,
+                });
+                $('#calendar').fullCalendar('removeEvents', id.replace(" ", "T" ));
+                // alert(id);
+                alert("meeting deleted");
             }
 
             $(document).ready(function() {
@@ -537,9 +731,12 @@ $result = $stmt->fetch();
                             data: formData,
                             success: function(data, textStatus, jqXHR) {
                                 var meetingInfo = JSON.parse(data);
+                                $('#titleName').html(meetingInfo['firstName'] + " " + meetingInfo['lastName']);
+
                                 $('#firstName').html(meetingInfo['firstName']);
 
                                 $('#lastName').html(meetingInfo['lastName']);
+                                $('#phone').html(meetingInfo['phone']);
                                 $('#minBed').html(meetingInfo['bedroomsMin']);
                                 $('#minBath').html(meetingInfo['bathroomsMin']);
                                 $('#minPrice').html(meetingInfo['priceMin']);
@@ -549,9 +746,13 @@ $result = $stmt->fetch();
                                 $('#id').html(meetingInfo['meeting']);
                                 $('#textArea').append(meetingInfo['note']);
 
+                                $('#meetingTime').html(meetingInfo['meetingFormat'].substring(10,16));
+                                $('#meetingDay').html(meetingInfo['meetingFormat'].substring(0,10));
+
                             }
                         });
                         $("#modal-primary").modal();
+                        // alert(event.id);
 
                     },
 

@@ -4,7 +4,7 @@ session_start();
 require '../databaseConnection.php';
 $dbConn = getConnection();
 
-$meetingInfo = "SELECT * FROM BuyerInfo WHERE meeting = :id";
+$meetingInfo = "SELECT *, DATE_FORMAT(meeting, '%m/%d/%Y %H:%i') as meetingFormat FROM BuyerInfo WHERE meeting = :id";
 
 $namedParameters = array();
 $namedParameters[':id'] = $_POST['id'];
