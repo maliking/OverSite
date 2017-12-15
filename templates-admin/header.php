@@ -110,11 +110,10 @@ $agentInfo = $email->fetch();
                 <li class="dropdown user user-menu">
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                                         alt="User Image"> <span class="hidden-xs"><?php echo $agentInfo['firstName'] . " " . $agentInfo['lastName'] . " #" . $agentInfo['license'];?></span> </a>
+                        <span class="hidden-xs"><?php echo $agentInfo['firstName'] . " " . $agentInfo['lastName'] . " #" . $agentInfo['license'];?></span> </a>
                     <ul class="dropdown-menu">
                         <!-- User image in the menu -->
-                        <li class="user-header"><img src="./dist/img/user2-160x160.jpg" class="img-circle"
-                                                     alt="User Image">
+                        <li class="user-header"><img src="./dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                             <p> <?=$_SESSION['username'];?>
                                 <small>Member since Nov. 2012</small>
                             </p>
