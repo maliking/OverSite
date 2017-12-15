@@ -209,9 +209,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                             <!-- small box -->
                             <div class="small-box bg-orange">
                                 <div class="inner">
-                                    <h3><sup style="font-size: 20px">$</sup>
-                                        <?php echo number_format($result['average'], 0); ?>
-                                    </h3>
+                                    <h3><?php echo number_format($result['avgPercent'], 2); ?><sup style="font-size: 20px">%</sup></h3></h3>
                                     <p>Buyer Commission</p>
                                 </div>
                                 <div class="icon">
