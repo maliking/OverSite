@@ -20,7 +20,7 @@ $namedParameters[':userId'] = $_SESSION['userId'];
 
 
 $mlsIdStmt = $dbConn->prepare($sqlMlsId);
-//$mlsIdStmt->execute($namedParameters);
+$mlsIdStmt->execute($namedParameters);
 $mlsIdResult = $mlsIdStmt->fetch();
 
 $addedHouses = "SELECT * FROM HouseInfo WHERE userId = :userId AND status = :status";
