@@ -8,3 +8,6 @@
 <script src="../dist/js/vendor/fastclick.min.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
+<!-- PAGE-SPECIFIC JS -->
+<script src="../dist/js/vendor/footable.min.js"></script>
+
