@@ -358,7 +358,7 @@ $keys = array_keys($response);
                                 $stmt->execute($namedParameters);
                                 $results = $stmt->fetchAll();
 
-                                $houseAddresses = "SELECT DISTINCT address, city, state, zip FROM HouseInfo WHERE userId = :userId";
+                                $houseAddresses = "SELECT address, city, state, zip FROM HouseInfo WHERE userId = :userId GROUP BY address";
                                 $addressParam = array();
                                 $addressParam[':userId'] = $_SESSION['userId'];
                                 $addressStmt = $dbConn->prepare($houseAddresses);
