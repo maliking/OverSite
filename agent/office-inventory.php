@@ -231,10 +231,8 @@ $keys = array_keys($response);
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-body">
-
-
                             <table class="table table-bordered table-striped" data-sorting="true"
-                                   data-filtering="true" data-paging="true" data-paging-limit="20"
+                                   data-filtering="true" data-paging="true"
                                    id="inventory-table">
                                 <thead>
 
