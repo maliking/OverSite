@@ -316,8 +316,7 @@ $keys = array_keys($response);
                                               FROM BuyerInfo 
                                          LEFT JOIN HouseInfo 
                                                 ON BuyerInfo.houseId = HouseInfo.houseId 
-                                             WHERE BuyerInfo.userId = :userId
-                                             GROUP BY address;";
+                                             WHERE BuyerInfo.userId = :userId;";
 
                                 if (isset($_GET['visitorSort'])) {
                                     if ($visitorSort == 1) {
