@@ -6,6 +6,7 @@ if (!isset($_SESSION['userId'])) {
 }
 require '../databaseConnection.php';
 $dbConn = getConnection();
+$dbConnTwo = getConnection();
 //if (isset ($_GET['deleteForm'])) {  //checking whether we have clicked on the "Delete" button
 //    $sql = "DELETE FROM BuyerInfo
 //                 WHERE buyerID = '" . $_GET['buyerID'] . "'";
@@ -316,8 +317,7 @@ $keys = array_keys($response);
                                               FROM BuyerInfo 
                                          LEFT JOIN HouseInfo 
                                                 ON BuyerInfo.houseId = HouseInfo.houseId 
-                                             WHERE BuyerInfo.userId = :userId
-                                             GROUP BY address;";
+                                             WHERE BuyerInfo.userId = :userId;";
 
                                 if (isset($_GET['visitorSort'])) {
                                     if ($visitorSort == 1) {
@@ -359,10 +359,18 @@ $keys = array_keys($response);
                                 $stmt->execute($namedParameters);
                                 $results = $stmt->fetchAll();
 
-                                $counter = 1;
+                                $houseAddresses = "SELECT address, city, state, zip FROM HouseInfo WHERE userId = :userId GROUP BY address;";
+                                $addressParam = array();
+                                $addressParam[':userId'] = $_SESSION['userId'];
+                                $addressStmt = $dbConnTwo->prepare($houseAddresses);
+                                $addressStmt->execute($addressParam);
+                                $addressResults = $addressStmt->fetchAll();
 
-                                foreach ($results as $result) {
-                                    $dbNote = $result['note'];
+                                $counter = 1;
+                                // print_r($addressResults);
+                                foreach($addressResults as $result) 
+                                {
+                                    
 
                                     echo "<div class=\"panel panel-default\">";
                                     echo "<div class=\"panel-heading\">";
@@ -380,8 +388,14 @@ $keys = array_keys($response);
                                     echo "</div>"; // panel-heading
                                     echo "<div id=\"collapse" . $counter . "\" class=\"panel-collapse collapse\">
                                         <div class=\"panel-body\">
-                                            <table class=\"table table-striped\">
-                                                <tr>
+                                            <table class=\"table table-striped\">";
+
+                                    foreach($results as $visitors)
+                                    {
+                                        if($visitors['address'] == $result['address'])
+                                        {
+                                            $dbNote = $visitors['note'];
+                                    echo "<tr>
                                                     <th>Name</th>
                                                     <th>Phone</th>
                                                     <th>Email</th>
@@ -390,9 +404,9 @@ $keys = array_keys($response);
                                                     <th></th>
                                                 </tr>";
                                     echo "      <tr>
-                                                    <td>" . $result['firstName'] . " " . $result['lastName'] . "</td>
-                                                    <td>" . $result['phone'] . "</td>
-                                                    <td>" . htmlspecialchars($result['email']) . "</td>";
+                                                    <td>" . $visitors['firstName'] . " " . $visitors['lastName'] . "</td>
+                                                    <td>" . $visitors['phone'] . "</td>
+                                                    <td>" . htmlspecialchars($visitors['email']) . "</td>";
                                     echo "<td>
                                             <div class=\"btn-group\">
                                                 <button type=\"button\" class=\"btn btn-warning btn-sm\"><i class=\"fa fa-lg fa-mobile\"></i> Text</i> </button>
@@ -412,19 +426,21 @@ $keys = array_keys($response);
                                                 </div>
                                                 
                                             </div>
-                                            <button class=\"btn btn-danger btn-sm\" onClick=\"return confirm('Are you sure you want to delete " . $result["firstName"] . " " . $result['lastName'] . "?')\" href='deleteProduct.php?buyerID=" . $result["buyerID"] . "'>
+                                            <button class=\"btn btn-danger btn-sm\" onClick=\"return confirm('Are you sure you want to delete " . $visitors["firstName"] . " " . $visitors['lastName'] . "?')\" href='deleteProduct.php?buyerID=" . $visitors["buyerID"] . "'>
                                     <i class='fa fa-trash-o'></i> Remove
                                             </button>
                                           </td>";
-                                    echo "<td id='" . $result['buyerID'] . "'>" . $dbNote . "</td>";
+                                    echo "<td id='" . $visitors['buyerID'] . "'>" . $dbNote . "</td>";
                                     echo "<td><button class=\"btn-sm btn-primary\" type=\"button\"
                                                                         data-toggle=\"modal\" data-toggle=\"modal\"
-                                                                        data-target=\"#addNotesModal\" onClick=takeNote(" . $result['houseId'] . ',' . $result['buyerID'] . ")>
+                                                                        data-target=\"#addNotesModal\" onClick=takeNote(" . $visitors['houseId'] . ',' . $visitors['buyerID'] . ")>
                                                                     Add Note
                                                                 </button></td>";
 
 
                                     echo "      </tr>";
+                                }
+                                }
                                     echo "</table>";
                                     echo "</div>";
                                     echo "</div>";
