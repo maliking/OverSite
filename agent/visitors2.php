@@ -357,7 +357,6 @@ $keys = array_keys($response);
                                 $namedParameters[':userId'] = $_SESSION['userId'];
                                 $stmt = $dbConn->prepare($sql);
                                 $stmt->execute($namedParameters);
-                                //$stmt->execute();
                                 $results = $stmt->fetchAll();
 
                                 $counter = 1;
@@ -388,6 +387,7 @@ $keys = array_keys($response);
                                                     <th>Email</th>
                                                     <th></th>
                                                     <th>Notes</th>
+                                                    <th></th>
                                                 </tr>";
                                     echo "      <tr>
                                                     <td>" . $result['firstName'] . " " . $result['lastName'] . "</td>
@@ -416,6 +416,7 @@ $keys = array_keys($response);
                                     <i class='fa fa-trash-o'></i> Remove
                                             </button>
                                           </td>";
+                                    echo "<td id='" . $result['buyerID'] . "'>" . $dbNote . "</td>";
                                     echo "<td><button class=\"btn-sm btn-primary\" type=\"button\"
                                                                         data-toggle=\"modal\" data-toggle=\"modal\"
                                                                         data-target=\"#addNotesModal\" onClick=takeNote(" . $result['houseId'] . ',' . $result['buyerID'] . ")>
