@@ -358,9 +358,16 @@ $keys = array_keys($response);
                                 $stmt->execute($namedParameters);
                                 $results = $stmt->fetchAll();
 
+                                $houseAddresses = "SELECT DISTINCT address, city, state, zip FROM HouseInfo WHERE userId = :userId";
+                                $addressParam = array();
+                                $addressParam[':userId'] = $_SESSION['userId'];
+                                $addressStmt = $dbConn->prepare($houseAddresses);
+                                $addressStmt->execute($addressParam);
+                                $addressResults = $addressStmt->fetchAll();
+
                                 $counter = 1;
 
-                                foreach ($results as $result) {
+                                foreach ($addressResults as $result) {
                                     
 
                                     echo "<div class=\"panel panel-default\">";
