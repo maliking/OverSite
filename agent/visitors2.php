@@ -6,6 +6,7 @@ if (!isset($_SESSION['userId'])) {
 }
 require '../databaseConnection.php';
 $dbConn = getConnection();
+$dbConnTwo = getConnection();
 //if (isset ($_GET['deleteForm'])) {  //checking whether we have clicked on the "Delete" button
 //    $sql = "DELETE FROM BuyerInfo
 //                 WHERE buyerID = '" . $_GET['buyerID'] . "'";
@@ -358,15 +359,15 @@ $keys = array_keys($response);
                                 $stmt->execute($namedParameters);
                                 $results = $stmt->fetchAll();
 
-                                $houseAddresses = "SELECT address, city, state, zip FROM HouseInfo WHERE userId = :userId GROUP BY address";
+                                $houseAddresses = "SELECT address, city, state, zip FROM HouseInfo WHERE userId = :userId GROUP BY address;";
                                 $addressParam = array();
                                 $addressParam[':userId'] = $_SESSION['userId'];
-                                $addressStmt = $dbConn->prepare($houseAddresses);
+                                $addressStmt = $dbConnTwo->prepare($houseAddresses);
                                 $addressStmt->execute($addressParam);
                                 $addressResults = $addressStmt->fetchAll();
 
                                 $counter = 1;
-                                print_r($addressResults);
+                                // print_r($addressResults);
                                 foreach($addressResults as $result) 
                                 {
                                     
