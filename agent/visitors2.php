@@ -366,8 +366,9 @@ $keys = array_keys($response);
                                 $addressResults = $addressStmt->fetchAll();
 
                                 $counter = 1;
-
-                                foreach ($addressResults as $result) {
+                                print_r($addressResults);
+                                foreach($addressResults as $result) 
+                                {
                                     
 
                                     echo "<div class=\"panel panel-default\">";
