@@ -234,7 +234,7 @@ $keys = array_keys($response);
 
 
                             <table class="table table-bordered table-striped" data-sorting="true"
-                                   data-filtering="true" id="inventory-table">
+                                   data-filtering="true" data-paging="true" id="inventory-table">
                                 <thead>
 
 
