@@ -6,13 +6,6 @@ if (!isset($_SESSION['userId'])) {
 }
 require '../databaseConnection.php';
 $dbConn = getConnection();
-$dbConnTwo = getConnection();
-//if (isset ($_GET['deleteForm'])) {  //checking whether we have clicked on the "Delete" button
-//    $sql = "DELETE FROM BuyerInfo
-//                 WHERE buyerID = '" . $_GET['buyerID'] . "'";
-//    $stmt = $dbConn->prepare($sql);
-//    $stmt->execute();
-//}
 
 $sqlMlsId = "SELECT  mlsId FROM UsersInfo WHERE userId = :userId";
 
@@ -372,72 +365,62 @@ $keys = array_keys($response);
                                 {
                                     
 
-                                    echo "<div class=\"panel panel-default\">";
-                                    echo "<div class=\"panel-heading\">";
-                                    echo "<h4 class=\"panel-title\">
-                                            <a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse" . $counter . "\">";
+                                foreach ($results as $result) {
+                                    $dbNote = $result['note'];
 
-                                    if ($result['address'] == "Lead") {
-                                        echo htmlspecialchars($result['address']);
-
-                                    } else {
-                                        echo htmlspecialchars($result['address'] . ", " . $result['city'] . ", " . $result['state'] . " " . $result['zip']);
-                                    }
-                                    echo "</a>";
-                                    echo "</h4>";
-                                    echo "</div>"; // panel-heading
+                                    echo "<div class=\"panel panel-default\">
+                                            <div class=\"panel-heading\">
+                                                <h4 class=\"panel-title\">
+                                                    <a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse" . $counter . "\">";
+                                                        if ($result['address'] == "Lead") {
+                                                            echo htmlspecialchars($result['address']);
+                                                        } else {
+                                                            echo htmlspecialchars(
+                                                                    $result['address'] . ", " .
+                                                                    $result['city'] . ", " .
+                                                                    $result['state'] . " " .
+                                                                    $result['zip']);
+                                                        }
+                                    echo "          </a>
+                                                </h4>
+                                            </div>"; // panel-heading
                                     echo "<div id=\"collapse" . $counter . "\" class=\"panel-collapse collapse\">
-                                        <div class=\"panel-body\">
-                                            <table class=\"table table-striped\">";
-
-                                    foreach($results as $visitors)
-                                    {
-                                        if($visitors['address'] == $result['address'])
-                                        {
-                                            $dbNote = $visitors['note'];
-                                    echo "<tr>
-                                                    <th>Name</th>
-                                                    <th>Phone</th>
-                                                    <th>Email</th>
-                                                    <th></th>
-                                                    <th>Notes</th>
-                                                    <th></th>
-                                                </tr>";
-                                    echo "      <tr>
-                                                    <td>" . $visitors['firstName'] . " " . $visitors['lastName'] . "</td>
-                                                    <td>" . $visitors['phone'] . "</td>
-                                                    <td>" . htmlspecialchars($visitors['email']) . "</td>";
-                                    echo "<td>
+                                            <div class=\"panel-body\">
+                                                <table class=\"table table-striped\">
+                                                    <tr>
+                                                        <th>Name</th>
+                                                        <th>Phone</th>
+                                                        <th>Email</th>
+                                                        <th></th> <!-- Text | Send Flyer | Edit Buttons -->
+                                                        <th>Notes</th>
+                                                        <th></th> <!-- Written Notes -->
+                                                    </tr>
+                                                    <tr>
+                                                        <td>" . $result['firstName'] . " " . $result['lastName'] . "</td>
+                                                        <td>" . $result['phone'] . "</td>
+                                                        <td>" . htmlspecialchars($result['email']) . "</td>";
+                                    echo "              <td>
                                             <div class=\"btn-group\">
                                                 <button type=\"button\" class=\"btn btn-warning btn-sm\"><i class=\"fa fa-lg fa-mobile\"></i> Text</i> </button>
-                                                <button type=\"button\" onClick=\"openFlyerModal()\" class=\"btn btn-success btn-sm\"><i class=\"fa fa-send-o\"></i> Send Flyer</button>
-                                                <div class=\"btn-group\">
-                                                    <button type=\"button\" class=\"btn btn-primary btn-sm dropdown-toggle\" data-toggle=\"dropdown\">
-                                                        <i class=\"fa fa-pencil\"></i> Edit <span class=\"caret\"></span></button>
-                                                    <ul class=\"dropdown-menu\" role=\"menu\">
-                                                        <li><a href=\"#\"><i class=\"fa fa-pencil\"></i> Change Information</a></li>
-                                                        <li class=\"divider\"></li>
-                                                        <li>
-                                                            
-                                                   
-                                                        </li>
-                                                        
-                                                    </ul>
-                                                </div>
-                                                
+                                                <button type=\"button\" onClick=\"openFlyerModal()\" class=\"btn btn-success btn-sm\"><i class=\"fa fa-send-o\"></i>                                                    Send Flyer</button>                                
+                                                <button type=\"button\" class=\"btn btn-primary btn-sm dropdown-toggle\" data-toggle=\"dropdown\">
+                                                        <i class=\"fa fa-pencil\"></i> Edit</button>
                                             </div>
-                                            <button class=\"btn btn-danger btn-sm\" onClick=\"return confirm('Are you sure you want to delete " . $visitors["firstName"] . " " . $visitors['lastName'] . "?')\" href='deleteProduct.php?buyerID=" . $visitors["buyerID"] . "'>
-                                    <i class='fa fa-trash-o'></i> Remove
-                                            </button>
+                                            <a class=\"btn btn-danger btn-sm\" 
+                                                onClick=\"return confirm('Are you sure you want to delete " .
+                                                    $result["firstName"] . " " . $result['lastName'] . "?')\" 
+                                                href='deleteProduct.php?buyerID=" . $result["buyerID"] . "'>
+                                                <i class='fa fa-trash-o'></i> Remove
+                                            </a>
                                           </td>";
-                                    echo "<td id='" . $visitors['buyerID'] . "'>" . $dbNote . "</td>";
-                                    echo "<td><button class=\"btn-sm btn-primary\" type=\"button\"
-                                                                        data-toggle=\"modal\" data-toggle=\"modal\"
-                                                                        data-target=\"#addNotesModal\" onClick=takeNote(" . $visitors['houseId'] . ',' . $visitors['buyerID'] . ")>
-                                                                    Add Note
-                                                                </button></td>";
-
-
+                                    echo "<td id='" . $result['buyerID'] . "'>" . $dbNote . "</td>";
+                                    echo "<td>
+                                            <button class=\"btn-sm btn-primary\" type=\"button\"
+                                              data-toggle=\"modal\" 
+                                              data-toggle=\"modal\"
+                                              data-target=\"#addNotesModal\" 
+                                              onClick=takeNote(" . $result['houseId'] . ',' . $result['buyerID'] . ")>Add Note</button>
+                                          </td>";
                                     echo "      </tr>";
                                 }
                                 }
