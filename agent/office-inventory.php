@@ -233,16 +233,17 @@ $keys = array_keys($response);
                         <div class="box-body">
 
 
-                            <table class="table table-bordered table-striped" id="inventory-table">
+                            <table class="table table-bordered table-striped" data-sorting="true"
+                                   data-filtering="true" id="inventory-table">
                                 <thead>
 
 
                                 <tr>
-                                    <th id="visitorSort"><a class="dotted" href=<?php echo "http://www.oversite.cc/agent/office-inventory.php?agentSort=" . updateSort($agentSort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Agent</a></th>
-                                    <th id="propertySort"><a class="dotted" href=<?php echo "http://www.oversite.cc/agent/office-inventory.php?propertySort=" . updateSort($propertySort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Property</a></th>
-                                    <th id="bedroomSort"><a class="dotted" href=<?php echo "http://www.oversite.cc/agent/office-inventory.php?bedroomSort=" . updateSort($bedroomSort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Bedroom</a></th>
-                                    <th id="bathroomSort"><a class="dotted" href=<?php echo "http://www.oversite.cc/agent/office-inventory.php?bathroomSort=" . updateSort($bathroomSort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Bathroom</a></th>
-                                    <th id="priceSort"><a class="dotted" href=<?php echo "http://www.oversite.cc/agent/office-inventory.php?priceSort=" . updateSort($priceSort) ?> data-toggle="tooltip" data-placement="top"  title="Approval Date">Price</a></th>
+                                    <th>Agent</th>
+                                    <th>Property</th>
+                                    <th data-type="number">Bedroom</th>
+                                    <th data-type="number">Bathroom</th>
+                                    <th>Price</th>
                                     <th>House Images</th>
                                     <th>Map</th>
 
