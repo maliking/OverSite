@@ -418,7 +418,7 @@ $keys = array_keys($response);
                                           </td>";
                                     echo "<td><button class=\"btn-sm btn-primary\" type=\"button\"
                                                                         data-toggle=\"modal\" data-toggle=\"modal\"
-                                                                        data-target=\"#addNotesModal\">
+                                                                        data-target=\"#addNotesModal\" onClick=takeNote(" . $result['houseId'] . ',' . $result['buyerID'] . ")>
                                                                     Add Note
                                                                 </button></td>";
 
