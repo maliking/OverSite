@@ -58,42 +58,42 @@
 
                                                 <div class="radio">
                                                     <label>
-                      <input type="radio" name="eventType" id="emd" value="emd" checked>
+                      <input type="radio" name="eventType" id="emd" value="emd" >
                       Emd
                     </label>
                                                 </div>
                       
                                                 <div class="radio">
                                                     <label>
-                      <input type="radio" name="eventType" id="disc" value="disc" checked>
+                      <input type="radio" name="eventType" id="disc" value="disc" >
                      Disc
                     </label>
                                                 </div>
                                
                                                 <div class="radio">
                                                     <label>
-                      <input type="radio" name="eventType" id="insp" value="insp" checked>
+                      <input type="radio" name="eventType" id="insp" value="insp" >
                       Insp
                     </label>
                                                 </div>
                          
                                                 <div class="radio">
                                                     <label>
-                      <input type="radio" name="eventType" id="appr" value="appr" checked>
+                      <input type="radio" name="eventType" id="appr" value="appr" >
                       Appr
                     </label>
                                                 </div>
                                         
                                                 <div class="radio">
                                                     <label>
-                      <input type="radio" name="eventType" id="lc" value="lc" checked>
+                      <input type="radio" name="eventType" id="lc" value="lc" >
                       LC
                     </label>
                                                 </div>
                                 
                                                 <div class="radio">
                                                     <label>
-                      <input type="radio" name="eventType" id="coe" value="coe" checked>
+                      <input type="radio" name="eventType" id="coe" value="coe" >
                      Coe
                     </label>
                                                 </div>
