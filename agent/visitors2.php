@@ -366,25 +366,26 @@ $keys = array_keys($response);
                                 {
                                     
 
-                                foreach ($results as $visitors) {
-                                    $dbNote = $visitors['note'];
+                                
 
                                     echo "<div class=\"panel panel-default\">
                                             <div class=\"panel-heading\">
                                                 <h4 class=\"panel-title\">
                                                     <a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse" . $counter . "\">";
-                                                        if ($visitors['address'] == "Lead") {
+                                                        if ($result['address'] == "Lead") {
                                                             echo htmlspecialchars($visitors['address']);
                                                         } else {
                                                             echo htmlspecialchars(
-                                                                    $visitors['address'] . ", " .
-                                                                    $visitors['city'] . ", " .
-                                                                    $visitors['state'] . " " .
-                                                                    $visitors['zip']);
+                                                                    $result['address'] . ", " .
+                                                                    $result['city'] . ", " .
+                                                                    $result['state'] . " " .
+                                                                    $result['zip']);
                                                         }
                                     echo "          </a>
                                                 </h4>
                                             </div>"; // panel-heading
+                                    foreach ($results as $visitors) {
+                                    $dbNote = $visitors['note'];
                                     echo "<div id=\"collapse" . $counter . "\" class=\"panel-collapse collapse\">
                                             <div class=\"panel-body\">
                                                 <table class=\"table table-striped\">
