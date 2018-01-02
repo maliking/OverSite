@@ -6,6 +6,7 @@ if (!isset($_SESSION['userId'])) {
 }
 require '../databaseConnection.php';
 $dbConn = getConnection();
+$dbConnTwo = getConnection();
 
 $sqlMlsId = "SELECT  mlsId FROM UsersInfo WHERE userId = :userId";
 
