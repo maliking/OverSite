@@ -365,21 +365,21 @@ $keys = array_keys($response);
                                 {
                                     
 
-                                foreach ($results as $result) {
-                                    $dbNote = $result['note'];
+                                foreach ($results as $visitors) {
+                                    $dbNote = $visitors['note'];
 
                                     echo "<div class=\"panel panel-default\">
                                             <div class=\"panel-heading\">
                                                 <h4 class=\"panel-title\">
                                                     <a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse" . $counter . "\">";
-                                                        if ($result['address'] == "Lead") {
-                                                            echo htmlspecialchars($result['address']);
+                                                        if ($visitors['address'] == "Lead") {
+                                                            echo htmlspecialchars($visitors['address']);
                                                         } else {
                                                             echo htmlspecialchars(
-                                                                    $result['address'] . ", " .
-                                                                    $result['city'] . ", " .
-                                                                    $result['state'] . " " .
-                                                                    $result['zip']);
+                                                                    $visitors['address'] . ", " .
+                                                                    $visitors['city'] . ", " .
+                                                                    $visitors['state'] . " " .
+                                                                    $visitors['zip']);
                                                         }
                                     echo "          </a>
                                                 </h4>
@@ -396,9 +396,9 @@ $keys = array_keys($response);
                                                         <th></th> <!-- Written Notes -->
                                                     </tr>
                                                     <tr>
-                                                        <td>" . $result['firstName'] . " " . $result['lastName'] . "</td>
-                                                        <td>" . $result['phone'] . "</td>
-                                                        <td>" . htmlspecialchars($result['email']) . "</td>";
+                                                        <td>" . $visitors['firstName'] . " " . $visitors['lastName'] . "</td>
+                                                        <td>" . $visitors['phone'] . "</td>
+                                                        <td>" . htmlspecialchars($visitors['email']) . "</td>";
                                     echo "              <td>
                                             <div class=\"btn-group\">
                                                 <button type=\"button\" class=\"btn btn-warning btn-sm\"><i class=\"fa fa-lg fa-mobile\"></i> Text</i> </button>
@@ -408,18 +408,18 @@ $keys = array_keys($response);
                                             </div>
                                             <a class=\"btn btn-danger btn-sm\" 
                                                 onClick=\"return confirm('Are you sure you want to delete " .
-                                                    $result["firstName"] . " " . $result['lastName'] . "?')\" 
-                                                href='deleteProduct.php?buyerID=" . $result["buyerID"] . "'>
+                                                    $visitors["firstName"] . " " . $visitors['lastName'] . "?')\" 
+                                                href='deleteProduct.php?buyerID=" . $visitors["buyerID"] . "'>
                                                 <i class='fa fa-trash-o'></i> Remove
                                             </a>
                                           </td>";
-                                    echo "<td id='" . $result['buyerID'] . "'>" . $dbNote . "</td>";
+                                    echo "<td id='" . $visitors['buyerID'] . "'>" . $dbNote . "</td>";
                                     echo "<td>
                                             <button class=\"btn-sm btn-primary\" type=\"button\"
                                               data-toggle=\"modal\" 
                                               data-toggle=\"modal\"
                                               data-target=\"#addNotesModal\" 
-                                              onClick=takeNote(" . $result['houseId'] . ',' . $result['buyerID'] . ")>Add Note</button>
+                                              onClick=takeNote(" . $visitors['houseId'] . ',' . $visitors['buyerID'] . ")>Add Note</button>
                                           </td>";
                                     echo "      </tr>";
                                 }
