@@ -362,14 +362,14 @@ $keys = array_keys($response);
 
                                 $counter = 1;
                                 // print_r($addressResults);
-                                echo "<div class=\"panel panel-default\">";
+                                
                                 foreach($addressResults as $result) 
                                 {
                                     
 
                                 
 
-                                    
+                                    echo "<div class=\"panel panel-default\">";
                                     echo "<div class=\"panel-heading\">
                                                 <h4 class=\"panel-title\">
                                                     <a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse" . $counter . "\">";
@@ -386,6 +386,8 @@ $keys = array_keys($response);
                                                 </h4>
                                             </div>"; // panel-heading
                                     foreach ($results as $visitors) {
+                                        if($visitors['address'] == $result['address'])
+                                        {
                                     $dbNote = $visitors['note'];
                                     echo "<div id=\"collapse" . $counter . "\" class=\"panel-collapse collapse\">
                                             <div class=\"panel-body\">
@@ -425,6 +427,7 @@ $keys = array_keys($response);
                                               onClick=takeNote(" . $visitors['houseId'] . ',' . $visitors['buyerID'] . ")>Add Note</button>
                                           </td>";
                                     echo "      </tr>";
+                                }
                                 }
                                 }
                                     echo "</table>";
