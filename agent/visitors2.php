@@ -362,14 +362,14 @@ $keys = array_keys($response);
 
                                 $counter = 1;
                                 // print_r($addressResults);
-                                
+                                echo "<div class=\"panel panel-default\">";
                                 foreach($addressResults as $result) 
                                 {
                                     
 
                                 
 
-                                    echo "<div class=\"panel panel-default\">";
+                                    
                                     echo "<div class=\"panel-heading\">
                                                 <h4 class=\"panel-title\">
                                                     <a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse" . $counter . "\">";
