@@ -447,54 +447,7 @@ $keys = array_keys($response);
 
 
 
-                            <!-------------End Mock Visitor Dropdown-------->
-                            <div id="table-scroll" style="overflow: auto;" >
-                                <button type="button" class="btn btn-success" style="float: right;" onClick="leadModal()">Add Lead</button>
-                                <table class="table table-bordered table-striped" id="freeze" >
-                                    <thead>
-                                    <tr>
-                                        <th data-breakpoints="all">Lead ID</th>
-                                        <th data-breakpoints="all">TimeStamp</th>
-                                        <th id="visitorSort"><a class="dotted"
-                                                                href=<?php echo "http://www.oversite.cc/agent/visitors.php?visitorSort=" . updateSort($visitorSort) ?> data-toggle="tooltip"
-                                                                data-placement="top" title="Approval Date">Visitors</a></th>
 
-                                        <th data-breakpoints="all">Phone Number</th>
-                                        <th id="emailSort" data-breakpoints="all"><a class="dotted"
-                                                                                     href=<?php echo "http://www.oversite.cc/agent/visitors.php?emailSort=" . updateSort($emailSort) ?> data-toggle="tooltip"
-                                                                                     data-placement="top"
-                                                                                     title="Approval Date">Email</a></th>
-
-
-                                        <th id="addressSort" data-breakpoints="xs sm"><a class="dotted"
-                                                                                         href=<?php echo "http://www.oversite.cc/agent/visitors.php?addressSort=" . updateSort($addressSort) ?> data-toggle="tooltip"
-                                                                                         data-placement="top"
-                                                                                         title="Approval Date">Address
-                                                Visited </a></th>
-
-                                        <th data-breakpoints="xs sm">Contact </th>
-                                        <th data-breakpoints="all">Notes</th>
-
-                                        <th data-breakpoints="xs sm">Notes</th>
-                                        <th data-breakpoints="xs sm">Delete</th>
-                                        <th id="bedroomSort" data-breakpoints="all"><a class="dotted"
-                                                                                       href=<?php echo "http://www.oversite.cc/agent/visitors.php?bedroomSort=" . updateSort($bedroomSort) ?> data-toggle="tooltip"
-                                                                                       data-placement="top"
-                                                                                       title="Approval Date">Bedroom(s)</a>
-                                        </th>
-                                        <th id="bathroomSort" data-breakpoints="all"><a class="dotted"
-                                                                                        href=<?php echo "http://www.oversite.cc/agent/visitors.php?bathroomSort=" . updateSort($bathroomSort) ?> data-toggle="tooltip"
-                                                                                        data-placement="top"
-                                                                                        title="Approval Date">Bathroom(s)</a>
-                                        <th data-breakpoints="all">Price</a>
-                                        </th>
-                                    </tr>
-                                    </thead>
-
-
-
-                                </table>
-                            </div>
                             <!-- /.box-body -->
                         </div>
                         <!-- /.box -->
