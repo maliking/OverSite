@@ -447,14 +447,16 @@ $keys = array_keys($response);
 
 
 
+                            <!-------------End Mock Visitor Dropdown-------->
 
-                            <!-- /.box-body -->
                         </div>
-                        <!-- /.box -->
+                        <!-- /.box-body -->
                     </div>
-                    <!-- /.col -->
+                    <!-- /.box -->
                 </div>
-                <!-- /.row -->
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
 
         </section>
         <!-- /.content -->
