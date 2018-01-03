@@ -433,6 +433,7 @@ $keys = array_keys($response);
                                 }
                                 }
                                 echo "</table>";
+                                echo "</br>";
                                     echo "</div>";
                                     echo "</div>";
                                 $counter++;
