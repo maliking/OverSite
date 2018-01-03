@@ -307,7 +307,8 @@ $keys = array_keys($response);
                                                    HouseInfo.address as address, 
                                                    HouseInfo.city as city, 
                                                    HouseInfo.state as state, 
-                                                   HouseInfo.zip as zip
+                                                   HouseInfo.zip as zip,
+                                                   HouseInfo.houseId as houseId
                                               FROM BuyerInfo 
                                          LEFT JOIN HouseInfo 
                                                 ON BuyerInfo.houseId = HouseInfo.houseId 
@@ -353,7 +354,7 @@ $keys = array_keys($response);
                                 $stmt->execute($namedParameters);
                                 $results = $stmt->fetchAll();
 
-                                $houseAddresses = "SELECT address, city, state, zip FROM HouseInfo WHERE userId = :userId GROUP BY address;";
+                                $houseAddresses = "SELECT address, city, state, zip, houseId FROM HouseInfo WHERE userId = :userId GROUP BY address;";
                                 $addressParam = array();
                                 $addressParam[':userId'] = $_SESSION['userId'];
                                 $addressStmt = $dbConnTwo->prepare($houseAddresses);
@@ -390,7 +391,7 @@ $keys = array_keys($response);
                                             <div class=\"panel-body\">
                                                 <table class=\"table table-striped\">";
                                     foreach ($results as $visitors) {
-                                        if($visitors['address'] == $result['address'])
+                                        if($visitors['houseId'] == $result['houseId'])
                                         {
                                     $dbNote = $visitors['note'];
                                     
