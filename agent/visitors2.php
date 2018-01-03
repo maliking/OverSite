@@ -385,14 +385,16 @@ $keys = array_keys($response);
                                     echo "          </a>
                                                 </h4>
                                             </div>"; // panel-heading
+
+                                echo "<div id=\"collapse" . $counter . "\" class=\"panel-collapse collapse\">
+                                            <div class=\"panel-body\">
+                                                <table class=\"table table-striped\">";
                                     foreach ($results as $visitors) {
                                         if($visitors['address'] == $result['address'])
                                         {
                                     $dbNote = $visitors['note'];
-                                    echo "<div id=\"collapse" . $counter . "\" class=\"panel-collapse collapse\">
-                                            <div class=\"panel-body\">
-                                                <table class=\"table table-striped\">
-                                                    <tr>
+                                    
+                                                   echo "<tr>
                                                         <th>Name</th>
                                                         <th>Phone</th>
                                                         <th>Email</th>
@@ -436,10 +438,6 @@ $keys = array_keys($response);
                                 }
                                     
                                     // echo "</div>";
-                                    
-
-                                
-
 
                                 ?>
 
