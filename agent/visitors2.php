@@ -429,12 +429,13 @@ $keys = array_keys($response);
                                     echo "      </tr>";
                                 }
                                 }
+                                $counter++;
                                 }
                                     echo "</table>";
                                     echo "</div>";
                                     echo "</div>";
                                     echo "</div>";
-                                    $counter++;
+                                    
 
                                 
 
