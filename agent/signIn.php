@@ -201,49 +201,12 @@ $_SESSION['flyer'] = $result['flyer'];
                     <option value="4">4</option>
                     <option value="4.5">4.5</option>
                 </select>
-
+                <br>
+                <button type="submit" class="btn btn-primary btn-block">Submit</button>
             </div>
 
         </div>
-        <div class="row" style="margin-top: 20px;">
-
-            <!-- <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-4">
-                <input type="text" name="priceMin" class="form-control has-feedback-left" id="inputSuccess2"
-                       placeholder="Minimum Price">
-                <span class="form-control-feedback left" aria-hidden="true"></span>
-                </br>
-                <input type="text" name="priceMax" class="form-control" id="inputSuccess3" placeholder="Maximum Price">
-                <span class="form-control-feedback right" aria-hidden="true"></span>
-            </div> -->
-
-
-            <!--
-            <div class="col-md-8 col-sm-8 col-xs-12 col-md-offset-2">
-                <p>Price Range</p>
-
-                <input class="slider" type="text" value="" class="slider form-control" data-slider-min="0" data-slider-max="200000000" data-slider-step="50000" data-slider-value="[1000000,200000000]" data-slider-orientation="horizontal" data-slider-selection="before" data-slider-tooltip="show" data-slider-id="blue">
-
-
-            </div>
--->
-
-
-        </div>
-
-        <div class="row">
-            <br/>
-            <br/>
-            <center>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </center>
-
-
-        </div>
-
-
     </form>
-
-
 </section>
 
 
