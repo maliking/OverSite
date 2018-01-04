@@ -265,7 +265,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                         <div class="row">
 
 
-                                            <!--                                        Start Box-->
+                                            <!-- Start Box-->
                                             <div class="box">
 
                                                 <div class="box-body no-padding">
@@ -378,113 +378,121 @@ for($i = 0; $i < sizeof($keys); $i++)
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-md-12">
-                            <div class="box">
-                            <table class="table table-bordered table-striped"  >
-                                <thead>
-                                <tr>
-                                    <th>Type</th>
-                                    <th>Client</th>
-                                    <th>Property</th>
-                                    
-                                    <th data-breakpoints="all">Client Number</th>
-                                    <th data-breakpoints="all">Client Email</th>
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top"
-                                                                    title="Accepted Date">Acc. </a></th>
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top" title="Earnest Money Deposit">EMD </a>
-                                    </th>
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top" title="Disclosures">Seller Disc. </a>
-                                    </th>
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4>In-Contract Properties</h4>
+                                </div>
+                                <div class="box-body">
+                                    <table class="table table-bordered table-striped"  >
+                                        <thead>
+                                        <tr>
+                                            <th>Type</th>
+                                            <th>Client</th>
+                                            <th>Property</th>
 
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top" title="Inspection">Insp. </a>
-                                    </th>
+                                            <th data-breakpoints="all">Client Number</th>
+                                            <th data-breakpoints="all">Client Email</th>
+                                            <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
+                                                                            data-placement="top"
+                                                                            title="Accepted Date">Acc. </a></th>
+                                            <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
+                                                                            data-placement="top" title="Earnest Money Deposit">EMD </a>
+                                            </th>
+                                            <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
+                                                                            data-placement="top" title="Disclosures">Seller Disc. </a>
+                                            </th>
 
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top" title="Appraisal">Appr. </a>
-                                    </th>
+                                            <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
+                                                                            data-placement="top" title="Inspection">Insp. </a>
+                                            </th>
 
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top"
-                                                                    title="Loan Contingencies">LC </a></th>
-                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                    data-placement="top"
-                                                                    title="Close of Escrow">COE </a></th>
-                                    <th data-breakpoints="xs sm">Notes</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
+                                            <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
+                                                                            data-placement="top" title="Appraisal">Appr. </a>
+                                            </th>
 
-                                    foreach ($transResults as $trans) {
-                                        # code...
-                                        $day = $trans['accDay'];
-                                    
-                                        echo '<td>' . $trans['transType']  . '</td>
-                                    <td>' . $trans['clientName'] . '</td>
-                                    <td>' . $trans['address'] . '</td>
-                                    <td>' . $trans['clientNum'] . '</td>
-                                    <td>Test Email</td>
+                                            <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
+                                                                            data-placement="top"
+                                                                            title="Loan Contingencies">LC </a></th>
+                                            <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
+                                                                            data-placement="top"
+                                                                            title="Close of Escrow">COE </a></th>
+                                            <th data-breakpoints="xs sm">Notes</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
 
-                                    <td>' . date('m/d/y', strtotime($day)) . '
-                                        <br>
-                                        <span class="label label-success">Done! <i
-                                                    class="fa fa-check-circle-o"></i></span>
-                                    </td>
-                                    <td>' . date('m/d/y', strtotime($day . ' + '. $trans['emdDays'] . ' days' )) . '
-                                        <br>
-                                        <span class="label label-success">Done! <i
-                                                    class="fa fa-check-circle-o"></i></span>
-                                    </td>
-                                    <td>' . date('m/d/y', strtotime($day . ' + '. $trans['sellerDiscDays'] . ' days' )) . '
-                                    <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
-                                                  data-toggle="popover" data-Oplacement="right"
-                                                  data-content="<b>Completed:</b> 3/4/17"><i
-                                                    class="fa fa-chevron-circle-right"></i></a>
-                                        <br>
-                                        <span class="label label-danger">Overdue</span>
-                                    </td>
+                                            foreach ($transResults as $trans) {
+                                                # code...
+                                                $day = $trans['accDay'];
 
-                                    <td>' . date('m/d/y', strtotime($day . ' + '. $trans['genInspecDays'] . ' days' )) . '
-                                     <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
-                                                  data-toggle="popover" data-Oplacement="right"
-                                                  data-content="<b>Completed:</b> 3/4/17"><i
-                                                    class="fa fa-chevron-circle-right"></i></a>
-                                        <br>
-                                        <span class="label label-warning">Due in 8d</span>
-                                    </td>
+                                                echo '<td>';
+                                                if ($trans['transType'] == 'Listing') {
+                                                    echo '<b>LIST</b>';
+                                                } else {
+                                                    echo '<b>BUY</b>';
+                                                }
+                                                echo '</td>
+                                            <td>' . $trans['clientName'] . '</td>
+                                            <td>' . $trans['address'] . '</td>
+                                            <td>' . $trans['clientNum'] . '</td>
+                                            <td>Test Email</td>
+        
+                                            <td>' . date('m/d/y', strtotime($day)) . '
+                                                <br>
+                                                <span class="label label-success">Done! <i
+                                                            class="fa fa-check-circle-o"></i></span>
+                                            </td>
+                                            <td>' . date('m/d/y', strtotime($day . ' + '. $trans['emdDays'] . ' days' )) . '
+                                                <br>
+                                                <span class="label label-success">Done! <i
+                                                            class="fa fa-check-circle-o"></i></span>
+                                            </td>
+                                            <td>' . date('m/d/y', strtotime($day . ' + '. $trans['sellerDiscDays'] . ' days' )) . '
+                                            <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
+                                                          data-toggle="popover" data-Oplacement="right"
+                                                          data-content="<b>Completed:</b> 3/4/17"><i
+                                                            class="fa fa-chevron-circle-right"></i></a>
+                                                <br>
+                                                <span class="label label-danger">Overdue</span>
+                                            </td>
+        
+                                            <td>' . date('m/d/y', strtotime($day . ' + '. $trans['genInspecDays'] . ' days' )) . '
+                                             <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
+                                                          data-toggle="popover" data-Oplacement="right"
+                                                          data-content="<b>Completed:</b> 3/4/17"><i
+                                                            class="fa fa-chevron-circle-right"></i></a>
+                                                <br>
+                                                <span class="label label-warning">Due in 8d</span>
+                                            </td>
+        
+                                            <td>' . date('m/d/y', strtotime($day . ' + '. $trans['appraisalDays'] . ' days' )) . '
+                                             <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
+                                                          data-toggle="popover" data-Oplacement="right"
+                                                          data-content="<b>Completed:</b> 3/4/17"><i
+                                                            class="fa fa-chevron-circle-right"></i></a>
+                                                <br>
+                                                <span class="label label-warning">Due in 8d</span>
+                                            </td>
+        
+                                            <td>' . date('m/d/y', strtotime($day . ' + '. $trans['lcDays'] . ' days' )) . '
+                                                <br>
+                                                <span class="label label-default">Incomplete</span>
+                                            </td>
+                                            <td>' . date('m/d/y', strtotime($day . ' + '. $trans['coeDays'] . ' days' )) . '
+                                                <br>
+                                                <span class="label label-default">Incomplete</span>
+                                            </td>
+                                            <td>Write some notes here!</td>
+                                        </tr>';
+                                    }
+                                            ?>
 
-                                    <td>' . date('m/d/y', strtotime($day . ' + '. $trans['appraisalDays'] . ' days' )) . '
-                                     <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
-                                                  data-toggle="popover" data-Oplacement="right"
-                                                  data-content="<b>Completed:</b> 3/4/17"><i
-                                                    class="fa fa-chevron-circle-right"></i></a>
-                                        <br>
-                                        <span class="label label-warning">Due in 8d</span>
-                                    </td>
-
-                                    <td>' . date('m/d/y', strtotime($day . ' + '. $trans['lcDays'] . ' days' )) . '
-                                        <br>
-                                        <span class="label label-default">Incomplete</span>
-                                    </td>
-                                    <td>' . date('m/d/y', strtotime($day . ' + '. $trans['coeDays'] . ' days' )) . '
-                                        <br>
-                                        <span class="label label-default">Incomplete</span>
-                                    </td>
-                                    <td>Write some notes here!</td>
-                                </tr>';
-                            }
-                                    ?>
-                                
-
-                                    
-                                </tbody>
-                            </table>
-                        </div>
+                                        </tbody>
+                                    </table>
+                                </div> <!-- /.box-body -->
+                            </div> <!-- /.box -->
                             <div class="box box-primary">
-
                                 <div class="box-body">
                                     <!-- THE CALENDAR -->
                                     <div id="calendar"></div>
