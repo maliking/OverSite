@@ -292,6 +292,8 @@ $keys = array_keys($response);
                     <div class="box">
                         <div class="box-header">
                             <h3>My Visitors</h3>
+                            <button type="button" class="btn btn-success" style="float: right; margin-left: 7px;"
+                                    onClick="leadModal()">Add Lead</button>
                             <button class="btn btn-default pull-right" id="exportVisitors">Export</button>
                             <div class="clearfix"></div>
                         </div>
