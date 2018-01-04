@@ -287,7 +287,7 @@ $result = $stmt->fetch();
                         <!-- /.col -->
                         <div class="col-md-12">
                             <div class="box box-primary">
-                                <div class="box-body no-padding" style="height:520px;">
+                                <div class="box-body">
                                     <!-- THE CALENDAR -->
                                     <div id="calendar"></div>
                                 </div>
