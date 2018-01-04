@@ -477,7 +477,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                 </tr>';
                             }
                                     ?>
-                                <tr>
+                                
 
                                     
                                 </tbody>
