@@ -238,13 +238,13 @@ $keys = array_keys($response);
 
 
                                 <tr>
-                                    <th>Agent</th>
+                                    <th data-breakpoints="xs">Agent</th>
                                     <th>Property</th>
-                                    <th data-type="number">Bedroom</th>
-                                    <th data-type="number">Bathroom</th>
+                                    <th data-type="number">Bd</th>
+                                    <th data-type="number">Ba</th>
                                     <th>Price</th>
-                                    <th>House Images</th>
-                                    <th>Map</th>
+                                    <th data-breakpoints="xs">Images</th>
+                                    <th data-breakpoints="xs">Map</th>
 
                                 </tr>
                                 </thead>
@@ -318,7 +318,9 @@ $keys = array_keys($response);
 <script src="../dist/js/vendors/footable.min.js"></script>
 <script>
     jQuery(function ($) {
-        $('.table').footable({});
+        $('.table').footable({
+            "cascade": true
+        });
     });
 </script>
 </body>

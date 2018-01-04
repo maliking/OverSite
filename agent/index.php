@@ -406,6 +406,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                                             data-placement="top" title="Inspection">Insp. </a>
                                             </th>
 
+
                                             <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                             data-placement="top" title="Appraisal">Appr. </a>
                                             </th>
@@ -465,6 +466,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                 <br>
                                                 <span class="label label-warning">Due in 8d</span>
                                             </td>
+                                           
         
                                             <td>' . date('m/d/y', strtotime($day . ' + '. $trans['appraisalDays'] . ' days' )) . '
                                              <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
