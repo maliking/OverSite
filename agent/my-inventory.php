@@ -197,10 +197,11 @@ $addedListingsResults = $addedListings->fetchAll();
                              $response[$keys[$i]]['state'] . ", 
                                         " . $response[$keys[$i]]['zipcode'] . "</h4>
                                         <div class=\"box-tools pull-right\">
-          
+                                          <!--
                                           <a href='#'><span class=\"label label-default\"><i class='fa fa-trash'></i> 
                                           Remove
                                           </span></a>
+                                          -->
                                         </div>
                                     </div>
                                 <div class=\"box-body\">
@@ -336,10 +337,6 @@ $addedListingsResults = $addedListings->fetchAll();
 
                 alert("House In-contract. Will reflect on Dashboard.");
             });
-
-
-
-
     }
 </script>
 </body>
