@@ -89,9 +89,9 @@ $_SESSION['flyer'] = $result['flyer'];
 
 <section class="content">
     <center>
-        <img alt="Interesting Image" border="0" class="simage float_center" height="200px"
-             src="../dist/img/remax-logo.png" style="margin-left: 0px; margin-right: 0px;" title="Interesting Image"
-             width="280"/>
+        <img alt="RE/MAX Logo" border="0" class="simage float_center img-responsive"
+             src="../dist/img/remax-logo224x194.png" style="margin-left: 0px; margin-right: 0px;" title="Interesting Image"
+            />
     </center>
     <form method="post" action="addBuyer.php">
 
