@@ -17,7 +17,7 @@
             <li><a href="../agent/my-calendar.php"><i class="fa fa-calendar"></i>
                     <span>My Appointments</span></a></li>
 
-             <li><a href="../agent/visitors.php"><i class="fa fa-visitors"></i>
+             <li><a href="../agent/visitors.php"><i class="fa fa-address-book-o"></i>
                     <span>My Visitors/Leads</span></a></li>
 
             <li class="header-style treeview">
