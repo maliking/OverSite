@@ -485,7 +485,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                         </div>
                             <div class="box box-primary">
 
-                                <div class="box-body no-padding" style="height:600px;">
+                                <div class="box-body">
                                     <!-- THE CALENDAR -->
                                     <div id="calendar"></div>
                                 </div>
