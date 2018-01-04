@@ -271,157 +271,87 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                 <div class="box-body no-padding">
                                                     <table id="modal-table" class="table table-striped">
                                                         <tr>
-
-
                                                             <th>First Name</th>
                                                             <th>Last Name</th>
-
-
                                                         </tr>
                                                         <tr>
-
                                                             <td id="firstName">John</td>
-                                                            <td id="lastName">
-                                                                Doe
+                                                            <td id="lastName">Doe</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Phone</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th id="phone"></th>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Min Bed</th>
+                                                            <th>Min Bath</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="minBed">2</td>
+                                                            <td id="minBath">2
                                                             </td>
                                                         </tr>
-
                                                         <tr>
-
-                                                            <th>Phone</th>
-                                        
+                                                            <th>Min Price</th>
+                                                            <th>Max Price</th>
                                                         </tr>
-
                                                         <tr>
-
-                                                            <th id="phone"></th>
-                                        
+                                                            <td id="minPrice">$120,000</td>
+                                                            <td id="maxPrice">$910,000</td>
                                                         </tr>
-                                                            <tr>
-
-
-                                                                <th>Min Bed</th>
-                                                                <th>Min Bath</th>
-
-
-                                                            </tr>
-                                                            <tr>
-
-                                                                <td id="minBed">2</td>
-                                                                <td id="minBath">
-                                                                    2
-                                                                </td>
-                                                            </tr>
-                                                                <tr>
-
-
-                                                                    <th>Min Price</th>
-                                                                    <th>Max Price</th>
-
-
-                                                                </tr>
-                                                                <tr>
-
-                                                                    <td id="minPrice">$120,000</td>
-                                                                    <td id="maxPrice">
-                                                                        $910,000
-                                                                    </td>
-
-                                                                </tr>
-                                                                <tr>
-
-                                                                    <th>Looking to purchase home within:</th>
-                                                                    <th>Pre-Approved?</th>
-
-                                                                </tr>
-                                                                <tr>
-
-                                                                    <td id="purchaseWithin">3-6 months</td>
-                                                                    <td>
-                                                                        <form action="">
-                                                                            <input type="radio" name="preapproved" value="yes"> Yes
-                                                                            <br>
-                                                                            <input type="radio" name="preapproved" value="no"> No
-                                                                            <br>
-                                                                        </form>
-
-                                                                    </td>
-
-                                                                </tr>
-                                                                <tr>
-
-
-                                                                    <th>Notes from open house</th>
-
-
-                                                                </tr>
-                                                                <tr>
-
-                                                                    <td id="notes">
-
-                                                                        Preferes large back yard for 2 dogs.
-                                                                    </td>
-                                                                    <p id="id" hidden></p>
-                                                                    <!-- <td>
-                                                                <small>
-                            May 19, 2017 12:43pm
-                        </small>
-                                                            </td> -->
-
-                                                                    <!-- <tr>
-                                                                <td>
-                                                                    Must have garage
-                                                                </td>
-                                                                <td>
-                                                                    <small>
-                            May 19, 2017 1:09pm
-                        </small>
-                                                                </td>
-
-                                                            </tr> -->
-
-
-                                                                </tr>
-                                                                <tr></tr>
-                                                                <tr>
-
-                                                                    <th>Schedule next call appointment:</th>
-                                                                    <th>
-                                                                        <p>Schedule in person appointment:</th>
-
-                                                                </tr>
-                                                                <tr>
-
-                                                                    <td>
-                                                                        <i class="fa fa-calendar"></i>
-                                                                        <input type="text" class="form-control pull-right" id="datepicker">
-                                                                    </td>
-                                                                    <td>
-                                                                        <i class="fa fa-calendar"></i>
-                                                                        <input type="text" class="fa fa-calendar form-control pull-right" id="datepicker">
-                                                                    </td>
-
-                                                                </tr>
-
+                                                        <tr>
+                                                            <th>Looking to purchase home within:</th>
+                                                            <th>Pre-Approved?</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="purchaseWithin">3-6 months</td>
+                                                            <td>
+                                                                <form action="">
+                                                                    <input type="radio" name="preapproved" value="yes"> Yes
+                                                                    <br>
+                                                                    <input type="radio" name="preapproved" value="no"> No
+                                                                    <br>
+                                                                </form>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>Notes from open house</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td id="notes">Preferes large back yard for 2 dogs.</td>
+                                                            <p id="id" hidden></p>
+                                                        </tr>
+                                                        <tr></tr>
+                                                        <tr>
+                                                            <th>Schedule next call appointment:</th>
+                                                            <th>
+                                                                <p>Schedule in person appointment:</th>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <i class="fa fa-calendar"></i>
+                                                                <input type="text" class="form-control pull-right" id="datepicker">
+                                                            </td>
+                                                            <td>
+                                                                <i class="fa fa-calendar"></i>
+                                                                <input type="text" class="fa fa-calendar form-control pull-right" id="datepicker">
+                                                            </td>
+                                                        </tr>
                                                     </table>
                                                 </div>
                                                 <!-- /.box-body -->
                                             </div>
                                             <!-- /.box -->
 
-
                                             <div class="col-md-12">
                                                 <p>Additional Notes:</p>
                                                 <textarea id="textArea" style="color:black;" rows="6" cols="60"></textarea>
 
                                             </div>
-
-
                                         </div>
-
-
                                     </div>
-
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -440,18 +370,16 @@ for($i = 0; $i < sizeof($keys); $i++)
 
                     <!-- /.modal -->
                     <div class="container">
-
                         <!--MODAL AREA-->
-
                     </div>
 
 
-                    <!--                    END example modal-->
+                    <!-- END example modal-->
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-md-12">
                             <div class="box">
-                            <table class="table table-bordered table-striped" >
+                            <table class="table table-bordered table-striped"  >
                                 <thead>
                                 <tr>
                                     <th>Type</th>
@@ -613,8 +541,15 @@ for($i = 0; $i < sizeof($keys); $i++)
             $('#datepicker').datepicker({
                 autoclose: true
             })
-            jQuery(function($) {
-                $('.table').footable({});
+            jQuery(function($){
+                $('.table').footable({
+                    "paging": {
+                        "enabled": true,
+                        "size": 4,
+                        "position": "right"
+                    }
+
+                });
             });
 
         </script>
