@@ -217,6 +217,7 @@ $result = $stmt->fetchAll();
                     $editorTitle.text('Add a New Agent');
                     $modal.modal('toggle');
                 },
+                "addText": '<i class="fa fa-user-plus"></i> Add New Agent',
                 "editRow": function (row) {
                     var values = row.val();
                     $editor.find('#firstName').val(values.firstName);
