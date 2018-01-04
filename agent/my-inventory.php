@@ -189,7 +189,7 @@ $addedListingsResults = $addedListings->fetchAll();
                         } else {
                             $houseBaths = $response[$keys[$i]]['totalBaths'];
                         }
-                        echo "<div class=\"col-xs-3\">
+                        echo "<div class=\"col-xs-12 col-md-6 col-lg-3\">
                                 <div class=\"box\">
                                     <div class=\"box-header with-border\">
                                         <h4 class='box-title'>" . $response[$keys[$i]]['address'] . "<br>" .
