@@ -541,7 +541,7 @@ for($i = 0; $i < sizeof($keys); $i++)
         <script src="build/js/custom.min.js"></script>
 
         <!-- date-range-picker -->
-        <script src="../plugins/moment/min/moment.min.js"></script>
+        <script src="../plugins/moment/moment.min.js"></script>
         <script src="../plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
         <!-- bootstrap datepicker -->
         <script src="../plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
