@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+clearstatcache();
 if (!isset($_SESSION['userId'])) {
     header("Location: http://jjp2017.org/login.php");
 }
