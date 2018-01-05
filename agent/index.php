@@ -538,7 +538,6 @@ for($i = 0; $i < sizeof($keys); $i++)
         <script type="text/javascript" src="../plugins/pnotify/dist/pnotify.nonblock.js"></script>
 
         <!-- Custom Theme Scripts -->
-        <script src="build/js/custom.min.js"></script>
 
         <!-- date-range-picker -->
         <script src="../plugins/moment/moment.min.js"></script>
