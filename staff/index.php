@@ -1,6 +1,6 @@
 <?php
 session_start();
- echo($_SESSION['userType']);
+ // echo($_SESSION['userType']);
 if (!isset($_SESSION['userId']) ) {
     header("Location: login.php");
 }
@@ -205,7 +205,7 @@ $dbConn = getConnection();
                 $('#calendar').fullCalendar({
 
                     eventSources: [{
-                        url: 'getMeetings.php', // use the `url` property
+                        url: '../agent/getMeetings.php', // use the `url` property
                         color: 'yellow', // an option!
                         textColor: 'black' // an option!
                     }],
