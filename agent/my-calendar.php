@@ -57,8 +57,9 @@ $result = $stmt->fetch();
 
         </style>
         <!-- NOTIFICATION Links-->
-        <link href="../plugins/pnotify/dist/pnotify.css" rel="stylesheet">
-        <link href="../plugins/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
+<!--        <link href="../plugins/pnotify/dist/pnotify.css" rel="stylesheet">-->
+<!--        <link href="../plugins/pnotify/dist/pnotify.buttons.css" rel="stylesheet">-->
+<!--        <link href="../plugins/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">-->
 
         <!-- daterange picker -->
         <link rel="stylesheet" href="../plugins/bootstrap-daterangepicker/daterangepicker.css">
@@ -324,8 +325,8 @@ $result = $stmt->fetch();
         <script src="../dist/js/vendor/moment-with-locales.min.js"></script>
         <script src="../dist/js/vendor/fullcalendar/gcal.min.js"></script>
         <script src="../dist/js/vendor/fullcalendar/fullcalendar.min.js"></script>
-        <script type="text/javascript" src="../plugins/pnotify/dist/pnotify.js"></script>
-        <script type="text/javascript" src="../plugins/pnotify/dist/pnotify.buttons.js"></script>
+<!--        <script type="text/javascript" src="../plugins/pnotify/dist/pnotify.js"></script>-->
+<!--        <script type="text/javascript" src="../plugins/pnotify/dist/pnotify.buttons.js"></script>-->
 
         <!-- Custom Theme Scripts -->
         <script src="build/js/custom.min.js"></script>
