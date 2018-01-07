@@ -117,9 +117,6 @@ $keys = array_keys($response);
             color: black;
         }
 
-        thead {
-            background-color: #dd4b39;
-        }
 
     </style>
     <!-- NOTIFICATION Links-->
@@ -298,57 +295,36 @@ $keys = array_keys($response);
                             <div class="clearfix"></div>
                         </div>
 
-                        <!-------------Mock Visitor Dropdown-------->
-                        <div class="container-fluid">
-
-
-                            <div class="panel-group" id="accordion">
-
+                        <div class="box-body">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Date Added</th>
+                                    <th>Last Name</th>
+                                    <th>First Name</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Property</th>
+                                </tr>
+                                </thead>
+                                <tbody>
                                 <?php
-                                $sql = "SELECT BuyerInfo.*, 
-                                                   HouseInfo.address as address, 
-                                                   HouseInfo.city as city, 
-                                                   HouseInfo.state as state, 
-                                                   HouseInfo.zip as zip,
-                                                   HouseInfo.houseId as houseId
-                                              FROM BuyerInfo 
-                                         LEFT JOIN HouseInfo 
-                                                ON BuyerInfo.houseId = HouseInfo.houseId 
-                                             WHERE BuyerInfo.userId = :userId;";
 
-                                if (isset($_GET['visitorSort'])) {
-                                    if ($visitorSort == 1) {
-                                        $sql .= "lastName ASC";
-                                    } else {
-                                        $sql .= "lastName DESC";
-                                    }
-                                } elseif (isset($_GET['emailSort'])) {
-                                    if ($emailSort == 1) {
-                                        $sql .= "email ASC";
-                                    } else {
-                                        $sql .= "email DESC";
-                                    }
-                                } elseif (isset($_GET['addressSort'])) {
-                                    if ($addressSort == 1) {
-                                        $sql .= "SUBSTR(LTRIM(address), LOCATE(' ', LTRIM(address))) ASC";
-                                    } else {
-                                        $sql .= "SUBSTR(LTRIM(address), LOCATE(' ', LTRIM(address))) DESC";
-                                    }
-                                } elseif (isset($_GET['bedroomSort'])) {
-                                    if ($bedroomSort == 1) {
-                                        $sql .= "bedroomsMin ASC";
-                                    } else {
-                                        $sql .= "bedroomsMin DESC";
-                                    }
-                                } elseif (isset($_GET['bathroomSort'])) {
-                                    if ($bathroomSort == 1) {
-                                        $sql .= "bathroomsMin ASC";
-                                    } else {
-                                        $sql .= "bathroomsMin DESC";
-                                    }
-                                } else {
-                                    $sql .= "lastName ASC";
-                                }
+                                $sql = "SELECT BuyerInfo.firstName as fname,
+                                               BuyerInfo.lastName as lname,
+                                               BuyerInfo.email as email,
+                                               BuyerInfo.phone as phone,
+                                               BuyerInfo.registeredDate as dateAdded,
+                                               HouseInfo.address as address, 
+                                               HouseInfo.city as city, 
+                                               HouseInfo.state as state, 
+                                               HouseInfo.zip as zip,
+                                               HouseInfo.houseId as houseId
+                                          FROM BuyerInfo 
+                                     LEFT JOIN HouseInfo 
+                                            ON BuyerInfo.houseId = HouseInfo.houseId 
+                                         WHERE BuyerInfo.userId = :userId;";
 
                                 $namedParameters = array();
                                 $namedParameters[':userId'] = $_SESSION['userId'];
@@ -356,100 +332,65 @@ $keys = array_keys($response);
                                 $stmt->execute($namedParameters);
                                 $results = $stmt->fetchAll();
 
-                                $houseAddresses = "SELECT address, city, state, zip, houseId FROM HouseInfo WHERE userId = :userId GROUP BY address;";
-                                $addressParam = array();
-                                $addressParam[':userId'] = $_SESSION['userId'];
-                                $addressStmt = $dbConnTwo->prepare($houseAddresses);
-                                $addressStmt->execute($addressParam);
-                                $addressResults = $addressStmt->fetchAll();
+                                foreach($results as $result) {
+//                                    $dbNote = $result['note'];
 
-                                $counter = 1;
-                                // print_r($addressResults);
-                                echo "<div class=\"panel panel-default\">";
-                                foreach($addressResults as $result)
-                                {
+                                    echo "<tr>";
 
-
-
-
-
-                                    echo "<div class=\"panel-heading\">
-                                                <h4 class=\"panel-title\">
-                                                    <a data-toggle=\"collapse\" data-parent=\"#accordion\" href=\"#collapse" . $counter . "\">";
-                                    if ($result['address'] == "Lead") {
-                                        echo htmlspecialchars($visitors['address']);
+                                    // Type - Open House Visitor (OHV) or Lead
+                                    echo "<td>";
+                                    if ($result['address'] == 'Lead'){
+                                        echo "<span title=\"Lead\" class=\"label label-warning\">Lead</span>";
                                     } else {
-                                        echo htmlspecialchars(
-                                            $result['address'] . ", " .
-                                            $result['city'] . ", " .
-                                            $result['state'] . " " .
-                                            $result['zip']);
+                                        echo "<span title=\"Open House Visitor\" class=\"label label-info\">OHV</span>";
                                     }
-                                    echo "          </a>
-                                                </h4>
-                                            </div>"; // panel-heading
+                                    echo "</td>";
 
-                                    echo "<div id=\"collapse" . $counter . "\" class=\"panel-collapse collapse\">
-                                            <div class=\"panel-body\">
-                                                <table class=\"table table-striped\">";
-                                    foreach ($results as $visitors) {
-                                        if($visitors['houseId'] == $result['houseId'])
-                                        {
-                                            $dbNote = $visitors['note'];
 
-                                            echo "<tr>
-                                                        <th>Name</th>
-                                                        <th>Phone</th>
-                                                        <th>Email</th>
-                                                        <th></th> <!-- Text | Send Flyer | Edit Buttons -->
-                                                        <th>Notes</th>
-                                                        <th></th> <!-- Written Notes -->
-                                                    </tr>
-                                                    <tr>
-                                                        <td>" . $visitors['firstName'] . " " . $visitors['lastName'] . "</td>
-                                                        <td>" . $visitors['phone'] . "</td>
-                                                        <td>" . htmlspecialchars($visitors['email']) . "</td>";
-                                            echo "              <td>
-                                            <div class=\"btn-group\">
-                                                <button type=\"button\" class=\"btn btn-warning btn-sm\"><i class=\"fa fa-lg fa-mobile\"></i> Text</i> </button>
-                                                <button type=\"button\" onClick=\"openFlyerModal()\" class=\"btn btn-success btn-sm\"><i class=\"fa fa-send-o\"></i>                                                    Send Flyer</button>                                
-                                                <button type=\"button\" class=\"btn btn-primary btn-sm dropdown-toggle\" data-toggle=\"dropdown\">
-                                                        <i class=\"fa fa-pencil\"></i> Edit</button>
-                                            </div>
-                                            <a class=\"btn btn-danger btn-sm\" 
-                                                onClick=\"return confirm('Are you sure you want to delete " .
-                                                 $visitors["firstName"] . " " . $visitors['lastName'] . "?')\" 
-                                                href='deleteProduct.php?buyerID=" . $visitors["buyerID"] . "'>
-                                                <i class='fa fa-trash-o'></i> Remove
-                                            </a>
-                                          </td>";
-                                            echo "<td id='" . $visitors['buyerID'] . "'>" . $dbNote . "</td>";
-                                            echo "<td>
-                                            <button class=\"btn-sm btn-primary\" type=\"button\"
-                                              data-toggle=\"modal\" 
-                                              data-toggle=\"modal\"
-                                              data-target=\"#addNotesModal\" 
-                                              onClick=takeNote(" . $visitors['houseId'] . ',' . $visitors['buyerID'] . ")>Add Note</button>
-                                          </td>";
-                                            echo "      </tr>";
-                                        }
+                                    // Date Added
+                                    echo "        <td>";
+                                    if ($result['dateAdded'] == NULL) {
+                                        echo ".";
+                                    } else {
+                                        echo date("m-d-Y", strtotime($result['dateAdded']));
                                     }
-                                    echo "</table>";
-                                    echo "</div>";
-                                    echo "</div>";
-                                    echo "</br>";
-                                    $counter++;
+                                    echo "</td>";
+
+                                    // Last Name
+                                    echo "<td>";
+                                    echo $result['lname'];
+                                    echo "</td>";
+
+                                    // First Name
+                                    echo "<td>";
+                                    echo $result['fname'];
+                                    echo "</td>";
+
+                                    // Phone Number
+                                    echo "<td>";
+                                    echo $result['phone'];
+                                    echo "</td>";
+
+                                    // Email
+                                    echo "<td>";
+                                    echo $result['email'];
+                                    echo "</td>";
+
+                                    // Property
+                                    echo "<td>";
+                                    if ($result['address'] == 'Lead'){
+                                        echo "Lead";
+                                    } else {
+                                        echo htmlspecialchars($result['address'] . ", " . $result['city']);
+                                    }
+                                    echo "</td>";
+
+                                    echo "</tr>";
                                 }
-
-                                // echo "</div>";
-
                                 ?>
+                                </tbody>
+                            </table>
 
-                            </div> <!-- /.panel-group -->
-
-
-
-                            <!-------------End Mock Visitor Dropdown-------->
 
                         </div>
                         <!-- /.box-body -->
@@ -563,10 +504,10 @@ $keys = array_keys($response);
         }
     }
 
-    $('table').floatThead({
-        position: 'absolute'
-
-    });
+    // $('table').floatThead({
+    //     position: 'absolute'
+    //
+    // });
 
 
     function toggleIcon(e) {
@@ -667,35 +608,43 @@ $keys = array_keys($response);
         $('#visitorHouseMatchModal').modal('toggle');
 
     }
-
-    function barSearch()
-    {
-        var input, filter, table, tr, td, i;
-        input = document.getElementById("searchBar");
-        filter = input.value.toUpperCase();
-        table = document.getElementById("freeze");
-        tr = table.getElementsByTagName("tr");
-        for (i = 0; i < tr.length; i++)
-        {
-            td = tr[i].getElementsByTagName("td")[2];
-            if (td)
-            {
-                if (td.innerHTML.toUpperCase().indexOf(filter) > -1)
-                {
-                    tr[i].style.display = "";
-                } else
-                {
-                    tr[i].style.display = "none";
-                }
-            }
-        }
+    //
+    // function barSearch()
+    // {
+    //     var input, filter, table, tr, td, i;
+    //     input = document.getElementById("searchBar");
+    //     filter = input.value.toUpperCase();
+    //     table = document.getElementById("freeze");
+    //     tr = table.getElementsByTagName("tr");
+    //     for (i = 0; i < tr.length; i++)
+    //     {
+    //         td = tr[i].getElementsByTagName("td")[2];
+    //         if (td)
+    //         {
+    //             if (td.innerHTML.toUpperCase().indexOf(filter) > -1)
+    //             {
+    //                 tr[i].style.display = "";
+    //             } else
+    //             {
+    //                 tr[i].style.display = "none";
+    //             }
+    //         }
+    //     }
     }
 
 </script>
 
 <script>
     jQuery(function ($) {
-        $('.table').footable({});
+        $('.table').footable({
+            "sorting": {
+                "enabled": true
+            },
+            "paging": {
+                "enabled": true,
+                "size": 15
+            }
+        });
     });
 </script>
 
