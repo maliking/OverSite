@@ -319,7 +319,8 @@ $keys = array_keys($response);
 <script>
     jQuery(function ($) {
         $('.table').footable({
-            "cascade": true
+            "cascade": true,
+            "sortable": true
         });
     });
 </script>
