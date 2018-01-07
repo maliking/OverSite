@@ -21,7 +21,7 @@ $activePage = basename($_SERVER['PHP_SELF'], ".php");
         <!-- Temporary button for easy switching -->
         <?php
             if ($_SESSION['userType'] == 0) {
-                echo "<a href=\"http://www.oversite.cc/index.php\" style=\"margin-top: 8px; margin-left: 10px\" class=\"btn
+                echo "<a href=\"../index.php\" style=\"margin-top: 8px; margin-left: 10px\" class=\"btn
                 btn-primary\">Switch to Admin</a>";
             }
         ?>
