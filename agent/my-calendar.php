@@ -507,18 +507,18 @@ $result = $stmt->fetch();
             });
 
 
-            window.setInterval(function() { // Set interval for checking
-                var date = new Date(); // Create a Date object to find out what time it is
-                if (date.getHours() === 18 && date.getMinutes() === 49) { // Check the time
-
-                    new PNotify({
-                        title: 'Contact Client',
-                        text: 'Must send email to John by 5:15pm.',
-                        styling: 'fontawesome'
-
-                    });
-                }
-            }, 60000); // Repeat every 60000 milliseconds (1 minute)
+            // window.setInterval(function() { // Set interval for checking
+            //     var date = new Date(); // Create a Date object to find out what time it is
+            //     if (date.getHours() === 18 && date.getMinutes() === 49) { // Check the time
+            //
+            //         new PNotify({
+            //             title: 'Contact Client',
+            //             text: 'Must send email to John by 5:15pm.',
+            //             styling: 'fontawesome'
+            //
+            //         });
+            //     }
+            // }, 60000); // Repeat every 60000 milliseconds (1 minute)
 
         </script>
 
