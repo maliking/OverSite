@@ -9,6 +9,8 @@ $activePage = basename($_SERVER['PHP_SELF'], ".php");
 
 ?>
 
+
+
 <!-- Main Header -->
 <header class="main-header">
     <!-- Header Navbar -->
@@ -22,7 +24,7 @@ $activePage = basename($_SERVER['PHP_SELF'], ".php");
         <?php
             if ($_SESSION['userType'] == 0) {
                 echo "<a href=\"../index.php\" style=\"margin-top: 8px; margin-left: 10px\" class=\"btn
-                btn-primary\">Switch to Admin</a>";
+                btn-admin\">Switch to Admin</a>";
             }
         ?>
 

@@ -141,10 +141,6 @@ for($i = 0; $i < sizeof($keys); $i++)
             <?php include "./templates-agent/nav.php" ?>
             <!-- END TEMPLATE nav.php INCLUDE -->
 
-            <!-- PAGE-SPECIFIC CSS -->
-            <link rel="stylesheet" href="../dist/css/vendor/fullcalendar.min.css">
-
-
 
             <?php include "./fullcalendar/links.php" ?>
 
