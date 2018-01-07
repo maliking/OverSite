@@ -232,7 +232,7 @@ $keys = array_keys($response);
                     <div class="box">
                         <div class="box-body">
                             <table class="table table-bordered table-striped" data-sorting="true"
-                                   data-filtering="true" data-paging="true"
+                                   data-filtering="true"
                                    id="inventory-table">
                                 <thead>
 
@@ -319,8 +319,7 @@ $keys = array_keys($response);
 <script>
     jQuery(function ($) {
         $('.table').footable({
-            "cascade": true,
-            "sortable": true
+      
         });
     });
 </script>
