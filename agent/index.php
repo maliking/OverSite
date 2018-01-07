@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+clearstatcache();
 if (!isset($_SESSION['userId'])) {
     header("Location: http://jjp2017.org/login.php");
 }
@@ -497,7 +497,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                             <div class="box box-primary">
                                 <div class="box-body">
                                     <!-- THE CALENDAR -->
-                                    <div id="calendar"></div>
+                                    <div id="calendar" style="height:600px;"></div>
                                 </div>
                                 <!-- /.box-body -->
                             </div>
@@ -531,17 +531,15 @@ for($i = 0; $i < sizeof($keys); $i++)
 
         <!-- PAGE-SPECIFIC JS -->
         <script src="../dist/js/vendor/moment-with-locales.min.js"></script>
-        <script src="../dist/js/vendor/fullcalendar/gcal.min.js"></script>
         <script src="../dist/js/vendor/fullcalendar/fullcalendar.min.js"></script>
         <script type="text/javascript" src="../plugins/pnotify/dist/pnotify.js"></script>
         <script type="text/javascript" src="../plugins/pnotify/dist/pnotify.buttons.js"></script>
         <script type="text/javascript" src="../plugins/pnotify/dist/pnotify.nonblock.js"></script>
 
         <!-- Custom Theme Scripts -->
-        <script src="build/js/custom.min.js"></script>
 
         <!-- date-range-picker -->
-        <script src="../plugins/moment/min/moment.min.js"></script>
+        <script src="../plugins/moment/moment.min.js"></script>
         <script src="../plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
         <!-- bootstrap datepicker -->
         <script src="../plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>

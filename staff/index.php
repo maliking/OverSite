@@ -1,6 +1,6 @@
 <?php
 session_start();
- echo($_SESSION['userType']);
+ // echo($_SESSION['userType']);
 if (!isset($_SESSION['userId']) ) {
     header("Location: login.php");
 }
@@ -17,7 +17,11 @@ require '../databaseConnection.php';
 
 $dbConn = getConnection();
 
+$sqlGetAgents = "SELECT userId, firstName, lastName FROM UsersInfo";
 
+$agentStmt = $dbConn->prepare($sqlGetAgents);
+$agentStmt->execute();
+$agentResults = $agentStmt->fetchAll();
 
 
 ?>
@@ -44,7 +48,7 @@ $dbConn = getConnection();
         <link rel="stylesheet" href="../dist/css/vendor/fullcalendar.min.css">
 
         <!-- iCheck for checkboxes and radio inputs -->
-        <link rel="stylesheet" href="../../plugins/iCheck/all.css">
+        <link rel="stylesheet" href="../plugins/iCheck/all.css">
     </head>
 
     <body class="hold-transition skin-black sidebar-mini">
@@ -107,30 +111,19 @@ $dbConn = getConnection();
 
                                 <div class="box-body">
                             <table class="table table-striped">
-                                <tr>
-                                    <td>
-                                        <label>
-                    <input type="checkbox" class="flat-red">
-               John Doe
-                </label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label>
-                    <input type="checkbox" class="flat-red">
-              Jane Smith
-                </label>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label>
-                    <input type="checkbox" class="flat-red">
-              Billy Bob
-                </label>
-                                    </td>
-                                </tr>
+
+                                <?php
+
+                                foreach($agentResults as $agent)
+                                {
+                                    echo "<tr>
+                                            <td>";
+                                    echo '<label><input id="checkboxFilter" type="checkbox" class="flat-red" value="' . $agent['userId'] . '" checked> ' .$agent['firstName'] . " " . $agent['lastName'] . '</label>';
+                                    echo "</td>
+                                            </tr>";
+                                }
+                                ?>
+                                
                             </table>
          </div>
                             </div>
@@ -164,9 +157,9 @@ $dbConn = getConnection();
 
 
         <script>
-            jQuery(function($) {
-                $('.table').footable({});
-            });
+            // jQuery(function($) {
+            //     $('.table').footable({});
+            // });
 
         </script>
         <script>
@@ -202,10 +195,11 @@ $dbConn = getConnection();
             }
 
             $(document).ready(function() {
+                var currentEvents = "getTransactions.php?all=true";
                 $('#calendar').fullCalendar({
 
                     eventSources: [{
-                        url: 'getMeetings.php', // use the `url` property
+                        url: currentEvents, // use the `url` property
                         color: 'yellow', // an option!
                         textColor: 'black' // an option!
                     }],
@@ -237,7 +231,7 @@ $dbConn = getConnection();
                     },
                     selectable: true,
                     selectHelper: true,
-                    eventLimit: true,
+                    eventLimit: false,
                     // firstHour: 12,
                     minTime: '07:00:00',
                     maxTime: '21:00:00',
@@ -350,12 +344,35 @@ $dbConn = getConnection();
 
                 });
 
+                $( "input[type=checkbox]").click(function() 
+                {
+                    var getFilteredEvents = "";
+                    var filterCount = 0;
+                    $.each($("[type=checkbox]:checked"), function()
+                    {            
+                        getFilteredEvents += "userId" + filterCount + "=" + $(this).val() + "&";
+                        filterCount++;
+                    });
+
+                    $('#calendar').fullCalendar('removeEventSource', currentEvents);
+
+                    var newEvents = "getTransactions.php?" + getFilteredEvents;
+                    // alert(newEvents);
+                    $('#calendar').fullCalendar('addEventSource', newEvents);
+                    // $('#calendar').fullCalendar('refetchEvents');
+
+                    currentEvents = newEvents;
+
+                });
+
             });
             //iCheck for checkbox and radio inputs
-            $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-                checkboxClass: 'icheckbox_minimal-blue',
-                radioClass: 'iradio_minimal-blue'
-            })
+            // $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
+            //     checkboxClass: 'icheckbox_minimal-blue',
+            //     radioClass: 'iradio_minimal-blue'
+            // })
+
+            
 
         </script>
 
