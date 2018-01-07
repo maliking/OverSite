@@ -296,7 +296,7 @@ $keys = array_keys($response);
                         </div>
 
                         <div class="box-body">
-                            <table class="table table-striped">
+                            <table class="table table-striped" data-filtering="true">
                                 <thead>
                                 <tr>
                                     <th>Type</th>
@@ -644,6 +644,7 @@ $keys = array_keys($response);
                 "enabled": true,
                 "size": 15
             }
+
         });
     });
 </script>
