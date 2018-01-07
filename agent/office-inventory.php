@@ -231,12 +231,9 @@ $keys = array_keys($response);
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-body">
-                            <table class="table table-bordered table-striped" data-sorting="true"
-                                   data-filtering="true"
+                            <table class="table table-bordered table-striped"
                                    id="inventory-table">
                                 <thead>
-
-
                                 <tr>
                                     <th data-breakpoints="xs">Agent</th>
                                     <th>Property</th>
@@ -248,11 +245,10 @@ $keys = array_keys($response);
 
                                 </tr>
                                 </thead>
+                                <tbody>
                                 <?php
                                 // foreach ($result as $house) {
                                 for ($i = 0; $i < sizeof($keys); $i++) {
-
-                                    
                                         $agentName = "SELECT firstName, lastName FROM UsersInfo WHERE mlsId = :mlsId";
                                         $namedParameters = array();
                                         $namedParameters[':mlsId'] = $response[$keys[$i]]['listingAgentID'];
@@ -277,7 +273,7 @@ $keys = array_keys($response);
                                             $bathrooms = $response[$keys[$i]]['totalBaths'];
                                         }   
 
-                                        echo '<tbody><tr><td> ' . $name['firstName'] . " " . $name['lastName'] .  '</td>
+                                        echo '<tr><td> ' . $name['firstName'] . " " . $name['lastName'] .  '</td>
                                                     <td> ' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] .  ' </td>
                                                     <td>' . $bedrooms . '</td>
                                                     <td>'. $bathrooms .'</td>
@@ -286,10 +282,11 @@ $keys = array_keys($response);
 
                                                     <td ><a href="https://maps.google.com/?q=' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] . '" target="_blank"><button >View on Map</button></a></td>
                                                     
-                                                </tr></tbody>';
+                                                </tr>';
                                     
                                 }
                                 ?>
+                                </tbody>
 
                             </table>
                         </div>
@@ -319,7 +316,9 @@ $keys = array_keys($response);
 <script>
     jQuery(function ($) {
         $('.table').footable({
-      
+            "sorting": {
+                "enabled": true
+            }
         });
     });
 </script>
