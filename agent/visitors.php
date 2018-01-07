@@ -301,11 +301,10 @@ $keys = array_keys($response);
                                 <tr>
                                     <th>Type</th>
                                     <th>Date Added</th>
-                                    <th>Last Name</th>
-                                    <th>First Name</th>
-                                    <th>Phone</th>
-                                    <th>Email</th>
-                                    <th>Property</th>
+                                    <th>Name</th>
+                                    <th data-breakpoints="xs">Phone</th>
+                                    <th data-breakpoints="xs">Email</th>
+                                    <th data-breakpoints="xs sm">Property</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -356,14 +355,9 @@ $keys = array_keys($response);
                                     }
                                     echo "</td>";
 
-                                    // Last Name
+                                    // Name
                                     echo "<td>";
-                                    echo $result['lname'];
-                                    echo "</td>";
-
-                                    // First Name
-                                    echo "<td>";
-                                    echo $result['fname'];
+                                    echo $result['fname'] . " " . $result['lname'];
                                     echo "</td>";
 
                                     // Phone Number
