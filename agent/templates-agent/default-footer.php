@@ -5,5 +5,5 @@
         Powered by <a href="#">OverSite</a>
     </div>
     <!-- Default to the left -->
-    <strong>&copy; 2017 | <a href="#">Re/Max Salinas</a>.</strong> All rights reserved.
+    <strong>&copy; <?php echo date("Y"); ?> | <a href="#">Re/Max Salinas</a>.</strong> All rights reserved.
 </footer>
