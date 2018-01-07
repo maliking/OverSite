@@ -318,6 +318,10 @@ $keys = array_keys($response);
         $('.table').footable({
             "sorting": {
                 "enabled": true
+            },
+            "paging": {
+                "enabled": true,
+                "size": 15
             }
         });
     });
