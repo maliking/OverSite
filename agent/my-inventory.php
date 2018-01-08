@@ -220,7 +220,7 @@ $addedListingsResults = $addedListings->fetchAll();
                                     onClick=\"matchLeadsModal(" . $response[$keys[$i]]['rntLsePrice'] . "," .
                              $houseBedrooms . "," . $houseBaths .  ")\"> Top 5 Leads</button>
                                     <button type=\"button\" class=\"btn btn-success btn-block\" 
-                                    onClick=\"addTransaction(" . $response[$keys[$i]]['listingID'] . ")\"><i class='fa fa-check'></i> In-Contract</button>
+                                    onClick=\"addTransaction('" . $response[$keys[$i]]['listingID'] . "')\"><i class='fa fa-check'></i> In-Contract</button>
                                 </div>
                                 </div>
                              </div>";
