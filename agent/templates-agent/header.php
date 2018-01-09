@@ -1,5 +1,15 @@
 <?php
 
+if ($_SESSION['userId'] == "100" || $_SESSION['userId'] == "34") //Jorge
+{
+    $_SESSION['userId'] = "34";
+    $_SESSION['userType'] = "1";
+}
+else if($_SESSION['userId'] == "101" || $_SESSION['userId'] == "37" ) //Juan
+{
+    $_SESSION['userId'] = "37";
+    $_SESSION['userType'] = "1";
+}
 $currAgent = "SELECT * FROM UsersInfo WHERE userId = '" . $_SESSION['userId'] . "'";
 $email = $dbConn->prepare($currAgent);
 $email->execute();
