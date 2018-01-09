@@ -22,7 +22,17 @@ $activePage = basename($_SERVER['PHP_SELF'], ".php");
 
         <!-- Temporary button for easy switching -->
         <?php
-            if ($_SESSION['userType'] == 0) {
+            if ($_SESSION['userId'] == "100" || $_SESSION['userId'] == "34") //Jorge
+            {
+                $_SESSION['userId'] = "34";
+                $_SESSION['userType'] = "1";
+                echo "<a href=\"../index.php\" style=\"margin-top: 8px; margin-left: 10px\" class=\"btn
+                btn-admin\">Switch to Admin</a>";
+            }
+            else if($_SESSION['userId'] == "101" || $_SESSION['userId'] == "37" ) //Juan
+            {
+                $_SESSION['userId'] = "37";
+                $_SESSION['userType'] = "1";
                 echo "<a href=\"../index.php\" style=\"margin-top: 8px; margin-left: 10px\" class=\"btn
                 btn-admin\">Switch to Admin</a>";
             }

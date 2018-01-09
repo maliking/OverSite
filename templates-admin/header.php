@@ -17,8 +17,23 @@ $activePage = basename($_SERVER['PHP_SELF'], ".php");
             <span class="sr-only">Toggle navigation</span>
         </a>
 
-        <!-- Temporary button for easy switching -->
-        <a href="agent/index.php" style="margin-top: 8px; margin-left: 10px" class="btn btn-danger">Switch to Agent</a>
+        <?php
+            if ($_SESSION['userId'] == "34" || $_SESSION['userId'] == "100" ) //Jorge
+            {
+                $_SESSION['userId'] = "100";
+                $_SESSION['userType'] = "0";
+                echo "<a href=\"agent/index.php\" style=\"margin-top: 8px; margin-left: 10px\" class=\"btn
+                btn-admin\">Switch to Agent</a>";
+            }
+            else if($_SESSION['userId'] == "37" || $_SESSION['userId'] == "101") //Juan
+            {
+                $_SESSION['userId'] = "101";
+                $_SESSION['userType'] = "0";
+                echo "<a href=\"agent/index.php\" style=\"margin-top: 8px; margin-left: 10px\" class=\"btn
+                btn-admin\">Switch to Agent</a>";
+            }
+        ?>
+        
 
         <!-- Navbar Right Menu -->
         <div class="navbar-custom-menu">
