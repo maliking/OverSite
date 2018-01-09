@@ -12,6 +12,13 @@
         .modal-body {
             color: black;
         }
+         input.empty {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}
+
 
     </style>
 

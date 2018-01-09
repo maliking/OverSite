@@ -18,7 +18,14 @@
         }
         th, td {
             padding-right: 40px;
+ 
         }
+        input.empty {
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+}
 
     </style>
 
@@ -146,7 +153,17 @@
     CKEDITOR.replace('editor1')
     //bootstrap WYSIHTML5 - text editor
     $('.textarea').wysihtml5()
+      
   })
+    $('#iconified').on('keyup', function() {
+    var input = $(this);
+    if(input.val().length === 0) {
+        input.addClass('empty');
+    } else {
+        input.removeClass('empty');
+    }
+});
+    
 </script>
 
 </body>
