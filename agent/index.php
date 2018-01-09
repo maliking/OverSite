@@ -436,22 +436,17 @@ for($i = 0; $i < sizeof($keys); $i++)
                                             <td>Test Email</td>
         
                                             <td>' . date('m/d/y', strtotime($day)) . '
-                                                <br>
-                                                <span class="label label-success">Done! <i
-                                                            class="fa fa-check-circle-o"></i></span>
+                                                          &nbsp  <i class="fa fa-check-circle" style="color:#5cb85c"></i>
                                             </td>
                                             <td>' . date('m/d/y', strtotime($day . ' + '. $trans['emdDays'] . ' days' )) . '
-                                                <br>
-                                                <span class="label label-success">Done! <i
-                                                            class="fa fa-check-circle-o"></i></span>
+                                                  &nbsp  <i class="fa fa-check-circle" style="color:#5cb85c"></i>
                                             </td>
                                             <td>' . date('m/d/y', strtotime($day . ' + '. $trans['sellerDiscDays'] . ' days' )) . '
                                             <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
                                                           data-toggle="popover" data-Oplacement="right"
                                                           data-content="<b>Completed:</b> 3/4/17"><i
                                                             class="fa fa-chevron-circle-right"></i></a>
-                                                <br>
-                                                <span class="label label-danger">Overdue</span>
+                                                    &nbsp  <i class="fa fa-flag" style="color:#d9534f"></i>
                                             </td>
         
                                             <td>' . date('m/d/y', strtotime($day . ' + '. $trans['genInspecDays'] . ' days' )) . '
@@ -459,8 +454,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                           data-toggle="popover" data-Oplacement="right"
                                                           data-content="<b>Completed:</b> 3/4/17"><i
                                                             class="fa fa-chevron-circle-right"></i></a>
-                                                <br>
-                                                <span class="label label-warning">Due in 8d</span>
+                                                 &nbsp  <i class="fa fa-warning" style="color:#ffae42"></i>
                                             </td>
                                            
         
@@ -469,19 +463,16 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                           data-toggle="popover" data-Oplacement="right"
                                                           data-content="<b>Completed:</b> 3/4/17"><i
                                                             class="fa fa-chevron-circle-right"></i></a>
-                                                <br>
-                                                <span class="label label-warning">Due in 8d</span>
+                                     &nbsp  <i class="fa fa-warning" style="color:#ffae42"></i>
                                             </td>
         
                                             <td>' . date('m/d/y', strtotime($day . ' + '. $trans['lcDays'] . ' days' )) . '
-                                                <br>
-                                                <span class="label label-default">Incomplete</span>
+                                                 &nbsp  <i class="fa fa-exclamation-circle" style="color:#d3d3d3"></i>
                                             </td>
                                             <td>' . date('m/d/y', strtotime($day . ' + '. $trans['coeDays'] . ' days' )) . '
-                                                <br>
-                                                <span class="label label-default">Incomplete</span>
+                                                &nbsp  <i class="fa fa-exclamation-circle" style="color:#d3d3d3"></i>
                                             </td>
-                                            <td>Write some notes here!</td>
+                                            <button>  <i class="fa fa-edit" style="color:#d3d3d3"></i> </button>
                                         </tr>';
                                     }
                                             ?>
