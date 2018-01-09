@@ -11,7 +11,7 @@ if($_SESSION['userType'] == "0"){
 
 if($_SESSION['userType'] == "1"){
     header("Location: ../agent/index.php");
-}
+}3
 
 require '../databaseConnection.php';
 
@@ -86,11 +86,9 @@ $dbConn = getConnection();
                             <table class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
-                                    <th>Agent</th>
+                              
                                     <th>Property</th>
-                                    <th data-breakpoints="all">Client Name</th>
-                                    <th data-breakpoints="all">Client Number</th>
-                                    <th data-breakpoints="all">Client Email</th>
+                                  
                                     <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                     data-placement="top"
                                                                     title="Approval Date">Aprv. </a></th>
@@ -115,67 +113,65 @@ $dbConn = getConnection();
                                     <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                     data-placement="top"
                                                                     title="Close of Escrow">COE </a></th>
-                                    <th data-breakpoints="xs sm">Notes</th>
+                                    <th data-breakpoints="xs sm">Edit Dates</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <tr>
 
-                                    <td>Jorge Edeza</td>
+                              
                                     <td>1204 Rogers Ct. Salinas, CA 94934</td>
-                                    <td>Patty Hershang</td>
-                                    <td>831-382-4833</td>
-                                    <td>phershang@gmail.com</td>
+                                  
 
                                     <td>3/1/17
-                                        <br>
-                                        <span class="label label-success">Done! <i
-                                                    class="fa fa-check-circle-o"></i></span>
+                                       
+                                       
                                     </td>
                                     <td>3/1/17
-                                        <br>
-                                        <span class="label label-success">Done! <i
-                                                    class="fa fa-check-circle-o"></i></span>
+                                        
                                     </td>
                                     <td>3/1/17 <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
                                                   data-toggle="popover" data-Oplacement="right"
-                                                  data-content="<b>Completed:</b> 3/4/17"><i
-                                                    class="fa fa-chevron-circle-right"></i></a>
-                                        <br>
-                                        <span class="label label-danger">Overdue</span>
+                                                  data-content="<b>Completed:</b> 3/4/17"></a>
+                                       
                                     </td>
 
                                     <td>3/1/17 <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
                                                   data-toggle="popover" data-Oplacement="right"
-                                                  data-content="<b>Completed:</b> 3/4/17"><i
-                                                    class="fa fa-chevron-circle-right"></i></a>
-                                        <br>
-                                        <span class="label label-warning">Due in 8d</span>
+                                                  data-content="<b>Completed:</b> 3/4/17"></a>
+                                        
                                     </td>
 
                                     <td>3/1/17 <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
                                                   data-toggle="popover" data-Oplacement="right"
-                                                  data-content="<b>Completed:</b> 3/4/17"><i
-                                                    class="fa fa-chevron-circle-right"></i></a>
+                                                  data-content="<b>Completed:</b> 3/4/17"></a>
                                         <br>
-                                        <span class="label label-warning">Due in 8d</span>
-                                    </td>
+                                       
 
                                     <td>3/1/17
-                                        <br>
-                                        <span class="label label-default">Incomplete</span>
+                                        
                                     </td>
                                     <td>3/1/17
-                                        <br>
-                                        <span class="label label-default">Incomplete</span>
+                                       
                                     </td>
-                                    <td>Write some notes here!</td>
+                                    <td><?php include "editDates.php"?></td>
                                 </tr>
                                 </tbody>
                             </table>
              
                              
                         </div>
+                        
+                        <!-- /.box-body -->
+                    </div>
+                    <!-- /.box -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->     
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="box">
                           <div class="box-body">
                          <div class="box-body no-padding" style="height:600px;">
                                     <!-- THE CALENDAR -->
@@ -216,7 +212,14 @@ $dbConn = getConnection();
 
 <script>
     jQuery(function ($) {
-        $('.table').footable({});
+        $('.table').footable({
+                "paging": {
+                        "enabled": true,
+                        "size": 4,
+                        "position": "right"
+                    }
+            
+        });
     });
 </script>
 <script>

@@ -16,17 +16,17 @@
     </style>
 
     <!-- Button trigger modal -->
-    <button type="button"  data-toggle="modal" data-target="#modal-primary">
+    <button type="button"  data-toggle="modal" data-target="#modal">
   <h6>Text Agent</h6>
 </button>
     <!--MODAL AREA!!-->
 
 
-    <div class="modal modal-primary fade" id="modal-primary">
+    <div class="modal modalfade" id="modal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <small style="color: white;">Message to John Doe</small>
+                 <small>  Message to John Doe</small>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span></button>
                 </div>
@@ -43,13 +43,14 @@
        
                     </div>
 
-                </div>
-            </div>
+             
             <div class="modal-footer">
-                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close
                                 </button>
-                <button type="button" class="btn btn-outline">Send 
+                <button type="button" class="btn-default pull-right">Send 
                                 </button>
+            </div>
+                       </div>
             </div>
         </div>
         <!-- /.modal-content -->
