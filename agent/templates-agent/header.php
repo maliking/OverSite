@@ -7,6 +7,45 @@ $agentInfo = $email->fetch();
 
 $activePage = basename($_SERVER['PHP_SELF'], ".php");
 
+$sqlLicense = "SELECT license, mlsId FROM UsersInfo WHERE userId = :userId";
+
+$namedParameters = array();
+$namedParameters[':userId'] = $_SESSION['userId'];
+
+
+$licenseStmt = $dbConn->prepare($sqlLicense);
+$licenseStmt->execute($namedParameters);
+$licenseResult = $licenseStmt->fetch();
+
+
+
+
+$addedHouses = "SELECT count(*) as added FROM HouseInfo WHERE userId = :userId AND status = :status";
+$addedHouseParam = array();
+$addedHouseParam[':userId'] = $_SESSION['userId'];
+$addedHouseParam[':status'] = "added";
+
+$addedHousesStmt = $dbConn->prepare($addedHouses);
+$addedHousesStmt->execute($addedHouseParam);
+$addedHouseResults = $addedHousesStmt->fetch();
+
+
+
+
+$sql = "SELECT firstName, lastName, count(*) as sold, AVG(finalComm) as average, SUM(finalComm) AS earnings, AVG(percentage) AS avgPercent FROM commInfo WHERE license = :license GROUP BY license ";
+$parameters = array();
+$parameters[':license'] = $licenseResult['license'];
+
+$stmt = $dbConn->prepare($sql);
+$stmt->execute($parameters);
+$result = $stmt->fetch();
+
+$sqlTransactions = "SELECT * FROM transactions WHERE userId = :userId";
+$transParameters = array();
+$transParameters[':userId'] = $_SESSION['userId'];
+$transStmt = $dbConn->prepare($sqlTransactions);
+$transStmt->execute($transParameters);
+$transResults = $transStmt->fetchAll();
 ?>
 
 
