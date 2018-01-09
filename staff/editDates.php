@@ -56,49 +56,49 @@
                                             <td>Aprv</td>
                                             <td>3/1/17</td>
                                             <td><div class="input-group date">
-                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="	&#xf073;">
+                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
                 </div></td>
                                         </tr>
                                          <tr>
                                             <td>EMD</td>
                                               <td>3/1/17</td>
                                             <td><div class="input-group date">
-                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="	&#xf073;">
+                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
                 </div></td>
                                         </tr>
                                            <tr>
                                             <td>DISC</td>
                                                 <td>3/1/17</td>
                                             <td><div class="input-group date">
-                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="	&#xf073;">
+                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
                 </div></td>
                                         </tr>
                                            <tr>
                                             <td>INSP</td>
                                                 <td>3/1/17</td>
                                             <td><div class="input-group date">
-                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="	&#xf073;">
+                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
                 </div></td>
                                         </tr>
                                            <tr>
                                             <td>APPR</td>
                                                 <td>3/1/17</td>
                                             <td><div class="input-group date">
-                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="	&#xf073;">
+                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
                 </div></td>
                                         </tr>
                                            <tr>
                                             <td>LC</td>
                                                 <td>3/1/17</td>
                                             <td><div class="input-group date">
-                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="	&#xf073;">
+                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
                 </div></td>
                                         </tr>
                                            <tr>
                                             <td>COE</td>
                                                 <td>3/1/17</td>
                                             <td><div class="input-group date">
-                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="	&#xf073;">
+                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
                 </div></td>
                                         </tr>
                      

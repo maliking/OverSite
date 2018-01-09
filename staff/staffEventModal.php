@@ -16,13 +16,13 @@
     </style>
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-primary">
-  <h5>Add New Event</h5>
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">
+  <h5>Add New Date</h5>
 </button>
     <!--MODAL AREA!!-->
 
 
-    <div class="modal modal-primary fade" id="modal-primary">
+    <div class="modal modal fade" id="modal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -36,104 +36,36 @@
                             <div class="box">
 
                                 <div class="box-body no-padding">
-                                    <table id="modal-table" class="table table-striped">
-                                        <tr>
-
-                                            <th>Type</th>
-                                            <th>For Agent</th>
-                                            <th>Due Date</th>
-                                            
-                                        </tr>
-
-                                        <tr>
-
-                                            <td>
-                                                <div class="radio">
-                                                    <label>
-                      <input type="radio" name="eventType" id="aprv" value="aprv" checked>
-                      Aprv
-                    </label>
-                                                </div>
-
-
-                                                <div class="radio">
-                                                    <label>
-                      <input type="radio" name="eventType" id="emd" value="emd" >
-                      Emd
-                    </label>
-                                                </div>
-                      
-                                                <div class="radio">
-                                                    <label>
-                      <input type="radio" name="eventType" id="disc" value="disc" >
-                     Disc
-                    </label>
-                                                </div>
-                               
-                                                <div class="radio">
-                                                    <label>
-                      <input type="radio" name="eventType" id="insp" value="insp" >
-                      Insp
-                    </label>
-                                                </div>
-                         
-                                                <div class="radio">
-                                                    <label>
-                      <input type="radio" name="eventType" id="appr" value="appr" >
-                      Appr
-                    </label>
-                                                </div>
-                                        
-                                                <div class="radio">
-                                                    <label>
-                      <input type="radio" name="eventType" id="lc" value="lc" >
-                      LC
-                    </label>
-                                                </div>
-                                
-                                                <div class="radio">
-                                                    <label>
-                      <input type="radio" name="eventType" id="coe" value="coe" >
-                     Coe
-                    </label>
-                                                </div>
-                                          
-                                                <div class="radio">
-                                                    <label>
-                      <input type="radio" name="eventType" id="other" value="other" >
-                                                        <input type="text" placeholder="Other"> 
-                    </label>
-                                                </div>
-                                            </td>
-                                            
-<!--                                          FOR AGENT-->
-                                            <td> 
-                                            <div class="radio">
-                                                    <label>
-                      <input type="radio" name="forAgent" id="johnDoe" value="johnDoe" >
-                                                John Doe
-                                                </label> 
-                                                </div>
-                                                 <div class="radio">
-                                                <label>
-                      <input type="radio" name="forAgent" id="janeSmith" value="janeSmith" >
-                                                    Jane Smith
-                    </label>
-                                                </div>
-                                    </td>
-<!--                                            END for Agent-->
-<!--                                            Select Date-->
-                                    <td>
-                                               <div class="input-group date">
-                  <div class="input-group-addon">
-                    <i class="fa fa-calendar"></i>
-                  </div>
-                  <input type="text" class="form-control pull-right" id="datepicker">
-                </div>
-<!--                                        END Select Date-->
-                                        </tr>
-
-                                    </table>
+                                  
+                                <form>
+                                  <label for="address"> Address</label>  <select id="address">
+                                        <option value="">1234 House st</option>
+                                        <option value="">5678 App Lane</option>
+                                            </select>
+                                    <br>
+                                    <br>
+                                    <label for="agent">Agent</label> <select id="agent">
+                                        <option value="">John Doe</option>
+                                        <option value="">Jane Smith</option>
+                                            </select>
+                                    <br>
+                                    <br>
+                                    <label for="type">Type</label> <select id="type">
+                                        <option value="">APRV</option>
+                                        <option value="">EMD</option>
+                                        <option value="">DISC</option>
+                                        <option value="">INSP</option>
+                                        <option value="">APPR</option>
+                                        <option value="">LC</option>
+                                        <option value="">COE</option>
+                                            </select>
+                                    <br>
+                                    <br>
+                                     <label for="datepicker">Date</label>
+                  <input type="text"  class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
+                <br>
+                <br>
+                                    </form>
                                 </div>
                                 <!-- /.box-body -->
                             </div>

@@ -22,7 +22,7 @@
     <!--MODAL AREA!!-->
 
 
-    <div class="modal modalfade" id="modal">
+    <div class="modal modal fade" id="modal">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
