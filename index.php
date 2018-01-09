@@ -5,7 +5,7 @@ if (!isset($_SESSION['userId']) ) {
     header("Location: login.php");
 }
 
-if($_SESSION['userType'] == "1" && ($_SESSION['userId'] != "34" || $_SESSION['userId'] != "37"))
+if($_SESSION['userType'] == "1" && ($_SESSION['userId'] != "34" && $_SESSION['userId'] != "37"))
 {
     header("Location: agent/index.php");
 }
