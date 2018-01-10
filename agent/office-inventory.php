@@ -232,7 +232,7 @@ $keys = array_keys($response);
                     <div class="box">
                         <div class="box-body">
                             <table class="table table-bordered table-striped"
-                                   id="inventory-table">
+                                   id="inventory-table" data-filtering="true">
                                 <thead>
                                 <tr>
                                     <th data-breakpoints="xs">Agent</th>
