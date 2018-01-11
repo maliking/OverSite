@@ -434,7 +434,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                             <td>' . date('m/d/y', strtotime($day . ' + '. $trans['coeDays'] . ' days' )) . '
                                                 &nbsp  <i class="fa fa-exclamation-circle" style="color:#d3d3d3"></i>
                                             </td>
-                                            <button>  <i class="fa fa-edit" style="color:#d3d3d3"></i> </button>
+                                           <td> <button>  <i class="fa fa-edit" style="color:#d3d3d3"></i> </button></td>
                                         </tr>';
                                     }
                                             ?>
