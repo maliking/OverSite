@@ -33,7 +33,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                 <small>  Message to John Doe</small>
+                 <small>  Message to <?php echo $agentResult['firstName'] . " " . $agentResult['lastName']; ?></small>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span></button>
                 </div>
@@ -43,8 +43,7 @@
                                     
             <div class="box-body">
               <form>
-                    <textarea id="editor1" name="editor1" rows="10" cols="45" style="color:black;" placeholder="text">
-</textarea>
+                    <textarea id="editor1" name="editor1" rows="10" cols="40" style="color:black;" placeholder="Text"></textarea>
               </form>
             </div>
        
@@ -54,7 +53,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close
                                 </button>
-                <button type="button" class="btn-default pull-right">Send 
+                <button type="button" class="btn-default pull-right" onClick="sendText()">Send 
                                 </button>
             </div>
                        </div>
@@ -80,6 +79,15 @@
     //bootstrap WYSIHTML5 - text editor
     $('.textarea').wysihtml5()
   })
+
+  function sendText()
+  {
+    // alert($("#editor1").val());
+    $.post( "sendText.php", { phone: $("#hiddenPhone").html() , text: $("#editor1").val() })
+      .done(function( data ) {
+        alert("Message Sent");
+      });
+  }
 </script>
 
 </body>

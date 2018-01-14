@@ -1,6 +1,7 @@
 <?php
 session_start();
- echo($_SESSION['userType']);
+ // echo($_SESSION['userType']);
+
 if (!isset($_SESSION['userId']) ) {
     header("Location: login.php");
 }
@@ -16,8 +17,24 @@ require '../databaseConnection.php';
 
 $dbConn = getConnection();
 
+$agentSql = "SELECT * FROM UsersInfo WHERE userId = :userId";
+
+$namedParameters = array();
+$namedParameters[':userId'] = $_GET['userId'];
 
 
+$agentStmt = $dbConn->prepare($agentSql);
+$agentStmt->execute($namedParameters);
+$agentResult = $agentStmt->fetch();
+
+$transactionsSql = "SELECT * FROM transactions WHERE userId = :userId";
+
+$transParameters = array();
+$transParameters[':userId'] = $_GET['userId'];
+
+$transStmt = $dbConn->prepare($transactionsSql);
+$transStmt->execute($transParameters);
+$transResults = $transStmt->fetchAll();
 
 ?>
 
@@ -60,8 +77,10 @@ $dbConn = getConnection();
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                John Doe
-                <small><strong>(831)-123-4567  |  jdoe@gmail.com</strong></small> 
+                <p hidden id="hiddenUserId"><?php echo $_GET['userId']; ?></p>
+                <p hidden id="hiddenPhone"><?php echo $agentResult['phone']; ?></p>
+                <?php echo $agentResult['firstName'] . " " . $agentResult['lastName']; ?>
+                <small><strong><?php echo $agentResult['phone'] . "  |  " . $agentResult['email']; ?></strong></small> 
                 &nbsp;<?php include "textAgent.php" ?>
             </h1>
             <ol class="breadcrumb">
@@ -116,46 +135,31 @@ $dbConn = getConnection();
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
+                                
 
+                                    <?php
+
+                                    foreach($transResults as $trans)
+                                    {
+                                        $day = $trans['accDay'];
+                                        echo "<tr><td>" . $trans['address'] . "</td>"; 
+                                        echo "<td>" . date('m/d/y', strtotime($day)) . "</td>";
+                                        echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['emdDays'] . ' days')) . "</td>";
+                                        echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['sellerDiscDays'] . ' days')) . "</td>";
+                                        echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['genInspecDays'] . ' days')) . "</td>";
+                                        echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['appraisalDays'] . ' days')) . "</td>";
+                                        echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['lcDays'] . ' days')) . "</td>";
+                                        echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['coeDays'] . ' days')) . "</td>";
+                                        echo"<td>";
+                                        ?>
+                                        <?php include "editDates.php"; ?>
+                                    <?php
+                                    echo "</td></tr>";
+                                    }
+
+                                    ?>
                               
-                                    <td>1204 Rogers Ct. Salinas, CA 94934</td>
-                                  
-
-                                    <td>3/1/17
-                                       
-                                       
-                                    </td>
-                                    <td>3/1/17
-                                        
-                                    </td>
-                                    <td>3/1/17 <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
-                                                  data-toggle="popover" data-Oplacement="right"
-                                                  data-content="<b>Completed:</b> 3/4/17"></a>
-                                       
-                                    </td>
-
-                                    <td>3/1/17 <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
-                                                  data-toggle="popover" data-Oplacement="right"
-                                                  data-content="<b>Completed:</b> 3/4/17"></a>
-                                        
-                                    </td>
-
-                                    <td>3/1/17 <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
-                                                  data-toggle="popover" data-Oplacement="right"
-                                                  data-content="<b>Completed:</b> 3/4/17"></a>
-                                        <br>
-                                       
-
-                                    <td>3/1/17
-                                        
-                                    </td>
-                                    <td>3/1/17
-                                       
-                                    </td>
-                                    <td><?php include "editDates.php"?></td>
-                                </tr>
-                                </tbody>
+                                   </tbody>
                             </table>
              
                              
@@ -259,7 +263,7 @@ $dbConn = getConnection();
                 $('#calendar').fullCalendar({
 
                     eventSources: [{
-                        url: 'getMeetings.php', // use the `url` property
+                        url: 'getTransactions.php?userId=' + $("#hiddenUserId").html(), // use the `url` property
                         color: 'yellow', // an option!
                         textColor: 'black' // an option!
                     }],

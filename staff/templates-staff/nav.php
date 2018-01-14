@@ -39,6 +39,7 @@ $agentResults = $stmt->fetchAll();
                              </span>
                             </a>
                         <ul class="treeview-menu">
+                    <li><a class="dropdown-text" href="agentPage.php?userId='.$agent['userId'] .'"> <span>Agent Page</span></a></li>
                     <li><a class="dropdown-text" href="#"> <span>Phone: ' . $agent['phone'] . '</span></a></li>
                     <li><a class="dropdown-text" href="#"><span>Email: ' . $agent['email'] . '</span></a></li>
                 </ul>
