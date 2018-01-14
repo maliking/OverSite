@@ -27,7 +27,7 @@ $agentResults = $stmt->fetchAll();
                       </span>
                 </a>
         <ul class="treeview-menu">
-            <li><a class="dropdown-text" href="agentPage.php"> <span>John Doe</span></a></li>
+            <!-- <li><a class="dropdown-text" href="agentPage.php"> <span>John Doe</span></a></li> -->
             <?php
                 foreach ($agentResults as $agent) {
                
