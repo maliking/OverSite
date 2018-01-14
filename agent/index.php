@@ -376,6 +376,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                                             data-placement="top"
                                                                             title="Close of Escrow">COE </a></th>
                                             <th data-breakpoints="xs sm">Notes</th>
+                                            <th data-breakpoints="xs sm">Edit Notes</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -434,7 +435,8 @@ for($i = 0; $i < sizeof($keys); $i++)
                                             <td>' . date('m/d/y', strtotime($day . ' + '. $trans['coeDays'] . ' days' )) . '
                                                 &nbsp  <i class="fa fa-exclamation-circle" style="color:#d3d3d3"></i>
                                             </td>
-                                           <td> <button>  <i class="fa fa-edit" style="color:#d3d3d3"></i> </button></td>
+                                            <td id=' . $trans['transId'] . '> ' . $trans['notes']  . ' </td>
+                                           <td> <button onClick=takeTransNote(' .$trans['transId'] . ')>  <i class="fa fa-edit" style="color:#d3d3d3"></i> </button></td>
                                         </tr>';
                                     }
                                             ?>
@@ -684,7 +686,22 @@ for($i = 0; $i < sizeof($keys); $i++)
                 });
 
             });
+        
+        function takeTransNote(transId)
+        {
+            var prevNote = $("#" + transId).html();
+            var noteEntered = prompt("Enter Note:", prevNote);
+            if (noteEntered == null || noteEntered == "") {
+            } else {
+                $("#" + transId).html(noteEntered);
+                // alert(houseId + " " + buyerID);
+                $.post("saveTransNote.php", {
+                    transId: transId,
+                    note: noteEntered
+                });
+            }
 
+        }
 
             // window.setInterval(function() { // Set interval for checking
             //     var date = new Date(); // Create a Date object to find out what time it is
