@@ -305,21 +305,22 @@ $keys = array_keys($response);
                                     <th data-breakpoints="xs">Phone</th>
                                     <th data-breakpoints="xs">Email</th>
                                     <th data-breakpoints="xs sm">Property</th>
+
+                                    <th data-breakpoints="xs sm">How soon are you looking to purchase a home?</th>
+                                    <th data-breakpoints="xs sm">Price</th>
+                                    <th data-breakpoints="xs sm">Bedrooms</th>
+                                    <th data-breakpoints="xs sm">Bathrooms</th>
+                                    <th data-breakpoints="xs sm">Notes</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
 
-                                $sql = "SELECT BuyerInfo.firstName as fname,
-                                               BuyerInfo.lastName as lname,
-                                               BuyerInfo.email as email,
-                                               BuyerInfo.phone as phone,
-                                               BuyerInfo.registeredDate as dateAdded,
+                                $sql = "SELECT BuyerInfo.*,
                                                HouseInfo.address as address, 
                                                HouseInfo.city as city, 
                                                HouseInfo.state as state, 
-                                               HouseInfo.zip as zip,
-                                               HouseInfo.houseId as houseId
+                                               HouseInfo.zip as zip
                                           FROM BuyerInfo 
                                      LEFT JOIN HouseInfo 
                                             ON BuyerInfo.houseId = HouseInfo.houseId 
@@ -348,16 +349,16 @@ $keys = array_keys($response);
 
                                     // Date Added
                                     echo "        <td>";
-                                    if ($result['dateAdded'] == NULL) {
+                                    if ($result['registeredDate'] == NULL) {
                                         echo ".";
                                     } else {
-                                        echo date("m-d-Y", strtotime($result['dateAdded']));
+                                        echo date("m-d-Y", strtotime($result['registeredDate']));
                                     }
                                     echo "</td>";
 
                                     // Name
                                     echo "<td>";
-                                    echo $result['fname'] . " " . $result['lname'];
+                                    echo $result['firstName'] . " " . $result['lastName'];
                                     echo "</td>";
 
                                     // Phone Number
@@ -377,6 +378,31 @@ $keys = array_keys($response);
                                     } else {
                                         echo htmlspecialchars($result['address'] . ", " . $result['city']);
                                     }
+                                    echo "</td>";
+
+                                    // How soon?
+                                    echo "<td>";
+                                    echo $result['howSoon'];
+                                    echo "</td>";
+
+                                    // Price
+                                    echo "<td>";
+                                    echo $result['priceMax'];
+                                    echo "</td>";
+
+                                    // Bedroom
+                                    echo "<td>";
+                                    echo $result['bedroomsMin'];
+                                    echo "</td>";
+
+                                    // Bathroom
+                                    echo "<td>";
+                                    echo $result['bathroomsMin'];
+                                    echo "</td>";
+
+                                    // Notes
+                                    echo "<td id=" . $result['buyerID'] . " onClick=takeNote(" . $result['houseId'] . "," . $result['buyerID'] . ") >";
+                                    echo $result['note'];
                                     echo "</td>";
 
                                     echo "</tr>";
@@ -482,6 +508,12 @@ $keys = array_keys($response);
         });
 
     });
+
+document.getElementById("takeNote").addEventListener("click", function(){
+    ;
+});
+
+
 
     function takeNote(house, buyer) {
         var prevNote = $("#" + buyer).html();
@@ -624,7 +656,7 @@ $keys = array_keys($response);
     //             }
     //         }
     //     }
-    }
+    
 
 </script>
 
