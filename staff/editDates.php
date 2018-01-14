@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title> </title> 
 </head>
@@ -49,77 +48,36 @@
                         
                        
                             
-                                    <form >
+                                    <form>
                                     <table id="modal-table" >
                                         <tr>
-
                                         <th>Type</th>
                                         <th>Current Date</th>
                                         <th>New Date</th>
-                                            
                                         </tr>
-
-                                        <tr>
-                                            <td>Aprv</td>
-                                            <td>3/1/17</td>
-                                            <td><div class="input-group date">
+                                        <tr><td>Aprv</td><td>3/1/17</td><td><div class="input-group date">
                   <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
-                </div></td>
-                                        </tr>
-                                         <tr>
-                                            <td>EMD</td>
-                                              <td>3/1/17</td>
-                                            <td><div class="input-group date">
+                </div></td> </tr>
+                                         <tr><td>EMD</td><td>3/1/17</td><td><div class="input-group date">
                   <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
-                </div></td>
-                                        </tr>
-                                           <tr>
-                                            <td>DISC</td>
-                                                <td>3/1/17</td>
-                                            <td><div class="input-group date">
+                </div></td></tr>
+                                           <tr><td>DISC</td><td>3/1/17</td><td><div class="input-group date">
                   <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
-                </div></td>
-                                        </tr>
-                                           <tr>
-                                            <td>INSP</td>
-                                                <td>3/1/17</td>
-                                            <td><div class="input-group date">
+                </div></td> </tr>
+                                        <tr><td>INSP</td><td>3/1/17</td><td><div class="input-group date">
                   <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
-                </div></td>
-                                        </tr>
-                                           <tr>
-                                            <td>APPR</td>
-                                                <td>3/1/17</td>
-                                            <td><div class="input-group date">
+                </div></td></tr>
+                                        <tr><td>APPR</td><td>3/1/17</td><td><div class="input-group date">
                   <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
-                </div></td>
-                                        </tr>
-                                           <tr>
-                                            <td>LC</td>
-                                                <td>3/1/17</td>
-                                            <td><div class="input-group date">
+                </div></td></tr>
+                                        <tr><td>LC</td><td>3/1/17</td><td><div class="input-group date">
                   <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
-                </div></td>
-                                        </tr>
-                                           <tr>
-                                            <td>COE</td>
-                                                <td>3/1/17</td>
-                                            <td><div class="input-group date">
+                </div></td></tr>
+                                        <tr><td>COE</td><td>3/1/17</td><td><div class="input-group date">
                   <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
-                </div></td>
-                                        </tr>
-                     
-
-                                
-                                      
-
+                </div></td></tr>
                                     </table>
                                     </form>  
-                      
-
-
-
-
                 
             </div>
             <div class="modal-footer">
@@ -141,7 +99,7 @@
     <!-- /.modal -->
     <div class="container">
 
-        <!--MODAL AREA-->
+  
 
     </div>
 <!-- Bootstrap WYSIHTML5 -->

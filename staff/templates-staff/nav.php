@@ -30,9 +30,7 @@ $agentResults = $stmt->fetchAll();
             <li><a class="dropdown-text" href="agentPage.php"> <span>John Doe</span></a></li>
             <?php
                 foreach ($agentResults as $agent) {
-                    // echo '<li class="header" style="color: white;">' . $agent['firstName'] . " " . $agent['lastName'] . '</li>';
-                    // echo '<li style="color: white;"><a href="#"><span>Phone: ' . $agent['phone'] . '</span></a></li>';
-                    // echo '<li style="color: white;"><a href="#"><span>Email: ' . $agent['email'] . '</span></a></li>';
+               
 
                     echo '<li class="header-style treeview">
                             <a href="#"><span class="header-color">' . $agent['firstName'] . " " . $agent['lastName'] . ' </span>
@@ -50,6 +48,7 @@ $agentResults = $stmt->fetchAll();
            
         </ul>
            </li>
+               <li><a href="./office-inventory.php"><i class="fa fa-building"></i> <span>Office Inventory</span></a></li>
         </ul>
         <!-- /.sidebar-menu -->
     </section>
