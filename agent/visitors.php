@@ -509,12 +509,6 @@ $keys = array_keys($response);
 
     });
 
-document.getElementById("takeNote").addEventListener("click", function(){
-    ;
-});
-
-
-
     function takeNote(house, buyer) {
         var prevNote = $("#" + buyer).html();
         var noteEntered = prompt("Enter Note:", prevNote);
