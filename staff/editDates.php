@@ -29,17 +29,17 @@
     </style>
 
     <!-- Button trigger modal -->
-    <button type="button"  data-toggle="modal" data-target="#editDatemodal">
+    <button type="button"  data-toggle="modal" <?php echo "data-target=#editDatemodal".$count;?>>
   <i class="fa fa-edit"></i>
 </button>
     <!--MODAL AREA!!-->
 
 
-    <div class="modal fade" id="editDatemodal">
+    <div class="modal fade" <?php echo "id=editDatemodal" . $count;?>>
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                   1204 Rogers Ct. Salinas, CA 94934
+                   <?php echo $trans['address']; ?>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                         <span aria-hidden="true">&times;</span></button>
                 </div>
@@ -55,25 +55,25 @@
                                         <th>Current Date</th>
                                         <th>New Date</th>
                                         </tr>
-                                        <tr><td>Aprv</td><td>3/1/17</td><td><div class="input-group date">
+                                        <tr><td>Aprv</td><?php echo "<td>" . date('m/d/y', strtotime($day)) . "</td>"; ?> <td><div class="input-group date">
                   <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
                 </div></td> </tr>
-                                         <tr><td>EMD</td><td>3/1/17</td><td><div class="input-group date">
+                                         <tr><td>EMD</td><?php echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['emdDays'] . ' days')) . "</td>"; ?><td><div class="input-group date">
                   <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
                 </div></td></tr>
-                                           <tr><td>DISC</td><td>3/1/17</td><td><div class="input-group date">
+                                           <tr><td>DISC</td><?php echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['sellerDiscDays'] . ' days')) . "</td>"; ?><td><div class="input-group date">
                   <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
                 </div></td> </tr>
-                                        <tr><td>INSP</td><td>3/1/17</td><td><div class="input-group date">
+                                        <tr><td>INSP</td><?php echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['genInspecDays'] . ' days')) . "</td>"; ?><td><div class="input-group date">
                   <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
                 </div></td></tr>
-                                        <tr><td>APPR</td><td>3/1/17</td><td><div class="input-group date">
+                                        <tr><td>APPR</td><?php echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['appraisalDays'] . ' days')) . "</td>"; ?><td><div class="input-group date">
                   <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
                 </div></td></tr>
-                                        <tr><td>LC</td><td>3/1/17</td><td><div class="input-group date">
+                                        <tr><td>LC</td><?php echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['lcDays'] . ' days')) . "</td>"; ?><td><div class="input-group date">
                   <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
                 </div></td></tr>
-                                        <tr><td>COE</td><td>3/1/17</td><td><div class="input-group date">
+                                        <tr><td>COE</td><?php echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['coeDays'] . ' days')) . "</td>"; ?><td><div class="input-group date">
                   <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
                 </div></td></tr>
                                     </table>

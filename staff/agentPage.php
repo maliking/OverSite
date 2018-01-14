@@ -139,6 +139,7 @@ $transResults = $transStmt->fetchAll();
 
                                     <?php
 
+                                    $count = 0;
                                     foreach($transResults as $trans)
                                     {
                                         $day = $trans['accDay'];
@@ -155,6 +156,7 @@ $transResults = $transStmt->fetchAll();
                                         <?php include "editDates.php"; ?>
                                     <?php
                                     echo "</td></tr>";
+                                    $count++;
                                     }
 
                                     ?>
