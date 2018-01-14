@@ -1,22 +1,21 @@
 <?php
-//session_start();
-// echo($_SESSION['userType']);
-//if (!isset($_SESSION['userId']) ) {
-//    header("Location: login.php");
-//}
-//
-//if($_SESSION['userType'] == "0"){
-//    header("Location: ../index.php");
-//}
-//
-//if($_SESSION['userType'] == "1"){
-//    header("Location: ../agent/index.php");
-//}3
-//
-//require '../databaseConnection.php';
-//
-//$dbConn = getConnection();
-//
+session_start();
+ echo($_SESSION['userType']);
+if (!isset($_SESSION['userId']) ) {
+    header("Location: login.php");
+}
+
+if($_SESSION['userType'] == "0"){
+    header("Location: ../index.php");
+}
+
+if($_SESSION['userType'] == "1"){
+    header("Location: ../agent/index.php");
+}
+require '../databaseConnection.php';
+
+$dbConn = getConnection();
+
 
 
 
@@ -47,11 +46,11 @@
 <div class="wrapper">
 
     <!-- BEGIN TEMPLATE header.php INCLUDE -->
-    <?//php include "templates-staff/header.php" ?>
+    <?php include "templates-staff/header.php" ?>
     <!-- END TEMPLATE header.php INCLUDE -->
 
     <!-- BEGIN TEMPLATE nav.php INCLUDE -->
-    <?//php include "templates-staff/nav.php" ?>
+    <?php include "templates-staff/nav.php" ?>
     <!-- END TEMPLATE nav.php INCLUDE -->
     
                  <?php include "./fullcalendar/links.php" ?>
