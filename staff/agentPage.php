@@ -240,7 +240,7 @@ $transResults = $transStmt->fetchAll();
             function saveNewDates(transId, modalNum)
             {
 
-                $("#editDateModal"+modalNum).modal("toggle");
+                $("#editDateModal"+transId).modal("toggle");
                 // alert("saving dates from: " + transId);
                 var aprvDay = $("#aprvDay"+transId).val();
                 var emdDay = $("#emdDay"+transId).val();

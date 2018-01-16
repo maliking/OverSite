@@ -29,13 +29,13 @@
     </style>
 
     <!-- Button trigger modal -->
-    <button type="button"  data-toggle="modal" <?php echo "data-target=#editDateModal".$count;?>>
+    <button type="button"  data-toggle="modal" <?php echo "data-target=#editDateModal".$trans['transId'];?>>
   <i class="fa fa-edit"></i>
 </button>
     <!--MODAL AREA!!-->
 
 
-    <div class="modal fade" <?php echo "id=editDateModal" . $count;?>>
+    <div class="modal fade" <?php echo "id=editDateModal" . $trans['transId'];?>>
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
