@@ -236,7 +236,39 @@ $transResults = $transStmt->fetchAll();
 </script>
  
         <script>
-      
+            
+            function saveNewDates(transId, modalNum)
+            {
+
+                $("#editDateModal"+modalNum).modal("toggle");
+                // alert("saving dates from: " + transId);
+                var aprvDay = $("#aprvDay"+transId).val();
+                var emdDay = $("#emdDay"+transId).val();
+                var sellDay = $("#sellDay"+transId).val();
+                var genDay = $("#genDay"+transId).val();
+                var apprvDay = $("#apprvDay"+transId).val();
+                var lcDay = $("#lcDay"+transId).val();
+                var coeDay = $("#coeDay"+transId).val();
+
+                // alert(aprvDay);
+                // alert(emdDay);
+                // alert(sellDay);
+                // alert(genDay);
+                // alert(apprvDay);
+                // alert(lcDay);
+                // alert(coeDay);
+                $.post( "saveNewDates.php", { transId:transId, aprvDay:aprvDay, emdDay:emdDay , sellDay:sellDay,
+                                              genDay:genDay, apprvDay:apprvDay, lcDay:lcDay, coeDay:coeDay})
+                  .done(function( data ) {
+                    alert( "Dates Saved" );
+                    location.reload();
+                  });
+
+
+                
+
+
+            }
 
              function saveMeeting() {
                 var id = $('#id').text();

@@ -29,13 +29,13 @@
     </style>
 
     <!-- Button trigger modal -->
-    <button type="button"  data-toggle="modal" <?php echo "data-target=#editDatemodal".$count;?>>
+    <button type="button"  data-toggle="modal" <?php echo "data-target=#editDateModal".$count;?>>
   <i class="fa fa-edit"></i>
 </button>
     <!--MODAL AREA!!-->
 
 
-    <div class="modal fade" <?php echo "id=editDatemodal" . $count;?>>
+    <div class="modal fade" <?php echo "id=editDateModal" . $count;?>>
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -56,25 +56,25 @@
                                         <th>New Date</th>
                                         </tr>
                                         <tr><td>Aprv</td><?php echo "<td>" . date('m/d/y', strtotime($day)) . "</td>"; ?> <td><div class="input-group date">
-                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
+                  <input type="date" class="form-control pull-right" <?php echo "id=aprvDay".$trans['transId'];?> placeholder="&#xf073;" value=<?php echo date('Y-m-d', strtotime($day));?>>
                 </div></td> </tr>
                                          <tr><td>EMD</td><?php echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['emdDays'] . ' days')) . "</td>"; ?><td><div class="input-group date">
-                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
+                  <input type="date" class="form-control pull-right" <?php echo "id=emdDay".$trans['transId'];?> placeholder="&#xf073;" value=<?php echo date('Y-m-d', strtotime($day . ' + '. $trans['emdDays'] . ' days'));?>>
                 </div></td></tr>
                                            <tr><td>DISC</td><?php echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['sellerDiscDays'] . ' days')) . "</td>"; ?><td><div class="input-group date">
-                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
+                  <input type="date" class="form-control pull-right" <?php echo "id=sellDay".$trans['transId'];?> placeholder="&#xf073;" value=<?php echo date('Y-m-d', strtotime($day . ' + '. $trans['sellerDiscDays'] . ' days'));?>>
                 </div></td> </tr>
                                         <tr><td>INSP</td><?php echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['genInspecDays'] . ' days')) . "</td>"; ?><td><div class="input-group date">
-                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
+                  <input type="date" class="form-control pull-right" <?php echo "id=genDay".$trans['transId'];?> placeholder="&#xf073;" value=<?php echo date('Y-m-d', strtotime($day . ' + '. $trans['genInspecDays'] . ' days'));?>>
                 </div></td></tr>
                                         <tr><td>APPR</td><?php echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['appraisalDays'] . ' days')) . "</td>"; ?><td><div class="input-group date">
-                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
+                  <input type="date" class="form-control pull-right" <?php echo "id=apprvDay".$trans['transId'];?> placeholder="&#xf073;" value=<?php echo date('Y-m-d', strtotime($day . ' + '. $trans['appraisalDays'] . ' days'));?>>
                 </div></td></tr>
                                         <tr><td>LC</td><?php echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['lcDays'] . ' days')) . "</td>"; ?><td><div class="input-group date">
-                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
+                  <input type="date" class="form-control pull-right" <?php echo "id=lcDay".$trans['transId'];?> placeholder="&#xf073;" value=<?php echo date('Y-m-d', strtotime($day . ' + '. $trans['lcDays'] . ' days'));?>>
                 </div></td></tr>
                                         <tr><td>COE</td><?php echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['coeDays'] . ' days')) . "</td>"; ?><td><div class="input-group date">
-                  <input type="text" class="form-control pull-right" id="datepicker" placeholder="&#xf073;">
+                  <input type="date" class="form-control pull-right" <?php echo "id=coeDay".$trans['transId'];?> placeholder="&#xf073;" value=<?php echo date('Y-m-d', strtotime($day . ' + '. $trans['coeDays'] . ' days'));?>>
                 </div></td></tr>
                                     </table>
                                     </form>  
@@ -83,7 +83,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close
                                 </button>
-                <button type="button" class="btn btn-default">Save
+                <button type="button" class="btn btn-default" onClick=<?php echo "saveNewDates(" . $trans['transId'] . "," . $count . ")"; ?>>Save
                                 </button>
             </div>
                               </div>
