@@ -1,25 +1,23 @@
 <?php
-require '../twilio-php-master/Twilio/autoload.php';
 require '../keys/cred.php';
+require '../twilio-php-master/Twilio/autoload.php';
+
 use Twilio\Jwt\ClientToken;
 
 // put your Twilio API credentials here
 $accountSid = $sid;
 $authToken  = $token;
 
-// put your TwiML Application Sid here
-// $appSid = 'APXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX';
 
 $capability = new ClientToken($accountSid, $authToken);
 $capability->allowClientOutgoing($appSid);
-$capability->allowClientIncoming('joey');
 $token = $capability->generateToken();
 ?>
 
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hello Client Monkey 4</title>
+    <title>Hello Client Monkey 1</title>
     <script type="text/javascript"
       src="//media.twiliocdn.com/sdk/js/client/v1.3/twilio.min.js"></script>
     <script type="text/javascript"
@@ -43,24 +41,8 @@ $token = $capability->generateToken();
         $("#log").text("Successfully established call");
       });
 
-      Twilio.Device.disconnect(function (conn) {
-        $("#log").text("Call ended");
-      });
-
-      Twilio.Device.incoming(function (conn) {
-        $("#log").text("Incoming connection from " + conn.parameters.From);
-        // accept the incoming connection and start two-way audio
-        conn.accept();
-      });
-
       function call() {
-        // get the phone number to connect the call to
-        params = {"PhoneNumber": $("#number").val()};
-        Twilio.Device.connect(params);
-      }
-
-      function hangup() {
-        Twilio.Device.disconnectAll();
+        Twilio.Device.connect();
       }
     </script>
   </head>
@@ -68,13 +50,6 @@ $token = $capability->generateToken();
     <button class="call" onclick="call();">
       Call
     </button>
-
-    <button class="hangup" onclick="hangup();">
-      Hangup
-    </button>
-        
-    <input type="text" id="number" name="number"
-      placeholder="Enter a phone number to call"/>
 
     <div id="log">Loading pigeons...</div>
   </body>
