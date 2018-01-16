@@ -139,7 +139,7 @@ $transResults = $transStmt->fetchAll();
 
                                     <?php
 
-                                    $count = 0;
+                                    $count = 1;
                                     foreach($transResults as $trans)
                                     {
                                         $day = $trans['accDay'];
@@ -347,16 +347,16 @@ $transResults = $transStmt->fetchAll();
                         $('#calendar').fullCalendar('unselect');
                     },
                     eventClick: function(event, element) {
-                        var id = event.id.replace("T", " ");
+                        // var id = event.id.replace("T", " ");
 
-                        var formData = {
-                            id: id
-                        };
+                        // var formData = {
+                        //     id: id
+                        // };
 
                        
-                        $("#modal-primary").modal();
+                        // $("#modal-primary").modal();
                         // alert(event.id);
-
+                        $("#editDateModal"+event.id).modal('toggle');
                     },
 
                     eventDrop: function(event, delta, revertFunc, jsEvent, ui, view) {

@@ -65,6 +65,7 @@ foreach($meetingResults as $meeting)
 	$meetingObj->textColor = "#000000";
 	$meetingObj->start = $meeting['start'];
 	$meetingObj->end = date_format($date,"Y-m-d") . "T00:00:00";
+	$meetingObj->id = $meeting['transId'];
 
 	array_push($meetingsArray,$meetingObj);
 
@@ -77,6 +78,7 @@ foreach($meetingResults as $meeting)
 	$meetingObj->textColor = "#000000";
 	$meetingObj->start = $meeting['start'];
 	$meetingObj->end = date_format($date,"Y-m-d") . "T00:00:00";
+	$meetingObj->id = $meeting['transId'];
 
 	array_push($meetingsArray,$meetingObj);
 
@@ -89,6 +91,7 @@ foreach($meetingResults as $meeting)
 	$meetingObj->textColor = "#000000";
 	$meetingObj->start = $meeting['start'];
 	$meetingObj->end = date_format($date,"Y-m-d") . "T00:00:00";
+	$meetingObj->id = $meeting['transId'];
 
 	array_push($meetingsArray,$meetingObj);
 
@@ -101,6 +104,7 @@ foreach($meetingResults as $meeting)
 	$meetingObj->textColor = "#000000";
 	$meetingObj->start = $meeting['start'];
 	$meetingObj->end = date_format($date,"Y-m-d") . "T00:00:00";
+	$meetingObj->id = $meeting['transId'];
 
 	array_push($meetingsArray,$meetingObj);
 
@@ -113,6 +117,7 @@ foreach($meetingResults as $meeting)
 	$meetingObj->textColor = "#000000";
 	$meetingObj->start = $meeting['start'];
 	$meetingObj->end = date_format($date,"Y-m-d") . "T00:00:00";
+	$meetingObj->id = $meeting['transId'];
 
 	array_push($meetingsArray,$meetingObj);
 
