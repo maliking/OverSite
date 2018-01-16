@@ -83,7 +83,7 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close
                                 </button>
-                <button type="button" class="btn btn-default" onClick=<?php echo "saveNewDates(" . $trans['transId'] . "," . $count . ")"; ?>>Save
+                <button type="button" class="btn btn-default" onClick=<?php echo "saveNewDates(" . $trans['transId'] . ")"; ?>>Save
                                 </button>
             </div>
                               </div>

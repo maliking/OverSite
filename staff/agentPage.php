@@ -237,7 +237,7 @@ $transResults = $transStmt->fetchAll();
  
         <script>
             
-            function saveNewDates(transId, modalNum)
+            function saveNewDates(transId)
             {
 
                 $("#editDateModal"+transId).modal("toggle");
