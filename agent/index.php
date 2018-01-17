@@ -699,6 +699,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                     transId: transId,
                     note: noteEntered
                 });
+                alert("Note Saved");
             }
 
         }
