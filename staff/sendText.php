@@ -12,7 +12,7 @@ $client = new Client($sid, $token);
 $client->messages->create(
 $_POST['phone'],
 array(
-    "From" => $twilio_phone_number,
+    'messagingServiceSid' => $serviceSid,
     "Body" => $_POST['text'],
     
     )
