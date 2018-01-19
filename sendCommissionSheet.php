@@ -42,19 +42,19 @@ $namedParameters[":address"] = $houseResults['address'];
 $namedParameters[":city"] = $houseResults['city'];
 $namedParameters[":state"] = $houseResults['state'];
 $namedParameters[":zip"] = $houseResults['zip'];
-$namedParameters[":TYGross"] = (int)$_POST['TYGross'] + $_POST['InitialGross'];
-$namedParameters[":FYGross"] = $_SESSION['FYGross'] + $_POST['netCommission'];
-$namedParameters[":InitialGross"] = $_POST['InitialGross'];
-$namedParameters[":brokerFee"] = $_POST['brokerFee'];
-$namedParameters[":finalComm"] = $_POST['netCommission'];
-$namedParameters[":misc"] = $_POST['miscell'];
-$namedParameters[":remaxFee"] = (int)$_POST['remaxFee'];
+$namedParameters[":TYGross"] = (int)(str_replace(",", "", $_POST['TYGross'])) + str_replace(",", "", $_POST['InitialGross']);
+$namedParameters[":FYGross"] = str_replace(",", "", $_SESSION['FYGross']) + str_replace(",", "", $_POST['netCommission']);
+$namedParameters[":InitialGross"] = str_replace(",", "", $_POST['InitialGross']);
+$namedParameters[":brokerFee"] = str_replace(",", "", $_POST['brokerFee']);
+$namedParameters[":finalComm"] = str_replace(",", "", $_POST['netCommission']);
+$namedParameters[":misc"] = str_replace(",", "", $_POST['miscell']);
+$namedParameters[":remaxFee"] = (int)(str_replace(",", "", $_POST['remaxFee']));
 $namedParameters[":clients"] = $_POST['clients'];
 // $value = preg_replace('/[\%,]/', '', $_POST['percentage']);
 $value = floatval($_POST['percentage']);
 $namedParameters[":percentage"] = $value;
-$namedParameters[":finalHousePrice"] = $_POST['finalHousePrice'];
-
+$namedParameters[":finalHousePrice"] = str_replace(",", "", $_POST['finalHousePrice']);
+str_replace(find,replace,string,count)
 // $stmt = $dbConn -> prepare($sql);
 // $stmt->execute($namedParameters); 
 
@@ -122,24 +122,24 @@ $pdf->Cell(0, 5, ' ', 0, 1);
 $pdf->SetFont('Times', 'B');
 $pdf->Cell(69, 10, '                        Gross Check Amount: ', 0, 0);
 $pdf->SetFont('Times', 'U');
-$pdf->Cell(23, 10, '   $' . number_format($_POST['InitialGross'], 2) . '      ', 0, 1);
+$pdf->Cell(23, 10, '   $' . number_format(str_replace(",", "", $_POST['InitialGross']), 2) . '      ', 0, 1);
 
 // $pdf->Cell(0,2,' ',0,1);
 
 $pdf->SetFont('Times', 'B');
 $pdf->Cell(69, 10, '                        Remax/Broker Fee: ', 0, 0);
 $pdf->SetFont('Times', 'U');
-$pdf->Cell(23, 10, '   $' . number_format($_POST['brokerFee'], 2) . '      ', 0, 1);
+$pdf->Cell(23, 10, '   $' . number_format(str_replace(",", "", $_POST['brokerFee']), 2) . '      ', 0, 1);
 
 $pdf->SetFont('Times', 'B');
 $pdf->Cell(69, 10, '                        Total Fees: ', 0, 0);
 $pdf->SetFont('Times', 'U');
-$pdf->Cell(23, 10, '   $' . number_format($_POST['brokerFee'], 2) . '      ', 0, 1);
+$pdf->Cell(23, 10, '   $' . number_format(str_replace(",", "", $_POST['brokerFee']), 2) . '      ', 0, 1);
 
 $pdf->SetFont('Times', 'B');
 $pdf->Cell(69, 10, '                        Subtotal: ', 0, 0);
 $pdf->SetFont('Times', 'U');
-$pdf->Cell(23, 10, '   $' . number_format(($_POST['InitialGross'] - $_POST['brokerFee']), 2) . '      ', 0, 1);
+$pdf->Cell(23, 10, '   $' . number_format((str_replace(",", "", $_POST['InitialGross']) - str_replace(",", "", $_POST['brokerFee'])), 2) . '      ', 0, 1);
 
 $pdf->SetFont('Times', 'B');
 $pdf->Cell(69, 10, '                        Processing Fee: ', 0, 0);
@@ -159,17 +159,17 @@ $pdf->Cell(23, 10, '   $99.00      ', 0, 1);
 $pdf->SetFont('Times', 'B');
 $pdf->Cell(69, 10, '                        Remax Franchise: ', 0, 0);
 $pdf->SetFont('Times', 'U');
-$pdf->Cell(23, 10, '   $' . number_format($_POST['remaxFee'], 2) . '      ', 0, 1);
+$pdf->Cell(23, 10, '   $' . number_format(str_replace(",", "", $_POST['remaxFee'], 2)) . '      ', 0, 1);
 
 $pdf->SetFont('Times', 'B');
 $pdf->Cell(69, 10, '                        Misc: ', 0, 0);
 $pdf->SetFont('Times', 'U');
-$pdf->Cell(23, 10, '   $' . number_format($_POST['miscell'], 2) . '      ', 0, 1);
+$pdf->Cell(23, 10, '   $' . number_format(str_replace(",", "", $_POST['miscell'], 2)) . '      ', 0, 1);
 
 $pdf->SetFont('Times', 'B');
 $pdf->Cell(69, 10, '                        Agent Commission: ', 0, 0);
 $pdf->SetFont('Times', 'U');
-$pdf->Cell(23, 10, '   $' . number_format($_POST['netCommission'], 2) . '      ', 0, 1);
+$pdf->Cell(23, 10, '   $' . number_format(str_replace(",", "", $_POST['netCommission'], 2)) . '      ', 0, 1);
 
 
 $pdf->Cell(0, 10, '', 0, 1);
@@ -192,7 +192,7 @@ $pdf->Cell(0, 13, '', 0, 1);
 $pdf->SetFont('Times', 'B');
 $pdf->Cell(155, 5, '                                                                                                      New Gross Commission: ', 0, 0);
 $pdf->SetFont('Times', 'U');
-$pdf->Cell(30, 5, '   $' . number_format($_POST['TYGross'] + $_POST['InitialGross'], 2) . '      ', 0, 1);
+$pdf->Cell(30, 5, '   $' . number_format(str_replace(",", "", $_POST['TYGross']) + str_replace(",", "", $_POST['InitialGross']), 2) . '      ', 0, 1);
 
 // $pdf->Output();
 $base = $pdf->Output('', 's');
