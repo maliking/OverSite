@@ -26,13 +26,13 @@ $stmtHouse = $dbConn->prepare($sqlHouse);
 $stmtHouse->execute();
 $houseResults = $stmtHouse->fetch();
 
-$TYGross = (int)str_replace(",", "", $_POST['TYGross']);
-$FYGross = (int)str_replace(",", "", $_SESSION['FYGross']);
-$initialGross = (int)str_replace(",", "", $_POST['InitialGross']);
-$netCommission = (int)str_replace(",", "", $_POST['netCommission']);
-$brokerFee = (int)str_replace(",", "", $_POST['brokerFee']);
-$miscell = (int)str_replace(",", "", $_POST['miscell']);
-$remaxFee = (int)str_replace(",", "", $_POST['remaxFee']);
+$TYGross =         (int)str_replace(",", "", $_POST['TYGross']);
+$FYGross =         (int)str_replace(",", "", $_SESSION['FYGross']);
+$initialGross =    (int)str_replace(",", "", $_POST['InitialGross']);
+$netCommission =   (int)str_replace(",", "", $_POST['netCommission']);
+$brokerFee =       (int)str_replace(",", "", $_POST['brokerFee']);
+$miscell =         (int)str_replace(",", "", $_POST['miscell']);
+$remaxFee =        (int)str_replace(",", "", $_POST['remaxFee']);
 $finalHousePrice = (int)str_replace(",", "", $_POST['finalHousePrice']);
 
 
@@ -169,12 +169,12 @@ $pdf->Cell(23, 10, '   $99.00      ', 0, 1);
 $pdf->SetFont('Times', 'B');
 $pdf->Cell(69, 10, '                        Remax Franchise: ', 0, 0);
 $pdf->SetFont('Times', 'U');
-$pdf->Cell(23, 10, '   $' . number_format($remaxFee, 2)) . '      ', 0, 1);
+$pdf->Cell(23, 10, '   $' . number_format($remaxFee, 2) . '      ', 0, 1);
 
 $pdf->SetFont('Times', 'B');
 $pdf->Cell(69, 10, '                        Misc: ', 0, 0);
 $pdf->SetFont('Times', 'U');
-$pdf->Cell(23, 10, '   $' . number_format($miscell, 2)) . '      ', 0, 1);
+$pdf->Cell(23, 10, '   $' . number_format($miscell, 2) . '      ', 0, 1);
 
 $pdf->SetFont('Times', 'B');
 $pdf->Cell(69, 10, '                        Agent Commission: ', 0, 0);
