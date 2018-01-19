@@ -97,14 +97,14 @@ $pdf->Cell(5, 10, '$' . number_format($TYGross, 2) . ' ', 0, 1);
 $pdf->SetFont('Times', 'B');
 $pdf->Cell(15, 10, 'Date: ', 0, 0);
 $pdf->SetFont('Times', 'U');
-$pdf->Cell(30, 10, '     ' . date("d-m-Y", strtotime($_POST['today-date'])) . '       ', 0, 1);
+$pdf->Cell(30, 10, '     ' . date("m-d-Y", strtotime($_POST['today-date'])) . '       ', 0, 1);
 
 $pdf->Cell(10, 3, '', 0, 1);
 
 $pdf->SetFont('Times', 'B');
 $pdf->Cell(35, 10, 'Settlement Date: ', 0, 0);
 $pdf->SetFont('Times', 'U');
-$pdf->Cell(30, 10, '     ' . date("d-m-Y", strtotime($_POST['settlementDate'])) . '       ', 0, 1);
+$pdf->Cell(30, 10, '     ' . date("m-d-Y", strtotime($_POST['settlementDate'])) . '       ', 0, 1);
 
 $pdf->Cell(10, 3, '', 0, 1);
 
