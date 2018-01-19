@@ -259,7 +259,7 @@ if ($err) {
 
 $envId = json_decode($response, true);
 $namedParameters[":envelopeId"] = $envId['envelopeId'];
-$stmt = $dbConn->prepare($sql);
+// $stmt = $dbConn->prepare($sql);
 try {
 
 
