@@ -64,7 +64,7 @@ $namedParameters[":clients"] = $_POST['clients'];
 $value = floatval($_POST['percentage']);
 $namedParameters[":percentage"] = $value;
 $namedParameters[":finalHousePrice"] = $finalHousePrice;
-str_replace(find,replace,string,count)
+// str_replace(find,replace,string,count)
 // $stmt = $dbConn -> prepare($sql);
 // $stmt->execute($namedParameters); 
 
@@ -87,122 +87,122 @@ $pdf->SetFontSize(12);
 $pdf->SetLineWidth(.3);
 $pdf->Cell(96, 10, 'Re/MAX Property Experts Commission Breakdown', 1, 0);
 $pdf->Cell(10, 10, '', 0, 0);
-// $pdf->Cell(0, 10, '                       Check # ' . $_POST['checkNum'], 'B', 1);
+$pdf->Cell(0, 10, '                       Check # ' . $_POST['checkNum'], 'B', 1);
 
 
-// $pdf->Cell(166, 10, '                                                                                                   Beginning Gross Check Amount: ', 0, 0);
-// $pdf->SetFont('Times', 'U');
-// $pdf->Cell(5, 10, '$' . number_format($TYGross, 2) . ' ', 0, 1);
+$pdf->Cell(166, 10, '                                                                                                   Beginning Gross Check Amount: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(5, 10, '$' . number_format($TYGross, 2) . ' ', 0, 1);
 
-// $pdf->SetFont('Times', 'B');
-// $pdf->Cell(15, 10, 'Date: ', 0, 0);
-// $pdf->SetFont('Times', 'U');
-// $pdf->Cell(30, 10, '     ' . date("d-m-Y", strtotime($_POST['today-date'])) . '       ', 0, 1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(15, 10, 'Date: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(30, 10, '     ' . date("d-m-Y", strtotime($_POST['today-date'])) . '       ', 0, 1);
 
-// $pdf->Cell(10, 3, '', 0, 1);
+$pdf->Cell(10, 3, '', 0, 1);
 
-// $pdf->SetFont('Times', 'B');
-// $pdf->Cell(35, 10, 'Settlement Date: ', 0, 0);
-// $pdf->SetFont('Times', 'U');
-// $pdf->Cell(30, 10, '     ' . date("d-m-Y", strtotime($_POST['settlementDate'])) . '       ', 0, 1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(35, 10, 'Settlement Date: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(30, 10, '     ' . date("d-m-Y", strtotime($_POST['settlementDate'])) . '       ', 0, 1);
 
-// $pdf->Cell(10, 3, '', 0, 1);
+$pdf->Cell(10, 3, '', 0, 1);
 
-// $pdf->SetFont('Times', 'B');
-// $pdf->Cell(17, 10, 'Agent: ', 0, 0);
-// $pdf->SetFont('Times', 'U');
-// $pdf->Cell(50, 10, '     ' . $userResults['firstName'] . ' ' . $userResults['lastName'] . '      ', 0, 1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(17, 10, 'Agent: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(50, 10, '     ' . $userResults['firstName'] . ' ' . $userResults['lastName'] . '      ', 0, 1);
 
-// $pdf->Cell(10, 3, '', 0, 1);
+$pdf->Cell(10, 3, '', 0, 1);
 
-// $pdf->SetFont('Times', 'B');
-// $pdf->Cell(18, 10, 'Clients: ', 0, 0);
-// $pdf->SetFont('Times', 'U');
-// $pdf->Cell(50, 10, '     ' . $_POST['clients'] . '     ', 0, 1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(18, 10, 'Clients: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(50, 10, '     ' . $_POST['clients'] . '     ', 0, 1);
 
-// $pdf->Cell(10, 3, '', 0, 1);
+$pdf->Cell(10, 3, '', 0, 1);
 
-// $pdf->SetFont('Times', 'B');
-// $pdf->Cell(37, 10, 'Property Address: ', 0, 0);
-// $pdf->SetFont('Times', 'U');
-// $pdf->Cell(50, 10, '   ' . $houseResults['address'] . ', ' . $houseResults['city'] . ', ' . $houseResults['state'] . ', ' . $houseResults['zip'] . '      ', 0, 1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(37, 10, 'Property Address: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(50, 10, '   ' . $houseResults['address'] . ', ' . $houseResults['city'] . ', ' . $houseResults['state'] . ', ' . $houseResults['zip'] . '      ', 0, 1);
 
-// $pdf->Cell(0, 5, ' ', 0, 1);
+$pdf->Cell(0, 5, ' ', 0, 1);
 
-// $pdf->SetFont('Times', 'B');
-// $pdf->Cell(69, 10, '                        Gross Check Amount: ', 0, 0);
-// $pdf->SetFont('Times', 'U');
-// $pdf->Cell(23, 10, '   $' . number_format($initialGross, 2) . '      ', 0, 1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(69, 10, '                        Gross Check Amount: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(23, 10, '   $' . number_format($initialGross, 2) . '      ', 0, 1);
 
-// // $pdf->Cell(0,2,' ',0,1);
+// $pdf->Cell(0,2,' ',0,1);
 
-// $pdf->SetFont('Times', 'B');
-// $pdf->Cell(69, 10, '                        Remax/Broker Fee: ', 0, 0);
-// $pdf->SetFont('Times', 'U');
-// $pdf->Cell(23, 10, '   $' . number_format($brokerFee, 2) . '      ', 0, 1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(69, 10, '                        Remax/Broker Fee: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(23, 10, '   $' . number_format($brokerFee, 2) . '      ', 0, 1);
 
-// $pdf->SetFont('Times', 'B');
-// $pdf->Cell(69, 10, '                        Total Fees: ', 0, 0);
-// $pdf->SetFont('Times', 'U');
-// $pdf->Cell(23, 10, '   $' . number_format($brokerFee, 2) . '      ', 0, 1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(69, 10, '                        Total Fees: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(23, 10, '   $' . number_format($brokerFee, 2) . '      ', 0, 1);
 
-// $pdf->SetFont('Times', 'B');
-// $pdf->Cell(69, 10, '                        Subtotal: ', 0, 0);
-// $pdf->SetFont('Times', 'U');
-// $pdf->Cell(23, 10, '   $' . number_format(((int)$initialGross - $brokerFee), 2) . '      ', 0, 1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(69, 10, '                        Subtotal: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(23, 10, '   $' . number_format(((int)$initialGross - $brokerFee), 2) . '      ', 0, 1);
 
-// $pdf->SetFont('Times', 'B');
-// $pdf->Cell(69, 10, '                        Processing Fee: ', 0, 0);
-// $pdf->SetFont('Times', 'U');
-// $pdf->Cell(23, 10, '   $200.00      ', 0, 1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(69, 10, '                        Processing Fee: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(23, 10, '   $200.00      ', 0, 1);
 
-// $pdf->SetFont('Times', 'B');
-// $pdf->Cell(69, 10, '                        TC. Tech Fee: ', 0, 0);
-// $pdf->SetFont('Times', 'U');
-// $pdf->Cell(23, 10, '   $50.00      ', 0, 1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(69, 10, '                        TC. Tech Fee: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(23, 10, '   $50.00      ', 0, 1);
 
-// $pdf->SetFont('Times', 'B');
-// $pdf->Cell(69, 10, '                        E&O Insurance: ', 0, 0);
-// $pdf->SetFont('Times', 'U');
-// $pdf->Cell(23, 10, '   $99.00      ', 0, 1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(69, 10, '                        E&O Insurance: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(23, 10, '   $99.00      ', 0, 1);
 
-// $pdf->SetFont('Times', 'B');
-// $pdf->Cell(69, 10, '                        Remax Franchise: ', 0, 0);
-// $pdf->SetFont('Times', 'U');
-// $pdf->Cell(23, 10, '   $' . number_format($remaxFee, 2) . '      ', 0, 1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(69, 10, '                        Remax Franchise: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(23, 10, '   $' . number_format($remaxFee, 2) . '      ', 0, 1);
 
-// $pdf->SetFont('Times', 'B');
-// $pdf->Cell(69, 10, '                        Misc: ', 0, 0);
-// $pdf->SetFont('Times', 'U');
-// $pdf->Cell(23, 10, '   $' . number_format($miscell, 2) . '      ', 0, 1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(69, 10, '                        Misc: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(23, 10, '   $' . number_format($miscell, 2) . '      ', 0, 1);
 
-// $pdf->SetFont('Times', 'B');
-// $pdf->Cell(69, 10, '                        Agent Commission: ', 0, 0);
-// $pdf->SetFont('Times', 'U');
-// $pdf->Cell(23, 10, '   $' . number_format($netCommission, 2) . '      ', 0, 1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(69, 10, '                        Agent Commission: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(23, 10, '   $' . number_format($netCommission, 2) . '      ', 0, 1);
 
 
-// $pdf->Cell(0, 10, '', 0, 1);
-// $pdf->SetFont('Times', 'I', 14);
-// $pdf->Cell(7, 10, '   I, ', 0, 0);
-// $pdf->SetFont('Times', 'U', 14);
-// $pdf->Cell(41, 10, '                                ', 0, 0);
-// $pdf->SetFont('Times');
-// $pdf->Cell(20, 10, ', have READ & APPROVED this Commission Worksheet.  ', 0, 1);
+$pdf->Cell(0, 10, '', 0, 1);
+$pdf->SetFont('Times', 'I', 14);
+$pdf->Cell(7, 10, '   I, ', 0, 0);
+$pdf->SetFont('Times', 'U', 14);
+$pdf->Cell(41, 10, '                                ', 0, 0);
+$pdf->SetFont('Times');
+$pdf->Cell(20, 10, ', have READ & APPROVED this Commission Worksheet.  ', 0, 1);
 
-// $pdf->SetFontSize(12);
-// $pdf->Cell(0, 30, '', 0, 1);
+$pdf->SetFontSize(12);
+$pdf->Cell(0, 30, '', 0, 1);
 
-// $pdf->Cell(75, 10, ' Agent Signature                               Date  ', 'T', 0);
-// $pdf->Cell(32, 10, '      ', 0, 0);
-// $pdf->Cell(84, 10, ' Owner and/or Broker Signature               Date  ', 'T', 1);
+$pdf->Cell(75, 10, ' Agent Signature                               Date  ', 'T', 0);
+$pdf->Cell(32, 10, '      ', 0, 0);
+$pdf->Cell(84, 10, ' Owner and/or Broker Signature               Date  ', 'T', 1);
 
-// $pdf->Cell(0, 13, '', 0, 1);
+$pdf->Cell(0, 13, '', 0, 1);
 
-// $pdf->SetFont('Times', 'B');
-// $pdf->Cell(155, 5, '                                                                                                      New Gross Commission: ', 0, 0);
-// $pdf->SetFont('Times', 'U');
-// $pdf->Cell(30, 5, '   $' . number_format(((int)$TYGross + $initialGross), 2) . '      ', 0, 1);
+$pdf->SetFont('Times', 'B');
+$pdf->Cell(155, 5, '                                                                                                      New Gross Commission: ', 0, 0);
+$pdf->SetFont('Times', 'U');
+$pdf->Cell(30, 5, '   $' . number_format(((int)$TYGross + $initialGross), 2) . '      ', 0, 1);
 
 // $pdf->Output();
 $base = $pdf->Output('', 's');
@@ -259,7 +259,7 @@ if ($err) {
 
 $envId = json_decode($response, true);
 $namedParameters[":envelopeId"] = $envId['envelopeId'];
-// $stmt = $dbConn->prepare($sql);
+$stmt = $dbConn->prepare($sql);
 try {
 
 
