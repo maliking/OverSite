@@ -53,7 +53,7 @@ $namedParameters[":city"] = $houseResults['city'];
 $namedParameters[":state"] = $houseResults['state'];
 $namedParameters[":zip"] = $houseResults['zip'];
 $namedParameters[":TYGross"] = (int)$TYGross + $initialGross;
-$namedParameters[":FYGross"] = $FYGross + $netCommission;
+$namedParameters[":FYGross"] = (int)$FYGross + $netCommission;
 $namedParameters[":InitialGross"] = $initialGross;
 $namedParameters[":brokerFee"] = $brokerFee;
 $namedParameters[":finalComm"] = $netCommission;
@@ -149,7 +149,7 @@ $pdf->Cell(23, 10, '   $' . number_format($brokerFee, 2) . '      ', 0, 1);
 $pdf->SetFont('Times', 'B');
 $pdf->Cell(69, 10, '                        Subtotal: ', 0, 0);
 $pdf->SetFont('Times', 'U');
-$pdf->Cell(23, 10, '   $' . number_format(($initialGross - $brokerFee), 2) . '      ', 0, 1);
+$pdf->Cell(23, 10, '   $' . number_format(((int)$initialGross - $brokerFee), 2) . '      ', 0, 1);
 
 $pdf->SetFont('Times', 'B');
 $pdf->Cell(69, 10, '                        Processing Fee: ', 0, 0);
@@ -202,7 +202,7 @@ $pdf->Cell(0, 13, '', 0, 1);
 $pdf->SetFont('Times', 'B');
 $pdf->Cell(155, 5, '                                                                                                      New Gross Commission: ', 0, 0);
 $pdf->SetFont('Times', 'U');
-$pdf->Cell(30, 5, '   $' . number_format(($TYGross + $initialGross), 2) . '      ', 0, 1);
+$pdf->Cell(30, 5, '   $' . number_format(((int)$TYGross + $initialGross), 2) . '      ', 0, 1);
 
 // $pdf->Output();
 $base = $pdf->Output('', 's');
