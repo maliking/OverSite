@@ -82,7 +82,7 @@ $result = $stmt->fetchAll();
                                 <?php
                                 foreach ($result as $sales) {
                                     echo "<tr>";
-                                    echo "<td>" . $sales['settlementDate'] . "</td>";
+                                    echo "<td>" . date("m-d-Y", strtotime($sales['settlementDate'])) . "</td>";
                                     echo "<td>" . $sales['address'] . "</td>";
                                     echo "<td>" . $sales['firstName'] . " " . $sales['lastName'] . "</td>";
                                     echo "<td>" . '$' . number_format($sales['InitialGross'], 0) . "</td>"; //Total
