@@ -1,13 +1,13 @@
 function calculateCommission() {
     var brokerFee = 0;
     var difference = 0;
-    var misc = parseFloat(document.getElementById("misc").value);
-    var TYGross = parseFloat(document.getElementById("beg-comm").value);
-    var initialCommission = parseFloat(document.getElementById("gross-comm").value);
+    var misc = parseFloat(document.getElementById("misc").value.replace(",",""));
+    var TYGross = parseFloat(document.getElementById("beg-comm").value.replace(",",""));
+    var initialCommission = parseFloat(document.getElementById("gross-comm").value.replace(",",""));
     // var misc = parseFloat(document.getElementById("misc").value);
-    var commission = parseFloat(document.getElementById("gross-comm").value);
+    var commission = parseFloat(document.getElementById("gross-comm").value.replace(",",""));
 
-    var remaxFee = parseFloat(document.getElementById("remaxFee").value);
+    var remaxFee = parseFloat(document.getElementById("remaxFee").value.replace(",",""));
 
     if (TYGross <= 80000) {
         difference = 80000 - TYGross;
@@ -82,10 +82,14 @@ function calculateCommission() {
         brokerFee += commission * .5;
     }
 
-    document.getElementById("broker").value = brokerFee;
+    document.getElementById("broker").value = formatNumber(brokerFee);
     // document.getElementById("percentage").value = ;
-    document.getElementById("subtotal").value = initialCommission - brokerFee;
-    document.getElementById("agent_net").value = initialCommission - brokerFee - 349 - misc - remaxFee;
+    document.getElementById("subtotal").value = formatNumber(initialCommission - brokerFee);
+    document.getElementById("agent_net").value = formatNumber(initialCommission - brokerFee - 349 - misc - remaxFee);
 
-
+    
 }
+
+function formatNumber (num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    }

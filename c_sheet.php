@@ -80,10 +80,14 @@ $houses = $stmtHouse->fetchAll();
 
         function setPercentage(commission) {
             var housePrice = document.getElementById("housePrice").value;
-            document.getElementById("percentage").value = ((commission * 100) / housePrice) + "%";
 
+            document.getElementById("percentage").value = ((commission.replace(",","") * 100) / housePrice.replace(",","")) + "%";
+            document.getElementById("gross-comm").value = formatNumber(commission);
         }
-
+        function addComa(number)
+        {   
+            document.getElementById("housePrice").value = formatNumber(number);
+        }
         function getOwners() {
 
         }
@@ -218,7 +222,7 @@ $houses = $stmtHouse->fetchAll();
                                                                 <div class="col-xs-3">
                                                                     <input type="text" class="form-control"
                                                                            id="housePrice" placeholder=""
-                                                                           name="finalHousePrice">
+                                                                           name="finalHousePrice" onchange="addComa(this.value)">
                                                                 </div>
                                                             </div>
                                                             <div class="clearfix"></div>
