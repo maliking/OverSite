@@ -26,14 +26,14 @@ $stmtHouse = $dbConn->prepare($sqlHouse);
 $stmtHouse->execute();
 $houseResults = $stmtHouse->fetch();
 
-$TYGross =         str_replace(",", "", $_POST['TYGross']);
-$FYGross =         str_replace(",", "", $_SESSION['FYGross']);
-$initialGross =    str_replace(",", "", $_POST['InitialGross']);
-$netCommission =   str_replace(",", "", $_POST['netCommission']);
-$brokerFee =       str_replace(",", "", $_POST['brokerFee']);
-$miscell =         str_replace(",", "", $_POST['miscell']);
-$remaxFee =        str_replace(",", "", $_POST['remaxFee']);
-$finalHousePrice = str_replace(",", "", $_POST['finalHousePrice']);
+$TYGross =         str_replace(",", "", (string)$_POST['TYGross']);
+$FYGross =         str_replace(",", "", (string)$_SESSION['FYGross']);
+$initialGross =    str_replace(",", "", (string)$_POST['InitialGross']);
+$netCommission =   str_replace(",", "", (string)$_POST['netCommission']);
+$brokerFee =       str_replace(",", "", (string)$_POST['brokerFee']);
+$miscell =         str_replace(",", "", (string)$_POST['miscell']);
+$remaxFee =        str_replace(",", "", (string)$_POST['remaxFee']);
+$finalHousePrice = str_replace(",", "", (string)$_POST['finalHousePrice']);
 
 
 $sql = "INSERT INTO commInfo
