@@ -143,7 +143,7 @@ $mlsId = $_GET['id'];
                                 // }
                                 ?>
                                 
-                                <div class="w3-container" style=" width:100%; height:700px">
+                                <div class="w3-container" style=" width:85%; height:700px">
                                     <div>
                                         <?php
                                         for ($i = 0; $i < sizeof($keys); $i++) 
