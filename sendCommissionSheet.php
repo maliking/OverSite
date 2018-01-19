@@ -202,7 +202,7 @@ $pdf->Cell(0, 13, '', 0, 1);
 $pdf->SetFont('Times', 'B');
 $pdf->Cell(155, 5, '                                                                                                      New Gross Commission: ', 0, 0);
 $pdf->SetFont('Times', 'U');
-$pdf->Cell(30, 5, '   $' . number_format($TYGross + $initialGross, 2) . '      ', 0, 1);
+$pdf->Cell(30, 5, '   $' . number_format(($TYGross + $initialGross), 2) . '      ', 0, 1);
 
 // $pdf->Output();
 $base = $pdf->Output('', 's');
