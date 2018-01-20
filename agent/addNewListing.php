@@ -27,8 +27,8 @@ if (!isset($_SESSION['userId'])) {
 // echo "price " . $price . "<br>"."<br>";
 // echo "sqft " . $sqft  . "<br>"."<br>";
 
-$sql = "INSERT INTO HouseInfo (userId, status, address, city, state, zip, bedrooms, bathrooms, price, sqft)
-	    VALUES (:userId, :status, :address, :city, :state, :zip, :bedrooms, :bathrooms, :price, :sqft)";
+$sql = "INSERT INTO HouseInfo (userId, status, address, city, state, zip, bedrooms, bathrooms, price, sqft, flyer)
+	    VALUES (:userId, :status, :address, :city, :state, :zip, :bedrooms, :bathrooms, :price, :sqft, :flyer)";
         $namedParameters = array();
         $namedParameters[":userId"] = $_SESSION['userId'];
         // $namedParameters[":listingId"] = $response[$keys[$i]]['listingID'];
@@ -45,44 +45,77 @@ $sql = "INSERT INTO HouseInfo (userId, status, address, city, state, zip, bedroo
         $squareFeet = preg_replace('/[\$,]/', '', $sqft);
         $squareFeet = intval($squareFeet);
         $namedParameters[":sqft"] = $squareFeet;
+        $namedParameters[":flyer"] = substr(basename($_FILES['file']['name']), 0, -3) . 'jpg';
         $stmt = $dbConn->prepare($sql);
         $stmt->execute($namedParameters);
 
-        $filename = '../addedHouses/'. $address;
+    if (isset($_FILES)) 
+    {
+    // print_r($_FILES);
+    // $targetfolder = "../../../test/";  //local
+    $targetfolder = "../uploadFlyers/";  //server
+
+    $targetfolder = $targetfolder . basename($_FILES['file']['name']);
+
+    $ok = 1;
+
+    $file_type = $_FILES['file']['type'];
+
+        if ($file_type == "application/pdf") 
+        {
+
+            if (move_uploaded_file($_FILES['file']['tmp_name'], $targetfolder)) 
+            {
+               
+                $im = new Imagick();
+
+                $im->setResolution(300, 300);
+                $im->readimage("../uploadFlyers/" . $_FILES['file']['name'] . '[0]');
+                $im->setImageFormat('jpeg');
+                $im->writeImage("../uploadFlyers/" . substr(basename($_FILES['file']['name']), 0, -3) . 'jpg');
+
+                $im->clear();
+                $im->destroy();
+
+
+            } 
+        } 
+    }
+        // $filename = '../addedHouses/'. $address;
 
         // if (is_dir($filename)) 
         // {
-            mkdir($filename, 0777);
+            // mkdir($filename, 0777);
         // }
 
-$total = count($_FILES['housePictures']['name']);
+// $total = count($_FILES['housePictures']['name']);
 
 
-for($i=0; $i<$total; $i++) 
-{
+// for($i=0; $i<$total; $i++) 
+// {
 
-            $tmp_name = $_FILES["housePictures"]["tmp_name"][$i];
-        // basename() may prevent filesystem traversal attacks;
-        // further validation/sanitation of the filename may be appropriate
-        $folder = "../addedHouses/" . $address . "/";
+//             $tmp_name = $_FILES["housePictures"]["tmp_name"][$i];
+//         // basename() may prevent filesystem traversal attacks;
+//         // further validation/sanitation of the filename may be appropriate
+//         $folder = "../addedHouses/" . $address . "/";
         
 
-        $name = basename($_FILES["housePictures"]["name"][$i]);
-        $target = $folder . $name;
-        // echo $name;
+//         $name = basename($_FILES["housePictures"]["name"][$i]);
+//         $target = $folder . $name;
+//         // echo $name;
   
-    if(move_uploaded_file($tmp_name, $target)) 
-    {
+//     if(move_uploaded_file($tmp_name, $target)) 
+//     {
 
-      //Handle other code here
+//       //Handle other code here
 
-        echo "uploaded" . "<br>";
-    }
-    else{
-        echo "failed <br><br>";
-    }
+//         echo "uploaded" . "<br>";
+//     }
+//     else{
+//         echo "failed <br><br>";
+//     }
   
-}
+// }
 
 header('Location: http://www.oversite.cc/agent/my-inventory.php');
 
