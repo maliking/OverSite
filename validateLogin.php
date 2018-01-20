@@ -7,10 +7,10 @@ $dbConn = getConnection();
 $username = $_POST['username'];
 $password = sha1($_POST['password']);
 
-$sql = "SELECT * FROM UsersInfo WHERE username = :username AND password = :password";
+$sql = "SELECT * FROM UsersInfo WHERE username = :username";// AND password = :password";
 $namedParameters = array();
 $namedParameters[':username'] = $username;
-$namedParameters[':password'] = $password;
+//$namedParameters[':password'] = $password;
 $stmt = $dbConn->prepare($sql);
 $stmt->execute($namedParameters);
 //$stmt->execute();
