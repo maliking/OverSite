@@ -45,7 +45,7 @@ $sql = "INSERT INTO HouseInfo (userId, status, address, city, state, zip, bedroo
         $squareFeet = preg_replace('/[\$,]/', '', $sqft);
         $squareFeet = intval($squareFeet);
         $namedParameters[":sqft"] = $squareFeet;
-        $namedParameters[":flyer"] = substr(basename($_FILES['file']['name']), 0, -3) . 'jpg';
+        $namedParameters[":flyer"] = substr(basename($_FILES['housePictures']['name']), 0, -3) . 'jpg';
         $stmt = $dbConn->prepare($sql);
         $stmt->execute($namedParameters);
 
@@ -55,24 +55,24 @@ $sql = "INSERT INTO HouseInfo (userId, status, address, city, state, zip, bedroo
     // $targetfolder = "../../../test/";  //local
     $targetfolder = "../uploadFlyers/";  //server
 
-    $targetfolder = $targetfolder . basename($_FILES['file']['name']);
+    $targetfolder = $targetfolder . basename($_FILES['housePictures']['name']);
 
     $ok = 1;
 
-    $file_type = $_FILES['file']['type'];
+    $file_type = $_FILES['housePictures']['type'];
 
         if ($file_type == "application/pdf") 
         {
 
-            if (move_uploaded_file($_FILES['file']['tmp_name'], $targetfolder)) 
+            if (move_uploaded_file($_FILES['housePictures']['tmp_name'], $targetfolder)) 
             {
                
                 $im = new Imagick();
 
                 $im->setResolution(300, 300);
-                $im->readimage("../uploadFlyers/" . $_FILES['file']['name'] . '[0]');
+                $im->readimage("../uploadFlyers/" . $_FILES['housePictures']['name'] . '[0]');
                 $im->setImageFormat('jpeg');
-                $im->writeImage("../uploadFlyers/" . substr(basename($_FILES['file']['name']), 0, -3) . 'jpg');
+                $im->writeImage("../uploadFlyers/" . substr(basename($_FILES['housePictures']['name']), 0, -3) . 'jpg');
 
                 $im->clear();
                 $im->destroy();
