@@ -229,26 +229,26 @@ $addedListingsResults = $addedListings->fetchAll();
 
 
 
-                //                foreach($addedListingsResults as $addHouse)
-                //                {
-                //                    $directory = "../addedHouses/" . $addHouse['address'] . "/";
-                //                    $files = scandir ($directory);
-                //                    echo "<tr>";
-                //                    echo "<td style=\"padding-left:10%\"><img src='" . $directory . $files[2] . "' alt='error' width=\"225px\" height=\"200px\"></td>";
-                //                    echo "<td>";
-                //                    echo $addHouse['address'] . "<br>" . $addHouse['city'] . " " . $addHouse['state'] . ", " . $addHouse['zip'];
-                //                    echo "</td>";
-                //                    echo "<td>";
-                //
-                //                    echo '<a href="openhouse/create-flyer.php?id=' . $addHouse['houseId'] . '"><button type="button" class="btn btn-primary ">Create a New Flyer</button></a></br></br>';
-                //                    echo '<a href=signIn.php?id=' . $addHouse['houseId'] . ' target="_blank"><button type="button" class="btn btn-primary">Sign-In</button></a></br></br>';
-                //                    echo '<a href="singleListingVisitors.php?id=' . $addHouse['houseId'] . '"><button type="button" class="btn btn-primary ">Listing Visitors</button></a></br></br>';
-                //                    echo '<button type="button" class="btn btn-primary" onClick="matchLeadsModal(' . $addHouse['price'] . "," . $addHouse['bedrooms'] . "," . $addHouse['bathrooms'] . ')">Top 5 Leads</button></br></br>';
-                //                    echo '<button type="button" class="btn btn-primary" onClick="addTransaction(' . $addHouse['houseId'] . ')">In-Contract</button></br></br>';
-                //                    echo '<button type="button" class="btn btn-danger">Remove</button></br></br>';
-                //                    echo "                               </td>";
-                //                    echo "</tr>";
-                //                }
+                               foreach($addedListingsResults as $addHouse)
+                               {
+                                   $directory = "../addedHouses/" . $addHouse['address'] . "/";
+                                   $files = scandir ($directory);
+                                   echo "<tr>";
+                                   echo "<td style=\"padding-left:10%\"><img src='" . $directory . $files[2] . "' alt='error' width=\"225px\" height=\"200px\"></td>";
+                                   echo "<td>";
+                                   echo $addHouse['address'] . "<br>" . $addHouse['city'] . " " . $addHouse['state'] . ", " . $addHouse['zip'];
+                                   echo "</td>";
+                                   echo "<td>";
+                
+                                   echo '<a href="openhouse/create-flyer.php?id=' . $addHouse['houseId'] . '"><button type="button" class="btn btn-primary ">Create a New Flyer</button></a></br></br>';
+                                   echo '<a href=signIn.php?id=' . $addHouse['houseId'] . ' target="_blank"><button type="button" class="btn btn-primary">Sign-In</button></a></br></br>';
+                                   echo '<a href="singleListingVisitors.php?id=' . $addHouse['houseId'] . '"><button type="button" class="btn btn-primary ">Listing Visitors</button></a></br></br>';
+                                   echo '<button type="button" class="btn btn-primary" onClick="matchLeadsModal(' . $addHouse['price'] . "," . $addHouse['bedrooms'] . "," . $addHouse['bathrooms'] . ')">Top 5 Leads</button></br></br>';
+                                   echo '<button type="button" class="btn btn-primary" onClick="addTransaction(' . $addHouse['houseId'] . ')">In-Contract</button></br></br>';
+                                   echo '<button type="button" class="btn btn-danger">Remove</button></br></br>';
+                                   echo "                               </td>";
+                                   echo "</tr>";
+                               }
                 ?>
 
 
