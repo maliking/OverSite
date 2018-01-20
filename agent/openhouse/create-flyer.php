@@ -388,24 +388,24 @@ else
                                             }
                                         }
                                     }
-                                else
-                                {
+                                // else
+                                // {
                                     
-                                    $directory = "../../addedHouses/" . $address . "/";
-                                    $files = scandir ($directory);
+                                //     $directory = "../../addedHouses/" . $address . "/";
+                                //     $files = scandir ($directory);
 
-                                    $imageCount = count($files);
-                                    for($i = 2; $i < $imageCount; $i++)
-                                    {
-                                        $website = "http://www.oversite.cc/addedHouses/" . rawurlencode($address) . "/" . rawurlencode($files[$i]);
+                                //     $imageCount = count($files);
+                                //     for($i = 2; $i < $imageCount; $i++)
+                                //     {
+                                //         $website = "http://www.oversite.cc/addedHouses/" . rawurlencode($address) . "/" . rawurlencode($files[$i]);
 
-                                        echo '<label class="item col-md-4 col-sm-4 col-xs-6">
-                                            <input class="js-switch" type="checkbox" name="imageURL" value="' . $website . '"/> 
-                                            <img src="' . $website . '" style="width:100%; height:100%" >
-                                        </label>';
-                                    }
+                                //         echo '<label class="item col-md-4 col-sm-4 col-xs-6">
+                                //             <input class="js-switch" type="checkbox" name="imageURL" value="' . $website . '"/> 
+                                //             <img src="' . $website . '" style="width:100%; height:100%" >
+                                //         </label>';
+                                //     }
 
-                                }
+                                // }
                                     ?>
                                 </div>
 
