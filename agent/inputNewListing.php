@@ -168,10 +168,10 @@ if (!isset($_SESSION['userId'])) {
 
                                                                 <input type="file" name="housePictures" multiple id="gallery-photo-add" enctype="multipart/form-data">
                                                                 <br>
-                                                                <div class="gallery" id="gallery"></div>
+                                                                <!-- <div class="gallery" id="gallery"></div>
 
                                                             </div>
-
+ -->
 
                                                         </div>
 
