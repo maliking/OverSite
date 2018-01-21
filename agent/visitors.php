@@ -300,6 +300,7 @@ $keys = array_keys($response);
                                 <thead>
                                 <tr>
                                     <th>Type</th>
+                                    <th>ID</th>
                                     <th>Date Added</th>
                                     <th>Name</th>
                                     <th data-breakpoints="xs">Phone</th>
@@ -340,13 +341,13 @@ $keys = array_keys($response);
                                     // Type - Open House Visitor (OHV) or Lead
                                     echo "<td>";
                                     if ($result['address'] == 'Lead'){
-                                        echo "<span title=\"Lead\" class=\"label label-warning\">Lead</span>";
+                                        echo "<span title=\"Lead\" class=\"label label-warning\">ML</span>";
                                     } else {
                                         echo "<span title=\"Open House Visitor\" class=\"label label-info\">OHV</span>";
                                     }
                                     echo "</td>";
 
-
+                                    echo "<td>" . $result['buyerID']  . "</td>";
                                     // Date Added
                                     echo "        <td>";
                                     if ($result['registeredDate'] == NULL) {
