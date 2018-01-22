@@ -188,7 +188,7 @@ $pdf->Cell(7, 10, '   I, ', 0, 0);
 $pdf->SetFont('Times', 'U', 14);
 $pdf->Cell(41, 10, '                                            ', 0, 0);
 $pdf->SetFont('Times');
-$pdf->Cell(20, 10, ', have READ & APPROVED this Commission Worksheet.  ', 0, 1);
+$pdf->Cell(20, 10, '         , have READ & APPROVED this Commission Worksheet.  ', 0, 1);
 
 $pdf->SetFontSize(12);
 $pdf->Cell(0, 30, '', 0, 1);
@@ -245,7 +245,7 @@ curl_setopt_array($curl, array(
 		  			}
 		  	},
 		  	{
-		  		\"email\": \"" . $currAgentEmail['email'] . "\",
+		  		\"email\": \"" . $userResults['email'] . "\",
 		  		\"name\": \"" . $currAgentEmail['firstName'] . " " . $currAgentEmail['lastName'] .  "\",
 		  		\"recipientId\": \"2\",
 		  		\"routingOrder\": \"2\",
