@@ -204,7 +204,7 @@ $houses = $stmtHouse->fetchAll();
                                                             </div>
 
                                                             <!-- Commission Lead Type -->
-                                                            <div>
+                                                            <div class="form-group col-xs-2">
                                                                 <label for="leadType">Lead Type</label>
                                                                 <select required class="form-control" id="leadType"
                                                                         name="leadType">
