@@ -242,8 +242,8 @@ curl_setopt_array($curl, array(
 		  		\"name\": \"Jose \",
 		  		\"recipientId\": \"2\",
 		  		\"routingOrder\": \"2\",
-		  		\"tabs\": [
-		  			{
+		  		\"tabs\": {
+		  			
 		  				\"signHereTabs\":[
 		  				{
 			  				\"xPosition\": \"500\",
@@ -251,7 +251,7 @@ curl_setopt_array($curl, array(
 			  				\"documentId\": \"1\",
 			  				\"pageNumber\" : \"1\"
 		  				}]
-		  			}]	
+		  			}
 		  	}]},
 	  		\"documents\": [
 	  		{
