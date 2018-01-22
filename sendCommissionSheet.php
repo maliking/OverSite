@@ -260,7 +260,7 @@ curl_setopt_array($curl, array(
 		  				}],
 		  				\"dateSignedTabs\": [
 		  				{
-		  					\"xPosition\": \"700\",
+		  					\"xPosition\": \"500\",
 			  				\"yPosition\": \"687\",
 			  				\"documentId\": \"1\",
 			  				\"pageNumber\" : \"1\"
