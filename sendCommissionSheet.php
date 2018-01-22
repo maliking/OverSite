@@ -245,7 +245,7 @@ curl_setopt_array($curl, array(
 		  			}
 		  	},
 		  	{
-		  		\"email\": \"" . $userResults['email'] . "\",
+		  		\"email\": \"" . $currAgentEmail['email'] . "\",
 		  		\"name\": \"" . $currAgentEmail['firstName'] . " " . $currAgentEmail['lastName'] .  "\",
 		  		\"recipientId\": \"2\",
 		  		\"routingOrder\": \"2\",
