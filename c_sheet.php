@@ -203,6 +203,23 @@ $houses = $stmtHouse->fetchAll();
                                                                        name="checkNum" placeholder="">
                                                             </div>
 
+                                                            <!-- Commission Lead Type -->
+                                                            <div>
+                                                                <label for="leadType">Lead Type</label>
+                                                                <select required class="form-control" id="leadType"
+                                                                        name="leadType">
+                                                                        <option>Select Lead Type</option>
+                                                                        <option value="Zillow">Zillow</option>
+                                                                        <option value="Realtor.com">Realtor.com</option>
+                                                                        <option value="Referral">Referral</option>
+                                                                        <option value="Past Client">Past Client</option>
+                                                                        <option value="Open House">Open House</option>
+
+                                                                </select>
+
+                                                            </div>
+                                                            <!--  -->
+
                                                         </div>
                                                     </div>
                                                 </div>
