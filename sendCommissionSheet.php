@@ -230,8 +230,8 @@ curl_setopt_array($curl, array(
 		  			
 		  				\"signHereTabs\": [
 		  				{
-			  				\"xPosition\": \"30\",
-			  				\"yPosition\": \"600\",
+			  				\"xPosition\": \"40\",
+			  				\"yPosition\": \"580\",
 			  				\"documentId\": \"1\",
 			  				\"pageNumber\" : \"1\"
 		  				}]
@@ -246,8 +246,8 @@ curl_setopt_array($curl, array(
 		  			
 		  				\"signHereTabs\":[
 		  				{
-			  				\"xPosition\": \"510\",
-			  				\"yPosition\": \"780\",
+			  				\"xPosition\": \"500\",
+			  				\"yPosition\": \"800\",
 			  				\"documentId\": \"1\",
 			  				\"pageNumber\" : \"1\"
 		  				}]
