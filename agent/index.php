@@ -376,7 +376,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                                             data-placement="top"
                                                                             title="Close of Escrow">COE </a></th>
                                             <th data-breakpoints="xs sm">Notes</th>
-                                            <th data-breakpoints="xs sm">Edit Notes</th>
+                                            <th data-breakpoints="xs sm"></th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -397,42 +397,96 @@ for($i = 0; $i < sizeof($keys); $i++)
                                             <td>' . $trans['address'] . '</td>
                                             <td>' . $trans['clientNum'] . '</td>
                                             <td>Test Email</td>
-        
-                                            <td>' . date('m/d/y', strtotime($day)) . '
-                                                          &nbsp  <i class="fa fa-check-circle" style="color:#5cb85c"></i>
+                                            <td>
+                                                <div class="btn-group">
+                                                  <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    ' . date('m/d/y', strtotime($day)) . ' <span class="caret"></span>
+                                                  </button>
+                                                  <ul class="dropdown-menu">
+                                                    <li><a href="#">Completed: 12/12/12</a></li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li><a href="#">Ordered: 12/12/12</a></li>
+                                                  </ul>
+                                                </div>
+                                                <i class="fa fa-check-circle" style="color:#5cb85c"></i>
                                             </td>
-                                            <td>' . date('m/d/y', strtotime($day . ' + '. $trans['emdDays'] . ' days' )) . '
+                                            <td>
+                                                <div class="btn-group">
+                                                  <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                  ' . date('m/d/y', strtotime($day . ' + '. $trans['emdDays'] . ' days' )) . ' <span class="caret"></span>
+                                                  </button>
+                                                  <ul class="dropdown-menu">
+                                                    <li><a href="#">Completed: 12/12/12</a></li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li><a href="#">Ordered: 12/12/12</a></li>
+                                                  </ul>
+                                                </div>
                                                   &nbsp  <i class="fa fa-check-circle" style="color:#5cb85c"></i>
                                             </td>
-                                            <td>' . date('m/d/y', strtotime($day . ' + '. $trans['sellerDiscDays'] . ' days' )) . '
-                                            <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
-                                                          data-toggle="popover" data-Oplacement="right"
-                                                          data-content="<b>Completed:</b> 3/4/17"><i
-                                                            class="fa fa-chevron-circle-right"></i></a>
+                                            <td>
+                                                <div class="btn-group">
+                                                  <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                  ' . date('m/d/y', strtotime($day . ' + '. $trans['sellerDiscDays'] . ' days' )) . ' <span class="caret"></span>
+                                                  </button>
+                                                  <ul class="dropdown-menu">
+                                                    <li><a href="#">Completed: 12/12/12</a></li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li><a href="#">Ordered: 12/12/12</a></li>
+                                                  </ul>
+                                                </div>
                                                     &nbsp  <i class="fa fa-flag" style="color:#d9534f"></i>
                                             </td>
         
-                                            <td>' . date('m/d/y', strtotime($day . ' + '. $trans['genInspecDays'] . ' days' )) . '
-                                             <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
-                                                          data-toggle="popover" data-Oplacement="right"
-                                                          data-content="<b>Completed:</b> 3/4/17"><i
-                                                            class="fa fa-chevron-circle-right"></i></a>
+                                            <td>
+                                                <div class="btn-group">
+                                                  <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                  ' . date('m/d/y', strtotime($day . ' + '. $trans['genInspecDays'] . ' days' )) . ' <span class="caret"></span>
+                                                  </button>
+                                                  <ul class="dropdown-menu">
+                                                    <li><a href="#">Completed: 12/12/12</a></li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li><a href="#">Ordered: 12/12/12</a></li>
+                                                  </ul>
+                                                </div>
                                                  &nbsp  <i class="fa fa-warning" style="color:#ffae42"></i>
+                                            </td>               
+                                            <td>
+                                                <div class="btn-group">
+                                                  <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                  ' . date('m/d/y', strtotime($day . ' + '. $trans['appraisalDays'] . ' days' )) . ' <span class="caret"></span>
+                                                  </button>
+                                                  <ul class="dropdown-menu">
+                                                    <li><a href="#">Completed: 12/12/12</a></li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li><a href="#">Ordered: 12/12/12</a></li>
+                                                  </ul>
+                                                </div>
+                                                &nbsp  <i class="fa fa-warning" style="color:#ffae42"></i>
                                             </td>
-                                           
-        
-                                            <td>' . date('m/d/y', strtotime($day . ' + '. $trans['appraisalDays'] . ' days' )) . '
-                                             <a href="#" data-trigger="hover focus" title="<b>Ordered:</b> 3/2/17"
-                                                          data-toggle="popover" data-Oplacement="right"
-                                                          data-content="<b>Completed:</b> 3/4/17"><i
-                                                            class="fa fa-chevron-circle-right"></i></a>
-                                     &nbsp  <i class="fa fa-warning" style="color:#ffae42"></i>
+                                            <td>
+                                                <div class="btn-group">
+                                                  <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    ' . date('m/d/y', strtotime($day . ' + '. $trans['lcDays'] . ' days' )) . ' <span class="caret"></span>
+                                                  </button>
+                                                  <ul class="dropdown-menu">
+                                                    <li><a href="#">Completed: 12/12/12</a></li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li><a href="#">Ordered: 12/12/12</a></li>
+                                                  </ul>
+                                                </div>
+                                                &nbsp  <i class="fa fa-exclamation-circle" style="color:#d3d3d3"></i>
                                             </td>
-        
-                                            <td>' . date('m/d/y', strtotime($day . ' + '. $trans['lcDays'] . ' days' )) . '
-                                                 &nbsp  <i class="fa fa-exclamation-circle" style="color:#d3d3d3"></i>
-                                            </td>
-                                            <td>' . date('m/d/y', strtotime($day . ' + '. $trans['coeDays'] . ' days' )) . '
+                                            <td>
+                                                <div class="btn-group">
+                                                  <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    ' . date('m/d/y', strtotime($day . ' + '. $trans['coeDays'] . ' days' )) . ' <span class="caret"></span>
+                                                  </button>
+                                                  <ul class="dropdown-menu">
+                                                    <li><a href="#">Completed: 12/12/12</a></li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li><a href="#">Ordered: 12/12/12</a></li>
+                                                  </ul>
+                                                </div>
                                                 &nbsp  <i class="fa fa-exclamation-circle" style="color:#d3d3d3"></i>
                                             </td>
                                             <td id=' . $trans['transId'] . '> ' . $trans['notes']  . ' </td>
