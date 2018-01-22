@@ -254,7 +254,14 @@ curl_setopt_array($curl, array(
 		  				\"signHereTabs\":[
 		  				{
 			  				\"xPosition\": \"340\",
-			  				\"yPosition\": \"645\",
+			  				\"yPosition\": \"647\",
+			  				\"documentId\": \"1\",
+			  				\"pageNumber\" : \"1\"
+		  				}],
+		  				\"dateSignedTabs\": [
+		  				{
+		  					\"xPosition\": \"700\",
+			  				\"yPosition\": \"687\",
 			  				\"documentId\": \"1\",
 			  				\"pageNumber\" : \"1\"
 		  				}]
