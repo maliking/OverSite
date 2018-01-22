@@ -218,12 +218,12 @@ curl_setopt_array($curl, array(
     CURLOPT_CUSTOMREQUEST => "POST",
     CURLOPT_POSTFIELDS => "{
 	  \"emailSubject\":\"DocuSign REST API Quickstart Sample\",
-	  \"emailBlurb\": \"Shows how to create and send an envelope from a document.\",
+	  \"emailBlurb\": \"Commission Sheet - Signature Required\",
 	  \"recipients\": {
 	  	\"signers\": [
 	  		{
 	  			\"email\": \"" . $userResults['email'] . "\",
-		  		\"name\": \"" . $_POST['agentName'] . "\",
+		  		\"name\": \"" . $userResults['firstName'] . " " . $userResults['lastName'] . "\",
 		  		\"recipientId\": \"1\",
 		  		\"routingOrder\": \"1\",
 		  		\"tabs\": {
@@ -239,15 +239,15 @@ curl_setopt_array($curl, array(
 		  	},
 		  	{
 		  		\"email\": \"" . $currAgentEmail['email'] . "\",
-		  		\"name\": \"Jose \",
+		  		\"name\": \"" . $currAgentEmail['firstName'] . " " . $currAgentEmail['lastName'] .  "\",
 		  		\"recipientId\": \"2\",
 		  		\"routingOrder\": \"2\",
 		  		\"tabs\": {
 		  			
 		  				\"signHereTabs\":[
 		  				{
-			  				\"xPosition\": \"500\",
-			  				\"yPosition\": \"800\",
+			  				\"xPosition\": \"510\",
+			  				\"yPosition\": \"780\",
 			  				\"documentId\": \"1\",
 			  				\"pageNumber\" : \"1\"
 		  				}]
