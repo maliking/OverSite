@@ -191,10 +191,10 @@ $pdf->SetFont('Times');
 $pdf->Cell(20, 10, '             , have READ & APPROVED this Commission Worksheet.  ', 0, 1);
 
 $pdf->SetFontSize(12);
-// $pdf->Cell(0, 30, '', 0, 1);
+$pdf->Cell(0, 30, '', 0, 1);
 
-// $pdf->Cell(75, 10, ' Agent Signature                               Date  ', 'T', 0);
-// $pdf->Cell(32, 10, '      ', 0, 0);
+$pdf->Cell(75, 10, '                                                     ', 0, 0);
+$pdf->Cell(32, 10, '      ', 0, 0);
 $pdf->Cell(84, 10, ' Owner and/or Broker Signature               Date  ', 'T', 1);
 
 $pdf->Cell(0, 13, '', 0, 1);
