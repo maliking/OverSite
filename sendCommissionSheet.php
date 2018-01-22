@@ -230,8 +230,8 @@ curl_setopt_array($curl, array(
 		  			
 		  				\"signHereTabs\": [
 		  				{
-			  				\"xPosition\": \"40\",
-			  				\"yPosition\": \"580\",
+			  				\"xPosition\": \"60\",
+			  				\"yPosition\": \"530\",
 			  				\"documentId\": \"1\",
 			  				\"pageNumber\" : \"1\"
 		  				}]
