@@ -227,7 +227,7 @@ curl_setopt_array($curl, array(
 		  		\"recipientId\": \"1\",
 		  		\"routingOrder\": \"1\",
 		  		\"tabs\": [
-		  			{
+		  			
 		  				\"signHereTabs\":[
 		  				{
 			  				\"xPosition\": \"30\",
@@ -235,7 +235,7 @@ curl_setopt_array($curl, array(
 			  				\"documentId\": \"1\",
 			  				\"pageNumber\" : \"1\"
 		  				}]
-		  			}]
+		  			]
 		  	},
 		  	{
 		  		\"email\": \"" . $currAgentEmail['email'] . "\",
