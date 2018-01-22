@@ -225,13 +225,31 @@ curl_setopt_array($curl, array(
 	  			\"email\": \"" . $userResults['email'] . "\",
 		  		\"name\": \"" . $_POST['agentName'] . "\",
 		  		\"recipientId\": \"1\",
-		  		\"routingOrder\": \"1\"
+		  		\"routingOrder\": \"1\",
+		  		\"tabs\": [
+		  			{
+		  				\"signHereTabs\":[
+		  				{
+			  				\"xPosition\": \"30\",
+			  				\"yPosition\": \"600\",
+			  				\"pageNumber\" : \"1\"
+		  				}]
+		  			}]
 		  	},
 		  	{
 		  		\"email\": \"" . $currAgentEmail['email'] . "\",
 		  		\"name\": \"Jose \",
 		  		\"recipientId\": \"2\",
-		  		\"routingOrder\": \"2\"	
+		  		\"routingOrder\": \"2\",
+		  		\"tabs\": [
+		  			{
+		  				\"signHereTabs\":[
+		  				{
+			  				\"xPosition\": \"500\",
+			  				\"yPosition\": \"800\",
+			  				\"pageNumber\" : \"1\"
+		  				}]
+		  			}]	
 		  	}]},
 	  		\"documents\": [
 	  		{
