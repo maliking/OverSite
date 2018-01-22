@@ -237,8 +237,8 @@ curl_setopt_array($curl, array(
 		  				}],
 		  				\"dateSignedTabs\": [
 		  				{
-		  					\"xPosition\": \"80\",
-			  				\"yPosition\": \"555\",
+		  					\"xPosition\": \"110\",
+			  				\"yPosition\": \"580\",
 			  				\"documentId\": \"1\",
 			  				\"pageNumber\" : \"1\"
 		  				}]
@@ -253,8 +253,8 @@ curl_setopt_array($curl, array(
 		  			
 		  				\"signHereTabs\":[
 		  				{
-			  				\"xPosition\": \"400\",
-			  				\"yPosition\": \"680\",
+			  				\"xPosition\": \"300\",
+			  				\"yPosition\": \"650\",
 			  				\"documentId\": \"1\",
 			  				\"pageNumber\" : \"1\"
 		  				}]
