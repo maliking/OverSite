@@ -226,16 +226,16 @@ curl_setopt_array($curl, array(
 		  		\"name\": \"" . $_POST['agentName'] . "\",
 		  		\"recipientId\": \"1\",
 		  		\"routingOrder\": \"1\",
-		  		\"tabs\": [
+		  		\"tabs\": {
 		  			
-		  				\"signHereTabs\":[
+		  				\"signHereTabs\": [
 		  				{
 			  				\"xPosition\": \"30\",
 			  				\"yPosition\": \"600\",
 			  				\"documentId\": \"1\",
 			  				\"pageNumber\" : \"1\"
 		  				}]
-		  			]
+		  			}
 		  	},
 		  	{
 		  		\"email\": \"" . $currAgentEmail['email'] . "\",
