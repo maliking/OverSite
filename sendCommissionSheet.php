@@ -232,6 +232,7 @@ curl_setopt_array($curl, array(
 		  				{
 			  				\"xPosition\": \"30\",
 			  				\"yPosition\": \"600\",
+			  				\"documentId\": \"1\",
 			  				\"pageNumber\" : \"1\"
 		  				}]
 		  			}]
@@ -247,6 +248,7 @@ curl_setopt_array($curl, array(
 		  				{
 			  				\"xPosition\": \"500\",
 			  				\"yPosition\": \"800\",
+			  				\"documentId\": \"1\",
 			  				\"pageNumber\" : \"1\"
 		  				}]
 		  			}]	
