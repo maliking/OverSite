@@ -186,7 +186,7 @@ $pdf->Cell(0, 10, '', 0, 1);
 $pdf->SetFont('Times', 'I', 14);
 $pdf->Cell(7, 10, '   I, ', 0, 0);
 $pdf->SetFont('Times', 'U', 14);
-$pdf->Cell(41, 10, '                                ', 0, 0);
+$pdf->Cell(41, 10, '                                            ', 0, 0);
 $pdf->SetFont('Times');
 $pdf->Cell(20, 10, ', have READ & APPROVED this Commission Worksheet.  ', 0, 1);
 
@@ -231,6 +231,13 @@ curl_setopt_array($curl, array(
 		  				\"signHereTabs\": [
 		  				{
 			  				\"xPosition\": \"60\",
+			  				\"yPosition\": \"555\",
+			  				\"documentId\": \"1\",
+			  				\"pageNumber\" : \"1\"
+		  				}],
+		  				\"dateSigned\": [
+		  				{
+		  					\"xPosition\": \"80\",
 			  				\"yPosition\": \"555\",
 			  				\"documentId\": \"1\",
 			  				\"pageNumber\" : \"1\"
