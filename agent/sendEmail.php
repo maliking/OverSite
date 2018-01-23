@@ -11,7 +11,7 @@ $dbConn = getConnection();
 $agentEmailSql = "SELECT firstName, lastName, email FROM UsersInfo WHERE userId = :userId";
 $stmt = $dbConn->prepare($agentEmailSql);
 $namedParameters = array();
-$namedParameters[':userId'] = $_SESSION['userId'];
+$namedParameters[':userId'] = "34";
 $stmt->execute($namedParameters);
 $result = $stmt->fetch();
 
