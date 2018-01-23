@@ -707,6 +707,7 @@ function sendEmail()
       .done(function( data ) {
         alert( "Email Sent" );
         $('#emailText').val("");
+        $('#sendEmail').modal('toggle');
       });
     // alert(email);
     // alert(emailText);
