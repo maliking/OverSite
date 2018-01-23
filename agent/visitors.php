@@ -278,6 +278,28 @@ $keys = array_keys($response);
         </div>
     </div>
 
+    <!-- Modal -->
+  <div class="modal fade" id="sendEmail" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Send Email</h4>
+          <p id="sendToEmail"></p>
+        </div>
+        <div class="modal-body">
+          <textarea id="emailText" name="emailText" rows="10" cols="70" style="color:black;" placeholder="Text"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" onClick="sendEmail()">Send Email</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Main content -->
@@ -365,11 +387,17 @@ $keys = array_keys($response);
                                     // Phone Number
                                     echo "<td>";
                                     echo $result['phone'];
+                                    echo "<p></p>";
+                                    echo '<p onClick="makeCall()" class="fa fa-phone"></p>';
+                                    echo '<span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>';
+                                    echo '<p onClick="makeText()" class="fa fa-commenting-o"></p>';
                                     echo "</td>";
 
                                     // Email
                                     echo "<td>";
                                     echo $result['email'];
+                                    echo "<p></p>";
+                                    echo '<p onClick=makeEmail("' . $result['email'] . '") class="fa fa-envelope-o"></p>';
                                     echo "</td>";
 
                                     // Property
@@ -652,7 +680,36 @@ $keys = array_keys($response);
     //         }
     //     }
     
+function makeCall()
+{
+    alert("Call");
 
+}
+
+function makeText()
+{
+    alert("Text");
+}
+
+function makeEmail(email)
+{
+    // alert("Email");
+    $('#sendToEmail').text(email);
+    $('#sendEmail').modal('toggle');
+    
+}
+function sendEmail()
+{
+    var email = $('#sendToEmail').text();
+    var emailText = $('#emailText').val();
+
+    $.post( "sendEmail.php", { email: email, emailText: emailText })
+      .done(function( data ) {
+        alert( "Email Sent" );
+      });
+    // alert(email);
+    // alert(emailText);
+}
 </script>
 
 <script>
