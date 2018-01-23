@@ -19,7 +19,7 @@ $mail = new PHPMailer;
 $mail->setFrom($result['email'], $result['firstName'] . " " . $result['lastName']);
 $mail->addAddress($_POST['email']);
 $mail->Subject  =  "Follow up from openHouse");
-$mail->Body     = $_POST['emailText'] ;
+$mail->Body     = $_POST['emailText'] . "" ;
 if(!$mail->send()) {
   echo 'Message was not sent.';
   echo 'Mailer error: ' . $mail->ErrorInfo;
