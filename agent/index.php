@@ -79,6 +79,47 @@ for($i = 0; $i < sizeof($keys); $i++)
             }
 
         </style>
+        <style type "text/css">
+
+
+        .blink {
+            -webkit-animation: blink .75s linear infinite;
+            -moz-animation: blink .75s linear infinite;
+            -ms-animation: blink .75s linear infinite;
+            -o-animation: blink .75s linear infinite;
+             animation: blink .75s linear infinite;
+        }
+        @-webkit-keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 1; }
+            50.01% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @-moz-keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 1; }
+            50.01% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @-ms-keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 1; }
+            50.01% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @-o-keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 1; }
+            50.01% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 1; }
+            50.01% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        </style>
         <!-- NOTIFICATION Links-->
         <link href="../plugins/pnotify/dist/pnotify.css" rel="stylesheet">
         <link href="../plugins/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
@@ -408,7 +449,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                     <li><a href="#">Ordered: 12/12/12</a></li>
                                                   </ul>
                                                 </div>
-                                                <i class="fa fa-check-circle" style="color:#5cb85c"></i>
+                                                <i class="fa fa-check-circle blink" style="color:#5cb85c"></i>
                                             </td>
                                             <td>
                                                 <div class="btn-group">
@@ -421,7 +462,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                     <li><a href="#">Ordered: 12/12/12</a></li>
                                                   </ul>
                                                 </div>
-                                                  &nbsp  <i class="fa fa-check-circle" style="color:#5cb85c"></i>
+                                                  &nbsp  <i class="fa fa-check-circle blink" style="color:#5cb85c"></i>
                                             </td>
                                             <td>
                                                 <div class="btn-group">
@@ -434,7 +475,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                     <li><a href="#">Ordered: 12/12/12</a></li>
                                                   </ul>
                                                 </div>
-                                                    &nbsp  <i class="fa fa-flag" style="color:#d9534f"></i>
+                                                    &nbsp  <i class="fa fa-flag blink" style="color:#d9534f"></i>
                                             </td>
         
                                             <td>
@@ -448,7 +489,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                     <li><a href="#">Ordered: 12/12/12</a></li>
                                                   </ul>
                                                 </div>
-                                                 &nbsp  <i class="fa fa-warning" style="color:#ffae42"></i>
+                                                 &nbsp  <i class="fa fa-warning blink" style="color:#ffae42"></i>
                                             </td>               
                                             <td>
                                                 <div class="btn-group">
@@ -461,7 +502,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                     <li><a href="#">Ordered: 12/12/12</a></li>
                                                   </ul>
                                                 </div>
-                                                &nbsp  <i class="fa fa-warning" style="color:#ffae42"></i>
+                                                &nbsp  <i class="fa fa-warning blink" style="color:#ffae42"></i>
                                             </td>
                                             <td>
                                                 <div class="btn-group">
@@ -474,7 +515,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                     <li><a href="#">Ordered: 12/12/12</a></li>
                                                   </ul>
                                                 </div>
-                                                &nbsp  <i class="fa fa-exclamation-circle" style="color:#d3d3d3"></i>
+                                                &nbsp  <i class="fa fa-exclamation-circle blink" style="color:#d3d3d3"></i>
                                             </td>
                                             <td>
                                                 <div class="btn-group">
@@ -487,7 +528,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                     <li><a href="#">Ordered: 12/12/12</a></li>
                                                   </ul>
                                                 </div>
-                                                &nbsp  <i class="fa fa-exclamation-circle" style="color:#d3d3d3"></i>
+                                                &nbsp  <i class="fa fa-exclamation-circle blink" style="color:#d3d3d3"></i>
                                             </td>
                                             <td id=' . $trans['transId'] . '> ' . $trans['notes']  . ' </td>
                                            <td> <button onClick=takeTransNote(' .$trans['transId'] . ')>  <i class="fa fa-edit" style="color:#d3d3d3"></i> </button></td>
