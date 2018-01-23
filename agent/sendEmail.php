@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-
-// 'mediaUrl' => "http://52.11.24.75/uploadFlyers/" . rawurlencode($_POST['flyer']) . 'jpg',
 require '../databaseConnection.php';
 require '../PHPMailer/src/PHPMailer.php'; 
 require '../PHPMailer/src/Exception.php'; 
@@ -20,7 +18,7 @@ $result = $stmt->fetch();
 $mail = new PHPMailer;
 $mail->setFrom($result['email'], $result['firstName'] . " " . $result['lastName']);
 $mail->addAddress($_POST['email']);
-$mail->Subject  =  "Follow up from openHouse", 0, -1);
+$mail->Subject  =  "Follow up from openHouse");
 $mail->Body     = $_POST['emailText'] ;
 if(!$mail->send()) {
   echo 'Message was not sent.';
