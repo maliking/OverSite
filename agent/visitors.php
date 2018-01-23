@@ -706,6 +706,7 @@ function sendEmail()
     $.post( "sendEmail.php", { email: email, emailText: emailText })
       .done(function( data ) {
         alert( "Email Sent" );
+        $('#emailText').val("");
       });
     // alert(email);
     // alert(emailText);
