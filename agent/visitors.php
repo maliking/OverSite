@@ -348,7 +348,7 @@ $keys = array_keys($response);
           <h4 class="modal-title">Call</h4>
         </div>
         <div class="modal-body">
-            <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal" onClick="hangUp()">Hang Up</button>
+            <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal" onClick="hangup()">Hang Up</button>
         </div>
        
       </div>
