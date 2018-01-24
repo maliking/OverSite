@@ -835,7 +835,7 @@ function sendEmail()
         $('#hangUpCall').modal('toggle');
         $('#callTo').text(phone);
         // alert(phone);
-        Twilio.Device.connect(phone);
+        Twilio.Device.connect(params);
       }
 
       function hangup() {
