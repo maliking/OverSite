@@ -225,7 +225,7 @@ $agentResults = $agentStmt->fetchAll();
                     //     end: '21:00', // an end time (6pm in this example)
                     // },
                     editable: true,
-                    defaultView: 'agendaWeek',
+                    defaultView: 'month',
                     duration: {
                         days: 7
                     },

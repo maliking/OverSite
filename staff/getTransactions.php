@@ -61,9 +61,9 @@ foreach($meetingResults as $meeting)
 	$meetingObj = new stdClass();
 	$meetingObj->title = "EMD " . $meeting['firstName'] . " " . $meeting['lastName'] . " " . $meeting['transType'] . " " . $meeting['address'];
 	$meetingObj->allday = True;
-	$meetingObj->color = "#ffff00";
+	$meetingObj->color = "#52BE80  ";
 	$meetingObj->textColor = "#000000";
-	$meetingObj->start = $meeting['start'];
+	$meetingObj->start = date_format($date,"Y-m-d") . "T00:00:00";;
 	$meetingObj->end = date_format($date,"Y-m-d") . "T00:00:00";
 	$meetingObj->id = $meeting['transId'];
 
@@ -74,9 +74,9 @@ foreach($meetingResults as $meeting)
 	$meetingObj = new stdClass();
 	$meetingObj->title = "Seller Disc Days " . $meeting['firstName'] . " " . $meeting['lastName'] . " " . $meeting['transType'] . " " . $meeting['address'];
 	$meetingObj->allday = True;
-	$meetingObj->color = "#ffff00";
+	$meetingObj->color = "#85C1E9  ";
 	$meetingObj->textColor = "#000000";
-	$meetingObj->start = $meeting['start'];
+	$meetingObj->start = date_format($date,"Y-m-d") . "T00:00:00";
 	$meetingObj->end = date_format($date,"Y-m-d") . "T00:00:00";
 	$meetingObj->id = $meeting['transId'];
 
@@ -87,9 +87,9 @@ foreach($meetingResults as $meeting)
 	$meetingObj = new stdClass();
 	$meetingObj->title = "Buyer Disc Days " . $meeting['firstName'] . " " . $meeting['lastName'] . " " . $meeting['transType'] . " " . $meeting['address'];
 	$meetingObj->allday = True;
-	$meetingObj->color = "#ffff00";
+	$meetingObj->color = "#FF6600";
 	$meetingObj->textColor = "#000000";
-	$meetingObj->start = $meeting['start'];
+	$meetingObj->start = date_format($date,"Y-m-d") . "T00:00:00";
 	$meetingObj->end = date_format($date,"Y-m-d") . "T00:00:00";
 	$meetingObj->id = $meeting['transId'];
 
@@ -100,9 +100,9 @@ foreach($meetingResults as $meeting)
 	$meetingObj = new stdClass();
 	$meetingObj->title = "Gen Inspec Days " . $meeting['firstName'] . " " . $meeting['lastName'] . " " . $meeting['transType'] . " " . $meeting['address'];
 	$meetingObj->allday = True;
-	$meetingObj->color = "#ffff00";
+	$meetingObj->color = "#FF4FFF";
 	$meetingObj->textColor = "#000000";
-	$meetingObj->start = $meeting['start'];
+	$meetingObj->start = date_format($date,"Y-m-d") . "T00:00:00";
 	$meetingObj->end = date_format($date,"Y-m-d") . "T00:00:00";
 	$meetingObj->id = $meeting['transId'];
 
@@ -113,9 +113,9 @@ foreach($meetingResults as $meeting)
 	$meetingObj = new stdClass();
 	$meetingObj->title = "Appraisal Days " . $meeting['firstName'] . " " . $meeting['lastName'] . " " . $meeting['transType'] . " " . $meeting['address'];
 	$meetingObj->allday = True;
-	$meetingObj->color = "#ffff00";
+	$meetingObj->color = "#FF530D";
 	$meetingObj->textColor = "#000000";
-	$meetingObj->start = $meeting['start'];
+	$meetingObj->start = date_format($date,"Y-m-d") . "T00:00:00";
 	$meetingObj->end = date_format($date,"Y-m-d") . "T00:00:00";
 	$meetingObj->id = $meeting['transId'];
 
