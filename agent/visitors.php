@@ -5,6 +5,11 @@ if (!isset($_SESSION['userId'])) {
     header("Location: http://www.oversite.cc/login.php");
 }
 require '../databaseConnection.php';
+require '../keys/cred.php';
+require '../twilio-php-master/Twilio/autoload.php';
+
+use Twilio\Jwt\ClientToken;
+
 $dbConn = getConnection();
 $dbConnTwo = getConnection();
 
@@ -28,6 +33,16 @@ $addedHousesStmt->execute($addedHouseParam);
 $addedHouseResults = $addedHousesStmt->fetchAll();
 
 $houses = $addedHousesStmt->rowCount();
+
+//Twilio call functionality
+$accountSid = $sid;
+$authToken  = $token;
+$capability = new ClientToken($accountSid, $authToken);
+$capability->allowClientOutgoing($appSid);
+$capability->allowClientIncoming('joey');
+$token = $capability->generateToken();
+
+//End Twilio Functionality
 
 function updateSort($sort)
 {
@@ -322,6 +337,24 @@ $keys = array_keys($response);
     </div>
   </div>
 
+  <!-- Modal -->
+  <div class="modal fade" id="hangUpCall" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Call</h4>
+        </div>
+        <div class="modal-body">
+            <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal">Hang Up</button>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Main content -->
@@ -410,7 +443,7 @@ $keys = array_keys($response);
                                     echo "<td>";
                                     echo $result['phone'];
                                     echo "<p></p>";
-                                    echo '<p onClick="makeCall()" class="fa fa-phone"></p>';
+                                    echo '<p onClick=makeCall("' . $result['phone'] . '") class="fa fa-phone"></p>';
                                     echo '<span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>';
                                     echo '<p onClick=makeText("' . $result['phone'] . '") class="fa fa-commenting-o"></p>';
                                     echo "</td>";
@@ -551,6 +584,7 @@ $keys = array_keys($response);
 <script type='text/javascript'
         src="https://cdnjs.cloudflare.com/ajax/libs/floatthead/2.0.3/jquery.floatThead.js"></script>
 
+<script type="text/javascript" src="//media.twiliocdn.com/sdk/js/client/v1.3/twilio.min.js"></script>
 
 <script>
     $(document).ready(function () {
@@ -702,11 +736,11 @@ $keys = array_keys($response);
     //         }
     //     }
     
-function makeCall()
-{
-    alert("Call");
+// function makeCall()
+// {
+//     alert("Call");
 
-}
+// }
 
 function makeText(phone)
 {
@@ -768,6 +802,44 @@ function sendEmail()
     });
 </script>
 
+<script type="text/javascript">
+
+      Twilio.Device.setup("<?php echo $token; ?>");
+
+      Twilio.Device.ready(function (device) {
+        // $("#log").text("Ready");
+      });
+
+      Twilio.Device.error(function (error) {
+        // $("#log").text("Error: " + error.message);
+      });
+
+      Twilio.Device.connect(function (conn) {
+        // $("#log").text("Successfully established call");
+      });
+
+      Twilio.Device.disconnect(function (conn) {
+        // $("#log").text("Call ended");
+      });
+
+      Twilio.Device.incoming(function (conn) {
+        // $("#log").text("Incoming connection from " + conn.parameters.From);
+        // accept the incoming connection and start two-way audio
+        conn.accept();
+      });
+
+      function makeCall(phone) {
+        // get the phone number to connect the call to
+        // params = {"PhoneNumber": $("#number").val()};
+        $('#hangUpCall').modal('toggle');
+        Twilio.Device.connect(phone);
+      }
+
+      function hangup() {
+        Twilio.Device.disconnectAll();
+        $('#hangUpCall').modal('toggle');
+      }
+    </script>
 <!-- Modal -->
 
 </body>
