@@ -300,6 +300,28 @@ $keys = array_keys($response);
     </div>
   </div>
 
+  <!-- Modal -->
+  <div class="modal fade" id="sendText" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Send Text</h4>
+          <p id="sendToText"></p>
+        </div>
+        <div class="modal-body">
+          <textarea id="messageText" name="messageText" rows="10" cols="70" style="color:black;" placeholder="Text"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" onClick="sendText()">Send Text</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Main content -->
@@ -390,7 +412,7 @@ $keys = array_keys($response);
                                     echo "<p></p>";
                                     echo '<p onClick="makeCall()" class="fa fa-phone"></p>';
                                     echo '<span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>';
-                                    echo '<p onClick="makeText()" class="fa fa-commenting-o"></p>';
+                                    echo '<p onClick=makeText("' . $result['phone'] . '") class="fa fa-commenting-o"></p>';
                                     echo "</td>";
 
                                     // Email
@@ -686,9 +708,26 @@ function makeCall()
 
 }
 
-function makeText()
+function makeText(phone)
 {
-    alert("Text");
+    // alert("Text");
+    $('#sendToText').text(phone);
+    $('#sendText').modal('toggle');
+}
+function sendText()
+{
+    var number = $('#sendToText').text();
+    var messageText = $('#messageText').val();
+
+    $.post( "sendText.php", { phone: number, text: messageText })
+      .done(function( data ) {
+        alert( "Text Sent" );
+        $('#messageText').val("");
+        $('#sendText').modal('toggle');
+      });
+    // alert(number);
+    // alert(messageText);
+
 }
 
 function makeEmail(email)
