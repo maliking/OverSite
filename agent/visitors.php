@@ -346,6 +346,7 @@ $keys = array_keys($response);
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
           <h4 class="modal-title">Call</h4>
+          <p id="callTo"></p>
         </div>
         <div class="modal-body">
             <button type="button" class="btn btn-danger btn-lg" data-dismiss="modal" onClick="hangup()">Hang Up</button>
@@ -832,6 +833,7 @@ function sendEmail()
         // get the phone number to connect the call to
         // params = {"PhoneNumber": $("#number").val()};
         $('#hangUpCall').modal('toggle');
+        $('#callTo').text(phone);
         // alert(phone);
         Twilio.Device.connect(phone);
       }
