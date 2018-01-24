@@ -831,7 +831,7 @@ function sendEmail()
 
       function makeCall(phone) {
         // get the phone number to connect the call to
-        // params = {"PhoneNumber": $("#number").val()};
+        params = {"PhoneNumber": phone};
         $('#hangUpCall').modal('toggle');
         $('#callTo').text(phone);
         // alert(phone);
