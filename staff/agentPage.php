@@ -236,6 +236,30 @@ $transResults = $transStmt->fetchAll();
 </script>
  
         <script>
+            function saveOrdDate(transId,type,date)
+            {
+                var sendDate = date.value;
+                if(sendDate == "")
+                {
+                    sendDate = "NULL";
+                }
+                $.post( "saveOrdDates.php", { transId: transId, type:type, date:sendDate });
+            }
+            function saveCompDate(transId,type,date)
+            {
+                // alert("saveCompDate");
+                // alert(type);
+                // alert(date.value);
+                // alert(transId);
+                var sendDate = date.value;
+                if(sendDate == "")
+                {
+                    sendDate = "NULL";
+                }
+                $.post( "saveCompDates.php", { transId: transId, type:type, date:sendDate });
+
+                // alert(date);
+            }
              function saveDateCalendar(transId,type,date)
              {
             //     // alert("saveDate");
