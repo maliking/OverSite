@@ -83,6 +83,47 @@ for($i = 0; $i < sizeof($keys); $i++)
             }
 
         </style>
+        <style type "text/css">
+
+
+        /*.blink {
+            -webkit-animation: blink .75s linear infinite;
+            -moz-animation: blink .75s linear infinite;
+            -ms-animation: blink .75s linear infinite;
+            -o-animation: blink .75s linear infinite;
+             animation: blink .75s linear infinite;
+        }
+        @-webkit-keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 1; }
+            50.01% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @-moz-keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 1; }
+            50.01% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @-ms-keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 1; }
+            50.01% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @-o-keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 1; }
+            50.01% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 1; }
+            50.01% { opacity: 0; }
+            100% { opacity: 0; }
+        }*/
+        </style>
         <!-- NOTIFICATION Links-->
         <link href="../plugins/pnotify/dist/pnotify.css" rel="stylesheet">
         <link href="../plugins/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
@@ -412,33 +453,49 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                     <li><a href="#">Ordered: 12/12/12</a></li>
                                                   </ul>
                                                 </div>
-                                                <i class="fa fa-check-circle" style="color:#5cb85c"></i>
+                                                <i class="fa fa-check-circle blink" style="color:#5cb85c"></i>
                                             </td>
                                             <td>
                                                 <div class="btn-group">
                                                   <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                   ' . date('m/d/y', strtotime($day . ' + '. $trans['emdDays'] . ' days' )) . ' <span class="caret"></span>
                                                   </button>
-                                                  <ul class="dropdown-menu">
-                                                    <li><a href="#">Completed: 12/12/12</a></li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li><a href="#">Ordered: 12/12/12</a></li>
-                                                  </ul>
+                                                  <ul class="dropdown-menu">';
+                                                  if($trans['emdComp'] != NULL && $trans['emdComp'] != '0000-00-00')
+                                                  {
+                                                    echo '<li><a href="#">Completed: ' . date('m/d/y', strtotime($trans['emdComp'])) . '</a></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
+                                                  }
+                                                else
+                                                {
+                                                    echo '<li><a href="#">Completed: N/A </a></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
+                                                }
+                                                    // <li><a href="#">Ordered: 12/12/12</a></li>
+                                                  echo '</ul>
                                                 </div>
-                                                  &nbsp  <i class="fa fa-check-circle" style="color:#5cb85c"></i>
+                                                  &nbsp  <i class="fa fa-check-circle blink" style="color:#5cb85c"></i>
                                             </td>
                                             <td>
                                                 <div class="btn-group">
                                                   <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                   ' . date('m/d/y', strtotime($day . ' + '. $trans['sellerDiscDays'] . ' days' )) . ' <span class="caret"></span>
                                                   </button>
-                                                  <ul class="dropdown-menu">
-                                                    <li><a href="#">Completed: 12/12/12</a></li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li><a href="#">Ordered: 12/12/12</a></li>
-                                                  </ul>
+                                                  <ul class="dropdown-menu">';
+                                                  if($trans['sellerDiscComp'] != NULL && $trans['sellerDiscComp'] != '0000-00-00')
+                                                  {
+                                                    echo '<li><a href="#">Completed: ' . date('m/d/y', strtotime($trans['sellerDiscComp'])) . '</a></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
+                                                  }
+                                                else
+                                                {
+                                                    echo '<li><a href="#">Completed: N/A </a></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
+                                                }
+                                                    // <li><a href="#">Ordered: 12/12/12</a></li>
+                                                  echo '</ul>
                                                 </div>
-                                                    &nbsp  <i class="fa fa-flag" style="color:#d9534f"></i>
+                                                    &nbsp  <i class="fa fa-flag blink" style="color:#d9534f"></i>
                                             </td>
         
                                             <td>
@@ -446,52 +503,92 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                   <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                   ' . date('m/d/y', strtotime($day . ' + '. $trans['genInspecDays'] . ' days' )) . ' <span class="caret"></span>
                                                   </button>
-                                                  <ul class="dropdown-menu">
-                                                    <li><a href="#">Completed: 12/12/12</a></li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li><a href="#">Ordered: 12/12/12</a></li>
-                                                  </ul>
+                                                  <ul class="dropdown-menu">';
+                                                  if($trans['genInspecComp'] != NULL && $trans['genInspecComp'] != '0000-00-00')
+                                                  {
+                                                    echo '<li><a href="#">Completed: ' . date('m/d/y', strtotime($trans['genInspecComp'])) . '</a></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
+                                                  }
+                                                else
+                                                {
+                                                    echo '<li><a href="#">Completed: N/A </a></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
+                                                }
+                                                    // <li><a href="#">Ordered: 12/12/12</a></li>
+                                                  echo '</ul>
                                                 </div>
-                                                 &nbsp  <i class="fa fa-warning" style="color:#ffae42"></i>
+                                                 &nbsp  <i class="fa fa-warning blink" style="color:#ffae42"></i>
                                             </td>               
                                             <td>
                                                 <div class="btn-group">
                                                   <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                   ' . date('m/d/y', strtotime($day . ' + '. $trans['appraisalDays'] . ' days' )) . ' <span class="caret"></span>
                                                   </button>
-                                                  <ul class="dropdown-menu">
-                                                    <li><a href="#">Completed: 12/12/12</a></li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li><a href="#">Ordered: 12/12/12</a></li>
-                                                  </ul>
+                                                  <ul class="dropdown-menu">';
+                                                  if($trans['apprComp'] != NULL && $trans['apprComp'] != '0000-00-00')
+                                                  {
+                                                    echo '<li><a href="#">Completed: ' . date('m/d/y', strtotime($trans['apprComp'])) . '</a></li>';
+                                                    echo '<li role="separator" class="divider"></li>';
+                                                  }
+                                                else
+                                                {
+                                                    echo '<li><a href="#">Completed: N/A </a></li>';
+                                                    echo '<li role="separator" class="divider"></li>';
+                                                }
+                                                if($trans['apprOrdered'] != NULL && $trans['apprOrdered'] != '0000-00-00')
+                                                {
+                                                    echo '<li><a href="#">Ordered: ' . date('m/d/y', strtotime($trans['apprOrdered'])) . '</a></li>';
+                                                }
+                                                else
+                                                {
+                                                    echo '<li><a href="#">Ordered: N/A</a></li>';
+                                                }
+                                                    
+                                                  echo '</ul>
                                                 </div>
-                                                &nbsp  <i class="fa fa-warning" style="color:#ffae42"></i>
+                                                &nbsp  <i class="fa fa-warning blink" style="color:#ffae42"></i>
                                             </td>
                                             <td>
                                                 <div class="btn-group">
                                                   <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     ' . date('m/d/y', strtotime($day . ' + '. $trans['lcDays'] . ' days' )) . ' <span class="caret"></span>
                                                   </button>
-                                                  <ul class="dropdown-menu">
-                                                    <li><a href="#">Completed: 12/12/12</a></li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li><a href="#">Ordered: 12/12/12</a></li>
-                                                  </ul>
+                                                  <ul class="dropdown-menu">';
+                                                  if($trans['lcComp'] != NULL && $trans['lcComp'] != '0000-00-00')
+                                                  {
+                                                    echo '<li><a href="#">Completed: ' . date('m/d/y', strtotime($trans['lcComp'])) . '</a></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
+                                                  }
+                                                else
+                                                {
+                                                    echo '<li><a href="#">Completed: N/A </a></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
+                                                }
+                                                    // <li><a href="#">Ordered: 12/12/12</a></li>
+                                                  echo '</ul>
                                                 </div>
-                                                &nbsp  <i class="fa fa-exclamation-circle" style="color:#d3d3d3"></i>
+                                                &nbsp  <i class="fa fa-exclamation-circle blink" style="color:#d3d3d3"></i>
                                             </td>
                                             <td>
                                                 <div class="btn-group">
                                                   <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     ' . date('m/d/y', strtotime($day . ' + '. $trans['coeDays'] . ' days' )) . ' <span class="caret"></span>
                                                   </button>
-                                                  <ul class="dropdown-menu">
-                                                    <li><a href="#">Completed: 12/12/12</a></li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li><a href="#">Ordered: 12/12/12</a></li>
-                                                  </ul>
+                                                  <ul class="dropdown-menu">';
+                                                  if($trans['coeComp'] != NULL && $trans['coeComp'] != '0000-00-00')
+                                                  {
+                                                    echo '<li><a href="#">Completed: ' . date('m/d/y', strtotime($trans['coeComp'])) . '</a></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
+                                                  }
+                                                else
+                                                {
+                                                    echo '<li><a href="#">Completed: N/A </a></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
+                                                }
+                                                    // <li><a href="#">Ordered: 12/12/12</a></li>
+                                                  echo '</ul>
                                                 </div>
-                                                &nbsp  <i class="fa fa-exclamation-circle" style="color:#d3d3d3"></i>
+                                                &nbsp  <i class="fa fa-exclamation-circle blink" style="color:#d3d3d3"></i>
                                             </td>
                                             <td id=' . $trans['transId'] . '> ' . $trans['notes']  . ' </td>
                                            <td> <button onClick=takeTransNote(' .$trans['transId'] . ')>  <i class="fa fa-edit" style="color:#d3d3d3"></i> </button></td>

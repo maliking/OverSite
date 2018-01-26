@@ -236,19 +236,65 @@ $transResults = $transStmt->fetchAll();
 </script>
  
         <script>
+            function saveOrdDate(transId,type,date)
+            {
+                var sendDate = date.value;
+                if(sendDate == "")
+                {
+                    sendDate = "NULL";
+                }
+                $.post( "saveOrdDates.php", { transId: transId, type:type, date:sendDate });
+            }
+            function saveCompDate(transId,type,date)
+            {
+                // alert("saveCompDate");
+                // alert(type);
+                // alert(date.value);
+                // alert(transId);
+                var sendDate = date.value;
+                if(sendDate == "")
+                {
+                    sendDate = "NULL";
+                }
+                $.post( "saveCompDates.php", { transId: transId, type:type, date:sendDate });
+
+                // alert(date);
+            }
+             function saveDateCalendar(transId,type,date)
+             {
+            //     // alert("saveDate");
+            //     // alert(type);
+            //     // alert(date.value);
+            //     // alert(transId);
+                var aprvDay = $("#aprvDay"+transId).val();
+                $.post( "saveNewDates.php", { transId: transId, type:type, date:date.value, aprvDay: aprvDay });
+                  
+            }
             
+            function saveDaysNum(transId,type,date)
+             {
+            //     // alert("saveDate");
+                // alert(type);
+                // alert(date.value);
+                // alert(transId);
+                // var aprvDay = $("#aprvDay"+transId).val();
+                $.post( "saveNewDaysNum.php", { transId: transId, type:type, date:date.value });
+                  
+            }
+
             function saveNewDates(transId)
             {
 
                 $("#editDateModal"+transId).modal("toggle");
                 // alert("saving dates from: " + transId);
-                var aprvDay = $("#aprvDay"+transId).val();
-                var emdDay = $("#emdDay"+transId).val();
-                var sellDay = $("#sellDay"+transId).val();
-                var genDay = $("#genDay"+transId).val();
-                var apprvDay = $("#apprvDay"+transId).val();
-                var lcDay = $("#lcDay"+transId).val();
-                var coeDay = $("#coeDay"+transId).val();
+
+                // var aprvDay = $("#aprvDay"+transId).val();
+                // var emdDay = $("#emdDay"+transId).val();
+                // var sellDay = $("#sellDay"+transId).val();
+                // var genDay = $("#genDay"+transId).val();
+                // var apprvDay = $("#apprvDay"+transId).val();
+                // var lcDay = $("#lcDay"+transId).val();
+                // var coeDay = $("#coeDay"+transId).val();
 
                 // alert(aprvDay);
                 // alert(emdDay);
@@ -257,15 +303,16 @@ $transResults = $transStmt->fetchAll();
                 // alert(apprvDay);
                 // alert(lcDay);
                 // alert(coeDay);
-                $.post( "saveNewDates.php", { transId:transId, aprvDay:aprvDay, emdDay:emdDay , sellDay:sellDay,
-                                              genDay:genDay, apprvDay:apprvDay, lcDay:lcDay, coeDay:coeDay})
-                  .done(function( data ) {
-                    alert( "Dates Saved" );
-                    location.reload();
-                  });
 
+                // $.post( "saveNewDates.php", { transId:transId, aprvDay:aprvDay, emdDay:emdDay , sellDay:sellDay,
+                //                               genDay:genDay, apprvDay:apprvDay, lcDay:lcDay, coeDay:coeDay})
+                //   .done(function( data ) {
+                //     alert( "Dates Saved" );
+                //     location.reload();
+                //   });
 
-                
+                alert( "Dates Saved" );
+                location.reload();
 
 
             }

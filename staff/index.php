@@ -111,9 +111,16 @@ $agentResults = $agentStmt->fetchAll();
                                     <button style="margin-bottom: 10px" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal">Add New Date</button>
                                 </div>
                                 <div class="box-body">
-                                    
-                                    <table class="table table-striped">
-                                    
+
+                                    <div>
+                                        <input type="checkbox" id="selectAll" name="selectAll" value="selectAll">
+                                        <label for="selectAll">Select All</label>
+                                        &nbsp
+                                        <input type="checkbox" id="deselectAll" name="deselectAll" value="deselectAll">
+                                    <label for="deselectAll">Deselect All</label>
+                                    </div>
+                                     
+                            <table class="table table-striped">
 
 <?php
 foreach ($agentResults as $agent) {
@@ -226,7 +233,7 @@ foreach ($agentResults as $agent) {
                     //     end: '21:00', // an end time (6pm in this example)
                     // },
                     editable: true,
-                    defaultView: 'agendaWeek',
+                    defaultView: 'month',
                     duration: {
                         days: 7
                     },
@@ -344,15 +351,48 @@ foreach ($agentResults as $agent) {
 
 
                 });
+                $( "input[name=selectAll]").click(function() 
+                {
+                    if($( "input[name=selectAll]")[0].checked)
+                    {
+                        $('#deselectAll').prop('checked', false);
+                        $.each($("[id=checkboxFilter]"), function()
+                        {            
+                            $(this).prop('checked', true);
+                        });
+                        refreshEvents();
+                    }
+                        // alert("Select All");
+                });
+                $( "input[name=deselectAll]").click(function() 
+                {
+                    if($( "input[name=deselectAll]")[0].checked)
+                    {
+                        $('#selectAll').prop('checked', false);
+                        $.each($("[id=checkboxFilter]"), function()
+                        {            
+                            $(this).prop('checked', false);
+                        });
+                        refreshEvents();
+                    }
+                        // alert("Deselect All");
+                });
 
-                $("input[type=checkbox]").click(function ()
+                $( "input[id=checkboxFilter]").click(function() 
                 {
                     var getFilteredEvents = "";
                     var filterCount = 0;
-                    $.each($("[type=checkbox]:checked"), function ()
-                    {
-                        getFilteredEvents += "userId" + filterCount + "=" + $(this).val() + "&";
-                        filterCount++;
+                    $.each($("[type=checkbox]:checked"), function()
+                    {            
+                        if($(this).attr('name') == "selectAll" || $(this).attr('name') == "deselectAll")
+                        {
+
+                        }
+                        else
+                        {
+                            getFilteredEvents += "userId" + filterCount + "=" + $(this).val() + "&";
+                            filterCount++;
+                        }
                     });
 
                     $('#calendar').fullCalendar('removeEventSource', currentEvents);
@@ -363,10 +403,39 @@ foreach ($agentResults as $agent) {
                     // $('#calendar').fullCalendar('refetchEvents');
 
                     currentEvents = newEvents;
-
+                    
                 });
 
+                function refreshEvents()
+                {
+                    var getFilteredEvents = "";
+                    var filterCount = 0;
+                    $.each($("[type=checkbox]:checked"), function()
+                    {            
+                        if($(this).attr('name') == "selectAll" || $(this).attr('name') == "deselectAll")
+                        {
+
+                        }
+                        else
+                        {
+                            getFilteredEvents += "userId" + filterCount + "=" + $(this).val() + "&";
+                            filterCount++;
+                        }
+                    });
+
+                    $('#calendar').fullCalendar('removeEventSource', currentEvents);
+
+                    var newEvents = "getTransactions.php?" + getFilteredEvents;
+                    // alert(newEvents);
+                    $('#calendar').fullCalendar('addEventSource', newEvents);
+                    // $('#calendar').fullCalendar('refetchEvents');
+
+                    currentEvents = newEvents;
+                }
+
             });
+
+            
             //iCheck for checkbox and radio inputs
             // $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
             //     checkboxClass: 'icheckbox_minimal-blue',

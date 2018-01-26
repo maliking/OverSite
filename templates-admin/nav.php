@@ -18,6 +18,8 @@
             <li class="<?= ($activePage == 'sales-breakdown') ? 'active':''; ?>"><a href="sales-breakdown.php"><i class="fa fa-list-alt"></i> <span> Sales Breakdown</span></a></li>
             <li class="<?= ($activePage == 'monthly-report') ? 'active':''; ?>"><a href="monthly-report.php"><i class="fa fa-line-chart"></i> <span>Monthly Report</span></a></li>
             <li class="<?= ($activePage == 'c_sheet') ? 'active':''; ?>"><a href="c_sheet.php"><i class="fa fa-file-text-o"></i> <span>Commission Sheet</span></a></li>
+            <li class="<?= ($activePage == 'c_sheetFifty') ? 'active':''; ?>"><a href="c_sheetFifty.php"><i class="fa fa-file-text-o"></i> <span>Commission Sheet (50/50)</span></a></li>
+            <li class="<?= ($activePage == 'c_sheetReferral') ? 'active':''; ?>"><a href="c_sheetReferral.php"><i class="fa fa-file-text-o"></i> <span>Commission Sheet (Referral)</span></a></li>
             <li class="header">STATISTICS</li>
             <li class="<?= ($activePage == 'analytics') ? 'active':''; ?>"><a href="analytics.php"><i class="fa fa-line-chart"></i> <span> Analytics</span></a></li>
         </ul>
