@@ -1,15 +1,15 @@
 <?php
 session_start();
- // echo($_SESSION['userType']);
-if (!isset($_SESSION['userId']) ) {
+// echo($_SESSION['userType']);
+if (!isset($_SESSION['userId'])) {
     header("Location: login.php");
 }
 
-if($_SESSION['userType'] == "0"){
+if ($_SESSION['userType'] == "0") {
     header("Location: ../index.php");
 }
 
-if($_SESSION['userType'] == "1"){
+if ($_SESSION['userType'] == "1") {
     header("Location: ../agent/index.php");
 }
 
@@ -22,12 +22,10 @@ $sqlGetAgents = "SELECT userId, firstName, lastName FROM UsersInfo";
 $agentStmt = $dbConn->prepare($sqlGetAgents);
 $agentStmt->execute();
 $agentResults = $agentStmt->fetchAll();
-
-
 ?>
 
-    <!DOCTYPE html>
-    <html>
+<!DOCTYPE html>
+<html>
 
     <head>
         <meta charset="utf-8">
@@ -35,11 +33,11 @@ $agentResults = $agentStmt->fetchAll();
         <title>Re/Max Salinas | Staff Dashboard</title>
 
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
         <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
-        <?php include "templates-staff/default-css.php" ?>
+<?php include "templates-staff/default-css.php" ?>
         <!-- END TEMPLATE default-css.php INCLUDE -->
 
         <!-- PAGE-SPECIFIC CSS -->
@@ -52,19 +50,19 @@ $agentResults = $agentStmt->fetchAll();
     </head>
 
     <body class="hold-transition skin-black sidebar-mini">
-   
+
         <!-- Site Wrapper -->
         <div class="wrapper">
 
             <!-- BEGIN TEMPLATE header.php INCLUDE -->
-            <?php include "templates-staff/header.php" ?>
+<?php include "templates-staff/header.php" ?>
             <!-- END TEMPLATE header.php INCLUDE -->
 
             <!-- BEGIN TEMPLATE nav.php INCLUDE -->
-            <?php include "templates-staff/nav.php" ?>
+<?php include "templates-staff/nav.php" ?>
             <!-- END TEMPLATE nav.php INCLUDE -->
 
-            <?php include "./fullcalendar/links.php" ?>
+<?php include "./fullcalendar/links.php" ?>
 
 
             <!-- Content Wrapper. Contains page content -->
@@ -102,30 +100,33 @@ $agentResults = $agentStmt->fetchAll();
                             <!-- /.box -->
                         </div>
                         <div class="col-xs-3">
-                            
-     <div class="box">
-          <?php include "staffEventModal.php" ?>
-            <div class="box-header">
-                            <h4>Agent Schedules</h4>
-                        </div>
 
-                                <div class="box-body">
-                            <table class="table table-striped">
-
-                                <?php
-
-                                foreach($agentResults as $agent)
-                                {
-                                    echo "<tr>
-                                            <td>";
-                                    echo '<label><input id="checkboxFilter" type="checkbox" class="flat-red" value="' . $agent['userId'] . '" checked> ' .$agent['firstName'] . " " . $agent['lastName'] . '</label>';
-                                    echo "</td>
-                                            </tr>";
-                                }
-                                ?>
+                            <div class="box">
                                 
-                            </table>
-         </div>
+<?php include "staffEventModal.php" ?>
+                                <div class="box-header">
+                                    <h4>Agent Schedules</h4>
+                                </div>
+                                <div class="col-xs-12">
+                                    <button style="margin-bottom: 10px" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal">Add New Date</button>
+                                </div>
+                                <div class="box-body">
+                                    
+                                    <table class="table table-striped">
+                                    
+
+<?php
+foreach ($agentResults as $agent) {
+    echo "<tr>
+                                            <td>";
+    echo '<label><input id="checkboxFilter" type="checkbox" class="flat-red" value="' . $agent['userId'] . '" checked> ' . $agent['firstName'] . " " . $agent['lastName'] . '</label>';
+    echo "</td>
+                                            </tr>";
+}
+?>
+
+                                    </table>
+                                </div>
                             </div>
                         </div>
                         <!-- /.col -->
@@ -138,7 +139,7 @@ $agentResults = $agentStmt->fetchAll();
         <!-- /.wrapper -->
 
         <!-- BEGIN TEMPLATE default-footer.php INCLUDE -->
-        <?php include "templates-staff/default-footer.php" ?>
+<?php include "templates-staff/default-footer.php" ?>
         <!-- END TEMPLATE default-footer.php INCLUDE -->
 
         <!-- BEGIN TEMPLATE default-js.php INCLUDE -->
@@ -163,7 +164,7 @@ $agentResults = $agentStmt->fetchAll();
 
         </script>
         <script>
-            $(document).ready(function() {
+            $(document).ready(function () {
                 $('[data-toggle="popover"]').popover({
                     html: true
                 });
@@ -194,15 +195,15 @@ $agentResults = $agentStmt->fetchAll();
                 alert("meeting deleted");
             }
 
-            $(document).ready(function() {
+            $(document).ready(function () {
                 var currentEvents = "getTransactions.php?all=true";
                 $('#calendar').fullCalendar({
 
                     eventSources: [{
-                        url: currentEvents, // use the `url` property
-                        color: 'yellow', // an option!
-                        textColor: 'black' // an option!
-                    }],
+                            url: currentEvents, // use the `url` property
+                            color: 'yellow', // an option!
+                            textColor: 'black' // an option!
+                        }],
                     header: {
                         left: 'title',
                         center: 'month,agendaWeek,basicDay',
@@ -212,7 +213,7 @@ $agentResults = $agentStmt->fetchAll();
                     customButtons: {
                         myCustomButton: {
                             text: 'custom!',
-                            click: function() {
+                            click: function () {
                                 alert('clicked the custom button!');
                             }
                         }
@@ -240,7 +241,7 @@ $agentResults = $agentStmt->fetchAll();
                     navLinks: true, // can click day/week names to navigate views
                     eventLimit: true, // allow "more" link when too many events
 
-                    select: function(start, end) {
+                    select: function (start, end) {
                         var title = prompt('Event Title:');
                         var eventData;
                         if (title) {
@@ -255,7 +256,7 @@ $agentResults = $agentStmt->fetchAll();
                         }
                         $('#calendar').fullCalendar('unselect');
                     },
-                    eventClick: function(event, element) {
+                    eventClick: function (event, element) {
                         var id = event.id.replace("T", " ");
 
                         var formData = {
@@ -266,7 +267,7 @@ $agentResults = $agentStmt->fetchAll();
                             url: "getMeetingInfo.php",
                             type: "POST",
                             data: formData,
-                            success: function(data, textStatus, jqXHR) {
+                            success: function (data, textStatus, jqXHR) {
                                 var meetingInfo = JSON.parse(data);
                                 $('#titleName').html(meetingInfo['firstName'] + " " + meetingInfo['lastName']);
 
@@ -293,7 +294,7 @@ $agentResults = $agentStmt->fetchAll();
 
                     },
 
-                    eventDrop: function(event, delta, revertFunc, jsEvent, ui, view) {
+                    eventDrop: function (event, delta, revertFunc, jsEvent, ui, view) {
 
                         // alert(event.title + " end is now " + event.start.format().replace("T", " ") + " " + event.id.replace("T", " "));
 
@@ -314,7 +315,7 @@ $agentResults = $agentStmt->fetchAll();
                                 url: "updateMeeting.php",
                                 type: "POST",
                                 data: formData,
-                                success: function(data, textStatus, jqXHR) {
+                                success: function (data, textStatus, jqXHR) {
                                     // alert("finished");
                                 }
                             });
@@ -322,7 +323,7 @@ $agentResults = $agentStmt->fetchAll();
                         }
 
                     },
-                    eventResize: function(event, delta, revertFunc, jsEvent, ui, view) {
+                    eventResize: function (event, delta, revertFunc, jsEvent, ui, view) {
 
                         // alert("ive been resized!!!");
                         var id = event.id.replace("T", " ");
@@ -344,12 +345,12 @@ $agentResults = $agentStmt->fetchAll();
 
                 });
 
-                $( "input[type=checkbox]").click(function() 
+                $("input[type=checkbox]").click(function ()
                 {
                     var getFilteredEvents = "";
                     var filterCount = 0;
-                    $.each($("[type=checkbox]:checked"), function()
-                    {            
+                    $.each($("[type=checkbox]:checked"), function ()
+                    {
                         getFilteredEvents += "userId" + filterCount + "=" + $(this).val() + "&";
                         filterCount++;
                     });
@@ -372,10 +373,10 @@ $agentResults = $agentStmt->fetchAll();
             //     radioClass: 'iradio_minimal-blue'
             // })
 
-            
+
 
         </script>
 
     </body>
 
-    </html>
+</html>

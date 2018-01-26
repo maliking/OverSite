@@ -77,6 +77,10 @@ for($i = 0; $i < sizeof($keys); $i++)
             #modal-table {
                 color: black;
             }
+            
+            .btn-group {
+                display: inline-block!important
+            }
 
         </style>
         <!-- NOTIFICATION Links-->
@@ -227,7 +231,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                             <div class="box">
 
                                                 <div class="box-body no-padding">
-                                                    <table id="modal-table" class="table table-striped">
+                                                    <table id="modal-table" class="table footable table-striped">
                                                         <tr>
                                                             <th>First Name</th>
                                                             <th>Last Name</th>
@@ -341,7 +345,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                     <h4>In-Contract Properties</h4>
                                 </div>
                                 <div class="box-body">
-                                    <table class="table table-bordered table-striped"  >
+                                    <table class="table footable table-bordered table-striped"  >
                                         <thead>
                                         <tr>
                                             <th>Type</th>
@@ -555,7 +559,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                 autoclose: true
             })
             jQuery(function($){
-                $('.table').footable({
+                $('.footable').footable({
                     "paging": {
                         "enabled": true,
                         "size": 4,

@@ -1,24 +1,9 @@
-<!DOCTYPE html>
-<html>
 
-<head>
-    <title> </title> 
     <!-- bootstrap datepicker -->
   <link rel="stylesheet" href="../../plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-</head>
-
-<body>
-    <style>
-        #modal-table {
-            color: black;
-        }
-
-    </style>
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal">
-  <h5>Add New Date</h5>
-</button>
+    
     <!--MODAL AREA!!-->
 
 
@@ -117,6 +102,3 @@
     }
 });
   </script>
-</body>
-
-</html>
