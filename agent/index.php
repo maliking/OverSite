@@ -82,7 +82,7 @@ for($i = 0; $i < sizeof($keys); $i++)
         <style type "text/css">
 
 
-        .blink {
+        /*.blink {
             -webkit-animation: blink .75s linear infinite;
             -moz-animation: blink .75s linear infinite;
             -ms-animation: blink .75s linear infinite;
@@ -118,7 +118,7 @@ for($i = 0; $i < sizeof($keys); $i++)
             50% { opacity: 1; }
             50.01% { opacity: 0; }
             100% { opacity: 0; }
-        }
+        }*/
         </style>
         <!-- NOTIFICATION Links-->
         <link href="../plugins/pnotify/dist/pnotify.css" rel="stylesheet">
