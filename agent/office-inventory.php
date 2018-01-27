@@ -241,6 +241,7 @@ $keys = array_keys($response);
                                     <th data-type="number">Ba</th>
                                     <th>Price</th>
                                     <th data-breakpoints="xs">Images</th>
+                                    <th data-breakpoints="xs">Open House</th>
                                     <th data-breakpoints="xs">Map</th>
 
                                 </tr>
@@ -279,6 +280,9 @@ $keys = array_keys($response);
                                                     <td>'. $bathrooms .'</td>
                                                     <td>'.$response[$keys[$i]]['listingPrice'] .'</td>
                                                     <td ><a href="viewHouseImages.php?id=' . $response[$keys[$i]]['listingID'] . '" target="_blank"><button >View</button></a></td>
+
+                                                    <td><a href=openhouse/create-flyer.php?id=' . $response[$keys[$i]]['listingID'] . ' target=\"_blank\"><button>Open House Sign-In</button></a></td>
+
 
                                                     <td ><a href="https://maps.google.com/?q=' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] . '" target="_blank"><button >View on Map</button></a></td>
                                                     
