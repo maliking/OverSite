@@ -4,86 +4,86 @@ session_start();
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>RE/MAX Salinas | Admin Login</title>
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>RE/MAX Salinas | Admin Login</title>
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
-    <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
-    <?php include "./templates-admin/default-css.php" ?>
-    <!-- END TEMPLATE default-css.php INCLUDE -->
-    <!-- Checkbox -->
-    <link rel="stylesheet" href="plugins/checkbox/style.css">
+        <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
+        <?php include "./templates-admin/default-css.php" ?>
+        <!-- END TEMPLATE default-css.php INCLUDE -->
+        <!-- Checkbox -->
+        <link rel="stylesheet" href="plugins/checkbox/style.css">
 
-    <style>
-        /* Make logo on login page smaller */
-        .img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
-            max-width: 80%;
-            margin-left: auto;
-            margin-right: auto;
-        }
+        <style>
+            /* Make logo on login page smaller */
+            .img-responsive, .thumbnail > img, .thumbnail a > img, .carousel-inner > .item > img, .carousel-inner > .item > a > img {
+                max-width: 80%;
+                margin-left: auto;
+                margin-right: auto;
+            }
 
-        #login-logo {
-            max-width: 200px
-        }
+            #login-logo {
+                max-width: 200px
+            }
 
-        .login-box-body {
-            padding-bottom: 40px;
-            border-radius: 5px;
-        }
+            .login-box-body {
+                padding-bottom: 40px;
+                border-radius: 5px;
+            }
 
-        #code-box {
-            margin-top: 20px;
-        }
-    </style>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
+            #code-box {
+                margin-top: 20px;
+            }
+        </style>
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
 
-<body class="hold-transition login-page">
-    <!-- Modal -->
-    <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
-                    <h3 class="modal-title" id="lineModalLabel">Forgot your password?</h3>
-                </div>
-                <div class="modal-body">
+    <body class="hold-transition login-page">
+        <!-- Modal -->
+        <div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+                        <h3 class="modal-title" id="lineModalLabel">Forgot your password?</h3>
+                    </div>
+                    <div class="modal-body">
 
-                    <!-- content goes here -->
-                    <form>
-                        <div class="input-group">
-                            <input type="text" class="form-control" id="license" name="license" placeholder="CalBRE License">
-                            <div class="input-group-btn">
-                                <button class="btn btn-primary" onclick="submitLicense()" type="submit">
-                                    Submit
-                                </button>
+                        <!-- content goes here -->
+                        <form>
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="license" name="license" placeholder="CalBRE License">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-primary" onclick="submitLicense()" type="submit">
+                                        Submit
+                                    </button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="form-group" id="code-box">
-                            <label for="code">Code:</label>
-                            <input type="text" class="form-control" id="code" name="code" disabled>
-                        </div>
-                        <div class="form-group">
-                            <label for="password">New Password:</label>
-                            <input type="password" class="form-control" id="password" name="password" disabled>
-                        </div>
-                    </form>
+                            <div class="form-group" id="code-box">
+                                <label for="code">Code:</label>
+                                <input type="text" class="form-control" id="code" name="code" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">New Password:</label>
+                                <input type="password" class="form-control" id="password" name="password" disabled>
+                            </div>
+                        </form>
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" role="button" id="resetButton" class="btn btn-danger btn-block" data-dismiss="modal" onclick="resetPassword()" >Reset</button>
-                </div>
-                </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" role="button" id="resetButton" class="btn btn-danger btn-block" data-dismiss="modal" onclick="resetPassword()" >Reset</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 <div class="login-box">
     <div class="login-logo">
         <img src="dist/img/remax-logo.png" id="login-logo" class="img-responsive">
@@ -134,40 +134,39 @@ session_start();
 <script>
 
 
-function submitLicense()
-{
-    var license = $('#license').val();
-    // alert(license);
-    $.post( "resetPassword.php", { license: license, code: " ", password: ""} )
-    .done(function( data ) {
-    alert( "Code has been sent to your phone.");
-    $("#code").prop('disabled', false);
-    $("#password").prop('disabled', false);
-    $("#resetButton").prop('disabled', false);
-  });
+    function submitLicense()
+    {
+        var license = $('#license').val();
+        // alert(license);
+        $.post("resetPassword.php", {license: license, code: " ", password: ""})
+                .done(function (data) {
+                    alert("Code has been sent to your phone.");
+                    $("#code").prop('disabled', false);
+                    $("#password").prop('disabled', false);
+                    $("#resetButton").prop('disabled', false);
+                });
 
 
-}
-function resetPassword()
-{
-    var license = $('#license').val();
-    var code = $('#code').val();
-    var newPassword = $('#password').val();
+    }
+    function resetPassword()
+    {
+        var license = $('#license').val();
+        var code = $('#code').val();
+        var newPassword = $('#password').val();
 
-    $.post( "resetPassword.php", { license: license, code: code, password: newPassword } )
-    .done(function( data ) {
-        var info = JSON.parse(data);
-        // alert(info);
-        if(info == "Error")
-        {
-            alert( "Password could not be reset. Wrong code.");
-        }
-        else
-        {
-            alert( "Password has been reset.");
-        }
-  });
-}
+        $.post("resetPassword.php", {license: license, code: code, password: newPassword})
+                .done(function (data) {
+                    var info = JSON.parse(data);
+                    // alert(info);
+                    if (info == "Error")
+                    {
+                        alert("Password could not be reset. Wrong code.");
+                    } else
+                    {
+                        alert("Password has been reset.");
+                    }
+                });
+    }
 
 </script>
 </body>
