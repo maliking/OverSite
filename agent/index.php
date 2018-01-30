@@ -444,14 +444,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                             <td>Test Email</td>
                                             <td>
                                                 <div class="btn-group">
-                                                  <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    ' . date('m/d/y', strtotime($day)) . ' <span class="caret"></span>
-                                                  </button>
-                                                  <ul class="dropdown-menu">
-                                                    <li><a href="#">Completed: 12/12/12</a></li>
-                                                    <li role="separator" class="divider"></li>
-                                                    <li><a href="#">Ordered: 12/12/12</a></li>
-                                                  </ul>
+                                                    ' . date('m/d/y', strtotime($day)) . ' 
                                                 </div>
                                                 <i class="fa fa-check-circle blink" style="color:#5cb85c"></i>
                                             </td>
@@ -482,6 +475,19 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                   ' . date('m/d/y', strtotime($day . ' + '. $trans['sellerDiscDays'] . ' days' )) . ' <span class="caret"></span>
                                                   </button>
                                                   <ul class="dropdown-menu">';
+
+                                                  
+                                                  if($trans['sellerDiscComp'] != NULL && $trans['sellerDiscComp'] != '0000-00-00')
+                                                  {
+                                                    echo '<li><a href="#">Completed: ' . date('m/d/y', strtotime($trans['sellerDiscRec'])) . '</a></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
+                                                  }
+                                                else
+                                                {
+                                                    echo '<li><a href="#">Date Recieved: N/A</a></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
+                                                }
+                                                  echo '<li role="separator" class="divider"></li>';
                                                   if($trans['sellerDiscComp'] != NULL && $trans['sellerDiscComp'] != '0000-00-00')
                                                   {
                                                     echo '<li><a href="#">Completed: ' . date('m/d/y', strtotime($trans['sellerDiscComp'])) . '</a></li>';
@@ -525,24 +531,29 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                   ' . date('m/d/y', strtotime($day . ' + '. $trans['appraisalDays'] . ' days' )) . ' <span class="caret"></span>
                                                   </button>
                                                   <ul class="dropdown-menu">';
+
+                                                  if($trans['apprOrdered'] != NULL && $trans['apprOrdered'] != '0000-00-00')
+                                                    {
+                                                        echo '<li><a href="#">Ordered: ' . date('m/d/y', strtotime($trans['apprOrdered'])) . '</a></li>';
+                                                    }
+                                                    else
+                                                    {
+                                                        echo '<li><a href="#">Ordered: N/A</a></li>';
+                                                    }
+                                                    
+                                                echo '<li role="separator" class="divider"></li>';
+
                                                   if($trans['apprComp'] != NULL && $trans['apprComp'] != '0000-00-00')
                                                   {
                                                     echo '<li><a href="#">Completed: ' . date('m/d/y', strtotime($trans['apprComp'])) . '</a></li>';
-                                                    echo '<li role="separator" class="divider"></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
                                                   }
                                                 else
                                                 {
                                                     echo '<li><a href="#">Completed: N/A </a></li>';
-                                                    echo '<li role="separator" class="divider"></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
                                                 }
-                                                if($trans['apprOrdered'] != NULL && $trans['apprOrdered'] != '0000-00-00')
-                                                {
-                                                    echo '<li><a href="#">Ordered: ' . date('m/d/y', strtotime($trans['apprOrdered'])) . '</a></li>';
-                                                }
-                                                else
-                                                {
-                                                    echo '<li><a href="#">Ordered: N/A</a></li>';
-                                                }
+                                                
                                                     
                                                   echo '</ul>
                                                 </div>
@@ -575,6 +586,19 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                     ' . date('m/d/y', strtotime($day . ' + '. $trans['coeDays'] . ' days' )) . ' <span class="caret"></span>
                                                   </button>
                                                   <ul class="dropdown-menu">';
+
+                                                  if($trans['coeComp'] != NULL && $trans['coeComp'] != '0000-00-00')
+                                                  {
+                                                    echo '<li><a href="#">Original Due Date: ' . date('m/d/y', strtotime($trans['coeOrgDate'])) . '</a></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
+                                                  }
+                                                else
+                                                {
+                                                    echo '<li><a href="#">Original Due Date: N/A </a></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
+                                                }
+
+                                                  echo '<li role="separator" class="divider"></li>';
                                                   if($trans['coeComp'] != NULL && $trans['coeComp'] != '0000-00-00')
                                                   {
                                                     echo '<li><a href="#">Completed: ' . date('m/d/y', strtotime($trans['coeComp'])) . '</a></li>';
