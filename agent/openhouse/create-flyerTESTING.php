@@ -60,7 +60,7 @@ $keys = array_keys($response);
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Re/Max Salinas | Home</title>
+    <title>RE/MAX Salinas | Home</title>
     <script type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 

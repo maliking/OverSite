@@ -85,7 +85,7 @@ $pdf->SetFont('Times', 'B');
 $pdf->SetFontSize(12);
 
 $pdf->SetLineWidth(.3);
-$pdf->Cell(96, 10, 'Re/MAX Property Experts Commission Breakdown', 1, 0);
+$pdf->Cell(96, 10, 'RE/MAX Property Experts Commission Breakdown', 1, 0);
 $pdf->Cell(10, 10, '', 0, 0);
 $pdf->Cell(0, 10, '                       Check # ' . $_POST['checkNum'], 'B', 1);
 

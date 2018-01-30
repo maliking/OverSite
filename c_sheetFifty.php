@@ -23,7 +23,7 @@ $houses = $stmtHouse->fetchAll();
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Re/Max Salinas | Commission Sheet</title>
+    <title>RE/MAX Salinas | Commission Sheet</title>
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
     <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
@@ -322,7 +322,7 @@ $houses = $stmtHouse->fetchAll();
                                                             <div class="clearfix"></div>
 
                                                             <div class="form-group col-xs-12">
-                                                                <label class="col-xs-9 control-label" for="pwd">Re/Max
+                                                                <label class="col-xs-9 control-label" for="pwd">RE/MAX
                                                                     Fee</label>
                                                                 <div class="col-xs-3">
                                                                     <input type="text" class="form-control"

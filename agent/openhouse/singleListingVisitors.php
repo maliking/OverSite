@@ -20,7 +20,7 @@ if (isset ($_GET['deleteForm'])) {  //checking whether we have clicked on the "D
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Re/Max Salinas | Visitors</title>
+    <title>RE/MAX Salinas | Visitors</title>
 
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- BEGIN TEMPLATE default-css.php INCLUDE -->

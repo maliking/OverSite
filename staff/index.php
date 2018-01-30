@@ -30,14 +30,14 @@ $agentResults = $agentStmt->fetchAll();
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Re/Max Salinas | Staff Dashboard</title>
+        <title>RE/MAX Salinas | Staff Dashboard</title>
 
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
         <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
-<?php include "templates-staff/default-css.php" ?>
+        <?php include "templates-staff/default-css.php" ?>
         <!-- END TEMPLATE default-css.php INCLUDE -->
 
         <!-- PAGE-SPECIFIC CSS -->
@@ -55,15 +55,14 @@ $agentResults = $agentStmt->fetchAll();
         <div class="wrapper">
 
             <!-- BEGIN TEMPLATE header.php INCLUDE -->
-<?php include "templates-staff/header.php" ?>
+            <?php include "templates-staff/header.php" ?>
             <!-- END TEMPLATE header.php INCLUDE -->
 
             <!-- BEGIN TEMPLATE nav.php INCLUDE -->
-<?php include "templates-staff/nav.php" ?>
+            <?php include "templates-staff/nav.php" ?>
             <!-- END TEMPLATE nav.php INCLUDE -->
 
-<?php include "./fullcalendar/links.php" ?>
-
+            <?php include "./fullcalendar/links.php" ?>
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
@@ -103,7 +102,7 @@ $agentResults = $agentStmt->fetchAll();
 
                             <div class="box">
                                 
-<?php include "staffEventModal.php" ?>
+                                <?php include "staffEventModal.php" ?>
                                 <div class="box-header">
                                     <h4>Agent Schedules</h4>
                                 </div>

@@ -43,7 +43,7 @@ $_SESSION['flyer'] = $result['flyer'];
    Remove this if you use the .htaccess -->
 
 
-    <title>Re/Max Salinas | Sign In Form</title>
+    <title>RE/MAX Salinas | Sign In Form</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
