@@ -5,5 +5,5 @@
         Powered by <a href="#">OverSite</a>
     </div>
     <!-- Default to the left -->
-    <strong>&copy; 2017 | <a href="#">RE/MAX Salinas</a>.</strong> All rights reserved.
+    <strong>&copy; <?php echo date("Y"); ?> | <a href="#">RE/MAX Salinas</a>.</strong> All rights reserved.
 </footer>
