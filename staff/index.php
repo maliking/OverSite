@@ -36,13 +36,14 @@ $agentResults = $agentStmt->fetchAll();
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
+
         <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
         <?php include "templates-staff/default-css.php" ?>
         <!-- END TEMPLATE default-css.php INCLUDE -->
 
         <!-- PAGE-SPECIFIC CSS -->
         <link rel="stylesheet" href="../dist/css/vendor/footable.bootstrap.min.css">
-        <!-- PAGE-SPECIFIC CSS -->
+        <link rel="stylesheet" href="../../plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
         <link rel="stylesheet" href="../dist/css/vendor/fullcalendar.min.css">
 
         <!-- iCheck for checkboxes and radio inputs -->
@@ -101,8 +102,8 @@ $agentResults = $agentStmt->fetchAll();
                         <div class="col-xs-3">
 
                             <div class="box">
+
                                 
-                                <?php include "staffEventModal.php" ?>
                                 <div class="box-header">
                                     <h4>Agent Schedules</h4>
                                 </div>
@@ -116,20 +117,20 @@ $agentResults = $agentStmt->fetchAll();
                                         <label for="selectAll">Select All</label>
                                         &nbsp
                                         <input type="checkbox" id="deselectAll" name="deselectAll" value="deselectAll">
-                                    <label for="deselectAll">Deselect All</label>
+                                        <label for="deselectAll">Deselect All</label>
                                     </div>
-                                     
-                            <table class="table table-striped">
 
-<?php
-foreach ($agentResults as $agent) {
-    echo "<tr>
+                                    <table class="table table-striped">
+
+                                        <?php
+                                        foreach ($agentResults as $agent) {
+                                            echo "<tr>
                                             <td>";
-    echo '<label><input id="checkboxFilter" type="checkbox" class="flat-red" value="' . $agent['userId'] . '" checked> ' . $agent['firstName'] . " " . $agent['lastName'] . '</label>';
-    echo "</td>
+                                            echo '<label><input id="checkboxFilter" type="checkbox" class="flat-red" value="' . $agent['userId'] . '" checked> ' . $agent['firstName'] . " " . $agent['lastName'] . '</label>';
+                                            echo "</td>
                                             </tr>";
-}
-?>
+                                        }
+                                        ?>
 
                                     </table>
                                 </div>
@@ -143,9 +144,11 @@ foreach ($agentResults as $agent) {
             <!-- /.content-wrapper -->
         </div>
         <!-- /.wrapper -->
+        
+        <?php include "staffEventModal.php" ?>
 
         <!-- BEGIN TEMPLATE default-footer.php INCLUDE -->
-<?php include "templates-staff/default-footer.php" ?>
+        <?php include "templates-staff/default-footer.php" ?>
         <!-- END TEMPLATE default-footer.php INCLUDE -->
 
         <!-- BEGIN TEMPLATE default-js.php INCLUDE -->
@@ -350,44 +353,43 @@ foreach ($agentResults as $agent) {
 
 
                 });
-                $( "input[name=selectAll]").click(function() 
+                $("input[name=selectAll]").click(function ()
                 {
-                    if($( "input[name=selectAll]")[0].checked)
+                    if ($("input[name=selectAll]")[0].checked)
                     {
                         $('#deselectAll').prop('checked', false);
-                        $.each($("[id=checkboxFilter]"), function()
-                        {            
+                        $.each($("[id=checkboxFilter]"), function ()
+                        {
                             $(this).prop('checked', true);
                         });
                         refreshEvents();
                     }
-                        // alert("Select All");
+                    // alert("Select All");
                 });
-                $( "input[name=deselectAll]").click(function() 
+                $("input[name=deselectAll]").click(function ()
                 {
-                    if($( "input[name=deselectAll]")[0].checked)
+                    if ($("input[name=deselectAll]")[0].checked)
                     {
                         $('#selectAll').prop('checked', false);
-                        $.each($("[id=checkboxFilter]"), function()
-                        {            
+                        $.each($("[id=checkboxFilter]"), function ()
+                        {
                             $(this).prop('checked', false);
                         });
                         refreshEvents();
                     }
-                        // alert("Deselect All");
+                    // alert("Deselect All");
                 });
 
-                $( "input[id=checkboxFilter]").click(function() 
+                $("input[id=checkboxFilter]").click(function ()
                 {
                     var getFilteredEvents = "";
                     var filterCount = 0;
-                    $.each($("[type=checkbox]:checked"), function()
-                    {            
-                        if($(this).attr('name') == "selectAll" || $(this).attr('name') == "deselectAll")
+                    $.each($("[type=checkbox]:checked"), function ()
+                    {
+                        if ($(this).attr('name') == "selectAll" || $(this).attr('name') == "deselectAll")
                         {
 
-                        }
-                        else
+                        } else
                         {
                             getFilteredEvents += "userId" + filterCount + "=" + $(this).val() + "&";
                             filterCount++;
@@ -402,20 +404,19 @@ foreach ($agentResults as $agent) {
                     // $('#calendar').fullCalendar('refetchEvents');
 
                     currentEvents = newEvents;
-                    
+
                 });
 
                 function refreshEvents()
                 {
                     var getFilteredEvents = "";
                     var filterCount = 0;
-                    $.each($("[type=checkbox]:checked"), function()
-                    {            
-                        if($(this).attr('name') == "selectAll" || $(this).attr('name') == "deselectAll")
+                    $.each($("[type=checkbox]:checked"), function ()
+                    {
+                        if ($(this).attr('name') == "selectAll" || $(this).attr('name') == "deselectAll")
                         {
 
-                        }
-                        else
+                        } else
                         {
                             getFilteredEvents += "userId" + filterCount + "=" + $(this).val() + "&";
                             filterCount++;
@@ -434,7 +435,7 @@ foreach ($agentResults as $agent) {
 
             });
 
-            
+
             //iCheck for checkbox and radio inputs
             // $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
             //     checkboxClass: 'icheckbox_minimal-blue',
@@ -443,6 +444,23 @@ foreach ($agentResults as $agent) {
 
 
 
+        </script>
+        <script src="../../plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+        <script>
+            
+            //Date picker
+            $('#datepicker').datepicker({
+                autoclose: true
+            })
+            $('#iconified').on('keyup', function () {
+                var input = $(this);
+                if (input.val().length === 0) {
+                    input.addClass('empty');
+                } else {
+                    input.removeClass('empty');
+                }
+            });
         </script>
 
     </body>
