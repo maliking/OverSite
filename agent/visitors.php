@@ -390,6 +390,7 @@ $keys = array_keys($response);
                                     <th data-breakpoints="xs sm">Bedrooms</th>
                                     <th data-breakpoints="xs sm">Bathrooms</th>
                                     <th data-breakpoints="xs sm">Notes</th>
+                                    <th data-breakpoints="xs sm">Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -490,6 +491,10 @@ $keys = array_keys($response);
                                     echo $result['note'];
                                     echo "</td>";
 
+                                    // Delete Button
+                                    echo "<td>";
+                                    echo "<button>Delete</button>";
+                                    echo "</td>";
                                     echo "</tr>";
                                 }
                                 ?>

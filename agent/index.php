@@ -702,6 +702,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                 $('#notes').html(newNote);
                 // $('#modal-primary').modal('toggle');
                 // alert();
+                alert("Note Saved");
             }
 
             function deleteMeeting()
@@ -801,7 +802,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                 $('#purchaseWithin').html(meetingInfo['howSoon']);
                                 $('#notes').html(meetingInfo['note']);
                                 $('#id').html(meetingInfo['meeting']);
-                                $('#textArea').append(meetingInfo['note']);
+                                $('#textArea').val(meetingInfo['note']);
 
                                 $('#meetingTime').html(meetingInfo['meetingFormat'].substring(10,16));
                                 $('#meetingDay').html(meetingInfo['meetingFormat'].substring(0,10));
@@ -878,7 +879,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                     transId: transId,
                     note: noteEntered
                 });
-                alert("Note Saved");
+                
             }
 
         }
