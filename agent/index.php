@@ -1,6 +1,7 @@
 <?php
 session_start();
 clearstatcache();
+date_default_timezone_set('America/Los_Angeles');
 if (!isset($_SESSION['userId'])) {
     header("Location: http://jjp2017.org/login.php");
 }
