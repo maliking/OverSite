@@ -86,7 +86,7 @@ for($i = 0; $i < sizeof($keys); $i++)
         <style type "text/css">
 
 
-        /*.blink {
+        .blink {
             -webkit-animation: blink .75s linear infinite;
             -moz-animation: blink .75s linear infinite;
             -ms-animation: blink .75s linear infinite;
@@ -122,7 +122,7 @@ for($i = 0; $i < sizeof($keys); $i++)
             50% { opacity: 1; }
             50.01% { opacity: 0; }
             100% { opacity: 0; }
-        }*/
+        }
         </style>
         <!-- NOTIFICATION Links-->
         <link href="../plugins/pnotify/dist/pnotify.css" rel="stylesheet">
@@ -446,7 +446,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                 <div class="btn-group">
                                                     ' . date('m/d/y', strtotime($day)) . ' 
                                                 </div>
-                                                <i class="fa fa-check-circle blink" style="color:#5cb85c"></i>
+                                                <i class="fa fa-check-circle" style="color:#5cb85c"></i>
                                             </td>
                                             <td>
                                                 <div class="btn-group">
@@ -466,9 +466,30 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                 }
                                                     // <li><a href="#">Ordered: 12/12/12</a></li>
                                                   echo '</ul>
-                                                </div>
-                                                  &nbsp  <i class="fa fa-check-circle blink" style="color:#5cb85c"></i>
-                                            </td>
+                                                </div>';
+                                                  echo '&nbsp';
+                                                  $today = new DateTime('today');
+                                                  $emdOnTime = new DateTime($trans['accDay']);
+                                                  $emdOnTime = $emdOnTime->add(new DateInterval('P'.$trans['emdDays'] .'D'));
+
+                                                  $emdReduced = new DateTime($trans['accDay']);
+                                                  $emdReduced = $emdReduced->add(new DateInterval('P'.$trans['emdDays'] .'D'));
+                                                  $emdReduced = $emdReduced->modify('-3 days');
+
+                                                  // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
+                                                  if($trans['emdComp'] != NULL && $trans['emdComp'] != '0000-00-00')
+                                                  {
+                                                    echo '<i class="fa fa-check-circle" style="color:#5cb85c"></i>';
+                                                  }
+                                                    else if($today >= $emdReduced && $today < $emdOnTime)
+                                                    {
+                                                        echo '<i class="fa fa-warning" style="color:#ffae42"></i>';
+                                                    }
+                                                    else if($today >= $emdOnTime)
+                                                    {
+                                                        echo '<i class="fa fa-flag blink" style="color:#d9534f"></i>';
+                                                    }
+                                            echo '</td>
                                             <td>
                                                 <div class="btn-group">
                                                   <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -500,9 +521,30 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                 }
                                                     // <li><a href="#">Ordered: 12/12/12</a></li>
                                                   echo '</ul>
-                                                </div>
-                                                    &nbsp  <i class="fa fa-flag blink" style="color:#d9534f"></i>
-                                            </td>
+                                                </div>';
+                                                  echo '&nbsp';
+                                                  // $today = new DateTime('today');
+                                                  $sellerOnTime = new DateTime($trans['accDay']);
+                                                  $sellerOnTime = $sellerOnTime->add(new DateInterval('P'.$trans['sellerDiscDays'] .'D'));
+
+                                                  $sellerReduced = new DateTime($trans['accDay']);
+                                                  $sellerReduced = $sellerReduced->add(new DateInterval('P'.$trans['sellerDiscDays'] .'D'));
+                                                  $sellerReduced = $sellerReduced->modify('-3 days');
+
+                                                  // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
+                                                  if($trans['sellerDiscComp'] != NULL && $trans['sellerDiscComp'] != '0000-00-00')
+                                                  {
+                                                    echo '<i class="fa fa-check-circle" style="color:#5cb85c"></i>';
+                                                  }
+                                                    else if($today >= $sellerReduced && $today < $sellerOnTime)
+                                                    {
+                                                        echo '<i class="fa fa-warning" style="color:#ffae42"></i>';
+                                                    }
+                                                    else if($today >= $sellerOnTime)
+                                                    {
+                                                        echo '<i class="fa fa-flag blink" style="color:#d9534f"></i>';
+                                                    }
+                                            echo '</td>
         
                                             <td>
                                                 <div class="btn-group">
@@ -522,9 +564,30 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                 }
                                                     // <li><a href="#">Ordered: 12/12/12</a></li>
                                                   echo '</ul>
-                                                </div>
-                                                 &nbsp  <i class="fa fa-warning blink" style="color:#ffae42"></i>
-                                            </td>               
+                                                </div>';
+                                                  echo '&nbsp';
+                                                  // $today = new DateTime('today');
+                                                  $genOnTime = new DateTime($trans['accDay']);
+                                                  $genOnTime = $genOnTime->add(new DateInterval('P'.$trans['genInspecDays'] .'D'));
+
+                                                  $genReduced = new DateTime($trans['accDay']);
+                                                  $genReduced = $genReduced->add(new DateInterval('P'.$trans['genInspecDays'] .'D'));
+                                                  $genReduced = $genReduced->modify('-3 days');
+
+                                                  // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
+                                                  if($trans['genInspecComp'] != NULL && $trans['genInspecComp'] != '0000-00-00')
+                                                  {
+                                                    echo '<i class="fa fa-check-circle" style="color:#5cb85c"></i>';
+                                                  }
+                                                    else if($today >= $genReduced && $today < $genOnTime)
+                                                    {
+                                                        echo '<i class="fa fa-warning" style="color:#ffae42"></i>';
+                                                    }
+                                                    else if($today >= $genOnTime)
+                                                    {
+                                                        echo '<i class="fa fa-flag blink" style="color:#d9534f"></i>';
+                                                    }
+                                            echo '</td>               
                                             <td>
                                                 <div class="btn-group">
                                                   <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -556,9 +619,30 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                 
                                                     
                                                   echo '</ul>
-                                                </div>
-                                                &nbsp  <i class="fa fa-warning blink" style="color:#ffae42"></i>
-                                            </td>
+                                                </div>';
+                                                  echo '&nbsp';
+                                                  // $today = new DateTime('today');
+                                                  $apprOnTime = new DateTime($trans['accDay']);
+                                                  $apprOnTime = $apprOnTime->add(new DateInterval('P'.$trans['appraisalDays'] .'D'));
+
+                                                  $apprReduced = new DateTime($trans['accDay']);
+                                                  $apprReduced = $apprReduced->add(new DateInterval('P'.$trans['appraisalDays'] .'D'));
+                                                  $apprReduced = $apprReduced->modify('-3 days');
+
+                                                  // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
+                                                  if($trans['apprComp'] != NULL && $trans['apprComp'] != '0000-00-00')
+                                                  {
+                                                    echo '<i class="fa fa-check-circle" style="color:#5cb85c"></i>';
+                                                  }
+                                                    else if($today >= $apprReduced && $today < $apprOnTime)
+                                                    {
+                                                        echo '<i class="fa fa-warning" style="color:#ffae42"></i>';
+                                                    }
+                                                    else if($today >= $apprOnTime)
+                                                    {
+                                                        echo '<i class="fa fa-flag blink" style="color:#d9534f"></i>';
+                                                    }
+                                            echo '</td>
                                             <td>
                                                 <div class="btn-group">
                                                   <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -577,9 +661,30 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                 }
                                                     // <li><a href="#">Ordered: 12/12/12</a></li>
                                                   echo '</ul>
-                                                </div>
-                                                &nbsp  <i class="fa fa-exclamation-circle blink" style="color:#d3d3d3"></i>
-                                            </td>
+                                                </div>';
+                                                  echo '&nbsp';
+                                                  // $today = new DateTime('today');
+                                                  $lcOnTime = new DateTime($trans['accDay']);
+                                                  $lcOnTime = $lcOnTime->add(new DateInterval('P'.$trans['lcDays'] .'D'));
+
+                                                  $lcReduced = new DateTime($trans['accDay']);
+                                                  $lcReduced = $lcReduced->add(new DateInterval('P'.$trans['lcDays'] .'D'));
+                                                  $lcReduced = $lcReduced->modify('-3 days');
+
+                                                  // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
+                                                  if($trans['lcComp'] != NULL && $trans['lcComp'] != '0000-00-00')
+                                                  {
+                                                    echo '<i class="fa fa-check-circle" style="color:#5cb85c"></i>';
+                                                  }
+                                                    else if($today >= $lcReduced && $today < $lcOnTime)
+                                                    {
+                                                        echo '<i class="fa fa-warning" style="color:#ffae42"></i>';
+                                                    }
+                                                    else if($today >= $lcOnTime)
+                                                    {
+                                                        echo '<i class="fa fa-flag blink" style="color:#d9534f"></i>';
+                                                    }
+                                            echo '</td>
                                             <td>
                                                 <div class="btn-group">
                                                   <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -611,9 +716,30 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                 }
                                                     // <li><a href="#">Ordered: 12/12/12</a></li>
                                                   echo '</ul>
-                                                </div>
-                                                &nbsp  <i class="fa fa-exclamation-circle blink" style="color:#d3d3d3"></i>
-                                            </td>
+                                                </div>';
+                                                  echo '&nbsp';
+                                                  // $today = new DateTime('today');
+                                                  $coeOnTime = new DateTime($trans['accDay']);
+                                                  $coeOnTime = $coeOnTime->add(new DateInterval('P'.$trans['coeDays'] .'D'));
+
+                                                  $coeReduced = new DateTime($trans['accDay']);
+                                                  $coeReduced = $coeReduced->add(new DateInterval('P'.$trans['coeDays'] .'D'));
+                                                  $coeReduced = $coeReduced->modify('-3 days');
+
+                                                  // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
+                                                  if($trans['coeComp'] != NULL && $trans['coeComp'] != '0000-00-00')
+                                                  {
+                                                    echo '<i class="fa fa-check-circle" style="color:#5cb85c"></i>';
+                                                  }
+                                                    else if($today >= $coeReduced && $today < $coeOnTime)
+                                                    {
+                                                        echo '<i class="fa fa-warning" style="color:#ffae42"></i>';
+                                                    }
+                                                    else if($today >= $coeOnTime)
+                                                    {
+                                                        echo '<i class="fa fa-flag blink" style="color:#d9534f"></i>';
+                                                    }
+                                            echo '</td>
                                             <td id=' . $trans['transId'] . '> ' . $trans['notes']  . ' </td>
                                            <td> <button onClick=takeTransNote(' .$trans['transId'] . ')>  <i class="fa fa-edit" style="color:#d3d3d3"></i> </button></td>
                                         </tr>';
