@@ -161,7 +161,7 @@ if (!isset($_SESSION['userId'])) {
                                                 <div class="col-md-12">
                                                     <div class="panel panel-primary">
                                                         <div class="panel-heading">
-                                                            <h3 class="panel-title"><strong>Input Images </strong></h3>
+                                                            <h3 class="panel-title"><strong>Upload Flyer (PDF)</strong></h3>
                                                         </div>
                                                         <div class="panel-body">
                                                             <div class="form-group col-xs-12">
