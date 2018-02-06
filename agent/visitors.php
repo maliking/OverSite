@@ -473,7 +473,7 @@ $keys = array_keys($response);
 
                                     // Price
                                     echo "<td>";
-                                    echo $result['priceMax'];
+                                    echo "$" . number_format($result['priceMax'], 0);
                                     echo "</td>";
 
                                     // Bedroom
