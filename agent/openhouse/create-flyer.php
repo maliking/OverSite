@@ -134,6 +134,15 @@ else
         .theIMG {
             -webkit-transform: scale(0.5);
         }
+        .buttonPrevious{
+            font-size: 20px;
+        }
+        .buttonNext{
+            font-size: 20px;
+        }
+        .buttonFinish{
+            font-size: 20px;
+        }
 
     </style>
 
@@ -428,7 +437,7 @@ else
                                     <label>
                                         <input type="checkbox" class="js-switch" name="lotSize" id="lotSize"
                                                value=<?php echo $acres; ?>/>
-                                        <?php echo $acres; ?>sqFt Lot Size
+                                        <?php echo "<font size=4>" . $acres . " sqFt Lot Size</font>"; ?> 
                                     </label>
                                     </br>
                                     </br>
