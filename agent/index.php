@@ -853,7 +853,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                     }],
                     header: {
                         left: 'title',
-                        center: 'month,agendaWeek,basicDay',
+                        center: 'month,agendaWeek,agendaDay',
                         right: 'today prev,next'
                     },
                     firstDay: 6,
