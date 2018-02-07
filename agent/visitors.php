@@ -415,7 +415,7 @@ $keys = array_keys($response);
                                 foreach($results as $result) {
 //                                    $dbNote = $result['note'];
 
-                                    echo "<tr>";
+                                    echo "<tr id=visitor" . $result['buyerID']." >";
 
                                     // Type - Open House Visitor (OHV) or Lead
                                     echo "<td>";
@@ -493,7 +493,7 @@ $keys = array_keys($response);
 
                                     // Delete Button
                                     echo "<td>";
-                                    echo "<button>Delete</button>";
+                                    echo "<button onClick=deleteVisitor(\"" . $result['buyerID'] . "\")>Delete</button>";
                                     echo "</td>";
                                     echo "</tr>";
                                 }
@@ -790,6 +790,17 @@ function sendEmail()
       });
     // alert(email);
     // alert(emailText);
+}
+
+function deleteVisitor(visitorId)
+{
+    
+    $.post( "deleteBuyer.php", { buyerID: visitorId })
+      .done(function( data ) {
+        alert("Visitor Deleted");
+        $('#visitor' + visitorId).remove();
+      });
+    
 }
 </script>
 
