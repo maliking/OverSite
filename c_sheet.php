@@ -72,6 +72,18 @@ $houses = $stmtHouse->fetchAll();
                         document.getElementById("beg-comm").value = data.TYGross;
                         TYGross = "";
                     }
+
+                    $("#houseId > option").each(function() {
+                            $(this).show();
+                    });
+
+                    var agentSelectedId = $('#agentName').children(":selected").attr("id");
+                    $("#houseId > option").each(function() {
+                        if($(this).attr("id") != agentSelectedId)
+                        {
+                            $(this).hide();
+                        }
+                    });
                 }
             };
             xhttp.open("GET", "agentCommission.php?license=" + x, true);
@@ -136,12 +148,13 @@ $houses = $stmtHouse->fetchAll();
                                                                 <label for="agentName">Agent Name</label>
                                                                 <select class="form-control" id="agentName"
                                                                         onchange="getLicense()" name="agentName">
+                                                                        <option value=''>Select Agent</option>
                                                                     <?php
                                                                     $license = "";
                                                                     foreach ($results as $result) {
                                                                         if ($result['userType'] == 0 || $result['license'] == $_SESSION['license']) {
                                                                         } else
-                                                                            echo "<option value='" . $result['license'] . "'>" . $result['firstName'] . " " . $result['lastName'] . "</option>";
+                                                                            echo "<option id=agent" . $result['userId'] . " value='" . $result['license'] . "'>" . $result['firstName'] . " " . $result['lastName'] . "</option>";
                                                                     }
                                                                     ?>
                                                                 </select>
@@ -165,11 +178,11 @@ $houses = $stmtHouse->fetchAll();
                                                                 <label for="houseId">Property Address</label>
                                                                 <select class="form-control" id="houseId"
                                                                         onchange="getOwners()" name="propertyAddress">
-
+                                                                        <option value=''>Select House</option>
                                                                     <?php
 
                                                                     foreach ($houses as $house) {
-                                                                        echo "<option value='" . $house['houseId'] . "'>" . $house['address'] . " " . $house['city'] . " " . $house['state'] . " " . $house['zip'] . "</option>";
+                                                                        echo "<option id=agent" . $house['userId'] . " value='" . $house['houseId'] . "'>" . $house['address'] . " " . $house['city'] . " " . $house['state'] . " " . $house['zip'] . "</option>";
                                                                     }
                                                                     ?>
                                                                 </select>
