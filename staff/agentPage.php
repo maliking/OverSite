@@ -136,6 +136,7 @@ $transResults = $transStmt->fetchAll();
                                 </thead>
                                 <tbody>
                                 
+                                   
 
                                     <?php
 
@@ -143,7 +144,7 @@ $transResults = $transStmt->fetchAll();
                                     foreach($transResults as $trans)
                                     {
                                         $day = $trans['accDay'];
-                                        echo "<tr><td>" . $trans['address'] . "</td>"; 
+                                        echo "<tr id=inContract" . $trans['transId']  . " ><td>" . $trans['address'] . "</td>"; 
                                         echo "<td>" . date('m/d/y', strtotime($day)) . "</td>";
                                         echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['emdDays'] . ' days')) . "</td>";
                                         echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['sellerDiscDays'] . ' days')) . "</td>";
