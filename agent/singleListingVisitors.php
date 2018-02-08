@@ -749,7 +749,7 @@ $keys = array_keys($response);
         <!-- BEGIN TEMPLATE default-js.php INCLUDE -->
         <?php include "./templates-agent/default-js.php" ?>
         <!-- END TEMPLATE default-css.php INCLUDE -->
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
 <script type='text/javascript'
         src="https://cdnjs.cloudflare.com/ajax/libs/floatthead/2.0.3/jquery.floatThead.js"></script>
 
