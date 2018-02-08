@@ -235,7 +235,7 @@ $addedListingsResults = $addedListings->fetchAll();
                                    $files = scandir ($directory);
                                    
 
-                                   echo "<div class=\"col-xs-12 col-md-6 col-lg-3\">
+                                   echo "<div id=house" . $addHouse['houseId'] . " class=\"col-xs-12 col-md-6 col-lg-3\">
                                 <div class=\"box\">
                                     <div class=\"box-header with-border\">
                                         <h4 class='box-title'>" . $addHouse['address'] . "<br>" .
@@ -264,6 +264,10 @@ $addedListingsResults = $addedListings->fetchAll();
                              $addHouse['houseId'] . "\" target=\"_blank\"><i class='fa fa-users'></i> Open House Visitors</a>
                                     <button type=\"button\" class=\"btn btn-link btn-block\" 
                                     onClick=\"matchLeadsModal(" . $addHouse['price'] . "," . $addHouse['bedrooms'] . "," . $addHouse['bathrooms'] .  ")\"> Top 5 Leads</button>
+
+                                    <button type=\"button\" class=\"btn btn-link btn-block\" 
+                                    onClick=\"deleteManualListing('" . $addHouse['houseId'] . "')\">Delete</button>
+
                                     <button type=\"button\" class=\"btn btn-success btn-block\" 
                                     onClick=\"addTransaction('" . $addHouse['houseId'] . "')\"><i class='fa fa-check'></i> In-Contract</button>
                                 </div>
@@ -308,6 +312,21 @@ $addedListingsResults = $addedListings->fetchAll();
             html: true
         });
     });
+
+    function deleteManualListing(listingId)
+    {
+        // alert("Manual Listing Deleted");
+        // $('#house' + listingId).remove();
+
+        // alert("delete Manual Listing: " + listingId);
+
+        $.post( "deleteManualLead.php", { listingId: listingId })
+            .done(function( data ) {
+                alert("Manual Listing Deleted");
+                $('#house' + listingId).remove();
+            });
+
+    }
 
     function matchLeadsModal(price,bedrooms,bathrooms)
     {
