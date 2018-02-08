@@ -113,7 +113,7 @@ $keys = array_keys($response);
 
                     var agentSelectedId = $('#agentName').children(":selected").attr("id");
                     $("#houseId > option").each(function() {
-                        if($(this).attr("id") != agentSelectedId)
+                        if($(this).attr("id") != agentSelectedId && $(this).attr("id") != "empty")
                         {
                             $(this).hide();
                         }
@@ -212,7 +212,7 @@ $keys = array_keys($response);
                                                                 <label for="houseId">Property Address</label>
                                                                 <select class="form-control" id="houseId"
                                                                         onchange="getOwners()" name="propertyAddress">
-                                                                        <option value=''>Select House</option>
+                                                                        <option id='empty' value=''>Select House</option>
                                                                     <?php
 
                                                                     for ($i = 0; $i < sizeof($keys); $i++) 
