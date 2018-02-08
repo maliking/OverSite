@@ -458,7 +458,23 @@ $transResults = $transStmt->fetchAll();
                 });
 
             });
+            
+            function deleteInContract(inContractId)
+            {
+                // alert(inContractId);
 
+
+                $.post( "../staff/deleteInContract.php", { inContractId: inContractId })
+                  .done(function( data ) {
+                    alert("In-contract Deleted");
+                    $("#editDateModal"+inContractId).modal("toggle");
+
+                    $('#inContract' + inContractId).remove();
+                  });
+
+
+                
+            }
  
         </script>
 
