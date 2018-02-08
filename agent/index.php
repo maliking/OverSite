@@ -423,6 +423,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                                             title="Close of Escrow">COE </a></th>
                                             <th data-breakpoints="xs sm">Notes</th>
                                             <th data-breakpoints="xs sm"></th>
+                                            <th data-breakpoints="xs sm">Edit Dates</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -432,7 +433,7 @@ for($i = 0; $i < sizeof($keys); $i++)
                                                 # code...
                                                 $day = $trans['accDay'];
 
-                                                echo '<td>';
+                                                echo '<tr id=inContract' . $trans['transId'] . ' ><td>';
                                                 if ($trans['transType'] == 'Listing') {
                                                     echo '<b>LIST</b>';
                                                 } else {
@@ -743,6 +744,12 @@ for($i = 0; $i < sizeof($keys); $i++)
                                             echo '</td>
                                             <td id=' . $trans['transId'] . '> ' . $trans['notes']  . ' </td>
                                            <td> <button onClick=takeTransNote(' .$trans['transId'] . ')>  <i class="fa fa-edit" style="color:#d3d3d3"></i> </button></td>
+                                           <td>';
+                                           ?>
+                                           <?php include "../staff/editDates.php"; ?>
+                                           <?php
+
+                                           echo '</td>
                                         </tr>';
                                     }
                                             ?>
@@ -1024,6 +1031,70 @@ for($i = 0; $i < sizeof($keys); $i++)
             //     }
             // }, 60000); // Repeat every 60000 milliseconds (1 minute)
 
+
+            function saveOrdDate(transId,type,date)
+            {
+                var sendDate = date.value;
+                if(sendDate == "")
+                {
+                    sendDate = "NULL";
+                }
+                $.post( "../staff/saveOrdDates.php", { transId: transId, type:type, date:sendDate });
+            }
+            function saveCompDate(transId,type,date)
+            {
+                
+                var sendDate = date.value;
+                if(sendDate == "")
+                {
+                    sendDate = "NULL";
+                }
+                $.post( "../staff/saveCompDates.php", { transId: transId, type:type, date:sendDate });
+
+            }
+             function saveDateCalendar(transId,type,date)
+             {
+          
+                var aprvDay = $("#aprvDay"+transId).val();
+                $.post( "../staff/saveNewDates.php", { transId: transId, type:type, date:date.value, aprvDay: aprvDay });
+                  
+            }
+            
+            function saveDaysNum(transId,type,date)
+             {
+           
+                $.post( "../staff/saveNewDaysNum.php", { transId: transId, type:type, date:date.value });
+                  
+            }
+
+            function saveNewDates(transId)
+            {
+
+                $("#editDateModal"+transId).modal("toggle");
+                
+
+                alert( "Dates Saved" );
+                location.reload();
+
+
+            }
+
+            function deleteInContract(inContractId)
+            {
+                // alert(inContractId);
+
+
+                $.post( "../staff/deleteInContract.php", { inContractId: inContractId })
+                  .done(function( data ) {
+                    alert("In-contract Deleted");
+                    $("#editDateModal"+inContractId).modal("toggle");
+
+                    $('#inContract' + inContractId).remove();
+                  });
+
+
+                
+            }
         </script>
 
 

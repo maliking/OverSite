@@ -35,7 +35,7 @@
     <!--MODAL AREA!!-->
 
 
-    <div class="modal fade" <?php echo "id=editDateModal" . $trans['transId'];?>>
+    <div class="modal " <?php echo "id=editDateModal" . $trans['transId'];?>>
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -308,6 +308,11 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close
                                 </button>
+
+                                <button type="button" class="btn btn-default pull-left" 
+                                onClick=<?php echo "deleteInContract(" . $trans['transId'] . ")"; ?>>Delete
+                                </button>
+
                 <button type="button" class="btn btn-default" onClick=<?php echo "saveNewDates(" . $trans['transId'] . ")"; ?>>Save
                                 </button>
             </div>
