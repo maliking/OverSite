@@ -16,6 +16,40 @@ $stmtHouse->execute();
 $results = $stmt->fetchAll();
 $houses = $stmtHouse->fetchAll();
 
+
+$url = 'https://api.idxbroker.com/clients/featured';
+
+$method = 'GET';
+
+// headers (required and optional)
+$headers = array(
+    'Content-Type: application/x-www-form-urlencoded', // required
+    'accesskey: e1Br0B5DcgaZ3@JXI9qib5', // required - replace with your own
+    'outputtype: json' // optional - overrides the preferences in our API control page
+);
+
+// set up cURL
+$handle = curl_init();
+curl_setopt($handle, CURLOPT_URL, $url);
+curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+
+// exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
+$response = curl_exec($handle);
+$code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+
+if ($code >= 200 || $code < 300) {
+    $response = json_decode($response, true);
+} else {
+    $error = $code;
+}
+
+// print_r($response);
+
+$keys = array_keys($response);
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -154,7 +188,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     foreach ($results as $result) {
                                                                         if ($result['userType'] == 0 || $result['license'] == $_SESSION['license']) {
                                                                         } else
-                                                                            echo "<option id=agent" . $result['userId'] . " value='" . $result['license'] . "'>" . $result['firstName'] . " " . $result['lastName'] . "</option>";
+                                                                            echo "<option id=agent" . $result['mlsId'] . " value='" . $result['license'] . "'>" . $result['firstName'] . " " . $result['lastName'] . "</option>";
                                                                     }
                                                                     ?>
                                                                 </select>
@@ -181,9 +215,16 @@ $houses = $stmtHouse->fetchAll();
                                                                         <option value=''>Select House</option>
                                                                     <?php
 
-                                                                    foreach ($houses as $house) {
-                                                                        echo "<option id=agent" . $house['userId'] . " value='" . $house['houseId'] . "'>" . $house['address'] . " " . $house['city'] . " " . $house['state'] . " " . $house['zip'] . "</option>";
+                                                                    for ($i = 0; $i < sizeof($keys); $i++) 
+                                                                    {
+                                                                        echo "<option id=agent" . $response[$keys[$i]]['listingAgentID'] . " value='" . $response[$keys[$i]]['listingID'] . "'>" 
+                                                                        . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] . "</option>";
+
                                                                     }
+
+                                                                    // foreach ($houses as $house) {
+                                                                    //     echo "<option id=agent" . $house['userId'] . " value='" . $house['houseId'] . "'>" . $house['address'] . " " . $house['city'] . " " . $house['state'] . " " . $house['zip'] . "</option>";
+                                                                    // }
                                                                     ?>
                                                                 </select>
                                                             </div>
