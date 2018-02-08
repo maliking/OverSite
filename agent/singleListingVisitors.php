@@ -12,7 +12,6 @@ if (isset ($_GET['deleteForm'])) {  //checking whether we have clicked on the "D
     $stmt = $dbConn->prepare($sql);
     $stmt->execute();
 }
-
 if($_GET['id'][0] == 'M')
     $addedHouses = "SELECT houseId FROM HouseInfo WHERE listingId = :listingId";
 else
@@ -581,6 +580,16 @@ $keys = array_keys($response);
                                 </thead>
 
                                 <?php
+                                if($_GET['id'][0] == 'M')
+                                    $addedHouses = "SELECT houseId FROM HouseInfo WHERE listingId = :listingId";
+                                else
+                                    $addedHouses = "SELECT houseId FROM HouseInfo WHERE houseId = :listingId";
+                                $addedHouseParam = array();
+                                $addedHouseParam[':listingId'] = $_GET['id'];
+
+                                $addedHousesStmt = $dbConn->prepare($addedHouses);
+                                $addedHousesStmt->execute($addedHouseParam);
+                                $addedHouseResults = $addedHousesStmt->fetch();
                                 /*function getHouseAddress($houseId){
                                     $dbConn = getConnection();
                                     $sql = "SELECT * FROM HouseInfo WHERE houseId = :houseId";
