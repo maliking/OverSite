@@ -46,7 +46,10 @@ $activePage = basename($_SERVER['PHP_SELF'], ".php");
                         <span class="hidden-xs"><?php echo $agentInfo['firstName'] . " " . $agentInfo['lastName'] . " #" . $agentInfo['license'];?></span> </a>
                     <ul class="dropdown-menu">
                         <!-- User image in the menu -->
-                        <li class="user-header"><img src="./dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                        <li class="user-header"><img src=<?php if(isset($agentInfo['picture']))
+                                                                    echo "agent/agentPictures/". $agentInfo['picture']; 
+                                                                else
+                                                                    echo "dist/img/user2-160x160.jpg"; ?> class="img-circle" alt="User Image">
                             <p> <?=$_SESSION['username'];?>
                                 <small>Member since Nov. 2012</small>
                             </p>

@@ -95,14 +95,14 @@ $transResults = $transStmt->fetchAll();
                     <!-- Menu Toggle Button -->
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <!-- User image in navbar--><img src=<?php if(isset($agentInfo['picture']))
-                                                                    echo "\"openhouse/". $agentInfo['picture'] . "\""; 
+                                                                    echo "agentPictures/". $agentInfo['picture']; 
                                                                 else
                                                                     echo "\"../dist/img/user2-160x160.jpg\""; ?> class="user-image"
                                                          alt="User Image"> <span class="hidden-xs"><?php echo $agentInfo['firstName'] . " " . $agentInfo['lastName'] . " #" . $agentInfo['license'];?></span> </a>
                     <ul class="dropdown-menu">
                         <!-- User image in the menu -->
                         <li class="user-header"><img src=<?php if(isset($agentInfo['picture']))
-                                                                    echo "\"openhouse/". $agentInfo['picture'] . "\""; 
+                                                                    echo "agentPictures/". $agentInfo['picture']; 
                                                                 else
                                                                     echo "\"../dist/img/user2-160x160.jpg\""; ?> class="img-circle"
                                                      alt="User Image">

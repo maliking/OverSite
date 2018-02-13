@@ -143,7 +143,7 @@ else
     $pdf->Text(9, 210, 'RE/MAX Property Experts');
     if($infoResult['picture'] != NULL)
     {
-        $pdf->Image($infoResult['picture'], 9, 212, 20, 30, "jpg");
+        $pdf->Image("../agentPictures/" . $infoResult['picture'], 9, 212, 20, 30, "jpg");
     }
     else
     {
