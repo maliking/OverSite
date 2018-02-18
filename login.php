@@ -56,7 +56,7 @@ session_start();
                     <div class="modal-body">
 
                         <!-- content goes here -->
-                        <form>
+                        <!-- <form> -->
                             <div class="input-group">
                                 <input type="text" class="form-control" id="license" name="license" placeholder="CalBRE License">
                                 <div class="input-group-btn">
@@ -73,7 +73,7 @@ session_start();
                                 <label for="password">New Password:</label>
                                 <input type="password" class="form-control" id="password" name="password" disabled>
                             </div>
-                        </form>
+                        <!-- </form> -->
 
                     </div>
                     <div class="modal-footer">
