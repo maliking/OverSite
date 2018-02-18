@@ -59,7 +59,7 @@
                                         <th>Completed Date</th>
                                         </tr>
                                         <tr>
-                                            <td>Aprv</td>
+                                            <td>Acc</td>
                                             <?php echo "<td>" . date('m/d/y', strtotime($day)) . "</td>"; ?> 
                                             <td>
                                                 <div>

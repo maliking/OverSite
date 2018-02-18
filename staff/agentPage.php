@@ -109,7 +109,7 @@ $transResults = $transStmt->fetchAll();
                                   
                                     <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                     data-placement="top"
-                                                                    title="Approval Date">Aprv. </a></th>
+                                                                    title="Approval Date">Acc. </a></th>
                                     <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                     data-placement="top" title="Earnest Money Deposit">EMD </a>
                                     </th>
