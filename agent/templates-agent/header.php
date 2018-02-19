@@ -56,6 +56,53 @@ $transParameters[':userId'] = $_SESSION['userId'];
 $transStmt = $dbConn->prepare($sqlTransactions);
 $transStmt->execute($transParameters);
 $transResults = $transStmt->fetchAll();
+
+// ranking system
+$soldRank = 0;
+$sqlNumSold = "SELECT COUNT(*) as numSold, license  FROM commInfo GROUP BY license ORDER BY numSold DESC";
+$stmtNumSold = $dbConn->prepare($sqlNumSold);
+$stmtNumSold->execute();
+$resultNumSold = $stmtNumSold->fetchAll();
+foreach ($resultNumSold as $sold) {
+    if($sold['license'] == $licenseResult['license'])
+    {
+        $soldRank++;
+        break;
+    }
+    else
+        $soldRank++;
+}
+
+$volumeRank = 0;
+$sqlVolSold = "SELECT SUM(InitialGross) as volSold, license  FROM commInfo GROUP BY license ORDER BY volSold DESC";
+$stmtVolSold = $dbConn->prepare($sqlVolSold);
+$stmtVolSold->execute();
+$resultVolSold = $stmtVolSold->fetchAll();
+foreach ($resultVolSold as $volume) {
+    if($volume['license'] == $licenseResult['license'])
+    {
+        $volumeRank++;
+        break;
+    }
+    else
+        $volumeRank++;
+}
+
+$grossRank = 0;
+$sqlGrossRank = "SELECT SUM(finalComm) as gross, license  FROM commInfo GROUP BY license ORDER BY gross DESC";
+$stmtGross = $dbConn->prepare($sqlGrossRank);
+$stmtGross->execute();
+$resultGross = $stmtGross->fetchAll();
+foreach ($resultGross as $gross) {
+    if($gross['license'] == $licenseResult['license'])
+    {
+        $grossRank++;
+        break;
+    }
+    else
+        $grossRank++;
+}
+
 ?>
 
 

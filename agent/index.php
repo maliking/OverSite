@@ -164,12 +164,12 @@ for($i = 0; $i < sizeof($keys); $i++)
                             <!-- small box -->
                             <div class="small-box bg-blue">
                                 <div class="inner">
-                                    <h3>
-                                        <sup style="font-size: 20px">$</sup>0</h3>
-                                    <p>Listing Commission</p>
+                                    <h2>
+                                        <sup style="font-size: 20px">#</sup><?php echo $soldRank . "  Num: " . $resultNumSold[$soldRank - 1]['numSold']; ?></h2>
+                                    <p>Units Closed Rank</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fa fa-dollar"></i>
+                                    <!-- <i class="fa fa-dollar"></i> -->
                                 </div>
                             </div>
                         </div>
@@ -178,11 +178,12 @@ for($i = 0; $i < sizeof($keys); $i++)
                             <!-- small box -->
                             <div class="small-box bg-yellow">
                                 <div class="inner">
-                                    <h3><?php echo number_format($result['avgPercent'], 2); ?><sup style="font-size: 20px">%</sup></h3></h3>
-                                    <p>Listing Commission</p>
+                                    <h2>
+                                        <sup style="font-size: 20px">#</sup><?php echo $volumeRank . "-$:" . number_format($resultVolSold[$volumeRank - 1]['volSold']); ?></h2>
+                                    <p>Vol Sold Rank</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fa fa-percent"></i>
+                                    <!-- <i class="fa fa-percent"></i> -->
                                 </div>
                             </div>
                         </div>
@@ -191,13 +192,12 @@ for($i = 0; $i < sizeof($keys); $i++)
                             <!-- small box -->
                             <div class="small-box bg-green">
                                 <div class="inner">
-                                    <h3>
-                                        <sup style="font-size: 20px">$</sup>0</h3>
-                                    </h3>
-                                    <p>Buyer Commission</p>
+                                    <h2>
+                                        <sup style="font-size: 20px">#</sup><?php echo $grossRank . "-$:" . number_format($resultGross[$grossRank - 1]['gross']); ?></h2>
+                                    <p>Gross Commission Rank</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fa fa-dollar"></i>
+                                   <!-- <i class="fa fa-dollar"></i> -->
                                 </div>
                             </div>
                         </div>
