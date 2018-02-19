@@ -108,7 +108,7 @@ $agentResults = $agentStmt->fetchAll();
                                     <h4>Agent Schedules</h4>
                                 </div>
                                 <div class="col-xs-12">
-                                    <button style="margin-bottom: 10px" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal">Add New Date</button>
+                                    <button style="margin-bottom: 10px" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal">Add New</button>
                                 </div>
                                 <div class="box-body">
 

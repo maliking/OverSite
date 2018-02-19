@@ -21,9 +21,9 @@ $address = $getAddress->fetch();
 
 $insertSql = "INSERT INTO transactions(houseId, userId, address, transType, clientName, clientNum, accDay, emdDays,
 						 sellerDiscDays, buyerDiscDays, genInspecDays, termiteInspecDays, septicInspecDays, waterInspecDays, 
-						 appraisalDays, appraisalOrdered, appraisalComp, lcDays, coeDays, notes) 
+						 appraisalDays, apprOrdered, apprComp, lcDays, coeDays, notes) 
 VALUES (:houseId, :userId, :address, :transType, :clientName, :clientNum, :accDay, :emdDays, :sellerDiscDays, :buyerDiscDays, :genInspecDays, :termiteInspecDays, 
-	:septicInspecDays, :waterInspecDays, :appraisalDays, :appraisalOrdered, :appraisalComp, :lcDays, :coeDays, :notes)";
+	:septicInspecDays, :waterInspecDays, :appraisalDays, :apprOrdered, :apprComp, :lcDays, :coeDays, :notes)";
 
 $parameters = array();
 $parameters[':houseId'] = $houseId;
@@ -41,8 +41,8 @@ $parameters[':termiteInspecDays'] = "17";
 $parameters[':septicInspecDays'] = "17";
 $parameters[':waterInspecDays'] = "17";
 $parameters[':appraisalDays'] = "17";
-$parameters[':appraisalOrdered'] = "";
-$parameters[':appraisalComp'] = "";
+$parameters[':apprOrdered'] = "";
+$parameters[':apprComp'] = "";
 $parameters[':lcDays'] = "21";
 $parameters[':coeDays'] = "30";
 $parameters[':notes'] = "";
@@ -52,9 +52,9 @@ $stmt->execute($parameters);
 
 $buyerSql = "INSERT INTO transactions (houseId, userId, address, transType, clientName, clientNum, accDay, emdDays,
 						 sellerDiscDays, buyerDiscDays, genInspecDays, termiteInspecDays, septicInspecDays, waterInspecDays, 
-						 appraisalDays, appraisalOrdered, appraisalComp, lcDays, coeDays, notes) 
+						 appraisalDays, apprOrdered, apprComp, lcDays, coeDays, notes) 
 VALUES (:houseId, :userId, :address, :transType, :clientName, :clientNum, :accDay, :emdDays, :sellerDiscDays, :buyerDiscDays, :genInspecDays, :termiteInspecDays, 
-	:septicInspecDays, :waterInspecDays, :appraisalDays, :appraisalOrdered, :appraisalComp, :lcDays, :coeDays, :notes)";
+	:septicInspecDays, :waterInspecDays, :appraisalDays, :apprOrdered, :apprComp, :lcDays, :coeDays, :notes)";
 
 $parameters = array();
 $parameters[':houseId'] = $houseId;
@@ -72,8 +72,8 @@ $parameters[':termiteInspecDays'] = "17";
 $parameters[':septicInspecDays'] = "17";
 $parameters[':waterInspecDays'] = "17";
 $parameters[':appraisalDays'] = "17";
-$parameters[':appraisalOrdered'] = "";
-$parameters[':appraisalComp'] = "";
+$parameters[':apprOrdered'] = "";
+$parameters[':apprComp'] = "";
 $parameters[':lcDays'] = "21";
 $parameters[':coeDays'] = "30";
 $parameters[':notes'] = "";
