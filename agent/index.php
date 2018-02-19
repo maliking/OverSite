@@ -46,14 +46,16 @@ if ($code >= 200 || $code < 300) {
 // print_r($response);
 
 $keys = array_keys($response);
-$pendingListings = (int)$addedHouseResults['added'];
-for($i = 0; $i < sizeof($keys); $i++) 
-{
-    if($response[$keys[$i]]['listingAgentID'] == $licenseResult['mlsId'])
-    {
-        $pendingListings++;
-    }
-}
+
+
+// $pendingListings = (int)$addedHouseResults['added'];
+// for($i = 0; $i < sizeof($keys); $i++) 
+// {
+//     if($response[$keys[$i]]['listingAgentID'] == $licenseResult['mlsId'])
+//     {
+//         $pendingListings++;
+//     }
+// }
 ?>
 
     <!DOCTYPE html>
@@ -165,7 +167,14 @@ for($i = 0; $i < sizeof($keys); $i++)
                             <div class="small-box bg-blue">
                                 <div class="inner">
                                     <h2>
-                                        <sup style="font-size: 20px">#</sup><?php echo $soldRank . "  Num: " . $resultNumSold[$soldRank - 1]['numSold']; ?></h2>
+                                        <sup style="font-size: 20px">#</sup>
+                                        <?php 
+                                        if($soldRank == 0)
+                                            echo "N/A";
+                                        else
+                                            echo $soldRank . "  Num: " . $resultNumSold[$soldRank - 1]['numSold']; 
+
+                                        ?></h2>
                                     <p>Units Closed Rank</p>
                                 </div>
                                 <div class="icon">
@@ -179,7 +188,13 @@ for($i = 0; $i < sizeof($keys); $i++)
                             <div class="small-box bg-yellow">
                                 <div class="inner">
                                     <h2>
-                                        <sup style="font-size: 20px">#</sup><?php echo $volumeRank . "-$:" . number_format($resultVolSold[$volumeRank - 1]['volSold']); ?></h2>
+                                        <sup style="font-size: 20px">#</sup>
+                                        <?php 
+                                        if($volumeRank == 0)
+                                            echo "N/A";
+                                        else
+                                            echo $volumeRank . " $:" . number_format($resultVolSold[$volumeRank - 1]['volSold']); 
+                                        ?></h2>
                                     <p>Vol Sold Rank</p>
                                 </div>
                                 <div class="icon">
@@ -193,7 +208,13 @@ for($i = 0; $i < sizeof($keys); $i++)
                             <div class="small-box bg-green">
                                 <div class="inner">
                                     <h2>
-                                        <sup style="font-size: 20px">#</sup><?php echo $grossRank . "-$:" . number_format($resultGross[$grossRank - 1]['gross']); ?></h2>
+                                        <sup style="font-size: 20px">#</sup>
+                                        <?php 
+                                        if($grossRank == 0)
+                                            echo "N/A";
+                                        else
+                                            echo $grossRank . " $:" . number_format($resultGross[$grossRank - 1]['gross']); 
+                                        ?></h2>
                                     <p>Gross Commission Rank</p>
                                 </div>
                                 <div class="icon">

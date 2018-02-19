@@ -63,14 +63,18 @@ $sqlNumSold = "SELECT COUNT(*) as numSold, license  FROM commInfo GROUP BY licen
 $stmtNumSold = $dbConn->prepare($sqlNumSold);
 $stmtNumSold->execute();
 $resultNumSold = $stmtNumSold->fetchAll();
+
 foreach ($resultNumSold as $sold) {
+    $soldRank++;
     if($sold['license'] == $licenseResult['license'])
     {
-        $soldRank++;
         break;
     }
-    else
-        $soldRank++;
+    else if($soldRank == count($resultNumSold))
+    {
+        $soldRank = 0;
+    }
+  
 }
 
 $volumeRank = 0;
@@ -79,13 +83,15 @@ $stmtVolSold = $dbConn->prepare($sqlVolSold);
 $stmtVolSold->execute();
 $resultVolSold = $stmtVolSold->fetchAll();
 foreach ($resultVolSold as $volume) {
+    $volumeRank++;
     if($volume['license'] == $licenseResult['license'])
     {
-        $volumeRank++;
         break;
     }
-    else
-        $volumeRank++;
+   else if($volumeRank == count($resultVolSold))
+    {
+        $volumeRank = 0;
+    }
 }
 
 $grossRank = 0;
@@ -94,13 +100,15 @@ $stmtGross = $dbConn->prepare($sqlGrossRank);
 $stmtGross->execute();
 $resultGross = $stmtGross->fetchAll();
 foreach ($resultGross as $gross) {
+    $grossRank++;
     if($gross['license'] == $licenseResult['license'])
     {
-        $grossRank++;
         break;
     }
-    else
-        $grossRank++;
+   else if($grossRank == count($resultGross))
+    {
+        $grossRank = 0;
+    }
 }
 
 ?>
