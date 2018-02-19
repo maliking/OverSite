@@ -31,9 +31,9 @@ $address = $getAddress->fetch();
 
 $insertSql = "INSERT INTO transactions(houseId, userId, address, transType, clientName, clientNum, accDay, emdDays,
 						 sellerDiscDays, buyerDiscDays, genInspecDays, termiteInspecDays, septicInspecDays, waterInspecDays, 
-						 appraisalDays, apprOrdered, apprComp, lcDays, coeDays, notes) 
+						 appraisalDays, apprOrdered, apprComp, lcDays, coeDays, coeOrgDate, notes) 
 VALUES (:houseId, :userId, :address, :transType, :clientName, :clientNum, :accDay, :emdDays, :sellerDiscDays, :buyerDiscDays, :genInspecDays, :termiteInspecDays, 
-	:septicInspecDays, :waterInspecDays, :appraisalDays, :apprOrdered, :apprComp, :lcDays, :coeDays, :notes)";
+	:septicInspecDays, :waterInspecDays, :appraisalDays, :apprOrdered, :apprComp, :lcDays, :coeDays, :coeOrgDate, :notes)";
 
 $parameters = array();
 $parameters[':houseId'] = $houseId;
@@ -55,6 +55,7 @@ $parameters[':apprOrdered'] = "";
 $parameters[':apprComp'] = "";
 $parameters[':lcDays'] = "21";
 $parameters[':coeDays'] = "30";
+$parameters[':coeOrgDate'] = date("y-m-d");
 $parameters[':notes'] = "";
 
 $stmt = $dbConn->prepare($insertSql);
@@ -86,6 +87,7 @@ $parameters[':apprOrdered'] = "";
 $parameters[':apprComp'] = "";
 $parameters[':lcDays'] = "21";
 $parameters[':coeDays'] = "30";
+$parameters[':coeOrgDate'] = date("y-m-d");
 $parameters[':notes'] = "";
 
 $buyerstmt = $dbConn->prepare($buyerSql);

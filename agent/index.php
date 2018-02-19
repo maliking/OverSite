@@ -521,7 +521,7 @@ $keys = array_keys($response);
                                                   <ul class="dropdown-menu">';
 
                                                   
-                                                  if($trans['sellerDiscComp'] != NULL && $trans['sellerDiscComp'] != '0000-00-00')
+                                                  if($trans['sellerDiscRec'] != NULL && $trans['sellerDiscRec'] != '0000-00-00')
                                                   {
                                                     echo '<li><a href="#">Completed: ' . date('m/d/y', strtotime($trans['sellerDiscRec'])) . '</a></li>';
                                                     // echo '<li role="separator" class="divider"></li>';
@@ -715,7 +715,7 @@ $keys = array_keys($response);
                                                   </button>
                                                   <ul class="dropdown-menu">';
 
-                                                  if($trans['coeComp'] != NULL && $trans['coeComp'] != '0000-00-00')
+                                                  if($trans['coeOrgDate'] != NULL && $trans['coeOrgDate'] != '0000-00-00')
                                                   {
                                                     echo '<li><a href="#">Original Due Date: ' . date('m/d/y', strtotime($trans['coeOrgDate'])) . '</a></li>';
                                                     // echo '<li role="separator" class="divider"></li>';
