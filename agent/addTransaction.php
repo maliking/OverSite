@@ -117,7 +117,7 @@ $client->messages->create(
     "8312934153",
     array(
         "From" => $twilio_phone_number,
-        "Body" => $address['address'] . " " . $address['city'] . " ," . $address['state'] . " " . $address['zip'] . " placed in-contract",
+        "Body" => $result['firstName'] . " " . $result['lastName'] . " - " .$address['address'] . " " . $address['city'] . " ," . $address['state'] . " " . $address['zip'] . " placed in-contract",
     )
 );
 
