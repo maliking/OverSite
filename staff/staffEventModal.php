@@ -47,11 +47,13 @@ $keys = array_keys($response);
                 <form>
                     <div class="form-group">
                         <label for="agent">Agent:</label>
-                        <select class="form-control" id="agent">
+                        <select class="form-control" id="agentName" onChange="hideHouses()">
+                            <option value="">--Select Agent--</option>
                             <?php
                             foreach($agentResults as $agent)
                             {
-                                echo "<option>" . $agent['firstName'] . " " . $agent['lastName'] . "</option>";
+                                echo "<option id=agent" . $agent['mlsId'] . " value=" . $agent['userId'] . " >" 
+                                . $agent['firstName'] . " " . $agent['lastName'] . "</option>";
                             }
                             ?>
                             
@@ -60,11 +62,13 @@ $keys = array_keys($response);
 
                         <br>
                         <label for="address">Address:</label>
-                        <select class="form-control" id="address">
+                        <select class="form-control" id="houseId">
+                            <option value="" id="empty">--Select House--</option>
                             <?php
                             for ($i = 0; $i < sizeof($keys); $i++) 
                             {
-                                echo "<option>" . $response[$keys[$i]]['address'] . " " .$response[$keys[$i]]['cityName'] . " " . 
+                                echo "<option id=agent" . $response[$keys[$i]]['listingAgentID'] . " value=" . $response[$keys[$i]]['listingID'] . " >"
+                                 . $response[$keys[$i]]['address'] . " " .$response[$keys[$i]]['cityName'] . " " . 
                                 $response[$keys[$i]]['state'] . "</option>";
                             }
                             ?>
@@ -75,7 +79,7 @@ $keys = array_keys($response);
                         <br>
                         <label>Date In-Contract:</label>
                         <div>
-                            <input type="date" name="accDate">
+                            <input type="date" name="accDate" id="newAccDate">
                         </div>
                         <!-- <div class="radio">
                             <label><input type="radio" name="optradio">EMD - Earnest Money Deposit</label>
@@ -101,11 +105,13 @@ $keys = array_keys($response);
 
             </div>
             <div class="modal-footer">
-                <button type="button" role="button" id="resetButton" class="btn btn-success btn-block" data-dismiss="modal" >Submit</button>
+                <button type="button" role="button" id="resetButton" class="btn btn-success btn-block" data-dismiss="modal" onClick="addNewTransaction()" >Submit</button>
             </div>
         </div>
     </div>
 </div>
+
+
 <!--
 <div class="modal modal fade" id="modal">
     <div class="modal-dialog">

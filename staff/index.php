@@ -17,7 +17,7 @@ require '../databaseConnection.php';
 
 $dbConn = getConnection();
 
-$sqlGetAgents = "SELECT userId, firstName, lastName FROM UsersInfo";
+$sqlGetAgents = "SELECT userId, firstName, lastName, mlsId FROM UsersInfo";
 
 $agentStmt = $dbConn->prepare($sqlGetAgents);
 $agentStmt->execute();
@@ -203,7 +203,31 @@ $agentResults = $agentStmt->fetchAll();
                 // alert(id);
                 alert("meeting deleted");
             }
+            function hideHouses()
+            {
+                $("#houseId > option").each(function() {
+                                        $(this).show();
+                });
 
+                var agentSelectedId = $('#agentName').children(":selected").attr("id");
+                $("#houseId > option").each(function() {
+                    if($(this).attr("id") != agentSelectedId && $(this).attr("id") != "empty")
+                    {
+                        $(this).hide();
+                    }
+                });
+            }
+
+            function addNewTransaction()
+            {
+                var houseSelected = $('#houseId').children(":selected").attr("value");   
+                var agentSelected = $('#agentName').children(":selected").attr("value"); 
+                var accDate = $('#newAccDate').val();
+                // alert(accDate);
+                // alert(agentSelected);
+                $.post("addTransactionStaff.php", {userId: agentSelected, houseId: houseSelected, accDate: accDate});
+                alert("House In-Contract");
+            }
             $(document).ready(function () {
                 var currentEvents = "getTransactions.php?all=true";
                 $('#calendar').fullCalendar({
@@ -434,6 +458,7 @@ $agentResults = $agentStmt->fetchAll();
                 }
 
             });
+
 
 
             //iCheck for checkbox and radio inputs
