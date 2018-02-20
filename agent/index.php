@@ -428,6 +428,10 @@ $keys = array_keys($response);
                                             </th>
 
                                             <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
+                                                                            data-placement="top" title="signedDisclousres">Sign. Disc. </a>
+                                            </th>
+
+                                            <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                             data-placement="top" title="Inspection">Insp. </a>
                                             </th>
 
@@ -479,12 +483,14 @@ $keys = array_keys($response);
                                                   <ul class="dropdown-menu">';
                                                   if($trans['emdComp'] != NULL && $trans['emdComp'] != '0000-00-00')
                                                   {
-                                                    echo '<li><a href="#">Completed: ' . date('m/d/y', strtotime($trans['emdComp'])) . '</a></li>';
+                                                    echo '<li><a href="#" id=emdComp' . $trans['transId'] . ' >Completed: ' . date('m/d/y', strtotime($trans['emdComp'])) . '</a>
+                                                    <input type="date" onChange=saveCompDate("' . $trans['transId'] . '",\'emd\',this) value=' . $trans['emdComp'] . '></li>';
                                                     // echo '<li role="separator" class="divider"></li>';
                                                   }
                                                 else
                                                 {
-                                                    echo '<li><a href="#">Completed: N/A </a></li>';
+                                                    echo '<li><a href="#" id=emdComp' . $trans['transId'] . '>Completed: N/A </a>
+                                                    <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'emd\',this) ></li>';
                                                     // echo '<li role="separator" class="divider"></li>';
                                                 }
                                                     // <li><a href="#">Ordered: 12/12/12</a></li>
@@ -523,23 +529,27 @@ $keys = array_keys($response);
                                                   
                                                   if($trans['sellerDiscRec'] != NULL && $trans['sellerDiscRec'] != '0000-00-00')
                                                   {
-                                                    echo '<li><a href="#">Completed: ' . date('m/d/y', strtotime($trans['sellerDiscRec'])) . '</a></li>';
+                                                    echo '<li><a href="#" id=recievedComp' . $trans['transId'] . '>Date Recieved: ' . date('m/d/y', strtotime($trans['sellerDiscRec'])) . '</a>
+                                                    <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'recieved\',this) value=' . $trans['sellerDiscRec'] . '></li>';
                                                     // echo '<li role="separator" class="divider"></li>';
                                                   }
                                                 else
                                                 {
-                                                    echo '<li><a href="#">Date Recieved: N/A</a></li>';
+                                                    echo '<li><a href="#" id=recievedComp' . $trans['transId'] . '>Date Recieved: N/A</a>
+                                                    <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'recieved\',this) ></li>';
                                                     // echo '<li role="separator" class="divider"></li>';
                                                 }
                                                   echo '<li role="separator" class="divider"></li>';
                                                   if($trans['sellerDiscComp'] != NULL && $trans['sellerDiscComp'] != '0000-00-00')
                                                   {
-                                                    echo '<li><a href="#">Completed: ' . date('m/d/y', strtotime($trans['sellerDiscComp'])) . '</a></li>';
+                                                    echo '<li><a href="#" id=sellerComp' . $trans['transId'] . '>Completed: ' . date('m/d/y', strtotime($trans['sellerDiscComp'])) . '</a>
+                                                    <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'seller\',this) value=' . $trans['sellerDiscComp'] . '></li>';
                                                     // echo '<li role="separator" class="divider"></li>';
                                                   }
                                                 else
                                                 {
-                                                    echo '<li><a href="#">Completed: N/A </a></li>';
+                                                    echo '<li><a href="#" id=sellerComp' . $trans['transId'] . '>Completed: N/A </a>
+                                                    <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'seller\',this)></li>';
                                                     // echo '<li role="separator" class="divider"></li>';
                                                 }
                                                     // <li><a href="#">Ordered: 12/12/12</a></li>
@@ -568,21 +578,82 @@ $keys = array_keys($response);
                                                         echo '<i class="fa fa-flag blink" style="color:#d9534f"></i>';
                                                     }
                                             echo '</td>
-        
+                                            <td>
+                                                <div class="btn-group">
+                                                  <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                  ' . date('m/d/y', strtotime($day . ' + '. $trans['signedDiscDays'] . ' days' )) . ' <span class="caret"></span>
+                                                  </button>
+                                                  <ul class="dropdown-menu">';
+/////////
+                                                
+                                                  if($trans['signedDiscComp'] != NULL && $trans['signedDiscComp'] != '0000-00-00')
+                                                  {
+                                                    echo '<li><a href="#" id=signedComp'. $trans['transId'] .'>Signed: ' . date('m/d/y', strtotime($trans['signedDiscComp'])) . '</a>
+                                                    <input type="date" onChange=saveCompDate(\''.$trans['transId'] . '\',"signed",this)  value='.$trans['signedDiscComp'] . '></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
+                                                  }
+                                                else
+                                                {
+                                                    echo '<li><a href="#" id=signedComp'. $trans['transId'] .'>Signed: N/A </a>
+                                                    <input type="date" onChange=saveCompDate(\''.$trans['transId'] . '\',"signed",this) ></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
+                                                }
+                                                    // <li><a href="#">Ordered: 12/12/12</a></li>
+                                                  echo '</ul>
+                                                </div>';
+                                                  echo '&nbsp';
+                                                  // $today = new DateTime('today');
+                                                  $signedOnTime = new DateTime($trans['accDay']);
+                                                  $signedOnTime = $signedOnTime->add(new DateInterval('P'.$trans['signedDiscDays'] .'D'));
+
+                                                  $signedReduced = new DateTime($trans['accDay']);
+                                                  $signedReduced = $signedReduced->add(new DateInterval('P'.$trans['signedDiscDays'] .'D'));
+                                                  $signedReduced = $signedReduced->modify('-3 days');
+
+                                                  // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
+                                                  if($trans['signedDiscComp'] != NULL && $trans['signedDiscComp'] != '0000-00-00')
+                                                  {
+                                                    echo '<i class="fa fa-check-circle" style="color:#5cb85c"></i>';
+                                                  }
+                                                    else if($today >= $signedReduced && $today < $signedOnTime)
+                                                    {
+                                                        echo '<i class="fa fa-warning" style="color:#ffae42"></i>';
+                                                    }
+                                                    else if($today >= $signedOnTime)
+                                                    {
+                                                        echo '<i class="fa fa-flag blink" style="color:#d9534f"></i>';
+                                                    }
+                                            echo '</td>
                                             <td>
                                                 <div class="btn-group">
                                                   <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                   ' . date('m/d/y', strtotime($day . ' + '. $trans['genInspecDays'] . ' days' )) . ' <span class="caret"></span>
                                                   </button>
                                                   <ul class="dropdown-menu">';
+
+                                                  if($trans['genInspecOrd'] != NULL && $trans['genInspecOrd'] != '0000-00-00')
+                                                    {
+                                                        echo '<li><a href="#" id=generalInspecOrd' . $trans['transId'] . '>Ordered: ' . date('m/d/y', strtotime($trans['genInspecOrd'])) . '</a>
+                                                        <input type="date" onChange=saveOrdDate(\''.$trans['transId'] . '\',"generalInspec",this)  value='.$trans['genInspecOrd'] . '></li>';
+                                                    }
+                                                    else
+                                                    {
+                                                        echo '<li><a href="#" id=generalInspecOrd' . $trans['transId'] . '>Ordered: N/A</a>
+                                                        <input type="date" onChange=saveOrdDate(\''.$trans['transId'] . '\',"generalInspec",this)></li>';
+                                                    }
+
+                                                    echo '<li role="separator" class="divider"></li>';
+
                                                   if($trans['genInspecComp'] != NULL && $trans['genInspecComp'] != '0000-00-00')
                                                   {
-                                                    echo '<li><a href="#">Completed: ' . date('m/d/y', strtotime($trans['genInspecComp'])) . '</a></li>';
+                                                    echo '<li><a href="#" id=generalInspecComp' . $trans['transId']  . '>Completed: ' . date('m/d/y', strtotime($trans['genInspecComp'])) . '</a>
+                                                    <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'generalInspec\',this) value=' . $trans['genInspecComp'] . '></li>';
                                                     // echo '<li role="separator" class="divider"></li>';
                                                   }
                                                 else
                                                 {
-                                                    echo '<li><a href="#">Completed: N/A </a></li>';
+                                                    echo '<li><a href="#" id=generalInspecComp' . $trans['transId']  . '>Completed: N/A </a>
+                                                    <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'generalInspec\',this) ></li>';
                                                     // echo '<li role="separator" class="divider"></li>';
                                                 }
                                                     // <li><a href="#">Ordered: 12/12/12</a></li>
@@ -620,23 +691,27 @@ $keys = array_keys($response);
 
                                                   if($trans['apprOrdered'] != NULL && $trans['apprOrdered'] != '0000-00-00')
                                                     {
-                                                        echo '<li><a href="#">Ordered: ' . date('m/d/y', strtotime($trans['apprOrdered'])) . '</a></li>';
+                                                        echo '<li><a href="#" id=apprOrd' .$trans['transId'].'>Ordered: ' . date('m/d/y', strtotime($trans['apprOrdered'])) . '</a>
+                                                        <input type="date" onChange=saveOrdDate(\''.$trans['transId'] . '\',"appr",this) value='. $trans['apprOrdered'].'></li>';
                                                     }
                                                     else
                                                     {
-                                                        echo '<li><a href="#">Ordered: N/A</a></li>';
+                                                        echo '<li><a href="#" id=apprOrd' .$trans['transId'].'>Ordered: N/A</a>
+                                                        <input type="date" onChange=saveOrdDate(\''.$trans['transId'] . '\',"appr",this)></li>';
                                                     }
                                                     
                                                 echo '<li role="separator" class="divider"></li>';
 
                                                   if($trans['apprComp'] != NULL && $trans['apprComp'] != '0000-00-00')
                                                   {
-                                                    echo '<li><a href="#">Completed: ' . date('m/d/y', strtotime($trans['apprComp'])) . '</a></li>';
+                                                    echo '<li><a href="#" id=apprComp' . $trans['transId'] . '>Completed: ' . date('m/d/y', strtotime($trans['apprComp'])) . '</a>
+                                                    <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'appr\',this) value='. $trans['apprComp'] . ' ></li>';
                                                     // echo '<li role="separator" class="divider"></li>';
                                                   }
                                                 else
                                                 {
-                                                    echo '<li><a href="#">Completed: N/A </a></li>';
+                                                    echo '<li><a href="#" id=apprComp' . $trans['transId'] . ' >Completed: N/A </a>
+                                                    <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'appr\',this)></li>';
                                                     // echo '<li role="separator" class="divider"></li>';
                                                 }
                                                 
@@ -674,12 +749,14 @@ $keys = array_keys($response);
                                                   <ul class="dropdown-menu">';
                                                   if($trans['lcComp'] != NULL && $trans['lcComp'] != '0000-00-00')
                                                   {
-                                                    echo '<li><a href="#">Completed: ' . date('m/d/y', strtotime($trans['lcComp'])) . '</a></li>';
+                                                    echo '<li><a href="#" id=lcComp' . $trans['transId'] .'>Completed: ' . date('m/d/y', strtotime($trans['lcComp'])) . '</a>
+                                                    <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'lc\',this) value=' . $trans['lcComp'] . '></li>';
                                                     // echo '<li role="separator" class="divider"></li>';
                                                   }
                                                 else
                                                 {
-                                                    echo '<li><a href="#">Completed: N/A </a></li>';
+                                                    echo '<li><a href="#" id=lcComp' . $trans['transId'] .'>Completed: N/A </a>
+                                                    <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'lc\',this)></li>';
                                                     // echo '<li role="separator" class="divider"></li>';
                                                 }
                                                     // <li><a href="#">Ordered: 12/12/12</a></li>
@@ -729,12 +806,14 @@ $keys = array_keys($response);
                                                   echo '<li role="separator" class="divider"></li>';
                                                   if($trans['coeComp'] != NULL && $trans['coeComp'] != '0000-00-00')
                                                   {
-                                                    echo '<li><a href="#">Completed: ' . date('m/d/y', strtotime($trans['coeComp'])) . '</a></li>';
+                                                    echo '<li><a href="#" id=coeComp'. $trans['transId'] .'>Completed: ' . date('m/d/y', strtotime($trans['coeComp'])) . '</a>
+                                                    <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'coe\',this) value=' . $trans['coeComp'] . '></li>';
                                                     // echo '<li role="separator" class="divider"></li>';
                                                   }
                                                 else
                                                 {
-                                                    echo '<li><a href="#">Completed: N/A </a></li>';
+                                                    echo '<li><a href="#" id=coeComp'. $trans['transId'] .'>Completed: N/A </a>
+                                                    <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'coe\',this) ></li>';
                                                     // echo '<li role="separator" class="divider"></li>';
                                                 }
                                                     // <li><a href="#">Ordered: 12/12/12</a></li>
@@ -830,10 +909,10 @@ $keys = array_keys($response);
         <script src="../plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 
         <script>
+        
             //Date picker
-            $('#datepicker').datepicker({
-                autoclose: true
-            })
+            $('#datepicker').datepicker();
+           
             jQuery(function($){
                 $('.footable').footable({
                     "paging": {
@@ -1059,17 +1138,25 @@ $keys = array_keys($response);
                 if(sendDate == "")
                 {
                     sendDate = "NULL";
+                    $('#' + type + 'Ord' + transId).html("Ordered: N/A");
                 }
+                else
+                    $('#' + type + 'Ord' + transId).html("Ordered: " + sendDate.substring(5,7) + "/" + sendDate.substring(8,10) + "/" + sendDate.substring(0,4) );
                 $.post( "../staff/saveOrdDates.php", { transId: transId, type:type, date:sendDate });
             }
             function saveCompDate(transId,type,date)
             {
+
                 
                 var sendDate = date.value;
                 if(sendDate == "")
                 {
                     sendDate = "NULL";
+                    $('#' + type + 'Comp' + transId).html("Completed: N/A");
                 }
+                else
+                    $('#' + type + 'Comp' + transId).html("Completed: " + sendDate.substring(5,7) + "/" + sendDate.substring(8,10) + "/" + sendDate.substring(0,4) );
+
                 $.post( "../staff/saveCompDates.php", { transId: transId, type:type, date:sendDate });
 
             }

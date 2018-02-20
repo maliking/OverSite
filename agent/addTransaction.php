@@ -30,9 +30,9 @@ $address = $getAddress->fetch();
 
 
 $insertSql = "INSERT INTO transactions(houseId, userId, address, transType, clientName, clientNum, accDay, emdDays,
-						 sellerDiscDays, buyerDiscDays, genInspecDays, termiteInspecDays, septicInspecDays, waterInspecDays, 
+						 sellerDiscDays, buyerDiscDays, signedDiscDays, genInspecDays, termiteInspecDays, septicInspecDays, waterInspecDays, 
 						 appraisalDays, apprOrdered, apprComp, lcDays, coeDays, coeOrgDate, notes) 
-VALUES (:houseId, :userId, :address, :transType, :clientName, :clientNum, :accDay, :emdDays, :sellerDiscDays, :buyerDiscDays, :genInspecDays, :termiteInspecDays, 
+VALUES (:houseId, :userId, :address, :transType, :clientName, :clientNum, :accDay, :emdDays, :sellerDiscDays, :buyerDiscDays, :signedDiscDays, :genInspecDays, :termiteInspecDays, 
 	:septicInspecDays, :waterInspecDays, :appraisalDays, :apprOrdered, :apprComp, :lcDays, :coeDays, :coeOrgDate, :notes)";
 
 $parameters = array();
@@ -46,6 +46,7 @@ $parameters[':accDay'] = date("y-m-d");
 $parameters[':emdDays'] = "3";
 $parameters[':sellerDiscDays'] = "7";
 $parameters[':buyerDiscDays'] = "17";
+$parameters[':signedDiscDays'] = "17";
 $parameters[':genInspecDays'] = "17";
 $parameters[':termiteInspecDays'] = "17";
 $parameters[':septicInspecDays'] = "17";
@@ -62,10 +63,10 @@ $stmt = $dbConn->prepare($insertSql);
 $stmt->execute($parameters);
 
 $buyerSql = "INSERT INTO transactions (houseId, userId, address, transType, clientName, clientNum, accDay, emdDays,
-						 sellerDiscDays, buyerDiscDays, genInspecDays, termiteInspecDays, septicInspecDays, waterInspecDays, 
-						 appraisalDays, apprOrdered, apprComp, lcDays, coeDays, notes) 
-VALUES (:houseId, :userId, :address, :transType, :clientName, :clientNum, :accDay, :emdDays, :sellerDiscDays, :buyerDiscDays, :genInspecDays, :termiteInspecDays, 
-	:septicInspecDays, :waterInspecDays, :appraisalDays, :apprOrdered, :apprComp, :lcDays, :coeDays, :notes)";
+						 sellerDiscDays, buyerDiscDays, signedDiscDays, genInspecDays, termiteInspecDays, septicInspecDays, waterInspecDays, 
+						 appraisalDays, apprOrdered, apprComp, lcDays, coeDays, coeOrgDate, notes) 
+VALUES (:houseId, :userId, :address, :transType, :clientName, :clientNum, :accDay, :emdDays, :sellerDiscDays, :buyerDiscDays, :signedDiscDays, :genInspecDays, :termiteInspecDays, 
+	:septicInspecDays, :waterInspecDays, :appraisalDays, :apprOrdered, :apprComp, :lcDays, :coeDays, :coeOrgDate, :notes)";
 
 $parameters = array();
 $parameters[':houseId'] = $houseId;
@@ -78,6 +79,7 @@ $parameters[':accDay'] = date("y-m-d");
 $parameters[':emdDays'] = "3";
 $parameters[':sellerDiscDays'] = "7";
 $parameters[':buyerDiscDays'] = "17";
+$parameters[':signedDiscDays'] = "17";
 $parameters[':genInspecDays'] = "17";
 $parameters[':termiteInspecDays'] = "17";
 $parameters[':septicInspecDays'] = "17";

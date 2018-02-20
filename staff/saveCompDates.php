@@ -73,4 +73,23 @@ else if($type == "coe")
 	$dateStmt->execute($namedParameters);
 }
 
+
+else if($type == "recieved")
+{
+	$dateSql = "UPDATE transactions SET  sellerDiscRec = :sellerDiscRec WHERE transId = :transId";
+	$namedParameters = array();
+	$namedParameters[':transId'] = $transId;
+	$namedParameters[':sellerDiscRec'] = $date;
+	$dateStmt = $dbConn->prepare($dateSql);
+	$dateStmt->execute($namedParameters);
+}
+else if($type == "signed")
+{
+	$dateSql = "UPDATE transactions SET  signedDiscComp = :signedDiscComp WHERE transId = :transId";
+	$namedParameters = array();
+	$namedParameters[':transId'] = $transId;
+	$namedParameters[':signedDiscComp'] = $date;
+	$dateStmt = $dbConn->prepare($dateSql);
+	$dateStmt->execute($namedParameters);
+}
 ?>

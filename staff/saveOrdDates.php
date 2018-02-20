@@ -38,10 +38,10 @@ else if($type == "seller")
 }
 else if($type == "generalInspec") 
 {
-	$dateSql = "UPDATE transactions SET  genInspecComp = :genInspecComp WHERE transId = :transId";
+	$dateSql = "UPDATE transactions SET  genInspecOrd = :genInspecOrd WHERE transId = :transId";
 	$namedParameters = array();
 	$namedParameters[':transId'] = $transId;
-	$namedParameters[':genInspecComp'] = $date;
+	$namedParameters[':genInspecOrd'] = $date;
 	$dateStmt = $dbConn->prepare($dateSql);
 	$dateStmt->execute($namedParameters);
 }
