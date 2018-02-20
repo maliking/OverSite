@@ -64,8 +64,8 @@ $keys = array_keys($response);
                             <?php
                             for ($i = 0; $i < sizeof($keys); $i++) {
                             {
-                                echo "<option>" . $response[$keys[$i]]['address'] . " " .$response[$keys[$i]]['cityName'] . " " . 
-                                $response[$keys[$i]]['state'] . "</option>";
+                                // echo "<option>" . $response[$keys[$i]]['address'] . " " .$response[$keys[$i]]['cityName'] . " " . 
+                                // $response[$keys[$i]]['state'] . "</option>";
                             }
                             ?>
                             <!-- <option>1234 House St.</option>
