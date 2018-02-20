@@ -1,3 +1,39 @@
+<?php
+// session_start();
+// require("../databaseConnection.php");
+// $dbConn = getConnection();
+
+$url = 'https://api.idxbroker.com/clients/featured';
+
+$method = 'GET';
+
+// headers (required and optional)
+$headers = array(
+    'Content-Type: application/x-www-form-urlencoded', // required
+    'accesskey: e1Br0B5DcgaZ3@JXI9qib5', // required - replace with your own
+    'outputtype: json' // optional - overrides the preferences in our API control page
+);
+
+// set up cURL
+$handle = curl_init();
+curl_setopt($handle, CURLOPT_URL, $url);
+curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+
+// exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
+$response = curl_exec($handle);
+$code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+
+if ($code >= 200 || $code < 300) {
+    $response = json_decode($response, true);
+} else {
+    $error = $code;
+}
+
+$keys = array_keys($response);
+?>
 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -10,23 +46,38 @@
                 <!-- content goes here -->
                 <form>
                     <div class="form-group">
-                        <label for="address">Address:</label>
-                        <select class="form-control" id="address">
-                            <option>1234 House St.</option>
-                            <option>492 Example Dr.</option>
-                        </select>
-                        <br>
                         <label for="agent">Agent:</label>
                         <select class="form-control" id="agent">
-                            <option>John Doe</option>
-                            <option>Jane Smith</option>
+                            <?php
+                            foreach($agentResults as $agent)
+                            {
+                                echo "<option>" . $agent['firstName'] . " " . $agent['lastName'] . "</option>";
+                            }
+                            ?>
+                            
+                           <!--  <option>Jane Smith</option> -->
                         </select>
+
                         <br>
-                        <label for="radio">Date Type: </label>
-                        <div class="radio">
-                            <label><input type="radio" name="optradio">Acc. - Accepted</label>
+                        <label for="address">Address:</label>
+                        <select class="form-control" id="address">
+                            <?php
+                            for ($i = 0; $i < sizeof($keys); $i++) {
+                            {
+                                echo "<option>" . $response[$keys[$i]]['address'] . " " .$response[$keys[$i]]['cityName'] . " " . 
+                                $response[$keys[$i]]['state'] . "</option>";
+                            }
+                            ?>
+                            <!-- <option>1234 House St.</option>
+                            <option>492 Example Dr.</option> -->
+                        </select>
+
+                        <br>
+                        <label>Date In-Contract:</label>
+                        <div>
+                            <input type="date" name="accDate">
                         </div>
-                        <div class="radio">
+                        <!-- <div class="radio">
                             <label><input type="radio" name="optradio">EMD - Earnest Money Deposit</label>
                         </div>
                         <div class="radio">
@@ -43,7 +94,7 @@
                         </div>
                         <div class="radio">
                             <label><input type="radio" name="optradio">COE - Close of Escrow</label>
-                        </div>
+                        </div> -->
 
                     </div>
                 </form>
