@@ -118,6 +118,9 @@ $transResults = $transStmt->fetchAll();
                                     </th>
 
                                     <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
+                                                                    data-placement="top" title="SignedDisc">Signed Disc. </a>
+
+                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                     data-placement="top" title="Inspection">Insp. </a>
                                     </th>
 
@@ -131,6 +134,12 @@ $transResults = $transStmt->fetchAll();
                                     <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                     data-placement="top"
                                                                     title="Close of Escrow">COE </a></th>
+                                                                    
+                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
+                                    data-placement="top" title="miscOne">Misc. 1 </a>
+
+                                    <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
+                                                                    data-placement="top" title="miscTwo">Misc. 2 </a>
                                     <th data-breakpoints="xs sm">Edit Dates</th>
                                 </tr>
                                 </thead>
@@ -148,10 +157,14 @@ $transResults = $transStmt->fetchAll();
                                         echo "<td>" . date('m/d/y', strtotime($day)) . "</td>";
                                         echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['emdDays'] . ' days')) . "</td>";
                                         echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['sellerDiscDays'] . ' days')) . "</td>";
+                                        echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['signedDiscDays'] . ' days')) . "</td>";
                                         echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['genInspecDays'] . ' days')) . "</td>";
                                         echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['appraisalDays'] . ' days')) . "</td>";
                                         echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['lcDays'] . ' days')) . "</td>";
                                         echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['coeDays'] . ' days')) . "</td>";
+                                        echo "<td>" . $trans['miscOneName'] . " " . date('m/d/y', strtotime($day . ' + '. $trans['miscOneDays'] . ' days')) . "</td>";
+                                        echo "<td>" . $trans['miscTwoName'] . " " . date('m/d/y', strtotime($day . ' + '. $trans['miscTwoDays'] . ' days')) . "</td>";
+
                                         echo"<td>";
                                         ?>
                                         <?php include "editDates.php"; ?>
@@ -275,7 +288,7 @@ $transResults = $transStmt->fetchAll();
             //     // alert(date.value);
             //     // alert(transId);
                 var aprvDay = $("#aprvDay"+transId).val();
-                // $.post( "saveNewDates.php", { transId: transId, type:type, date:date.value, aprvDay: aprvDay });
+                $.post( "saveNewDates.php", { transId: transId, type:type, date:date.value, aprvDay: aprvDay });
                   
             }
             

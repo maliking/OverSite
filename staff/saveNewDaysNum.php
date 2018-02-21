@@ -86,4 +86,14 @@ else if($type == "miscTwo")
 	$dateStmt->execute($namedParameters);
 }
 
+else if($type == "signed")
+{
+	$dateSql = "UPDATE transactions SET  signedDiscDays = :signedDiscDays WHERE transId = :transId";
+	$namedParameters = array();
+	$namedParameters[':transId'] = $transId;
+	$namedParameters[':signedDiscDays'] = $date;
+	$dateStmt = $dbConn->prepare($dateSql);
+	$dateStmt->execute($namedParameters);
+}
+
 ?>

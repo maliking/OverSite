@@ -119,6 +119,20 @@ else if ($type == "miscTwo")
 	$dateStmt = $dbConn->prepare($dateSql);
 	$dateStmt->execute($namedParameters);
 }
+
+else if($type == "signed")
+{
+	$createDate = date_create($date);
+	$dateSql = "UPDATE transactions SET  signedDiscDays = :signedDiscDays WHERE transId = :transId";
+	$namedParameters = array();
+	$namedParameters[':transId'] = $transId;
+
+	$diff  = date_diff($aprvDay, $createDate);
+	$namedParameters[':signedDiscDays'] = $diff->days;
+	$dateStmt = $dbConn->prepare($dateSql);
+	$dateStmt->execute($namedParameters);
+}
+
 else
 {}
 //01-01-2018

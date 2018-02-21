@@ -96,6 +96,19 @@ foreach($meetingResults as $meeting)
 	array_push($meetingsArray,$meetingObj);
 
 	$date=date_create(substr($meeting['accDay'], 0,11));
+	date_add($date,date_interval_create_from_date_string($meeting['signedDiscDays'] . " days"));
+	$meetingObj = new stdClass();
+	$meetingObj->title = "Signed Disc Days " . $meeting['firstName'] . " " . $meeting['lastName'] . " " . $meeting['transType'] . " " . $meeting['address'];
+	$meetingObj->allday = True;
+	$meetingObj->color = "#4ff6ff";
+	$meetingObj->textColor = "#000000";
+	$meetingObj->start = date_format($date,"Y-m-d") . "T00:00:00";
+	$meetingObj->end = date_format($date,"Y-m-d") . "T00:00:00";
+	$meetingObj->id = $meeting['transId'];
+
+	array_push($meetingsArray,$meetingObj);
+
+	$date=date_create(substr($meeting['accDay'], 0,11));
 	date_add($date,date_interval_create_from_date_string($meeting['genInspecDays'] . " days"));
 	$meetingObj = new stdClass();
 	$meetingObj->title = "Gen Inspec Days " . $meeting['firstName'] . " " . $meeting['lastName'] . " " . $meeting['transType'] . " " . $meeting['address'];
