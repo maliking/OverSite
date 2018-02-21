@@ -67,4 +67,23 @@ else if($type == "coe")
 	$dateStmt->execute($namedParameters);
 }
 
+else if($type == "miscOne")
+{
+	$dateSql = "UPDATE transactions SET  miscOneDays = :miscOneDays WHERE transId = :transId";
+	$namedParameters = array();
+	$namedParameters[':transId'] = $transId;
+	$namedParameters[':miscOneDays'] = $date;
+	$dateStmt = $dbConn->prepare($dateSql);
+	$dateStmt->execute($namedParameters);
+}
+else if($type == "miscTwo")
+{
+	$dateSql = "UPDATE transactions SET  miscTwoDays = :miscTwoDays WHERE transId = :transId";
+	$namedParameters = array();
+	$namedParameters[':transId'] = $transId;
+	$namedParameters[':miscTwoDays'] = $date;
+	$dateStmt = $dbConn->prepare($dateSql);
+	$dateStmt->execute($namedParameters);
+}
+
 ?>

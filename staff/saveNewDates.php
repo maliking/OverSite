@@ -94,6 +94,31 @@ else if($type == "coe")
 	$dateStmt = $dbConn->prepare($dateSql);
 	$dateStmt->execute($namedParameters);
 }
+
+else if ($type == "miscOne")
+{
+	$createDate = date_create($date);
+	$dateSql = "UPDATE transactions SET  miscOneDays = :miscOneDays WHERE transId = :transId";
+	$namedParameters = array();
+	$namedParameters[':transId'] = $transId;
+
+	$diff  = date_diff($aprvDay, $createDate);
+	$namedParameters[':miscOneDays'] = $diff->days;
+	$dateStmt = $dbConn->prepare($dateSql);
+	$dateStmt->execute($namedParameters);
+}
+else if ($type == "miscTwo")
+{
+	$createDate = date_create($date);
+	$dateSql = "UPDATE transactions SET  miscTwoDays = :miscTwoDays WHERE transId = :transId";
+	$namedParameters = array();
+	$namedParameters[':transId'] = $transId;
+
+	$diff  = date_diff($aprvDay, $createDate);
+	$namedParameters[':miscTwoDays'] = $diff->days;
+	$dateStmt = $dbConn->prepare($dateSql);
+	$dateStmt->execute($namedParameters);
+}
 else
 {}
 //01-01-2018

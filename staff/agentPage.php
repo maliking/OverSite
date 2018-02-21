@@ -237,6 +237,13 @@ $transResults = $transStmt->fetchAll();
 </script>
  
         <script>
+
+            function saveNameMisc(transId,type,name)
+            {
+                // alert(name.value);
+                $.post( "saveMiscName.php", { transId: transId, type:type, name:name.value });
+            }
+
             function saveOrdDate(transId,type,date)
             {
                 var sendDate = date.value;
@@ -268,7 +275,7 @@ $transResults = $transStmt->fetchAll();
             //     // alert(date.value);
             //     // alert(transId);
                 var aprvDay = $("#aprvDay"+transId).val();
-                $.post( "saveNewDates.php", { transId: transId, type:type, date:date.value, aprvDay: aprvDay });
+                // $.post( "saveNewDates.php", { transId: transId, type:type, date:date.value, aprvDay: aprvDay });
                   
             }
             

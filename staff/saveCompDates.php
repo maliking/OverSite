@@ -92,4 +92,24 @@ else if($type == "signed")
 	$dateStmt = $dbConn->prepare($dateSql);
 	$dateStmt->execute($namedParameters);
 }
+
+else if($type == "miscOne")
+{
+	$dateSql = "UPDATE transactions SET  miscOneComp = :miscOneComp WHERE transId = :transId";
+	$namedParameters = array();
+	$namedParameters[':transId'] = $transId;
+	$namedParameters[':miscOneComp'] = $date;
+	$dateStmt = $dbConn->prepare($dateSql);
+	$dateStmt->execute($namedParameters);
+}
+
+else if($type == "miscTwo")
+{
+	$dateSql = "UPDATE transactions SET  miscTwoComp = :miscTwoComp WHERE transId = :transId";
+	$namedParameters = array();
+	$namedParameters[':transId'] = $transId;
+	$namedParameters[':miscTwoComp'] = $date;
+	$dateStmt = $dbConn->prepare($dateSql);
+	$dateStmt->execute($namedParameters);
+}
 ?>
