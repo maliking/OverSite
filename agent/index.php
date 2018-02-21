@@ -446,8 +446,15 @@ $keys = array_keys($response);
                                             <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                             data-placement="top"
                                                                             title="Close of Escrow">COE </a></th>
+
+                                            <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
+                                                                            data-placement="top"
+                                                                            title="Close of Escrow">Misc. 1 </a></th>
+                                            <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
+                                                                            data-placement="top"
+                                                                            title="Close of Escrow">Misc. 2 </a></th>
                                             <th data-breakpoints="xs sm">Notes</th>
-                                            <th data-breakpoints="xs sm"></th>
+                                            <!-- <th data-breakpoints="xs sm"></th> -->
                                             <th data-breakpoints="xs sm">Edit Dates</th>
                                         </tr>
                                         </thead>
@@ -842,9 +849,111 @@ $keys = array_keys($response);
                                                         echo '<i class="fa fa-flag blink" style="color:#d9534f"></i>';
                                                     }
                                             echo '</td>
-                                            <td id=' . $trans['transId'] . '> ' . $trans['notes']  . ' </td>
-                                           <td> <button onClick=takeTransNote(' .$trans['transId'] . ')>  <i class="fa fa-edit" style="color:#d3d3d3"></i> </button></td>
-                                           <td>';
+                                            <td>
+                                                <div class="btn-group">
+                                                  <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    ' . date('m/d/y', strtotime($day . ' + '. $trans['miscOneDays'] . ' days' )) . ' <span class="caret"></span>
+                                                  </button>
+                                                  <ul class="dropdown-menu">';
+
+                                                  echo '<li><a href="#">' . $trans['miscOneName'] . '</a></li>';
+
+                                                  echo '<li role="separator" class="divider"></li>';
+                                                  if($trans['miscOneComp'] != NULL && $trans['miscOneComp'] != '0000-00-00')
+                                                  {
+                                                    echo '<li><a href="#">Completed: ' . date('m/d/y', strtotime($trans['miscOneComp'])) . '</a>
+                                                    <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'miscOne\',this) value=' . $trans['miscOneComp'] . '></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
+                                                  }
+                                                else
+                                                {
+                                                    echo '<li><a href="#">Completed: N/A </a>
+                                                    <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'miscOne\',this) ></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
+                                                }
+
+                                                 
+                                                  echo '</ul>
+                                                </div>';
+                                                  echo '&nbsp';
+                                                  // $today = new DateTime('today');
+                                                  $miscOneOnTime = new DateTime($trans['accDay']);
+                                                  $miscOneOnTime = $miscOneOnTime->add(new DateInterval('P'.$trans['miscOneDays'] .'D'));
+
+                                                  $miscOneReduced = new DateTime($trans['accDay']);
+                                                  $miscOneReduced = $miscOneReduced->add(new DateInterval('P'.$trans['miscOneDays'] .'D'));
+                                                  $miscOneReduced = $miscOneReduced->modify('-3 days');
+
+                                                  // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
+                                                  if($trans['miscOneComp'] != NULL && $trans['miscOneComp'] != '0000-00-00')
+                                                  {
+                                                    echo '<i class="fa fa-check-circle" style="color:#5cb85c"></i>';
+                                                  }
+                                                    else if($today >= $miscOneReduced && $today < $miscOneOnTime)
+                                                    {
+                                                        echo '<i class="fa fa-warning" style="color:#ffae42"></i>';
+                                                    }
+                                                    else if($today >= $miscOneOnTime)
+                                                    {
+                                                        echo '<i class="fa fa-flag blink" style="color:#d9534f"></i>';
+                                                    }
+
+
+
+                                            echo '</td>
+                                            <td>
+                                                <div class="btn-group">
+                                                  <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    ' . date('m/d/y', strtotime($day . ' + '. $trans['miscTwoDays'] . ' days' )) . ' <span class="caret"></span>
+                                                  </button>
+                                                  <ul class="dropdown-menu">';
+
+                                                  echo '<li><a href="#">' . $trans['miscTwoName'] . '</a></li>';
+
+                                                  echo '<li role="separator" class="divider"></li>';
+
+                                                  if($trans['miscTwoComp'] != NULL && $trans['miscTwoComp'] != '0000-00-00')
+                                                  {
+                                                    echo '<li><a href="#">Completed: ' . date('m/d/y', strtotime($trans['miscTwoComp'])) . '</a>
+                                                    <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'miscTwo\',this) value=' . $trans['miscTwoComp'] . '></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
+                                                  }
+                                                else
+                                                {
+                                                    echo '<li><a href="#">Completed: N/A </a>
+                                                    <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'miscTwo\',this) ></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
+                                                }
+
+                                                  
+                                                  echo '</ul>
+                                                </div>';
+                                                  echo '&nbsp';
+                                                  // $today = new DateTime('today');
+                                                  $miscTwoOnTime = new DateTime($trans['accDay']);
+                                                  $miscTwoOnTime = $miscTwoOnTime->add(new DateInterval('P'.$trans['miscTwoDays'] .'D'));
+
+                                                  $miscTwoReduced = new DateTime($trans['accDay']);
+                                                  $miscTwoReduced = $miscTwoReduced->add(new DateInterval('P'.$trans['miscTwoDays'] .'D'));
+                                                  $miscTwoReduced = $miscTwoReduced->modify('-3 days');
+
+                                                  // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
+                                                  if($trans['miscTwoComp'] != NULL && $trans['miscTwoComp'] != '0000-00-00')
+                                                  {
+                                                    echo '<i class="fa fa-check-circle" style="color:#5cb85c"></i>';
+                                                  }
+                                                    else if($today >= $miscTwoReduced && $today < $miscTwoOnTime)
+                                                    {
+                                                        echo '<i class="fa fa-warning" style="color:#ffae42"></i>';
+                                                    }
+                                                    else if($today >= $miscTwoOnTime)
+                                                    {
+                                                        echo '<i class="fa fa-flag blink" style="color:#d9534f"></i>';
+                                                    }
+                                            echo '</td>
+                                            <td id=' . $trans['transId'] . '> ' . $trans['notes']  . ' </td>';
+                                           // <td> <button onClick=takeTransNote(' .$trans['transId'] . ')>  <i class="fa fa-edit" style="color:#d3d3d3"></i> </button></td>
+                                           echo '<td>';
                                            ?>
                                            <?php include "../staff/editDates.php"; ?>
                                            <?php
