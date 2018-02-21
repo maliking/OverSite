@@ -1131,6 +1131,12 @@ $keys = array_keys($response);
             //     }
             // }, 60000); // Repeat every 60000 milliseconds (1 minute)
 
+            
+            function saveNameMisc(transId,type,name)
+            {
+                // alert(name.value);
+                $.post( "../staff/saveMiscName.php", { transId: transId, type:type, name:name.value });
+            }
 
             function saveOrdDate(transId,type,date)
             {
