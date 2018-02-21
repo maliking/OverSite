@@ -150,41 +150,7 @@
                                             </td>
                                         </tr>
 
-                                        <tr>
-                                            <td>Signed Disc.</td>
-                                            <?php echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['signedDiscDays'] . ' days')) . "</td>"; ?>
-                                            <td>
-                                                <div>
-                                                    <input type="text" class="form-control pull-right" onChange=<?php echo "saveDaysNum('" . $trans['transId'] . "','signed',this)"; ?> <?php echo "id=signedDayNum".$trans['transId'];?> value=<?php echo $trans['signedDiscDays'] ;?>>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="input-group date">
-                                                    <input class="col" type="date" class="form-control pull-right" onChange=<?php echo "saveDateCalendar('" . $trans['transId'] . "','signed',this)"; ?> <?php echo "id=signedDay".$trans['transId'];?> placeholder="&#xf073;" value=<?php echo date('Y-m-d', strtotime($day . ' + '. $trans['signedDiscDays'] . ' days'));?>>
-                                                </div>
-                                            </td>
-
-                                            <td>
-                                                <div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="input-group date">
-                                                    <?php
-                                                        if($trans['signedDiscComp'] == NULL)
-                                                        {
-                                                            echo '<input class="col" type="date" class="form-control pull-right" onChange=saveCompDate("'.$trans['transId'] . '","signed",this) id=signedDay'.$trans['transId'].' placeholder="&#xf073;" value="" >';
-
-                                                        }
-                                                        else
-                                                        {
-                                                            echo '<input class="col" type="date" class="form-control pull-right" onChange=saveCompDate("'.$trans['transId'] . '","signed",this)  id=signedDay'.$trans['transId'].' placeholder="&#xf073;" value=' . $trans['signedDiscComp'] . '>';
-
-                                                        }
-                                                    ?>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        
                                        
 
 
@@ -223,6 +189,7 @@
                                                 </div>
                                             </td>
                                         </tr>
+
                                         <tr>
                                             <td>APPR</td>
                                             <?php echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['appraisalDays'] . ' days')) . "</td>"; ?>
@@ -270,6 +237,7 @@
                                                 </div>
                                             </td>
                                         </tr>
+
                                         <tr>
                                             <td>LC</td>
                                             <?php echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['lcDays'] . ' days')) . "</td>"; ?>
@@ -305,6 +273,7 @@
                                                 </div>
                                             </td>
                                         </tr>
+
                                         <tr>
                                             <td>COE</td>
                                             <?php echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['coeDays'] . ' days')) . "</td>"; ?>
