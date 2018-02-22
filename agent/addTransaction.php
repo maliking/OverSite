@@ -28,6 +28,11 @@ $getAddress = $dbConn->prepare($sql);
 $getAddress->execute($namedParameters);
 $address = $getAddress->fetch();
 
+$threeDay = dateVerify(3);
+$sevenDay = dateVerify(7);
+$sevenTeenDay =dateVerify(17);
+$twentyOneDay = dateVerify(21);
+$thirtyDay = dateVerify(30);
 
 $insertSql = "INSERT INTO transactions(houseId, userId, address, transType, clientName, clientNum, accDay, emdDays,
 						 sellerDiscDays, buyerDiscDays, signedDiscDays, genInspecDays, termiteInspecDays, septicInspecDays, waterInspecDays, 
@@ -43,19 +48,19 @@ $parameters[':transType'] = "Listing";
 $parameters[':clientName'] = "NA";
 $parameters[':clientNum'] = "NA";
 $parameters[':accDay'] = date("y-m-d");
-$parameters[':emdDays'] = "3";
-$parameters[':sellerDiscDays'] = "7";
-$parameters[':buyerDiscDays'] = "17";
-$parameters[':signedDiscDays'] = "17";
-$parameters[':genInspecDays'] = "17";
-$parameters[':termiteInspecDays'] = "17";
-$parameters[':septicInspecDays'] = "17";
-$parameters[':waterInspecDays'] = "17";
-$parameters[':appraisalDays'] = "17";
+$parameters[':emdDays'] = $threeDay;
+$parameters[':sellerDiscDays'] = $sevenDay;
+$parameters[':buyerDiscDays'] = $sevenTeenDay;
+$parameters[':signedDiscDays'] = $sevenTeenDay;
+$parameters[':genInspecDays'] = $sevenTeenDay;
+$parameters[':termiteInspecDays'] = $sevenTeenDay;
+$parameters[':septicInspecDays'] = $sevenTeenDay;
+$parameters[':waterInspecDays'] = $sevenTeenDay;
+$parameters[':appraisalDays'] = $sevenTeenDay;
 $parameters[':apprOrdered'] = "";
 $parameters[':apprComp'] = "";
-$parameters[':lcDays'] = "21";
-$parameters[':coeDays'] = "30";
+$parameters[':lcDays'] = $twentyOneDay;
+$parameters[':coeDays'] = $thirtyDay;
 $parameters[':coeOrgDate'] = date("y-m-d");
 $parameters[':notes'] = "";
 
@@ -76,19 +81,19 @@ $parameters[':transType'] = "Buyer";
 $parameters[':clientName'] = "NA";
 $parameters[':clientNum'] = "NA";
 $parameters[':accDay'] = date("y-m-d");
-$parameters[':emdDays'] = "3";
-$parameters[':sellerDiscDays'] = "7";
-$parameters[':buyerDiscDays'] = "17";
-$parameters[':signedDiscDays'] = "17";
-$parameters[':genInspecDays'] = "17";
-$parameters[':termiteInspecDays'] = "17";
-$parameters[':septicInspecDays'] = "17";
-$parameters[':waterInspecDays'] = "17";
-$parameters[':appraisalDays'] = "17";
+$parameters[':emdDays'] = $threeDay;
+$parameters[':sellerDiscDays'] = $sevenDay;
+$parameters[':buyerDiscDays'] = $sevenTeenDay;
+$parameters[':signedDiscDays'] = $sevenTeenDay;
+$parameters[':genInspecDays'] = $sevenTeenDay;
+$parameters[':termiteInspecDays'] = $sevenTeenDay;
+$parameters[':septicInspecDays'] = $sevenTeenDay;
+$parameters[':waterInspecDays'] = $sevenTeenDay;
+$parameters[':appraisalDays'] = $sevenTeenDay;
 $parameters[':apprOrdered'] = "";
 $parameters[':apprComp'] = "";
-$parameters[':lcDays'] = "21";
-$parameters[':coeDays'] = "30";
+$parameters[':lcDays'] = $twentyOneDay;
+$parameters[':coeDays'] = $thirtyDay;
 $parameters[':coeOrgDate'] = date("y-m-d");
 $parameters[':notes'] = "";
 
@@ -125,4 +130,60 @@ $client->messages->create(
     )
 );
 
+function dateVerify($addDays) 
+{
+	$returnDaysToAdd = $addDays;
+    $today = date("Y-m-d");
+    $addedDate = date("Y-m-d", strtotime($today . ' + ' . $addDays . ' days' ));
+
+    $holidays = array("2018-01-01", "2018-01-15", "2018-02-19", "2018-05-28", "2018-07-04",
+    				 "2018-09-03", "2018-10-08", "2018-11-12", "2018-11-22", "2018-12-25" );
+
+    if(date("l", strtotime($addedDate)) == "Saturday")
+	{
+	    $addedDate = date("Y-m-d", strtotime($addedDate . ' + 2 days' ));
+	    $returnDaysToAdd += 2;
+	}
+	else if(date("l", strtotime($addedDate)) == "Sunday")
+	{
+	    $addedDate = date("Y-m-d", strtotime($addedDate . ' + 1 days' ));
+	    $returnDaysToAdd += 1;
+	}
+
+	foreach($holidays as $holiday)
+	{
+		if($addedDate == $holiday)
+		{
+		    $addedDate = date("Y-m-d", strtotime($addedDate . ' + 1 days' ));
+		    $returnDaysToAdd += 1;
+		     if(date("l", strtotime($addedDate)) == "Saturday")
+			{
+			    $addedDate = date("Y-m-d", strtotime($addedDate . ' + 2 days' ));
+			    $returnDaysToAdd += 2;
+			}
+			else if(date("l", strtotime($addedDate)) == "Sunday")
+			{
+			    $addedDate = date("Y-m-d", strtotime($addedDate . ' + 1 days' ));
+			    $returnDaysToAdd += 1;
+			}
+
+		}
+	}
+
+    return $returnDaysToAdd;
+}
+
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
