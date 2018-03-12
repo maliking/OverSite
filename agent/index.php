@@ -137,6 +137,9 @@ $keys = array_keys($response);
         <!-- bootstrap datepicker -->
         <link rel="stylesheet" href="../plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/locale/ca.js"></script>
+
     </head>
 
     <body class="hold-transition skin-red-light sidebar-mini">
@@ -515,15 +518,15 @@ $keys = array_keys($response);
                                                   // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
                                                   if($trans['emdComp'] != NULL && $trans['emdComp'] != '0000-00-00')
                                                   {
-                                                    echo '<i class="fa fa-check-circle" style="color:#5cb85c"></i>';
+                                                    echo '<i id=status' . $trans['transId'] . 'emd' . ' class="fa fa-check-circle" style="color:#5cb85c"></i>';
                                                   }
                                                     else if($today >= $emdReduced && $today < $emdOnTime)
                                                     {
-                                                        echo '<i class="fa fa-warning" style="color:#ffae42"></i>';
+                                                        echo '<i id=status' . $trans['transId'] .  'emd' . ' class="fa fa-warning" style="color:#ffae42"></i>';
                                                     }
                                                     else if($today >= $emdOnTime)
                                                     {
-                                                        echo '<i class="fa fa-flag blink" style="color:#d9534f"></i>';
+                                                        echo '<i id=status' . $trans['transId'] .  'emd' . ' class="fa fa-flag blink" style="color:#d9534f"></i>';
                                                     }
                                             echo '</td>
                                             <td>
@@ -574,15 +577,15 @@ $keys = array_keys($response);
                                                   // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
                                                   if($trans['sellerDiscComp'] != NULL && $trans['sellerDiscComp'] != '0000-00-00')
                                                   {
-                                                    echo '<i class="fa fa-check-circle" style="color:#5cb85c"></i>';
+                                                    echo '<i id=status' . $trans['transId'] .  'seller' . ' class="fa fa-check-circle" style="color:#5cb85c"></i>';
                                                   }
                                                     else if($today >= $sellerReduced && $today < $sellerOnTime)
                                                     {
-                                                        echo '<i class="fa fa-warning" style="color:#ffae42"></i>';
+                                                        echo '<i id=status' . $trans['transId'] .  'seller' . ' class="fa fa-warning" style="color:#ffae42"></i>';
                                                     }
                                                     else if($today >= $sellerOnTime)
                                                     {
-                                                        echo '<i class="fa fa-flag blink" style="color:#d9534f"></i>';
+                                                        echo '<i id=status' . $trans['transId'] .  'seller' . ' class="fa fa-flag blink" style="color:#d9534f"></i>';
                                                     }
                                             echo '</td>
                                             <td>
@@ -620,15 +623,15 @@ $keys = array_keys($response);
                                                   // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
                                                   if($trans['signedDiscComp'] != NULL && $trans['signedDiscComp'] != '0000-00-00')
                                                   {
-                                                    echo '<i class="fa fa-check-circle" style="color:#5cb85c"></i>';
+                                                    echo '<i id=status' . $trans['transId'] .  'signed' . ' class="fa fa-check-circle" style="color:#5cb85c"></i>';
                                                   }
                                                     else if($today >= $signedReduced && $today < $signedOnTime)
                                                     {
-                                                        echo '<i class="fa fa-warning" style="color:#ffae42"></i>';
+                                                        echo '<i id=status' . $trans['transId'] .  'signed' . ' class="fa fa-warning" style="color:#ffae42"></i>';
                                                     }
                                                     else if($today >= $signedOnTime)
                                                     {
-                                                        echo '<i class="fa fa-flag blink" style="color:#d9534f"></i>';
+                                                        echo '<i id=status' . $trans['transId'] .  'signed' . ' class="fa fa-flag blink" style="color:#d9534f"></i>';
                                                     }
                                             echo '</td>
                                             <td>
@@ -678,15 +681,15 @@ $keys = array_keys($response);
                                                   // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
                                                   if($trans['genInspecComp'] != NULL && $trans['genInspecComp'] != '0000-00-00')
                                                   {
-                                                    echo '<i class="fa fa-check-circle" style="color:#5cb85c"></i>';
+                                                    echo '<i id=status' . $trans['transId'] .  'generalInspec' . ' class="fa fa-check-circle" style="color:#5cb85c"></i>';
                                                   }
                                                     else if($today >= $genReduced && $today < $genOnTime)
                                                     {
-                                                        echo '<i class="fa fa-warning" style="color:#ffae42"></i>';
+                                                        echo '<i id=status' . $trans['transId'] .  'generalInspec' . ' class="fa fa-warning" style="color:#ffae42"></i>';
                                                     }
                                                     else if($today >= $genOnTime)
                                                     {
-                                                        echo '<i class="fa fa-flag blink" style="color:#d9534f"></i>';
+                                                        echo '<i id=status' . $trans['transId'] .  'generalInspec' . ' class="fa fa-flag blink" style="color:#d9534f"></i>';
                                                     }
                                             echo '</td>               
                                             <td>
@@ -737,15 +740,15 @@ $keys = array_keys($response);
                                                   // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
                                                   if($trans['apprComp'] != NULL && $trans['apprComp'] != '0000-00-00')
                                                   {
-                                                    echo '<i class="fa fa-check-circle" style="color:#5cb85c"></i>';
+                                                    echo '<i id=status' . $trans['transId'] .  'appr' . ' class="fa fa-check-circle" style="color:#5cb85c"></i>';
                                                   }
                                                     else if($today >= $apprReduced && $today < $apprOnTime)
                                                     {
-                                                        echo '<i class="fa fa-warning" style="color:#ffae42"></i>';
+                                                        echo '<i id=status' . $trans['transId'] .  'appr' . ' class="fa fa-warning" style="color:#ffae42"></i>';
                                                     }
                                                     else if($today >= $apprOnTime)
                                                     {
-                                                        echo '<i class="fa fa-flag blink" style="color:#d9534f"></i>';
+                                                        echo '<i id=status' . $trans['transId'] .  'appr' . ' class="fa fa-flag blink" style="color:#d9534f"></i>';
                                                     }
                                             echo '</td>
                                             <td>
@@ -781,15 +784,15 @@ $keys = array_keys($response);
                                                   // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
                                                   if($trans['lcComp'] != NULL && $trans['lcComp'] != '0000-00-00')
                                                   {
-                                                    echo '<i class="fa fa-check-circle" style="color:#5cb85c"></i>';
+                                                    echo '<i id=status' . $trans['transId'] .  'lc' . ' class="fa fa-check-circle" style="color:#5cb85c"></i>';
                                                   }
                                                     else if($today >= $lcReduced && $today < $lcOnTime)
                                                     {
-                                                        echo '<i class="fa fa-warning" style="color:#ffae42"></i>';
+                                                        echo '<i id=status' . $trans['transId'] .  'lc' . ' class="fa fa-warning" style="color:#ffae42"></i>';
                                                     }
                                                     else if($today >= $lcOnTime)
                                                     {
-                                                        echo '<i class="fa fa-flag blink" style="color:#d9534f"></i>';
+                                                        echo '<i id=status' . $trans['transId'] .  'lc' . ' class="fa fa-flag blink" style="color:#d9534f"></i>';
                                                     }
                                             echo '</td>
                                             <td>
@@ -838,15 +841,15 @@ $keys = array_keys($response);
                                                   // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
                                                   if($trans['coeComp'] != NULL && $trans['coeComp'] != '0000-00-00')
                                                   {
-                                                    echo '<i class="fa fa-check-circle" style="color:#5cb85c"></i>';
+                                                    echo '<i id=status' . $trans['transId'] .  'coe' . ' class="fa fa-check-circle" style="color:#5cb85c"></i>';
                                                   }
                                                     else if($today >= $coeReduced && $today < $coeOnTime)
                                                     {
-                                                        echo '<i class="fa fa-warning" style="color:#ffae42"></i>';
+                                                        echo '<i id=status' . $trans['transId'] .  'coe' . ' class="fa fa-warning" style="color:#ffae42"></i>';
                                                     }
                                                     else if($today >= $coeOnTime)
                                                     {
-                                                        echo '<i class="fa fa-flag blink" style="color:#d9534f"></i>';
+                                                        echo '<i id=status' . $trans['transId'] .  'coe' . ' class="fa fa-flag blink" style="color:#d9534f"></i>';
                                                     }
                                             echo '</td>
                                             <td>
@@ -887,15 +890,15 @@ $keys = array_keys($response);
                                                   // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
                                                   if($trans['miscOneComp'] != NULL && $trans['miscOneComp'] != '0000-00-00')
                                                   {
-                                                    echo '<i class="fa fa-check-circle" style="color:#5cb85c"></i>';
+                                                    echo '<i id=status' . $trans['transId'] .  'miscOne' . ' class="fa fa-check-circle" style="color:#5cb85c"></i>';
                                                   }
                                                     else if($today >= $miscOneReduced && $today < $miscOneOnTime)
                                                     {
-                                                        echo '<i class="fa fa-warning" style="color:#ffae42"></i>';
+                                                        echo '<i id=status' . $trans['transId'] .  'miscOne' . ' class="fa fa-warning" style="color:#ffae42"></i>';
                                                     }
                                                     else if($today >= $miscOneOnTime)
                                                     {
-                                                        echo '<i class="fa fa-flag blink" style="color:#d9534f"></i>';
+                                                        echo '<i id=status' . $trans['transId'] .  'miscOne' . ' class="fa fa-flag blink" style="color:#d9534f"></i>';
                                                     }
 
 
@@ -940,15 +943,15 @@ $keys = array_keys($response);
                                                   // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
                                                   if($trans['miscTwoComp'] != NULL && $trans['miscTwoComp'] != '0000-00-00')
                                                   {
-                                                    echo '<i class="fa fa-check-circle" style="color:#5cb85c"></i>';
+                                                    echo '<i id=status' . $trans['transId'] .  'miscTwo' . ' class="fa fa-check-circle" style="color:#5cb85c"></i>';
                                                   }
                                                     else if($today >= $miscTwoReduced && $today < $miscTwoOnTime)
                                                     {
-                                                        echo '<i class="fa fa-warning" style="color:#ffae42"></i>';
+                                                        echo '<i id=status' . $trans['transId'] .  'miscTwo' . ' class="fa fa-warning" style="color:#ffae42"></i>';
                                                     }
                                                     else if($today >= $miscTwoOnTime)
                                                     {
-                                                        echo '<i class="fa fa-flag blink" style="color:#d9534f"></i>';
+                                                        echo '<i id=status' . $trans['transId'] .  'miscTwo' . ' class="fa fa-flag blink" style="color:#d9534f"></i>';
                                                     }
                                             echo '</td>
                                             <td id=' . $trans['transId'] . '> ' . $trans['notes']  . ' </td>';
@@ -1264,29 +1267,76 @@ $keys = array_keys($response);
 
                 
                 var sendDate = date.value;
-                if(sendDate == "")
+                if( type == "recieved")
                 {
-                    sendDate = "NULL";
-                    $('#' + type + 'Comp' + transId).html("Completed: N/A");
+                    if(sendDate == "")
+                    {
+                        sendDate = "NULL";
+                        $('#' + type + 'Comp' + transId).html("Date Recieved: N/A");
+                        $("#status" + transId+type).attr('class', '');
+                        $("#status" + transId+type).css('color', "");
+                    }
+                    else
+                    {
+                        $('#' + type + 'Comp' + transId).html("Date Recieved: " + sendDate.substring(5,7) + "/" + sendDate.substring(8,10) + "/" + sendDate.substring(0,4) );
+                        $("#status" + transId+type).attr('class', 'fa fa-check-circle');
+                        $("#status" + transId+type).css('color', "#5cb85c");
+                    }
+                }
+                else if( type == "signed")
+                {
+                    if(sendDate == "")
+                    {
+                        sendDate = "NULL";
+                        $('#' + type + 'Comp' + transId).html("Signed: N/A");
+                        $("#status" + transId+type).attr('class', '');
+                        $("#status" + transId+type).css('color', "");
+                    }
+                    else
+                    {
+                        $('#' + type + 'Comp' + transId).html("Signed: " + sendDate.substring(5,7) + "/" + sendDate.substring(8,10) + "/" + sendDate.substring(0,4) );
+                        $("#status" + transId+type).attr('class', 'fa fa-check-circle');
+                        $("#status" + transId+type).css('color', "#5cb85c");
+                    }
                 }
                 else
-                    $('#' + type + 'Comp' + transId).html("Completed: " + sendDate.substring(5,7) + "/" + sendDate.substring(8,10) + "/" + sendDate.substring(0,4) );
+                {
+                    if(sendDate == "")
+                    {
+                        sendDate = "NULL";
+                        $('#' + type + 'Comp' + transId).html("Completed: N/A");
+                        $("#status" + transId+type).attr('class', '');
+                        $("#status" + transId+type).css('color', "");
+                    }
+                    else
+                    {
+                        $('#' + type + 'Comp' + transId).html("Completed: " + sendDate.substring(5,7) + "/" + sendDate.substring(8,10) + "/" + sendDate.substring(0,4) );
+                        $("#status" + transId+type).attr('class', 'fa fa-check-circle');
+                        $("#status" + transId+type).css('color', "#5cb85c");
+                    }
+                }
 
+                // updateStatus(transId, type date);
                 $.post( "../staff/saveCompDates.php", { transId: transId, type:type, date:sendDate });
+
+                
 
             }
              function saveDateCalendar(transId,type,date)
              {
           
                 var aprvDay = $("#aprvDay"+transId).val();
+                $("#aprvDay" + transId).val(date.value);
+                updateStatus(transId,type,date);
                 $.post( "../staff/saveNewDates.php", { transId: transId, type:type, date:date.value, aprvDay: aprvDay });
-                  
+                
             }
             
             function saveDaysNum(transId,type,date)
              {
            
                 $.post( "../staff/saveNewDaysNum.php", { transId: transId, type:type, date:date.value });
+                updateStatus(transId,date);
                   
             }
 
@@ -1317,6 +1367,38 @@ $keys = array_keys($response);
 
 
                 
+            }
+
+            function updateStatus(transId, type, date)
+            {
+                var aprvDay = $("#aprvDay"+transId).val();
+                // alert(aprvDay);
+                var newDate = moment(date.value).format("YYYY-MM-DD"); 
+                var todayDate = moment().format("YYYY-MM-DD"); 
+                var inThreeDays = moment(todayDate).add(3, 'days').format("YYYY-MM-DD");
+               
+                
+                if(moment(newDate).isSameOrBefore(inThreeDays) && moment(newDate).isSameOrAfter(todayDate))
+                {
+                    $("#status" + transId + type).attr('class', 'fa fa-warning');
+                    $("#status" + transId + type).css('color', "#ffae42");
+                    // alert("caution");
+                }
+                else if(moment(newDate).isSameOrAfter(todayDate))
+                {
+                    
+                    $("#status" + transId + type).attr('class', '');
+                    // $("#status" + transId + type).css('color', "#5cb85c");
+                    // alert("late");
+                }
+                else if(moment(newDate).isSameOrBefore(todayDate))
+                {
+                    $("#status" + transId + type).attr('class', 'fa fa-flag blink');
+                    $("#status" + transId + type).css('color', "#d9534f");
+                    // $("#status" + transId + type).attr('class', 'fa fa-check-circle');
+                    // $("#status" + transId + type).css('color', "#5cb85c");
+                    // alert("onTime");
+                }
             }
         </script>
 
