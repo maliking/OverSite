@@ -406,6 +406,7 @@ $keys = array_keys($response);
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-md-12">
+                            <?php include 'progressGoal.php' ?>
                             <div class="box box-success">
                                 <div class="box-header">
                                     <h4>In-Contract Properties</h4>
@@ -462,6 +463,7 @@ $keys = array_keys($response);
                                         </tr>
                                         </thead>
                                         <tbody>
+
                                             <?php
 
                                             foreach ($transResults as $trans) {
@@ -970,6 +972,9 @@ $keys = array_keys($response);
                                     </table>
                                 </div> <!-- /.box-body -->
                             </div> <!-- /.box -->
+
+                           
+
                             <div class="box box-primary">
                                 <div class="box-body">
                                     <!-- THE CALENDAR -->
