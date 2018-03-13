@@ -169,15 +169,63 @@ $keys = array_keys($response);
                             <!-- small box -->
                             <div class="small-box bg-blue">
                                 <div class="inner">
-                                    <h2>
-                                        <sup style="font-size: 20px">#</sup>
+                                    
                                         <?php 
                                         if($soldRank == 0)
                                             echo "N/A";
                                         else
-                                            echo $soldRank . "  Num: " . $resultNumSold[$soldRank - 1]['numSold']; 
+                                        {
+                                            if($soldRank == "1")
+                                            {
+                                                echo '<h2>
+                                                        <sup style="font-size: 20px">#</sup>' . 
+                                                        $soldRank . "  Num: " . $resultNumSold[$soldRank - 1]['numSold'] .
+                                                        ' </h2>';
+                                                if(count($resultNumSold) > 1)
+                                                {
+                                                    echo '<p><sup style="font-size: 15px">#</sup>' . 
+                                                        ($soldRank + 1) . "  Num: " . $resultNumSold[$soldRank]['numSold'] . '</p>';
+                                                }
+                                                if(count($resultNumSold) > 2)
+                                                {
+                                                    echo '<p><sup style="font-size: 15px">#</sup>' . 
+                                                        ($soldRank + 2) . "  Num: " . $resultNumSold[$soldRank + 1]['numSold'] . '</p>';  
+                                                }
+                                            }
+                                            else if($soldRank == count($resultNumSold)) 
+                                            {
+                                                if(count($resultNumSold) > 2)
+                                                {
+                                                    echo '<p><sup style="font-size: 15px">#</sup>' . 
+                                                        ($soldRank - 2) . "  Num: " . $resultNumSold[$soldRank - 3]['numSold'] . '</p>'; 
+                                                }
+                                                if(count($resultNumSold) > 1)
+                                                {
+                                                    echo '<p><sup style="font-size: 15px">#</sup>' . 
+                                                        ($soldRank - 1) . "  Num: " . $resultNumSold[$soldRank - 2]['numSold'] . '</p>';
+                                               }
+                                                    echo '<h2>
+                                                        <sup style="font-size: 20px">#</sup>' . 
+                                                        $soldRank . "  Num: " . $resultNumSold[$soldRank - 1]['numSold'] .
+                                                        ' </h2>';
+                                                
+                                            }  
+                                            else
+                                            {
+                                                echo '<p><sup style="font-size: 15px">#</sup>' . 
+                                                        ($soldRank - 1) . "  Num: " . $resultNumSold[$soldRank - 2]['numSold'] . '</p>';
+                                                echo '<h2>
+                                                        <sup style="font-size: 20px">#</sup>' . 
+                                                        $soldRank . "  Num: " . $resultNumSold[$soldRank - 1]['numSold'] .
+                                                        ' </h2>';
+                                                echo '<p><sup style="font-size: 15px">#</sup>' . 
+                                                        ($soldRank + 1) . "  Num: " . $resultNumSold[$soldRank]['numSold'] . '</p>';
+                                            }
 
-                                        ?></h2>
+                                        }
+
+                                        ?>
+                                   
                                     <p>Units Closed Rank</p>
                                 </div>
                                 <div class="icon">
@@ -190,14 +238,62 @@ $keys = array_keys($response);
                             <!-- small box -->
                             <div class="small-box bg-yellow">
                                 <div class="inner">
-                                    <h2>
-                                        <sup style="font-size: 20px">#</sup>
+                                    
                                         <?php 
                                         if($volumeRank == 0)
                                             echo "N/A";
                                         else
-                                            echo $volumeRank . " $" . number_format($resultVolSold[$volumeRank - 1]['volSold']); 
-                                        ?></h2>
+                                        {
+                                            //echo $volumeRank . " $" . number_format($resultVolSold[$volumeRank - 1]['volSold']);
+
+                                            if($volumeRank == "1")
+                                            {
+                                                echo '<h2>
+                                                        <sup style="font-size: 20px">#</sup>' . 
+                                                        $volumeRank . "  $: " . number_format($resultVolSold[$volumeRank - 1]['volSold']) .
+                                                        ' </h2>';
+                                                if(count($resultVolSold) > 1)
+                                                {
+                                                    echo '<p><sup style="font-size: 15px">#</sup>' . 
+                                                        ($volumeRank + 1) . "  $: " . number_format($resultVolSold[$volumeRank]['volSold']) . '</p>';
+                                                }
+                                                if(count($resultVolSold) > 2)
+                                                {
+                                                    echo '<p><sup style="font-size: 15px">#</sup>' . 
+                                                        ($volumeRank + 2) . "  $: " . number_format($resultVolSold[$volumeRank + 1]['volSold']) . '</p>';  
+                                                }
+                                            }
+                                            else if($volumeRank == count($resultVolSold)) 
+                                            {
+                                                if(count($resultVolSold) > 2)
+                                                {
+                                                    echo '<p><sup style="font-size: 15px">#</sup>' . 
+                                                        ($volumeRank - 2) . "  $: " . number_format($resultVolSold[$volumeRank - 3]['volSold']) . '</p>'; 
+                                                }
+                                                if(count($resultVolSold) > 1)
+                                                {
+                                                    echo '<p><sup style="font-size: 15px">#</sup>' . 
+                                                        ($volumeRank - 1) . "  $: " . number_format($resultVolSold[$volumeRank - 2]['volSold']) . '</p>';
+                                               }
+                                                    echo '<h2>
+                                                        <sup style="font-size: 20px">#</sup>' . 
+                                                        $volumeRank . "  $: " . number_format($resultVolSold[$volumeRank - 1]['volSold']) .
+                                                        ' </h2>';
+                                                
+                                            }  
+                                            else
+                                            {
+                                                echo '<p><sup style="font-size: 15px">#</sup>' . 
+                                                        ($volumeRank - 1) . "  $: " . number_format($resultVolSold[$volumeRank - 2]['volSold']) . '</p>';
+                                                echo '<h2>
+                                                        <sup style="font-size: 20px">#</sup>' . 
+                                                        $volumeRank . "  $: " . number_format($resultVolSold[$volumeRank - 1]['volSold']) .
+                                                        ' </h2>';
+                                                echo '<p><sup style="font-size: 15px">#</sup>' . 
+                                                        ($volumeRank + 1) . "  $: " . number_format($resultVolSold[$volumeRank]['volSold']) . '</p>';
+                                            }
+                                        }
+                                        ?>
                                     <p>Vol Sold Rank</p>
                                 </div>
                                 <div class="icon">
@@ -210,14 +306,61 @@ $keys = array_keys($response);
                             <!-- small box -->
                             <div class="small-box bg-green">
                                 <div class="inner">
-                                    <h2>
-                                        <sup style="font-size: 20px">#</sup>
+                                    
                                         <?php 
                                         if($grossRank == 0)
                                             echo "N/A";
                                         else
-                                            echo $grossRank . " $" . number_format($resultGross[$grossRank - 1]['gross']); 
-                                        ?></h2>
+                                        {
+                                            //echo $grossRank . " $" . number_format($resultGross[$grossRank - 1]['gross']); 
+                                            if($grossRank == "1")
+                                            {
+                                                echo '<h2>
+                                                        <sup style="font-size: 20px">#</sup>' . 
+                                                        $grossRank . "  $: " . number_format($resultGross[$grossRank - 1]['gross']) .
+                                                        ' </h2>';
+                                                if(count($resultGross) > 1)
+                                                {
+                                                    echo '<p><sup style="font-size: 15px">#</sup>' . 
+                                                        ($grossRank + 1) . "  $: " . number_format($resultGross[$grossRank]['gross']) . '</p>';
+                                                }
+                                                if(count($resultGross) > 2)
+                                                {
+                                                    echo '<p><sup style="font-size: 15px">#</sup>' . 
+                                                        ($grossRank + 2) . "  $: " . number_format($resultGross[$grossRank + 1]['gross']) . '</p>';  
+                                                }
+                                            }
+                                            else if($grossRank == count($resultGross)) 
+                                            {
+                                                if(count($resultGross) > 2)
+                                                {
+                                                    echo '<p><sup style="font-size: 15px">#</sup>' . 
+                                                        ($grossRank - 2) . "  $: " . number_format($resultGross[$grossRank - 3]['gross']) . '</p>'; 
+                                                }
+                                                if(count($resultGross) > 1)
+                                                {
+                                                    echo '<p><sup style="font-size: 15px">#</sup>' . 
+                                                        ($grossRank - 1) . "  $: " . number_format($resultGross[$grossRank - 2]['gross']) . '</p>';
+                                               }
+                                                    echo '<h2>
+                                                        <sup style="font-size: 20px">#</sup>' . 
+                                                        $grossRank . "  $: " . number_format($resultGross[$grossRank - 1]['gross']) .
+                                                        ' </h2>';
+                                                
+                                            }  
+                                            else
+                                            {
+                                                echo '<p><sup style="font-size: 15px">#</sup>' . 
+                                                        ($grossRank - 1) . "  $: " . number_format($resultGross[$grossRank - 2]['gross']) . '</p>';
+                                                echo '<h2>
+                                                        <sup style="font-size: 20px">#</sup>' . 
+                                                        $grossRank . "  $: " . number_format($resultGross[$grossRank - 1]['gross']) .
+                                                        ' </h2>';
+                                                echo '<p><sup style="font-size: 15px">#</sup>' . 
+                                                        ($grossRank + 1) . "  $: " . number_format($resultGross[$grossRank]['gross']) . '</p>';
+                                            }
+                                        }
+                                        ?>
                                     <p>Gross Commission Rank</p>
                                 </div>
                                 <div class="icon">
