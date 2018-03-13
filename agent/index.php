@@ -196,7 +196,7 @@ $keys = array_keys($response);
                                         if($volumeRank == 0)
                                             echo "N/A";
                                         else
-                                            echo $volumeRank . " $:" . number_format($resultVolSold[$volumeRank - 1]['volSold']); 
+                                            echo $volumeRank . " $" . number_format($resultVolSold[$volumeRank - 1]['volSold']); 
                                         ?></h2>
                                     <p>Vol Sold Rank</p>
                                 </div>
@@ -216,7 +216,7 @@ $keys = array_keys($response);
                                         if($grossRank == 0)
                                             echo "N/A";
                                         else
-                                            echo $grossRank . " $:" . number_format($resultGross[$grossRank - 1]['gross']); 
+                                            echo $grossRank . " $" . number_format($resultGross[$grossRank - 1]['gross']); 
                                         ?></h2>
                                     <p>Gross Commission Rank</p>
                                 </div>
