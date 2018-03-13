@@ -387,12 +387,11 @@ $keys = array_keys($response);
                             <!-- small box -->
                             <div class="small-box bg-blue">
                                 <div class="inner">
-                                    <h3>
-                                        <?php echo number_format($result['avgPercent'], 0); ?><sup style="font-size: 20px">%</sup></h3>
-                                    <p>Active Listings</p>
+                                    <h4>$<?php echo number_format($prevYearResult['prevGross'], 0); ?></h4>
+                                    <p>Prior Year Gross</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fa fa-flash"></i>
+                                    <i class="fa fa-usd"></i>
                                 </div>
                             </div>
                         </div>

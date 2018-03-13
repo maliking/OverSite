@@ -36,6 +36,15 @@ for($i = 0; $i < sizeof($keys); $i++)
     }
 }
 
+$prevYearConn =getConnection();
+
+$prevYearGross = "SELECT SUM(finalComm) as prevGross, license FROM `commInfo` WHERE 
+                YEAR(date) = YEAR(DATE_SUB( CURRENT_TIMESTAMP () , INTERVAL 1 YEAR )) AND license = :license GROUP BY license";
+$prevYearParameters = array();
+$prevYearParameters[':license'] = $agentInfo['license'];
+$prevYearStmt = $prevYearConn->prepare($prevYearGross);
+$prevYearStmt->execute($prevYearParameters);
+$prevYearResult = $prevYearStmt->fetch();
 
 $addedHouses = "SELECT count(*) as added FROM HouseInfo WHERE userId = :userId AND status = :status";
 $addedHouseParam = array();
