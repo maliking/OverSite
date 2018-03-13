@@ -56,6 +56,7 @@ $keys = array_keys($response);
 //         $pendingListings++;
 //     }
 // }
+
 ?>
 
     <!DOCTYPE html>
@@ -373,11 +374,11 @@ $keys = array_keys($response);
                             <!-- small box -->
                             <div class="small-box bg-orange">
                                 <div class="inner">
-                                    <h3><?php echo number_format($result['avgPercent'], 2); ?><sup style="font-size: 20px">%</sup></h3></h3>
-                                    <p>Buyer Commission</p>
+                                    <h4>$<?php echo number_format($potentialGross, 2); ?></h4>
+                                    <p>Potential Income</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fa fa-percent"></i>
+                                    <i class="fa fa-usd"></i>
                                 </div>
                             </div>
                         </div>

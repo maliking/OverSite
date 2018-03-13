@@ -27,7 +27,14 @@ $licenseStmt = $dbConn->prepare($sqlLicense);
 $licenseStmt->execute($namedParameters);
 $licenseResult = $licenseStmt->fetch();
 
-
+$potentialGross = 0;
+for($i = 0; $i < sizeof($keys); $i++) 
+{
+    if($response[$keys[$i]]['listingAgentID'] == $agentInfo['mlsId'])
+    {
+        $potentialGross += $response[$keys[$i]]['rntLsePrice'];
+    }
+}
 
 
 $addedHouses = "SELECT count(*) as added FROM HouseInfo WHERE userId = :userId AND status = :status";
