@@ -34,6 +34,16 @@ $addedHouseResults = $addedHousesStmt->fetchAll();
 
 $houses = $addedHousesStmt->rowCount();
 
+$otherHouses = "SELECT * FROM HouseInfo WHERE userId = :userId AND status != :status";
+$otherHouseParam = array();
+$otherHouseParam[':userId'] = $_SESSION['userId'];
+$otherHouseParam[':status'] = "added";
+
+$otherHousesStmt = $dbConn->prepare($otherHouses);
+$otherHousesStmt->execute($otherHouseParam);
+$otherHouseResults = $otherHousesStmt->fetchAll();
+
+
 //Twilio call functionality
 $accountSid = $sid;
 $authToken  = $token;
@@ -107,6 +117,17 @@ if ($code >= 200 || $code < 300) {
 // print_r($response);
 
 $keys = array_keys($response);
+for ($h = 0; $h < sizeof($keys); $h++)
+{
+    for ($g = 0; $g < sizeof($otherHouseResults); $g++)
+    {
+        if($response[$keys[$h]]['listingID'] == $otherHouseResults[$g]['listingID'])
+        {
+            unset($otherHouseResults[$g]);
+            break;
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -560,6 +581,13 @@ $keys = array_keys($response);
                                 echo '<option value=' . $addedHouseResults[$j]['listingId'] . '>' . $addedHouseResults[$j]['address'] .
                                      " " . $addedHouseResults[$j]['city'] . " " . $addedHouseResults[$j]['state'] . ", " .
                                      $addedHouseResults[$j]['zip'] . '</option>';
+                            }
+                            echo "<option>--Closed Houses--</option>";
+                            for($k = 0; $k < sizeof($otherHouseResults); $k++)
+                            {
+                                echo '<option value=' . $otherHouseResults[$k]['listingId'] . '>' . $otherHouseResults[$k]['address'] .
+                                     " " . $otherHouseResults[$k]['city'] . " " . $otherHouseResults[$k]['state'] . ", " .
+                                     $otherHouseResults[$k]['zip'] . '</option>';
                             }
                             ?>
                         </select>
