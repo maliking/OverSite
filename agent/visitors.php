@@ -143,6 +143,10 @@ $keys = array_keys($response);
     <link rel="stylesheet" href="../plugins/bootstrap-daterangepicker/daterangepicker.css">
     <!-- bootstrap datepicker -->
     <link rel="stylesheet" href="../plugins/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/locale/ca.js"></script>
+
     <style>
         .panel-heading a:after {
             font-family:'Glyphicons Halflings';
@@ -601,8 +605,16 @@ $keys = array_keys($response);
     });
 
     function takeNote(house, buyer) {
+        var today = moment().format("MM-DD-YYYY");
         var prevNote = $("#" + buyer).html();
-        var noteEntered = prompt("Enter Note:", prevNote);
+        if(prevNote == "" || prevNote == " ")
+        {
+            var noteEntered = prompt("Enter Note:", today + " " + prevNote );
+        }
+        else
+        {
+            var noteEntered = prompt("Enter Note:", prevNote + " " + today );
+        }
         if (noteEntered == null || noteEntered == "") {
         } else {
             $("#" + buyer).html(noteEntered);
