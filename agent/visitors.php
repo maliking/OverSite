@@ -794,13 +794,14 @@ function sendEmail()
 
 function deleteVisitor(visitorId)
 {
-    
-    $.post( "deleteBuyer.php", { buyerID: visitorId })
-      .done(function( data ) {
-        alert("Visitor Deleted");
-        $('#visitor' + visitorId).remove();
-      });
-    
+    if(confirm("Are you sure you want to delete the isitor?"))
+    {
+        $.post( "deleteBuyer.php", { buyerID: visitorId })
+          .done(function( data ) {
+            alert("Visitor Deleted");
+            $('#visitor' + visitorId).remove();
+          });
+    }
 }
 </script>
 
