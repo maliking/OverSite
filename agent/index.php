@@ -295,7 +295,7 @@ $keys = array_keys($response);
                                             }
                                         }
                                         ?>
-                                    <p>Vol Sold Rank</p>
+                                    <p>Vol Sold Rank <a href="houseHistory.php"><i class="fa fa-line-chart"></i></a></p>
                                 </div>
                                 <div class="icon">
                                     <!-- <i class="fa fa-percent"></i> -->
