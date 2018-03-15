@@ -1,5 +1,6 @@
 <?php
 session_start();
+date_default_timezone_set('America/Los_Angeles');
 require("databaseConnection.php");
 $dbConn = getConnection();
 if (!isset($_SESSION['userId'])) {
@@ -49,6 +50,18 @@ if ($code >= 200 || $code < 300) {
 // print_r($response);
 
 $keys = array_keys($response);
+
+$todaysMonth =  date("n");
+
+$paidRemaxFeeSql = "SELECT SUM(paid) as paid FROM remaxFee WHERE userId = :userId GROUP BY userId";
+$paidParam = array();
+$paidParam['userId'] = $_SESSION['userId'];
+
+$paidStmt = $dbConn->prepare($paidRemaxFeeSql);
+$paidStmt->execute($paidParam);
+$paidResults = $paidStmt->fetch();
+
+$remaxFeeToPay = (350 * $todaysMonth) - $paidResults['paid'];
 
 ?>
 <!DOCTYPE html>
@@ -381,7 +394,7 @@ $keys = array_keys($response);
                                                                 <div class="col-xs-3">
                                                                     <input type="text" class="form-control"
                                                                            id="remaxFee" name="remaxFee" placeholder=""
-                                                                           onchange="calculateCommission()">
+                                                                           onchange="calculateCommission()" value=<?php echo $remaxFeeToPay; ?>>
                                                                 </div>
 
                                                             </div>
