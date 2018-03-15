@@ -35,6 +35,14 @@ $miscell =         str_replace(",", "", (string)$_POST['miscell']);
 $remaxFee =        str_replace(",", "", (string)$_POST['remaxFee']);
 $finalHousePrice = str_replace(",", "", (string)$_POST['finalHousePrice']);
 
+$addRemaxFeeSql = "INSERT INTO remaxFee (userId, date, paid) VALUES (:userId, :date, :paid)";
+$remaxFeeParam = array();
+$remaxFeeParam[':userId'] = $_SESSION['userId'];
+$remaxFeeParam[':date'] = date("Y-m-d", strtotime($_POST['today-date']));
+$remaxFeeParam[':paid'] = (int)$remaxFee;
+
+$remaxFeeStmt = $dbConn->prepare($addRemaxFeeSql);
+$remaxFeeStmt->execute($remaxFeeParam);
 
 $sql = "INSERT INTO commInfo
         (houseId, license, firstName, lastName, date, settlementDate, checkNum, clients, address, city, state, zip, TYGross, FYGross, InitialGross, brokerFee, finalComm, remaxFee, misc, percentage, envelopeId, finalHousePrice)

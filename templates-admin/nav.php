@@ -10,6 +10,7 @@
         <ul class="sidebar-menu">
             <li class="<?= ($activePage == 'index') ? 'active':''; ?>"><a href="index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
             <li class="<?= ($activePage == 'agent-roster') ? 'active':''; ?>">><a href="agent-roster.php"><i class="fa fa-users"></i> <span>Agent Roster</span></a></li>
+            <li class="<?= ($activePage == 'agentRemaxFee') ? 'active':''; ?>">><a href="agentRemaxFee.php"><i class="fa fa-money"></i> <span>Agent Remax Fee</span></a></li>
             <li class="header">PROPERTIES</li>
             <li class="<?= ($activePage == 'inventory') ? 'active':''; ?>"><a href="inventory.php"><i class="fa fa-home"></i> <span>Office Inventory</span></a></li>
             <li class="<?= ($activePage == 'coming-soon') ? 'active':''; ?>"><a href="coming-soon.php"><i class="fa fa-flag"></i> <span>Coming Soon</span></a></li>
