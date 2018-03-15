@@ -1,6 +1,5 @@
 <?php
 session_start();
-date_default_timezone_set('America/Los_Angeles');
 require("databaseConnection.php");
 $dbConn = getConnection();
 if (!isset($_SESSION['userId'])) {
@@ -51,17 +50,7 @@ if ($code >= 200 || $code < 300) {
 
 $keys = array_keys($response);
 
-$todaysMonth =  date("n");
 
-$paidRemaxFeeSql = "SELECT SUM(paid) as paid FROM remaxFee WHERE userId = :userId GROUP BY userId";
-$paidParam = array();
-$paidParam['userId'] = $_SESSION['userId'];
-
-$paidStmt = $dbConn->prepare($paidRemaxFeeSql);
-$paidStmt->execute($paidParam);
-$paidResults = $paidStmt->fetch();
-
-$remaxFeeToPay = (350 * $todaysMonth) - $paidResults['paid'];
 
 ?>
 <!DOCTYPE html>
@@ -131,6 +120,8 @@ $remaxFeeToPay = (350 * $todaysMonth) - $paidResults['paid'];
                             $(this).hide();
                         }
                     });
+
+                    agentFeeToPay(x);
                 }
             };
             xhttp.open("GET", "agentCommission.php?license=" + x, true);
@@ -149,6 +140,16 @@ $remaxFeeToPay = (350 * $todaysMonth) - $paidResults['paid'];
         }
         function getOwners() {
 
+        }
+        function agentFeeToPay(license)
+        {
+            $.post( "remaxFeeCalculation.php", { license: license })
+              .done(function( data ) {
+                var results = JSON.parse(data);
+                $('#remaxFee').val(results.fee);
+                // alert( "Fee: " + results.fee );
+              });
+            // alert(license);
         }
     </script>
 </head>
@@ -394,7 +395,7 @@ $remaxFeeToPay = (350 * $todaysMonth) - $paidResults['paid'];
                                                                 <div class="col-xs-3">
                                                                     <input type="text" class="form-control"
                                                                            id="remaxFee" name="remaxFee" placeholder=""
-                                                                           onchange="calculateCommission()" value=<?php echo $remaxFeeToPay; ?>>
+                                                                           onchange="calculateCommission()" value="">
                                                                 </div>
 
                                                             </div>
