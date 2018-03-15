@@ -47,7 +47,7 @@ for($i = 0; $i < sizeof($keys); $i++)
     }
 }
 
-$potentialGross = potentialAlgo($fyResult['TYGross'], $potentialGross) - (350 * $activeListings);
+// $potentialGross = potentialAlgo($fyResult['TYGross'], $potentialGross) - (350 * $activeListings);
 
 $prevYearConn =getConnection();
 
