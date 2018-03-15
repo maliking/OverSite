@@ -35,7 +35,7 @@ function calculateCommission() {
                             brokerFee += 49999 * .10;
                             commission = commission - 49999;
                             if (commission > 0) {
-                                brokerFee += commission * .5;
+                                brokerFee += commission * .05;
                             }
                         }
                     }
@@ -59,7 +59,7 @@ function calculateCommission() {
                     brokerFee += 49999 * .10;
                     commission = commission - 49999;
                     if (commission > 0) {
-                        brokerFee += commission * .5;
+                        brokerFee += commission * .05;
                     }
                 }
             }
@@ -74,12 +74,12 @@ function calculateCommission() {
             brokerFee += 49999 * .10;
             commission = commission - 49999;
             if (commission > 0) {
-                brokerFee += commission * .5;
+                brokerFee += commission * .05;
             }
         }
     }
     else {
-        brokerFee += commission * .5;
+        brokerFee += commission * .05;
     }
 
     document.getElementById("broker").value = formatNumber(brokerFee);

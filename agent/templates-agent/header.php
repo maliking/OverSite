@@ -27,14 +27,27 @@ $licenseStmt = $dbConn->prepare($sqlLicense);
 $licenseStmt->execute($namedParameters);
 $licenseResult = $licenseStmt->fetch();
 
+$fyGrossSql = "SELECT TYGross FROM commInfo WHERE license = :license ORDER BY TYGross DESC LIMIT 1";
+$fyParam = array();
+$fyParam['license'] = $agentInfo['license'];
+
+$fyStmt = $dbConn->prepare($fyGrossSql);
+$fyStmt->execute($fyParam);
+$fyResult = $fyStmt->fetch();
+
+
+$activeListings = 0;
 $potentialGross = 0;
 for($i = 0; $i < sizeof($keys); $i++) 
 {
     if($response[$keys[$i]]['listingAgentID'] == $agentInfo['mlsId'])
     {
         $potentialGross += $response[$keys[$i]]['rntLsePrice'];
+        $activeListings++;
     }
 }
+
+$potentialGross = potentialAlgo($fyResult['TYGross'], $potentialGross) - (350 * $activeListings);
 
 $prevYearConn =getConnection();
 
