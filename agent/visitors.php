@@ -219,6 +219,7 @@ for ($h = 0; $h < sizeof($keys); $h++)
                         </br>
                         <input type="text" name="phone" class="form-control" id="inputSuccess5" placeholder="Phone">
                         </br>
+
                         <label>How soon are you looking to purchase a home?</label>
                         <select id="" name="howSoon" class="form-control" required>
                             <option value="0">--Select One--</option>
@@ -227,8 +228,16 @@ for ($h = 0; $h < sizeof($keys); $h++)
                             <option value="7-12">7-12 months</option>
                             <option value="Visit">Just visiting</option>
                         </select>
-
                         </br>
+
+                        <label>Have you been pre-approved?</label>
+                        <select id="" name="preApproved" class="form-control" required>
+                            <option value="0">--Select One--</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        </br>
+
                         <label>Price</label>
                         <select id="" name="price" class="form-control" required>
                             <option value="">--Select One--</option>

@@ -146,6 +146,15 @@ $_SESSION['flyer'] = $result['flyer'];
                 </select>
 
                 </br>
+
+                <label>Have you been pre-approved?</label>
+                <select id="" name="preApproved" class="form-control" required>
+                    <option value="0">--Select One--</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+                        </br>
+                        
                 <label>Price</label>
                 <select id="" name="price" class="form-control" required>
                     <option value="">--Select One--</option>
