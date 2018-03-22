@@ -420,6 +420,7 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                     <th data-breakpoints="xs sm">Property</th>
 
                                     <th data-breakpoints="xs sm">How soon are you looking to purchase a home?</th>
+                                    <th data-breakpoints="xs sm">Pre-approved?</th>
                                     <th data-breakpoints="xs sm">Price</th>
                                     <th data-breakpoints="xs sm">Bedrooms</th>
                                     <th data-breakpoints="xs sm">Bathrooms</th>
@@ -503,6 +504,11 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                     // How soon?
                                     echo "<td>";
                                     echo $result['howSoon'];
+                                    echo "</td>";
+
+                                    // Pre-approved?
+                                    echo "<td>";
+                                    echo $result['approved'];
                                     echo "</td>";
 
                                     // Price
