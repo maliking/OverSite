@@ -109,8 +109,8 @@ if (empty($meetingResult)) {
 
 $userId = $_SESSION['userId'];
 $sql = "INSERT INTO BuyerInfo
-		(firstName, lastName, email, phone, registeredDate, meeting, bedroomsMin, bathroomsMin, priceMax, houseId, userId, howSoon)
-		VALUES (:firstName, :lastName, :email, :phone, :registeredDate, :meeting, :bedroomsMin, :bathroomsMin, :priceMax, :houseId, :userId, :howSoon)";
+		(firstName, lastName, email, phone, registeredDate, meeting, bedroomsMin, bathroomsMin, priceMax, houseId, userId, howSoon, approved)
+		VALUES (:firstName, :lastName, :email, :phone, :registeredDate, :meeting, :bedroomsMin, :bathroomsMin, :priceMax, :houseId, :userId, :howSoon, :approved)";
 $namedParameters = array();
 $namedParameters[':firstName'] = $firstName;
 $namedParameters[':lastName'] = $lastName;
@@ -125,6 +125,7 @@ $namedParameters[':priceMax'] = $priceMax;
 $namedParameters[':houseId'] = $_POST['houseId'];
 $namedParameters[':userId'] = $userId;
 $namedParameters[':howSoon'] = $_POST['howSoon'];
+$namedParameters[':approved'] = $_POST['preApproved'];
 $stmt = $dbConn->prepare($sql);
 try {
     $stmt->execute($namedParameters);
