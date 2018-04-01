@@ -1,0 +1,3865 @@
+{
+  "@encoding": "iso-8859-1",
+  "@version": "1.0",
+  "petfinder": {
+    "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "lastOffset": {
+      "$t": "25"
+    },
+    "pets": {
+      "pet": [
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "831-373-2631"
+            },
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "info@SPCAmc.org"
+            },
+            "city": {
+              "$t": "Monterey"
+            },
+            "zip": {
+              "$t": "93940"
+            },
+            "fax": {},
+            "address1": {
+              "$t": "1002 Highway 68"
+            }
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39518087/1/?bust=1506667919&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39518087/1/?bust=1506667919&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39518087/1/?bust=1506667919&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39518087/1/?bust=1506667919&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39518087/1/?bust=1506667919&width=50&-t.jpg",
+                  "@id": "1"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "39518087"
+          },
+          "shelterPetId": {
+            "$t": "103472"
+          },
+          "breeds": {
+            "breed": {
+              "$t": "Terrier"
+            }
+          },
+          "name": {
+            "$t": "Bumper"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "I am a playful puppy who loves to explore!\nGuess what? I would love to go home with you!\n\n\n Primary Color: Black\n Secondary Color: Tan\n Weight: 9\n Age: 0yrs 3mths 3wks \n Animal has been Neutered \n\n Adoption Fees: $290\n\nADOPTION INFORMATION: \nAll animals adopted from The SPCA of Monterey County are spayed or neutered prior to adoption and have received vaccinations appropriate to age and species, permanent microchip identification, SPCA identification tag, health evaluations, behavior evaluations (for dogs) and more! Please note that in order to make the best match possible, potential adopters must come to The SPCA of Monterey County in person to meet with an adoption counselor and complete the adoption process. All members of the household (including other pets, if applicable) should be present to ensure the chosen pet is compatible with everyone. For the health and safety of our animals we do not place holds or do adoptions over the phone and we do not ship pets.\n \nFor more information on the adoption process please visit  http://www.SPCAmc.org.\n ADOPTION HOURS: \nMonday - Friday: 11 A.M. TO 5 P.M.\n Saturday - Sunday: 11 A.M. TO 4 P.M.\n \n1002 Highway 68\n Across from Mazda Raceway at Laguna Seca\n \n(831) 373-2631 or 422-4721\n"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA1164"
+          },
+          "lastUpdate": {
+            "$t": "2017-09-29T04:55:49Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": {
+              "$t": "altered"
+            }
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "(831) 454-7200"
+            },
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {
+              "$t": "2200 7th Ave."
+            },
+            "email": {
+              "$t": "asa143@co.santa-cruz.ca.us"
+            },
+            "city": {
+              "$t": "Santa Cruz"
+            },
+            "zip": {
+              "$t": "95062"
+            },
+            "fax": {},
+            "address1": {
+              "$t": "1001 Rodriguez St."
+            }
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39517456/1/?bust=1506666544&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39517456/1/?bust=1506666544&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39517456/1/?bust=1506666544&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39517456/1/?bust=1506666544&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39517456/1/?bust=1506666544&width=50&-t.jpg",
+                  "@id": "1"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "39517456"
+          },
+          "shelterPetId": {
+            "$t": "A241029"
+          },
+          "breeds": {
+            "breed": [
+              {
+                "$t": "Australian Shepherd"
+              },
+              {
+                "$t": "Mixed Breed"
+              }
+            ]
+          },
+          "name": {
+            "$t": "ADORE*"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "Please watch a short video of the puppies below: These babies will be available beginning on Fri, 9/29/17. They will need experienced adopters to guide them into successful adulthoods. They are currently recovering from a cold which could be potentially contagious to other dogs for several weeks after recovery. Prospective adopters will need to complete applications and be pre-screened prior to meeting the pups. Submitting an application does not guarantee a meeting with the pups, nor does it obligate the applicant in any way.  Applications can be downloaded here: http://scanimalshelter.org/adoption_application. Completed applications can be turned in to the Santa Cruz branch of the shelter during business hours or scanned and emailed to asa143@santacruzcounty.us   .  More information about our adoption process can be seen here: http://scanimalshelter.org/adoption_process    Please consider supporting local animals (PayPal button below):        safer, easier way to pay online!>"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA625"
+          },
+          "lastUpdate": {
+            "$t": "2017-10-02T23:59:06Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "(831)465-5000"
+            },
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "Tina@SPCASC.ORG"
+            },
+            "city": {
+              "$t": "Santa Cruz"
+            },
+            "zip": {
+              "$t": "95063"
+            },
+            "fax": {},
+            "address1": {
+              "$t": "2685 Chanticleer Avenue"
+            }
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39474294/1/?bust=1506286558&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39474294/1/?bust=1506286558&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39474294/1/?bust=1506286558&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39474294/1/?bust=1506286558&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39474294/1/?bust=1506286558&width=50&-t.jpg",
+                  "@id": "1"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "39474294"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Terrier"
+            }
+          },
+          "name": {
+            "$t": "Payton"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "The Santa Cruz SPCA is an independent 501(c)3 non-profit organization dedicated to the welfare of animals. Our organization, and the work that we do, is supported by individual contributions.\n\nAll of our adoptions include spay/neuter, microchip, recent treatment for fleas and worms, age appropriate vaccinations, testing for FELV/FIV, certificate for free vet exam and an adoption packet with additional pet care information and coupons. Please visit our website for adoption procedures. www.spcasc.org\n\nPuppies (under 1 year of age); $300.00\nAdult Dogs (1-7 years); $200.00\nSenior Dogs (8+) $150.00"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA992"
+          },
+          "lastUpdate": {
+            "$t": "2017-09-24T20:56:12Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "(831)465-5000"
+            },
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "Tina@SPCASC.ORG"
+            },
+            "city": {
+              "$t": "Santa Cruz"
+            },
+            "zip": {
+              "$t": "95063"
+            },
+            "fax": {},
+            "address1": {
+              "$t": "2685 Chanticleer Avenue"
+            }
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39474201/1/?bust=1506286164&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39474201/1/?bust=1506286164&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39474201/1/?bust=1506286164&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39474201/1/?bust=1506286164&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39474201/1/?bust=1506286164&width=50&-t.jpg",
+                  "@id": "1"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "39474201"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Terrier"
+            }
+          },
+          "name": {
+            "$t": "Bellini"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "The Santa Cruz SPCA is an independent 501(c)3 non-profit organization dedicated to the welfare of animals. Our organization, and the work that we do, is supported by individual contributions.\n\nAll of our adoptions include spay/neuter, microchip, recent treatment for fleas and worms, age appropriate vaccinations, testing for FELV/FIV, certificate for free vet exam and an adoption packet with additional pet care information and coupons. Please visit our website for adoption procedures. www.spcasc.org\n\nPuppies (under 1 year of age); $300.00\nAdult Dogs (1-7 years); $200.00\nSenior Dogs (8+) $150.00"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA992"
+          },
+          "lastUpdate": {
+            "$t": "2017-09-24T20:49:46Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": {
+              "$t": "altered"
+            }
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {},
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "karmicrescues@gmail.com"
+            },
+            "city": {
+              "$t": "Santa Cruz"
+            },
+            "zip": {
+              "$t": "95060"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "M"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379616/1/?bust=1505407137&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379616/1/?bust=1505407137&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379616/1/?bust=1505407137&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379616/1/?bust=1505407137&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379616/1/?bust=1505407137&width=50&-t.jpg",
+                  "@id": "1"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "39379616"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Collie"
+            }
+          },
+          "name": {
+            "$t": "Collin"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "Just arriving on transport September 17th.\nWe need a foster home for him immediately upon arrival;  otherwise, he will have to be kenneled and that's no fun.\nReady for adoption September 23rd"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA2054"
+          },
+          "lastUpdate": {
+            "$t": "2017-09-14T18:34:12Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": {
+              "$t": "altered"
+            }
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {},
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "karmicrescues@gmail.com"
+            },
+            "city": {
+              "$t": "Santa Cruz"
+            },
+            "zip": {
+              "$t": "95060"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "M"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379375/1/?bust=1505406904&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379375/1/?bust=1505406904&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379375/1/?bust=1505406904&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379375/1/?bust=1505406904&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379375/1/?bust=1505406904&width=50&-t.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379375/2/?bust=1506792555&width=60&-pnt.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379375/2/?bust=1506792555&width=95&-fpm.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379375/2/?bust=1506792555&width=500&-x.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379375/2/?bust=1506792555&width=300&-pn.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379375/2/?bust=1506792555&width=50&-t.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379375/3/?bust=1506792556&width=60&-pnt.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379375/3/?bust=1506792556&width=95&-fpm.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379375/3/?bust=1506792556&width=500&-x.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379375/3/?bust=1506792556&width=300&-pn.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379375/3/?bust=1506792556&width=50&-t.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379375/4/?bust=1506792556&width=60&-pnt.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379375/4/?bust=1506792556&width=95&-fpm.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379375/4/?bust=1506792556&width=500&-x.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379375/4/?bust=1506792556&width=300&-pn.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39379375/4/?bust=1506792556&width=50&-t.jpg",
+                  "@id": "4"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "39379375"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Australian Shepherd"
+            }
+          },
+          "name": {
+            "$t": "Angelina"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "Angelina is a little lady. She is initially a bit shy with strangers but like all puppies she wants to be cuddled and loved. She is a serious girl and a good listener. She likes other dogs and is curious about the world around her. She is very smart and will probably be easily trained. She is quiet and thoughtful. She likes to sit back and watch before making that leap!"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA2054"
+          },
+          "lastUpdate": {
+            "$t": "2017-09-30T17:29:17Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {},
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "831-917-5570"
+            },
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "vivatacgsinc@aol.com"
+            },
+            "city": {
+              "$t": "Hollister"
+            },
+            "zip": {
+              "$t": "95024"
+            },
+            "fax": {},
+            "address1": {
+              "$t": "PO Box 904"
+            }
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417364/1/?bust=1505793846&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417364/1/?bust=1505793846&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417364/1/?bust=1505793846&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417364/1/?bust=1505793846&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417364/1/?bust=1505793846&width=50&-t.jpg",
+                  "@id": "1"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "39417364"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": [
+              {
+                "$t": "Terrier"
+              },
+              {
+                "$t": "Chihuahua"
+              }
+            ]
+          },
+          "name": {
+            "$t": "Burt"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "Want to add some fun and joy to your home, come see our adorable little puppies who were born on July 25th. Zoe his Mum is a Cairn Terrier. Burt is part of a litter of seven puppies. He is now 9 weeks old and has received first vaccines and de-worming. Burt is very healthy, adorable well socialized little puppy, he along with his siblings all have their own individual personalities. \n"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA1549"
+          },
+          "lastUpdate": {
+            "$t": "2017-09-19T04:05:30Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {},
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "831-917-5570"
+            },
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "vivatacgsinc@aol.com"
+            },
+            "city": {
+              "$t": "Hollister"
+            },
+            "zip": {
+              "$t": "95024"
+            },
+            "fax": {},
+            "address1": {
+              "$t": "PO Box 904"
+            }
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417686/1/?bust=1505795686&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417686/1/?bust=1505795686&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417686/1/?bust=1505795686&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417686/1/?bust=1505795686&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417686/1/?bust=1505795686&width=50&-t.jpg",
+                  "@id": "1"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "39417686"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": [
+              {
+                "$t": "Terrier"
+              },
+              {
+                "$t": "Chihuahua"
+              }
+            ]
+          },
+          "name": {
+            "$t": "Alice"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "Want to add some fun and joy to your home, come see our adorable little puppies who were born on July 25th. Zoe their Mum who is a Cairn Terrier. PEANUT and ALICE are part of a litter of seven puppies. They are now 9 weeks old and have received first vaccines and de-worming. Very healthy, adorable well socialized little puppies, each with their own individual personalities"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA1549"
+          },
+          "lastUpdate": {
+            "$t": "2017-09-19T04:35:13Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {},
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "831-917-5570"
+            },
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "vivatacgsinc@aol.com"
+            },
+            "city": {
+              "$t": "Hollister"
+            },
+            "zip": {
+              "$t": "95024"
+            },
+            "fax": {},
+            "address1": {
+              "$t": "PO Box 904"
+            }
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417846/1/?bust=1505796852&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417846/1/?bust=1505796852&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417846/1/?bust=1505796852&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417846/1/?bust=1505796852&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417846/1/?bust=1505796852&width=50&-t.jpg",
+                  "@id": "1"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "39417846"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": [
+              {
+                "$t": "Terrier"
+              },
+              {
+                "$t": "Chihuahua"
+              }
+            ]
+          },
+          "name": {
+            "$t": "Rosie"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "Want to add some fun and joy to your home, come see our adorable little puppies who were born on July 25th. Zoe their Mum is a Cairn Terrier. OSCAR and ROSIE are part of a litter of seven puppies. They are now 9 weeks old and have received first vaccines and de-worming. Very healthy, adorable well socialized little puppies, each with their own individual personalities. \n"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA1549"
+          },
+          "lastUpdate": {
+            "$t": "2017-09-19T04:54:49Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {},
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "831-917-5570"
+            },
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "vivatacgsinc@aol.com"
+            },
+            "city": {
+              "$t": "Hollister"
+            },
+            "zip": {
+              "$t": "95024"
+            },
+            "fax": {},
+            "address1": {
+              "$t": "PO Box 904"
+            }
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39468861/1/?bust=1506207346&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39468861/1/?bust=1506207346&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39468861/1/?bust=1506207346&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39468861/1/?bust=1506207346&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39468861/1/?bust=1506207346&width=50&-t.jpg",
+                  "@id": "1"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "39468861"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": [
+              {
+                "$t": "Cairn Terrier"
+              },
+              {
+                "$t": "Wirehaired Terrier"
+              }
+            ]
+          },
+          "name": {
+            "$t": "Daisy Two"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "Daisy Two came to us from Hollister Animal Shelter. She was surrendered due to people moving. Daisy did not have much of a prior life, it was spent in a crate, no daily walks, no socialization, no toys, and zero vet care. So very sad. \n\nToday, Daisy's story is one of progress, she is alert, very loving, plays with toys and with the two cats in her foster home. Her foster Mum said she is so sweet and an undemanding little puppy, who enjoys sitting on your lap. No pun intended, she laps up all the attention she can get, who can blame her after being deprived. \n\nLook at her soulful sweet little face. She will make a wonderful companion to a family/person."
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA1549"
+          },
+          "lastUpdate": {
+            "$t": "2017-09-23T22:56:31Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {},
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "831-917-5570"
+            },
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "vivatacgsinc@aol.com"
+            },
+            "city": {
+              "$t": "Hollister"
+            },
+            "zip": {
+              "$t": "95024"
+            },
+            "fax": {},
+            "address1": {
+              "$t": "PO Box 904"
+            }
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417071/1/?bust=1505792906&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417071/1/?bust=1505792906&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417071/1/?bust=1505792906&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417071/1/?bust=1505792906&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417071/1/?bust=1505792906&width=50&-t.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417071/2/?bust=1506833294&width=60&-pnt.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417071/2/?bust=1506833294&width=95&-fpm.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417071/2/?bust=1506833294&width=500&-x.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417071/2/?bust=1506833294&width=300&-pn.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417071/2/?bust=1506833294&width=50&-t.jpg",
+                  "@id": "2"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "39417071"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": [
+              {
+                "$t": "Terrier"
+              },
+              {
+                "$t": "Chihuahua"
+              }
+            ]
+          },
+          "name": {
+            "$t": "Abby"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "Want to add some fun and joy to your home, come see our adorable little puppies who were born on July 25th. Zoe their Mum who is a Cairn Terrier. ABBY and POO-BEAR are part of a litter of seven puppies. They are now 9 weeks old and have received first vaccines and de-worming. Very healthy, adorable well socialized little puppies, each with their own individual personalities."
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA1549"
+          },
+          "lastUpdate": {
+            "$t": "2017-10-01T05:33:50Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {},
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "831-917-5570"
+            },
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "vivatacgsinc@aol.com"
+            },
+            "city": {
+              "$t": "Hollister"
+            },
+            "zip": {
+              "$t": "95024"
+            },
+            "fax": {},
+            "address1": {
+              "$t": "PO Box 904"
+            }
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417225/1/?bust=1505793087&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417225/1/?bust=1505793087&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417225/1/?bust=1505793087&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417225/1/?bust=1505793087&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417225/1/?bust=1505793087&width=50&-t.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417225/2/?bust=1506833199&width=60&-pnt.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417225/2/?bust=1506833199&width=95&-fpm.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417225/2/?bust=1506833199&width=500&-x.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417225/2/?bust=1506833199&width=300&-pn.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417225/2/?bust=1506833199&width=50&-t.jpg",
+                  "@id": "2"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "39417225"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": [
+              {
+                "$t": "Terrier"
+              },
+              {
+                "$t": "Chihuahua"
+              }
+            ]
+          },
+          "name": {
+            "$t": "P-Bear"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "Want to add some fun and joy to your home, come see our adorable little puppies who were born on July 25th. Zoe their Mum who is a Cairn Terrier. ABBY and POO-BEAR are part of a litter of seven puppies. They are now 9 weeks old and have received first vaccines and de-worming. Very healthy, adorable well socialized little puppies, each with their own individual personalities."
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA1549"
+          },
+          "lastUpdate": {
+            "$t": "2017-10-01T04:46:40Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {},
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "831-917-5570"
+            },
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "vivatacgsinc@aol.com"
+            },
+            "city": {
+              "$t": "Hollister"
+            },
+            "zip": {
+              "$t": "95024"
+            },
+            "fax": {},
+            "address1": {
+              "$t": "PO Box 904"
+            }
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417521/1/?bust=1505795488&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417521/1/?bust=1505795488&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417521/1/?bust=1505795488&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417521/1/?bust=1505795488&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417521/1/?bust=1505795488&width=50&-t.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417521/2/?bust=1506833167&width=60&-pnt.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417521/2/?bust=1506833167&width=95&-fpm.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417521/2/?bust=1506833167&width=500&-x.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417521/2/?bust=1506833167&width=300&-pn.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417521/2/?bust=1506833167&width=50&-t.jpg",
+                  "@id": "2"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "39417521"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": [
+              {
+                "$t": "Terrier"
+              },
+              {
+                "$t": "Chihuahua"
+              }
+            ]
+          },
+          "name": {
+            "$t": "Peanut"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "Want to add some fun and joy to your home, come see our adorable little puppies who were born on July 25th. Zoe their Mum who is a Cairn Terrier. PEANUT and ALICE are part of a litter of seven puppies. They are now 9 weeks old and have received first vaccines and de-worming. Very healthy, adorable well socialized little puppies, each with their own individual personalities"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA1549"
+          },
+          "lastUpdate": {
+            "$t": "2017-10-01T04:47:10Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {},
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "831-917-5570"
+            },
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "vivatacgsinc@aol.com"
+            },
+            "city": {
+              "$t": "Hollister"
+            },
+            "zip": {
+              "$t": "95024"
+            },
+            "fax": {},
+            "address1": {
+              "$t": "PO Box 904"
+            }
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417848/1/?bust=1505796948&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417848/1/?bust=1505796948&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417848/1/?bust=1505796948&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417848/1/?bust=1505796948&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417848/1/?bust=1505796948&width=50&-t.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417848/2/?bust=1506833129&width=60&-pnt.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417848/2/?bust=1506833129&width=95&-fpm.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417848/2/?bust=1506833129&width=500&-x.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417848/2/?bust=1506833129&width=300&-pn.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39417848/2/?bust=1506833129&width=50&-t.jpg",
+                  "@id": "2"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "39417848"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": [
+              {
+                "$t": "Terrier"
+              },
+              {
+                "$t": "Chihuahua"
+              }
+            ]
+          },
+          "name": {
+            "$t": "Oscar"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "Want to add some fun and joy to your home, come see our adorable little puppies who were born on July 25th. Zoe their Mum is a Cairn Terrier. OSCAR and ROSIE are part of a litter of seven puppies. They are now 9 weeks old and have received first vaccines and de-worming. Very healthy, adorable well socialized little puppies, each with their own individual personalities. \n"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA1549"
+          },
+          "lastUpdate": {
+            "$t": "2017-10-01T04:45:29Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {},
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "925-899-4612"
+            },
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "resqrij@ridgeback.org"
+            },
+            "city": {
+              "$t": "Hollister"
+            },
+            "zip": {
+              "$t": "95023"
+            },
+            "fax": {},
+            "address1": {
+              "$t": "PO Box 38"
+            }
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "M"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/1/?bust=1504919030&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/1/?bust=1504919030&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/1/?bust=1504919030&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/1/?bust=1504919030&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/1/?bust=1504919030&width=50&-t.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/2/?bust=1504919045&width=60&-pnt.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/2/?bust=1504919045&width=95&-fpm.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/2/?bust=1504919045&width=500&-x.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/2/?bust=1504919045&width=300&-pn.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/2/?bust=1504919045&width=50&-t.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/3/?bust=1504919069&width=60&-pnt.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/3/?bust=1504919069&width=95&-fpm.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/3/?bust=1504919069&width=500&-x.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/3/?bust=1504919069&width=300&-pn.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/3/?bust=1504919069&width=50&-t.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/4/?bust=1504919105&width=60&-pnt.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/4/?bust=1504919105&width=95&-fpm.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/4/?bust=1504919105&width=500&-x.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/4/?bust=1504919105&width=300&-pn.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/4/?bust=1504919105&width=50&-t.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/5/?bust=1504919151&width=60&-pnt.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/5/?bust=1504919151&width=95&-fpm.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/5/?bust=1504919151&width=500&-x.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/5/?bust=1504919151&width=300&-pn.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/5/?bust=1504919151&width=50&-t.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/6/?bust=1504919194&width=60&-pnt.jpg",
+                  "@id": "6"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/6/?bust=1504919194&width=95&-fpm.jpg",
+                  "@id": "6"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/6/?bust=1504919194&width=500&-x.jpg",
+                  "@id": "6"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/6/?bust=1504919194&width=300&-pn.jpg",
+                  "@id": "6"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335545/6/?bust=1504919194&width=50&-t.jpg",
+                  "@id": "6"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "39335545"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Black Labrador Retriever"
+            }
+          },
+          "name": {
+            "$t": "Domino"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "Domino is one of the four daughters of Abacus. She is more streamlined than her sisters and seemingly the smartest one of all four. She is delightful, has a fun personality and is very outgoing. She will not be ready to go to her new home until September 24, 2017."
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA288"
+          },
+          "lastUpdate": {
+            "$t": "2017-09-09T01:10:12Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {},
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "925-899-4612"
+            },
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "resqrij@ridgeback.org"
+            },
+            "city": {
+              "$t": "Hollister"
+            },
+            "zip": {
+              "$t": "95023"
+            },
+            "fax": {},
+            "address1": {
+              "$t": "PO Box 38"
+            }
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "M"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/1/?bust=1504919542&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/1/?bust=1504919542&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/1/?bust=1504919542&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/1/?bust=1504919542&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/1/?bust=1504919542&width=50&-t.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/2/?bust=1504919574&width=60&-pnt.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/2/?bust=1504919574&width=95&-fpm.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/2/?bust=1504919574&width=500&-x.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/2/?bust=1504919574&width=300&-pn.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/2/?bust=1504919574&width=50&-t.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/3/?bust=1504919592&width=60&-pnt.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/3/?bust=1504919592&width=95&-fpm.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/3/?bust=1504919592&width=500&-x.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/3/?bust=1504919592&width=300&-pn.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/3/?bust=1504919592&width=50&-t.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/4/?bust=1504919644&width=60&-pnt.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/4/?bust=1504919644&width=95&-fpm.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/4/?bust=1504919644&width=500&-x.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/4/?bust=1504919644&width=300&-pn.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/4/?bust=1504919644&width=50&-t.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/5/?bust=1504919672&width=60&-pnt.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/5/?bust=1504919672&width=95&-fpm.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/5/?bust=1504919672&width=500&-x.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/5/?bust=1504919672&width=300&-pn.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/5/?bust=1504919672&width=50&-t.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/6/?bust=1504919725&width=60&-pnt.jpg",
+                  "@id": "6"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/6/?bust=1504919725&width=95&-fpm.jpg",
+                  "@id": "6"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/6/?bust=1504919725&width=500&-x.jpg",
+                  "@id": "6"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/6/?bust=1504919725&width=300&-pn.jpg",
+                  "@id": "6"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/39335568/6/?bust=1504919725&width=50&-t.jpg",
+                  "@id": "6"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "39335568"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Labrador Retriever"
+            }
+          },
+          "name": {
+            "$t": "Maude"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "Maude is one of the four daughters of Abacus. She is a chunky little mixed breed girl who is smart, has a delightful personality and is outgoing and fun. She will not be ready to go to her new home until September 24, 2017."
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA288"
+          },
+          "lastUpdate": {
+            "$t": "2017-09-09T01:16:37Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {
+              "$t": "8554606127"
+            },
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "sctailwaggers@gmail.com"
+            },
+            "city": {
+              "$t": "Gilroy"
+            },
+            "zip": {
+              "$t": "95020"
+            },
+            "fax": {},
+            "address1": {}
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38943343/1/?bust=1501558447&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38943343/1/?bust=1501558447&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38943343/1/?bust=1501558447&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38943343/1/?bust=1501558447&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38943343/1/?bust=1501558447&width=50&-t.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38943343/2/?bust=1501558467&width=60&-pnt.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38943343/2/?bust=1501558467&width=95&-fpm.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38943343/2/?bust=1501558467&width=500&-x.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38943343/2/?bust=1501558467&width=300&-pn.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38943343/2/?bust=1501558467&width=50&-t.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38943343/3/?bust=1501818837&width=60&-pnt.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38943343/3/?bust=1501818837&width=95&-fpm.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38943343/3/?bust=1501818837&width=500&-x.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38943343/3/?bust=1501818837&width=300&-pn.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38943343/3/?bust=1501818837&width=50&-t.jpg",
+                  "@id": "3"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "38943343"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": [
+              {
+                "$t": "Terrier"
+              },
+              {
+                "$t": "Maltese"
+              }
+            ]
+          },
+          "name": {
+            "$t": "Harry"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "Sweet Harry! This little guy came to us after his mom and siblings were turned into the shelter. The good Samaritan who brought them in said he found them huddled together next to a creek. His foster mom knew his name the moment she laid eyes on him! He is so FLUFFY and is such a social little guy. He is always ready to play or just cuddle. He is easy going in nature, and he truly gets along great with everyone."
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA2507"
+          },
+          "lastUpdate": {
+            "$t": "2017-08-04T03:53:57Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              },
+              {
+                "$t": "housetrained"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {},
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "adopt@aarflove.org"
+            },
+            "city": {
+              "$t": "San Martin"
+            },
+            "zip": {
+              "$t": "95046"
+            },
+            "fax": {},
+            "address1": {
+              "$t": "PO Box 941"
+            }
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/1/?bust=1499728001&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/1/?bust=1499728001&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/1/?bust=1499728001&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/1/?bust=1499728001&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/1/?bust=1499728001&width=50&-t.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/2/?bust=1501466151&width=60&-pnt.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/2/?bust=1501466151&width=95&-fpm.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/2/?bust=1501466151&width=500&-x.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/2/?bust=1501466151&width=300&-pn.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/2/?bust=1501466151&width=50&-t.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/3/?bust=1502230986&width=60&-pnt.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/3/?bust=1502230986&width=95&-fpm.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/3/?bust=1502230986&width=500&-x.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/3/?bust=1502230986&width=300&-pn.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/3/?bust=1502230986&width=50&-t.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/4/?bust=1502230987&width=60&-pnt.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/4/?bust=1502230987&width=95&-fpm.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/4/?bust=1502230987&width=500&-x.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/4/?bust=1502230987&width=300&-pn.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/4/?bust=1502230987&width=50&-t.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/5/?bust=1504286490&width=60&-pnt.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/5/?bust=1504286490&width=95&-fpm.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/5/?bust=1504286490&width=500&-x.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/5/?bust=1504286490&width=300&-pn.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/5/?bust=1504286490&width=50&-t.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/6/?bust=1504286491&width=60&-pnt.jpg",
+                  "@id": "6"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/6/?bust=1504286491&width=95&-fpm.jpg",
+                  "@id": "6"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/6/?bust=1504286491&width=500&-x.jpg",
+                  "@id": "6"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/6/?bust=1504286491&width=300&-pn.jpg",
+                  "@id": "6"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678442/6/?bust=1504286491&width=50&-t.jpg",
+                  "@id": "6"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "38678442"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": [
+              {
+                "$t": "Chihuahua"
+              },
+              {
+                "$t": "Terrier"
+              }
+            ]
+          },
+          "name": {
+            "$t": "Ebony"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "Ebony is a spunky puppy full of energy and fun.  He loves to wrestle and play with his two puppy siblings.  He's well mannered in the house and very sweet."
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA2467"
+          },
+          "lastUpdate": {
+            "$t": "2017-09-01T17:21:32Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": [
+              {
+                "$t": "hasShots"
+              },
+              {
+                "$t": "altered"
+              },
+              {
+                "$t": "housetrained"
+              }
+            ]
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {},
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "adopt@aarflove.org"
+            },
+            "city": {
+              "$t": "San Martin"
+            },
+            "zip": {
+              "$t": "95046"
+            },
+            "fax": {},
+            "address1": {
+              "$t": "PO Box 941"
+            }
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/1/?bust=1504286226&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/1/?bust=1504286226&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/1/?bust=1504286226&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/1/?bust=1504286226&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/1/?bust=1504286226&width=50&-t.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/2/?bust=1504286227&width=60&-pnt.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/2/?bust=1504286227&width=95&-fpm.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/2/?bust=1504286227&width=500&-x.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/2/?bust=1504286227&width=300&-pn.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/2/?bust=1504286227&width=50&-t.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/3/?bust=1501725588&width=60&-pnt.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/3/?bust=1501725588&width=95&-fpm.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/3/?bust=1501725588&width=500&-x.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/3/?bust=1501725588&width=300&-pn.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/3/?bust=1501725588&width=50&-t.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/4/?bust=1502230311&width=60&-pnt.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/4/?bust=1502230311&width=95&-fpm.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/4/?bust=1502230311&width=500&-x.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/4/?bust=1502230311&width=300&-pn.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/4/?bust=1502230311&width=50&-t.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/6/?bust=1502230312&width=60&-pnt.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/6/?bust=1502230312&width=95&-fpm.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/6/?bust=1502230312&width=500&-x.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/6/?bust=1502230312&width=300&-pn.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38678684/6/?bust=1502230312&width=50&-t.jpg",
+                  "@id": "5"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "38678684"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": [
+              {
+                "$t": "Chihuahua"
+              },
+              {
+                "$t": "Terrier"
+              }
+            ]
+          },
+          "name": {
+            "$t": "Ivory"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "Ivory is a very shy puppy that is still learning that humans can be nice.  When she came to our rescue she was afraid of everyone but has come a long way since then.  She loves to play with other dogs and is very well behaved and quiet.\n\nMiss Ivory is as much like a cat as a dog. We don't know what happened in her earlier life to make her timid but if she learns to trust you and you are sitting quietly, she will come near for stroking and even sometimes turn up her silky soft tummy for a rub. Like cats, she prefers that all encounters be on her terms, and like cats, her satin soft warm body is worth waiting for. So if you like little dogs that aren't always in your face, and you also like cats, Miss Ivory may be the perfect companion for you."
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA2467"
+          },
+          "lastUpdate": {
+            "$t": "2017-09-19T04:09:58Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": {
+              "$t": "hasShots"
+            }
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {},
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "adopt@aarflove.org"
+            },
+            "city": {
+              "$t": "San Martin"
+            },
+            "zip": {
+              "$t": "95046"
+            },
+            "fax": {},
+            "address1": {
+              "$t": "PO Box 941"
+            }
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/1/?bust=1501458167&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/1/?bust=1501458167&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/1/?bust=1501458167&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/1/?bust=1501458167&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/1/?bust=1501458167&width=50&-t.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/2/?bust=1501458168&width=60&-pnt.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/2/?bust=1501458168&width=95&-fpm.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/2/?bust=1501458168&width=500&-x.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/2/?bust=1501458168&width=300&-pn.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/2/?bust=1501458168&width=50&-t.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/3/?bust=1501458168&width=60&-pnt.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/3/?bust=1501458168&width=95&-fpm.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/3/?bust=1501458168&width=500&-x.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/3/?bust=1501458168&width=300&-pn.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/3/?bust=1501458168&width=50&-t.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/4/?bust=1501458169&width=60&-pnt.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/4/?bust=1501458169&width=95&-fpm.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/4/?bust=1501458169&width=500&-x.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/4/?bust=1501458169&width=300&-pn.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/4/?bust=1501458169&width=50&-t.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/5/?bust=1504285615&width=60&-pnt.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/5/?bust=1504285615&width=95&-fpm.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/5/?bust=1504285615&width=500&-x.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/5/?bust=1504285615&width=300&-pn.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/5/?bust=1504285615&width=50&-t.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/6/?bust=1504285616&width=60&-pnt.jpg",
+                  "@id": "6"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/6/?bust=1504285616&width=95&-fpm.jpg",
+                  "@id": "6"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/6/?bust=1504285616&width=500&-x.jpg",
+                  "@id": "6"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/6/?bust=1504285616&width=300&-pn.jpg",
+                  "@id": "6"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933942/6/?bust=1504285616&width=50&-t.jpg",
+                  "@id": "6"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "38933942"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Terrier"
+            }
+          },
+          "name": {
+            "$t": "Molly"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "Molly is from a litter of 6 puppies.  She is proving to be the sassy one who likes to sneak up on her sleeping siblings and pounce to play.  She pouts when she doesn't get her way.  Adorable sweetie!"
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA2467"
+          },
+          "lastUpdate": {
+            "$t": "2017-09-01T17:08:53Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": {
+              "$t": "hasShots"
+            }
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {},
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "adopt@aarflove.org"
+            },
+            "city": {
+              "$t": "San Martin"
+            },
+            "zip": {
+              "$t": "95046"
+            },
+            "fax": {},
+            "address1": {
+              "$t": "PO Box 941"
+            }
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/1/?bust=1501458459&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/1/?bust=1501458459&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/1/?bust=1501458459&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/1/?bust=1501458459&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/1/?bust=1501458459&width=50&-t.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/2/?bust=1501458460&width=60&-pnt.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/2/?bust=1501458460&width=95&-fpm.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/2/?bust=1501458460&width=500&-x.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/2/?bust=1501458460&width=300&-pn.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/2/?bust=1501458460&width=50&-t.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/3/?bust=1501458460&width=60&-pnt.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/3/?bust=1501458460&width=95&-fpm.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/3/?bust=1501458460&width=500&-x.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/3/?bust=1501458460&width=300&-pn.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/3/?bust=1501458460&width=50&-t.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/4/?bust=1504285472&width=60&-pnt.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/4/?bust=1504285472&width=95&-fpm.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/4/?bust=1504285472&width=500&-x.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/4/?bust=1504285472&width=300&-pn.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/4/?bust=1504285472&width=50&-t.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/5/?bust=1501458461&width=60&-pnt.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/5/?bust=1501458461&width=95&-fpm.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/5/?bust=1501458461&width=500&-x.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/5/?bust=1501458461&width=300&-pn.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933961/5/?bust=1501458461&width=50&-t.jpg",
+                  "@id": "5"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "38933961"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Terrier"
+            }
+          },
+          "name": {
+            "$t": "Rocky"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "Rocky is from a litter of six puppies.  Rocky is proving to be the baby.  He needs attention and will let you know it.  He likes to get up on his hind legs and box.  He is also quite a snuggler."
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA2467"
+          },
+          "lastUpdate": {
+            "$t": "2017-09-01T17:04:33Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": {
+              "$t": "hasShots"
+            }
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {},
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "adopt@aarflove.org"
+            },
+            "city": {
+              "$t": "San Martin"
+            },
+            "zip": {
+              "$t": "95046"
+            },
+            "fax": {},
+            "address1": {
+              "$t": "PO Box 941"
+            }
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933971/1/?bust=1501458059&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933971/1/?bust=1501458059&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933971/1/?bust=1501458059&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933971/1/?bust=1501458059&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933971/1/?bust=1501458059&width=50&-t.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933971/2/?bust=1501458059&width=60&-pnt.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933971/2/?bust=1501458059&width=95&-fpm.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933971/2/?bust=1501458059&width=500&-x.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933971/2/?bust=1501458059&width=300&-pn.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933971/2/?bust=1501458059&width=50&-t.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933971/3/?bust=1501458060&width=60&-pnt.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933971/3/?bust=1501458060&width=95&-fpm.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933971/3/?bust=1501458060&width=500&-x.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933971/3/?bust=1501458060&width=300&-pn.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933971/3/?bust=1501458060&width=50&-t.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933971/4/?bust=1504285088&width=60&-pnt.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933971/4/?bust=1504285088&width=95&-fpm.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933971/4/?bust=1504285088&width=500&-x.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933971/4/?bust=1504285088&width=300&-pn.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933971/4/?bust=1504285088&width=50&-t.jpg",
+                  "@id": "4"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "38933971"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Terrier"
+            }
+          },
+          "name": {
+            "$t": "Foxey"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "Foxey is from a litter of six puppies.  She is the quiet watcher and very curious of everything.  She likes to have her ears scratched and will lick your hands as a thank you.  She also likes to cuddle with a stuffed animal friend."
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA2467"
+          },
+          "lastUpdate": {
+            "$t": "2017-09-01T16:58:09Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": {
+              "$t": "hasShots"
+            }
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {},
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "adopt@aarflove.org"
+            },
+            "city": {
+              "$t": "San Martin"
+            },
+            "zip": {
+              "$t": "95046"
+            },
+            "fax": {},
+            "address1": {
+              "$t": "PO Box 941"
+            }
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/1/?bust=1501458523&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/1/?bust=1501458523&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/1/?bust=1501458523&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/1/?bust=1501458523&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/1/?bust=1501458523&width=50&-t.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/2/?bust=1501458523&width=60&-pnt.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/2/?bust=1501458523&width=95&-fpm.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/2/?bust=1501458523&width=500&-x.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/2/?bust=1501458523&width=300&-pn.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/2/?bust=1501458523&width=50&-t.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/3/?bust=1501458524&width=60&-pnt.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/3/?bust=1501458524&width=95&-fpm.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/3/?bust=1501458524&width=500&-x.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/3/?bust=1501458524&width=300&-pn.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/3/?bust=1501458524&width=50&-t.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/4/?bust=1501458524&width=60&-pnt.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/4/?bust=1501458524&width=95&-fpm.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/4/?bust=1501458524&width=500&-x.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/4/?bust=1501458524&width=300&-pn.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/4/?bust=1501458524&width=50&-t.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/5/?bust=1504285383&width=60&-pnt.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/5/?bust=1504285383&width=95&-fpm.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/5/?bust=1504285383&width=500&-x.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/5/?bust=1504285383&width=300&-pn.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/5/?bust=1504285383&width=50&-t.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/6/?bust=1504285384&width=60&-pnt.jpg",
+                  "@id": "6"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/6/?bust=1504285384&width=95&-fpm.jpg",
+                  "@id": "6"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/6/?bust=1504285384&width=500&-x.jpg",
+                  "@id": "6"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/6/?bust=1504285384&width=300&-pn.jpg",
+                  "@id": "6"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38933980/6/?bust=1504285384&width=50&-t.jpg",
+                  "@id": "6"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "38933980"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Terrier"
+            }
+          },
+          "name": {
+            "$t": "Rubble"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "Rubble is from a litter of six puppies.  Rubble is the love-bug of the group.  he prefers to sleep close and under your shirt or a blanket next to you.  He is very laid back."
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA2467"
+          },
+          "lastUpdate": {
+            "$t": "2017-09-01T17:03:05Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": {
+              "$t": "hasShots"
+            }
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {},
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "adopt@aarflove.org"
+            },
+            "city": {
+              "$t": "San Martin"
+            },
+            "zip": {
+              "$t": "95046"
+            },
+            "fax": {},
+            "address1": {
+              "$t": "PO Box 941"
+            }
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/1/?bust=1501458305&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/1/?bust=1501458305&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/1/?bust=1501458305&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/1/?bust=1501458305&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/1/?bust=1501458305&width=50&-t.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/2/?bust=1501458305&width=60&-pnt.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/2/?bust=1501458305&width=95&-fpm.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/2/?bust=1501458305&width=500&-x.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/2/?bust=1501458305&width=300&-pn.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/2/?bust=1501458305&width=50&-t.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/3/?bust=1501458306&width=60&-pnt.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/3/?bust=1501458306&width=95&-fpm.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/3/?bust=1501458306&width=500&-x.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/3/?bust=1501458306&width=300&-pn.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/3/?bust=1501458306&width=50&-t.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/4/?bust=1504285187&width=60&-pnt.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/4/?bust=1504285187&width=95&-fpm.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/4/?bust=1504285187&width=500&-x.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/4/?bust=1504285187&width=300&-pn.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/4/?bust=1504285187&width=50&-t.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/5/?bust=1504285188&width=60&-pnt.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/5/?bust=1504285188&width=95&-fpm.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/5/?bust=1504285188&width=500&-x.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/5/?bust=1504285188&width=300&-pn.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934013/5/?bust=1504285188&width=50&-t.jpg",
+                  "@id": "5"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "38934013"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Terrier"
+            }
+          },
+          "name": {
+            "$t": "Max"
+          },
+          "sex": {
+            "$t": "M"
+          },
+          "description": {
+            "$t": "Max is from a litter of six puppies.  He is proving to be the one with the most energy.  He is constantly on the move and getting into everything.  He likes to play with the bigger dogs in the foster home and playing tug of war."
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA2467"
+          },
+          "lastUpdate": {
+            "$t": "2017-09-01T16:59:48Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        },
+        {
+          "options": {
+            "option": {
+              "$t": "hasShots"
+            }
+          },
+          "status": {
+            "$t": "A"
+          },
+          "contact": {
+            "phone": {},
+            "state": {
+              "$t": "CA"
+            },
+            "address2": {},
+            "email": {
+              "$t": "adopt@aarflove.org"
+            },
+            "city": {
+              "$t": "San Martin"
+            },
+            "zip": {
+              "$t": "95046"
+            },
+            "fax": {},
+            "address1": {
+              "$t": "PO Box 941"
+            }
+          },
+          "age": {
+            "$t": "Baby"
+          },
+          "size": {
+            "$t": "S"
+          },
+          "media": {
+            "photos": {
+              "photo": [
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/1/?bust=1501458391&width=60&-pnt.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/1/?bust=1501458391&width=95&-fpm.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/1/?bust=1501458391&width=500&-x.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/1/?bust=1501458391&width=300&-pn.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/1/?bust=1501458391&width=50&-t.jpg",
+                  "@id": "1"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/2/?bust=1501458391&width=60&-pnt.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/2/?bust=1501458391&width=95&-fpm.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/2/?bust=1501458391&width=500&-x.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/2/?bust=1501458391&width=300&-pn.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/2/?bust=1501458391&width=50&-t.jpg",
+                  "@id": "2"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/3/?bust=1501458392&width=60&-pnt.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/3/?bust=1501458392&width=95&-fpm.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/3/?bust=1501458392&width=500&-x.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/3/?bust=1501458392&width=300&-pn.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/3/?bust=1501458392&width=50&-t.jpg",
+                  "@id": "3"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/4/?bust=1501458392&width=60&-pnt.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/4/?bust=1501458392&width=95&-fpm.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/4/?bust=1501458392&width=500&-x.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/4/?bust=1501458392&width=300&-pn.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/4/?bust=1501458392&width=50&-t.jpg",
+                  "@id": "4"
+                },
+                {
+                  "@size": "pnt",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/5/?bust=1504285316&width=60&-pnt.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "fpm",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/5/?bust=1504285316&width=95&-fpm.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "x",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/5/?bust=1504285316&width=500&-x.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "pn",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/5/?bust=1504285316&width=300&-pn.jpg",
+                  "@id": "5"
+                },
+                {
+                  "@size": "t",
+                  "$t": "http://photos.petfinder.com/photos/pets/38934023/5/?bust=1504285316&width=50&-t.jpg",
+                  "@id": "5"
+                }
+              ]
+            }
+          },
+          "id": {
+            "$t": "38934023"
+          },
+          "shelterPetId": {},
+          "breeds": {
+            "breed": {
+              "$t": "Terrier"
+            }
+          },
+          "name": {
+            "$t": "Millie"
+          },
+          "sex": {
+            "$t": "F"
+          },
+          "description": {
+            "$t": "Millie is from a litter of six puppies.  Millie is an \"old soul\".  She's sweet and cuddly and just watches over all of her siblings.  She enjoys cuddling but gets a little nervous when she's alone.  Loves being around stuffed animals."
+          },
+          "mix": {
+            "$t": "yes"
+          },
+          "shelterId": {
+            "$t": "CA2467"
+          },
+          "lastUpdate": {
+            "$t": "2017-09-01T17:01:56Z"
+          },
+          "animal": {
+            "$t": "Dog"
+          }
+        }
+      ]
+    },
+    "header": {
+      "timestamp": {
+        "$t": "2017-10-03T02:49:52Z"
+      },
+      "status": {
+        "message": {},
+        "code": {
+          "$t": "100"
+        }
+      },
+      "version": {
+        "$t": "0.1"
+      }
+    },
+    "@xsi:noNamespaceSchemaLocation": "http://api.petfinder.com/schemas/0.9/petfinder.xsd"
+  }
+}

@@ -1,0 +1,10 @@
+.login-page {
+    background: #eaeaea;
+}
+
+/* Give logo on sidebar padding */
+.carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img,
+.carousel-inner>.item>a>img, .carousel-inner>.item>img, .img-responsive, .thumbnail a>img, .thumbnail>img{
+    padding-left: 20px;
+    padding-right: 20px;
+}

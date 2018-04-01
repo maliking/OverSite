@@ -1,0 +1,48 @@
+[
+  {
+    "name": "property",
+    "title": "Property",
+    "visible": false
+  },
+  {
+    "name": "clientName",
+    "title": "Client Name"
+  },
+  {
+    "name": "clientNumber",
+    "title": "Client Number"
+  },
+  {
+    "name": "aprv",
+    "title": "Aprv."
+  },
+  {
+    "name": "emd",
+    "title": "EMD"
+  },
+  {
+    "name": "insp",
+    "title": "Insp."
+  },
+  {
+    "name": "disc",
+    "title": "Disc."
+  },
+  {
+    "name": "cont",
+    "title": "Cont."
+  }
+
+  {
+    "name": "appr",
+    "title": "Appr."
+  },
+  {
+    "name": "coe",
+    "title": "COE."
+  },
+  {
+    "name": "notes",
+    "title": "Notes"
+  }
+]

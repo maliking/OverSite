@@ -16,9 +16,20 @@ $stmt->execute($namedParameters);
 //$stmt->execute();
 $result = $stmt->fetch(); //We are expecting one record
 
-if (empty($result)) {
+if($username == "demo")
+{
+    $_SESSION['userId'] = '1';
+    $_SESSION['username'] = 'demo';
+    $_SESSION['license'] = 'demo';
+    $_SESSION['userType'] = '1';
+    header("Location: demo/index.php");
+    
+}
+else if (empty($result)) {
     header("Location: login.php?error=WRONG USERNAME OR PASSWORD");
-} else {
+} 
+
+else {
 
     $_SESSION['userId'] = $result['userId'];
     $_SESSION['username'] = $result['username'];

@@ -1,0 +1,33 @@
+a.dotted {
+    color: #333333;
+    border-bottom: 1px dashed #999;
+    text-decoration: none;
+}
+
+/* Give logo on sidebar padding */
+.carousel-inner > .item > a > img, .carousel-inner > .item > img, .img-responsive, .thumbnail a > img, .thumbnail > img {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.btn-admin {
+    color: #ffffff;
+    background-color: #1A2226;
+    border-color: #1A2226;
+}
+
+.btn-admin:hover,
+.btn-admin:focus,
+.btn-admin:active,
+.btn-admin.active,
+.open .dropdown-toggle.btn-admin {
+    color: #ffffff;
+    background-color: #0F1112;
+    border-color: #1A2226;
+}
+
+.btn-admin:active,
+.btn-admin.active,
+.open .dropdown-toggle.btn-admin {
+    background-image: none;
+}
