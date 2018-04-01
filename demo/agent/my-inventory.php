@@ -231,8 +231,8 @@ $addedListingsResults = $addedListings->fetchAll();
 
                                foreach($addedListingsResults as $addHouse)
                                {
-                                   $directory = "../addedHouses/" . $addHouse['address'] . "/";
-                                   $files = scandir ($directory);
+                                   // $directory = "../addedHouses/" . $addHouse['address'] . "/";
+                                   // $files = scandir ($directory);
                                    
 
                                    echo "<div id=house" . $addHouse['houseId'] . " class=\"col-xs-12 col-md-6 col-lg-3\">
@@ -251,7 +251,7 @@ $addedListingsResults = $addedListings->fetchAll();
                                         </div>
                                     </div>
                                 <div class=\"box-body\">
-                                    <img class=\"img-responsive\" style='min-height: 180px' src='../uploadFlyers/" . $addHouse['flyer'] . "' alt='error'>
+                                    <img class=\"img-responsive\" style='min-height: 180px' src='../../uploadFlyers/" . $addHouse['flyer'] . "' alt='error'>
                                     <div class=\"listing-info\">
                                     <h4>$" . number_format($addHouse['price']) . "</h4>
                                     <h5>" . $addHouse['bedrooms'] . " <i class='fa fa-bed'></i></h5>
