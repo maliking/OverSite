@@ -5,7 +5,7 @@ if (!isset($_SESSION['userId'])) {
     header("Location: http://www.oversite.cc/login.php");
 }
 require '../databaseConnection.php';
-require '../keys/cred.php';
+require '../../keys/cred.php';
 require '../twilio-php-master/Twilio/autoload.php';
 
 use Twilio\Jwt\ClientToken;
