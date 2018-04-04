@@ -4,7 +4,7 @@
     <section class="sidebar">
         <a href="index.php" class="logo">
             <!-- Logo -->
-            <img class="img-responsive" src="../dist/img/oversite-logo.png"> </a>
+            <img class="img-responsive" src="../dist/img/houseLogo.png"> </a>
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">OVERVIEW</li>
