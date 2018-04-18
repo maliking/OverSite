@@ -8,7 +8,7 @@ if (!isset($_SESSION['userId'])) {
 require '../databaseConnection.php';
 $dbConn = getConnection();
 
-require 'potentialAlgo.php';
+
 
 // $sqlRank = "SELECT UsersInfo.firstName, UsersInfo.lastName, count(*) as sold, sum(finalComm) as YTDComm FROM UsersInfo LEFT JOIN commInfo on UsersInfo.license = commInfo.license group by UsersInfo.license order by sold Desc ";
 // $stmtRank = $dbConnRank->prepare($sqlRank);

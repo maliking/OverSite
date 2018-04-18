@@ -1,5 +1,5 @@
 <?php
-
+require 'potentialAlgo.php';
 if ($_SESSION['userId'] == "100" || $_SESSION['userId'] == "34") //Jorge
 {
     $_SESSION['userId'] = "34";
