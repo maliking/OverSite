@@ -86,6 +86,18 @@ $keys = array_keys($response);
                 display: inline-block!important
             }
 
+
+            .top, .bottom {
+                padding: 0 5px;    
+            }
+
+            
+
+            .bottom{
+                border-top: 1px solid #000;
+                display: block;
+            }
+
         </style>
         <style type "text/css">
 
