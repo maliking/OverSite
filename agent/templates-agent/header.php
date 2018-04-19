@@ -124,7 +124,7 @@ foreach ($resultVolSold as $volume) {
 }
 
 $grossRank = 0;
-$sqlGrossRank = "SELECT SUM(finalComm) as gross, license  FROM commInfo GROUP BY license ORDER BY gross DESC";
+$sqlGrossRank = "SELECT SUM(InitialGross) as gross, license  FROM commInfo GROUP BY license ORDER BY gross DESC";
 $stmtGross = $dbConn->prepare($sqlGrossRank);
 $stmtGross->execute();
 $resultGross = $stmtGross->fetchAll();
