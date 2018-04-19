@@ -260,7 +260,7 @@ $keys = array_keys($response);
                             <!-- small box -->
                             <div class="small-box bg-yellow">
                                 <div class="inner">
-                                    <p style="font-size:20px;"><b>Vol Sold Rank</b> <a href="houseHistory.php"><i class="fa fa-line-chart"></i></a></p>
+                                    <p style="font-size:20px;"><b>Volume Sold Rank</b> <a href="houseHistory.php"><i class="fa fa-line-chart"></i></a></p>
                                         <?php 
                                         if($volumeRank == 0)
                                             echo "N/A";
