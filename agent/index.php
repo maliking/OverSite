@@ -182,7 +182,7 @@ $keys = array_keys($response);
                             <!-- small box -->
                             <div class="small-box bg-blue">
                                 <div class="inner">
-                                    <p style="font-size:20px; text-align:center; background-color:#000080; width: inherit; margin-left: -10px; margin-right:-10px;"><b>Closed Units Rank</b></p>
+                                    <p style="font-size:20px; text-align:center; background-color:#000080; margin-left: -10px; margin-right:-10px;"><b>Closed Units Rank</b></p>
                                         <?php 
 
                                         if($soldRank == 0)
@@ -260,7 +260,7 @@ $keys = array_keys($response);
                             <!-- small box -->
                             <div class="small-box bg-yellow">
                                 <div class="inner">
-                                    <p style="font-size:20px;"><b>Volume Sold Rank</b> <a href="houseHistory.php"><i class="fa fa-line-chart"></i></a></p>
+                                    <p style="font-size:20px; text-align:center; background-color:#dd7205; margin-left: -10px; margin-right:-10px;"><b>Volume Sold Rank</b> <a href="houseHistory.php"><i class="fa fa-line-chart"></i></a></p>
                                         <?php 
                                         if($volumeRank == 0)
                                             echo "N/A";
@@ -343,7 +343,7 @@ $keys = array_keys($response);
                             <!-- small box -->
                             <div class="small-box bg-green">
                                 <div class="inner">
-                                    <p style="font-size:20px;">Gross Commission Rank</p>
+                                    <p style="font-size:20px; text-align:center; background-color:#027e11; margin-left: -10px; margin-right:-10px;">Gross Commission Rank</p>
                                         <?php 
                                         if($grossRank == 0)
                                             echo "N/A";
@@ -424,7 +424,7 @@ $keys = array_keys($response);
                             <!-- small box -->
                             <div class="small-box bg-orange">
                                 <div class="inner">
-                                    <p style="font-size:20px;">Potential Income</p>
+                                    <p style="font-size:20px; text-align:center; background-color:#C37410; margin-left: -10px; margin-right:-10px;">Potential Income</p>
                                     <h4>$<?php echo number_format($potentialGross, 2); ?></h4>
                                     
                                 </div>
@@ -438,7 +438,7 @@ $keys = array_keys($response);
                             <!-- small box -->
                             <div class="small-box bg-blue">
                                 <div class="inner">
-                                    <p style="font-size:20px;">Prior Year Gross</p>
+                                    <p style="font-size:20px; text-align:center; background-color:#000080; margin-left: -10px; margin-right:-10px;">Prior Year Gross</p>
                                     <h4>$<?php echo number_format($prevYearResult['prevGross'], 0); ?></h4>
                                     
                                 </div>
@@ -452,7 +452,7 @@ $keys = array_keys($response);
                             <!-- small box -->
                             <div class="small-box bg-red">
                                 <div class="inner">
-                                    <p style="font-size:20px;">Total Gross Earnings</p>
+                                    <p style="font-size:20px;  text-align:center; background-color:#AD0403; margin-left: -10px; margin-right:-10px;">Total Gross Earnings</p>
                                     <h3><sup style="font-size: 20px">$</sup>
                                         <?php echo number_format($result['earnings'], 0); ?>
                                     </h3>
