@@ -2,7 +2,7 @@
 <?php 
 
 $dbGoal = getConnection();
-$getMonthlyGrossSql = "SELECT SUM(finalComm) as gross, license, date, MONTH(date) as month FROM commInfo WHERE YEAR(date) = YEAR(CURRENT_TIMESTAMP ()) AND license = :license GROUP BY license, MONTH(date) ORDER BY MONTH(date) ASC";
+$getMonthlyGrossSql = "SELECT SUM(InitialGross) as gross, license, date, MONTH(date) as month FROM commInfo WHERE YEAR(date) = YEAR(CURRENT_TIMESTAMP ()) AND license = :license GROUP BY license, MONTH(date) ORDER BY MONTH(date) ASC";
 $goalParameters = array();
 $goalParameters[':license'] = $licenseResult['license'];
 
