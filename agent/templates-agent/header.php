@@ -71,7 +71,7 @@ $addedHouseResults = $addedHousesStmt->fetch();
 
 
 
-$sql = "SELECT firstName, lastName, count(*) as sold, AVG(finalComm) as average, SUM(finalComm) AS earnings, AVG(percentage) AS avgPercent FROM commInfo WHERE license = :license GROUP BY license ";
+$sql = "SELECT firstName, lastName, count(*) as sold, AVG(finalComm) as average, SUM(InitialGross) AS earnings, AVG(percentage) AS avgPercent FROM commInfo WHERE license = :license GROUP BY license ";
 $parameters = array();
 $parameters[':license'] = $licenseResult['license'];
 
