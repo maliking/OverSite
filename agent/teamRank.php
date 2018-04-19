@@ -211,7 +211,7 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                 <?php
                                 $rank = 1;
                                 $sql = "SELECT UsersInfo.firstName, UsersInfo.lastName, COUNT(commInfo.license) as closedUnits, commInfo.license, 
-                                        SUM(commInfo.InitialGross) as volSold, SUM(commInfo.finalComm) as GCI 
+                                        SUM(commInfo.finalHousePrice) as volSold, SUM(commInfo.finalComm) as GCI 
                                         FROM UsersInfo LEFT JOIN commInfo ON UsersInfo.license = commInfo.license GROUP BY commInfo.license
                                         ORDER BY closedUnits DESC";
 
