@@ -343,7 +343,7 @@ $keys = array_keys($response);
                             <!-- small box -->
                             <div class="small-box bg-green">
                                 <div class="inner">
-                                    <p style="font-size:20px;">GCI Rank</p>
+                                    <p style="font-size:20px;">Gross Commission Rank</p>
                                         <?php 
                                         if($grossRank == 0)
                                             echo "N/A";
