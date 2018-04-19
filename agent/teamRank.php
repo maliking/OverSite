@@ -212,7 +212,7 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                 $rank = 1;
                                 $sql = "SELECT UsersInfo.firstName, UsersInfo.lastName, COUNT(commInfo.license) as closedUnits, commInfo.license, 
                                         SUM(commInfo.finalHousePrice) as volSold, SUM(commInfo.InitialGross) as GCI 
-                                        FROM UsersInfo LEFT JOIN commInfo ON UsersInfo.license = commInfo.license GROUP BY commInfo.license
+                                        FROM UsersInfo LEFT JOIN commInfo ON UsersInfo.license = commInfo.license WHERE UsersInfo.userType != '0' GROUP BY commInfo.license
                                         ORDER BY closedUnits DESC";
 
                                 $namedParameters = array();
