@@ -107,7 +107,7 @@ foreach ($resultNumSold as $sold) {
 }
 
 $volumeRank = 0;
-$sqlVolSold = "SELECT SUM(InitialGross) as volSold, license  FROM commInfo GROUP BY license ORDER BY volSold DESC";
+$sqlVolSold = "SELECT SUM(finalHousePrice) as volSold, license  FROM commInfo GROUP BY license ORDER BY volSold DESC";
 $stmtVolSold = $dbConn->prepare($sqlVolSold);
 $stmtVolSold->execute();
 $resultVolSold = $stmtVolSold->fetchAll();
