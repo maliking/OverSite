@@ -31,7 +31,7 @@ for($i = 0; $i < 12; $i++)
 echo'<th>YTD GOAL</th>
   </tr>
   <tr>
-    <th>$ GCI $</th>';
+    <th>$ MY GROSS COMISSION $</th>';
 
     for($i = 0; $i < 12; $i++)
     {
