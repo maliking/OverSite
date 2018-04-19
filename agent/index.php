@@ -182,7 +182,7 @@ $keys = array_keys($response);
                             <!-- small box -->
                             <div class="small-box bg-blue">
                                 <div class="inner">
-                                    <p style="font-size:20px; border-bottom: 2px solid black"><b>Closed Units Rank</b></p>
+                                    <p style="font-size:20px; border-style: 2px solid black; background-color:#000080;"><b>Closed Units Rank</b></p>
                                         <?php 
 
                                         if($soldRank == 0)
