@@ -1602,6 +1602,27 @@ $keys = array_keys($response);
                     // alert("onTime");
                 }
             }
+
+            function updateGoal()
+            {
+                var newGoalEntry = prompt("Enter new goal: ");
+                var newGoal = parseInt(newGoalEntry.replace(/,$./g, ''));
+                while(newGoal < 100000 || isNaN(newGoal))
+                {
+                    newGoalEntry = prompt("Enter new goal: ");
+                    newGoal = parseInt(newGoalEntry.replace(/,$./g, ''));
+                }
+                
+                var dividedGoal = Math.ceil(newGoal/12);
+                $(".agentGoal").each(function ()
+                {
+                    $(".agentGoal").html("$" + dividedGoal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                });
+                $("#agentGoal").html("$" + newGoal.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+                $.post( "updateGoal.php", { newGoal: newGoal } );
+                // alert("update goal");
+            }
         </script>
 
 

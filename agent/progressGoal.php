@@ -57,9 +57,9 @@ echo'<th>YTD GOAL</th>
     <th>$ MY GOAL $</th>';
   for($i = 0; $i < 12; $i++)
   {
-    echo "<th>$" . number_format($agentGoal/12) . "</th>";
+    echo "<th class=agentGoal>$" . number_format($agentGoal/12) . "</th>";
   }
-  echo "<th>$" . number_format($agentGoal) . "</th>";
+  echo "<th id=agentGoal onClick=updateGoal()>$" . number_format($agentGoal) . "</th>";
    echo ' 
   </tr>
 </table>
