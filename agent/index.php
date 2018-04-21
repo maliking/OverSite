@@ -606,6 +606,7 @@ $keys = array_keys($response);
                             <div class="box box-success">
                                 <div class="box-header">
                                     <h4>In-Contract Properties</h4>
+                                    <button><a href="inputNewListing.php">Add New Listing</a></button>
                                 </div>
                                 <div class="box-body">
                                     <table class="table footable table-bordered table-striped"  >
