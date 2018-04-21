@@ -6,7 +6,7 @@ $license = $_GET['license'];
 require("databaseConnection.php");
 $dbConn = getConnection();
 
-$sql = "SELECT SUM(TYGross) as TYGross, SUM(FYGross) as FYGross FROM commInfo WHERE license = '" . $license . "' AND YEAR(date) = :year";
+$sql = "SELECT SUM(InitialGross) as TYGross, SUM(finalComm) as FYGross FROM commInfo WHERE license = '" . $license . "' AND YEAR(date) = :year";
 $namedParameters = array();
 $namedParameters[':year'] = date("Y");
 $stmt = $dbConn->prepare($sql);
