@@ -607,6 +607,7 @@ $keys = array_keys($response);
                                 <div class="box-header">
                                     <h4>In-Contract Properties</h4>
                                     <button><a href="inputNewListing.php">Add New Listing</a></button>
+                                    <button onClick="addNewTransaction()">Add New Transaction</button>
                                 </div>
                                 <div class="box-body">
                                     <table class="table footable table-bordered table-striped"  >
@@ -1222,6 +1223,7 @@ $keys = array_keys($response);
         <script src="../plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
         <!-- bootstrap datepicker -->
         <script src="../plugins/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 
         <script>
         
@@ -1623,6 +1625,51 @@ $keys = array_keys($response);
 
                 $.post( "updateGoal.php", { newGoal: newGoal } );
                 // alert("update goal");
+            }
+
+            function addNewTransaction()
+            {
+                var address;
+                var inContractType;
+                bootbox.prompt({ 
+                  size: "medium",
+                  title: "What is the address of the house?", 
+                  callback: function(result){ 
+                    address = result;
+
+                    bootbox.prompt({
+                    title: "Select what type of in-contract:",
+                    inputType: 'checkbox',
+                    inputOptions: [
+                        {
+                            text: 'Listing',
+                            value: 'Listing',
+                        },
+                        {
+                            text: 'Buyer',
+                            value: 'Buyer',
+                        },
+                        {
+                            text: 'List./Buy.',
+                            value: 'List./Buy.',
+                        }
+                    ],
+                    callback: function (result) {
+                        inContractType = result[0];
+                        // alert(inContractType);
+                        // alert(address);
+
+                        $.post( "addTransactionSimple.php", { address: address, type: inContractType})
+                        .done(function( data ) {
+
+                            alert("House In-contract. Will reflect on Dashboard after refreshing page.");
+                            });
+                    }
+
+                    });
+
+                    }
+                });
             }
         </script>
 
