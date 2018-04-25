@@ -668,11 +668,12 @@ $keys = array_keys($response);
                                                 $day = $trans['accDay'];
 
                                                 echo '<tr id=inContract' . $trans['transId'] . ' ><td>';
-                                                if ($trans['transType'] == 'Listing') {
-                                                    echo '<b>LIST</b>';
-                                                } else {
-                                                    echo '<b>BUY</b>';
-                                                }
+                                                // if ($trans['transType'] == 'Listing') {
+                                                //     echo '<b>LIST</b>';
+                                                // } else {
+                                                //     echo '<b>BUY</b>';
+                                                // }
+                                                echo $trans['transType'];
                                                 echo '</td>
                                             <td>' . $trans['clientName'] . '</td>
                                             <td>' . $trans['address'] . '</td>

@@ -300,7 +300,7 @@ $addedListingsResults = $addedListings->fetchAll();
 <!-- Footable -->
 <script src="../dist/js/vendor/footable.min.js"></script>
 
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 <script>
     jQuery(function ($) {
         $('.table').footable({});
@@ -372,11 +372,36 @@ $addedListingsResults = $addedListings->fetchAll();
     function addTransaction(houseId)
     {
         // alert(houseId);
-        $.post( "addTransaction.php", { houseId: houseId})
+        var inContractType;
+        bootbox.prompt({
+        title: "Select what type of in-contract:",
+        inputType: 'checkbox',
+        inputOptions: [
+            {
+                text: 'Listing',
+                value: 'Listing',
+            },
+            {
+                text: 'Buyer',
+                value: 'Buyer',
+            },
+            {
+                text: 'List./Buy.',
+                value: 'List./Buy.',
+            }
+        ],
+        callback: function (result) {
+            // console.log(result);
+            inContractType = result;
+            $.post( "addTransaction.php", { houseId: houseId, type: inContractType[0]})
             .done(function( data ) {
 
                 alert("House In-contract. Will reflect on Dashboard.");
             });
+        }
+        });
+        
+        
     }
 </script>
 </body>

@@ -44,7 +44,7 @@ $parameters = array();
 $parameters[':houseId'] = $houseId;
 $parameters[':userId'] = $_SESSION['userId'];
 $parameters[':address'] = $address['address'] . " " . $address['city'] . " ," . $address['state'] . " " . $address['zip'];
-$parameters[':transType'] = "Listing";
+$parameters[':transType'] = $_POST['type'];
 $parameters[':clientName'] = "NA";
 $parameters[':clientNum'] = "NA";
 $parameters[':accDay'] = date("y-m-d");
@@ -67,38 +67,38 @@ $parameters[':notes'] = "";
 $stmt = $dbConn->prepare($insertSql);
 $stmt->execute($parameters);
 
-$buyerSql = "INSERT INTO transactions (houseId, userId, address, transType, clientName, clientNum, accDay, emdDays,
-						 sellerDiscDays, buyerDiscDays, signedDiscDays, genInspecDays, termiteInspecDays, septicInspecDays, waterInspecDays, 
-						 appraisalDays, apprOrdered, apprComp, lcDays, coeDays, coeOrgDate, notes) 
-VALUES (:houseId, :userId, :address, :transType, :clientName, :clientNum, :accDay, :emdDays, :sellerDiscDays, :buyerDiscDays, :signedDiscDays, :genInspecDays, :termiteInspecDays, 
-	:septicInspecDays, :waterInspecDays, :appraisalDays, :apprOrdered, :apprComp, :lcDays, :coeDays, :coeOrgDate, :notes)";
+// $buyerSql = "INSERT INTO transactions (houseId, userId, address, transType, clientName, clientNum, accDay, emdDays,
+// 						 sellerDiscDays, buyerDiscDays, signedDiscDays, genInspecDays, termiteInspecDays, septicInspecDays, waterInspecDays, 
+// 						 appraisalDays, apprOrdered, apprComp, lcDays, coeDays, coeOrgDate, notes) 
+// VALUES (:houseId, :userId, :address, :transType, :clientName, :clientNum, :accDay, :emdDays, :sellerDiscDays, :buyerDiscDays, :signedDiscDays, :genInspecDays, :termiteInspecDays, 
+// 	:septicInspecDays, :waterInspecDays, :appraisalDays, :apprOrdered, :apprComp, :lcDays, :coeDays, :coeOrgDate, :notes)";
 
-$parameters = array();
-$parameters[':houseId'] = $houseId;
-$parameters[':userId'] = $_SESSION['userId'];
-$parameters[':address'] = $address['address'] . " " . $address['city'] . " ," . $address['state'] . " " . $address['zip'];
-$parameters[':transType'] = "Buyer";
-$parameters[':clientName'] = "NA";
-$parameters[':clientNum'] = "NA";
-$parameters[':accDay'] = date("y-m-d");
-$parameters[':emdDays'] = $threeDay;
-$parameters[':sellerDiscDays'] = $sevenDay;
-$parameters[':buyerDiscDays'] = $sevenTeenDay;
-$parameters[':signedDiscDays'] = $sevenTeenDay;
-$parameters[':genInspecDays'] = $sevenTeenDay;
-$parameters[':termiteInspecDays'] = $sevenTeenDay;
-$parameters[':septicInspecDays'] = $sevenTeenDay;
-$parameters[':waterInspecDays'] = $sevenTeenDay;
-$parameters[':appraisalDays'] = $sevenTeenDay;
-$parameters[':apprOrdered'] = "";
-$parameters[':apprComp'] = "";
-$parameters[':lcDays'] = $twentyOneDay;
-$parameters[':coeDays'] = $thirtyDay;
-$parameters[':coeOrgDate'] = date("y-m-d");
-$parameters[':notes'] = "";
+// $parameters = array();
+// $parameters[':houseId'] = $houseId;
+// $parameters[':userId'] = $_SESSION['userId'];
+// $parameters[':address'] = $address['address'] . " " . $address['city'] . " ," . $address['state'] . " " . $address['zip'];
+// $parameters[':transType'] = "Buyer";
+// $parameters[':clientName'] = "NA";
+// $parameters[':clientNum'] = "NA";
+// $parameters[':accDay'] = date("y-m-d");
+// $parameters[':emdDays'] = $threeDay;
+// $parameters[':sellerDiscDays'] = $sevenDay;
+// $parameters[':buyerDiscDays'] = $sevenTeenDay;
+// $parameters[':signedDiscDays'] = $sevenTeenDay;
+// $parameters[':genInspecDays'] = $sevenTeenDay;
+// $parameters[':termiteInspecDays'] = $sevenTeenDay;
+// $parameters[':septicInspecDays'] = $sevenTeenDay;
+// $parameters[':waterInspecDays'] = $sevenTeenDay;
+// $parameters[':appraisalDays'] = $sevenTeenDay;
+// $parameters[':apprOrdered'] = "";
+// $parameters[':apprComp'] = "";
+// $parameters[':lcDays'] = $twentyOneDay;
+// $parameters[':coeDays'] = $thirtyDay;
+// $parameters[':coeOrgDate'] = date("y-m-d");
+// $parameters[':notes'] = "";
 
-$buyerstmt = $dbConn->prepare($buyerSql);
-$buyerstmt->execute($parameters);
+// $buyerstmt = $dbConn->prepare($buyerSql);
+// $buyerstmt->execute($parameters);
 
 
 $agentEmailSql = "SELECT firstName, lastName, email FROM UsersInfo WHERE userId = :userId";
