@@ -234,15 +234,15 @@ for ($i = 0; $i < sizeof($keys); $i++)
 //             // if($houseId == "89")
 //             // {
             
-            $client = new Client($sid, $token);
-            $client->messages->create(
-                $mlsIdResult['phone'],
-                array(
-                    "From" => $twilio_phone_number,
-                    "Body" => $result['firstName'] . " " . $result['lastName'] . " has a potential lead, BuyerId: " . $lastBuyerId . ", for your listing: " .
-                     $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'],
-                )
-            );
+            // $client = new Client($sid, $token);
+            // $client->messages->create(
+            //     $mlsIdResult['phone'],
+            //     array(
+            //         "From" => $twilio_phone_number,
+            //         "Body" => $result['firstName'] . " " . $result['lastName'] . " has a potential lead, BuyerId: " . $lastBuyerId . ", for your listing: " .
+            //          $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'],
+            //     )
+            // );
 
             // $lastBuyerId
             $match++;
@@ -256,14 +256,14 @@ if($match > 1)
     $twilio_phone_number = "+18315851661";
     // if($houseId == "89")
     // {
-    $client = new Client($sid, $token);
-    $client->messages->create(
-        $result['phone'],
-        array(
-            "From" => $twilio_phone_number,
-            "Body" => $messageForLeadAgent,
-        )
-    );
+    // $client = new Client($sid, $token);
+    // $client->messages->create(
+    //     $result['phone'],
+    //     array(
+    //         "From" => $twilio_phone_number,
+    //         "Body" => $messageForLeadAgent,
+    //     )
+    // );
 }
 
 
