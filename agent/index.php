@@ -614,7 +614,7 @@ $keys = array_keys($response);
                                         <thead>
                                         <tr>
                                             <th>Type</th>
-                                            <th data-breakpoints="all">Client</th>
+                                            <th>Client</th>
                                             <th>Property</th>
 
                                             <th data-breakpoints="all">Client Number</th>
