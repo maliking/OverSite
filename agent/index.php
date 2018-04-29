@@ -610,11 +610,11 @@ $keys = array_keys($response);
                                     <button onClick="addNewTransaction()">Add New Transaction</button>
                                 </div>
                                 <div class="box-body">
-                                    <table class="table footable table-bordered table-striped"  >
+                                    <table class="table footable table-bordered table-striped" >
                                         <thead>
                                         <tr>
                                             <th>Type</th>
-                                            <th>Client</th>
+                                            <th data-breakpoints="all">Client</th>
                                             <th>Property</th>
 
                                             <th data-breakpoints="all">Client Number</th>
@@ -1232,14 +1232,21 @@ $keys = array_keys($response);
            
             jQuery(function($){
                 $('.footable').footable({
-                    "paging": {
-                        "enabled": true,
-                        "size": 4,
-                        "position": "right"
-                    }
+
+                    // "paging": {
+                    //     "enabled": true,
+                    //     "size": 4,
+                    //     "position": "right"
+                    // }
 
                 });
             });
+
+            // jQuery(function($){
+            //     $('.inConctractTable').footable({
+            //         "useParentWidth": true
+            //     });
+            // });
 
         </script>
         <script>
