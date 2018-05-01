@@ -1265,13 +1265,16 @@ $keys = array_keys($response);
 
             function deleteMeeting()
             {
-                var id = $('#id').text();
-                $.post("deleteMeeting.php", {
-                    id: id,
-                });
-                $('#calendar').fullCalendar('removeEvents', id.replace(" ", "T" ));
-                // alert(id);
-                alert("meeting deleted");
+                if(confirm("Are you sure you want to delete?"))
+                {
+                    var id = $('#id').text();
+                    $.post("deleteMeeting.php", {
+                        id: id,
+                    });
+                    $('#calendar').fullCalendar('removeEvents', id.replace(" ", "T" ));
+                    // alert(id);
+                    alert("meeting deleted");
+                }
             }
 
             $(document).ready(function() {
@@ -1568,16 +1571,17 @@ $keys = array_keys($response);
             {
                 // alert(inContractId);
 
+                if(confirm("Are you sure you want to delete?"))
+                {
+                    $.post( "../staff/deleteInContract.php", { inContractId: inContractId })
+                      .done(function( data ) {
+                        alert("In-contract Deleted");
+                        $("#editDateModal"+inContractId).modal("toggle");
 
-                $.post( "../staff/deleteInContract.php", { inContractId: inContractId })
-                  .done(function( data ) {
-                    alert("In-contract Deleted");
-                    $("#editDateModal"+inContractId).modal("toggle");
+                        $('#inContract' + inContractId).remove();
+                      });
 
-                    $('#inContract' + inContractId).remove();
-                  });
-
-
+                }
                 
             }
 
