@@ -8,6 +8,12 @@ if (!isset($_SESSION['userId'])) {
 require '../databaseConnection.php';
 $dbConn = getConnection();
 
+$favoriteSql = "SELECT * FROM favorites WHERE userId = :userId";
+$favoriteParameters = array();
+$favoriteParameters[':userId'] = $_SESSION['userId'];
+$favoriteStmt = $dbConn->prepare($favoriteSql);
+$favoriteStmt->execute($favoriteParameters);
+$favoriteResults = $favoriteStmt->fetchAll();
 
 
 // $sqlRank = "SELECT UsersInfo.firstName, UsersInfo.lastName, count(*) as sold, sum(finalComm) as YTDComm FROM UsersInfo LEFT JOIN commInfo on UsersInfo.license = commInfo.license group by UsersInfo.license order by sold Desc ";
@@ -604,6 +610,45 @@ $keys = array_keys($response);
                     <!-- END example modal-->
                     <div class="row">
                         <!-- /.col -->
+                        <div class="col-md-12">
+                            <div class="box box-success">
+                                <div class="box-header">
+                                    <h4>Favorites</h4>
+                                </div>
+                                <div class="box-body" style="height:200px; overflow: auto;">
+                                    <table class="table footable table-bordered table-striped" >
+                                        <thead>
+                                            <th style="width:20px;">Favorite</th>
+                                            <th>Client</th>
+                                            <th>Price</th>
+                                            <th>Bedroom</th>
+                                            <th>Bathroom</th>
+                                            <th>Match</th>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            foreach ($favoriteResults as $favorite) 
+                                            {
+                                                echo '<td class="fa fa-usd"  style="color: green; text-align: center;" onClick="deleteFavorite(' . $favorite['favoriteId'] . ')"></td>';
+                                                echo '<td>' . $favorite['client'] . '</td>';
+                                                echo '<td>' . $favorite['price'] . '</td>';
+                                                echo '<td>' . $favorite['bedroom'] . '</td>';
+                                                echo '<td>' . $favorite['bathroom'] . '</td>';
+                                                echo '<td><a>House Matches</a></td>';
+                                            }
+                                            ?>
+                                            <td class="fa fa-usd"  style="color: green; text-align: center;" onClick="deleteFavorite()"></td>
+                                            <td>test</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><a>House Matches</a></td>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col-md-12">
                             <?php include 'progressGoal.php' ?>
                             <div class="box box-success">
@@ -1710,6 +1755,14 @@ $keys = array_keys($response);
 
                 });
                     
+            }
+
+            function deleteFavorite()
+            {
+                if(confirm("Are you sure you want to remove this favorite?"))
+                {
+
+                }
             }
         </script>
 
