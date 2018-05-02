@@ -109,11 +109,17 @@ echo 'Title' . "\t" .
 
 foreach ($visitors as $visit) {
     # code...
+    if($visit['address'] == "Lead" || $visit['address'] == "")
+    {
+        $address = "Manual Lead";
+    }
+    else
+        $address = $visit['address'] .  ", " . $visit['city'] . " " . $visit['state'] . " " . $visit['zip'];
 
     echo ' ' . "\t" .
          $visit['firstName'] . "\t" . 
          $visit['lastName'] . "\t" .  
-         $visit['address'] .  ", " . $visit['city'] . " " . $visit['state'] . " " . $visit['zip']  . "\t" . 
+         $address . "\t" . 
          // ' ' . "\t" . 
          $visit['city'] . "\t" . 
          '' . "\t" . 
