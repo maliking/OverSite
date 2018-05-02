@@ -156,6 +156,8 @@ $keys = array_keys($response);
     </head>
 
     <body class="hold-transition skin-red-light sidebar-mini">
+
+
         <!-- Site Wrapper -->
         <div class="wrapper">
 
@@ -466,6 +468,7 @@ $keys = array_keys($response);
                     </div>
                     <!-- /.row -->
 
+                   
 
                     <!--MODAL AREA!!-->
 
@@ -607,7 +610,7 @@ $keys = array_keys($response);
                                 <div class="box-header">
                                     <h4>In-Contract Properties</h4>
                                     <button><a href="inputNewListing.php">Add New Listing</a></button>
-                                    <button onClick="addNewTransaction()">Add New Transaction</button>
+                                    <button onClick="showTransactionModal()">Add New Transaction</button>
                                 </div>
                                 <div class="box-body" style="height:200px; overflow: auto;">
                                     <table class="table footable table-bordered table-striped" >
@@ -1197,6 +1200,30 @@ $keys = array_keys($response);
         </div>
         <!-- /.wrapper -->
 
+        <!-- Modal -->
+        <div id="inContractModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Enter new In-Contract Address</h4>
+              </div>
+              <div class="modal-body">
+                Address: <input type="text" name="inContractAddress"><br><br>
+                City: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" name="inContractCity"><br><br>
+                State:&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" name="inContractState"><br><br>
+                Zip: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="inContractZip"><br>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" onClick="addNewTransaction()">OK</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
 
         <!-- BEGIN TEMPLATE default-footer.php INCLUDE -->
         <?php include "./templates-agent/default-footer.php" ?>
@@ -1637,50 +1664,52 @@ $keys = array_keys($response);
                 $.post( "updateGoal.php", { newGoal: newGoal } );
                 // alert("update goal");
             }
-
+            function showTransactionModal()
+            {
+                 $('#inContractModal').modal('toggle');
+            }
             function addNewTransaction()
             {
-                var address;
-                var inContractType;
-                bootbox.prompt({ 
-                  size: "medium",
-                  title: "What is the address of the house?", 
-                  callback: function(result){ 
-                    address = result;
+                var inContractAddress = $('[name=inContractAddress]').val();
+                var city = $('[name=inContractCity]').val();
+                var state = $('[name=inContractState]').val();
+                var zip = $('[name=inContractZip]').val();
 
-                    bootbox.prompt({
-                    title: "Select what type of in-contract:",
-                    inputType: 'checkbox',
-                    inputOptions: [
-                        {
-                            text: 'Listing',
-                            value: 'Listing',
-                        },
-                        {
-                            text: 'Buyer',
-                            value: 'Buyer',
-                        },
-                        {
-                            text: 'List./Buy.',
-                            value: 'List./Buy.',
-                        }
-                    ],
-                    callback: function (result) {
-                        inContractType = result[0];
-                        // alert(inContractType);
-                        // alert(address);
-
-                        $.post( "addTransactionSimple.php", { address: address, type: inContractType})
-                        .done(function( data ) {
-
-                            alert("House In-contract. Will reflect on Dashboard after refreshing page.");
-                            });
+                var address = inContractAddress + " " + city + ", " + state + " " + zip;
+                
+                bootbox.prompt({
+                title: "Select what type of in-contract:",
+                inputType: 'checkbox',
+                inputOptions: [
+                    {
+                        text: 'Listing',
+                        value: 'Listing',
+                    },
+                    {
+                        text: 'Buyer',
+                        value: 'Buyer',
+                    },
+                    {
+                        text: 'List./Buy.',
+                        value: 'List./Buy.',
                     }
+                ],
+                callback: function (result) {
+                    inContractType = result[0];
+                    // alert(inContractType);
+                    // alert(address);
+                    if(inContractType != null)
+                    {
+                    $.post( "addTransactionSimple.php", { address: address, type: inContractType})
+                    .done(function( data ) {
 
-                    });
-
+                        alert("House In-contract. Will reflect on Dashboard after refreshing page.");
+                        });
                     }
+                }
+
                 });
+                    
             }
         </script>
 
