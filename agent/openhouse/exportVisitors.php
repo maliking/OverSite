@@ -111,7 +111,7 @@ foreach ($visitors as $visit) {
     # code...
     if($visit['address'] == "Lead" || $visit['address'] == "")
     {
-        $address = "Manual Lead";
+        $address = "Manual Entry";
     }
     else
         $address = $visit['address'] .  ", " . $visit['city'] . " " . $visit['state'] . " " . $visit['zip'];
