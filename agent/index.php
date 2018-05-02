@@ -616,10 +616,12 @@ $keys = array_keys($response);
                                     <h4>Favorites</h4>
                                 </div>
                                 <div class="box-body" style="height:200px; overflow: auto;">
-                                    <table class="table footable table-bordered table-striped" >
+                                    <table class="table footable table-bordered table-striped">
                                         <thead>
+                                            
                                             <th style="width:20px;">Favorite</th>
                                             <th>Client</th>
+                                            <th>Phone</th>
                                             <th>Price</th>
                                             <th>Bedroom</th>
                                             <th>Bathroom</th>
@@ -628,21 +630,27 @@ $keys = array_keys($response);
                                         <tbody>
                                             <?php
                                             foreach ($favoriteResults as $favorite) 
-                                            {
+                                            {   
+                                                echo "<tr id=favorite" . $favorite['favoriteId'] . ">";
                                                 echo '<td class="fa fa-usd"  style="color: green; text-align: center;" onClick="deleteFavorite(' . $favorite['favoriteId'] . ')"></td>';
                                                 echo '<td>' . $favorite['client'] . '</td>';
+                                                echo '<td>' . $favorite['phone'] . '</td>';
                                                 echo '<td>' . $favorite['price'] . '</td>';
                                                 echo '<td>' . $favorite['bedroom'] . '</td>';
                                                 echo '<td>' . $favorite['bathroom'] . '</td>';
                                                 echo '<td><a>House Matches</a></td>';
+                                                echo "</tr>";
                                             }
                                             ?>
+                                            <tr>
                                             <td class="fa fa-usd"  style="color: green; text-align: center;" onClick="deleteFavorite()"></td>
                                             <td>test</td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
+                                            <td></td>
                                             <td><a>House Matches</a></td>
+                                        </tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -1757,11 +1765,16 @@ $keys = array_keys($response);
                     
             }
 
-            function deleteFavorite()
+            function deleteFavorite(favoriteId)
             {
                 if(confirm("Are you sure you want to remove this favorite?"))
                 {
-
+                    // alert(favoriteId);
+                     $.post( "deleteFavorite.php", { favoriteId: favoriteId })
+                      .done(function( data ) {
+                        $("#favorite" + favoriteId).hide();
+                        alert( "Favorite deleted" );
+                      });
                 }
             }
         </script>

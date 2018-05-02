@@ -411,6 +411,8 @@ for ($h = 0; $h < sizeof($keys); $h++)
                             <table class="table table-striped" data-filtering="true">
                                 <thead>
                                 <tr>
+                                    <th></th>
+                                    <th></th>
                                     <th>Type</th>
                                     <th>ID</th>
                                     <th>Date Added</th>
@@ -419,8 +421,8 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                     <th data-breakpoints="xs">Email</th>
                                     <th data-breakpoints="xs sm">Property</th>
 
-                                    <th data-breakpoints="xs sm">How soon are you looking to purchase a home?</th>
-                                    <th data-breakpoints="xs sm">Pre-approved?</th>
+                                    <th data-breakpoints="all">How soon are you looking to purchase a home?</th>
+                                    <th data-breakpoints="all">Pre-approved?</th>
                                     <th data-breakpoints="xs sm">Price</th>
                                     <th data-breakpoints="xs sm">Bedrooms</th>
                                     <th data-breakpoints="xs sm">Bathrooms</th>
@@ -451,6 +453,8 @@ for ($h = 0; $h < sizeof($keys); $h++)
 //                                    $dbNote = $result['note'];
 
                                     echo "<tr id=visitor" . $result['buyerID']." >";
+                                    echo "<td></td>";
+                                    echo '<td><span class="fa fa-usd"  style="text-align: center;" onClick="addFavorite(' . $result['buyerID'] . ')"></span></td>';
 
                                     // Type - Open House Visitor (OHV) or Lead
                                     echo "<td>";
@@ -913,6 +917,15 @@ function deleteVisitor(visitorId)
       function hangup() {
         Twilio.Device.disconnectAll();
         $('#hangUpCall').modal('toggle');
+      }
+
+      function addFavorite(buyerId)
+      {
+        // alert(buyerId);
+        $.post( "addFavorite.php", { buyerId: buyerId })
+          .done(function( data ) {
+            alert( "Favorite added" );
+          });
       }
     </script>
 <!-- Modal -->
