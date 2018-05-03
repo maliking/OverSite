@@ -665,7 +665,7 @@ $keys = array_keys($response);
                                     <button><a href="inputNewListing.php">Add New Listing</a></button>
                                     <button onClick="showTransactionModal()">Add New Transaction</button>
                                 </div>
-                                <div class="box-body" style="height:200px; overflow: auto;">
+                                <div class="box-body" style="height:300px; overflow: auto;">
                                     <table class="table footable table-bordered table-striped" >
                                         <thead>
                                         <tr>
