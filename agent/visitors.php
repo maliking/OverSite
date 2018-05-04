@@ -153,6 +153,9 @@ for ($h = 0; $h < sizeof($keys); $h++)
             color: black;
         }
 
+        html, body {
+    height: 100%;
+}
 
     </style>
     <!-- NOTIFICATION Links-->
@@ -407,7 +410,7 @@ for ($h = 0; $h < sizeof($keys); $h++)
                             <div class="clearfix"></div>
                         </div>
 
-                        <div class="box-body" style="height: 600px; overflow: auto;">
+                        <div class="box-body" style="height: 100%; overflow: auto;">
                             <table class="table table-striped" data-filtering="true">
                                 <thead>
                                 <tr>
