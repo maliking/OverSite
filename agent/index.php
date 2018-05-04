@@ -614,6 +614,7 @@ $keys = array_keys($response);
                             <div class="box box-success">
                                 <div class="box-header">
                                     <h4>Active Prospects</h4>
+                                    <button onClick="showProspectModal()">Add Prospect</button>
                                 </div>
                                 <div class="box-body" style="height:200px; overflow: auto;">
                                     <table class="table footable table-bordered table-striped">
@@ -633,7 +634,7 @@ $keys = array_keys($response);
                                             {   
                                                 echo "<tr id=favorite" . $favorite['favoriteId'] . ">";
                                                 echo '<td class="fa fa-usd"  style="color: green; text-align: center;" onClick="deleteFavorite(' . $favorite['favoriteId'] . ')"></td>';
-                                                echo '<td>' . $favorite['client'] . '</td>';
+                                                echo '<td>' . $favorite['firstName'] . " " . $favorite['lastName'] . '</td>';
                                                 echo '<td>' . $favorite['phone'] . '</td>';
                                                 echo '<td>' . $favorite['price'] . '</td>';
                                                 echo '<td>' . $favorite['bedroom'] . '</td>';
@@ -1278,6 +1279,112 @@ $keys = array_keys($response);
           </div>
         </div>
 
+        <!-- Modal -->
+    <div class="modal fade bd-example-modal-lg" id="addLeadModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Add Prospect</h4>
+                </div>
+                <div class="modal-body">
+                    <form action="addProspect.php" method="POST">
+                        <input type="text" name="firstName" class="form-control has-feedback-left" id="inputSuccess2"
+                               placeholder="First Name">
+                        <span class="form-control-feedback left" aria-hidden="true"></span>
+
+                        </br>
+                        <input type="text" name="lastName" class="form-control" id="inputSuccess3" placeholder="Last Name">
+                        </br>
+                        <input type="text" name="email" class="form-control has-feedback-left" id="inputSuccess4"
+                               placeholder="Email">
+                        </br>
+                        <input type="text" name="phone" class="form-control" id="inputSuccess5" placeholder="Phone">
+                        </br>
+
+                        <input type="text" name="zip" class="form-control" id="inputSuccess6" placeholder="zip">
+                        </br>
+
+                        <label>How soon are you looking to purchase a home?</label>
+                        <select id="" name="howSoon" class="form-control" required>
+                            <option value="0">--Select One--</option>
+                            <option value="1-3">1-3 months</option>
+                            <option value="4-6">4-6 months</option>
+                            <option value="7-12">7-12 months</option>
+                            <option value="Visit">Just visiting</option>
+                        </select>
+                        </br>
+
+                        <label>Have you been pre-approved?</label>
+                        <select id="" name="preApproved" class="form-control" required>
+                            <option value="0">--Select One--</option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        </br>
+
+                        <label>Price</label>
+                        <select id="" name="price" class="form-control" required>
+                            <option value="">--Select One--</option>
+                            <option value="100000">$100,000</option>
+                            <option value="150000">$150,000</option>
+                            <option value="200000">$200,000</option>
+                            <option value="250000">$250,000</option>
+                            <option value="300000">$300,000</option>
+                            <option value="350000">$350,000</option>
+                            <option value="400000">$400,000</option>
+                            <option value="450000">$450,000</option>
+                            <option value="500000">$500,000</option>
+                            <option value="550000">$550,000</option>
+                            <option value="600000">$600,000</option>
+                            <option value="650000">$650,000</option>
+                            <option value="700000">$700,000</option>
+                            <option value="750000">$750,000</option>
+                            <option value="800000">$800,000</option>
+                            <option value="850000">$850,000</option>
+                            <option value="900000">$900,000</option>
+                            <option value="950000">$950,000</option>
+                            <option value="1000000">$1,000,000+</option>
+                        </select>
+
+                        </br>
+
+                        <label>Min Bedrooms</label>
+                        <select id="" name="bedroom" class="form-control" required>
+                            <option value="">--Select One--</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+
+                        </select>
+                        </br>
+                        <label>Min Bathrooms</label>
+                        <select id="" name="bathroom" class="form-control" required>
+                            <option value="">--Select One--</option>
+                            <option value="1">1</option>
+                            <option value="1.5">1.5</option>
+                            <option value="2">2</option>
+                            <option value="2.5">2.5</option>
+                            <option value="3">3</option>
+                            <option value="3.5">3.5</option>
+                            <option value="4">4</option>
+                            <option value="4.5">4.5</option>
+                        </select>
+                        </br></br>
+                        <button type="submit" class="btn btn-default" >Save</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
         <!-- BEGIN TEMPLATE default-footer.php INCLUDE -->
         <?php include "./templates-agent/default-footer.php" ?>
         <!-- END TEMPLATE default-footer.php INCLUDE -->
@@ -1776,6 +1883,11 @@ $keys = array_keys($response);
                         alert( "Favorite deleted" );
                       });
                 }
+            }
+
+            function showProspectModal()
+            {
+                $('#addLeadModal').modal('toggle');
             }
         </script>
 

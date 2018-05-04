@@ -12,14 +12,20 @@ $buyerStmt = $dbConn->prepare($buyerSql);
 $buyerStmt->execute($buyerParameters);
 $buyerResults = $buyerStmt->fetch();
 
-$addFavoriteSql = "INSERT INTO favorites (userId, client, phone, price, bedroom, bathroom) VALUES (:userId, :client, :phone, :price, :bedroom, :bathroom)";
+$addFavoriteSql = "INSERT INTO favorites (userId, firstName, lastName, phone, email, price, bedroom, bathroom, howSoon, approved, note) 
+						VALUES (:userId, :firstName, :lastName, :phone, :email, :price, :bedroom, :bathroom, :howSoon, :approved, :note)";
 $favoriteParameters = array();
 $favoriteParameters[':userId'] = $_SESSION['userId'];
-$favoriteParameters[':client'] = $buyerResults['firstName'] . " " . $buyerResults['lastName'];
+$favoriteParameters[':firstName'] = $buyerResults['firstName'];
+$favoriteParameters[':lastName'] = $buyerResults['lastName'];
 $favoriteParameters[':phone'] = $buyerResults['phone'];
+$favoriteParameters[':email'] = $buyerResults['email'];
 $favoriteParameters[':price'] = $buyerResults['priceMax'];
 $favoriteParameters[':bedroom'] = $buyerResults['bedroomsMin'];
 $favoriteParameters[':bathroom'] = $buyerResults['bathroomsMin'];
+$favoriteParameters[':howSoon'] = $buyerResults['howSoon'];
+$favoriteParameters[':approved'] = $buyerResults['approved'];
+$favoriteParameters[':note'] = $buyerResults['note'];
 
 $favoriteStmt = $dbConn->prepare($addFavoriteSql);
 $favoriteStmt->execute($favoriteParameters);
