@@ -613,7 +613,7 @@ $keys = array_keys($response);
                         <div class="col-md-12">
                             <div class="box box-success">
                                 <div class="box-header">
-                                    <h4>Favorites</h4>
+                                    <h4>Active Prospects</h4>
                                 </div>
                                 <div class="box-body" style="height:200px; overflow: auto;">
                                     <table class="table footable table-bordered table-striped">
