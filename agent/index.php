@@ -623,6 +623,8 @@ $keys = array_keys($response);
                                             <th style="width:20px;">Favorite</th>
                                             <th>Client</th>
                                             <th>Phone</th>
+                                            <th>Email</th>
+                                            <th>Zip</th>
                                             <th>Price</th>
                                             <th>Bedroom</th>
                                             <th>Bathroom</th>
@@ -636,6 +638,8 @@ $keys = array_keys($response);
                                                 echo '<td class="fa fa-usd"  style="color: green; text-align: center;" onClick="deleteFavorite(' . $favorite['favoriteId'] . ')"></td>';
                                                 echo '<td>' . $favorite['firstName'] . " " . $favorite['lastName'] . '</td>';
                                                 echo '<td>' . $favorite['phone'] . '</td>';
+                                                echo '<td>' . $favorite['email'] . '</td>';
+                                                echo '<td>' . $favorite['zip'] . '</td>';
                                                 echo '<td>' . $favorite['price'] . '</td>';
                                                 echo '<td>' . $favorite['bedroom'] . '</td>';
                                                 echo '<td>' . $favorite['bathroom'] . '</td>';
@@ -646,6 +650,8 @@ $keys = array_keys($response);
                                             <tr>
                                             <td class="fa fa-usd"  style="color: green; text-align: center;" onClick="deleteFavorite()"></td>
                                             <td>test</td>
+                                            <td></td>
+                                            <td></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -1233,6 +1239,7 @@ $keys = array_keys($response);
 
                             <div class="box box-primary">
                                 <div class="box-body">
+                                    <h3>Meetings</h3>
                                     <!-- THE CALENDAR -->
                                     <div id="calendar" style="height:600px;"></div>
                                 </div>
