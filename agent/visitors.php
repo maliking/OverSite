@@ -407,7 +407,7 @@ for ($h = 0; $h < sizeof($keys); $h++)
                             <div class="clearfix"></div>
                         </div>
 
-                        <div class="box-body">
+                        <div class="box-body" style="height: 600px; overflow: auto;">
                             <table class="table table-striped" data-filtering="true">
                                 <thead>
                                 <tr>
@@ -870,10 +870,10 @@ function deleteVisitor(visitorId)
             "sorting": {
                 "enabled": true
             },
-            "paging": {
-                "enabled": true,
-                "size": 15
-            }
+            // "paging": {
+            //     "enabled": true,
+            //     "size": 15
+            // }
 
         });
     });
