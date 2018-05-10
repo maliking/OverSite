@@ -1218,7 +1218,7 @@ $keys = array_keys($response);
                                                         echo '<i id=status' . $trans['transId'] .  'miscTwo' . ' class="fa fa-flag blink" style="color:#d9534f"></i>';
                                                     }
                                             echo '</td>
-                                            <td id=' . $trans['transId'] . '> ' . $trans['notes']  . ' </td>';
+                                            <td id=' . $trans['transId'] . ' onClick="takeNote(' . $trans['transId'] . ')" > ' . $trans['notes']  . ' </td>';
                                            // <td> <button onClick=takeTransNote(' .$trans['transId'] . ')>  <i class="fa fa-edit" style="color:#d3d3d3"></i> </button></td>
                                            echo '<td>';
                                            ?>
@@ -1895,6 +1895,30 @@ $keys = array_keys($response);
             function showProspectModal()
             {
                 $('#addLeadModal').modal('toggle');
+            }
+
+            function takeNote(id)
+            {
+                // alert(id);
+                var today = moment().format("MM-DD-YYYY");
+                var prevNote = $("#" + id).html();
+                if(prevNote == "" || prevNote == " ")
+                {
+                    var noteEntered = prompt("Enter Note:", today + " " + prevNote );
+                }
+                else
+                {
+                    var noteEntered = prompt("Enter Note:", prevNote + " " + today );
+                }
+                if (noteEntered == null || noteEntered == "") {
+                } else {
+                    $("#" + id).html(noteEntered);
+                    // alert(houseId + " " + buyerID);
+                    $.post("saveInContractNote.php", {
+                        transId: id,
+                        note: noteEntered
+                    });
+                }
             }
         </script>
 
