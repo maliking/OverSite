@@ -656,7 +656,7 @@ $keys = array_keys($response);
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td><a>House Matches</a></td>
+                                            <td><a href="prospectsMatch.php">House Matches</a></td>
                                         </tr>
                                         </tbody>
                                     </table>
