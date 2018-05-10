@@ -739,10 +739,10 @@ $keys = array_keys($response);
                                                 // }
                                                 echo $trans['transType'];
                                                 echo '</td>
-                                            <td>' . $trans['clientName'] . '</td>
+                                            <td id=clientName'. $trans['transId'] . ' onClick="editClientName(' . $trans['transId'] . ')">' . $trans['clientName'] . '</td>
                                             <td>' . $trans['address'] . '</td>
-                                            <td>' . $trans['clientNum'] . '</td>
-                                            <td>Test Email</td>
+                                            <td id=clientNum' . $trans['transId'] . ' onClick="editClientNum(' . $trans['transId'] . ')">' . $trans['clientNum'] . '</td>
+                                            <td id=clientEmail'. $trans['transId'] . ' onClick="editClientEmail(' . $trans['transId'] . ')">' . $trans['clientEmail'] . '</td>
                                             <td>
                                                 <div class="btn-group">
                                                     ' . date('m/d/y', strtotime($day)) . ' 
@@ -1931,6 +1931,50 @@ $keys = array_keys($response);
                     $.post("saveInContractNote.php", {
                         transId: id,
                         note: noteEntered
+                    });
+                }
+            }
+
+            function editClientName(id)
+            {
+                // alert("edit client name");
+                var clientName = prompt("Enter client name:");
+                if (clientName == null || clientName == "") {
+                } else {
+                    $("#clientName" + id).html(clientName);
+                    // alert(houseId + " " + buyerID);
+                    $.post("saveInContractClientName.php", {
+                        transId: id,
+                        clientName: clientName
+                    });
+                }
+
+            }
+
+            function editClientNum(id)
+            {
+                var clientNum = prompt("Enter client number:");
+                if (clientNum == null || clientNum == "") {
+                } else {
+                    $("#clientNum" + id + "-detail").html(clientNum);
+                    // alert(houseId + " " + buyerID);
+                    $.post("saveInContractClientNum.php", {
+                        transId: id,
+                        clientNum: clientNum
+                    });
+                }
+            }
+
+            function editClientEmail(id)
+            {
+                var clientEmail = prompt("Enter client email:");
+                if (clientEmail == null || clientEmail == "") {
+                } else {
+                    $("#clientEmail" + id+ "-detail").html(clientEmail);
+                    // alert(houseId + " " + buyerID);
+                    $.post("saveInContractClientEmail.php", {
+                        transId: id,
+                        clientEmail: clientEmail
                     });
                 }
             }
