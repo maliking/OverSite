@@ -1670,6 +1670,11 @@ $keys = array_keys($response);
                 else
                     $('#' + type + 'Ord' + transId).html("Ordered: " + sendDate.substring(5,7) + "/" + sendDate.substring(8,10) + "/" + sendDate.substring(0,4) );
                 $.post( "../staff/saveOrdDates.php", { transId: transId, type:type, date:sendDate });
+
+                if(confirm("Do you want to download Extension Form?"))
+                {
+
+                }
             }
             function saveCompDate(transId,type,date)
             {
@@ -1727,7 +1732,7 @@ $keys = array_keys($response);
 
                 // updateStatus(transId, type date);
                 $.post( "../staff/saveCompDates.php", { transId: transId, type:type, date:sendDate });
-
+                
                 
 
             }
@@ -1738,7 +1743,10 @@ $keys = array_keys($response);
                 $("#aprvDay" + transId).val(date.value);
                 updateStatus(transId,type,date);
                 $.post( "../staff/saveNewDates.php", { transId: transId, type:type, date:date.value, aprvDay: aprvDay });
-                
+                if(confirm("Do you want to download Extension Form?"))
+                {
+
+                }
             }
             
             function saveDaysNum(transId,type,date)
@@ -1746,14 +1754,20 @@ $keys = array_keys($response);
            
                 $.post( "../staff/saveNewDaysNum.php", { transId: transId, type:type, date:date.value });
                 updateStatus(transId,date);
-                  
+                if(confirm("Do you want to download Extension Form?"))
+                {
+
+                }
             }
 
             function saveNewDates(transId)
             {
 
                 $("#editDateModal"+transId).modal("toggle");
-                
+                if(confirm("Do you want to download Extension Form?"))
+                {
+
+                }
 
                 alert( "Dates Saved" );
                 location.reload();
