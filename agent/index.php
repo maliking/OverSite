@@ -643,7 +643,7 @@ $keys = array_keys($response);
                                                 echo '<td>' . $favorite['price'] . '</td>';
                                                 echo '<td>' . $favorite['bedroom'] . '</td>';
                                                 echo '<td>' . $favorite['bathroom'] . '</td>';
-                                                echo '<td><a>House Matches</a></td>';
+                                                echo '<td><a href="prospectMatch.php">House Matches</a></td>';
                                                 echo "</tr>";
                                             }
                                             ?>

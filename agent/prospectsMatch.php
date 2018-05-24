@@ -66,27 +66,34 @@ $dbConn = getConnection();
                             <div class="box box-success">
                                 <div class="box-header">
                                     <h4>Active Prospects</h4>
-                                    <button onClick="showProspectModal()">Add Prospect</button>
+                                    <!-- <button onClick="showProspectModal()">Add Prospect</button> -->
                                 </div>
                                 <div class="box-body" style="height:200px; overflow: auto;">
                                     <table class="table footable table-bordered table-striped">
                                         <thead>
                                             
-                                            <th style="width:20px;">Favorite</th>
-                                            <th>Client</th>
-                                            <th>Phone</th>
-                                            <th>Email</th>
-                                            <th>Zip</th>
+                                            <!-- <th style="width:20px;">Favorite</th> -->
+                                            <th>Agent</th>
+                                            <th>Address</th>
                                             <th>Price</th>
                                             <th>Bedroom</th>
                                             <th>Bathroom</th>
-                                            <th>Match</th>
+                                            <th>Zip</th>
+                                            <th>SQFT</th>
                                         </thead>
                                         <tbody>
                                             <?php
-                                            
+                                            echo "<tr>";
+                                            echo "<td></td>";
+                                            echo "<td></td>";
+                                            echo "<td></td>";
+                                            echo "<td></td>";
+                                            echo "<td></td>";
+                                            echo "<td></td>";
+                                            echo "<td></td>";
+                                            echo "</tr>";
                                             ?>
-                                            <tr>
+                                            <!-- <tr>
                                             <td class="fa fa-usd"  style="color: green; text-align: center;" onClick="deleteFavorite()"></td>
                                             <td>test</td>
                                             <td></td>
@@ -96,7 +103,7 @@ $dbConn = getConnection();
                                             <td></td>
                                             <td></td>
                                             <td><a href="prospectsMatch.php">House Matches</a></td>
-                                        </tr>
+                                        </tr> -->
                                         </tbody>
                                     </table>
                                 </div>

@@ -92,6 +92,7 @@ $_SESSION['flyer'] = $result['flyer'];
         <img alt="RE/MAX Logo" border="0" class="simage float_center img-responsive"
              src="../dist/img/remax-logo224x194.png" style="margin-left: 0px; margin-right: 0px;" title="Interesting Image"
             />
+            <button ><a href="visitorSheet.php">Visitor Only</a></button>
     </center>
     <form method="post" action="addBuyer.php">
 

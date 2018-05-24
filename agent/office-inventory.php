@@ -199,6 +199,12 @@ $keys = array_keys($response);
 
     <!-- PAGE-SPECIFIC CSS -->
     <link rel="stylesheet" href="../dist/css/vendors/footable.bootstrap.min.css">
+     <style>
+       #map {
+        height: 100%;
+        width: 100%;
+       }
+    </style>
 </head>
 
 <body class="hold-transition skin-red-light sidebar-mini">
@@ -211,6 +217,16 @@ $keys = array_keys($response);
     <!-- BEGIN TEMPLATE nav.php INCLUDE -->
     <?php include "./templates-agent/nav.php" ?>
     <!-- END TEMPLATE nav.php INCLUDE -->
+
+<!-- MODAL -->
+    <div id="mapModal" class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div id="map"></div>
+        </div>
+      </div>
+    </div>
+
 
 
     <!-- Content Wrapper. Contains page content -->
@@ -231,6 +247,7 @@ $keys = array_keys($response);
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-body">
+                            <button onClick="showMapModal()">Map</button>
                             <table class="table table-bordered table-striped"
                                    id="inventory-table" data-filtering="true">
                                 <thead>
@@ -329,6 +346,51 @@ $keys = array_keys($response);
             }
         });
     });
+
+    function showMapModal()
+    {
+        $('#mapModal').modal('toggle');
+    }
 </script>
+
+<script>
+      function initMap() {
+
+        var contentString = '<div id="content">'+
+      '<div id="siteNotice">'+
+      '</div>'+
+      '<h3 id="firstHeading" class="firstHeading">27104 Laureles Grade RD</h3>'+
+      '<div id="bodyContent">'+
+      '<p>HIDDEN HILLS RANCH- MOTIVATED SELLER!! Nestled on Laureles Grade with views of the mountains, ocean, valley and city lights.'+
+      'Home includes a 3 bedroom, office, indoor laundry room and 2 full baths. The home leads out from the living room to a tranquil and '+
+      'private backyard with fabulous views of the valley.  This is an ideal residence for those seeking peace and privacy in a ranch type setting. '+
+      'The barn features all the amenities of a professional facility that includes 3 arenas, 18 indoor stalls, 12 outdoor stalls, horse trails on 16 acres.  '+
+      'The possibilities are endless.  This property is well suited for horses, vineyards or extended family gatherings.  The house and barn are on Cal-AM water.</p>' +
+      '<img src="https://mlslmedia.azureedge.net/property/MLSL/81687369/26fa7b4627304c7cbd46aa307ee80be1/2/6"  height="100" width="100" >'+
+      '</div>'+
+      '</div>';
+
+      var infowindow = new google.maps.InfoWindow({
+    content: contentString
+  });
+
+        var uluru = {lat: 36.537532, lng: -121.756676};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+        var marker = new google.maps.Marker({
+          position: uluru,
+          map: map
+        });
+
+        marker.addListener('click', function() {
+    infowindow.open(map, marker);
+  });
+      }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAK_Tffqf_2RClIjnuOPoz6wk1lZy4dAeg&libraries=places&callback=initMap" async defer></script>
+
 </body>
 </html>
