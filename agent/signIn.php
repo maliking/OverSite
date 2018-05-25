@@ -92,7 +92,7 @@ $_SESSION['flyer'] = $result['flyer'];
         <img alt="RE/MAX Logo" border="0" class="simage float_center img-responsive"
              src="../dist/img/remax-logo224x194.png" style="margin-left: 0px; margin-right: 0px;" title="Interesting Image"
             />
-            <button ><a href="visitorSheet.php">Visitor Only</a></button>
+            <!-- <button ><a href="visitorSheet.php">Visitor Only</a></button> -->
     </center>
     <form method="post" action="addBuyer.php">
 
@@ -110,11 +110,11 @@ $_SESSION['flyer'] = $result['flyer'];
 
             <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-4">
                 <input type="text" name="firstName" class="form-control has-feedback-left" id="inputSuccess2"
-                       placeholder="First Name">
+                       placeholder="First Name" required>
                 <span class="form-control-feedback left" aria-hidden="true"></span>
 
                 </br>
-                <input type="text" name="lastName" class="form-control" id="inputSuccess3" placeholder="Last Name">
+                <input type="text" name="lastName" class="form-control" id="inputSuccess3" placeholder="Last Name" required>
                 <span class="form-control-feedback right" aria-hidden="true"></span>
 
             </div>
@@ -125,10 +125,10 @@ $_SESSION['flyer'] = $result['flyer'];
 
             <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-4">
                 <input type="text" name="email" class="form-control has-feedback-left" id="inputSuccess4"
-                       placeholder="Email">
+                       placeholder="Email" required>
                 <span class="form-control-feedback left" aria-hidden="true"></span>
                 </br>
-                <input type="text" name="phone" class="form-control" id="inputSuccess5" placeholder="Phone">
+                <input type="text" name="phone" class="form-control" id="inputSuccess5" placeholder="Phone" required>
                 <span class=" form-control-feedback right" aria-hidden="true"></span>
             </div>
 
@@ -138,7 +138,7 @@ $_SESSION['flyer'] = $result['flyer'];
 
             <div class="col-md-4 col-sm-4 col-xs-12 col-md-offset-4" style="margin-top: 40px;">
                 <label>How soon are you looking to purchase a home?</label>
-                <select id="" name="howSoon" class="form-control" required>
+                <select id="" name="howSoon" class="form-control" >
                     <option value="0">--Select One--</option>
                     <option value="1-3">1-3 months</option>
                     <option value="4-6">4-6 months</option>
@@ -149,19 +149,19 @@ $_SESSION['flyer'] = $result['flyer'];
                 </br>
 
                 <label>Have you been pre-approved?</label>
-                <select id="" name="preApproved" class="form-control" required>
+                <select id="" name="preApproved" class="form-control" >
                     <option value="0">--Select One--</option>
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
                 </select>
                         </br>
                         
-                <label>Price</label>
-                <select id="" name="price" class="form-control" required>
+                <label>Max Purchase Price</label>
+                <select id="" name="price" class="form-control" >
                     <option value="">--Select One--</option>
-                    <option value="100000">$100,000</option>
+                    <!-- <option value="100000">$100,000</option>
                     <option value="150000">$150,000</option>
-                    <option value="200000">$200,000</option>
+                    <option value="200000">$200,000</option> -->
                     <option value="250000">$250,000</option>
                     <option value="300000">$300,000</option>
                     <option value="350000">$350,000</option>
@@ -188,8 +188,8 @@ $_SESSION['flyer'] = $result['flyer'];
         <div class="row" style="margin-top: 20px;">
 
             <div class="col-md-4 col-sm-4 col-xs-12 col-md-offset-4">
-                <label>Bedrooms</label>
-                <select id="" name="bedroomsMin" class="form-control" required>
+                <label>Min Bedroom(s)</label>
+                <select id="" name="bedroomsMin" class="form-control" >
                     <option value="">--Select One--</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -199,8 +199,8 @@ $_SESSION['flyer'] = $result['flyer'];
 
                 </select>
                 </br>
-                <label>Bathrooms</label>
-                <select id="" name="bathroomsMin" class="form-control" required>
+                <label>Min Bathroom(s)</label>
+                <select id="" name="bathroomsMin" class="form-control" >
                     <option value="">--Select One--</option>
                     <option value="1">1</option>
                     <option value="1.5">1.5</option>
