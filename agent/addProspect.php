@@ -20,8 +20,8 @@ $userId = $_SESSION['userId'];
 
 
 $sql = "INSERT INTO favorites
-		(firstName, lastName, email, zip, phone, bedroom, bathroom, price, userId, howSoon, approved)
-		VALUES (:firstName, :lastName, :email, :zip, :phone, :bedroom, :bathroom, :price, :userId, :howSoon, :approved)";
+		(firstName, lastName, email, zip, phone, bedroom, bathroom, price, userId, howSoon, approved, sqft, lotSize)
+		VALUES (:firstName, :lastName, :email, :zip, :phone, :bedroom, :bathroom, :price, :userId, :howSoon, :approved, :sqft, :lotSize)";
 $namedParameters = array();
 $namedParameters[':firstName'] = $firstName;
 $namedParameters[':lastName'] = $lastName;
@@ -32,6 +32,8 @@ $namedParameters[':bedroom'] = $bedroom;
 $namedParameters[':bathroom'] = (float)$bathroom;
 $namedParameters[':price'] = $priceMax;
 $namedParameters[':userId'] = $userId;
+$namedParameters[':sqft'] = $_POST['sqft'];
+$namedParameters[':lotSize'] = $_POST['lotSize'];
 $namedParameters[':howSoon'] = $_POST['howSoon'];
 $namedParameters[':approved'] = $_POST['preApproved'];
 $stmt = $dbConn->prepare($sql);

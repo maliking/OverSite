@@ -628,6 +628,8 @@ $keys = array_keys($response);
                                             <th>Price</th>
                                             <th>Bedroom</th>
                                             <th>Bathroom</th>
+                                            <th>SqFt</th>
+                                            <th>Lot Size</th>
                                             <th>Match</th>
                                         </thead>
                                         <tbody>
@@ -643,6 +645,8 @@ $keys = array_keys($response);
                                                 echo '<td id=price' . $favorite['favoriteId'] . ' onClick=editFavorite("price",' . $favorite['favoriteId'] . ')>' . $favorite['price'] . '</td>';
                                                 echo '<td id=bedroom' . $favorite['favoriteId'] . ' onClick=editFavorite("bedroom",' . $favorite['favoriteId'] . ')>' . $favorite['bedroom'] . '</td>';
                                                 echo '<td id=bathroom' . $favorite['favoriteId'] . ' onClick=editFavorite("bathroom",' . $favorite['favoriteId'] . ')>' . $favorite['bathroom'] . '</td>';
+                                                echo '<td id=sqft' . $favorite['favoriteId'] . ' onClick=editFavorite("sqft",' . $favorite['favoriteId'] . ')>' . $favorite['sqft'] . '</td>';
+                                                echo '<td id=lotSize' . $favorite['favoriteId'] . ' onClick=editFavorite("lotSize",' . $favorite['favoriteId'] . ')>' . $favorite['lotSize'] . '</td>';
                                                 echo '<td><a href="prospectMatch.php">House Matches</a></td>';
                                                 echo "</tr>";
                                             }
@@ -650,6 +654,8 @@ $keys = array_keys($response);
                                             <tr>
                                             <td class="fa fa-usd"  style="color: green; text-align: center;" onClick="deleteFavorite()"></td>
                                             <td>test</td>
+                                            <td></td>
+                                            <td></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -1299,23 +1305,23 @@ $keys = array_keys($response);
                 <div class="modal-body">
                     <form action="addProspect.php" method="POST">
                         <input type="text" name="firstName" class="form-control has-feedback-left" id="inputSuccess2"
-                               placeholder="First Name">
+                               placeholder="First Name" required>
                         <span class="form-control-feedback left" aria-hidden="true"></span>
 
                         </br>
-                        <input type="text" name="lastName" class="form-control" id="inputSuccess3" placeholder="Last Name">
+                        <input type="text" name="lastName" class="form-control" id="inputSuccess3" placeholder="Last Name" required>
                         </br>
                         <input type="text" name="email" class="form-control has-feedback-left" id="inputSuccess4"
-                               placeholder="Email">
+                               placeholder="Email" required>
                         </br>
-                        <input type="text" name="phone" class="form-control" id="inputSuccess5" placeholder="Phone">
+                        <input type="text" name="phone" class="form-control" id="inputSuccess5" placeholder="Phone" required>
                         </br>
 
                         <input type="text" name="zip" class="form-control" id="inputSuccess6" placeholder="zip">
                         </br>
 
                         <label>How soon are you looking to purchase a home?</label>
-                        <select id="" name="howSoon" class="form-control" required>
+                        <select id="" name="howSoon" class="form-control" >
                             <option value="0">--Select One--</option>
                             <option value="1-3">1-3 months</option>
                             <option value="4-6">4-6 months</option>
@@ -1325,19 +1331,19 @@ $keys = array_keys($response);
                         </br>
 
                         <label>Have you been pre-approved?</label>
-                        <select id="" name="preApproved" class="form-control" required>
+                        <select id="" name="preApproved" class="form-control" >
                             <option value="0">--Select One--</option>
                             <option value="yes">Yes</option>
                             <option value="no">No</option>
                         </select>
                         </br>
 
-                        <label>Price</label>
-                        <select id="" name="price" class="form-control" required>
+                        <label>Max Purchase Price</label>
+                        <select id="" name="price" class="form-control" >
                             <option value="">--Select One--</option>
-                            <option value="100000">$100,000</option>
+                            <!-- <option value="100000">$100,000</option>
                             <option value="150000">$150,000</option>
-                            <option value="200000">$200,000</option>
+                            <option value="200000">$200,000</option> -->
                             <option value="250000">$250,000</option>
                             <option value="300000">$300,000</option>
                             <option value="350000">$350,000</option>
@@ -1359,7 +1365,7 @@ $keys = array_keys($response);
                         </br>
 
                         <label>Min Bedrooms</label>
-                        <select id="" name="bedroom" class="form-control" required>
+                        <select id="" name="bedroom" class="form-control" >
                             <option value="">--Select One--</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -1370,7 +1376,7 @@ $keys = array_keys($response);
                         </select>
                         </br>
                         <label>Min Bathrooms</label>
-                        <select id="" name="bathroom" class="form-control" required>
+                        <select id="" name="bathroom" class="form-control" >
                             <option value="">--Select One--</option>
                             <option value="1">1</option>
                             <option value="1.5">1.5</option>
@@ -1381,7 +1387,13 @@ $keys = array_keys($response);
                             <option value="4">4</option>
                             <option value="4.5">4.5</option>
                         </select>
-                        </br></br>
+                        </br>
+
+                        <input type="text" name="sqft" class="form-control has-feedback-left" id="inputSuccess4" placeholder="sqft" >
+                        </br>
+                        <input type="text" name="lotSize" class="form-control has-feedback-left" id="inputSuccess4" placeholder="Lot Size" >
+                        </br>
+                        </br>
                         <button type="submit" class="btn btn-default" >Save</button>
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </form>
