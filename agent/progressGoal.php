@@ -19,7 +19,7 @@ $ytdGross = 0;
 
 echo '
 <div class="box">
-<div class="box-body no-padding">
+<div class="box-body no-padding" style="overflow: auto;">
 <table id="modal-table" class="table footable table-striped">
   <tr>
     <th>Month</th>';
