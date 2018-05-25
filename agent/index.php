@@ -636,13 +636,13 @@ $keys = array_keys($response);
                                             {   
                                                 echo "<tr id=favorite" . $favorite['favoriteId'] . ">";
                                                 echo '<td class="fa fa-usd"  style="color: green; text-align: center;" onClick="deleteFavorite(' . $favorite['favoriteId'] . ')"></td>';
-                                                echo '<td>' . $favorite['firstName'] . " " . $favorite['lastName'] . '</td>';
-                                                echo '<td>' . $favorite['phone'] . '</td>';
-                                                echo '<td>' . $favorite['email'] . '</td>';
-                                                echo '<td>' . $favorite['zip'] . '</td>';
-                                                echo '<td>' . $favorite['price'] . '</td>';
-                                                echo '<td>' . $favorite['bedroom'] . '</td>';
-                                                echo '<td>' . $favorite['bathroom'] . '</td>';
+                                                echo '<td id=name' . $favorite['favoriteId'] . ' onClick=editFavorite("name",' . $favorite['favoriteId'] . ')>' . $favorite['firstName'] . " " . $favorite['lastName'] . '</td>';
+                                                echo '<td id=phone' . $favorite['favoriteId'] . ' onClick=editFavorite("phone",' . $favorite['favoriteId'] . ')>' . $favorite['phone'] . '</td>';
+                                                echo '<td id=email' . $favorite['favoriteId'] . ' onClick=editFavorite("email",' . $favorite['favoriteId'] . ')>' . $favorite['email'] . '</td>';
+                                                echo '<td id=zip' . $favorite['favoriteId'] . ' onClick=editFavorite("zip",' . $favorite['favoriteId'] . ')>' . $favorite['zip'] . '</td>';
+                                                echo '<td id=price' . $favorite['favoriteId'] . ' onClick=editFavorite("price",' . $favorite['favoriteId'] . ')>' . $favorite['price'] . '</td>';
+                                                echo '<td id=bedroom' . $favorite['favoriteId'] . ' onClick=editFavorite("bedroom",' . $favorite['favoriteId'] . ')>' . $favorite['bedroom'] . '</td>';
+                                                echo '<td id=bathroom' . $favorite['favoriteId'] . ' onClick=editFavorite("bathroom",' . $favorite['favoriteId'] . ')>' . $favorite['bathroom'] . '</td>';
                                                 echo '<td><a href="prospectMatch.php">House Matches</a></td>';
                                                 echo "</tr>";
                                             }
@@ -1976,6 +1976,24 @@ $keys = array_keys($response);
                         transId: id,
                         clientEmail: clientEmail
                     });
+                }
+            }
+
+            function editFavorite(type,id)
+            {
+                // alert("edit favorite");
+                var input = prompt("Enter new " + type);
+                if(input != null && input != "")
+                {
+                    $.post("editFavorite.php", {
+                            type: type,
+                            id: id,
+                            newData: input
+                        })
+                    .done(function( data ) {
+                            alert( "Data updated");
+                            $('#'+type+id).html(input);
+                      });
                 }
             }
         </script>

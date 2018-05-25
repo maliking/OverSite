@@ -5,7 +5,7 @@ require '../databaseConnection.php';
 
 $dbConn = getConnection();
 
-$buyerSql = "SELECT firstName, lastName, phone, priceMax, bedroomsMin, bathroomsMin FROM BuyerInfo WHERE buyerID = :buyerId";
+$buyerSql = "SELECT firstName, lastName, email, phone, priceMax, bedroomsMin, bathroomsMin, howSoon, approved, note FROM BuyerInfo WHERE buyerID = :buyerId";
 $buyerParameters = array();
 $buyerParameters[':buyerId'] = $_POST['buyerId'];
 $buyerStmt = $dbConn->prepare($buyerSql);
