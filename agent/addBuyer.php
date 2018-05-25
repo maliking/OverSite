@@ -136,6 +136,12 @@ try {
 }
 //$stmt->execute();
 //$result = $stmt->fetch(); //We are expecting one record
+    $agentEmailSql = "SELECT firstName, lastName, email, phone FROM UsersInfo WHERE userId = :userId";
+    $stmt = $dbConn->prepare($agentEmailSql);
+    $namedParameters = array();
+    $namedParameters[':userId'] = $_SESSION['userId'];
+    $stmt->execute($namedParameters);
+    $result = $stmt->fetch();
 
 if($phone != "")
 {
@@ -147,18 +153,13 @@ if($phone != "")
         $phone,
         array(
             "From" => $twilio_phone_number,
-            "Body" => "Flyer",
+            "Body" => "Please don’t respond to this text. Please contact " . $result['firstName'] . " " . $result['lastName'] . "  at: " . $result['phone'],
             'mediaUrl' => "http://52.11.24.75/uploadFlyers/" . substr(rawurlencode($_SESSION['flyer']), 0, -3) . 'jpg',
         )
     );
 }
 
-    $agentEmailSql = "SELECT firstName, lastName, email, phone FROM UsersInfo WHERE userId = :userId";
-    $stmt = $dbConn->prepare($agentEmailSql);
-    $namedParameters = array();
-    $namedParameters[':userId'] = $_SESSION['userId'];
-    $stmt->execute($namedParameters);
-    $result = $stmt->fetch();
+    
 
 if($email != "")
 {
