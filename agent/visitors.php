@@ -424,7 +424,7 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                     <th data-breakpoints="xs">Email</th>
                                     <th data-breakpoints="xs sm">Property</th>
 
-                                    <th data-breakpoints="all">How soon are you looking to purchase a home?</th>
+                                    <th data-breakpoints="xs sm">How soon are you looking to purchase a home?</th>
                                     <th data-breakpoints="all">Pre-approved?</th>
                                     <th data-breakpoints="xs sm">Price</th>
                                     <th data-breakpoints="xs sm">Bedrooms</th>
