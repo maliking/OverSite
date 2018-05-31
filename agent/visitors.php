@@ -873,6 +873,9 @@ function deleteVisitor(visitorId)
             "sorting": {
                 "enabled": true
             },
+            "filtering": {
+            "connectors": false
+            }
             // "paging": {
             //     "enabled": true,
             //     "size": 15
