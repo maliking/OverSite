@@ -418,7 +418,7 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                     <th></th>
                                     <th>Type</th>
                                     <th>ID</th>
-                                    <th>Date Added</th>
+                                    <th data-type="date">Date Added</th>
                                     <th>Name</th>
                                     <th data-breakpoints="xs">Phone</th>
                                     <th data-breakpoints="xs">Email</th>
