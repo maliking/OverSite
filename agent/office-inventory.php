@@ -354,39 +354,68 @@ $keys = array_keys($response);
 </script>
 
 <script>
+  //     function initMap() {
+
+  //       var contentString = '<div id="content">'+
+  //     '<div id="siteNotice">'+
+  //     '</div>'+
+  //     '<h3 id="firstHeading" class="firstHeading">27104 Laureles Grade RD</h3>'+
+  //     '<div id="bodyContent">'+
+  //     '<p>HIDDEN HILLS RANCH- MOTIVATED SELLER!! Nestled on Laureles Grade with views of the mountains, ocean, valley and city lights.'+
+  //     'Home includes a 3 bedroom, office, indoor laundry room and 2 full baths. The home leads out from the living room to a tranquil and '+
+  //     'private backyard with fabulous views of the valley.  This is an ideal residence for those seeking peace and privacy in a ranch type setting. '+
+  //     'The barn features all the amenities of a professional facility that includes 3 arenas, 18 indoor stalls, 12 outdoor stalls, horse trails on 16 acres.  '+
+  //     'The possibilities are endless.  This property is well suited for horses, vineyards or extended family gatherings.  The house and barn are on Cal-AM water.</p>' +
+  //     '<img src="https://mlslmedia.azureedge.net/property/MLSL/81687369/26fa7b4627304c7cbd46aa307ee80be1/2/6"  height="100" width="100" >'+
+  //     '</div>'+
+  //     '</div>';
+
+  //     var infowindow = new google.maps.InfoWindow({
+  //   content: contentString
+  // });
+
+  //       var uluru = {lat: 36.537532, lng: -121.756676};
+  //       var map = new google.maps.Map(document.getElementById('map'), {
+  //         zoom: 4,
+  //         center: uluru
+  //       });
+  //       var marker = new google.maps.Marker({
+  //         position: uluru,
+  //         map: map
+  //       });
+
+  //       marker.addListener('click', function() {
+  //   infowindow.open(map, marker);
+  // });
+  //     }
+
+   var map;
       function initMap() {
-
-        var contentString = '<div id="content">'+
-      '<div id="siteNotice">'+
-      '</div>'+
-      '<h3 id="firstHeading" class="firstHeading">27104 Laureles Grade RD</h3>'+
-      '<div id="bodyContent">'+
-      '<p>HIDDEN HILLS RANCH- MOTIVATED SELLER!! Nestled on Laureles Grade with views of the mountains, ocean, valley and city lights.'+
-      'Home includes a 3 bedroom, office, indoor laundry room and 2 full baths. The home leads out from the living room to a tranquil and '+
-      'private backyard with fabulous views of the valley.  This is an ideal residence for those seeking peace and privacy in a ranch type setting. '+
-      'The barn features all the amenities of a professional facility that includes 3 arenas, 18 indoor stalls, 12 outdoor stalls, horse trails on 16 acres.  '+
-      'The possibilities are endless.  This property is well suited for horses, vineyards or extended family gatherings.  The house and barn are on Cal-AM water.</p>' +
-      '<img src="https://mlslmedia.azureedge.net/property/MLSL/81687369/26fa7b4627304c7cbd46aa307ee80be1/2/6"  height="100" width="100" >'+
-      '</div>'+
-      '</div>';
-
-      var infowindow = new google.maps.InfoWindow({
-    content: contentString
-  });
-
-        var uluru = {lat: 36.537532, lng: -121.756676};
-        var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: uluru
-        });
-        var marker = new google.maps.Marker({
-          position: uluru,
-          map: map
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 2,
+          center: new google.maps.LatLng(2.8,-187.3),
+          mapTypeId: 'terrain'
         });
 
-        marker.addListener('click', function() {
-    infowindow.open(map, marker);
-  });
+        // Create a <script> tag and set the USGS URL as the source.
+        var script = document.createElement('script');
+        // This example uses a local copy of the GeoJSON stored at
+        // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
+        script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
+        document.getElementsByTagName('head')[0].appendChild(script);
+      }
+
+      // Loop through the results array and place a marker for each
+      // set of coordinates.
+      window.eqfeed_callback = function(results) {
+        for (var i = 0; i < results.features.length; i++) {
+          var coords = results.features[i].geometry.coordinates;
+          var latLng = new google.maps.LatLng(coords[1],coords[0]);
+          var marker = new google.maps.Marker({
+            position: latLng,
+            map: map
+          });
+        }
       }
     </script>
 

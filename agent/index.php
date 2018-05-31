@@ -1312,9 +1312,9 @@ $keys = array_keys($response);
                         <input type="text" name="lastName" class="form-control" id="inputSuccess3" placeholder="Last Name" required>
                         </br>
                         <input type="text" name="email" class="form-control has-feedback-left" id="inputSuccess4"
-                               placeholder="Email" required>
+                               placeholder="Email">
                         </br>
-                        <input type="text" name="phone" class="form-control" id="inputSuccess5" placeholder="Phone" required>
+                        <input type="text" name="phone" class="form-control" id="inputSuccess5" placeholder="Phone">
                         </br>
 
                         <input type="text" name="zip" class="form-control" id="inputSuccess6" placeholder="zip">
