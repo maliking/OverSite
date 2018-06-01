@@ -36,6 +36,40 @@ $transStmt = $dbConn->prepare($transactionsSql);
 $transStmt->execute($transParameters);
 $transResults = $transStmt->fetchAll();
 
+$propertySql = "SELECT * FROM HouseInfo WHERE userId = :userId";
+
+
+$url = 'https://api.idxbroker.com/clients/featured';
+
+$method = 'GET';
+
+// headers (required and optional)
+$headers = array(
+    'Content-Type: application/x-www-form-urlencoded', // required
+    'accesskey: e1Br0B5DcgaZ3@JXI9qib5', // required - replace with your own
+    'outputtype: json' // optional - overrides the preferences in our API control page
+);
+
+// set up cURL
+$handle = curl_init();
+curl_setopt($handle, CURLOPT_URL, $url);
+curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+
+// exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
+$response = curl_exec($handle);
+$code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+
+if ($code >= 200 || $code < 300) {
+    $response = json_decode($response, true);
+} else {
+    $error = $code;
+}
+
+$keys = array_keys($response);
+
 ?>
 
 <!DOCTYPE html>
@@ -72,6 +106,46 @@ $transResults = $transStmt->fetchAll();
     
                  <?php include "./fullcalendar/links.php" ?>
 
+<!-- Modal -->
+<div id="propertyModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add Property</h4>
+      </div>
+      <div class="modal-body">
+        
+         <select class="form-control" id="property">
+            <option value="">--SELECT PROPERTY--</option>
+          <?php
+
+        for ($i = 0; $i < sizeof($keys); $i++) 
+        {
+
+            if($response[$keys[$i]]['listingAgentID'] == $agentResult['mlsId'])
+            {
+                echo "<option value=" . $response[$keys[$i]]['listingID'] . ">" . $response[$keys[$i]]['address'] . "</option>";
+                
+            }
+
+
+        }
+          ?>
+        </select>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" onClick="addProperty()">Add</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -99,6 +173,7 @@ $transResults = $transStmt->fetchAll();
                     <div class="box">
                         <div class="box-header">
                             <h4>Active/Active Contingent Properties</h4>
+                            <button data-toggle="modal" data-target="#propertyModal">Add Property</button>
                         </div>
                         <div class="box-body">
                             <table class="table table-bordered table-striped">
@@ -496,7 +571,20 @@ $transResults = $transStmt->fetchAll();
 
                 
             }
- 
+            
+         
+
+            function addProperty()
+            {
+                var property = $( "select#property" ).val();
+                var userId = $("#hiddenUserId").html();
+                // alert(property);
+                $.post( "addProperty.php", { listingId: property, userId: userId })
+                  .done(function( data ) {
+                    alert( "Property added" );
+                    location.reload();
+                  });
+            }
         </script>
 
 </body>
