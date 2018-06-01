@@ -581,7 +581,7 @@ $keys = array_keys($response);
                 // alert(property);
                 $.post( "addProperty.php", { listingId: property, userId: userId })
                   .done(function( data ) {
-                    alert( "Property added" );
+                    alert( "Property added. Page will reload." );
                     location.reload();
                   });
             }
