@@ -119,7 +119,13 @@ $visitorResults = $visitorStmt->fetchAll();
                                                     foreach ($visitorResults as $lead) 
                                                     {
                                                         echo "<tr>";
-                                                        echo "<td>" . $lead['houseId'] . "</td>";
+                                                        echo "<td>";
+                                                        if ($lead['address'] == 'Lead'){
+                                                            echo "<span title=\"Lead\" class=\"label label-warning\">ML</span>";
+                                                        } else {
+                                                            echo "<span title=\"Open House Visitor\" class=\"label label-info\">OHV</span>";
+                                                        }
+                                                        echo "</td>";
                                                         echo "<td>" . $lead['agentF'] . " " . $lead['agentL'] . "</td>";
                                                         echo "<td>" . $lead['buyerID'] . "</td>";
                                                         echo "<td>" . $lead['firstName'] . " " . $lead['lastName'] . "</td>";
