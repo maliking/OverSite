@@ -104,10 +104,12 @@ $visitorResults = $visitorStmt->fetchAll();
                                                     <th>Phone</th>
                                                     <th>Email</th>
                                                     <th>Property</th>
+                                                    <th>Pre-Approved?</th>
                                                     <th>How soon?</th>
                                                     <th>Price</th>
                                                     <th>Bedroom</th>
                                                     <th>Bathroom</th>
+                                                    <th>Notes</th>
                                                     <th>Delete</th>
                                                     <th data-breakpoints="all">Agent Email</th>
                                                     <th data-breakpoints="all">Agent Phone</th>
@@ -132,10 +134,12 @@ $visitorResults = $visitorStmt->fetchAll();
                                                         echo "<td>" . $lead['phone'] . "</td>";
                                                         echo "<td>" . $lead['email'] . "</td>";
                                                         echo "<td>" . $lead['address']. "</td>";
+                                                        echo "<td>" . $lead['approved'] . "</td>";
                                                         echo "<td>" . $lead['howSoon'] . "</td>";
                                                         echo "<td>" . $lead['priceMax'] . "</td>";
                                                         echo "<td>" . $lead['bedroomsMin'] . "</td>";
                                                         echo "<td>" . $lead['bathroomsMin'] . "</td>";
+                                                        echo "<td>" . $lead['note'] . "</td>";
                                                         echo "<td><button>Delete</button></td>";
                                                         echo "<td>" . $lead['agentEmail'] . "</td>";
                                                         echo "<td>" . $lead['agentPhone'] . "</td>";
