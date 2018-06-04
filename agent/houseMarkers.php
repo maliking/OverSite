@@ -31,12 +31,17 @@ if ($code >= 200 || $code < 300) {
 }
 
 $keys = array_keys($response);
+$json = array();
 
 foreach ($response as $marker) 
 {
-	echo $marker['address'] . "</br> ";
-	echo $marker['latitude'] . "</br> ";
-	echo $marker['longitude'] . "</br> ";
+	$marker = array('address' => $marker['address'], 'latitude' => $marker['latitude'], 'longitude' => $marker['longitude']);
+	array_push($json, $marker);
+	// echo $marker['address'] . "</br> ";
+	// echo $marker['latitude'] . "</br> ";
+	// echo $marker['longitude'] . "</br> ";
 }
+$jsonEnc = json_encode($json);
 
+echo $jsonEnc;
 ?>

@@ -201,7 +201,7 @@ $keys = array_keys($response);
     <link rel="stylesheet" href="../dist/css/vendors/footable.bootstrap.min.css">
      <style>
        #map {
-        height: 100%;
+        height: 90%;
         width: 100%;
        }
     </style>
@@ -354,69 +354,60 @@ $keys = array_keys($response);
 </script>
 
 <script>
-  //     function initMap() {
-
-  //       var contentString = '<div id="content">'+
-  //     '<div id="siteNotice">'+
-  //     '</div>'+
-  //     '<h3 id="firstHeading" class="firstHeading">27104 Laureles Grade RD</h3>'+
-  //     '<div id="bodyContent">'+
-  //     '<p>HIDDEN HILLS RANCH- MOTIVATED SELLER!! Nestled on Laureles Grade with views of the mountains, ocean, valley and city lights.'+
-  //     'Home includes a 3 bedroom, office, indoor laundry room and 2 full baths. The home leads out from the living room to a tranquil and '+
-  //     'private backyard with fabulous views of the valley.  This is an ideal residence for those seeking peace and privacy in a ranch type setting. '+
-  //     'The barn features all the amenities of a professional facility that includes 3 arenas, 18 indoor stalls, 12 outdoor stalls, horse trails on 16 acres.  '+
-  //     'The possibilities are endless.  This property is well suited for horses, vineyards or extended family gatherings.  The house and barn are on Cal-AM water.</p>' +
-  //     '<img src="https://mlslmedia.azureedge.net/property/MLSL/81687369/26fa7b4627304c7cbd46aa307ee80be1/2/6"  height="100" width="100" >'+
-  //     '</div>'+
-  //     '</div>';
-
-  //     var infowindow = new google.maps.InfoWindow({
-  //   content: contentString
-  // });
-
-  //       var uluru = {lat: 36.537532, lng: -121.756676};
-  //       var map = new google.maps.Map(document.getElementById('map'), {
-  //         zoom: 4,
-  //         center: uluru
-  //       });
-  //       var marker = new google.maps.Marker({
-  //         position: uluru,
-  //         map: map
-  //       });
-
-  //       marker.addListener('click', function() {
-  //   infowindow.open(map, marker);
-  // });
-  //     }
-
-   var map;
+  
+      var markerData;
+  
       function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 2,
-          center: new google.maps.LatLng(2.8,-187.3),
-          mapTypeId: 'terrain'
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: new google.maps.LatLng(36.67, -121.6),
+          mapTypeId: 'hybrid'
         });
 
-        // Create a <script> tag and set the USGS URL as the source.
-        var script = document.createElement('script');
-        // This example uses a local copy of the GeoJSON stored at
-        // http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_week.geojsonp
-        script.src = 'https://developers.google.com/maps/documentation/javascript/examples/json/earthquake_GeoJSONP.js';
-        document.getElementsByTagName('head')[0].appendChild(script);
+        $.post( "houseMarkers.php", { })
+          .done(function( data ) {
+            markerData = JSON.parse(data);
+            // alert( "Data Loaded: " + markerData.length );
+            var infoWindow = new google.maps.InfoWindow();
+            // var contentString = "";
+            for ( var i = 0; i < markerData.length; i++) 
+            {
+              var address = markerData[i]['address'];
+              
+              var latLng = new google.maps.LatLng(markerData[i]['latitude'],markerData[i]['longitude']);
+              var marker = new google.maps.Marker({
+                position: latLng,
+                map: map,
+                title: markerData[i].address
+              });
+
+              
+
+              //Attach click event to the marker.
+            (function (marker, address, i) {
+                google.maps.event.addListener(marker, "click", function (e) {
+                    //Wrap the content inside an HTML DIV in order to set height and width of InfoWindow.
+                    infoWindow.setContent('<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h5 id="firstHeading" class="firstHeading">' + markerData[i]['address']  + '</h5>'+
+            '<div id="bodyContent">'+
+            '<p></p>'+
+            '</div>'+
+            '</div>');
+                    infoWindow.open(map, marker);
+                });
+            })(marker, data, i);
+
+            }   
+
+            
+
+          });
+        
       }
 
-      // Loop through the results array and place a marker for each
-      // set of coordinates.
-      window.eqfeed_callback = function(results) {
-        for (var i = 0; i < results.features.length; i++) {
-          var coords = results.features[i].geometry.coordinates;
-          var latLng = new google.maps.LatLng(coords[1],coords[0]);
-          var marker = new google.maps.Marker({
-            position: latLng,
-            map: map
-          });
-        }
-      }
+      
     </script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAK_Tffqf_2RClIjnuOPoz6wk1lZy4dAeg&libraries=places&callback=initMap" async defer></script>
