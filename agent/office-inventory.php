@@ -406,8 +406,14 @@ $keys = array_keys($response);
 
 
             }  
-            map.setCenter(bounds.getCenter(), map.getBoundsZoomLevel(bounds)); 
-            
+            // map.setCenter(bounds.getCenter(), map.getBoundsZoomLevel(bounds)); 
+            map.fitBounds(bounds);
+            // map.panToBounds(bounds);
+
+    //         var boundsListener = google.maps.event.addListener((map), 'bounds_changed', function(event) {
+    //     this.setZoom(10);
+    //     google.maps.event.removeListener(boundsListener);
+    // });
 
           });
         
