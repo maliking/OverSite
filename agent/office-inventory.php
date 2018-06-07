@@ -358,6 +358,8 @@ $keys = array_keys($response);
       var markerData;
   
       function initMap() {
+        var bounds = new google.maps.LatLngBounds();
+
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 8,
           center: new google.maps.LatLng(36.67, -121.6),
@@ -375,6 +377,8 @@ $keys = array_keys($response);
               var address = markerData[i]['address'];
               
               var latLng = new google.maps.LatLng(markerData[i]['latitude'],markerData[i]['longitude']);
+              bounds.extend(latLng);
+
               var marker = new google.maps.Marker({
                 position: latLng,
                 map: map,
@@ -399,12 +403,15 @@ $keys = array_keys($response);
                 });
             })(marker, data, i);
 
-            }   
 
+
+            }  
+            map.setCenter(bounds.getCenter(), map.getBoundsZoomLevel(bounds)); 
             
 
           });
         
+
       }
 
       
