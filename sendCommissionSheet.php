@@ -308,11 +308,12 @@ require('fpdf/fpdf.php');
 
 // $envId = json_decode($response, true);
 // $namedParameters[":envelopeId"] = $envId['envelopeId'];
-// $stmt = $dbConn->prepare($sql);
+$namedParameters[":envelopeId"] = "";
+$stmt = $dbConn->prepare($sql);
 // try {
 
 
-//     $stmt->execute($namedParameters);
+    $stmt->execute($namedParameters);
 // } catch (PDOException $e) {
 //     echo "Error: " . $e->getMessage();
 // }
