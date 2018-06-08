@@ -247,7 +247,7 @@ $keys = array_keys($response);
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-body">
-                            <button onClick="showMapModal()">Map</button>
+                            <button type="button" data-toggle="modal" data-target="#mapModal">Map</button>
                             <table class="table table-bordered table-striped"
                                    id="inventory-table" data-filtering="true">
                                 <thead>
