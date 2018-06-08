@@ -36,6 +36,48 @@ $stmtRank = $dbConnRank->prepare($sqlRank);
 $stmtRank->execute();
 $rank = $stmtRank->fetchAll();
 
+$dbConnInContract = getConnection();
+$inContractCountSql = "SELECT count(*) as count FROM transactions";
+$stmtInContractCount = $dbConnInContract->prepare($inContractCountSql);
+$stmtInContractCount->execute();
+$inContractCount = $stmtInContractCount->fetch();
+
+
+
+$url = 'https://api.idxbroker.com/clients/featured';
+
+$method = 'GET';
+
+// headers (required and optional)
+$headers = array(
+    'Content-Type: application/x-www-form-urlencoded', // required
+    'accesskey: e1Br0B5DcgaZ3@JXI9qib5', // required - replace with your own
+    'outputtype: json' // optional - overrides the preferences in our API control page
+);
+
+// set up cURL
+$handle = curl_init();
+curl_setopt($handle, CURLOPT_URL, $url);
+curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+
+// exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
+$response = curl_exec($handle);
+$code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+
+if ($code >= 200 || $code < 300) {
+    $response = json_decode($response, true);
+} else {
+    $error = $code;
+}
+
+// print_r($response);
+
+$keys = array_keys($response);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -90,7 +132,7 @@ $rank = $stmtRank->fetchAll();
                     <!-- small box -->
                     <div class="small-box bg-aqua">
                         <div class="inner">
-                            <h3><?php echo $houseStatus[0]['num']; ?></h3>
+                            <h3><?php echo count($keys); ?></h3>
                             <p>Active Listings</p>
                         </div>
                         <div class="icon">
@@ -103,7 +145,7 @@ $rank = $stmtRank->fetchAll();
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            <h3><?php echo $houseStatus[1]['num']; ?></h3>
+                            <h3><?php echo $inContractCount['count']; ?></h3>
                             <p>Pending Listings</p>
                         </div>
                         <div class="icon">
@@ -116,7 +158,7 @@ $rank = $stmtRank->fetchAll();
                     <!-- small box -->
                     <div class="small-box bg-green">
                         <div class="inner">
-                            <h3><?php echo $houseStatus[2]['num']; ?></h3>
+                            <h3><?php //echo $houseStatus[2]['num']; ?></h3>
                             <p>Sold Listings</p>
                         </div>
                         <div class="icon">
@@ -130,7 +172,7 @@ $rank = $stmtRank->fetchAll();
                     <div class="small-box bg-orange">
                         <div class="inner">
                             <h3>
-                                <sup style="font-size: 20px">$</sup><?php echo number_format($sumEarnings['average'], 0) ?>
+                                <sup style="font-size: 20px">$</sup><?php //echo number_format($sumEarnings['average'], 0) ?>
                             </h3>
                             <p>Avg. Agent Commission</p>
                         </div>
@@ -145,7 +187,7 @@ $rank = $stmtRank->fetchAll();
                     <!-- small box -->
                     <div class="small-box bg-blue">
                         <div class="inner">
-                            <h3><?php echo number_format((float)$sumEarnings['avgPercent'], 2, '.', ''); ?><sup
+                            <h3><?php //echo number_format((float)$sumEarnings['avgPercent'], 2, '.', ''); ?><sup
                                         style="font-size: 20px">%</sup></h3>
 
                             <p>Avg. Agent Commission </p>
@@ -162,7 +204,7 @@ $rank = $stmtRank->fetchAll();
                     <div class="small-box bg-red">
                         <div class="inner">
                             <h3>
-                                <sup style="font-size: 20px">$</sup> <?php echo number_format($sumEarnings['earnings'], 0); ?>
+                                <sup style="font-size: 20px">$</sup> <?php //echo number_format($sumEarnings['earnings'], 0); ?>
                             </h3>
                             <p>Total Net Earnings</p>
                         </div>
