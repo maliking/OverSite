@@ -408,8 +408,8 @@ $keys = array_keys($response);
 
 
             }  
-            map.setCenter(bounds.getCenter()); 
-            map.panToBounds(bounds);
+            // map.setCenter(bounds.getCenter()); 
+            // map.panToBounds(bounds);
            
             // map.fitBounds(bounds);
             // map.panToBounds(bounds);
