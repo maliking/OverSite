@@ -675,7 +675,7 @@ $keys = array_keys($response);
                             <div class="box box-success">
                                 <div class="box-header">
                                     <h4>In-Contract Properties</h4>
-                                    <button><a href="inputNewListing.php">Add New Listing</a></button>
+                                    <button><a href="my-inventory.php">Add New In-Contract</a></button>
                                     <button onClick="showTransactionModal()">Add New Transaction</button>
                                 </div>
                                 <div class="box-body" style="height:300px; overflow: auto;">
