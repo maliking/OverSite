@@ -14,7 +14,7 @@ function calculateCommission() {
     var eoInsurance = parseFloat(document.getElementById("eo_insurance").value.replace(",",""));
 
     if (TYGross <= 85000) {
-        difference = 80000 - TYGross;
+        difference = 85000 - TYGross;
         //$total = $TYGross + $commission;
         if (commission <= difference) {
             brokerFee += commission * .20;
@@ -48,7 +48,7 @@ function calculateCommission() {
         }
     }
     else if (TYGross <= 135000) {
-        difference = 130000 - TYGross;
+        difference = 135000 - TYGross;
         if (commission <= difference) {
             brokerFee += commission * .15;
         }
@@ -70,7 +70,7 @@ function calculateCommission() {
         }
     }
     else if (TYGross <= 185000) {
-        difference = 180000 - TYGross;
+        difference = 185000 - TYGross;
         if (commission <= difference) {
             brokerFee += commission * .15;
         }
@@ -89,7 +89,7 @@ function calculateCommission() {
     document.getElementById("broker").value = formatNumber(brokerFee);
     // document.getElementById("percentage").value = ;
     document.getElementById("subtotal").value = formatNumber(initialCommission - brokerFee);
-    document.getElementById("agent_net").value = formatNumber(initialCommission - brokerFee - 349 - misc - remaxFee - transactionCoordFee - techFee - eoInsurance);
+    document.getElementById("agent_net").value = formatNumber(initialCommission - brokerFee  - misc - remaxFee - transactionCoordFee - techFee - eoInsurance);
 
     
 }
