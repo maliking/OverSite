@@ -407,7 +407,7 @@ $keys = array_keys($response);
 
             }  
             map.setCenter(bounds.getCenter()); 
-            map.setZoom(map.getBoundsZoomLevel(bounds));
+            map.panToBounds(bounds.getCenter());
             // map.fitBounds(bounds);
             // map.panToBounds(bounds);
 
