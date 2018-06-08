@@ -362,7 +362,7 @@ $keys = array_keys($response);
                                                                 <div class="col-xs-3">
                                                                     <input type="text" class="form-control"
                                                                            id="trans-coor" placeholder="" value="200.00"
-                                                                           >
+                                                                           onchange="calculateCommission()">
                                                                 </div>
 
                                                             </div>
@@ -373,7 +373,7 @@ $keys = array_keys($response);
                                                                     Fee</label>
                                                                 <div class="col-xs-3">
                                                                     <input type="text" class="form-control" id="tech"
-                                                                           placeholder="" value="50.00" >
+                                                                           placeholder="" value="50.00" onchange="calculateCommission()">
                                                                 </div>
 
                                                             </div>
@@ -385,7 +385,7 @@ $keys = array_keys($response);
                                                                 <div class="col-xs-3">
                                                                     <input type="text" class="form-control"
                                                                            id="eo_insurance" placeholder=""
-                                                                           value="99.00" >
+                                                                           value="99.00" onchange="calculateCommission()">
                                                                 </div>
 
 

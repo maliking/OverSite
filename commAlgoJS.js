@@ -9,6 +9,10 @@ function calculateCommission() {
 
     var remaxFee = parseFloat(document.getElementById("remaxFee").value.replace(",",""));
 
+    var transactionCoordFee = parseFloat(document.getElementById("trans-coor").value.replace(",",""));
+    var techFee = parseFloat(document.getElementById("tech").value.replace(",",""));
+    var eoInsurance = parseFloat(document.getElementById("eo_insurance").value.replace(",",""));
+
     if (TYGross <= 85000) {
         difference = 80000 - TYGross;
         //$total = $TYGross + $commission;
@@ -85,7 +89,7 @@ function calculateCommission() {
     document.getElementById("broker").value = formatNumber(brokerFee);
     // document.getElementById("percentage").value = ;
     document.getElementById("subtotal").value = formatNumber(initialCommission - brokerFee);
-    document.getElementById("agent_net").value = formatNumber(initialCommission - brokerFee - 349 - misc - remaxFee);
+    document.getElementById("agent_net").value = formatNumber(initialCommission - brokerFee - 349 - misc - remaxFee - transactionCoordFee - techFee - eoInsurance);
 
     
 }
