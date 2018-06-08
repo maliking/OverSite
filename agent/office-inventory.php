@@ -247,7 +247,7 @@ $keys = array_keys($response);
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-body">
-                            <button type="button" data-toggle="modal" data-target="#mapModal">Map</button>
+                            <button onClick="showMapModal()">Map</button>
                             <table class="table table-bordered table-striped"
                                    id="inventory-table" data-filtering="true">
                                 <thead>
@@ -335,6 +335,7 @@ $keys = array_keys($response);
 <!-- PAGE-SPECIFIC JS -->
 <script src="../dist/js/vendors/footable.min.js"></script>
 <script>
+    var map;
     jQuery(function ($) {
         $('.table').footable({
             "sorting": {
@@ -349,18 +350,19 @@ $keys = array_keys($response);
 
     function showMapModal()
     {
+         $('#mapModal').on('shown.bs.modal', function () {
+                google.maps.event.trigger(map, "resize");
+            });
         $('#mapModal').modal('toggle');
     }
-</script>
 
-<script>
   
       var markerData;
   
       function initMap() {
         var bounds = new google.maps.LatLngBounds();
 
-        var map = new google.maps.Map(document.getElementById('map'), {
+        map = new google.maps.Map(document.getElementById('map'), {
           zoom: 8,
           center: new google.maps.LatLng(36.67, -121.6),
           mapTypeId: 'hybrid'
@@ -408,9 +410,7 @@ $keys = array_keys($response);
             }  
             map.setCenter(bounds.getCenter()); 
             map.panToBounds(bounds);
-            $('#mapModal').on('shown.bs.modal', function () {
-                google.maps.event.trigger(map, "resize");
-            });
+           
             // map.fitBounds(bounds);
             // map.panToBounds(bounds);
 
