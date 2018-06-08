@@ -350,9 +350,9 @@ $keys = array_keys($response);
 
     function showMapModal()
     {
-         $('#mapModal').on('shown.bs.modal', function () {
-                google.maps.event.trigger(map, "resize");
-            });
+         // $('#mapModal').on('shown.bs.modal', function () {
+         //        google.maps.event.trigger(map, "resize");
+         //    });
         $('#mapModal').modal('toggle');
     }
 
