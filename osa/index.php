@@ -98,6 +98,7 @@ $visitorResults = $visitorStmt->fetchAll();
                                             <thead>
                                                 <tr>
                                                     <th>Type</th>
+                                                    <th>Date</th>
                                                     <th>Agent</th>
                                                     <th>ID</th>
                                                     <th>Name</th>
@@ -128,6 +129,7 @@ $visitorResults = $visitorStmt->fetchAll();
                                                             echo "<span title=\"Open House Visitor\" class=\"label label-info\">OHV</span>";
                                                         }
                                                         echo "</td>";
+                                                        echo "<td>" . $lead['registeredDate'] . "</td>";
                                                         echo "<td>" . $lead['agentF'] . " " . $lead['agentL'] . "</td>";
                                                         echo "<td>" . $lead['buyerID'] . "</td>";
                                                         echo "<td>" . $lead['firstName'] . " " . $lead['lastName'] . "</td>";
@@ -194,7 +196,8 @@ $visitorResults = $visitorStmt->fetchAll();
                 "enabled": true
                 },
                 "filtering": {
-                "connectors": false
+                "connectors": false,
+                "position": "center"
                 }
                 });
             });
