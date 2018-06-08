@@ -874,7 +874,8 @@ function deleteVisitor(visitorId)
                 "enabled": true
             },
             "filtering": {
-            "connectors": false
+            "connectors": false,
+            "position": "center"
             }
             // "paging": {
             //     "enabled": true,

@@ -344,6 +344,10 @@ $keys = array_keys($response);
             "paging": {
                 "enabled": true,
                 "size": 15
+            },
+            "filtering": {
+            "connectors": false,
+            "position": "center"
             }
         });
     });
