@@ -267,12 +267,12 @@ $keys = array_keys($response);
                                                                 <input type="text" class="form-control" id="beg-comm"
                                                                        name="TYGross" placeholder="" readonly>
                                                             </div>
-                                                            <div class="form-group col-xs-4">
+                                                            <!-- <div class="form-group col-xs-4">
                                                                 <label class="control-label  " for="datetimepicker4">Check
                                                                     Number</label>
                                                                 <input type="text" class="form-control" id="check"
                                                                        name="checkNum" placeholder="">
-                                                            </div>
+                                                            </div> -->
 
                                                             <!-- Commission Lead Type -->
                                                             <div class="form-group col-xs-2">
