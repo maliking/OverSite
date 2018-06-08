@@ -360,7 +360,7 @@ $keys = array_keys($response);
       var markerData;
   
       function initMap() {
-        var bounds = new google.maps.LatLngBounds();
+        // var bounds = new google.maps.LatLngBounds();
 
         map = new google.maps.Map(document.getElementById('map'), {
           zoom: 8,
@@ -379,7 +379,7 @@ $keys = array_keys($response);
               var address = markerData[i]['address'];
               
               var latLng = new google.maps.LatLng(markerData[i]['latitude'],markerData[i]['longitude']);
-              bounds.extend(latLng);
+              // bounds.extend(latLng);
 
               var marker = new google.maps.Marker({
                 position: latLng,
