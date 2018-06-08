@@ -224,23 +224,26 @@ $keys = array_keys($response);
 
                                                             <div class="form-group col-xs-4">
                                                                 <label for="houseId">Property Address</label>
-                                                                <select class="form-control" id="houseId"
+                                                                <input type="text" class="form-control" id="houseId"
+                                                                       name="propertyAddress"
+                                                                       placeholder="Enter Property Address">
+                                                                <!-- <select class="form-control" id="houseId"
                                                                         onchange="getOwners()" name="propertyAddress">
-                                                                        <option id='empty' value=''>Select House</option>
+                                                                        < option id='empty' value=''>Select House</option> -->
                                                                     <?php
 
-                                                                    for ($i = 0; $i < sizeof($keys); $i++) 
-                                                                    {
-                                                                        echo "<option id=agent" . $response[$keys[$i]]['listingAgentID'] . " value='" . $response[$keys[$i]]['listingID'] . "'>" 
-                                                                        . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] . "</option>";
+                                                                    // for ($i = 0; $i < sizeof($keys); $i++) 
+                                                                    // {
+                                                                    //     echo "<option id=agent" . $response[$keys[$i]]['listingAgentID'] . " value='" . $response[$keys[$i]]['listingID'] . "'>" 
+                                                                    //     . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] . "</option>";
 
-                                                                    }
+                                                                    // }
 
                                                                     // foreach ($houses as $house) {
                                                                     //     echo "<option id=agent" . $house['userId'] . " value='" . $house['houseId'] . "'>" . $house['address'] . " " . $house['city'] . " " . $house['state'] . " " . $house['zip'] . "</option>";
                                                                     // }
                                                                     ?>
-                                                                </select>
+                                                                <!-- </select> -->
                                                             </div>
                                                             <div class="clearfix"></div>
                                                             <div class="form-group col-xs-2">
@@ -359,7 +362,7 @@ $keys = array_keys($response);
                                                                 <div class="col-xs-3">
                                                                     <input type="text" class="form-control"
                                                                            id="trans-coor" placeholder="" value="200.00"
-                                                                           readonly>
+                                                                           >
                                                                 </div>
 
                                                             </div>
@@ -370,7 +373,7 @@ $keys = array_keys($response);
                                                                     Fee</label>
                                                                 <div class="col-xs-3">
                                                                     <input type="text" class="form-control" id="tech"
-                                                                           placeholder="" value="50.00" readonly>
+                                                                           placeholder="" value="50.00" >
                                                                 </div>
 
                                                             </div>
@@ -382,7 +385,7 @@ $keys = array_keys($response);
                                                                 <div class="col-xs-3">
                                                                     <input type="text" class="form-control"
                                                                            id="eo_insurance" placeholder=""
-                                                                           value="99.00" readonly>
+                                                                           value="99.00" >
                                                                 </div>
 
 
@@ -419,7 +422,7 @@ $keys = array_keys($response);
                                                                 <div class="col-xs-3">
                                                                     <input type="text" class="form-control"
                                                                            id="agent_net" name="netCommission"
-                                                                           placeholder="" readonly>
+                                                                           placeholder="" >
                                                                 </div>
                                                             </div>
                                                             <div class="clearfix"></div>
