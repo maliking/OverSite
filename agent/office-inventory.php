@@ -408,6 +408,9 @@ $keys = array_keys($response);
             }  
             map.setCenter(bounds.getCenter()); 
             map.panToBounds(bounds);
+            $('#mapModal').on('shown.bs.modal', function () {
+                google.maps.event.trigger(map, "resize");
+            });
             // map.fitBounds(bounds);
             // map.panToBounds(bounds);
 
