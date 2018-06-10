@@ -20,7 +20,7 @@ $dbConn = getConnection();
 $sqlGetVisitors = "SELECT BuyerInfo.*, UsersInfo.firstName as agentF, UsersInfo.lastName as agentL, UsersInfo.email as agentEmail, UsersInfo.phone as agentPhone, 
                     HouseInfo.address
                     FROM BuyerInfo LEFT JOIN UsersInfo ON BuyerInfo.userId = UsersInfo.userId LEFT JOIN HouseInfo ON BuyerInfo.houseId = HouseInfo.houseId WHERE 
-                    junk != 'yes'";
+                    junk = 'yes'";
 
 $visitorStmt = $dbConn->prepare($sqlGetVisitors);
 $visitorStmt->execute();
@@ -90,9 +90,9 @@ $visitorResults = $visitorStmt->fetchAll();
 
                         <div class="col-xs-12">
                             <div class="box">
-                                <div class="box-body">
-                                <h3>Leads</h3>
 
+                                <div class="box-body">
+                                    <h3>Seperate Leads</h3>
                                     <div class="box-body no-padding" style="height:600px; overflow:auto;">
                                         <!-- THE CALENDAR -->
                                         <!-- <div id="calendar"></div> -->
@@ -209,9 +209,9 @@ $visitorResults = $visitorStmt->fetchAll();
             function moveToTrash(buyerId)
             {
                 // alert(buyerId);
-                $.post( "addToJunk.php", { buyerId: buyerId })
+                $.post( "removeFromJunk.php", { buyerId: buyerId })
                   .done(function( data ) {
-                    alert( "Added to Junk" );
+                    alert( "Removed from Junk" );
                     $("#buyer" + buyerId).hide();
                   });
             }
