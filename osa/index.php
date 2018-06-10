@@ -211,7 +211,7 @@ $visitorResults = $visitorStmt->fetchAll();
                 $.post( "addToJunk.php", { buyerId: buyerId })
                   .done(function( data ) {
                     alert( "Added to Junk" );
-                    $("#buyer" + buyerId).hide()
+                    $("#buyer" + buyerId).hide();
                   });
             }
 
