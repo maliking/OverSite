@@ -205,15 +205,15 @@ $visitorResults = $visitorStmt->fetchAll();
                 });
             });
 
-            function moveToTrash(buyerId)
-            {
+            // function moveToTrash(buyerId)
+            // {
                 // alert(buyerId);
                 // $.post( "addToJunk.php", { buyerId: buyerId })
                 //   .done(function( data ) {
                 //     alert( "Added to Junk" );
                 //     $("#buyer" + buyerId).hide();
                 //   });
-            }
+            // }
 
         </script>
         <script>
