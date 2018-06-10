@@ -102,7 +102,18 @@ $results = $stmt->fetchAll();
                                             <th>SQFT</th>
                                         </thead>
                                         <tbody>
+                                            <tr>
+                                            <td>Prospect</td>
+                                            <td></td>
+                                            <td><?php echo $prospectResult['price'];  ?></td>
+                                            <td><?php echo $prospectResult['bedroom'];  ?></td>
+                                            <td><?php echo $prospectResult['bathroom'];  ?></td>
+                                            <td><?php echo $prospectResult['zip'];  ?></td>
+                                            <td><?php echo $prospectResult['sqft'];  ?></td>
+                                        </tr>
+
                                             <?php
+
                                             foreach ($results as $house) 
                                             {                                            
                                                 echo "<tr>";
