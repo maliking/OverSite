@@ -15,7 +15,7 @@ $prospectStmt->execute($prospectParameters);
 $prospectResult = $prospectStmt->fetch();
 
 $houseMatchSql = "SELECT DISTINCT HouseInfo.address, HouseInfo.price, HouseInfo.bedrooms, HouseInfo.bathrooms, HouseInfo.city, HouseInfo.state, 
-                HouseInfo.zip , HouseInfo.sqft, UsersInfo.firstName as fName, UsersInfo.lastName as lName  
+                HouseInfo.zip , HouseInfo.sqft, HouseInfo.listingId, UsersInfo.firstName as fName, UsersInfo.lastName as lName  
                 FROM HouseInfo LEFT JOIN UsersInfo ON HouseInfo.agentMlsId = UsersInfo.mlsId 
                 WHERE HouseInfo.bedrooms >= :bedroom AND HouseInfo.bathrooms >= :bathroom AND HouseInfo.price BETWEEN :lessPrice AND :morePrice AND HouseInfo.houseId != '0'
                 AND UsersInfo.userType != '0'
@@ -110,6 +110,7 @@ $results = $stmt->fetchAll();
                                             <th>Zip</th>
                                             <th>SQFT</th>
                                             <th>View House</th>
+                                            <th>Map</th>
                                         </thead>
                                         <tbody>
                                             
@@ -125,7 +126,11 @@ $results = $stmt->fetchAll();
                                                 echo "<td>" . $house['bathrooms'] . "</td>";
                                                 echo "<td>" . $house['zip'] . "</td>";
                                                 echo "<td>" . number_format($house['sqft']) . "</td>";
-                                                 echo "<td>" . "" . "</td>";
+                                                echo '<td ><a href="viewHouseImages.php?id=' . $house['listingId'] . '" target="_blank"><button >View</button></a></td>';
+                                                echo '<td ><a href="https://maps.google.com/?q=' . $house['address'] . 
+                                                    " " . $house['city'] . ", " . $house['state'] . 
+                                                    " " . $house['zip'] . '" target="_blank"><button >View on Map</button></a></td>';
+
                                                 echo "</tr>";
                                             }
                                             ?>

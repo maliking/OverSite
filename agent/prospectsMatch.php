@@ -108,6 +108,8 @@ $results = $stmt->fetchAll();
                                             <th>Bathroom</th>
                                             <th>Zip</th>
                                             <th>SQFT</th>
+                                            <th>View House</th>
+                                            <th>Map</th>
                                         </thead>
                                         <tbody>
                                             
@@ -123,6 +125,10 @@ $results = $stmt->fetchAll();
                                                 echo "<td>" . $house['bathrooms'] . "</td>";
                                                 echo "<td>" . $house['zip'] . "</td>";
                                                 echo "<td>" . number_format($house['sqft']) . "</td>";
+                                                echo '<td ><a href="viewHouseImages.php?id=' . $house['listingId'] . '" target="_blank"><button >View</button></a></td>';
+                                                echo '<td ><a href="https://maps.google.com/?q=' . $house['address'] . 
+                                                    " " . $house['city'] . ", " . $house['state'] . 
+                                                    " " . $house['zip'] . '" target="_blank"><button >View on Map</button></a></td>';
                                                 echo "</tr>";
                                             }
                                             ?>
