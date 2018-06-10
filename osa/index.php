@@ -59,11 +59,11 @@ $visitorResults = $visitorStmt->fetchAll();
         <div class="wrapper">
 
             <!-- BEGIN TEMPLATE header.php INCLUDE -->
-            <?php include "templates-osa/header.php" ?>
+            <?php include "templates-osa/header.php"; ?>
             <!-- END TEMPLATE header.php INCLUDE -->
 
             <!-- BEGIN TEMPLATE nav.php INCLUDE -->
-            <?php include "templates-osa/nav.php" ?>
+            <?php include "templates-osa/nav.php"; ?>
             <!-- END TEMPLATE nav.php INCLUDE -->
 
 
