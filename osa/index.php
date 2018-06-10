@@ -19,7 +19,8 @@ $dbConn = getConnection();
 
 $sqlGetVisitors = "SELECT BuyerInfo.*, UsersInfo.firstName as agentF, UsersInfo.lastName as agentL, UsersInfo.email as agentEmail, UsersInfo.phone as agentPhone, 
                     HouseInfo.address
-                    FROM BuyerInfo LEFT JOIN UsersInfo ON BuyerInfo.userId = UsersInfo.userId LEFT JOIN HouseInfo ON BuyerInfo.houseId = HouseInfo.houseId";
+                    FROM BuyerInfo LEFT JOIN UsersInfo ON BuyerInfo.userId = UsersInfo.userId LEFT JOIN HouseInfo ON BuyerInfo.houseId = HouseInfo.houseId WHERE 
+                    junk != 'yes'";
 
 $visitorStmt = $dbConn->prepare($sqlGetVisitors);
 $visitorStmt->execute();
@@ -122,7 +123,7 @@ $visitorResults = $visitorStmt->fetchAll();
                                                <?php
                                                     foreach ($visitorResults as $lead) 
                                                     {
-                                                        echo "<tr>";
+                                                        echo "<tr id=buyer" . $lead['buyerID'] . ">";
                                                         echo "<td>";
                                                         if ($lead['address'] == 'Lead'){
                                                             echo "<span title=\"Lead\" class=\"label label-warning\">ML</span>";
@@ -144,7 +145,7 @@ $visitorResults = $visitorStmt->fetchAll();
                                                         echo "<td>" . $lead['bathroomsMin'] . "</td>";
                                                         echo "<td>" . $lead['note'] . "</td>";
                                                         echo '<td><a target="_blank" href="prospectsMatch.php?visitorId=' . $lead['buyerID'] . ' ">House Matches</a></td>';
-                                                        echo "<td><button>Delete</button></td>";
+                                                        echo "<td><button onClick=moveToTrash('" . $lead['buyerID'] . "')>Delete</button></td>";
                                                         echo "<td>" . $lead['agentEmail'] . "</td>";
                                                         echo "<td>" . $lead['agentPhone'] . "</td>";
                                                         echo "</tr>";
@@ -203,6 +204,16 @@ $visitorResults = $visitorStmt->fetchAll();
                 }
                 });
             });
+
+            function moveToTrash(buyerId)
+            {
+                // alert(buyerId);
+                $.post( "addToJunk.php", { buyerId: buyerId })
+                  .done(function( data ) {
+                    alert( "Added to Junk" );
+                    $("#buyer" + buyerId).hide()
+                  });
+            }
 
         </script>
         <script>
