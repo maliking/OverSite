@@ -139,7 +139,7 @@ $visitorResults = $visitorStmt->fetchAll();
                                                         echo "<td>" . $lead['address']. "</td>";
                                                         echo "<td>" . $lead['approved'] . "</td>";
                                                         echo "<td>" . $lead['howSoon'] . "</td>";
-                                                        echo "<td>" . $lead['priceMax'] . "</td>";
+                                                        echo "<td>$" . number_format($lead['priceMax']) . "</td>";
                                                         echo "<td>" . $lead['bedroomsMin'] . "</td>";
                                                         echo "<td>" . $lead['bathroomsMin'] . "</td>";
                                                         echo "<td>" . $lead['note'] . "</td>";

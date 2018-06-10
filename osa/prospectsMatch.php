@@ -119,11 +119,11 @@ $results = $stmt->fetchAll();
                                                 echo "<tr>";
                                                 echo "<td>" . $house['fName'] . " " . $house['lName'] . "</td>";
                                                 echo "<td>" . $house['address'] . " " . $house['city'] . " " . $house['state'] . " " . $house['zip'] . "</td>";
-                                                echo "<td>" . $house['price'] . "</td>";
+                                                echo "<td>$" . number_format($house['price']) . "</td>";
                                                 echo "<td>" . $house['bedrooms'] . "</td>";
                                                 echo "<td>" . $house['bathrooms'] . "</td>";
                                                 echo "<td>" . $house['zip'] . "</td>";
-                                                echo "<td>" . $house['sqft'] . "</td>";
+                                                echo "<td>" . number_format($house['sqft']) . "</td>";
                                                 echo "</tr>";
                                             }
                                             ?>
