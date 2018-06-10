@@ -7,7 +7,12 @@ if (!isset($_SESSION['userId'])) {
     header("Location: http://www.oversite.cc/login.php");
 }
 
-
+    $mlsIdSql = "SELECT mlsId FROM UsersInfo WHERE userId = :userId";
+    $mlsParameters = array();
+    $mlsParameters[':userId'] = $_SESSION['userId'];
+    $mlsStmt = $dbConn->prepare($favoriteSql);
+    $mlsStmt->execute($mlsParameters);
+    $mlsResults = $mlsStmt->fetch();
 
  $address = $_POST['address'];
  $city = $_POST['city'];
@@ -27,10 +32,11 @@ if (!isset($_SESSION['userId'])) {
 // echo "price " . $price . "<br>"."<br>";
 // echo "sqft " . $sqft  . "<br>"."<br>";
 
-$sql = "INSERT INTO HouseInfo (userId, status, address, city, state, zip, bedrooms, bathrooms, price, sqft, flyer)
-	    VALUES (:userId, :status, :address, :city, :state, :zip, :bedrooms, :bathrooms, :price, :sqft, :flyer)";
+$sql = "INSERT INTO HouseInfo (userId, agentMlsId, status, address, city, state, zip, bedrooms, bathrooms, price, sqft, flyer)
+	    VALUES (:userId, :agentMlsId, :status, :address, :city, :state, :zip, :bedrooms, :bathrooms, :price, :sqft, :flyer)";
         $namedParameters = array();
         $namedParameters[":userId"] = $_SESSION['userId'];
+        $namedParameters[":userId"] = $mlsResults['mlsId'];
         // $namedParameters[":listingId"] = $response[$keys[$i]]['listingID'];
         $namedParameters[":status"] = "added";
         $namedParameters[":address"] = $address;
