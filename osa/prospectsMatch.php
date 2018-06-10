@@ -109,6 +109,7 @@ $results = $stmt->fetchAll();
                                             <th>Bathroom</th>
                                             <th>Zip</th>
                                             <th>SQFT</th>
+                                            <th>View House</th>
                                         </thead>
                                         <tbody>
                                             
@@ -124,6 +125,7 @@ $results = $stmt->fetchAll();
                                                 echo "<td>" . $house['bathrooms'] . "</td>";
                                                 echo "<td>" . $house['zip'] . "</td>";
                                                 echo "<td>" . number_format($house['sqft']) . "</td>";
+                                                 echo "<td>" . "" . "</td>";
                                                 echo "</tr>";
                                             }
                                             ?>
