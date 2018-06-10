@@ -85,6 +85,12 @@ $results = $stmt->fetchAll();
                 <div class="col-md-12">
                             <div class="box box-success">
                                 <div class="box-header">
+                                    <h3><?php echo $prospectResult['firstName'] . " " . $prospectResult['lastName']; ?>
+                                    </h3>
+                                    <h4><?php echo  "<strong>Price:</strong>  $" . number_format($prospectResult['price']) .
+                                    " <strong>Bed:</strong>  " . $prospectResult['bedroom'] . " <strong>Bath:</strong>  " . $prospectResult['bathroom'] . " <strong>Zip:</strong>  " . 
+                                    $prospectResult['zip'] . " <strong>SqFt:</strong> " . number_format($prospectResult['sqft']); 
+                                    ?></h4>
                                     <h4>Active Prospects</h4>
                                     <!-- <button onClick="showProspectModal()">Add Prospect</button> -->
                                 </div>
@@ -102,16 +108,7 @@ $results = $stmt->fetchAll();
                                             <th>SQFT</th>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                            <td>Prospect</td>
-                                            <td></td>
-                                            <td><?php echo $prospectResult['price'];  ?></td>
-                                            <td><?php echo $prospectResult['bedroom'];  ?></td>
-                                            <td><?php echo $prospectResult['bathroom'];  ?></td>
-                                            <td><?php echo $prospectResult['zip'];  ?></td>
-                                            <td><?php echo $prospectResult['sqft'];  ?></td>
-                                        </tr>
-
+                                            
                                             <?php
 
                                             foreach ($results as $house) 
