@@ -111,6 +111,7 @@ $visitorResults = $visitorStmt->fetchAll();
                                                     <th>Bedroom</th>
                                                     <th>Bathroom</th>
                                                     <th>Notes</th>
+                                                    <th>House Match</th>
                                                     <th>Delete</th>
                                                     <th data-breakpoints="all">Agent Email</th>
                                                     <th data-breakpoints="all">Agent Phone</th>
@@ -142,6 +143,7 @@ $visitorResults = $visitorStmt->fetchAll();
                                                         echo "<td>" . $lead['bedroomsMin'] . "</td>";
                                                         echo "<td>" . $lead['bathroomsMin'] . "</td>";
                                                         echo "<td>" . $lead['note'] . "</td>";
+                                                        echo '<td><a href="prospectsMatch.php?visitorId=' . $lead['buyerID'] . '" >House Matches</a></td>';
                                                         echo "<td><button>Delete</button></td>";
                                                         echo "<td>" . $lead['agentEmail'] . "</td>";
                                                         echo "<td>" . $lead['agentPhone'] . "</td>";
