@@ -145,7 +145,7 @@ $visitorResults = $visitorStmt->fetchAll();
                                                         echo "<td>" . $lead['bathroomsMin'] . "</td>";
                                                         echo "<td>" . $lead['note'] . "</td>";
                                                         echo '<td><a target="_blank" href="prospectsMatch.php?visitorId=' . $lead['buyerID'] . ' ">House Matches</a></td>';
-                                                        echo '<td><button onClick="moveToTrash(' . $lead['buyerID'] . ')" >Delete</button></td>';
+                                                        // echo '<td><button onClick="moveToTrash(' . $lead['buyerID'] . ')" >Delete</button></td>';
                                                         echo "<td>" . $lead['agentEmail'] . "</td>";
                                                         echo "<td>" . $lead['agentPhone'] . "</td>";
                                                         echo "</tr>";
@@ -211,7 +211,7 @@ $visitorResults = $visitorStmt->fetchAll();
                 $.post( "addToJunk.php", { buyerId: buyerId })
                   .done(function( data ) {
                     alert( "Added to Junk" );
-                    // $("#buyer" + buyerId).hide();
+                    $("#buyer" + buyerId).hide();
                   });
             }
 
