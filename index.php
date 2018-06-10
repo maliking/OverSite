@@ -219,7 +219,7 @@ $keys = array_keys($response);
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h4>Active/Active Contingent Properties</h4>
+                            <h4>Office Active/Active Contingent Properties</h4>
                         </div>
                         <div class="box-body">
                             <table class="table table-bordered table-striped">
