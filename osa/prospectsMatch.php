@@ -14,7 +14,9 @@ $prospectStmt = $dbConn->prepare($prospectInfoSql);
 $prospectStmt->execute($prospectParameters);
 $prospectResult = $prospectStmt->fetch();
 
-$houseMatchSql = "SELECT DISTINCT HouseInfo.address, HouseInfo.* , UsersInfo.firstName as fName, UsersInfo.lastName as lName FROM HouseInfo LEFT JOIN UsersInfo ON HouseInfo.agentMlsId = UsersInfo.mlsId 
+$houseMatchSql = "SELECT DISTINCT HouseInfo.address, HouseInfo.price, HouseInfo.bedrooms, HouseInfo.bathrooms, HouseInfo.city, HouseInfo.state, 
+                HouseInfo.zip , HouseInfo.sqft, UsersInfo.firstName as fName, UsersInfo.lastName as lName  
+                FROM HouseInfo LEFT JOIN UsersInfo ON HouseInfo.agentMlsId = UsersInfo.mlsId 
                 WHERE HouseInfo.bedrooms >= :bedroom AND HouseInfo.bathrooms >= :bathroom AND HouseInfo.price BETWEEN :lessPrice AND :morePrice AND HouseInfo.houseId != '0'
                 AND UsersInfo.userType != '0'
                 ORDER BY price DESC";
@@ -95,7 +97,7 @@ $results = $stmt->fetchAll();
                                     <h4>Active Prospects</h4>
                                     <!-- <button onClick="showProspectModal()">Add Prospect</button> -->
                                 </div>
-                                <div class="box-body" style="height:200px; overflow: auto;">
+                                <div class="box-body" style="height:500px; overflow: auto;">
                                     <table class="table footable table-bordered table-striped">
                                         <thead>
                                             
