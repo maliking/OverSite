@@ -19,10 +19,11 @@ $dbConn = getConnection();
 
 $sqlGetVisitors = "SELECT BuyerInfo.*, UsersInfo.firstName as agentF, UsersInfo.lastName as agentL, UsersInfo.email as agentEmail, UsersInfo.phone as agentPhone, 
                     HouseInfo.address
-                    FROM BuyerInfo LEFT JOIN UsersInfo ON BuyerInfo.userId = UsersInfo.userId LEFT JOIN HouseInfo ON BuyerInfo.houseId = HouseInfo.houseId WHERE junk != 'yes' ";
-
+                    FROM BuyerInfo LEFT JOIN UsersInfo ON BuyerInfo.userId = UsersInfo.userId LEFT JOIN HouseInfo ON BuyerInfo.houseId = HouseInfo.houseId WHERE junk != :junk ";
+$visitorPara = array();
+$visitorPara[':junk'] = "yes";
 $visitorStmt = $dbConn->prepare($sqlGetVisitors);
-$visitorStmt->execute();
+$visitorStmt->execute($visitorPara);
 $visitorResults = $visitorStmt->fetchAll();
 ?>
 
