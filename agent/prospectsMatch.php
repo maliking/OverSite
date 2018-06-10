@@ -15,7 +15,7 @@ $prospectStmt->execute($prospectParameters);
 $prospectResult = $prospectStmt->fetch();
 
 $houseMatchSql = "SELECT DISTINCT HouseInfo.address, HouseInfo.price, HouseInfo.bedrooms, HouseInfo.bathrooms, HouseInfo.city, HouseInfo.state, 
-                HouseInfo.zip , HouseInfo.sqft, UsersInfo.firstName as fName, UsersInfo.lastName as lName  
+                HouseInfo.zip , HouseInfo.sqft, HouseInfo.listingId, UsersInfo.firstName as fName, UsersInfo.lastName as lName  
                 FROM HouseInfo LEFT JOIN UsersInfo ON HouseInfo.agentMlsId = UsersInfo.mlsId 
                 WHERE HouseInfo.bedrooms >= :bedroom AND HouseInfo.bathrooms >= :bathroom AND HouseInfo.price BETWEEN :lessPrice AND :morePrice AND HouseInfo.houseId != '0'
                 AND UsersInfo.userType != '0'
