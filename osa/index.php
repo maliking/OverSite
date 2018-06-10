@@ -208,11 +208,11 @@ $visitorResults = $visitorStmt->fetchAll();
             function moveToTrash(buyerId)
             {
                 // alert(buyerId);
-                $.post( "addToJunk.php", { buyerId: buyerId })
-                  .done(function( data ) {
-                    alert( "Added to Junk" );
-                    $("#buyer" + buyerId).hide();
-                  });
+                // $.post( "addToJunk.php", { buyerId: buyerId })
+                //   .done(function( data ) {
+                //     alert( "Added to Junk" );
+                //     $("#buyer" + buyerId).hide();
+                //   });
             }
 
         </script>
