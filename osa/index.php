@@ -19,11 +19,11 @@ $dbConn = getConnection();
 
 $sqlGetVisitors = "SELECT BuyerInfo.*, UsersInfo.firstName as agentF, UsersInfo.lastName as agentL, UsersInfo.email as agentEmail, UsersInfo.phone as agentPhone, 
                     HouseInfo.address
-                    FROM BuyerInfo LEFT JOIN UsersInfo ON BuyerInfo.userId = UsersInfo.userId LEFT JOIN HouseInfo ON BuyerInfo.houseId = HouseInfo.houseId WHERE junk != :junk ";
-$visitorPara = array();
-$visitorPara[':junk'] = "yes";
+                    FROM BuyerInfo LEFT JOIN UsersInfo ON BuyerInfo.userId = UsersInfo.userId LEFT JOIN HouseInfo ON BuyerInfo.houseId = HouseInfo.houseId WHERE 
+                    junk != 'yes'";
+
 $visitorStmt = $dbConn->prepare($sqlGetVisitors);
-$visitorStmt->execute($visitorPara);
+$visitorStmt->execute();
 $visitorResults = $visitorStmt->fetchAll();
 ?>
 
@@ -59,11 +59,11 @@ $visitorResults = $visitorStmt->fetchAll();
         <div class="wrapper">
 
             <!-- BEGIN TEMPLATE header.php INCLUDE -->
-            <?php include "templates-osa/header.php"; ?>
+            <?php include "templates-osa/header.php" ?>
             <!-- END TEMPLATE header.php INCLUDE -->
 
             <!-- BEGIN TEMPLATE nav.php INCLUDE -->
-            <?php include "templates-osa/nav.php"; ?>
+            <?php include "templates-osa/nav.php" ?>
             <!-- END TEMPLATE nav.php INCLUDE -->
 
 
@@ -123,7 +123,7 @@ $visitorResults = $visitorStmt->fetchAll();
                                                <?php
                                                     foreach ($visitorResults as $lead) 
                                                     {
-                                                        echo "<tr id=buyer>";
+                                                        echo "<tr id=buyer" . $lead['buyerID'] . ">";
                                                         echo "<td>";
                                                         if ($lead['address'] == 'Lead'){
                                                             echo "<span title=\"Lead\" class=\"label label-warning\">ML</span>";
@@ -145,7 +145,7 @@ $visitorResults = $visitorStmt->fetchAll();
                                                         echo "<td>" . $lead['bathroomsMin'] . "</td>";
                                                         echo "<td>" . $lead['note'] . "</td>";
                                                         echo '<td><a target="_blank" href="prospectsMatch.php?visitorId=' . $lead['buyerID'] . ' ">House Matches</a></td>';
-                                                        // echo '<td><button onClick="moveToTrash(' . $lead['buyerID'] . ')" >Delete</button></td>';
+                                                        echo "<td><button onClick=moveToTrash('" . $lead['buyerID'] . "')>Delete</button></td>";
                                                         echo "<td>" . $lead['agentEmail'] . "</td>";
                                                         echo "<td>" . $lead['agentPhone'] . "</td>";
                                                         echo "</tr>";
@@ -205,15 +205,15 @@ $visitorResults = $visitorStmt->fetchAll();
                 });
             });
 
-            // function moveToTrash(buyerId)
-            // {
+            function moveToTrash(buyerId)
+            {
                 // alert(buyerId);
-                // $.post( "addToJunk.php", { buyerId: buyerId })
-                //   .done(function( data ) {
-                //     alert( "Added to Junk" );
-                //     $("#buyer" + buyerId).hide();
-                //   });
-            // }
+                $.post( "addToJunk.php", { buyerId: buyerId })
+                  .done(function( data ) {
+                    alert( "Added to Junk" );
+                    $("#buyer" + buyerId).hide();
+                  });
+            }
 
         </script>
         <script>
