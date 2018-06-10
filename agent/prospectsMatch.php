@@ -6,6 +6,24 @@ if (!isset($_SESSION['userId'])) {
 }
 require '../databaseConnection.php';
 $dbConn = getConnection();
+
+$prospectInfoSql = "SELECT * FROM favorites WHERE favoriteId = :favoriteId";
+$prospectParameters = array();
+$prospectParameters[':favoriteId'] = $_GET['visitorId'];
+$prospectStmt = $dbConn->prepare($prospectInfoSql);
+$prospectStmt->execute($prospectParameters);
+$prospectResult = $prospectStmt->fetch();
+
+$houseMatchSql = "SELECT HouseInfo.* , UsersInfo.firstName as fName, UsersInfo.lastName as lName FROM HouseInfo LEFT JOIN UsersInfo ON HouseInfo.agentMlsId = UsersInfo.mlsId WHERE bedrooms <= :bedroom AND bathrooms <= :bathroom AND price BETWEEN :lessPrice AND :morePrice
+                ORDER BY price DESC";
+$namedParameters = array();
+$namedParameters[':morePrice'] = $prospectResult['price'] + 70000;
+$namedParameters[':lessPrice'] = $prospectResult['price'] - 50000;
+$namedParameters[':bedroom'] = $prospectResult['bedroom'] ;
+$namedParameters[':bathroom'] = $prospectResult['bathroom'] ;
+$stmt = $dbConn->prepare($houseMatchSql);
+$stmt->execute($namedParameters);
+$results = $stmt->fetchAll();
 ?>
 
     <!DOCTYPE html>
@@ -83,15 +101,18 @@ $dbConn = getConnection();
                                         </thead>
                                         <tbody>
                                             <?php
-                                            echo "<tr>";
-                                            echo "<td></td>";
-                                            echo "<td></td>";
-                                            echo "<td></td>";
-                                            echo "<td></td>";
-                                            echo "<td></td>";
-                                            echo "<td></td>";
-                                            echo "<td></td>";
-                                            echo "</tr>";
+                                            foreach ($results as $house) 
+                                            {                                            
+                                                echo "<tr>";
+                                                echo "<td>" . $house['fName'] . " " . $house['lName'] . "</td>";
+                                                echo "<td>" . $house['address'] . " " . $house['city'] . " " . $house['state'] . " " . $house['zip'] . "</td>";
+                                                echo "<td>" . $house['price'] . "</td>";
+                                                echo "<td>" . $house['bedrooms'] . "</td>";
+                                                echo "<td>" . $house['bathrooms'] . "</td>";
+                                                echo "<td>" . $house['zip'] . "</td>";
+                                                echo "<td>" . $house['sqft'] . "</td>";
+                                                echo "</tr>";
+                                            }
                                             ?>
                                             <!-- <tr>
                                             <td class="fa fa-usd"  style="color: green; text-align: center;" onClick="deleteFavorite()"></td>

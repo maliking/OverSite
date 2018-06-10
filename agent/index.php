@@ -647,7 +647,7 @@ $keys = array_keys($response);
                                                 echo '<td id=bathroom' . $favorite['favoriteId'] . ' onClick=editFavorite("bathroom",' . $favorite['favoriteId'] . ')>' . $favorite['bathroom'] . '</td>';
                                                 echo '<td id=sqft' . $favorite['favoriteId'] . ' onClick=editFavorite("sqft",' . $favorite['favoriteId'] . ')>' . $favorite['sqft'] . '</td>';
                                                 echo '<td id=lotSize' . $favorite['favoriteId'] . ' onClick=editFavorite("lotSize",' . $favorite['favoriteId'] . ')>' . $favorite['lotSize'] . '</td>';
-                                                echo '<td><a href="prospectMatch.php">House Matches</a></td>';
+                                                echo '<td><a href="prospectsMatch.php?visitorId=' . $favorite['favoriteId'] . '" >House Matches</a></td>';
                                                 echo "</tr>";
                                             }
                                             ?>
