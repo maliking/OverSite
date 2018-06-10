@@ -16,6 +16,7 @@ $prospectResult = $prospectStmt->fetch();
 
 $houseMatchSql = "SELECT HouseInfo.* , UsersInfo.firstName as fName, UsersInfo.lastName as lName FROM HouseInfo LEFT JOIN UsersInfo ON HouseInfo.agentMlsId = UsersInfo.mlsId 
                 WHERE HouseInfo.bedrooms <= :bedroom AND HouseInfo.bathrooms <= :bathroom AND HouseInfo.price BETWEEN :lessPrice AND :morePrice AND HouseInfo.houseId != '0'
+                AND HouseInfo.listingId != NULL AND UsersInfo.userType !='0'
                 ORDER BY price DESC";
 $namedParameters = array();
 $namedParameters[':morePrice'] = $prospectResult['price'] + 70000;
