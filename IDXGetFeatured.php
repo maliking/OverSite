@@ -23,7 +23,7 @@ $results = $stmt->fetchAll();
 function inDatabase($address, $listingId, $results)
 {
     foreach ($results as $result) {
-        if (strtolower($result['address']) == strtolower($address) && $result['listingId'] != NULL  && $result['listingId'] != $listingId) {
+        if (strtolower($result['address']) == strtolower($address) && $result['listingId'] != NULL  && $result['listingId'] == $listingId) {
             return true;
         }
     }
