@@ -36,7 +36,7 @@ $sql = "INSERT INTO HouseInfo (userId, agentMlsId, status, address, city, state,
 	    VALUES (:userId, :agentMlsId, :status, :address, :city, :state, :zip, :bedrooms, :bathrooms, :price, :sqft, :flyer)";
         $namedParameters = array();
         $namedParameters[":userId"] = $_SESSION['userId'];
-        $namedParameters[":userId"] = $mlsResults['mlsId'];
+        $namedParameters[":agentMlsId"] = $mlsResults['mlsId'];
         // $namedParameters[":listingId"] = $response[$keys[$i]]['listingID'];
         $namedParameters[":status"] = "added";
         $namedParameters[":address"] = $address;
