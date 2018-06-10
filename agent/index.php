@@ -651,7 +651,7 @@ $keys = array_keys($response);
                                                 echo "</tr>";
                                             }
                                             ?>
-                                            <tr>
+                                            <!-- <tr>
                                             <td class="fa fa-usd"  style="color: green; text-align: center;" onClick="deleteFavorite()"></td>
                                             <td>test</td>
                                             <td></td>
@@ -663,7 +663,7 @@ $keys = array_keys($response);
                                             <td></td>
                                             <td></td>
                                             <td><a href="prospectsMatch.php">House Matches</a></td>
-                                        </tr>
+                                        </tr> -->
                                         </tbody>
                                     </table>
                                 </div>
