@@ -158,9 +158,9 @@ $keys = array_keys($response);
                                                 if($response[$keys[$i]]['rntLsePrice'] <= $prospectMaxRangePrice && $response[$keys[$i]]['rntLsePrice'] >= $prospectMinRangePrice &&
                                                     $response[$keys[$i]]['totalBaths'] >= $prospectResult['bathroomsMin'] && $response[$keys[$i]]['bedrooms'] >= $prospectResult['bedroomsMin'])
                                                 {     
-                                                    $agentNameSql = "SELECT firstName, lastName FROM UsersInfo WHERE userId = :userId";
+                                                    $agentNameSql = "SELECT firstName, lastName FROM UsersInfo WHERE mlsId = :mlsId";
                                                     $param = array();
-                                                    $param[':userId'] = $response[$keys[$i]]['listingAgentID'];
+                                                    $param[':mlsId'] = $response[$keys[$i]]['listingAgentID'];
                                                     $stmt = $dbConn->prepare($agentNameSql);
                                                     $stmt->execute($param);
                                                     $agentNameResult = $stmt->fetch();
