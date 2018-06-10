@@ -7,7 +7,7 @@ use Twilio\Rest\Client;
 require 'databaseConnection.php';
 $dbConn = getConnection();
 
-$sql = "SELECT address
+$sql = "SELECT address, listingId
             FROM HouseInfo";
 // WHERE userId = :userId";
 
@@ -23,7 +23,7 @@ $results = $stmt->fetchAll();
 function inDatabase($address, $results)
 {
     foreach ($results as $result) {
-        if (strtolower($result['address']) == strtolower($address)) {
+        if (strtolower($result['address']) == strtolower($address) && $result['listingId'] != "NULL" ) {
             return true;
         }
     }
@@ -64,10 +64,11 @@ $keys = array_keys($response);
 for ($i = 0; $i < sizeof($keys); $i++) {
     if (!inDatabase($response[$keys[$i]]['address'], $results)) {
         $sql = "INSERT INTO HouseInfo
-	                 (userId, listingId, status, address, city, state, zip, bedrooms, bathrooms, price, sqft)
-	                 VALUES (:userId, :listingId, :status, :address, :city, :state, :zip, :bedrooms, :bathrooms, :price, :sqft)";
+	                 (userId, agentMlsId, listingId, status, address, city, state, zip, bedrooms, bathrooms, price, sqft)
+	                 VALUES (:userId, :agentMlsId, :listingId, :status, :address, :city, :state, :zip, :bedrooms, :bathrooms, :price, :sqft)";
         $namedParameters = array();
         $namedParameters[":userId"] = "0";
+        $namedParameters[":agentMlsId"] = $response[$keys[$i]]['listingAgentID'];
         $namedParameters[":listingId"] = $response[$keys[$i]]['listingID'];
         $namedParameters[":status"] = strtolower($response[$keys[$i]]['idxStatus']);
         $namedParameters[":address"] = $response[$keys[$i]]['address'];
@@ -136,19 +137,19 @@ for ($i = 0; $i < sizeof($keys); $i++) {
         $agentStmt->execute($agentParam);
         $agentPhoneResult = $agentStmt->fetch();
 
-        if($leadCount > 1)
-        {
+        // if($leadCount > 1)
+        // {
 
-            $twilio_phone_number = "+18315851661";
-            $client = new Client($sid, $token);
-            $client->messages->create(
-                $agentPhoneResult['phone'],
-                array(
-                    "From" => $twilio_phone_number,
-                    "Body" => $message,
-                )
-            );
-        }
+        //     $twilio_phone_number = "+18315851661";
+        //     $client = new Client($sid, $token);
+        //     $client->messages->create(
+        //         $agentPhoneResult['phone'],
+        //         array(
+        //             "From" => $twilio_phone_number,
+        //             "Body" => $message,
+        //         )
+        //     );
+        // }
 
     }
 }
