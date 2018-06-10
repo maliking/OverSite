@@ -123,7 +123,7 @@ $visitorResults = $visitorStmt->fetchAll();
                                                <?php
                                                     foreach ($visitorResults as $lead) 
                                                     {
-                                                        echo "<tr id=buyer" . $lead['buyerID'] . ">";
+                                                        echo "<tr id=buyer>";
                                                         echo "<td>";
                                                         if ($lead['address'] == 'Lead'){
                                                             echo "<span title=\"Lead\" class=\"label label-warning\">ML</span>";
