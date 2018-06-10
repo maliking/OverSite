@@ -9,7 +9,7 @@ if (!isset($_SESSION['userId'])) {
 
     $mlsIdSql = "SELECT mlsId FROM UsersInfo WHERE userId = :userId";
     $mlsParameters = array();
-    $mlsParameters[':userId'] = $_SESSION['userId'];
+    $mlsParameters[':userId'] = $_SESSION['mlsIdSql'];
     $mlsStmt = $dbConn->prepare($favoriteSql);
     $mlsStmt->execute($mlsParameters);
     $mlsResults = $mlsStmt->fetch();
