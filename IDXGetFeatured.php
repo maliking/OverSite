@@ -20,10 +20,10 @@ $stmt->execute();
 $results = $stmt->fetchAll();
 
 
-function inDatabase($address, $results)
+function inDatabase($address, $listingId, $results)
 {
     foreach ($results as $result) {
-        if (strtolower($result['address']) == strtolower($address) && $result['listingId'] != NULL ) {
+        if (strtolower($result['address']) == strtolower($address) && $result['listingId'] != NULL  && $result['listingId'] != $listingId) {
             return true;
         }
     }
@@ -62,7 +62,7 @@ if ($code >= 200 || $code < 300) {
 $keys = array_keys($response);
 
 for ($i = 0; $i < sizeof($keys); $i++) {
-    if (!inDatabase($response[$keys[$i]]['address'], $results)) {
+    if (!inDatabase($response[$keys[$i]]['address'], $response[$keys[$i]]['listingID'], $results)) {
         $sql = "INSERT INTO HouseInfo
 	                 (userId, agentMlsId, listingId, status, address, city, state, zip, bedrooms, bathrooms, price, sqft)
 	                 VALUES (:userId, :agentMlsId, :listingId, :status, :address, :city, :state, :zip, :bedrooms, :bathrooms, :price, :sqft)";
