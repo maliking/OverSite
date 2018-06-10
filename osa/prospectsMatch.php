@@ -28,6 +28,40 @@ $namedParameters[':bathroom'] = $prospectResult['bathroomsMin'] ;
 $stmt = $dbConn->prepare($houseMatchSql);
 $stmt->execute($namedParameters);
 $results = $stmt->fetchAll();
+
+$url = 'https://api.idxbroker.com/clients/featured';
+
+$method = 'GET';
+
+// headers (required and optional)
+$headers = array(
+    'Content-Type: application/x-www-form-urlencoded', // required
+    'accesskey: e1Br0B5DcgaZ3@JXI9qib5', // required - replace with your own
+    'outputtype: json' // optional - overrides the preferences in our API control page
+);
+
+// set up cURL
+$handle = curl_init();
+curl_setopt($handle, CURLOPT_URL, $url);
+curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+
+// exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
+$response = curl_exec($handle);
+$code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+
+if ($code >= 200 || $code < 300) {
+    $response = json_decode($response, true);
+} else {
+    $error = $code;
+}
+
+// print_r($response);
+
+$keys = array_keys($response);
+
 ?>
 
     <!DOCTYPE html>
@@ -116,23 +150,37 @@ $results = $stmt->fetchAll();
                                             
                                             <?php
 
-                                            foreach ($results as $house) 
-                                            {                                            
-                                                echo "<tr>";
-                                                echo "<td>" . $house['fName'] . " " . $house['lName'] . "</td>";
-                                                echo "<td>" . $house['address'] . " " . $house['city'] . " " . $house['state'] . " " . $house['zip'] . "</td>";
-                                                echo "<td>$" . number_format($house['price']) . "</td>";
-                                                echo "<td>" . $house['bedrooms'] . "</td>";
-                                                echo "<td>" . $house['bathrooms'] . "</td>";
-                                                echo "<td>" . $house['zip'] . "</td>";
-                                                echo "<td>" . number_format($house['sqft']) . "</td>";
-                                                echo '<td ><a href="viewHouseImages.php?id=' . $house['listingId'] . '" target="_blank"><button >View</button></a></td>';
-                                                echo '<td ><a href="https://maps.google.com/?q=' . $house['address'] . 
-                                                    " " . $house['city'] . ", " . $house['state'] . 
-                                                    " " . $house['zip'] . '" target="_blank"><button >View on Map</button></a></td>';
+                                            $prospectMaxRangePrice = $prospectResult['priceMax'] + 70000;
+                                            $prospectMinRangePrice = $prospectResult['priceMax'] - 50000;
+                                            // foreach ($results as $house) 
+                                            for ($i = 0; $i < sizeof($keys); $i++)
+                                            {                                     
+                                                if($response[$keys[$i]]['rntLsePrice'] <= $prospectMaxRangePrice && $response[$keys[$i]]['rntLsePrice'] >= $prospectMinRangePrice &&
+                                                    $response[$keys[$i]]['totalBaths'] >= $prospectResult['bathroomsMin'] && $response[$keys[$i]]['bedrooms'] >= $prospectResult['bedroomsMin'])
+                                                {     
+                                                    $agentNameSql = "SELECT firstName, lastName FROM UsersInfo WHERE userId = :userId";
+                                                    $param = array();
+                                                    $param[':userId'] = $response[$keys[$i]]['listingAgentID'];
+                                                    $stmt = $dbConn->prepare($agentNameSql);
+                                                    $stmt->execute($param);
+                                                    $agentNameResult = $stmt->fetch();
 
-                                                echo "</tr>";
+                                                    echo "<tr>";
+                                                    echo "<td>" . $agentNameResult['firstName'] . " " . $agentNameResult['lastName'] . "</td>";
+                                                    echo "<td>" . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] . "</td>";
+                                                    echo "<td>$" . number_format($response[$keys[$i]]['rntLsePrice']) . "</td>";
+                                                    echo "<td>" . $response[$keys[$i]]['bedrooms'] . "</td>";
+                                                    echo "<td>" . $response[$keys[$i]]['totalBaths'] . "</td>";
+                                                    echo "<td>" . $response[$keys[$i]]['zipcode'] . "</td>";
+                                                    echo "<td>" . $response[$keys[$i]]['sqFt'] . "</td>";
+                                                    echo '<td ><a href="viewHouseImages.php?id=' . $response[$keys[$i]]['listingID'] . '" target="_blank"><button >View</button></a></td>';
+                                                    echo '<td ><a href="https://maps.google.com/?q=' . $response[$keys[$i]]['address'] . 
+                                                        " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . 
+                                                        " " . $response[$keys[$i]]['zipcode'] . '" target="_blank"><button >View on Map</button></a></td>';
+                                                    echo "</tr>";
+                                                }
                                             }
+
                                             ?>
                                             <!-- <tr>
                                             <td class="fa fa-usd"  style="color: green; text-align: center;" onClick="deleteFavorite()"></td>
