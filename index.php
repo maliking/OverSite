@@ -37,10 +37,11 @@ $stmtRank->execute();
 $rank = $stmtRank->fetchAll();
 
 $dbConnInContract = getConnection();
-$inContractCountSql = "SELECT count(*) as count FROM transactions";
+$inContractCountSql = "SELECT *, count(*) as count, UsersInfo.firstName, UsersInfo.lastName  FROM transactions LEFT JOIN UsersInfo ON 
+                        transactions.userId = UsersInfo.userId";
 $stmtInContractCount = $dbConnInContract->prepare($inContractCountSql);
 $stmtInContractCount->execute();
-$inContractCount = $stmtInContractCount->fetch();
+$inContractCount = $stmtInContractCount->fetchAll();
 
 
 
@@ -145,7 +146,7 @@ $keys = array_keys($response);
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            <h3><?php echo $inContractCount['count']; ?></h3>
+                            <h3><?php echo $inContractCount[0]['count']; ?></h3>
                             <p>Pending Listings</p>
                         </div>
                         <div class="icon">
@@ -225,13 +226,14 @@ $keys = array_keys($response);
                             <table class="table table-bordered table-striped">
                                 <thead>
                                 <tr>
+                                    <th>Agent</th>
                                     <th>Property</th>
                                     <th data-breakpoints="all">Client Name</th>
                                     <th data-breakpoints="all">Client Number</th>
                                     <th data-breakpoints="all">Client Email</th>
                                     <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                     data-placement="top"
-                                                                    title="Approval Date">Aprv. </a></th>
+                                                                    title="Accepted Date">Acc. </a></th>
                                     <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                     data-placement="top" title="Earnest Money Deposit">EMD </a>
                                     </th>
@@ -257,7 +259,28 @@ $keys = array_keys($response);
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
+                                    <?php
+                                    foreach ($inContractCount as $inContract) 
+                                    {
+                                        $day = $inContract['accDay'];
+                                        echo "<tr>";
+                                        echo "<td>" . $inContract['firstName'] . " " . $inContract['lastName'] . "</td>";
+                                        echo "<td>" . $inContract['address'] . "</td>";
+                                        echo "<td>" . $inContract['clientName'] . "</td>";
+                                        echo "<td>" . $inContract['clientNum'] . "</td>";
+                                        echo "<td>" . $inContract['clientEmail'] . "</td>";
+                                        echo "<td>" . date('m/d/y', strtotime($day)) . "</td>";
+                                        echo "<td>" . date('m/d/y', strtotime($day . ' + '. $inContract['emdDays'] . ' days' )) . "</td>";
+                                        echo "<td>" . date('m/d/y', strtotime($day . ' + '. $inContract['sellerDiscDays'] . ' days' )) . "</td>";
+                                        echo "<td>" . date('m/d/y', strtotime($day . ' + '. $inContract['genInspecDays'] . ' days' )) . "</td>";
+                                        echo "<td>" . date('m/d/y', strtotime($day . ' + '. $inContract['appraisalDays'] . ' days' )) . "</td>";
+                                        echo "<td>" . date('m/d/y', strtotime($day . ' + '. $inContract['lcDays'] . ' days' )) . "</td>";
+                                        echo "<td>" . date('m/d/y', strtotime($day . ' + '. $inContract['coeDays'] . ' days' )) . "</td>";
+                                        echo "<td>" . $inContract['notes'] . "</td>";
+                                        echo "</tr>";
+                                    }
+                                    ?>
+                                <!-- <tr>
 
                                     <td>1204 Rogers Ct. Salinas, CA 94934</td>
                                     <td>Patty Hershang</td>
@@ -307,7 +330,7 @@ $keys = array_keys($response);
                                         <span class="label label-default">Incomplete</span>
                                     </td>
                                     <td>Write some notes here!</td>
-                                </tr>
+                                </tr> -->
                                 </tbody>
                             </table>
                         </div>
