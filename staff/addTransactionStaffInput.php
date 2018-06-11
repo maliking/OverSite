@@ -35,7 +35,7 @@ VALUES (:houseId, :userId, :address, :transType, :clientName, :clientNum, :accDa
 $parameters = array();
 $parameters[':houseId'] = "0";
 $parameters[':userId'] = $_POST['userId'];
-$parameters[':address'] = $address['address'] . " " . $address['city'] . " ," . $address['state'] . " " . $address['zip'];
+$parameters[':address'] = $_POST['address'] . " " . $_POST['city'] . " ," . $_POST['state'] . " " . $_POST['zip'];
 $parameters[':transType'] = "Listing";
 $parameters[':clientName'] = "NA";
 $parameters[':clientNum'] = "NA";
