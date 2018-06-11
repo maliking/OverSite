@@ -37,12 +37,16 @@ $stmtRank->execute();
 $rank = $stmtRank->fetchAll();
 
 $dbConnInContract = getConnection();
-$inContractCountSql = "SELECT *, count(*) as count, UsersInfo.firstName, UsersInfo.lastName  FROM transactions LEFT JOIN UsersInfo ON 
+$inContractSql = "SELECT *, UsersInfo.firstName, UsersInfo.lastName  FROM transactions LEFT JOIN UsersInfo ON 
                         transactions.userId = UsersInfo.userId";
+$stmtInContract = $dbConnInContract->prepare($inContractSql);
+$stmtInContract->execute();
+$inContractResults = $stmtInContract->fetchAll();
+
+$inContractCountSql = "SELECT count(*) as count FROM transactions";
 $stmtInContractCount = $dbConnInContract->prepare($inContractCountSql);
 $stmtInContractCount->execute();
-$inContractCount = $stmtInContractCount->fetchAll();
-
+$inContractCountResult = $stmtInContractCount->fetch();
 
 
 $url = 'https://api.idxbroker.com/clients/featured';
@@ -146,7 +150,7 @@ $keys = array_keys($response);
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            <h3><?php echo $inContractCount[0]['count']; ?></h3>
+                            <h3><?php echo $inContractCountResult['count']; ?></h3>
                             <p>Pending Listings</p>
                         </div>
                         <div class="icon">
@@ -260,7 +264,7 @@ $keys = array_keys($response);
                                 </thead>
                                 <tbody>
                                     <?php
-                                    foreach ($inContractCount as $inContract) 
+                                    foreach ($inContractResults as $inContract) 
                                     {
                                         $day = $inContract['accDay'];
                                         echo "<tr>";
