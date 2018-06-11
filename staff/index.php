@@ -343,7 +343,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                 var inputZip = $('#inputZip').val();;
 
                 // alert(accDate);
-                alert(agentSelected);
+                // alert(agentSelected);
 
                 // alert(houseSelected);
                 if(houseSelected == "" && inputAddress != "" && inputState != "" && inputCity != "" && inputZip != "")
