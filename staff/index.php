@@ -143,7 +143,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                             </div>
                             <!-- /.box -->
                         </div>
-                        <div class="col-xs-3">
+                        <div class="col-xs-3" >
 
                             <div class="box">
 
@@ -151,10 +151,10 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                                 <div class="box-header">
                                     <h4>Agent Schedules</h4>
                                 </div>
-                                <div class="col-xs-12">
+                                <div class="col-xs-12" >
                                     <button style="margin-bottom: 10px" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal">Add New</button>
                                 </div>
-                                <div class="box-body">
+                                <div class="box-body" style="height:550px; overflow:auto;">
 
                                     <div>
                                         <input type="checkbox" id="selectAll" name="selectAll" value="selectAll">
@@ -164,7 +164,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                                         <label for="deselectAll">Deselect All</label>
                                     </div>
 
-                                    <table class="table table-striped">
+                                    <table class="table table-striped" >
 
                                         <?php
                                         foreach ($agentResults as $agent) {
@@ -187,7 +187,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                                 <div class="box-header">
                                     <h4>Properties</h4>
                                 </div>
-                                <div class="box-body">
+                                <div class="box-body" style="height:600px; overflow:auto;">
                                     <table class="table table-bordered table-striped">
                                         <thead>
                                         <tr>
