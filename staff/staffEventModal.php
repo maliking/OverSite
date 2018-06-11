@@ -77,6 +77,14 @@ $keys = array_keys($response);
                         </select>
 
                         <br>
+                            <strong>OR</strong>
+                        <br>
+                        Address:&nbsp&nbsp<input type="text" name="address" id="inputAddress" placeholder="Address"><br>
+                        City:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="city" id="inputCity" placeholder="City"><br>
+                        State:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="state" id="inputState" placeholder="State"><br>
+                        Zip:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="zip" id="inputZip" placeholder="Zip"><br>
+
+                        <br>
                         <label>Date In-Contract:</label>
                         <div>
                             <input type="date" name="accDate" id="newAccDate">

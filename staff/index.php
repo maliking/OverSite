@@ -336,10 +336,34 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                 var houseSelected = $('#houseId').children(":selected").attr("value");   
                 var agentSelected = $('#agentName').children(":selected").attr("value"); 
                 var accDate = $('#newAccDate').val();
+
+                var inputAddress = $('#inputAddress').val();;
+                var inputCity = $('#inputCity').val();;
+                var inputState = $('#inputState').val();;
+                var inputZip = $('#inputZip').val();;
+
                 // alert(accDate);
-                // alert(agentSelected);
-                $.post("addTransactionStaff.php", {userId: agentSelected, houseId: houseSelected, accDate: accDate});
-                alert("House In-Contract");
+                alert(agentSelected);
+
+                // alert(houseSelected);
+                if(houseSelected == "" && inputAddress != "" && inputState != "" && inputCity != "" && inputZip != "")
+                {
+                    $.post("addTransactionStaffInput.php", {userId: agentSelected, address: inputAddress, state: inputState, 
+                                                            city: inputCity, zip: inputZip , accDate: accDate});
+                    alert("House In-Contract");
+                    
+                }
+                else if(houseSelected != "" && inputAddress == "" && inputState == "" && inputCity == "" && inputZip == "")
+                {
+                    $.post("addTransactionStaff.php", {userId: agentSelected, houseId: houseSelected, accDate: accDate});
+                    alert("House In-Contract");
+                }
+                else
+                {
+                    alert("Choose House from dropdown or input house data.");
+                }
+                
+                
             }
             $(document).ready(function () {
                 var currentEvents = "getTransactions.php?all=true";

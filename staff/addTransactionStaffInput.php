@@ -5,19 +5,19 @@ require("../databaseConnection.php");
 session_start();
 $dbConn = getConnection();
 
-$houseId = $_POST['houseId'];
-if($houseId[0] == "M")
-{
-	// $houseId = substr($_POST['houseId'], 1, -1);
-	$sql = "SELECT address, city, state, zip FROM HouseInfo WHERE listingId = :houseId";
-}
-else
-	$sql = "SELECT address, city, state, zip FROM HouseInfo WHERE houseId = :houseId";
-$namedParameters = array();
-$namedParameters[':houseId'] = $houseId;
-$getAddress = $dbConn->prepare($sql);
-$getAddress->execute($namedParameters);
-$address = $getAddress->fetch();
+// $houseId = $_POST['houseId'];
+// if($houseId[0] == "M")
+// {
+// 	// $houseId = substr($_POST['houseId'], 1, -1);
+// 	$sql = "SELECT address, city, state, zip FROM HouseInfo WHERE listingId = :houseId";
+// }
+// else
+// 	$sql = "SELECT address, city, state, zip FROM HouseInfo WHERE houseId = :houseId";
+// $namedParameters = array();
+// $namedParameters[':houseId'] = $houseId;
+// $getAddress = $dbConn->prepare($sql);
+// $getAddress->execute($namedParameters);
+// $address = $getAddress->fetch();
 
 $threeDay = dateVerify(3);
 $sevenDay = dateVerify(7);
@@ -33,7 +33,7 @@ VALUES (:houseId, :userId, :address, :transType, :clientName, :clientNum, :accDa
 	:septicInspecDays, :waterInspecDays, :appraisalDays, :apprOrdered, :apprComp, :lcDays, :coeDays, :coeOrgDate, :notes)";
 
 $parameters = array();
-$parameters[':houseId'] = $houseId;
+$parameters[':houseId'] = "0";
 $parameters[':userId'] = $_POST['userId'];
 $parameters[':address'] = $address['address'] . " " . $address['city'] . " ," . $address['state'] . " " . $address['zip'];
 $parameters[':transType'] = "Listing";
