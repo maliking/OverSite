@@ -343,24 +343,26 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                 var inputZip = $('#inputZip').val();;
 
                 // alert(accDate);
+
                 // alert(agentSelected);
 
                 // alert(houseSelected);
-                if(houseSelected == "" && inputAddress != "" && inputState != "" && inputCity != "" && inputZip != "")
+
+                if(houseSelected == "" && inputAddress != "" && inputState != "" && inputCity != "" && inputZip != "" && accDate != "")
                 {
                     $.post("addTransactionStaffInput.php", {userId: agentSelected, address: inputAddress, state: inputState, 
                                                             city: inputCity, zip: inputZip , accDate: accDate});
                     alert("House In-Contract");
                     
                 }
-                else if(houseSelected != "" && inputAddress == "" && inputState == "" && inputCity == "" && inputZip == "")
+                else if(houseSelected != "" && inputAddress == "" && inputState == "" && inputCity == "" && inputZip == "" && accDate != "")
                 {
                     $.post("addTransactionStaff.php", {userId: agentSelected, houseId: houseSelected, accDate: accDate});
                     alert("House In-Contract");
                 }
                 else
                 {
-                    alert("Choose House from dropdown or input house data.");
+                    alert("Choose House from dropdown, input house data, or check date.");
                 }
                 
                 
