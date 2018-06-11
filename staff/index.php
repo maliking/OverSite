@@ -22,6 +22,50 @@ $sqlGetAgents = "SELECT userId, firstName, lastName, mlsId FROM UsersInfo";
 $agentStmt = $dbConn->prepare($sqlGetAgents);
 $agentStmt->execute();
 $agentResults = $agentStmt->fetchAll();
+
+$url = 'https://api.idxbroker.com/clients/featured';
+
+$method = 'GET';
+
+// headers (required and optional)
+$headers = array(
+    'Content-Type: application/x-www-form-urlencoded', // required
+    'accesskey: e1Br0B5DcgaZ3@JXI9qib5', // required - replace with your own
+    'outputtype: json' // optional - overrides the preferences in our API control page
+);
+
+// set up cURL
+$handle = curl_init();
+curl_setopt($handle, CURLOPT_URL, $url);
+curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+
+// exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
+$response = curl_exec($handle);
+$code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+
+if ($code >= 200 || $code < 300) {
+    $response = json_decode($response, true);
+} else {
+    $error = $code;
+}
+
+$keys = array_keys($response);
+for ($i = 0; $i < sizeof($keys); $i++) {
+
+                                    
+                                        $agentName = "SELECT firstName, lastName FROM UsersInfo WHERE mlsId = :mlsId";
+                                        $namedParameters = array();
+                                        $namedParameters[':mlsId'] = $response[$keys[$i]]['listingAgentID'];
+                                        $stmt = $dbConn->prepare($agentName);
+                                        $stmt->execute($namedParameters);
+                                        $name = $stmt->fetch();
+    $response[$keys[$i]]['agentName'] = $name['firstName'] . " " . $name['lastName'];              
+
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -82,7 +126,7 @@ $agentResults = $agentStmt->fetchAll();
                 <!-- Main content -->
                 <section class="content">
                     <!-- Small boxes (Stat box) -->
-
+                    <div class="container"> 
 
                     <div class="row">
 
@@ -136,8 +180,77 @@ $agentResults = $agentStmt->fetchAll();
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h4>Properties</h4>
+                                </div>
+                                <div class="box-body">
+                                    <table class="table table-bordered table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th data-breakpoints="xs">Agent</th>
+                                            <th>Property</th>
+                                            <th data-type="number">Bd</th>
+                                            <th data-type="number">Ba</th>
+                                            <th>Price</th>
+                                            <!-- <th data-breakpoints="xs">Images</th>
+                                            <th data-breakpoints="xs">Open House</th>
+                                            <th data-breakpoints="xs">Map</th> -->
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                                // foreach ($result as $house) {
+                                                for ($i = 0; $i < sizeof($keys); $i++) 
+                                                {
+                                                        $agentName = "SELECT firstName, lastName FROM UsersInfo WHERE mlsId = :mlsId";
+                                                        $namedParameters = array();
+                                                        $namedParameters[':mlsId'] = $response[$keys[$i]]['listingAgentID'];
+                                                        $stmt = $dbConn->prepare($agentName);
+                                                        $stmt->execute($namedParameters);
+                                                        $name = $stmt->fetch();
+
+                                                        if(!isset($response[$keys[$i]]['bedrooms']))
+                                                        {
+                                                            $bedrooms = "0";
+                                                        }
+                                                        else
+                                                        {
+                                                            $bedrooms = $response[$keys[$i]]['bedrooms'];
+                                                        }
+                                                        if(!isset($response[$keys[$i]]['totalBaths']))
+                                                        {
+                                                            $bathrooms = "0";
+                                                        }
+                                                        else
+                                                        {
+                                                            $bathrooms = $response[$keys[$i]]['totalBaths'];
+                                                        }   
+
+                                                        echo '<tr>';
+                                                        echo '<td> ' . $name['firstName'] . " " . $name['lastName'] .  '</td>';
+                                                        echo '<td> ' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] .  ' </td>';
+                                                        echo '<td>' . $bedrooms . '</td>';
+                                                        echo '<td>'. $bathrooms .'</td>';
+                                                        echo '<td>'.$response[$keys[$i]]['listingPrice'] .'</td>';
+                                                        echo '</tr>';
+                                                    
+                                                }
+                                                ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- /.box-body -->
+                            </div>
+                            <!-- /.box -->
+                        </div>
+
                         <!-- /.col -->
                     </div>
+                </div>
                     <!-- /.row -->
                 </section>
             </div>

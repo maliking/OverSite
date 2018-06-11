@@ -85,7 +85,9 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                                         $stmt = $dbConn->prepare($agentName);
                                         $stmt->execute($namedParameters);
                                         $name = $stmt->fetch();
-    array_push($response[$keys[$i]]['agentName'], $name['firstName'] . " " . $name['lastName']);              
+    // array_push($response[$keys[$i]]['agentName'], $name['firstName'] . " " . $name['lastName']);              
+    $response[$keys[$i]]['agentName'] = $name['firstName'] . " " . $name['lastName'];              
+
 
 }
 
