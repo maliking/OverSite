@@ -136,6 +136,7 @@ $houses = $stmtHouse->fetchAll();
                                                                 <label for="agentName">Agent Name</label>
                                                                 <select class="form-control" id="agentName"
                                                                         onchange="getLicense()" name="agentName">
+                                                                        <option value=''>Select Agent</option>
                                                                     <?php
                                                                     $license = "";
                                                                     foreach ($results as $result) {
@@ -163,16 +164,19 @@ $houses = $stmtHouse->fetchAll();
 
                                                             <div class="form-group col-xs-4">
                                                                 <label for="houseId">Property Address</label>
-                                                                <select class="form-control" id="houseId"
-                                                                        onchange="getOwners()" name="propertyAddress">
+                                                                <input type="text" class="form-control" id="houseId"
+                                                                       name="propertyAddress"
+                                                                       placeholder="Enter Property Address">
+                                                                <!-- <select class="form-control" id="houseId"
+                                                                        onchange="getOwners()" name="propertyAddress"> -->
 
                                                                     <?php
 
-                                                                    foreach ($houses as $house) {
-                                                                        echo "<option value='" . $house['houseId'] . "'>" . $house['address'] . " " . $house['city'] . " " . $house['state'] . " " . $house['zip'] . "</option>";
-                                                                    }
+                                                                    // foreach ($houses as $house) {
+                                                                    //     echo "<option value='" . $house['houseId'] . "'>" . $house['address'] . " " . $house['city'] . " " . $house['state'] . " " . $house['zip'] . "</option>";
+                                                                    // }
                                                                     ?>
-                                                                </select>
+                                                                <!-- </select> -->
                                                             </div>
                                                             <div class="clearfix"></div>
                                                             <div class="form-group col-xs-2">
@@ -196,12 +200,12 @@ $houses = $stmtHouse->fetchAll();
                                                                 <input type="text" class="form-control" id="beg-comm"
                                                                        name="TYGross" placeholder="" readonly>
                                                             </div>
-                                                            <div class="form-group col-xs-4">
+                                                           <!--  <div class="form-group col-xs-4">
                                                                 <label class="control-label  " for="datetimepicker4">Check
                                                                     Number</label>
                                                                 <input type="text" class="form-control" id="check"
                                                                        name="checkNum" placeholder="">
-                                                            </div>
+                                                            </div> -->
 
                                                             <!-- Commission Lead Type -->
                                                             <div class="form-group col-xs-2">
@@ -291,7 +295,7 @@ $houses = $stmtHouse->fetchAll();
                                                                 <div class="col-xs-3">
                                                                     <input type="text" class="form-control"
                                                                            id="trans-coor" placeholder="" value="200.00"
-                                                                           readonly>
+                                                                           onchange="calculateCommissionFifty()">
                                                                 </div>
 
                                                             </div>
@@ -302,7 +306,7 @@ $houses = $stmtHouse->fetchAll();
                                                                     Fee</label>
                                                                 <div class="col-xs-3">
                                                                     <input type="text" class="form-control" id="tech"
-                                                                           placeholder="" value="50.00" readonly>
+                                                                           placeholder="" value="50.00" onchange="calculateCommissionFifty()">
                                                                 </div>
 
                                                             </div>
@@ -314,7 +318,7 @@ $houses = $stmtHouse->fetchAll();
                                                                 <div class="col-xs-3">
                                                                     <input type="text" class="form-control"
                                                                            id="eo_insurance" placeholder=""
-                                                                           value="99.00" readonly>
+                                                                           value="99.00" onchange="calculateCommissionFifty()">
                                                                 </div>
 
 
