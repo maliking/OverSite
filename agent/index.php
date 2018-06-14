@@ -194,7 +194,10 @@ $keys = array_keys($response);
                                         <?php 
 
                                         if($soldRank == 0)
-                                            echo "N/A";
+                                        {
+                                            echo '<p style="font-size:20px;">N/A</p>';
+                                            echo '<a href="teamRank.php"><p style="font-size:20px; color: #FF3300;">Team Rank</p></a>';
+                                        }
                                         else
                                         {
                                             if($soldRank == "1")
@@ -271,7 +274,10 @@ $keys = array_keys($response);
                                     <p style="font-size:20px; text-align:center; background-color:#dd7205; margin-left: -10px; margin-right:-10px;"><b>Volume Sold Rank</b> <a href="houseHistory.php"><i class="fa fa-line-chart"></i></a></p>
                                         <?php 
                                         if($volumeRank == 0)
-                                            echo "N/A";
+                                        {
+                                            echo '<p style="font-size:20px;">N/A</p>';
+                                            echo '<a href="teamRank.php"><p style="font-size:20px; color: #FF3300;">Team Rank</p></a>';
+                                        }
                                         else
                                         {
                                             //echo $volumeRank . " $" . number_format($resultVolSold[$volumeRank - 1]['volSold']);
@@ -354,7 +360,10 @@ $keys = array_keys($response);
                                     <p style="font-size:20px; text-align:center; background-color:#027e11; margin-left: -10px; margin-right:-10px;">Gross Commission Rank</p>
                                         <?php 
                                         if($grossRank == 0)
-                                            echo "N/A";
+                                        {
+                                            echo '<p style="font-size:20px;">N/A</p>';
+                                            echo '<a href="teamRank.php"><p style="font-size:20px; color: #FF3300;">Team Rank</p></a>';
+                                        }
                                         else
                                         {
                                             //echo $grossRank . " $" . number_format($resultGross[$grossRank - 1]['gross']); 
