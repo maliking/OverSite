@@ -71,7 +71,7 @@ $result = $stmt->fetchAll();
                                     <th data-breakpoints="all">RE/MAX FF</th>
                                     <th data-breakpoints="all">Misc</th>
                                     <th>Commission</th>
-                                    <th>Beg. Comm.</th>
+                                    <th>Ending Comm.</th>
                                     <th data-breakpoints="all">Client</th>
                                     <th>Price</th>
                                     <th>Listing/Buyer</th>
