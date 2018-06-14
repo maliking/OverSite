@@ -71,6 +71,7 @@ $result = $stmt->fetchAll();
                                     <th data-breakpoints="all">RE/MAX FF</th>
                                     <th data-breakpoints="all">Misc</th>
                                     <th>Commission</th>
+                                    <th>Beg. Comm.</th>
                                     <th data-breakpoints="all">Client</th>
                                     <th>Price</th>
                                     <th>Listing/Buyer</th>
@@ -93,6 +94,7 @@ $result = $stmt->fetchAll();
                                     echo "<td>" . '$' . number_format($sales['remaxFee'], 0) . "</td>"; //remax_ff
                                     echo "<td>" . '$' . number_format($sales['misc'], 0) . "</td>"; //misc
                                     echo "<td>" . '$' . number_format($sales['finalComm'], 0) . "</td>"; //commission
+                                    echo "<td>" . '$' . number_format($sales['TYGross'], 0) . "</td>"; //commission
                                     echo "<td>" . $sales['clients'] . "</td>"; //client
                                     echo "<td>" . '$' . number_format($sales['finalHousePrice'], 0) . "</td>"; //price
                                     echo "<td>" . $sales['clients'] . "</td>"; //listing buyer
