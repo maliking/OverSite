@@ -61,7 +61,7 @@ $result = $stmt->fetchAll();
                                     <th>Date Settled</th>
                                     <th>Property Address</th>
                                     <th>Agent</th>
-                                    <th>Total</th>
+                                    <th>Gross Comm.</th>
                                     <th data-breakpoints="all">Office</th>
                                     <th data-breakpoints="all">E&O <a href="#" data-toggle="tooltip"
                                                                       data-placement="top" title="Errors & Omissions"><i
@@ -70,7 +70,7 @@ $result = $stmt->fetchAll();
                                     <th data-breakpoints="all">Processing</th>
                                     <th data-breakpoints="all">RE/MAX FF</th>
                                     <th data-breakpoints="all">Misc</th>
-                                    <th>Commission</th>
+                                    <th>Net Commission</th>
                                     <th>Ending Comm.</th>
                                     <th data-breakpoints="all">Client</th>
                                     <th>Price</th>
