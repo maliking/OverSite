@@ -138,7 +138,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                     <div class="container"> 
                         <div class="row">
                             <div class="col-xs-12">
-                            <?php //include 'inContractTableStaff.php'; ?>
+                            <?php include 'inContractTableStaff.php'; ?>
                          </div>
                         </div>
                     <div class="row">
