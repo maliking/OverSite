@@ -284,6 +284,8 @@ for ($i = 0; $i < sizeof($keys); $i++) {
         <!--        <script src="../dist/js/vendor/fullcalendar/gcal.min.js"></script>-->
         <script src="../dist/js/vendor/fullcalendar/fullcalendar.min.js"></script>
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/locale/ca.js"></script>
 
 
 
