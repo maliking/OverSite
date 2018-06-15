@@ -199,60 +199,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                                     <h4>Properties</h4>
                                 </div>
                                 <div class="box-body" style="height:600px; overflow:auto;">
-                                    <table class="table table-bordered table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th data-breakpoints="xs">Agent</th>
-                                            <th>Property</th>
-                                            <th data-type="number">Bd</th>
-                                            <th data-type="number">Ba</th>
-                                            <th>Price</th>
-                                            <!-- <th data-breakpoints="xs">Images</th>
-                                            <th data-breakpoints="xs">Open House</th>
-                                            <th data-breakpoints="xs">Map</th> -->
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                                // foreach ($result as $house) {
-                                                for ($i = 0; $i < sizeof($keys); $i++) 
-                                                {
-                                                        $agentName = "SELECT firstName, lastName FROM UsersInfo WHERE mlsId = :mlsId";
-                                                        $namedParameters = array();
-                                                        $namedParameters[':mlsId'] = $response[$keys[$i]]['listingAgentID'];
-                                                        $stmt = $dbConn->prepare($agentName);
-                                                        $stmt->execute($namedParameters);
-                                                        $name = $stmt->fetch();
-
-                                                        if(!isset($response[$keys[$i]]['bedrooms']))
-                                                        {
-                                                            $bedrooms = "0";
-                                                        }
-                                                        else
-                                                        {
-                                                            $bedrooms = $response[$keys[$i]]['bedrooms'];
-                                                        }
-                                                        if(!isset($response[$keys[$i]]['totalBaths']))
-                                                        {
-                                                            $bathrooms = "0";
-                                                        }
-                                                        else
-                                                        {
-                                                            $bathrooms = $response[$keys[$i]]['totalBaths'];
-                                                        }   
-
-                                                        echo '<tr>';
-                                                        echo '<td> ' . $name['firstName'] . " " . $name['lastName'] .  '</td>';
-                                                        echo '<td> ' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] .  ' </td>';
-                                                        echo '<td>' . $bedrooms . '</td>';
-                                                        echo '<td>'. $bathrooms .'</td>';
-                                                        echo '<td>'.$response[$keys[$i]]['listingPrice'] .'</td>';
-                                                        echo '</tr>';
-                                                    
-                                                }
-                                                ?>
-                                        </tbody>
-                                    </table>
+                                    
                                 </div>
                                 <!-- /.box-body -->
                             </div>

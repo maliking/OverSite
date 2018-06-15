@@ -8,7 +8,7 @@
               <button onClick="showTransactionModal()">Add New Transaction</button> -->
           </div>
           <div class="box-body" style="height:300px; overflow: auto;">
-              <table class="footable table-bordered table-striped" id="inContractTableStaff">
+              <table class="table footable table-bordered table-striped" id="inContractTableStaff">
                   <thead>
                   <tr>
                       <th>Type</th>
