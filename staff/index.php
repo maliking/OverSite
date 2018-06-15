@@ -295,17 +295,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
 
 
         <script>
-            jQuery(function($) {
-                $('#inContractTableStaff').footable({
-                    "sorting": {
-                "enabled": true
-            },
-            "filtering": {
-            "connectors": false,
-            "position": "center"
-            }
-                });
-            });
+            
 
             jQuery(function($) {
                 $('.table').footable({
