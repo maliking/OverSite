@@ -52,7 +52,7 @@ $sqlTransactions = "SELECT transactions.*, UsersInfo.firstName as fName, UsersIn
 $transParameters = array();
 $transParameters[':userId'] = $_SESSION['userId'];
 $transStmt = $dbConn->prepare($sqlTransactions);
-$transStmt->execute($transParameters);
+$transStmt->execute();
 $transResults = $transStmt->fetchAll();
 
 

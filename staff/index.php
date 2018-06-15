@@ -23,6 +23,13 @@ $agentStmt = $dbConn->prepare($sqlGetAgents);
 $agentStmt->execute();
 $agentResults = $agentStmt->fetchAll();
 
+$sqlTransactions = "SELECT transactions.*, UsersInfo.firstName as fName, UsersInfo.lastName lName FROM transactions LEFT JOIN UsersInfo ON UsersInfo.userId = transactions.userId  ORDER BY UsersInfo.firstName DESC";
+$transParameters = array();
+// $transParameters[':userId'] = $_SESSION['userId'];
+$transStmt = $dbConn->prepare($sqlTransactions);
+$transStmt->execute();
+$transResults = $transStmt->fetchAll();
+
 $url = 'https://api.idxbroker.com/clients/featured';
 
 $method = 'GET';
@@ -129,7 +136,9 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                     <div class="container"> 
 
                     <div class="row">
-
+                         <div class="col-xs-12">
+                            <?php include 'inContractTableStaff.php'; ?>
+                         </div>
                         <div class="col-xs-9">
                             <div class="box">
 
@@ -152,7 +161,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                                     <h4>Agent Schedules</h4>
                                 </div>
                                 <div class="col-xs-12" >
-                                    <button style="margin-bottom: 10px" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal">Add New</button>
+                                    <button style="margin-bottom: 10px" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal">Add New Transaction</button>
                                 </div>
                                 <div class="box-body" style="height:550px; overflow:auto;">
 
@@ -280,9 +289,17 @@ for ($i = 0; $i < sizeof($keys); $i++) {
 
 
         <script>
-            // jQuery(function($) {
-            //     $('.table').footable({});
-            // });
+            jQuery(function($) {
+                $('.table').footable({
+                    "sorting": {
+                "enabled": true
+            },
+            "filtering": {
+            "connectors": false,
+            "position": "center"
+            }
+                });
+            });
 
         </script>
         <script>
@@ -627,6 +644,264 @@ for ($i = 0; $i < sizeof($keys); $i++) {
             });
         </script>
 
+        <script>
+        function editClientName(id)
+            {
+                // alert("edit client name");
+                var clientName = prompt("Enter client name:");
+                if (clientName == null || clientName == "") {
+                } else {
+                    $("#clientName" + id).html(clientName);
+                    // alert(houseId + " " + buyerID);
+                    $.post("../agent/saveInContractClientName.php", {
+                        transId: id,
+                        clientName: clientName
+                    });
+                }
+
+            }
+
+            function editClientNum(id)
+            {
+                var clientNum = prompt("Enter client number:");
+                if (clientNum == null || clientNum == "") {
+                } else {
+                    $("#clientNum" + id + "-detail").html(clientNum);
+                    // alert(houseId + " " + buyerID);
+                    $.post("../agent/saveInContractClientNum.php", {
+                        transId: id,
+                        clientNum: clientNum
+                    });
+                }
+            }
+
+            function editClientEmail(id)
+            {
+                var clientEmail = prompt("Enter client email:");
+                if (clientEmail == null || clientEmail == "") {
+                } else {
+                    $("#clientEmail" + id+ "-detail").html(clientEmail);
+                    // alert(houseId + " " + buyerID);
+                    $.post("../agent/saveInContractClientEmail.php", {
+                        transId: id,
+                        clientEmail: clientEmail
+                    });
+                }
+            }
+
+            function takeNote(id)
+            {
+                // alert(id);
+                var today = moment().format("MM-DD-YYYY");
+                var prevNote = $("#" + id).html();
+                if(prevNote == "" || prevNote == " ")
+                {
+                    var noteEntered = prompt("Enter Note:", today + " " + prevNote );
+                }
+                else
+                {
+                    var noteEntered = prompt("Enter Note:", prevNote + " " + today );
+                }
+                if (noteEntered == null || noteEntered == "") {
+                } else {
+                    $("#" + id).html(noteEntered);
+                    // alert(houseId + " " + buyerID);
+                    $.post("../agent/saveInContractNote.php", {
+                        transId: id,
+                        note: noteEntered
+                    });
+                }
+            }
+
+            function saveNameMisc(transId,type,name)
+            {
+                // alert(name.value);
+                $.post( "../staff/saveMiscName.php", { transId: transId, type:type, name:name.value });
+            }
+
+            function saveOrdDate(transId,type,date)
+            {
+                var sendDate = date.value;
+                if(sendDate == "")
+                {
+                    sendDate = "NULL";
+                    $('#' + type + 'Ord' + transId).html("Ordered: N/A");
+                }
+                else
+                    $('#' + type + 'Ord' + transId).html("Ordered: " + sendDate.substring(5,7) + "/" + sendDate.substring(8,10) + "/" + sendDate.substring(0,4) );
+                $.post( "../staff/saveOrdDates.php", { transId: transId, type:type, date:sendDate });
+
+                if(confirm("Do you want to download Extension Form?"))
+                {
+
+                }
+            }
+            function saveCompDate(transId,type,date)
+            {
+
+                
+                var sendDate = date.value;
+                if( type == "recieved")
+                {
+                    if(sendDate == "")
+                    {
+                        sendDate = "NULL";
+                        $('#' + type + 'Comp' + transId).html("Date Recieved: N/A");
+                        $("#status" + transId+type).attr('class', '');
+                        $("#status" + transId+type).css('color', "");
+                    }
+                    else
+                    {
+                        $('#' + type + 'Comp' + transId).html("Date Recieved: " + sendDate.substring(5,7) + "/" + sendDate.substring(8,10) + "/" + sendDate.substring(0,4) );
+                        $("#status" + transId+type).attr('class', 'fa fa-check-circle');
+                        $("#status" + transId+type).css('color', "#5cb85c");
+                    }
+                }
+                else if( type == "signed")
+                {
+                    if(sendDate == "")
+                    {
+                        sendDate = "NULL";
+                        $('#' + type + 'Comp' + transId).html("Signed: N/A");
+                        $("#status" + transId+type).attr('class', '');
+                        $("#status" + transId+type).css('color', "");
+                    }
+                    else
+                    {
+                        $('#' + type + 'Comp' + transId).html("Signed: " + sendDate.substring(5,7) + "/" + sendDate.substring(8,10) + "/" + sendDate.substring(0,4) );
+                        $("#status" + transId+type).attr('class', 'fa fa-check-circle');
+                        $("#status" + transId+type).css('color', "#5cb85c");
+                    }
+                }
+                else
+                {
+                    if(sendDate == "")
+                    {
+                        sendDate = "NULL";
+                        $('#' + type + 'Comp' + transId).html("Completed: N/A");
+                        $("#status" + transId+type).attr('class', '');
+                        $("#status" + transId+type).css('color', "");
+                    }
+                    else
+                    {
+                        $('#' + type + 'Comp' + transId).html("Completed: " + sendDate.substring(5,7) + "/" + sendDate.substring(8,10) + "/" + sendDate.substring(0,4) );
+                        $("#status" + transId+type).attr('class', 'fa fa-check-circle');
+                        $("#status" + transId+type).css('color', "#5cb85c");
+                    }
+                }
+
+                // updateStatus(transId, type date);
+                $.post( "../staff/saveCompDates.php", { transId: transId, type:type, date:sendDate });
+                
+                
+
+            }
+             function saveDateCalendar(transId,type,date)
+             {
+          
+                var aprvDay = $("#aprvDay"+transId).val();
+                $("#aprvDay" + transId).val(date.value);
+                updateStatus(transId,type,date);
+                $.post( "../staff/saveNewDates.php", { transId: transId, type:type, date:date.value, aprvDay: aprvDay });
+                if(confirm("Do you want to download Extension Form?"))
+                {
+
+                }
+            }
+            
+            function saveDaysNum(transId,type,date)
+             {
+           
+                $.post( "../staff/saveNewDaysNum.php", { transId: transId, type:type, date:date.value });
+                updateStatus(transId,date);
+                if(confirm("Do you want to download Extension Form?"))
+                {
+
+                }
+            }
+
+            function saveNewDates(transId)
+            {
+
+                $("#editDateModal"+transId).modal("toggle");
+                // if(confirm("Do you want to download Extension Form?"))
+                // {
+
+                // }
+
+                alert( "Dates Saved" );
+                location.reload();
+
+
+            }
+
+            function deleteInContract(inContractId)
+            {
+                // alert(inContractId);
+
+                if(confirm("Are you sure you want to delete?"))
+                {
+                    $.post( "../staff/deleteInContract.php", { inContractId: inContractId })
+                      .done(function( data ) {
+                        alert("In-contract Deleted");
+                        $("#editDateModal"+inContractId).modal("toggle");
+
+                        $('#inContract' + inContractId).remove();
+                      });
+
+                }
+                
+            }
+
+            function updateStatus(transId, type, date)
+            {
+                var aprvDay = $("#aprvDay"+transId).val();
+                // alert(aprvDay);
+                var newDate = moment(date.value).format("YYYY-MM-DD"); 
+                var todayDate = moment().format("YYYY-MM-DD"); 
+                var inThreeDays = moment(todayDate).add(3, 'days').format("YYYY-MM-DD");
+               
+                
+                if(moment(newDate).isSameOrBefore(inThreeDays) && moment(newDate).isSameOrAfter(todayDate))
+                {
+                    $("#status" + transId + type).attr('class', 'fa fa-warning');
+                    $("#status" + transId + type).css('color', "#ffae42");
+                    // alert("caution");
+                }
+                else if(moment(newDate).isSameOrAfter(todayDate))
+                {
+                    
+                    $("#status" + transId + type).attr('class', '');
+                    // $("#status" + transId + type).css('color', "#5cb85c");
+                    // alert("late");
+                }
+                else if(moment(newDate).isSameOrBefore(todayDate))
+                {
+                    $("#status" + transId + type).attr('class', 'fa fa-flag blink');
+                    $("#status" + transId + type).css('color', "#d9534f");
+                    // $("#status" + transId + type).attr('class', 'fa fa-check-circle');
+                    // $("#status" + transId + type).css('color', "#5cb85c");
+                    // alert("onTime");
+                }
+            }
+
+            function takeTransNote(transId)
+        {
+            var prevNote = $("#" + transId).html();
+            var noteEntered = prompt("Enter Note:", prevNote);
+            if (noteEntered == null || noteEntered == "") {
+            } else {
+                $("#" + transId).html(noteEntered);
+                // alert(houseId + " " + buyerID);
+                $.post("../agent/saveTransNote.php", {
+                    transId: transId,
+                    note: noteEntered
+                });
+                
+            }
+
+        }
+        </script>
     </body>
 
 </html>
