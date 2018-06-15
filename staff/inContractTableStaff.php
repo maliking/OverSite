@@ -1,4 +1,4 @@
-<div class="box box-success">
+<div class="box">
                                 <div class="box-header">
                                     <h4>In-Contract Properties</h4>
                                     <div class="col-xs-2" >
