@@ -559,7 +559,7 @@
                                            // <td> <button onClick=takeTransNote(' .$trans['transId'] . ')>  <i class="fa fa-edit" style="color:#d3d3d3"></i> </button></td>
                                            echo '<td>';
                                            ?>
-                                           <?php include "../staff/editDates.php"; ?>
+                                           <?php include "editDates.php"; ?>
                                            <?php
 
                                            echo '</td>
