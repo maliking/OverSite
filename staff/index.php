@@ -134,11 +134,13 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                 <section class="content">
                     <!-- Small boxes (Stat box) -->
                     <div class="container"> 
-
-                    <div class="row">
-                         <div class="col-xs-12">
+                        <div class="row">
+                            <div class="col-xs-12">
                             <?php include 'inContractTableStaff.php'; ?>
                          </div>
+                        </div>
+                    <div class="row">
+                         
                         <div class="col-xs-9">
                             <div class="box">
 
