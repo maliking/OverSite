@@ -305,6 +305,18 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                 });
             });
 
+            jQuery(function($) {
+                $('.table').footable({
+                    "sorting": {
+                "enabled": true
+            },
+            "filtering": {
+            "connectors": false,
+            "position": "center"
+            }
+                });
+            });
+
         </script>
         <script>
             $(document).ready(function () {
