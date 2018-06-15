@@ -55,6 +55,12 @@ $transStmt = $dbConn->prepare($sqlTransactions);
 $transStmt->execute();
 $transResults = $transStmt->fetchAll();
 
+$sqlGetAgents = "SELECT userId, firstName, lastName, mlsId FROM UsersInfo";
+
+$agentStmt = $dbConn->prepare($sqlGetAgents);
+$agentStmt->execute();
+$agentResults = $agentStmt->fetchAll();
+
 
 $url = 'https://api.idxbroker.com/clients/featured';
 
@@ -362,6 +368,8 @@ $keys = array_keys($response);
 </div>
 <!-- /.wrapper -->
 
+<?php include "staff/staffEventModal.php" ?>
+
 <!-- BEGIN TEMPLATE default-footer.php INCLUDE -->
 <?php include "./templates-admin/default-footer.php" ?>
 <!-- END TEMPLATE default-footer.php INCLUDE -->
@@ -644,7 +652,42 @@ $keys = array_keys($response);
 
         }
 
+function addNewTransaction()
+            {
+                var houseSelected = $('#houseId').children(":selected").attr("value");   
+                var agentSelected = $('#agentName').children(":selected").attr("value"); 
+                var accDate = $('#newAccDate').val();
 
+                var inputAddress = $('#inputAddress').val();;
+                var inputCity = $('#inputCity').val();;
+                var inputState = $('#inputState').val();;
+                var inputZip = $('#inputZip').val();;
+
+                // alert(accDate);
+
+                // alert(agentSelected);
+
+                // alert(houseSelected);
+
+                if(houseSelected == "" && inputAddress != "" && inputState != "" && inputCity != "" && inputZip != "" && accDate != "")
+                {
+                    $.post("staff/addTransactionStaffInput.php", {userId: agentSelected, address: inputAddress, state: inputState, 
+                                                            city: inputCity, zip: inputZip , accDate: accDate});
+                    alert("House In-Contract");
+                    
+                }
+                else if(houseSelected != "" && inputAddress == "" && inputState == "" && inputCity == "" && inputZip == "" && accDate != "")
+                {
+                    $.post("staff/addTransactionStaff.php", {userId: agentSelected, houseId: houseSelected, accDate: accDate});
+                    alert("House In-Contract");
+                }
+                else
+                {
+                    alert("Choose House from dropdown, input house data, or check date.");
+                }
+                
+                
+            }
 </script>
 </body>
 

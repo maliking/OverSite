@@ -1,6 +1,9 @@
 <div class="box box-success">
                                 <div class="box-header">
                                     <h4>In-Contract Properties</h4>
+                                    <div class="col-xs-2" >
+                                    <button style="margin-bottom: 10px" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#modal">Add New Transaction</button>
+                                  </div>
                                     <!-- <button><a href="my-inventory.php">Add New In-Contract</a></button>
                                     <button onClick="showTransactionModal()">Add New Transaction</button> -->
                                 </div>
