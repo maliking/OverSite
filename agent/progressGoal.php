@@ -20,12 +20,6 @@ $ytdGross = 0;
 echo '
 <div class="box">
 <div class="box-body no-padding" style="overflow: auto;">
-<div class="box-header">
-  <h4>Progress Goal <button type="button" data-toggle="collapse" data-target="#goalBar" aria-expanded="true" aria-controls="goalBar">
-    <span class="fa fa-compress" aria-hidden="true"></span>
-  </button></h4>
-</div>
-<div class="collapse" id="goalBar">
 <table id="modal-table" class="table footable table-striped">
   <tr>
     <th>Month</th>';
@@ -69,7 +63,6 @@ echo'<th>YTD GOAL</th>
    echo ' 
   </tr>
 </table>
-</div>
 </div>
 </div>';
 
