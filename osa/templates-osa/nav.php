@@ -21,6 +21,7 @@
           <ul class="sidebar-menu" data-widget="tree">
              <li><a href="./index.php"><i class="fa fa-dashboard"></i> <span>Dashboard</span></a></li>
              <li><a href="./seperateVisitors.php"><i class="fa fa-dashboard"></i> <span>Seperate Visitors</span></a></li>
+             <li><a href="./facebookLeads.php"><i class="fa fa-dashboard"></i> <span>Facebook Leads</span></a></li>
          </ul>
         <!-- /.sidebar-menu -->
     </section>
