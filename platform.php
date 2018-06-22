@@ -1,4 +1,4 @@
-<h2>MY platform</h2>
+<h2>My platform</h2>
 
 <script>
   window.fbAsyncInit = function() {
@@ -19,7 +19,9 @@
    }(document, 'script', 'facebook-jssdk'));
 
   function myFacebookLogin(){
-  	FB.login(function(){}, {scope: ''});
+  	FB.login(function(response){
+  		console.log("Successfully logged in", response);
+  	}, {scope: 'manage pages'});
   }
 
 </script>
