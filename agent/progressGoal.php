@@ -10,6 +10,8 @@ $goalStmt = $dbGoal->prepare($getMonthlyGrossSql);
 $goalStmt->execute($goalParameters);
 $goalResults = $goalStmt->fetchAll();
 
+print_r($goalResults);
+
 $months = array("Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec");
 
 $counter = 0;
