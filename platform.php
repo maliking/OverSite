@@ -21,7 +21,7 @@
   function myFacebookLogin(){
   	FB.login(function(response){
   		console.log("Successfully logged in", response);
-  	}, {scope: 'manage pages'});
+  	}, {scope: 'manage_pages'});
   }
 
 </script>
