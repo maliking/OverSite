@@ -1,9 +1,4 @@
 {
-    "require": {
-        "facebook/php-business-sdk": "2.5.*"
-    }
-}
-{
   "name": "twilio/sdk",
   "type": "library",
   "description": "A PHP wrapper for Twilio's API",
