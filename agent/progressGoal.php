@@ -10,7 +10,7 @@ $goalStmt = $dbGoal->prepare($getMonthlyGrossSql);
 $goalStmt->execute($goalParameters);
 $goalResults = $goalStmt->fetchAll();
 
-print_r($goalResults);
+// print_r($goalResults);
 
 $months = array("Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "Sept", "Oct", "Nov", "Dec");
 
@@ -45,7 +45,7 @@ echo'<th>YTD GOAL</th>
     {
       if($counter < count($goalResults))
       {
-        if($goalResults[$counter]['month'] == $counter+1)
+        if($goalResults[$counter]['month'] == $i+1)
         {
           echo "<td>$" . number_format($goalResults[$counter]['gross']) . "</td>";
           $ytdGross += $goalResults[$counter]['gross'];
