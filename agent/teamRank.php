@@ -204,7 +204,7 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                     <th>Name</th>
                                     <th>closed Units</th>
                                     <th>Vol Sold</th>
-                                    <th>GCI</th>
+                                    <!-- <th>GCI</th> -->
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -249,9 +249,9 @@ for ($h = 0; $h < sizeof($keys); $h++)
 
                              
                                     // Bedroom
-                                    echo "<td>";
-                                    echo "$" . number_format($result['GCI']);
-                                    echo "</td>";
+                                    // echo "<td>";
+                                    // echo "$" . number_format($result['GCI']);
+                                    // echo "</td>";
 
                                     echo "</tr>";
                                     $rank++;
