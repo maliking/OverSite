@@ -632,7 +632,7 @@ $keys = array_keys($response);
                                     <table class="table footable table-bordered table-striped" data-sorting="true">
                                         <thead>
                                             
-                                            <th style="width:20px;">Favorite</th>
+                                            <th style="width:20px;">Last Contacted</th>
                                             <th>Client</th>
                                             <th>Phone</th>
                                             <th>Email</th>
@@ -651,7 +651,7 @@ $keys = array_keys($response);
                                             foreach ($favoriteResults as $favorite) 
                                             {   
                                                 echo "<tr id=favorite" . $favorite['favoriteId'] . ">";
-                                                echo '<td class="fa fa-usd"  style="color: green; text-align: center;" )"></td>';
+                                                echo '<td class="fa fa-phone"  style="text-align: center;" )"></td>';
                                                 echo '<td id=name' . $favorite['favoriteId'] . ' onClick=editFavorite("name",' . $favorite['favoriteId'] . ')>' . $favorite['firstName'] . " " . $favorite['lastName'] . '</td>';
                                                 echo '<td id=phone' . $favorite['favoriteId'] . ' onClick=editFavorite("phone",' . $favorite['favoriteId'] . ')>' . $favorite['phone'] . '</td>';
                                                 echo '<td id=email' . $favorite['favoriteId'] . ' onClick=editFavorite("email",' . $favorite['favoriteId'] . ')>' . $favorite['email'] . '</td>';
