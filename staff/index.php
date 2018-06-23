@@ -739,10 +739,10 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                     $('#' + type + 'Ord' + transId).html("Ordered: " + sendDate.substring(5,7) + "/" + sendDate.substring(8,10) + "/" + sendDate.substring(0,4) );
                 $.post( "../staff/saveOrdDates.php", { transId: transId, type:type, date:sendDate });
 
-                if(confirm("Do you want to download Extension Form?"))
-                {
+                // if(confirm("Do you want to download Extension Form?"))
+                // {
 
-                }
+                //}
             }
             function saveCompDate(transId,type,date)
             {
@@ -811,10 +811,10 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                 $("#aprvDay" + transId).val(date.value);
                 updateStatus(transId,type,date);
                 $.post( "../staff/saveNewDates.php", { transId: transId, type:type, date:date.value, aprvDay: aprvDay });
-                if(confirm("Do you want to download Extension Form?"))
-                {
+                // if(confirm("Do you want to download Extension Form?"))
+                // {
 
-                }
+                // }
             }
             
             function saveDaysNum(transId,type,date)
@@ -822,10 +822,10 @@ for ($i = 0; $i < sizeof($keys); $i++) {
            
                 $.post( "../staff/saveNewDaysNum.php", { transId: transId, type:type, date:date.value });
                 updateStatus(transId,date);
-                if(confirm("Do you want to download Extension Form?"))
-                {
+                // if(confirm("Do you want to download Extension Form?"))
+                // {
 
-                }
+                //}
             }
 
             function saveNewDates(transId)
