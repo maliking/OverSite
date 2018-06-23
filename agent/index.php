@@ -643,13 +643,14 @@ $keys = array_keys($response);
                                             <th>SqFt</th>
                                             <th>Lot Size</th>
                                             <th>Match</th>
+                                            <th>Delete</th>
                                         </thead>
                                         <tbody>
                                             <?php
                                             foreach ($favoriteResults as $favorite) 
                                             {   
                                                 echo "<tr id=favorite" . $favorite['favoriteId'] . ">";
-                                                echo '<td class="fa fa-usd"  style="color: green; text-align: center;" onClick="deleteFavorite(' . $favorite['favoriteId'] . ')"></td>';
+                                                echo '<td class="fa fa-usd"  style="color: green; text-align: center;" )"></td>';
                                                 echo '<td id=name' . $favorite['favoriteId'] . ' onClick=editFavorite("name",' . $favorite['favoriteId'] . ')>' . $favorite['firstName'] . " " . $favorite['lastName'] . '</td>';
                                                 echo '<td id=phone' . $favorite['favoriteId'] . ' onClick=editFavorite("phone",' . $favorite['favoriteId'] . ')>' . $favorite['phone'] . '</td>';
                                                 echo '<td id=email' . $favorite['favoriteId'] . ' onClick=editFavorite("email",' . $favorite['favoriteId'] . ')>' . $favorite['email'] . '</td>';
@@ -660,6 +661,7 @@ $keys = array_keys($response);
                                                 echo '<td id=sqft' . $favorite['favoriteId'] . ' onClick=editFavorite("sqft",' . $favorite['favoriteId'] . ')>' . number_format($favorite['sqft']) . '</td>';
                                                 echo '<td id=lotSize' . $favorite['favoriteId'] . ' onClick=editFavorite("lotSize",' . $favorite['favoriteId'] . ')>' . number_format($favorite['lotSize']) . '</td>';
                                                 echo '<td><a href="prospectsMatch.php?visitorId=' . $favorite['favoriteId'] . '" >House Matches</a></td>';
+                                                echo '<td class="fa fa-trash-o"  style="text-align: center;" onClick="deleteFavorite(' . $favorite['favoriteId'] . ')"></td>';
                                                 echo "</tr>";
                                             }
                                             ?>
