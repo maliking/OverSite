@@ -12,8 +12,8 @@
                                             <th>Client</th>
                                             <th>Property</th>
 
-                                            <th data-breakpoints="all">Client Number</th>
-                                            <th data-breakpoints="all">Client Email</th>
+                                            <th data-breakpoints="all">Info</th>
+                                            <!-- <th data-breakpoints="all">Client Email</th> -->
                                             <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                             data-placement="top"
                                                                             title="Accepted Date">Acc. </a></th>
@@ -72,9 +72,38 @@
                                                 echo $trans['transType'];
                                                 echo '</td>
                                             <td id=clientName'. $trans['transId'] . ' onClick="editClientName(' . $trans['transId'] . ')">' . $trans['clientName'] . '</td>
-                                            <td>' . $trans['address'] . '</td>
-                                            <td id=clientNum' . $trans['transId'] . ' onClick="editClientNum(' . $trans['transId'] . ')">' . $trans['clientNum'] . '</td>
-                                            <td id=clientEmail'. $trans['transId'] . ' onClick="editClientEmail(' . $trans['transId'] . ')">' . $trans['clientEmail'] . '</td>
+                                            <td>' . $trans['address'] . '</td>';
+                                            // echo '<td id=clientNum' . $trans['transId'] . ' onClick="editClientNum(' . $trans['transId'] . ')">' . $trans['clientNum'] . '</td>';
+                                            echo '<td><table>
+                                          
+                                            <tr>
+                                            <td></td>
+                                            <td>Client</td>
+                                            <td>Lender</td>
+                                            <td>Escrow</td>
+                                            </tr>
+                                            <tr>
+                                            <td>Name</td>
+                                            <td>Client Name</td>
+                                            <td>Lender Name</td>
+                                            <td>Escrow Name</td>
+                                            </tr>
+                                            <tr>
+                                            <td>Phone</td>
+                                            <td>Client Phone</td>
+                                            <td>Lender Phone</td>
+                                            <td>Escrow Phone</td>
+                                            </tr>
+                                            <tr>
+                                            <td>Email</td>
+                                            <td>Client Email</td>
+                                            <td>Lender Email</td>
+                                            <td>Escrow Email</td>
+                                            </tr>
+                                            
+                                            </table></td>';
+
+                                            echo '<td id=clientEmail'. $trans['transId'] . ' onClick="editClientEmail(' . $trans['transId'] . ')">' . $trans['clientEmail'] . '</td>
                                             <td>
                                                 <div class="btn-group">
                                                     ' . date('m/d/y', strtotime($day)) . ' 
