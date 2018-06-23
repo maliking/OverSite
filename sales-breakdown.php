@@ -60,7 +60,7 @@ $result = $stmt->fetchAll();
                                 <tr>
                                     <th>Date Settled</th>
                                     <th>Property Address</th>
-                                    <th>Agent</th>
+                                    <th data-type="text">Agent</th>
                                     <th>Gross Comm.</th>
                                     <th data-breakpoints="all">Office</th>
                                     <th data-breakpoints="all">E&O <a href="#" data-toggle="tooltip"
@@ -170,7 +170,15 @@ $result = $stmt->fetchAll();
 
 <script>
     jQuery(function ($) {
-        $('.table').footable();
+        $('.table').footable({
+            "sorting": {
+                "enabled": true
+            },
+            "filtering": {
+            "connectors": false,
+            "position": "center"
+            }
+        });
     });
 </script>
 </body>
