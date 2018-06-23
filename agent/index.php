@@ -642,6 +642,7 @@ $keys = array_keys($response);
                                             <th>Bathroom</th>
                                             <th>SqFt</th>
                                             <th>Lot Size</th>
+                                            <th>Notes</th>
                                             <th>Match</th>
                                             <th>Delete</th>
                                         </thead>
@@ -660,6 +661,7 @@ $keys = array_keys($response);
                                                 echo '<td id=bathroom' . $favorite['favoriteId'] . ' onClick=editFavorite("bathroom",' . $favorite['favoriteId'] . ')>' . $favorite['bathroom'] . '</td>';
                                                 echo '<td id=sqft' . $favorite['favoriteId'] . ' onClick=editFavorite("sqft",' . $favorite['favoriteId'] . ')>' . number_format($favorite['sqft']) . '</td>';
                                                 echo '<td id=lotSize' . $favorite['favoriteId'] . ' onClick=editFavorite("lotSize",' . $favorite['favoriteId'] . ')>' . number_format($favorite['lotSize']) . '</td>';
+                                                echo '<td><button>Notes</button></td>';
                                                 echo '<td><a href="prospectsMatch.php?visitorId=' . $favorite['favoriteId'] . '" >House Matches</a></td>';
                                                 echo '<td class="fa fa-trash-o"  style="text-align: center;" onClick="deleteFavorite(' . $favorite['favoriteId'] . ')"></td>';
                                                 echo "</tr>";
