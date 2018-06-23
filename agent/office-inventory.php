@@ -248,7 +248,7 @@ $keys = array_keys($response);
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box">
-                        <div class="box-body">
+                        <div class="box-body" style="overflow: auto; height:650px;">
                             <button onClick="showMapModal()">Map</button>
                             <table class="table table-bordered table-striped"
                                    id="inventory-table" data-filtering="true">
@@ -343,10 +343,10 @@ $keys = array_keys($response);
             "sorting": {
                 "enabled": true
             },
-            "paging": {
-                "enabled": true,
-                "size": 15
-            },
+            // "paging": {
+            //     "enabled": true,
+            //     "size": 15
+            // },
             "filtering": {
             "connectors": false,
             "position": "center"
