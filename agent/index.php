@@ -629,7 +629,7 @@ $keys = array_keys($response);
                                     <button onClick="showProspectModal()">Add Prospect</button>
                                 </div>
                                 <div class="box-body" style="height:200px; overflow: auto;">
-                                    <table class="table footable table-bordered table-striped">
+                                    <table class="table footable table-bordered table-striped" data-sorting="true">
                                         <thead>
                                             
                                             <th style="width:20px;">Favorite</th>
