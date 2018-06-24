@@ -135,7 +135,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                 <!-- Main content -->
                 <section class="content">
                     <!-- Small boxes (Stat box) -->
-                    <div class="container"> 
+                    <!-- <div class="container">  -->
                         <div class="row">
                             <div class="col-xs-12">
                             <?php include 'inContractTableStaff.php'; ?>
@@ -263,7 +263,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
 
                         <!-- /.col -->
                     </div>
-                </div>
+                <!-- </div> -->
                     <!-- /.row -->
                 </section>
             </div>
