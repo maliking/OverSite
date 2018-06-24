@@ -1420,7 +1420,7 @@ $keys = array_keys($response);
                 var clientNum = prompt("Enter client number:");
                 if (clientNum == null || clientNum == "") {
                 } else {
-                    $("#clientNum" + id + "-detail").html(clientNum);
+                    $("#clientNum" + id).html(clientNum);
                     // alert(houseId + " " + buyerID);
                     $.post("saveInContractClientNum.php", {
                         transId: id,
@@ -1434,7 +1434,7 @@ $keys = array_keys($response);
                 var clientEmail = prompt("Enter client email:");
                 if (clientEmail == null || clientEmail == "") {
                 } else {
-                    $("#clientEmail" + id+ "-detail").html(clientEmail);
+                    $("#clientEmail" + id).html(clientEmail);
                     // alert(houseId + " " + buyerID);
                     $.post("saveInContractClientEmail.php", {
                         transId: id,

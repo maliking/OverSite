@@ -96,15 +96,14 @@
                                             </tr>
                                             <tr>
                                             <td>Email</td>
-                                            <td>Client Email</td>
+                                            <td id=clientEmail'. $trans['transId'] . ' onClick="editClientEmail(\'' . $trans['transId'] . '\')">' . $trans['clientEmail'] . '</td>
                                             <td>Lender Email</td>
                                             <td>Escrow Email</td>
                                             </tr>
                                             
                                             </table></td>';
 
-                                            echo '<td id=clientEmail'. $trans['transId'] . ' onClick="editClientEmail(' . $trans['transId'] . ')">' . $trans['clientEmail'] . '</td>
-                                            <td>
+                                            echo '<td>
                                                 <div class="btn-group">
                                                     ' . date('m/d/y', strtotime($day)) . ' 
                                                 </div>
