@@ -151,7 +151,7 @@ $keys = array_keys($response);
         <section class="content">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <div class="col-lg-2 col-xs-6">
+                <div class="col-lg-2 col-xs-6" onclick="location.href='inventory.php';">
                     <!-- small box -->
                     <div class="small-box bg-aqua">
                         <div class="inner">
