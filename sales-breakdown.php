@@ -73,7 +73,8 @@ $result = $stmt->fetchAll();
                                     <th>Agent Net Commission</th>
                                     <th>Ending Comm.</th>
                                     <th data-breakpoints="all">Client</th>
-                                    <th>Price</th>
+                                    <th>House Price</th>
+                                    <th>Avg. Perc.</th>
                                     <th>Listing/Buyer</th>
                                     <th data-breakpoints="all">Notes</th>
                                     <th data-breakpoints="all">Commission Sheet</th>
@@ -97,6 +98,7 @@ $result = $stmt->fetchAll();
                                     echo "<td>" . '$' . number_format($sales['TYGross'], 0) . "</td>"; //commission
                                     echo "<td>" . $sales['clients'] . "</td>"; //client
                                     echo "<td>" . '$' . number_format($sales['finalHousePrice'], 0) . "</td>"; //price
+                                    echo "<td>" . number_format($sales['percentage'], 2, '.','') . "%</td>"; //Avg Percent
                                     echo "<td>" . $sales['clients'] . "</td>"; //listing buyer
                                     echo "<td>" . $sales['notes'] . "</td>"; //notes
                                     echo '<td> <a href="viewCommissionSheet.php?comm=' . $sales['commId'] . '" target="_blank"> <button>View Commission Sheet</button> </a> </td>';
