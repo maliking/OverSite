@@ -63,13 +63,14 @@ $result = $stmt->fetchAll();
                                     <th>closed Units</th>
                                     <th>Vol Sold</th>
                                     <th>GCI</th>
+                                    <th>Avg. Percentage</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
                                 $rank = 1;
                                 $sql = "SELECT UsersInfo.firstName, UsersInfo.lastName, COUNT(commInfo.license) as closedUnits, commInfo.license, 
-                                        SUM(commInfo.finalHousePrice) as volSold, SUM(commInfo.InitialGross) as GCI 
+                                        SUM(commInfo.finalHousePrice) as volSold, SUM(commInfo.InitialGross) as GCI, AVG(commInfo.percentage) as avgPercent 
                                         FROM UsersInfo LEFT JOIN commInfo ON UsersInfo.license = commInfo.license WHERE UsersInfo.userType != '0' GROUP BY commInfo.license
                                         ORDER BY closedUnits DESC";
 
@@ -109,6 +110,11 @@ $result = $stmt->fetchAll();
                                     // Bedroom
                                     echo "<td>";
                                     echo "$" . number_format($result['GCI']);
+                                    echo "</td>";
+
+                                    // Avg Percentage
+                                    echo "<td>";
+                                    echo number_format($result['avgPercent'], 2, '.','') . "%";
                                     echo "</td>";
 
                                     echo "</tr>";
