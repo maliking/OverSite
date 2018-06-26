@@ -72,7 +72,7 @@ function calculateCommission() {
     else if (TYGross <= 185000) {
         difference = 185000 - TYGross;
         if (commission <= difference) {
-            brokerFee += commission * .15;
+            brokerFee += commission * .10;
         }
         else {
             brokerFee += 49999 * .10;
