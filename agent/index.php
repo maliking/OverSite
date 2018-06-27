@@ -651,10 +651,13 @@ $keys = array_keys($response);
                                             <?php
                                             $activeProspectCount =1;
                                             foreach ($favoriteResults as $favorite) 
-                                            {   
+                                            {   if($favorite['lastContacted'] == "0000-00-00")
+                                                    $lastContacted = "NA";
+                                                else if ($favorite['lastContacted'] != "0000-00-00") 
+                                                    $lastContacted = date("m/d/y", strtotime($favorite['lastContacted']));
                                                 echo "<tr id=favorite" . $favorite['favoriteId'] . ">";
                                                 echo '<td>' . $activeProspectCount++ . '</td>';
-                                                echo '<td class="fa fa-phone"  style="text-align: center;" )"></td>';
+                                                echo '<td id=lastContacted' . $favorite['favoriteId'] . ' class="fa fa-phone"  style="text-align: center;" onClick="updateLastContacted(' . $favorite['favoriteId'] . ')">' . "&nbsp&nbsp&nbsp" . $lastContacted . '</td>';
                                                 echo '<td id=name' . $favorite['favoriteId'] . ' onClick=editFavorite("name",' . $favorite['favoriteId'] . ')>' . $favorite['firstName'] . " " . $favorite['lastName'] . '</td>';
                                                 echo '<td id=phone' . $favorite['favoriteId'] . ' onClick=editFavorite("phone",' . $favorite['favoriteId'] . ')>' . $favorite['phone'] . '</td>';
                                                 echo '<td id=email' . $favorite['favoriteId'] . ' onClick=editFavorite("email",' . $favorite['favoriteId'] . ')>' . $favorite['email'] . '</td>';
@@ -1458,6 +1461,20 @@ $keys = array_keys($response);
                             alert( "Data updated");
                             $('#'+type+id).html(input);
                       });
+                }
+            }
+
+            function updateLastContacted(id)
+            {
+                if(confirm("Want to update last contacted?"))
+                {
+                    $.post("updateLastContacted.php", {
+                                id: id
+                            })
+                        .done(function( data ) {
+                                alert("Updated last contacted ");
+                                $('#lastContacted'+id).html(moment().format('l'));
+                          });
                 }
             }
         </script>
