@@ -455,8 +455,12 @@
                                             echo '</td>
                                             <td>
                                                 <div class="btn-group">
-                                                  <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    ' . date('m/d/y', strtotime($day . ' + '. $trans['miscOneDays'] . ' days' )) . ' <span class="caret"></span>
+                                                  <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">';
+                                                  if($trans['miscOneDays'] == "0")
+                                                    echo "mm/dd/yyyy";
+                                                  else
+                                                    echo date('m/d/y', strtotime($day . ' + '. $trans['miscOneDays'] . ' days' )); 
+                                            echo ' <span class="caret"></span>
                                                   </button>
                                                   <ul class="dropdown-menu">';
 
@@ -489,7 +493,11 @@
                                                   $miscOneReduced = $miscOneReduced->modify('-3 days');
 
                                                   // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
-                                                  if($trans['miscOneComp'] != NULL && $trans['miscOneComp'] != '0000-00-00')
+                                                  if($trans['miscOneDays'] == "0")
+                                                  {
+                                                    echo "";
+                                                  }
+                                                  else if($trans['miscOneComp'] != NULL && $trans['miscOneComp'] != '0000-00-00')
                                                   {
                                                     echo '<i id=status' . $trans['transId'] .  'miscOne' . ' class="fa fa-check-circle" style="color:#5cb85c"></i>';
                                                   }
@@ -508,7 +516,12 @@
                                             <td>
                                                 <div class="btn-group">
                                                   <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    ' . date('m/d/y', strtotime($day . ' + '. $trans['miscTwoDays'] . ' days' )) . ' <span class="caret"></span>
+                                                    ';
+                                                    if($trans['miscTwoDays'] == "0")
+                                                      echo "mm/dd/yyyy";
+                                                    else 
+                                                      echo  date('m/d/y', strtotime($day . ' + '. $trans['miscTwoDays'] . ' days' ));
+                                                  echo ' <span class="caret"></span>
                                                   </button>
                                                   <ul class="dropdown-menu">';
 
@@ -542,7 +555,11 @@
                                                   $miscTwoReduced = $miscTwoReduced->modify('-3 days');
 
                                                   // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
-                                                  if($trans['miscTwoComp'] != NULL && $trans['miscTwoComp'] != '0000-00-00')
+                                                  if($trans['miscTwoDays'] == "0")
+                                                  {
+                                                    echo "";
+                                                  }
+                                                  else if($trans['miscTwoComp'] != NULL && $trans['miscTwoComp'] != '0000-00-00')
                                                   {
                                                     echo '<i id=status' . $trans['transId'] .  'miscTwo' . ' class="fa fa-check-circle" style="color:#5cb85c"></i>';
                                                   }
