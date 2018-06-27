@@ -378,12 +378,14 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                     $.post("addTransactionStaffInput.php", {userId: agentSelected, address: inputAddress, state: inputState, 
                                                             city: inputCity, zip: inputZip , accDate: accDate});
                     alert("House In-Contract");
+                    location.reload();
                     
                 }
                 else if(houseSelected != "" && inputAddress == "" && inputState == "" && inputCity == "" && inputZip == "" && accDate != "")
                 {
                     $.post("addTransactionStaff.php", {userId: agentSelected, houseId: houseSelected, accDate: accDate});
                     alert("House In-Contract");
+                    location.reload();
                 }
                 else
                 {
