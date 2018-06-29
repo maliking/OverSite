@@ -646,6 +646,7 @@ $keys = array_keys($response);
                                             <th>Lot Size</th>
                                             <th>Notes</th>
                                             <th>Match</th>
+                                            <th>Archive</th>
                                             <th>Delete</th>
                                         </thead>
                                         <tbody>
@@ -671,6 +672,7 @@ $keys = array_keys($response);
                                                 echo '<td id=lotSize' . $favorite['favoriteId'] . ' onClick=editFavorite("lotSize",' . $favorite['favoriteId'] . ')>' . number_format($favorite['lotSize']) . '</td>';
                                                 echo '<td><button>Notes</button></td>';
                                                 echo '<td><a href="prospectsMatch.php?visitorId=' . $favorite['favoriteId'] . '" >House Matches</a></td>';
+                                                echo '<td class="fa fa-archive" style="text-align: center;" onClick="archiveFavorite(' . $favorite['favoriteId'] . ')"></td>';
                                                 echo '<td class="fa fa-trash-o"  style="text-align: center;" onClick="deleteFavorite(' . $favorite['favoriteId'] . ')"></td>';
                                                 echo "</tr>";
                                             }
@@ -1373,13 +1375,13 @@ $keys = array_keys($response);
 
             function deleteFavorite(favoriteId)
             {
-                if(confirm("Are you sure you want to remove this favorite?"))
+                if(confirm("Are you sure you want to remove this prospect?"))
                 {
                     // alert(favoriteId);
                      $.post( "deleteFavorite.php", { favoriteId: favoriteId })
                       .done(function( data ) {
                         $("#favorite" + favoriteId).hide();
-                        alert( "Favorite deleted" );
+                        alert( "Prospect deleted" );
                       });
                 }
             }
@@ -1517,6 +1519,19 @@ $keys = array_keys($response);
                     .done(function( data ) {
                             alert( "Data updated");
                             $('#escrow'+type+id).html(input);
+                      });
+                }
+            }
+
+            function archiveFavorite(favoriteId)
+            {
+                if(confirm("Are you sure you want to archive this prospect?"))
+                {
+                    // alert(favoriteId);
+                     $.post( "archiveFavorite.php", { favoriteId: favoriteId })
+                      .done(function( data ) {
+                        $("#favorite" + favoriteId).hide();
+                        alert( "Prospect archived" );
                       });
                 }
             }
