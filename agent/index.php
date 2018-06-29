@@ -634,6 +634,7 @@ $keys = array_keys($response);
                                             
                                             <th></th>
                                             <th style="width:20px;">Last Contacted</th>
+                                            <th>Type</th>
                                             <th>Client</th>
                                             <th>Phone</th>
                                             <th>Email</th>
@@ -658,6 +659,7 @@ $keys = array_keys($response);
                                                 echo "<tr id=favorite" . $favorite['favoriteId'] . ">";
                                                 echo '<td>' . $activeProspectCount++ . '</td>';
                                                 echo '<td id=lastContacted' . $favorite['favoriteId'] . ' class="fa fa-phone"  style="text-align: center;" onClick="updateLastContacted(' . $favorite['favoriteId'] . ')">' . "&nbsp&nbsp&nbsp" . $lastContacted . '</td>';
+                                                echo '<td>' . $favorite['listingType'] . '</td>';
                                                 echo '<td id=name' . $favorite['favoriteId'] . ' onClick=editFavorite("name",' . $favorite['favoriteId'] . ')>' . $favorite['firstName'] . " " . $favorite['lastName'] . '</td>';
                                                 echo '<td id=phone' . $favorite['favoriteId'] . ' onClick=editFavorite("phone",' . $favorite['favoriteId'] . ')>' . $favorite['phone'] . '</td>';
                                                 echo '<td id=email' . $favorite['favoriteId'] . ' onClick=editFavorite("email",' . $favorite['favoriteId'] . ')>' . $favorite['email'] . '</td>';
@@ -773,6 +775,15 @@ $keys = array_keys($response);
                         </br>
 
                         <input type="text" name="zip" class="form-control" id="inputSuccess6" placeholder="zip">
+                        </br>
+
+                        <label>Listing Type?</label>
+                        <select id="" name="listingType" class="form-control" >
+                            <option value="">--Select One--</option>
+                            <option value="listing">Listing</option>
+                            <option value="buyer">Buyer</option>
+                            <option value="listing/buyer">Listing/Buyer</option>
+                        </select>
                         </br>
 
                         <label>How soon are you looking to purchase a home?</label>
