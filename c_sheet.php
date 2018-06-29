@@ -133,6 +133,7 @@ $keys = array_keys($response);
 
             document.getElementById("percentage").value = ((commission.replace(/,/g,"") / housePrice.replace(/,/g,"")) * 100) + "%";
             document.getElementById("gross-comm").value = formatNumber(commission);
+            calculateCommission();
         }
         function addComa(number)
         {   
@@ -398,7 +399,7 @@ $keys = array_keys($response);
                                                                 <div class="col-xs-3">
                                                                     <input type="text" class="form-control"
                                                                            id="remaxFee" name="remaxFee" placeholder=""
-                                                                           onchange="calculateCommission()" value="">
+                                                                           onchange="calculateCommission()" value="0">
                                                                 </div>
 
                                                             </div>
@@ -410,7 +411,7 @@ $keys = array_keys($response);
                                                                 <div class="col-xs-3">
                                                                     <input type="text" class="form-control" id="misc"
                                                                            name="miscell" placeholder=""
-                                                                           onchange="calculateCommission()">
+                                                                           onchange="calculateCommission()" value="0">
                                                                 </div>
 
                                                             </div>
