@@ -4,10 +4,25 @@ session_start();
 require 'databaseConnection.php';
 
 $dbConn = getConnection();
-$sql = "SELECT * FROM commInfo";
+$sql = "SELECT COUNT(*) as totalClosed FROM commInfo";
 $stmt = $dbConn->prepare($sql);
 $stmt->execute();
-$result = $stmt->fetchAll();
+$totalClosed = $stmt->fetch();
+
+$sumVolSql = "SELECT SUM(finalHousePrice) as volResult FROM commInfo";
+$volStmt = $dbConn->prepare($sumVolSql);
+$volStmt->execute();
+$volResult = $volStmt->fetch();
+
+$grossSql = "SELECT SUM(finalComm) as grossResult FROM commInfo";
+$grossStmt = $dbConn->prepare($grossSql);
+$grossStmt->execute();
+$grossResult = $grossStmt->fetch();
+
+$avgPercentSql = "SELECT AVG(percentage) as avgPercentResult FROM commInfo";
+$avgPercentStmt = $dbConn->prepare($avgPercentSql);
+$avgPercentStmt->execute();
+$avgPercentResult = $avgPercentStmt->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -85,6 +100,7 @@ $result = $stmt->fetchAll();
                                         $result['volSold'] = 0;
                                     if($result['GCI'] == "")
                                         $result['GCI'] = 0;
+                                    echo "<tr>";
                                     // Rank
                                     echo "<td>";
                                     echo $rank;
@@ -121,6 +137,14 @@ $result = $stmt->fetchAll();
                                     $rank++;
                                 }
                                 ?>
+                                <tr>
+                                    <td>Total</td>
+                                    <td></td>
+                                    <td><?php echo $totalClosed['totalClosed']; ?></td>
+                                    <td><?php echo "$" . number_format($volResult['volResult']); ?></td>
+                                    <td><?php echo "$" . number_format($grossResult['grossResult']); ?></td>
+                                    <td><?php echo number_format($avgPercentResult['avgPercentResult'], 2, '.','') . "%"; ?></td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
