@@ -222,6 +222,19 @@ $houses = $stmtHouse->fetchAll();
                                                                 </select>
 
                                                             </div>
+
+                                                             <div class="form-group col-xs-2">
+                                                                <label for="type">Type</label>
+                                                                <select required class="form-control" id="type"
+                                                                        name="type">
+                                                                        <option>Select Type</option>
+                                                                        <option value="Seller">Seller</option>
+                                                                        <option value="Buyer">Buyer</option>
+                                                                        <option value="Seller/Buyer">Seller/Buyer</option>
+
+                                                                </select>
+
+                                                            </div>
                                                             <!--  -->
 
                                                         </div>

@@ -292,7 +292,7 @@ $keys = array_keys($response);
                                                             </div>
 
                                                             <div class="form-group col-xs-2">
-                                                                <label for="leadType">Type</label>
+                                                                <label for="type">Type</label>
                                                                 <select required class="form-control" id="type"
                                                                         name="type">
                                                                         <option>Select Type</option>
