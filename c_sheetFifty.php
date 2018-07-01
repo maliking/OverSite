@@ -341,6 +341,10 @@ $houses = $stmtHouse->fetchAll();
                                                                 <label class="col-xs-9 control-label"
                                                                        for="pwd">*Misc.</label>
                                                                 <div class="col-xs-3">
+
+                                                                    <input type="text" class="form-control" id="miscTitle"
+                                                                           name="miscTitle" placeholder="Misc title" value="">
+                                                                           
                                                                     <input type="text" class="form-control" id="misc"
                                                                            name="miscell" placeholder=""
                                                                            onchange="calculateCommissionFifty()">
