@@ -93,7 +93,7 @@ $result = $stmt->fetchAll();
                                     echo "<td>" . '$50.00' . "</td>"; //tech
                                     echo "<td>" . '$200.00' . "</td>"; //processing
                                     echo "<td>" . '$' . number_format($sales['remaxFee'], 0) . "</td>"; //remax_ff
-                                    echo "<td>" . '$' . number_format($sales['misc'], 0) . "</td>"; //misc
+                                    echo "<td>" . $sales['miscTitle'] . ': $' . number_format($sales['misc'], 0) . "</td>"; //misc
                                     echo "<td>" . '$' . number_format($sales['finalComm'], 0) . "</td>"; //commission
                                     echo "<td>" . '$' . number_format($sales['TYGross'], 0) . "</td>"; //commission
                                     echo "<td>" . $sales['clients'] . "</td>"; //client
