@@ -45,8 +45,8 @@ $remaxFeeStmt = $dbConn->prepare($addRemaxFeeSql);
 $remaxFeeStmt->execute($remaxFeeParam);
 
 $sql = "INSERT INTO commInfo
-        (houseId, license, firstName, lastName, date, settlementDate, checkNum, clients, address, city, state, zip, TYGross, FYGross, InitialGross, brokerFee, finalComm, remaxFee, miscTitle, misc, percentage, envelopeId, finalHousePrice, type)
-        VALUES (:houseId, :license, :firstName, :lastName, :date, :settlementDate, :checkNum, :clients, :address, :city, :state, :zip, :TYGross, :FYGross, :InitialGross, :brokerFee, :finalComm, :remaxFee, :miscTitle, :misc, :percentage, :envelopeId, :finalHousePrice, :type)";
+        (houseId, license, firstName, lastName, date, settlementDate, checkNum, clients, address, city, state, zip, TYGross, FYGross, InitialGross, brokerFee, finalComm, remaxFee, miscTitle, misc, percentage, envelopeId, finalHousePrice, type, leadType)
+        VALUES (:houseId, :license, :firstName, :lastName, :date, :settlementDate, :checkNum, :clients, :address, :city, :state, :zip, :TYGross, :FYGross, :InitialGross, :brokerFee, :finalComm, :remaxFee, :miscTitle, :misc, :percentage, :envelopeId, :finalHousePrice, :type, :leadType)";
 
 $namedParameters = array();
 // $namedParameters[":houseId"] = $houseResults['houseId'];
@@ -81,6 +81,7 @@ $value = floatval($_POST['percentage']);
 $namedParameters[":percentage"] = $value;
 $namedParameters[":finalHousePrice"] = $finalHousePrice;
 
+$namedParameters[':leadType'] = $_POST['leadType'];
 $namedParameters[':type'] = $_POST['type'];
 // str_replace(find,replace,string,count)
 // $stmt = $dbConn -> prepare($sql);
