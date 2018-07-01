@@ -45,8 +45,8 @@ $remaxFeeStmt = $dbConn->prepare($addRemaxFeeSql);
 $remaxFeeStmt->execute($remaxFeeParam);
 
 $sql = "INSERT INTO commInfo
-        (houseId, license, firstName, lastName, date, settlementDate, checkNum, clients, address, city, state, zip, TYGross, FYGross, InitialGross, brokerFee, finalComm, remaxFee, misc, percentage, envelopeId, finalHousePrice)
-        VALUES (:houseId, :license, :firstName, :lastName, :date, :settlementDate, :checkNum, :clients, :address, :city, :state, :zip, :TYGross, :FYGross, :InitialGross, :brokerFee, :finalComm, :remaxFee, :misc, :percentage, :envelopeId, :finalHousePrice)";
+        (houseId, license, firstName, lastName, date, settlementDate, checkNum, clients, address, city, state, zip, TYGross, FYGross, InitialGross, brokerFee, finalComm, remaxFee, miscTitle, misc, percentage, envelopeId, finalHousePrice)
+        VALUES (:houseId, :license, :firstName, :lastName, :date, :settlementDate, :checkNum, :clients, :address, :city, :state, :zip, :TYGross, :FYGross, :InitialGross, :brokerFee, :finalComm, :remaxFee, :miscTitle, :misc, :percentage, :envelopeId, :finalHousePrice)";
 
 $namedParameters = array();
 // $namedParameters[":houseId"] = $houseResults['houseId'];
@@ -72,6 +72,7 @@ $namedParameters[":FYGross"] = (int)$FYGross + $netCommission;
 $namedParameters[":InitialGross"] = $initialGross;
 $namedParameters[":brokerFee"] = $brokerFee;
 $namedParameters[":finalComm"] = $netCommission;
+$namedParameters["miscTitle"] = $_POST['miscTitle'];
 $namedParameters[":misc"] = $miscell;
 $namedParameters[":remaxFee"] = (int)$remaxFee;
 $namedParameters[":clients"] = $_POST['clients'];
