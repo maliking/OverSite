@@ -1,0 +1,26 @@
+[
+  {
+    "name": "rank",
+    "title": "Rank"
+  },
+  {
+    "name": "name",
+    "title": "Name"
+  },
+  {
+    "name": "closedUnits",
+    "title": "Closed Units"
+  },
+  {
+    "name": "volSold",
+    "title": "Vol Sold"
+  },
+  {
+    "name": "gci",
+    "title": "GCI"
+  },
+  {
+    "name": "avgPercent",
+    "title": "Avg Percent"
+  }
+]

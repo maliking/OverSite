@@ -23,6 +23,7 @@
             <!-- <li class="<?= ($activePage == 'analytics') ? 'active':''; ?>"><a href="analytics.php"><i class="fa fa-line-chart"></i> <span> Analytics</span></a></li> -->
             <li class="<?= ($activePage == 'sales-breakdown') ? 'active':''; ?>"><a href="sales-breakdown.php"><i class="fa fa-list-alt"></i> <span> Sales Breakdown</span></a></li>
             <li class="<?= ($activePage == 'sales-summary') ? 'active':''; ?>"><a href="sales-summary.php"><i class="fa fa-list-alt"></i> <span> Sales Summary</span></a></li>
+            <li class="<?= ($activePage == 'awards') ? 'active':''; ?>"><a href="awards.php"><i class="fa fa-trophy"></i> <span>Awards</span></a></li>
             <li class="<?= ($activePage == 'past-sales') ? 'active':''; ?>"><a href="past-sales.php"><i class="fa fa-archive"></i> <span>Past Sales</span></a></li>
         </ul>
         <!-- /.sidebar-menu -->
