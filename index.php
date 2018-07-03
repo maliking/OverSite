@@ -385,7 +385,15 @@ $keys = array_keys($response);
 
 <script>
     jQuery(function ($) {
-        $('.table').footable({});
+        $('.table').footable({
+            "sorting": {
+                "enabled": true
+            },
+            "filtering": {
+            "connectors": false,
+            "position": "center"
+            }
+        });
     });
 </script>
 <script>
