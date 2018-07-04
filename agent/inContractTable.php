@@ -78,24 +78,24 @@
                                           
                                             <tr>
                                             <td></td>
-                                            <td>Client</td>
-                                            <td>Lender</td>
-                                            <td>Escrow</td>
+                                            <td><b>Client</b></td>
+                                            <td><b>Lender</b></td>
+                                            <td><b>Escrow</b></td>
                                             </tr>
                                             <tr>
-                                            <td>Name</td>
+                                            <td><b>Name</b></td>
                                             <td class=clientName'. $trans['transId'] . ' onClick="editClientName(' . $trans['transId'] . ')">' . $trans['clientName'] . '</td>
                                             <td id=lendorName' . $trans['transId'] . ' onClick=editLendorInfo("Name",' . $trans['transId']  . ') >' . $trans['lendorName'] . '</td>
                                             <td id=escrowName' . $trans['transId'] . ' onClick=editEscrowInfo("Name",' . $trans['transId']  . ') >' . $trans['escrowName'] . '</td>
                                             </tr>
                                             <tr>
-                                            <td>Phone</td>
+                                            <td><b>Phone</b></td>
                                             <td id=clientNum' . $trans['transId'] . ' onClick="editClientNum(' . $trans['transId'] . ')">' . $trans['clientNum'] . '</td>
                                             <td id=lendorNum' . $trans['transId'] . ' onClick=editLendorInfo("Num",' . $trans['transId']  . ') >' . $trans['lendorNum'] . '</td>
                                             <td id=escrowNum' . $trans['transId'] . ' onClick=editEscrowInfo("Num",' . $trans['transId']  . ') >' . $trans['escrowNum'] . '</td>
                                             </tr>
                                             <tr>
-                                            <td>Email</td>
+                                            <td><b>Email</b></td>
                                             <td id=clientEmail'. $trans['transId'] . ' onClick="editClientEmail(\'' . $trans['transId'] . '\')">' . $trans['clientEmail'] . '</td>
                                             <td id=lendorEmail' . $trans['transId'] . ' onClick=editLendorInfo("Email",' . $trans['transId']  . ') >' . $trans['lendorEmail'] . '</td>
                                             <td id=escrowEmail' . $trans['transId'] . ' onClick=editEscrowInfo("Email",' . $trans['transId']  . ') >' . $trans['escrowEmail'] . '</td>
