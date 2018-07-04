@@ -657,6 +657,27 @@ $keys = array_keys($response);
                                                     $lastContacted = "NA";
                                                 else if ($favorite['lastContacted'] != "0000-00-00") 
                                                     $lastContacted = date("m/d/y", strtotime($favorite['lastContacted']));
+                                                if($activeProspectCount % 5 == 0)
+                                                {
+                                                    echo "<tr>";
+                                                    echo '<td></td>';
+                                                    echo '<td>Last Contacted</td>';
+                                                    echo '<td>Type</td>';
+                                                    echo '<td>Client</td>';
+                                                    echo '<td>Phone</td>';
+                                                    echo '<td>Email</td>';
+                                                    echo '<td>Zip</td>';
+                                                    echo '<td>Price</td>';
+                                                    echo '<td>Bedroom</td>';
+                                                    echo '<td>Bathroom</td>';
+                                                    echo '<td>SqFt</td>';
+                                                    echo '<td>Lot Size</td>';
+                                                    echo '<td>Notes</td>';
+                                                    echo '<td>Match</td>';
+                                                    echo '<td>Archive</td>';
+                                                    echo '<td><Delete/td>';
+                                                    echo "</tr>";
+                                                }
                                                 echo "<tr id=favorite" . $favorite['favoriteId'] . ">";
                                                 echo '<td>' . $activeProspectCount++ . '</td>';
                                                 echo '<td id=lastContacted' . $favorite['favoriteId'] . ' class="fa fa-phone"  style="text-align: center;" onClick="updateLastContacted(' . $favorite['favoriteId'] . ')">' . "&nbsp&nbsp&nbsp" . $lastContacted . '</td>';
