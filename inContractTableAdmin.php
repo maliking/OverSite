@@ -64,11 +64,32 @@
                                         <tbody>
 
                                             <?php
-
+                                            $count = 1;
                                             foreach ($transResults as $trans) {
                                                 # code...
                                                 $day = $trans['accDay'];
-
+                                                if($count % 5 == 0)
+                                                {
+                                                    echo "<tr>";
+                                                    echo "<td><b>Type</b></td>";
+                                                    echo "<td><b>Client</b></td>";
+                                                    echo "<td><b>Property</b></td>";
+                                                    echo "<td></td>";
+                                                    echo "<td><b>Acc.</b></td>";
+                                                    echo "<td><b>EMD</b></td>";
+                                                    echo "<td><b>Seller Disc.</b></td>";
+                                                    echo "<td><b>Sign Disc.</b></td>";
+                                                    echo "<td><b>Insp.</b></td>";
+                                                    echo "<td><b>Appr</b></td>";
+                                                    echo "<td><b>LC</b></td>";
+                                                    echo "<td><b>COE</b></td>";
+                                                    echo "<td><b>Misc 1</b></td>";
+                                                    echo "<td><b>Misc 2</b></td>";
+                                                    echo "<td><b>Notes</b></td>";
+                                                    echo "<td><b>Edit Dates</b></td>";
+                                                    echo "</tr>";
+                                                }
+                                                $count++;
                                                 echo '<tr id=inContract' . $trans['transId'] . ' ><td>';
                                                 // if ($trans['transType'] == 'Listing') {
                                                 //     echo '<b>LIST</b>';
