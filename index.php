@@ -239,7 +239,7 @@ $keys = array_keys($response);
             </div>
 
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-xs-12" style="height:100vh">
                     <?php include 'inContractTableAdmin.php'; ?>
                     <!-- <div class="box">
                         <div class="box-header">

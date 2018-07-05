@@ -1,4 +1,6 @@
-<div class="box box-success">
+<div class="box box-success" style="height: 100%; overflow: auto;" >
+  <!-- style="overflow: auto;" -->
+  <!-- style="height: 100%;" -->
                                 <div class="box-header">
                                     <h4>In-Contract Properties</h4>
                                     <div class="col-xs-2" >
@@ -7,8 +9,8 @@
                                     <!-- <button><a href="my-inventory.php">Add New In-Contract</a></button>
                                     <button onClick="showTransactionModal()">Add New Transaction</button> -->
                                 </div>
-                                <div class="box-body" style="height:300px; overflow: auto;">
-                                    <table class="table footable table-bordered table-striped" data-filtering="true">
+                                <div class="box-body" style="height: 100%;" >
+                                    <table class="table footable table-bordered table-striped" data-filtering="true" style="height: 100%;">
                                         <thead>
                                         <tr>
                                             <th>Type</th>
