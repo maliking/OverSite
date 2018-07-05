@@ -183,7 +183,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                                         foreach ($agentResults as $agent) {
                                             echo "<tr>
                                             <td>";
-                                            echo '<label><input id="checkboxFilter" type="checkbox" class="flat-red" value="' . $agent['userId'] . '" checked> ' . $agent['firstName'] . " " . $agent['lastName'] . '</label>';
+                                            echo '<label><input class="checkboxFilter" type="checkbox" class="flat-red" value="' . $agent['userId'] . '" checked> ' . $agent['firstName'] . " " . $agent['lastName'] . '</label>';
                                             echo "</td>
                                             </tr>";
                                         }
@@ -548,7 +548,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                     if ($("input[name=selectAll]")[0].checked)
                     {
                         $('#deselectAll').prop('checked', false);
-                        $.each($("[id=checkboxFilter]"), function ()
+                        $.each($("[class=checkboxFilter]"), function ()
                         {
                             $(this).prop('checked', true);
                         });
@@ -561,7 +561,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                     if ($("input[name=deselectAll]")[0].checked)
                     {
                         $('#selectAll').prop('checked', false);
-                        $.each($("[id=checkboxFilter]"), function ()
+                        $.each($("[class=checkboxFilter]"), function ()
                         {
                             $(this).prop('checked', false);
                         });
@@ -570,7 +570,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                     // alert("Deselect All");
                 });
 
-                $("input[id=checkboxFilter]").click(function ()
+                $("input[class=checkboxFilter]").click(function ()
                 {
                     var getFilteredEvents = "";
                     var filterCount = 0;
@@ -589,7 +589,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                     $('#calendar').fullCalendar('removeEventSource', currentEvents);
 
                     var newEvents = "getTransactions.php?" + getFilteredEvents;
-                    // alert(newEvents);
+                    alert(newEvents);
                     $('#calendar').fullCalendar('addEventSource', newEvents);
                     // $('#calendar').fullCalendar('refetchEvents');
 
@@ -616,7 +616,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                     $('#calendar').fullCalendar('removeEventSource', currentEvents);
 
                     var newEvents = "getTransactions.php?" + getFilteredEvents;
-                    // alert(newEvents);
+                    alert(newEvents);
                     $('#calendar').fullCalendar('addEventSource', newEvents);
                     // $('#calendar').fullCalendar('refetchEvents');
 
