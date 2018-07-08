@@ -574,7 +574,8 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                 {
                     var getFilteredEvents = "";
                     var filterCount = 0;
-                    $.each($("[type=checkbox]:checked"), function ()
+                    // $.each($("[type=checkbox]:checked"), function ()
+                    $.each($("[class=checkboxFilter]:checked"), function ()
                     {
                         if ($(this).attr('name') == "selectAll" || $(this).attr('name') == "deselectAll")
                         {
@@ -589,7 +590,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                     $('#calendar').fullCalendar('removeEventSource', currentEvents);
 
                     var newEvents = "getTransactions.php?" + getFilteredEvents;
-                    alert(newEvents);
+                    // alert(newEvents);
                     $('#calendar').fullCalendar('addEventSource', newEvents);
                     // $('#calendar').fullCalendar('refetchEvents');
 
@@ -601,7 +602,8 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                 {
                     var getFilteredEvents = "";
                     var filterCount = 0;
-                    $.each($("[type=checkbox]:checked"), function ()
+                    // $.each($("[type=checkbox]:checked"), function ()
+                    $.each($("[class=checkboxFilter]:checked"), function ()
                     {
                         if ($(this).attr('name') == "selectAll" || $(this).attr('name') == "deselectAll")
                         {
@@ -616,7 +618,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                     $('#calendar').fullCalendar('removeEventSource', currentEvents);
 
                     var newEvents = "getTransactions.php?" + getFilteredEvents;
-                    alert(newEvents);
+                    // console.log(newEvents);
                     $('#calendar').fullCalendar('addEventSource', newEvents);
                     // $('#calendar').fullCalendar('refetchEvents');
 
