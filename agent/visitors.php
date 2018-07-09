@@ -724,7 +724,7 @@ for ($h = 0; $h < sizeof($keys); $h++)
         var firstName = $('input[name=firstName]').val();
         var lastName = $('input[name=lastName]').val();
         var email = $('input[name=email]').val();
-        var phone = $('input[name=phone]').val();
+        var phone = preg_replace('/[^0-9.]+/', '', $('input[name=phone]').val());
         var howSoon = $('select[name=howSoon]').val();
         var price = $('select[name=price]').val();
         var minBed = $('select[name=bedroomsMin]').val();
@@ -732,7 +732,7 @@ for ($h = 0; $h < sizeof($keys); $h++)
         // alert(firstName);
         // alert(lastName);
         // alert(email);
-        // alert(phone);
+         alert(phone);
         // alert(howSoon);
         // alert(price);
         // alert(minBed);
