@@ -160,7 +160,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
 
                             <div class="box">
 
-                                
+                                <!-- <button class="checkboxFilter">test</button> -->
                                 <div class="box-header">
                                     <h4>Agent Schedules</h4>
                                 </div>
@@ -178,7 +178,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                                     </div>
 
                                     <table class="table table-striped" >
-
+                                        <!-- <tr><td><input class="checkboxFilter" type="checkbox" value="1"/><label>asdf</label></td></tr> -->
                                         <?php
                                         foreach ($agentResults as $agent) {
                                             echo "<tr>
@@ -201,7 +201,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                                     <h4>Properties</h4>
                                 </div>
                                 <div class="box-body" style="height:600px; overflow:auto;">
-                                    <table class="table table-bordered table-striped">
+                                    <table class="table table-bordered table-striped footable" data-filtering="true">
                                         <thead>
                                         <tr>
                                             <th data-breakpoints="xs">Agent</th>
@@ -298,7 +298,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
             
 
             jQuery(function($) {
-                $('.table').footable({
+                $('.footable').footable({
                     "sorting": {
                 "enabled": true
             },
@@ -572,6 +572,7 @@ for ($i = 0; $i < sizeof($keys); $i++) {
 
                 $("input[class=checkboxFilter]").click(function ()
                 {
+                    // alert("clicked");
                     var getFilteredEvents = "";
                     var filterCount = 0;
                     // $.each($("[type=checkbox]:checked"), function ()
@@ -597,6 +598,11 @@ for ($i = 0; $i < sizeof($keys); $i++) {
                     currentEvents = newEvents;
 
                 });
+                // $("input[name=checkboxFilter]").each(function ()
+                // {
+                //     alert(this.value);
+
+                // });
 
                 function refreshEvents()
                 {
