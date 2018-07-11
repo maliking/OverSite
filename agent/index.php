@@ -104,6 +104,9 @@ $keys = array_keys($response);
                 display: block;
             }
 
+            .favoriteNoteRow{
+                width: 100%;
+            }
         </style>
         <style type "text/css">
 
@@ -178,6 +181,8 @@ $keys = array_keys($response);
 
             <?php include "./fullcalendar/links.php" ?>
 
+
+            <?php include "noteModal.php" ?>
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
@@ -691,7 +696,7 @@ $keys = array_keys($response);
                                                 echo '<td id=bathroom' . $favorite['favoriteId'] . ' onClick=editFavorite("bathroom",' . $favorite['favoriteId'] . ')>' . $favorite['bathroom'] . '</td>';
                                                 echo '<td id=sqft' . $favorite['favoriteId'] . ' onClick=editFavorite("sqft",' . $favorite['favoriteId'] . ')>' . number_format($favorite['sqft']) . '</td>';
                                                 echo '<td id=lotSize' . $favorite['favoriteId'] . ' onClick=editFavorite("lotSize",' . $favorite['favoriteId'] . ')>' . number_format($favorite['lotSize']) . '</td>';
-                                                echo '<td><button>Notes</button></td>';
+                                                echo '<td><button data-toggle="modal" onClick=openNoteModal(' . $favorite['favoriteId'] . ')>Notes</button></td>';
                                                 echo '<td><a href="prospectsMatch.php?visitorId=' . $favorite['favoriteId'] . '" >House Matches</a></td>';
                                                 echo '<td class="fa fa-archive" style="text-align: center;" onClick="archiveFavorite(' . $favorite['favoriteId'] . ')"></td>';
                                                 echo '<td class="fa fa-trash-o"  style="text-align: center;" onClick="deleteFavorite(' . $favorite['favoriteId'] . ')"></td>';
@@ -1555,6 +1560,74 @@ $keys = array_keys($response);
                         alert( "Prospect archived" );
                       });
                 }
+            }
+
+            function openNoteModal(favoriteId)
+            {
+                //erase all when opening modal
+                $('#favoriteId').html('');
+                $('#addNewNoteArea').val('');
+                $("#noteTable").empty();
+
+                //populate data
+                $('#favoriteId').html(favoriteId);
+                $.post( "getFavoriteNotes.php", { favoriteId: favoriteId })
+                      .done(function( data ) {
+                        var result = JSON.parse(data);
+                        var x;
+                        var table = document.getElementById("noteTable");
+                        for(x in result)
+                        {
+                            var row = table.insertRow(0);
+                            var cell1 = row.insertCell(0);
+                            var cell2 = row.insertCell(1);
+                            cell2.className = "favoriteNoteRow";
+                            cell1.innerHTML = "<h4>" + moment(result[x].noteDate).format('MM/DD/YYYY')+ "</h4>";
+                            cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + result[x].noteId + "' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + result[x].note + "</textarea>";
+                            // console.log(result[x].noteId);
+                            // console.log(result[x].noteDate);
+                            // console.log(result[x].note);
+                        }
+                        
+                      });
+
+                // Open Modal
+                $('#noteModal').modal('toggle');
+            }
+            function addNewNote()
+            {
+                var favoriteId = $('#favoriteId').html();
+                var note = $('#addNewNoteArea').val();
+                // alert(note);
+
+                if(note != "" && note != null)
+                {
+                    $.post( "addNewFavoriteNote.php", { favoriteId: favoriteId, note:note })
+                      .done(function( data ) {
+                        var table = document.getElementById("noteTable");
+                        var row = table.insertRow(0);
+                        var cell1 = row.insertCell(0);
+                        var cell2 = row.insertCell(1);
+                        cell2.className = "favoriteNoteRow";
+                        cell1.innerHTML = "<h4>" + moment().format('L') + "</h4>";
+                        cell2.innerHTML = "<textarea class='form-control' rows='2' id='comment' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + note + "</textarea>";
+                        alert( "Note Added");
+                        $('#addNewNoteArea').val("");
+                      });
+                }
+                else
+                    alert("Note Empty");
+            }
+            function saveNote(textArea)
+            {
+                var noteId = textArea.id.replace("note", "");
+                var newNote = textArea.value;
+                // alert(areaId);
+                // alert(textArea.value);
+                $.post( "updateFavoriteNote.php", { noteId: noteId, note: newNote })
+                      .done(function( data ) {
+                        alert("Note Updated");
+                      });
             }
         </script>
 
