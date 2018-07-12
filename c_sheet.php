@@ -121,7 +121,7 @@ $keys = array_keys($response);
                         }
                     });
 
-                    // agentFeeToPay(x);
+                    agentFeeToPay(x);
                 }
             };
             xhttp.open("GET", "agentCommission.php?license=" + x, true);
