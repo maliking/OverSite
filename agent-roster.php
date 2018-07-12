@@ -206,9 +206,9 @@ $result = $stmt->fetchAll();
             "sorting": {
                 "enabled": true
             },
-            "paging": {
-                "enabled": true
-            },
+            // "paging": {
+            //     "enabled": true
+            // },
             "editing": {
                 "enabled": true,
                 "addRow": function () {
