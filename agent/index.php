@@ -1548,6 +1548,22 @@ $keys = array_keys($response);
                       });
                 }
             }
+            function editProperty(id)
+            {
+                var input = prompt("Enter new property address: ");
+                if(input != null && input != "")
+                {
+                    $.post("editPropertyAddress.php", {
+                            id: id,
+                            newData: input
+                        })
+                    .done(function( data ) {
+                            alert( "Data updated");
+                            $('#propertyAddress'+id).html(input);
+                      });
+                }
+            }
+            
 
             function archiveFavorite(favoriteId)
             {
