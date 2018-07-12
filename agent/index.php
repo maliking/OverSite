@@ -625,9 +625,8 @@ $keys = array_keys($response);
                     <div class="row">
                         <!-- /.col -->
                         <div class="col-md-12">
-                            <?php include 'progressGoal.php' ?>
-                        </div>
-                        <button>Active Prospects</button>
+                        <?php include 'progressGoal.php' ?>
+                    </div>
                         <div class="col-md-12">
                             <div class="box box-success">
                                 <div class="box-header">

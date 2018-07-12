@@ -1,3 +1,4 @@
+<?php include "index.php"; ?>
 <div class="box box-success">
                                 <div class="box-header">
                                     <h4>In-Contract Properties</h4>
