@@ -411,7 +411,7 @@ $keys = array_keys($response);
                 var clientName = prompt("Enter client name:");
                 if (clientName == null || clientName == "") {
                 } else {
-                    $("#clientName" + id).html(clientName);
+                    $(".clientName" + id).html(clientName);
                     // alert(houseId + " " + buyerID);
                     $.post("agent/saveInContractClientName.php", {
                         transId: id,
@@ -697,6 +697,54 @@ function addNewTransaction()
                 }
                 
                 
+            }
+
+    function editLendorInfo(type, id)
+            {
+                var input = prompt("Enter new lender " + type);
+                if(input != null && input != "")
+                {
+                    $.post("editLendorInfo.php", {
+                            type: type,
+                            id: id,
+                            newData: input
+                        })
+                    .done(function( data ) {
+                            alert( "Data updated");
+                            $('#lendor'+type+id).html(input);
+                      });
+                }
+            }
+            function editEscrowInfo(type, id)
+            {
+                var input = prompt("Enter new escrow " + type);
+                if(input != null && input != "")
+                {
+                    $.post("editEscrowInfo.php", {
+                            type: type,
+                            id: id,
+                            newData: input
+                        })
+                    .done(function( data ) {
+                            alert( "Data updated");
+                            $('#escrow'+type+id).html(input);
+                      });
+                }
+            }
+            function editProperty(id)
+            {
+                var input = prompt("Enter new property address: ");
+                if(input != null && input != "")
+                {
+                    $.post("editPropertyAddress.php", {
+                            id: id,
+                            newData: input
+                        })
+                    .done(function( data ) {
+                            alert( "Data updated");
+                            $('#propertyAddress'+id).html(input);
+                      });
+                }
             }
 </script>
 </body>
