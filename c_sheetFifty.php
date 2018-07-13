@@ -83,6 +83,7 @@ $houses = $stmtHouse->fetchAll();
 
             document.getElementById("percentage").value = ((commission.replace(/,/g,"") / housePrice.replace(/,/g,"")) * 100) + "%";
             document.getElementById("gross-comm").value = formatNumber(commission.replace(/,/g,""));
+            calculateCommissionFifty();
         }
         function addComa(number)
         {   
