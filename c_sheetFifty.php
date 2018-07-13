@@ -345,7 +345,7 @@ $houses = $stmtHouse->fetchAll();
                                                                 <div class="col-xs-3">
                                                                     <input type="text" class="form-control"
                                                                            id="remaxFee" name="remaxFee" placeholder=""
-                                                                           onchange="calculateCommissionFifty()">
+                                                                           onchange="calculateCommissionFifty()" value="0">
                                                                 </div>
 
                                                             </div>
