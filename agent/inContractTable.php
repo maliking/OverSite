@@ -105,21 +105,21 @@
                                             </tr>
                                             <tr>
                                             <td><b>Name</b></td>
-                                            <td class=clientName'. $trans['transId'] . ' ondblclick="editClientName(' . $trans['transId'] . ')">' . $trans['clientName'] . '</td>
-                                            <td id=lendorName' . $trans['transId'] . ' ondblclick=editLendorInfo("Name",' . $trans['transId']  . ') >' . $trans['lendorName'] . '</td>
-                                            <td id=escrowName' . $trans['transId'] . ' ondblclick=editEscrowInfo("Name",' . $trans['transId']  . ') >' . $trans['escrowName'] . '</td>
+                                            <td style="color:#0000FF;" class=clientName'. $trans['transId'] . ' ondblclick="editClientName(' . $trans['transId'] . ')">' . $trans['clientName'] . '</td>
+                                            <td style="color:#0000FF;" id=lendorName' . $trans['transId'] . ' ondblclick=editLendorInfo("Name",' . $trans['transId']  . ') >' . $trans['lendorName'] . '</td>
+                                            <td style="color:#0000FF;" id=escrowName' . $trans['transId'] . ' ondblclick=editEscrowInfo("Name",' . $trans['transId']  . ') >' . $trans['escrowName'] . '</td>
                                             </tr>
                                             <tr>
                                             <td><b>Phone</b></td>
-                                            <td id=clientNum' . $trans['transId'] . ' ondblclick="editClientNum(' . $trans['transId'] . ')">' . $trans['clientNum'] . '</td>
-                                            <td id=lendorNum' . $trans['transId'] . ' ondblclick=editLendorInfo("Num",' . $trans['transId']  . ') >' . $trans['lendorNum'] . '</td>
-                                            <td id=escrowNum' . $trans['transId'] . ' ondblclick=editEscrowInfo("Num",' . $trans['transId']  . ') >' . $trans['escrowNum'] . '</td>
+                                            <td style="color:#0000FF;" id=clientNum' . $trans['transId'] . ' ondblclick="editClientNum(' . $trans['transId'] . ')">' . $trans['clientNum'] . '</td>
+                                            <td style="color:#0000FF;" id=lendorNum' . $trans['transId'] . ' ondblclick=editLendorInfo("Num",' . $trans['transId']  . ') >' . $trans['lendorNum'] . '</td>
+                                            <td style="color:#0000FF;" id=escrowNum' . $trans['transId'] . ' ondblclick=editEscrowInfo("Num",' . $trans['transId']  . ') >' . $trans['escrowNum'] . '</td>
                                             </tr>
                                             <tr>
                                             <td><b>Email</b></td>
-                                            <td id=clientEmail'. $trans['transId'] . ' ondblclick="editClientEmail(\'' . $trans['transId'] . '\')">' . $trans['clientEmail'] . '</td>
-                                            <td id=lendorEmail' . $trans['transId'] . ' ondblclick=editLendorInfo("Email",' . $trans['transId']  . ') >' . $trans['lendorEmail'] . '</td>
-                                            <td id=escrowEmail' . $trans['transId'] . ' ondblclick=editEscrowInfo("Email",' . $trans['transId']  . ') >' . $trans['escrowEmail'] . '</td>
+                                            <td style="color:#0000FF;" id=clientEmail'. $trans['transId'] . ' ondblclick="editClientEmail(\'' . $trans['transId'] . '\')">' . $trans['clientEmail'] . '</td>
+                                            <td style="color:#0000FF;" id=lendorEmail' . $trans['transId'] . ' ondblclick=editLendorInfo("Email",' . $trans['transId']  . ') >' . $trans['lendorEmail'] . '</td>
+                                            <td style="color:#0000FF;" id=escrowEmail' . $trans['transId'] . ' ondblclick=editEscrowInfo("Email",' . $trans['transId']  . ') >' . $trans['escrowEmail'] . '</td>
                                             </tr>
                                             
                                             </table></td>';
