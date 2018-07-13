@@ -805,7 +805,7 @@ $keys = array_keys($response);
                         <input type="text" name="zip" class="form-control" id="inputSuccess6" placeholder="zip">
                         </br>
 
-                        <label>Listing Type?</label>
+                        <label>Client Type?</label>
                         <select id="" name="listingType" class="form-control" >
                             <option value="">--Select One--</option>
                             <option value="listing">Listing</option>
