@@ -137,13 +137,19 @@ $avgPercentResult = $avgPercentStmt->fetch();
                                     $rank++;
                                 }
                                 ?>
-                                <tr>
+                                
+                                </tbody>
+                            </table>
+                            <table class="table table-bordered table-striped">
+                                
+                            <tbody>
+                            <tr>
                                     <td>Total</td>
                                     <td></td>
-                                    <td><?php echo $totalClosed['totalClosed']; ?></td>
-                                    <td><?php echo "$" . number_format($volResult['volResult']); ?></td>
-                                    <td><?php echo "$" . number_format($grossResult['grossResult']); ?></td>
-                                    <td><?php echo number_format($avgPercentResult['avgPercentResult'], 2, '.','') . "%"; ?></td>
+                                    <td><?php echo "Units: " . $totalClosed['totalClosed']; ?></td>
+                                    <td><?php echo "Vol Sold: $" . number_format($volResult['volResult']); ?></td>
+                                    <td><?php echo "GCI: $" . number_format($grossResult['grossResult']); ?></td>
+                                    <td><?php echo "AVG: " . number_format($avgPercentResult['avgPercentResult'], 2, '.','') . "%"; ?></td>
                                 </tr>
                                 </tbody>
                             </table>
