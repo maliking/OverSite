@@ -306,10 +306,10 @@ for ($h = 0; $h < sizeof($keys); $h++)
             "sorting": {
                 "enabled": true
             },
-            "paging": {
-                "enabled": true,
-                "size": 15
-            }
+            // "paging": {
+            //     "enabled": true,
+            //     "size": 15
+            // }
 
         });
     });
