@@ -306,7 +306,30 @@ $result = $stmt->fetchAll();
         });
     }); // jquery
 
+$('.table').bind({
+'after.ft.sorting': function (e) {
+addRowCount('.table');
+},
+'footable_filtering': function (e) {
+addRowCount('.footable');
+},
+'ready.ft.table': function (e){
+    addRowCount('.footable');
+}
+});
 
+function addRowCount(tableAttr) {
+var PageNumber = 0;
+$(tableAttr).each(function () {
+var RowCount = $('td:first-child', this).length;
+// alert(RowCount);
+$('td:first-child', this).each(function (i) {
+if(i != 0)
+    $(this).html( i );
+
+});
+});
+}
 
 //
 //
@@ -494,6 +517,10 @@ $result = $stmt->fetchAll();
         xhr.open("GET", "scriptToGetAgentInfo.php?license=" + lic, true);
         xhr.send();
     }
+
+    // $('.footable-sortable').click(function(){
+    // alert('Table updated, launching kill space goats sequence now.');
+// });
 </script>
 </body>
 

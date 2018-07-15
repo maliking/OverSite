@@ -1,5 +1,9 @@
 [
   {
+    "name": "rowNum",
+    "title": ""
+  },
+  {
     "name": "userId",
     "title": "User ID",
     "visible": false
