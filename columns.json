@@ -17,10 +17,6 @@
     "title": "First Name"
   },
   {
-    "name": "commission",
-    "title": "Commission"
-  },
-  {
     "name": "license",
     "title": "License",
     "visible": false
@@ -39,5 +35,9 @@
     "name": "phone",
     "title": "Phone",
     "visible": false
+  },
+  {
+    "name": "startDate",
+    "title": "Start Date"
   }
 ]
