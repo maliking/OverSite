@@ -12,17 +12,7 @@
       <div class="modal-body" style="height:75%; overflow: auto;">
 
         <table id="noteTable" style="border-collapse:separate; border-spacing: 0 15px;" >
-        <tr>
-          <td><h4>mm/dd/yyyy</h4></td>
-          <td style="width:100%"><textarea class="form-control" rows="2" id="comment" style="resize:none; border: solid 1px black" onchange="saveNote()"></textarea></td> 
-          
-        </tr>
-        <tr>
-          <td>date</td>
-          <td style="width:100%"><textarea class="form-control" rows="2" id="comment" style="resize:none;" onchange="saveNote()"></textarea></td> 
-        </tr>
 
-        
       </table>
       </div>
       <div class="modal-footer" style="border-top: solid 2px black">
@@ -33,5 +23,28 @@
       </div>
     </div>
 
+  </div>
+</div>
+<!-- -->
+
+<!-- Modal -->
+  <div id="lastContactedModal" class="modal fade" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <p id="favoriteIdContact" hidden></p>          
+        </div>
+        <div class="modal-body">
+          <button onClick="updateLastContacted('Contacted by Phone')">Phone</button>
+          <button onClick="updateLastContacted('Contacted by Email')">Email</button>
+          <button onClick="updateLastContacted('Contacted by Walk-in')">Walk-in</button>
+          <button onClick="updateLastContacted('Contacted by Text')">Text</button>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div> -->
+      </div>
+    </div>
   </div>
 </div>

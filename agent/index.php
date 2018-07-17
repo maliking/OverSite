@@ -661,7 +661,7 @@ $keys = array_keys($response);
                                             {   if($favorite['lastContacted'] == "0000-00-00")
                                                     $lastContacted = "NA";
                                                 else if ($favorite['lastContacted'] != "0000-00-00") 
-                                                    $lastContacted = date("m/d/y", strtotime($favorite['lastContacted']));
+                                                    $lastContacted = date("m/d/y g:i a", strtotime($favorite['lastContacted']));
                                                 if($activeProspectCount % 5 == 0)
                                                 {
                                                     echo "<tr>";
@@ -685,7 +685,7 @@ $keys = array_keys($response);
                                                 }
                                                 echo "<tr id=favorite" . $favorite['favoriteId'] . ">";
                                                 echo '<td>' . $activeProspectCount++ . '</td>';
-                                                echo '<td id=lastContacted' . $favorite['favoriteId'] . ' class="fa fa-phone"  style="text-align: center;" onClick="updateLastContacted(' . $favorite['favoriteId'] . ')">' . "&nbsp&nbsp&nbsp" . $lastContacted . '</td>';
+                                                echo '<td id=lastContacted' . $favorite['favoriteId'] . ' class="fa fa-phone"  style="text-align: center;" onClick="showLastContactedModal(this)">' . "&nbsp&nbsp&nbsp" . $lastContacted . '</td>';
                                                 echo '<td>' . $favorite['listingType'] . '</td>';
                                                 echo '<td id=name' . $favorite['favoriteId'] . ' onClick=editFavorite("name",' . $favorite['favoriteId'] . ')>' . $favorite['firstName'] . " " . $favorite['lastName'] . '</td>';
                                                 echo '<td id=phone' . $favorite['favoriteId'] . ' onClick=editFavorite("phone",' . $favorite['favoriteId'] . ')>' . $favorite['phone'] . '</td>';
@@ -1503,19 +1503,46 @@ $keys = array_keys($response);
                 }
             }
 
-            function updateLastContacted(id)
+            function showLastContactedModal(row)
             {
-                if(confirm("Want to update last contacted?"))
-                {
-                    $.post("updateLastContacted.php", {
-                                id: id
+                $('#lastContactedModal').modal('toggle');
+                var tableRow = row.id;
+                var id = tableRow.replace("lastContacted", "");
+                // alert(id);
+                $('#favoriteIdContact').html(id);
+
+
+            }
+            function updateLastContacted(type)
+            {
+                var favoriteId = $('#favoriteIdContact').html();
+                // alert(type);
+                $.post("updateLastContacted.php", {
+                                id: favoriteId,
+                                note: type
                             })
                         .done(function( data ) {
                                 alert("Updated last contacted ");
-                                $('#lastContacted'+id).html(moment().format('l'));
+                                // $('#lastContacted'+id).html(moment().format('l'));
+                                $('#lastContacted'+favoriteId).html(moment().format('M/DD/YYYY h:mma'));
+                                $('#lastContactedModal').modal('toggle');
                           });
-                }
+                
             }
+            // function updateLastContacted(id)
+            // {
+                
+            //     if(confirm("Want to update last contacted?"))
+            //     {
+            //         $.post("updateLastContacted.php", {
+            //                     id: id
+            //                 })
+            //             .done(function( data ) {
+            //                     alert("Updated last contacted ");
+            //                     $('#lastContacted'+id).html(moment().format('l'));
+            //               });
+            //     }
+            // }
             function editLendorInfo(type, id)
             {
                 var input = prompt("Enter new lender " + type);
@@ -1598,7 +1625,7 @@ $keys = array_keys($response);
                             var cell1 = row.insertCell(0);
                             var cell2 = row.insertCell(1);
                             cell2.className = "favoriteNoteRow";
-                            cell1.innerHTML = "<h4>" + moment(result[x].noteDate).format('MM/DD/YYYY')+ "</h4>";
+                            cell1.innerHTML = "<h4>" + moment(result[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
                             cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + result[x].noteId + "' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + result[x].note + "</textarea>";
                             // console.log(result[x].noteId);
                             // console.log(result[x].noteDate);
