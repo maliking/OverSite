@@ -9,7 +9,7 @@
         <h4 class="modal-title">Notes</h4>
         <p id="favoriteId" hidden></p>
       </div>
-      <div class="modal-body" style="height:75%; overflow: auto;">
+      <div class="modal-body" style="height:70%; overflow: auto;">
 
         <table id="noteTable" style="border-collapse:separate; border-spacing: 0 15px;" >
 

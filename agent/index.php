@@ -182,7 +182,7 @@ $keys = array_keys($response);
             <?php include "./fullcalendar/links.php" ?>
 
 
-            <?php include "noteModal.php" ?>
+            
 
             <!-- Content Wrapper. Contains page content -->
             <div class="content-wrapper">
@@ -905,7 +905,7 @@ $keys = array_keys($response);
         <!-- BEGIN TEMPLATE default-js.php INCLUDE -->
         <?php include "./templates-agent/default-js.php" ?>
         <!-- END TEMPLATE default-css.php INCLUDE -->
-
+        <?php include "noteModal.php" ?>
 
         <script type="text/javascript" src="../dist/js/vendor/footable.min.js"></script>
 
