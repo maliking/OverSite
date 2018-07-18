@@ -634,7 +634,7 @@ $keys = array_keys($response);
                                     <button onClick="showProspectModal()">Add Prospect</button>
                                 </div>
                                 <div class="box-body" style="height:100%; ">
-                                    <table class="table footable table-bordered table-striped" data-sorting="true" style="height:100%; ">
+                                    <table class="table footable table-bordered table-striped" data-sorting="true" data-filtering="true" style="height:100%; ">
                                         <thead>
                                             
                                             <th></th>
@@ -929,8 +929,14 @@ $keys = array_keys($response);
             $('#datepicker').datepicker();
            
             jQuery(function($){
-                $('.footable').footable({
-
+                $('.table').footable({
+                    "sorting": {
+                "enabled": true
+            },
+            "filtering": {
+            "connectors": false,
+            "position": "center"
+            }
                     // "paging": {
                     //     "enabled": true,
                     //     "size": 4,

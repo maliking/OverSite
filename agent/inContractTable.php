@@ -5,7 +5,7 @@
                                     <button onClick="showTransactionModal()">Add New Transaction</button>
                                 </div>
                                 <div class="box-body" style="height:100%;">
-                                    <table class="table footable table-bordered table-striped" data-sorting="true" style="height:100%;">
+                                    <table class="table footable table-bordered table-striped" data-sorting="true" data-filtering="true" style="height:100%;">
                                         <thead>
                                         <tr>
                                             <th>Type</th>
