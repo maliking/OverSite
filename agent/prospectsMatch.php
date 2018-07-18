@@ -152,30 +152,61 @@ $keys = array_keys($response);
                                             $prospectMinRangePrice = $prospectResult['price'] - 50000;
                                             // foreach ($results as $house) 
                                             for ($i = 0; $i < sizeof($keys); $i++)
-                                            {                                     
-                                                if($response[$keys[$i]]['rntLsePrice'] <= $prospectMaxRangePrice && $response[$keys[$i]]['rntLsePrice'] >= $prospectMinRangePrice &&
-                                                    $response[$keys[$i]]['totalBaths'] >= $prospectResult['bathroom'] && $response[$keys[$i]]['bedrooms'] >= $prospectResult['bedroom'])
-                                                {     
-                                                    $agentNameSql = "SELECT firstName, lastName FROM UsersInfo WHERE userId = :userId";
-                                                    $param = array();
-                                                    $param[':userId'] = $response[$keys[$i]]['listingAgentID'];
-                                                    $stmt = $dbConn->prepare($agentNameSql);
-                                                    $stmt->execute($param);
-                                                    $agentNameResult = $stmt->fetch();
+                                            {            
+                                                if($prospectResult['zip'] == "")
+                                                {                         
+                                                    if($response[$keys[$i]]['rntLsePrice'] <= $prospectMaxRangePrice && $response[$keys[$i]]['rntLsePrice'] >= $prospectMinRangePrice &&
+                                                        $response[$keys[$i]]['totalBaths'] >= $prospectResult['bathroom'] && $response[$keys[$i]]['bedrooms'] >= $prospectResult['bedroom'])
+                                                    {     
+                                                        $agentNameSql = "SELECT firstName, lastName FROM UsersInfo WHERE userId = :userId";
+                                                        $param = array();
+                                                        $param[':userId'] = $response[$keys[$i]]['listingAgentID'];
+                                                        $stmt = $dbConn->prepare($agentNameSql);
+                                                        $stmt->execute($param);
+                                                        $agentNameResult = $stmt->fetch();
 
-                                                    echo "<tr>";
-                                                    echo "<td>" . $agentNameResult['firstName'] . " " . $agentNameResult['lastName'] . "</td>";
-                                                    echo "<td>" . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] . "</td>";
-                                                    echo "<td>$" . number_format($response[$keys[$i]]['rntLsePrice']) . "</td>";
-                                                    echo "<td>" . $response[$keys[$i]]['bedrooms'] . "</td>";
-                                                    echo "<td>" . $response[$keys[$i]]['totalBaths'] . "</td>";
-                                                    echo "<td>" . $response[$keys[$i]]['zipcode'] . "</td>";
-                                                    echo "<td>" . $response[$keys[$i]]['sqFt'] . "</td>";
-                                                    echo '<td ><a href="viewHouseImages.php?id=' . $response[$keys[$i]]['listingID'] . '" target="_blank"><button >View</button></a></td>';
-                                                    echo '<td ><a href="https://maps.google.com/?q=' . $response[$keys[$i]]['address'] . 
-                                                        " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . 
-                                                        " " . $response[$keys[$i]]['zipcode'] . '" target="_blank"><button >View on Map</button></a></td>';
-                                                    echo "</tr>";
+                                                        echo "<tr>";
+                                                        echo "<td>" . $agentNameResult['firstName'] . " " . $agentNameResult['lastName'] . "</td>";
+                                                        echo "<td>" . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] . "</td>";
+                                                        echo "<td>$" . number_format($response[$keys[$i]]['rntLsePrice']) . "</td>";
+                                                        echo "<td>" . $response[$keys[$i]]['bedrooms'] . "</td>";
+                                                        echo "<td>" . $response[$keys[$i]]['totalBaths'] . "</td>";
+                                                        echo "<td>" . $response[$keys[$i]]['zipcode'] . "</td>";
+                                                        echo "<td>" . $response[$keys[$i]]['sqFt'] . "</td>";
+                                                        echo '<td ><a href="viewHouseImages.php?id=' . $response[$keys[$i]]['listingID'] . '" target="_blank"><button >View</button></a></td>';
+                                                        echo '<td ><a href="https://maps.google.com/?q=' . $response[$keys[$i]]['address'] . 
+                                                            " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . 
+                                                            " " . $response[$keys[$i]]['zipcode'] . '" target="_blank"><button >View on Map</button></a></td>';
+                                                        echo "</tr>";
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    if($response[$keys[$i]]['rntLsePrice'] <= $prospectMaxRangePrice && $response[$keys[$i]]['rntLsePrice'] >= $prospectMinRangePrice &&
+                                                        $response[$keys[$i]]['totalBaths'] >= $prospectResult['bathroom'] && $response[$keys[$i]]['bedrooms'] >= $prospectResult['bedroom'] &&
+                                                        $response[$keys[$i]]['zipcode'] == $prospectResult['zip'])
+                                                    {     
+                                                        $agentNameSql = "SELECT firstName, lastName FROM UsersInfo WHERE userId = :userId";
+                                                        $param = array();
+                                                        $param[':userId'] = $response[$keys[$i]]['listingAgentID'];
+                                                        $stmt = $dbConn->prepare($agentNameSql);
+                                                        $stmt->execute($param);
+                                                        $agentNameResult = $stmt->fetch();
+
+                                                        echo "<tr>";
+                                                        echo "<td>" . $agentNameResult['firstName'] . " " . $agentNameResult['lastName'] . "</td>";
+                                                        echo "<td>" . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . " " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] . "</td>";
+                                                        echo "<td>$" . number_format($response[$keys[$i]]['rntLsePrice']) . "</td>";
+                                                        echo "<td>" . $response[$keys[$i]]['bedrooms'] . "</td>";
+                                                        echo "<td>" . $response[$keys[$i]]['totalBaths'] . "</td>";
+                                                        echo "<td>" . $response[$keys[$i]]['zipcode'] . "</td>";
+                                                        echo "<td>" . $response[$keys[$i]]['sqFt'] . "</td>";
+                                                        echo '<td ><a href="viewHouseImages.php?id=' . $response[$keys[$i]]['listingID'] . '" target="_blank"><button >View</button></a></td>';
+                                                        echo '<td ><a href="https://maps.google.com/?q=' . $response[$keys[$i]]['address'] . 
+                                                            " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . 
+                                                            " " . $response[$keys[$i]]['zipcode'] . '" target="_blank"><button >View on Map</button></a></td>';
+                                                        echo "</tr>";
+                                                    }
                                                 }
                                             }
                                             ?>
