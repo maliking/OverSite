@@ -634,7 +634,7 @@ $keys = array_keys($response);
                                     <button onClick="showProspectModal()">Add Prospect</button>
                                 </div>
                                 <div class="box-body" style="height:100%; ">
-                                    <table class="table footable table-bordered table-striped" data-sorting="true" data-filtering="true" style="height:100%; ">
+                                    <table class="table footable table-bordered table-striped" id="favoriteTable" data-sorting="true" data-filtering="true" style="height:100%; ">
                                         <thead>
                                             
                                             <th></th>
@@ -684,7 +684,7 @@ $keys = array_keys($response);
                                                     echo "</tr>";
                                                 }
                                                 echo "<tr id=favorite" . $favorite['favoriteId'] . ">";
-                                                echo '<td>' . $activeProspectCount++ . '</td>';
+                                                echo '<td></td>';
                                                 echo '<td id=lastContacted' . $favorite['favoriteId'] . ' class="fa fa-phone"  style="text-align: center;" onClick="showLastContactedModal(this)">' . "&nbsp&nbsp&nbsp" . $lastContacted . '</td>';
                                                 echo '<td>' . $favorite['listingType'] . '</td>';
                                                 echo '<td id=name' . $favorite['favoriteId'] . ' onClick=editFavorite("name",' . $favorite['favoriteId'] . ')>' . $favorite['firstName'] . " " . $favorite['lastName'] . '</td>';
@@ -946,6 +946,52 @@ $keys = array_keys($response);
                 });
             });
 
+            $('#favoriteTable').bind({
+                'after.ft.sorting': function (e) {
+                addRowCount('#favoriteTable');
+                },
+                'footable_filtering': function (e) {
+                addRowCount('#favoriteTable');
+                },
+                'ready.ft.table': function (e){
+                    addRowCount('#favoriteTable');
+                }
+                });
+            $('#inContractTable').bind({
+                'after.ft.sorting': function (e) {
+                addRowCountIC('#inContractTable');
+                },
+                'footable_filtering': function (e) {
+                addRowCountIC('#inContractTable');
+                },
+                'ready.ft.table': function (e){
+                    addRowCountIC('#inContractTable');
+                }
+                });
+                function addRowCount(tableAttr) {
+                var PageNumber = 0;
+                $(tableAttr).each(function () {
+                var RowCount = $('td:first-child', this).length;
+                // alert(RowCount);
+                $('td:first-child', this).each(function (i) {
+                
+                $(this).html( i + 1);
+
+                });
+                });
+                }
+                function addRowCountIC(tableAttr) {
+                var PageNumber = 0;
+                $(tableAttr).each(function () {
+                var RowCount = $('td.inContractRowNumber', this).length;
+                // alert(RowCount);
+                $('td.inContractRowNumber', this).each(function (i) {
+                
+                $(this).html( i + 1);
+
+                });
+                });
+                }
             // jQuery(function($){
             //     $('.inConctractTable').footable({
             //         "useParentWidth": true

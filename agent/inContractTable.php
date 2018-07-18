@@ -1,4 +1,4 @@
-<div class="box box-success" style="height:90%; overflow: auto;">
+<div class="box box-success" id="inContractTable" style="height:90%; overflow: auto;">
                                 <div class="box-header">
                                     <h4>In-Contract Properties</h4>
                                     <button><a href="my-inventory.php">Add New In-Contract</a></button>
@@ -8,6 +8,7 @@
                                     <table class="table footable table-bordered table-striped" data-sorting="true" data-filtering="true" style="height:100%;">
                                         <thead>
                                         <tr>
+                                            <th></th>
                                             <th>Type</th>
                                             <th>Client</th>
                                             <th>Property</th>
@@ -65,6 +66,7 @@
                                                 if($count % 5 == 0)
                                                 {
                                                     echo "<tr>";
+                                                    echo "<td></td>";
                                                     echo "<td><b>Type</b></td>";
                                                     echo "<td><b>Client</b></td>";
                                                     echo "<td><b>Property</b></td>";
@@ -84,15 +86,15 @@
                                                     echo "</tr>";
                                                 }
                                                 $count++;
-                                                echo '<tr id=inContract' . $trans['transId'] . ' ><td>';
+                                                echo '<tr id=inContract' . $trans['transId'] . ' >';
                                                 // if ($trans['transType'] == 'Listing') {
                                                 //     echo '<b>LIST</b>';
                                                 // } else {
                                                 //     echo '<b>BUY</b>';
                                                 // }
-                                                echo $trans['transType'];
-                                                echo '</td>
-                                            <td class=clientName'. $trans['transId'] . ' ondblclick="editClientName(' . $trans['transId'] . ')">' . $trans['clientName'] . '</td>';
+                                                echo "<td class='inContractRowNumber'></td>";
+                                                echo "<td>" . $trans['transType'] . "</td>";
+                                            echo '<td class=clientName'. $trans['transId'] . ' ondblclick="editClientName(' . $trans['transId'] . ')">' . $trans['clientName'] . '</td>';
                                             echo '<td id=propertyAddress'. $trans['transId'] . ' ondblclick="editProperty(' . $trans['transId'] . ')">' . $trans['address'] . '</td>';
                                             // echo '<td id=clientNum' . $trans['transId'] . ' onClick="editClientNum(' . $trans['transId'] . ')">' . $trans['clientNum'] . '</td>';
                                             echo '<td><table border="1">
