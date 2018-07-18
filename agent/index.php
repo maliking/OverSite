@@ -627,14 +627,14 @@ $keys = array_keys($response);
                         <div class="col-md-12">
                         <?php include 'progressGoal.php' ?>
                     </div>
-                        <div class="col-md-12">
-                            <div class="box box-success">
+                        <div class="col-md-12" style="height:60vh;">
+                            <div class="box box-success" style="height:90%; overflow: auto;">
                                 <div class="box-header">
                                     <h4>Active Prospects</h4>
                                     <button onClick="showProspectModal()">Add Prospect</button>
                                 </div>
-                                <div class="box-body" style="height:200px; overflow: auto;">
-                                    <table class="table footable table-bordered table-striped" data-sorting="true">
+                                <div class="box-body" style="height:100%; ">
+                                    <table class="table footable table-bordered table-striped" data-sorting="true" style="height:100%; ">
                                         <thead>
                                             
                                             <th></th>
@@ -722,23 +722,21 @@ $keys = array_keys($response);
                             </div>
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-12" style="height:80vh;">
                             
                             
                             <?php include 'inContractTable.php'; ?>
-                           
 
-                            <div class="box box-primary">
-                                <div class="box-body">
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-12" style="height:80vh;">
+                                <div class="box box-success" style="height:100%; overflow: auto;">
                                     <h3>Meetings</h3>
                                     <!-- THE CALENDAR -->
-                                    <div id="calendar" style="height:600px;"></div>
+                                    <div id="calendar" ></div>
                                 </div>
                                 <!-- /.box-body -->
                             </div>
-                            <!-- /. box -->
-                        </div>
-                        <!-- /.col -->
                     </div>
                     <!-- /.row -->
                 </section>
