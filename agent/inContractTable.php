@@ -1,3 +1,4 @@
+<?php include "./templates-agent/default-css.php" ?> 
  <style>
             .modal-title {
                 font-size: 150%;
@@ -71,7 +72,7 @@
         </style>
 <div class="box box-success" id="inContractTable" style="height:90%; overflow: auto;">
                                 <div class="box-header">
-                                    <h4>In-Contract Property</h4>
+                                    <h4>In-Contract Properties</h4>
                                     <button><a href="my-inventory.php">Add New In-Contract</a></button>
                                     <button onClick="showTransactionModal()">Add New Transaction</button>
                                 </div>
