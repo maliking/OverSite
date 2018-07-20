@@ -1,3 +1,74 @@
+ <style>
+            .modal-title {
+                font-size: 150%;
+                font-weight: bold;
+            }
+            
+            #modal-table {
+                color: black;
+            }
+            
+            .btn-group {
+                display: inline-block!important
+            }
+
+
+            .top, .bottom {
+                padding: 0 5px;    
+            }
+
+            
+
+            .bottom{
+                border-top: 1px solid #000;
+                display: block;
+            }
+
+            .favoriteNoteRow{
+                width: 100%;
+            }
+        </style>
+        <style type "text/css">
+
+
+        .blink {
+            -webkit-animation: blink .75s linear infinite;
+            -moz-animation: blink .75s linear infinite;
+            -ms-animation: blink .75s linear infinite;
+            -o-animation: blink .75s linear infinite;
+             animation: blink .75s linear infinite;
+        }
+        @-webkit-keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 1; }
+            50.01% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @-moz-keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 1; }
+            50.01% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @-ms-keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 1; }
+            50.01% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @-o-keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 1; }
+            50.01% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 1; }
+            50.01% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+        </style>
 <div class="box box-success" id="inContractTable" style="height:90%; overflow: auto;">
                                 <div class="box-header">
                                     <h4>In-Contract Properties</h4>
