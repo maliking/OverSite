@@ -1,4 +1,71 @@
 <?php include "./templates-agent/default-css.php" ?> 
+<?php
+session_start();
+clearstatcache();
+date_default_timezone_set('America/Los_Angeles');
+if (!isset($_SESSION['userId'])) {
+    header("Location: http://jjp2017.org/login.php");
+}
+require '../databaseConnection.php';
+$dbConn = getConnection();
+
+$favoriteSql = "SELECT * FROM favorites WHERE userId = :userId";
+$favoriteParameters = array();
+$favoriteParameters[':userId'] = $_SESSION['userId'];
+$favoriteStmt = $dbConn->prepare($favoriteSql);
+$favoriteStmt->execute($favoriteParameters);
+$favoriteResults = $favoriteStmt->fetchAll();
+
+
+// $sqlRank = "SELECT UsersInfo.firstName, UsersInfo.lastName, count(*) as sold, sum(finalComm) as YTDComm FROM UsersInfo LEFT JOIN commInfo on UsersInfo.license = commInfo.license group by UsersInfo.license order by sold Desc ";
+// $stmtRank = $dbConnRank->prepare($sqlRank);
+// $stmtRank->execute();
+// $rank = $stmtRank->fetchAll();
+$url = 'https://api.idxbroker.com/clients/featured';
+
+$method = 'GET';
+
+// headers (required and optional)
+$headers = array(
+    'Content-Type: application/x-www-form-urlencoded', // required
+    'accesskey: e1Br0B5DcgaZ3@JXI9qib5', // required - replace with your own
+    'outputtype: json' // optional - overrides the preferences in our API control page
+);
+
+// set up cURL
+$handle = curl_init();
+curl_setopt($handle, CURLOPT_URL, $url);
+curl_setopt($handle, CURLOPT_HTTPHEADER, $headers);
+curl_setopt($handle, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($handle, CURLOPT_SSL_VERIFYHOST, false);
+curl_setopt($handle, CURLOPT_SSL_VERIFYPEER, false);
+
+// exec the cURL request and returned information. Store the returned HTTP code in $code for later reference
+$response = curl_exec($handle);
+$code = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+
+if ($code >= 200 || $code < 300) {
+    $response = json_decode($response, true);
+} else {
+    $error = $code;
+}
+
+// print_r($response);
+
+$keys = array_keys($response);
+
+
+// $pendingListings = (int)$addedHouseResults['added'];
+// for($i = 0; $i < sizeof($keys); $i++) 
+// {
+//     if($response[$keys[$i]]['listingAgentID'] == $licenseResult['mlsId'])
+//     {
+//         $pendingListings++;
+//     }
+// }
+
+?>
+
  <style>
             .modal-title {
                 font-size: 150%;
