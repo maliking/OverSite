@@ -84,18 +84,19 @@ $months = array("Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "S
                                 <thead>
                                 <tr>
                                     <th>Agent</th>
-                                    <th data-breakpoints="xs sm">Jan</th>
-                                    <th data-breakpoints="xs sm">Feb</th>
-                                    <th data-breakpoints="xs sm">March</th>
-                                    <th data-breakpoints="xs sm">April</th>
-                                    <th data-breakpoints="xs sm">May</th>
-                                    <th data-breakpoints="xs sm">June</th>
-                                    <th data-breakpoints="xs sm">July</th>
-                                    <th data-breakpoints="xs sm">Aug</th>
-                                    <th data-breakpoints="xs sm">Sept</th>
-                                    <th data-breakpoints="xs sm">Oct</th>
-                                    <th data-breakpoints="xs sm">Nov</th>
-                                    <th data-breakpoints="xs sm">Dec</th>
+                                    <th data-breakpoints="xs sm" >Jan</th>
+                                    <th data-breakpoints="xs sm" >Feb</th>
+                                    <th data-breakpoints="xs sm" >March</th>
+                                    <th data-breakpoints="xs sm" >April</th>
+                                    <th data-breakpoints="xs sm" >May</th>
+                                    <th data-breakpoints="xs sm" >June</th>
+                                    <th data-breakpoints="xs sm" >July</th>
+                                    <th data-breakpoints="xs sm" >Aug</th>
+                                    <th data-breakpoints="xs sm" >Sept</th>
+                                    <th data-breakpoints="xs sm" >Oct</th>
+                                    <th data-breakpoints="xs sm" >Nov</th>
+                                    <th data-breakpoints="xs sm" >Dec</th>
+                                    <th data-breakpoints="xs sm" >Total</th>
                                     
                                 </tr>
                                 </thead>
@@ -104,6 +105,7 @@ $months = array("Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "S
                                 foreach ($agents as $agent) 
                                 {
                                     $monthCounter = 1;
+                                    $totalRemaxFee = 0;
                                     echo "<tr>";
 
                                     echo "<td>" . $agent['firstName'] . " " . $agent['lastName'] . "</td>";
@@ -116,12 +118,13 @@ $months = array("Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "S
                                         
                                             if($paid['userId'] == $agent['userId'] && $paid['month'] == $monthCounter)
                                             {
-                                                echo "<td>$ " . $paid['paid'] . "</td>";
+                                                echo "<td data-sort-value=" . $paid['paid'] . " >$ " . $paid['paid'] . "</td>";
+                                                $totalRemaxFee += $paid['paid'];
                                                 break;
                                             }
                                             else if($endOfArray == sizeof($agentPaidFees)-1)
                                             {
-                                                echo "<td>$0</td>";
+                                                echo "<td data-sort-value=0 >$0</td>";
                                             }
                                             $endOfArray++;
                                             
@@ -130,7 +133,7 @@ $months = array("Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "S
                                          
                                     } 
                                     
-                                        
+                                    echo "<td data-sort-value=". $totalRemaxFee . " >$ " . number_format($totalRemaxFee) . "</td>";
                                     
 
                                     
@@ -167,7 +170,15 @@ $months = array("Jan", "Feb", "March", "April", "May", "June", "July", "Aug", "S
 
 <script>
     jQuery(function ($) {
-        $('.table').footable({});
+        $('.table').footable({
+            "sorting": {
+                "enabled": true
+            },
+            "filtering": {
+            "connectors": false,
+            "position": "center"
+            }
+        });
     });
 </script>
 <script>
