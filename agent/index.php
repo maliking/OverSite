@@ -107,6 +107,9 @@ $keys = array_keys($response);
             .favoriteNoteRow{
                 width: 100%;
             }
+            .inContractNoteRow{
+                width: 100%;
+            }
         </style>
         <style type "text/css">
 
@@ -696,7 +699,7 @@ $keys = array_keys($response);
                                                 echo '<td id=bathroom' . $favorite['favoriteId'] . ' onClick=editFavorite("bathroom",' . $favorite['favoriteId'] . ')>' . $favorite['bathroom'] . '</td>';
                                                 echo '<td id=sqft' . $favorite['favoriteId'] . ' onClick=editFavorite("sqft",' . $favorite['favoriteId'] . ')>' . number_format($favorite['sqft']) . '</td>';
                                                 echo '<td id=lotSize' . $favorite['favoriteId'] . ' onClick=editFavorite("lotSize",' . $favorite['favoriteId'] . ')>' . number_format($favorite['lotSize']) . '</td>';
-                                                echo '<td><button data-toggle="modal" onClick=openNoteModal(' . $favorite['favoriteId'] . ')>Notes</button></td>';
+                                                echo '<td>' . $favorite['note'] . '<button data-toggle="modal" onClick=openNoteModal(' . $favorite['favoriteId'] . ')>Notes</button></td>';
                                                 echo '<td><a href="prospectsMatch.php?visitorId=' . $favorite['favoriteId'] . '" >House Matches</a></td>';
                                                 echo '<td class="fa fa-archive" style="text-align: center;" onClick="archiveFavorite(' . $favorite['favoriteId'] . ')"></td>';
                                                 echo '<td class="fa fa-trash-o"  style="text-align: center;" onClick="deleteFavorite(' . $favorite['favoriteId'] . ')"></td>';
@@ -904,6 +907,7 @@ $keys = array_keys($response);
         <?php include "./templates-agent/default-js.php" ?>
         <!-- END TEMPLATE default-css.php INCLUDE -->
         <?php include "noteModal.php" ?>
+        <?php include "inContractNoteModal.php" ?>
 
         <script type="text/javascript" src="../dist/js/vendor/footable.min.js"></script>
 
@@ -1467,28 +1471,58 @@ $keys = array_keys($response);
                 $('#addLeadModal').modal('toggle');
             }
 
-            function takeNote(id)
+            function takeNote(transId)
             {
+                //erase all when opening modal
+                $('#transId').html('');
+                $('#addNewNoteInContractArea').val('');
+                $("#inContractNoteTable").empty();
+
+                //populate data
+                $('#transId').html(transId);
+                $.post( "getInContractNotes.php", { transId: transId })
+                      .done(function( data ) {
+                        var result = JSON.parse(data);
+                        var x;
+                        var table = document.getElementById("inContractNoteTable");
+                        for(x in result)
+                        {
+                            var row = table.insertRow(0);
+                            var cell1 = row.insertCell(0);
+                            var cell2 = row.insertCell(1);
+                            cell2.className = "inContractNoteRow";
+                            cell1.innerHTML = "<h4>" + moment(result[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
+                            cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + result[x].noteId + "' style='resize:none; border: solid 1px black' onchange='saveInContractNote(this)'>" + result[x].note + "</textarea>";
+                            // console.log(result[x].noteId);
+                            // console.log(result[x].noteDate);
+                            // console.log(result[x].note);
+                        }
+                        
+                      });
+
+                // Open Modal
+                $('#incontractNoteModal').modal('toggle');
+
                 // alert(id);
-                var today = moment().format("MM-DD-YYYY");
-                var prevNote = $("#" + id).html();
-                if(prevNote == "" || prevNote == " ")
-                {
-                    var noteEntered = prompt("Enter Note:", today + " " + prevNote );
-                }
-                else
-                {
-                    var noteEntered = prompt("Enter Note:", prevNote + " " + today );
-                }
-                if (noteEntered == null || noteEntered == "") {
-                } else {
-                    $("#" + id).html(noteEntered);
-                    // alert(houseId + " " + buyerID);
-                    $.post("saveInContractNote.php", {
-                        transId: id,
-                        note: noteEntered
-                    });
-                }
+                // var today = moment().format("MM-DD-YYYY");
+                // var prevNote = $("#" + id).html();
+                // if(prevNote == "" || prevNote == " ")
+                // {
+                //     var noteEntered = prompt("Enter Note:", today + " " + prevNote );
+                // }
+                // else
+                // {
+                //     var noteEntered = prompt("Enter Note:", prevNote + " " + today );
+                // }
+                // if (noteEntered == null || noteEntered == "") {
+                // } else {
+                //     $("#" + id).html(noteEntered);
+                //     // alert(houseId + " " + buyerID);
+                //     $.post("saveInContractNote.php", {
+                //         transId: id,
+                //         note: noteEntered
+                //     });
+                // }
             }
 
             function editClientName(id)
@@ -1721,6 +1755,42 @@ $keys = array_keys($response);
                       .done(function( data ) {
                         alert("Note Updated");
                       });
+            }
+
+            function saveInContractNote(textArea)
+            {
+                var noteId = textArea.id.replace("note", "");
+                var newNote = textArea.value;
+                // alert(areaId);
+                // alert(textArea.value);
+                $.post( "updateInContractNote.php", { noteId: noteId, note: newNote })
+                      .done(function( data ) {
+                        alert("Note Updated");
+                      });
+            }
+            function addNewNoteInContract()
+            {
+                var transId = $('#transId').html();
+                var note = $('#addNewNoteInContractArea').val();
+                // alert(note);
+
+                if(note != "" && note != null)
+                {
+                    $.post( "addNewInContractNote.php", { transId: transId, note:note })
+                      .done(function( data ) {
+                        var table = document.getElementById("inContractNoteTable");
+                        var row = table.insertRow(0);
+                        var cell1 = row.insertCell(0);
+                        var cell2 = row.insertCell(1);
+                        cell2.className = "inContractNoteRow";
+                        cell1.innerHTML = "<h4>" + moment().format('L') + "</h4>";
+                        cell2.innerHTML = "<textarea class='form-control' rows='2' id='comment' style='resize:none; border: solid 1px black' onchange='saveInContractNote(this)'>" + note + "</textarea>";
+                        alert( "Note Added");
+                        $('#addNewNoteInContractArea').val("");
+                      });
+                }
+                else
+                    alert("Note Empty");
             }
         </script>
 

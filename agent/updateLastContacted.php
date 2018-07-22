@@ -5,14 +5,14 @@ date_default_timezone_set('America/Los_Angeles');
 require '../databaseConnection.php';
 $dbConn = getConnection();
 
-$favoriteSql = "UPDATE favorites SET lastContacted = :lastContacted, note = :note WHERE favoriteId = :favoriteId";
+// $favoriteSql = "UPDATE favorites SET lastContacted = :lastContacted, note = :note WHERE favoriteId = :favoriteId";
 
-$favoriteParameters = array();
-$favoriteParameters[':favoriteId'] = $_POST['id'];
-$favoriteParameters[':note'] = $_POST['note'];
-$favoriteParameters[':lastContacted'] = date("Y-m-d H:i:s");
-$favoriteStmt = $dbConn->prepare($favoriteSql);
-$favoriteStmt->execute($favoriteParameters);
+// $favoriteParameters = array();
+// $favoriteParameters[':favoriteId'] = $_POST['id'];
+// $favoriteParameters[':note'] = $_POST['note'];
+// $favoriteParameters[':lastContacted'] = date("Y-m-d H:i:s");
+// $favoriteStmt = $dbConn->prepare($favoriteSql);
+// $favoriteStmt->execute($favoriteParameters);
 
 $sql = "INSERT INTO favoritesNotes (favoriteId, userId, noteDate, note)
 VALUES (:favoriteId, :userId, :noteDate, :note)";

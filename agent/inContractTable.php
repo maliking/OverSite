@@ -758,7 +758,7 @@ $keys = array_keys($response);
                                                         echo '<i id=status' . $trans['transId'] .  'miscTwo' . ' class="fa fa-flag blink" style="color:#d9534f"></i>';
                                                     }
                                             echo '</td>
-                                            <td id=' . $trans['transId'] . ' onClick="takeNote(' . $trans['transId'] . ')" > ' . $trans['notes']  . ' </td>';
+                                            <td> ' . $trans['notes']  . '<button onClick="takeNote(' . $trans['transId'] . ')" >Notes</button></td>';
                                            // <td> <button onClick=takeTransNote(' .$trans['transId'] . ')>  <i class="fa fa-edit" style="color:#d3d3d3"></i> </button></td>
                                            echo '<td>';
                                            ?>

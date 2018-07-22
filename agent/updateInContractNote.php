@@ -6,7 +6,7 @@ require '../databaseConnection.php';
 $dbConn = getConnection();
 
 
-$sql = "UPDATE favoritesNotes SET note = :note, noteDate = :noteDate WHERE noteId = :noteId";
+$sql = "UPDATE inContractNotes SET note = :note, noteDate = :noteDate WHERE noteId = :noteId";
 $namedParameters = array();
 $namedParameters[":noteId"] = $_POST['noteId'];
 $namedParameters[":noteDate"] = date("Y-m-d H:i:s");
