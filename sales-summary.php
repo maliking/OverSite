@@ -79,13 +79,15 @@ $avgPercentResult = $avgPercentStmt->fetch();
                                     <th>Vol Sold</th>
                                     <th>GCI</th>
                                     <th>Avg. Percentage</th>
+                                    <th>Broker Fee</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
                                 $rank = 1;
                                 $sql = "SELECT UsersInfo.firstName, UsersInfo.lastName, COUNT(commInfo.license) as closedUnits, commInfo.license, 
-                                        SUM(commInfo.finalHousePrice) as volSold, SUM(commInfo.InitialGross) as GCI, AVG(commInfo.percentage) as avgPercent 
+                                        SUM(commInfo.finalHousePrice) as volSold, SUM(commInfo.InitialGross) as GCI, AVG(commInfo.percentage) as avgPercent,
+                                        SUM(commInfo.brokerFee) as brokerFee
                                         FROM UsersInfo LEFT JOIN commInfo ON UsersInfo.license = commInfo.license WHERE UsersInfo.userType != '0' GROUP BY commInfo.license
                                         ORDER BY closedUnits DESC";
 
@@ -131,6 +133,11 @@ $avgPercentResult = $avgPercentStmt->fetch();
                                     // Avg Percentage
                                     echo "<td>";
                                     echo number_format($result['avgPercent'], 2, '.','') . "%";
+                                    echo "</td>";
+
+                                    // Broker Fee Total
+                                    echo "<td>";
+                                    echo "$" . number_format($result['brokerFee']);
                                     echo "</td>";
 
                                     echo "</tr>";
