@@ -1,13 +1,13 @@
 <?php include "./templates-agent/default-css.php" ?> 
 <?php
-session_start();
-clearstatcache();
+// session_start();
+// clearstatcache();
 date_default_timezone_set('America/Los_Angeles');
 if (!isset($_SESSION['userId'])) {
     header("Location: http://jjp2017.org/login.php");
 }
-require '../databaseConnection.php';
-$dbConn = getConnection();
+// require '../databaseConnection.php';
+// $dbConn = getConnection();
 
 $favoriteSql = "SELECT * FROM favorites WHERE userId = :userId";
 $favoriteParameters = array();
