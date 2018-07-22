@@ -44,9 +44,9 @@ foreach($commSheets as $sheet)
 	{	
         $newBroker = commAlgo($newTY, $sheet['InitialGross']);
         $newTY = $newTY + $sheet['InitialGross'];
-        $newFY = $newFY + ($sheet['InitialGross']- $newBroker - $sheet['remaxFee'] - $sheet['misc']);
+        $newFY = $newFY + ($sheet['InitialGross']- $newBroker - $sheet['remaxFee'] - $sheet['misc'] - 349);
         
-        $newFinalComm = $sheet['InitialGross'] - $newBroker - $sheet['remaxFee'] - $sheet['misc'];
+        $newFinalComm = $sheet['InitialGross'] - $newBroker - $sheet['remaxFee'] - $sheet['misc'] - 349;
 		echo "<tr>";
 		echo "<td height='50'>" . $sheet['firstName'] ."</td>";
 		echo "<td>" . $sheet['lastName'] ."</td>";
