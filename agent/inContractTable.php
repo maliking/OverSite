@@ -243,24 +243,28 @@ $keys = array_keys($response);
                                             <td><b>Client</b></td>
                                             <td><b>Lender</b></td>
                                             <td><b>Escrow</b></td>
+                                            <td><b>Agent</b></td>
                                             </tr>
                                             <tr>
                                             <td><b>Name</b></td>
                                             <td style="color:#0000FF;" class=clientName'. $trans['transId'] . ' ondblclick="editClientName(' . $trans['transId'] . ')">' . $trans['clientName'] . '</td>
                                             <td style="color:#0000FF;" id=lendorName' . $trans['transId'] . ' ondblclick=editLendorInfo("Name",' . $trans['transId']  . ') >' . $trans['lendorName'] . '</td>
                                             <td style="color:#0000FF;" id=escrowName' . $trans['transId'] . ' ondblclick=editEscrowInfo("Name",' . $trans['transId']  . ') >' . $trans['escrowName'] . '</td>
+                                            <td style="color:#0000FF;" id=agentName' . $trans['transId'] . ' ondblclick=editAgentInfo("Name",' . $trans['transId']  . ') >' . $trans['agentName'] . '</td>
                                             </tr>
                                             <tr>
                                             <td><b>Phone</b></td>
                                             <td style="color:#0000FF;" id=clientNum' . $trans['transId'] . ' ondblclick="editClientNum(' . $trans['transId'] . ')">' . $trans['clientNum'] . '</td>
                                             <td style="color:#0000FF;" id=lendorNum' . $trans['transId'] . ' ondblclick=editLendorInfo("Num",' . $trans['transId']  . ') >' . $trans['lendorNum'] . '</td>
                                             <td style="color:#0000FF;" id=escrowNum' . $trans['transId'] . ' ondblclick=editEscrowInfo("Num",' . $trans['transId']  . ') >' . $trans['escrowNum'] . '</td>
+                                            <td style="color:#0000FF;" id=agentNum' . $trans['transId'] . ' ondblclick=editAgentInfo("Num",' . $trans['transId']  . ') >' . $trans['agentNum'] . '</td>
                                             </tr>
                                             <tr>
                                             <td><b>Email</b></td>
                                             <td style="color:#0000FF;" id=clientEmail'. $trans['transId'] . ' ondblclick="editClientEmail(\'' . $trans['transId'] . '\')">' . $trans['clientEmail'] . '</td>
                                             <td style="color:#0000FF;" id=lendorEmail' . $trans['transId'] . ' ondblclick=editLendorInfo("Email",' . $trans['transId']  . ') >' . $trans['lendorEmail'] . '</td>
                                             <td style="color:#0000FF;" id=escrowEmail' . $trans['transId'] . ' ondblclick=editEscrowInfo("Email",' . $trans['transId']  . ') >' . $trans['escrowEmail'] . '</td>
+                                            <td style="color:#0000FF;" id=agentEmail' . $trans['transId'] . ' ondblclick=editAgentInfo("Email",' . $trans['transId']  . ') >' . $trans['agentEmail'] . '</td>
                                             </tr>
                                             
                                             </table></td>';
