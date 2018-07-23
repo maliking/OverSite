@@ -655,6 +655,7 @@ $keys = array_keys($response);
                                             <th>Notes</th>
                                             <th>Match</th>
                                             <th>Archive</th>
+                                            <th>To In-Contract</th>
                                             <th>Delete</th>
                                         </thead>
                                         <tbody>
@@ -702,6 +703,7 @@ $keys = array_keys($response);
                                                 echo '<td>' . $favorite['note'] . '<button data-toggle="modal" onClick=openNoteModal(' . $favorite['favoriteId'] . ')>Notes</button></td>';
                                                 echo '<td><a href="prospectsMatch.php?visitorId=' . $favorite['favoriteId'] . '" >House Matches</a></td>';
                                                 echo '<td class="fa fa-archive" style="text-align: center;" onClick="archiveFavorite(' . $favorite['favoriteId'] . ')"></td>';
+                                                echo '<td class="fa fa-file-text" style="text-align: center;" onClick="showSendToInContractModal(' . $favorite['favoriteId'] . ')"></td>';
                                                 echo '<td class="fa fa-trash-o"  style="text-align: center;" onClick="deleteFavorite(' . $favorite['favoriteId'] . ')"></td>';
                                                 echo "</tr>";
                                             }
@@ -772,6 +774,32 @@ $keys = array_keys($response);
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-default" data-dismiss="modal" onClick="addNewTransaction()">OK</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="sendToInContractModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Enter new In-Contract Address</h4>
+                <p id="sendToInContractId" hidden></p>
+              </div>
+              <div class="modal-body">
+                Address: <input type="text" name="sendToInContractAddress"><br><br>
+                City: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" name="sendToInContractCity"><br><br>
+                State:&nbsp&nbsp&nbsp&nbsp&nbsp <input type="text" name="sendToInContractState"><br><br>
+                Zip: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="sendToInContractZip"><br>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" onClick="sendToInContract()">OK</button>
               </div>
             </div>
 
@@ -1409,6 +1437,11 @@ $keys = array_keys($response);
             {
                  $('#inContractModal').modal('toggle');
             }
+            function showSendToInContractModal(id)
+            {
+                $('#sendToInContractId').html(id);
+                $('#sendToInContractModal').modal('toggle');
+            }
             function addNewTransaction()
             {
                 var inContractAddress = $('[name=inContractAddress]').val();
@@ -1703,6 +1736,51 @@ $keys = array_keys($response);
                         alert( "Prospect archived" );
                       });
                 }
+            }
+            function sendToInContract()
+            {
+                var favoriteId = $('#sendToInContractId').html();
+                ////
+                var inContractAddress = $('[name=sendToInContractAddress]').val();
+                var city = $('[name=sendToInContractCity]').val();
+                var state = $('[name=sendToInContractState]').val();
+                var zip = $('[name=sendToInContractZip]').val();
+
+                var address = inContractAddress + " " + city + ", " + state + " " + zip;
+                
+                bootbox.prompt({
+                title: "Select what type of in-contract:",
+                inputType: 'checkbox',
+                inputOptions: [
+                    {
+                        text: 'Listing',
+                        value: 'Listing',
+                    },
+                    {
+                        text: 'Buyer',
+                        value: 'Buyer',
+                    },
+                    {
+                        text: 'List./Buy.',
+                        value: 'List./Buy.',
+                    }
+                ],
+                callback: function (result) {
+                    inContractType = result[0];
+                    // alert(inContractType);
+                    // alert(address);
+                    if(inContractType != null)
+                    {
+                    $.post( "sendToInContract.php", {favoriteId: favoriteId, address: address, type: inContractType})
+                    .done(function( data ) {
+
+                        alert("Prospect In-contract. Will reflect on Dashboard after refreshing page.");
+                        });
+                    }
+                }
+
+                });
+            /////
             }
 
             function openNoteModal(favoriteId)
