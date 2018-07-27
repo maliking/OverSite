@@ -31,7 +31,7 @@
                                             </th>
 
                                             <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
-                                                                            data-placement="top" title="signedDisclousres">Sign. Disc. </a>
+                                                                            data-placement="top" title="signedDisclousres">Exec. Disc. </a>
                                             </th>
 
                                             <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
