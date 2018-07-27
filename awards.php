@@ -74,7 +74,12 @@ $avgPercentResult = $avgPercentStmt->fetch();
                             <button class="load-rows" type="button" data-url="quarterOneAwards.php">Q1</button>
                             <button class="load-rows" type="button" data-url="quarterTwoAwards.php">Q2</button>
                             <button class="load-rows" type="button" data-url="quarterThreeAwards.php">Q3</button>
-                            <button class="load-rows" type="button" data-url="quarterFourAwards.php">Q3</button>
+                            <button class="load-rows" type="button" data-url="quarterFourAwards.php">Q4</button>
+
+                            <input id="startMonth" type="month">
+                            -
+                            <input id="endMonth" type="month">
+                            <button class="getRowsByMonth" type="button" data-url="rowsByMonth.php">Filter</button>
                             <table class="table table-bordered table-striped" data-filtering="true">
                                 
                             </table>
@@ -137,20 +142,60 @@ $avgPercentResult = $avgPercentStmt->fetch();
         $( ".load-rows" ).each(function() {
           $(this).css( 'background-color','' );
         });
+        $('.getRowsByMonth').css( 'background-color','' );
+       
+            $(this).css('background-color','red');
+            // get the url to load off the button
+            var url = $(this).data('url');
+            // ajax fetch the rows
+            $.getJSON(url).then(function (rows) {
+                // and then load them using either
+                ft.rows.load(rows);
+                // or
+                // ft.loadRows(rows);
+            });
+        
+    });
+
+    $('.getRowsByMonth').on('click', function (e) {
+        e.preventDefault();
+        $( ".load-rows" ).each(function() {
+          $(this).css( 'background-color','' );
+        });
         $(this).css('background-color','red');
-        // get the url to load off the button
+        var startMonth = $('#startMonth').val().substr(-2);
+        var endMonth = $('#endMonth').val().substr(-2);
+        if(startMonth.charAt(0) == "0")
+            startMonth = startMonth.substr(-1);
+        if(endMonth.charAt(0) == "0")
+            endMonth = endMonth.substr(-1);
+        // alert(startMonth);
+        // alert(endMonth);
         var url = $(this).data('url');
-        // ajax fetch the rows
-        $.getJSON(url).then(function (rows) {
+        
+        $.getJSON(url,{startMonth:startMonth,endMonth:endMonth}).then(function (rows) {
             // and then load them using either
+            // alert(rows);
             ft.rows.load(rows);
             // or
             // ft.loadRows(rows);
         });
+
+        
     });
 
-    });
 
+    });
+$(document).ready(function(){
+    
+function getRowsByMonth()
+    {
+        // var startMonth = $('#startMonth').val();
+        // var endMonth = $('#endMonth').val();
+        // alert(startMonth);
+    }
+
+});
 </script>
 </body>
 
