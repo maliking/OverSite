@@ -62,7 +62,7 @@ $result = $stmt->fetchAll();
                                     <th>Property Address</th>
                                     <th data-type="text">Agent</th>
                                     <th>Gross Comm.</th>
-                                    <th data-breakpoints="all">Office</th>
+                                    <th>Office</th>
                                     <th data-breakpoints="all">E&O <a href="#" data-toggle="tooltip"
                                                                       data-placement="top" title="Errors & Omissions"><i
                                                     class="fa fa-question-circle"></i></a></th>
@@ -76,7 +76,7 @@ $result = $stmt->fetchAll();
                                     <th>House Price</th>
                                     <th>Avg. Perc.</th>
                                     <th>Listing/Buyer</th>
-                                    <th data-breakpoints="all">Notes</th>
+                                    <!-- <th data-breakpoints="all">Notes</th> -->
                                     <th data-breakpoints="all">Commission Sheet</th>
                                 </tr>
                                 </thead>
@@ -100,7 +100,7 @@ $result = $stmt->fetchAll();
                                     echo "<td>" . '$' . number_format($sales['finalHousePrice'], 0) . "</td>"; //price
                                     echo "<td>" . number_format($sales['percentage'], 2, '.','') . "%</td>"; //Avg Percent
                                     echo "<td>" . $sales['clients'] . "</td>"; //listing buyer
-                                    echo "<td>" . $sales['notes'] . "</td>"; //notes
+                                    // echo "<td>" . $sales['notes'] . "</td>"; //notes
                                     echo '<td> <a href="viewCommissionSheet.php?comm=' . $sales['commId'] . '" target="_blank"> <button>View Commission Sheet</button> </a> </td>';
                                     echo "</tr>";
                                 }
