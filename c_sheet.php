@@ -66,6 +66,8 @@ $keys = array_keys($response);
     <?php include "./templates-admin/default-css.php" ?>
     <!-- END TEMPLATE default-css.php INCLUDE -->
     <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/numeral.js/2.0.6/numeral.min.js"></script>
+
     <link rel="stylesheet" href="plugins/bootstrap-datepicker/bootstrap-datetimepicker.min.css">
 
     <style>
@@ -131,13 +133,13 @@ $keys = array_keys($response);
         function setPercentage(commission) {
             var housePrice = document.getElementById("housePrice").value;
 
-            document.getElementById("percentage").value = ((commission.replace(/,/g,"") / housePrice.replace(/,/g,"")) * 100) + "%";
-            document.getElementById("gross-comm").value = formatNumber(commission);
+            document.getElementById("percentage").value = numeral((commission.replace(/,/g,"") / housePrice.replace(/,/g,"")) * 100).format('0,0.00') + "%";
+            document.getElementById("gross-comm").value = numeral(commission).format('0,0.00');
             calculateCommission();
         }
         function addComa(number)
         {   
-            document.getElementById("housePrice").value = formatNumber(number);
+            document.getElementById("housePrice").value = numeral(number).format('0,0.00');
         }
         function getOwners() {
 

@@ -92,10 +92,15 @@ function calculateCommission() {
             brokerFee += commission * .05;
         }
 
-        document.getElementById("broker").value = formatNumber(brokerFee);
+        // document.getElementById("broker").value = formatNumber(brokerFee);
+        // // document.getElementById("percentage").value = ;
+        // document.getElementById("subtotal").value = formatNumber(initialCommission - brokerFee);
+        // document.getElementById("agent_net").value = formatNumber(initialCommission - brokerFee  - misc - remaxFee - transactionCoordFee - techFee - eoInsurance);
+
+        document.getElementById("broker").value = numeral(brokerFee).format('0,0.00');
         // document.getElementById("percentage").value = ;
-        document.getElementById("subtotal").value = formatNumber(initialCommission - brokerFee);
-        document.getElementById("agent_net").value = formatNumber(initialCommission - brokerFee  - misc - remaxFee - transactionCoordFee - techFee - eoInsurance);
+        document.getElementById("subtotal").value = numeral(initialCommission - brokerFee).format('0,0.00');
+        document.getElementById("agent_net").value = numeral(initialCommission - brokerFee  - misc - remaxFee - transactionCoordFee - techFee - eoInsurance).format('0,0.00');
 
     }
 }
@@ -119,10 +124,15 @@ function calculateCommissionFifty()
     brokerFee = initialCommission/2;
 
 
-    document.getElementById("broker").value = formatNumber(brokerFee);
+    // document.getElementById("broker").value = formatNumber(brokerFee);
+    // // document.getElementById("percentage").value = ;
+    // document.getElementById("subtotal").value = formatNumber(initialCommission - brokerFee);
+    // document.getElementById("agent_net").value = formatNumber(initialCommission - brokerFee - transactionCoordFee - techFee - eoInsurance - misc - remaxFee);
+
+    document.getElementById("broker").value = numeral(brokerFee).format('0,0.00');
     // document.getElementById("percentage").value = ;
-    document.getElementById("subtotal").value = formatNumber(initialCommission - brokerFee);
-    document.getElementById("agent_net").value = formatNumber(initialCommission - brokerFee - transactionCoordFee - techFee - eoInsurance - misc - remaxFee);
+    document.getElementById("subtotal").value = numeral(initialCommission - brokerFee).format('0,0.00');
+    document.getElementById("agent_net").value = numeral(initialCommission - brokerFee - transactionCoordFee - techFee - eoInsurance - misc - remaxFee).format('0,0.00');
 
 
 }
