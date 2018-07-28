@@ -654,7 +654,7 @@ $keys = array_keys($response);
                                             <th>Lot Size</th>
                                             <th>Notes</th>
                                             <th>Match</th>
-                                            <th>Archive</th>
+                                            <th>To Client List</th>
                                             <th>To In-Contract</th>
                                             <th>Delete</th>
                                         </thead>
