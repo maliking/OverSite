@@ -201,8 +201,8 @@ $keys = array_keys($response);
                                                                     <?php
                                                                     $license = "";
                                                                     foreach ($results as $result) {
-                                                                        // if ($result['userType'] == 0 || $result['license'] == $_SESSION['license']) {
-                                                                        // } else
+                                                                        if ($result['userType'] == 0) {
+                                                                        } else
                                                                         echo "<option id=agent" . $result['mlsId'] . " value='" . $result['license'] . "'>" . $result['firstName'] . " " . $result['lastName'] . "</option>";
                                                                     }
                                                                     ?>
