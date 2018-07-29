@@ -407,9 +407,9 @@ for ($h = 0; $h < sizeof($keys); $h++)
                             <button class="load-rows" type="button" onclick="window.location.pathname='agent/visitors.php'">Visitors</button>
                             <button class="load-rows" type="button" onclick="window.location.pathname='agent/pastClients.php'">Past Clients</button>
 
-                            <button type="button" class="btn btn-success" style="float: right; margin-left: 7px;"
+                            <!-- <button type="button" class="btn btn-success" style="float: right; margin-left: 7px;"
                                     onClick="leadModal()">Add Lead</button>
-                            <button class="btn btn-default pull-right" id="exportVisitors">Export</button>
+                            <button class="btn btn-default pull-right" id="exportVisitors">Export</button> -->
                             <div class="clearfix"></div>
                         </div>
 
@@ -419,35 +419,27 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                 <tr>
                                     <th></th>
                                     <th></th>
-                                    <th>Type</th>
+                                    <!-- <th>Type</th> -->
                                     <th>ID</th>
-                                    <th data-type="date">Date Added</th>
+                                    <!-- <th data-type="date">Date Added</th> -->
                                     <th>Name</th>
                                     <th data-breakpoints="xs">Phone</th>
                                     <th data-breakpoints="xs">Email</th>
-                                    <th data-breakpoints="xs sm">Property</th>
+                                    <!-- <th data-breakpoints="xs sm">Property</th> -->
 
-                                    <th data-breakpoints="xs sm">How soon are you looking to purchase a home?</th>
-                                    <th data-breakpoints="all">Pre-approved?</th>
-                                    <th data-breakpoints="xs sm">Price</th>
-                                    <th data-breakpoints="xs sm">Bedrooms</th>
-                                    <th data-breakpoints="xs sm">Bathrooms</th>
-                                    <th data-breakpoints="xs sm">Notes</th>
-                                    <th data-breakpoints="xs sm">Delete</th>
+                                    <!-- <th data-breakpoints="xs sm">How soon are you looking to purchase a home?</th> -->
+                                    <!-- <th data-breakpoints="all">Pre-approved?</th> -->
+                                    <!-- <th data-breakpoints="xs sm">Price</th> -->
+                                    <!-- <th data-breakpoints="xs sm">Bedrooms</th> -->
+                                    <!-- <th data-breakpoints="xs sm">Bathrooms</th> -->
+                                    <!-- <th data-breakpoints="xs sm">Notes</th> -->
+                                    <!-- <th data-breakpoints="xs sm">Delete</th> -->
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
 
-                                $sql = "SELECT BuyerInfo.*,
-                                               HouseInfo.address as address, 
-                                               HouseInfo.city as city, 
-                                               HouseInfo.state as state, 
-                                               HouseInfo.zip as zip
-                                          FROM BuyerInfo 
-                                     LEFT JOIN HouseInfo 
-                                            ON BuyerInfo.houseId = HouseInfo.houseId 
-                                         WHERE BuyerInfo.userId = :userId;";
+                                $sql = "SELECT * FROM pastClients WHERE userId = :userId";
 
                                 $namedParameters = array();
                                 $namedParameters[':userId'] = $_SESSION['userId'];
@@ -458,28 +450,29 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                 foreach($results as $result) {
 //                                    $dbNote = $result['note'];
 
-                                    echo "<tr id=visitor" . $result['buyerID']." >";
+                                    echo "<tr id=visitor" . $result['buyerId']." >";
                                     echo "<td></td>";
-                                    echo '<td><span class="fa fa-usd"  style="text-align: center;" onClick="addFavorite(' . $result['buyerID'] . ')"></span></td>';
+                                    // echo '<td><span class="fa fa-usd"  style="text-align: center;" onClick="addFavorite(' . $result['buyerId'] . ')"></span></td>';
 
                                     // Type - Open House Visitor (OHV) or Lead
                                     echo "<td>";
-                                    if ($result['address'] == 'Lead'){
-                                        echo "<span title=\"Lead\" class=\"label label-warning\">ML</span>";
-                                    } else {
-                                        echo "<span title=\"Open House Visitor\" class=\"label label-info\">OHV</span>";
-                                    }
+                                    echo "<span title=\"Lead\" class=\"label label-warning\">Past Client</span>";
+                                    // if ($result['address'] == 'Lead'){
+                                    //     echo "<span title=\"Lead\" class=\"label label-warning\">ML</span>";
+                                    // } else {
+                                    //     echo "<span title=\"Open House Visitor\" class=\"label label-info\">OHV</span>";
+                                    // }
                                     echo "</td>";
 
-                                    echo "<td>" . $result['buyerID']  . "</td>";
+                                    echo "<td>" . $result['buyerId']  . "</td>";
                                     // Date Added
-                                    echo "        <td>";
-                                    if ($result['registeredDate'] == NULL) {
-                                        echo ".";
-                                    } else {
-                                        echo date("m-d-Y", strtotime($result['registeredDate']));
-                                    }
-                                    echo "</td>";
+                                    // echo "        <td>";
+                                    // if ($result['registeredDate'] == NULL) {
+                                    //     echo ".";
+                                    // } else {
+                                    //     echo date("m-d-Y", strtotime($result['registeredDate']));
+                                    // }
+                                    // echo "</td>";
 
                                     // Name
                                     echo "<td>";
@@ -489,62 +482,62 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                     // Phone Number
                                     echo "<td>";
                                     echo $result['phone'];
-                                    echo "<p></p>";
-                                    echo '<p onClick=makeCall("' . $result['phone'] . '") class="fa fa-phone"></p>';
-                                    echo '<span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>';
-                                    echo '<p onClick=makeText("' . $result['phone'] . '") class="fa fa-commenting-o"></p>';
+                                    // echo "<p></p>";
+                                    // echo '<p onClick=makeCall("' . $result['phone'] . '") class="fa fa-phone"></p>';
+                                    // echo '<span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>';
+                                    // echo '<p onClick=makeText("' . $result['phone'] . '") class="fa fa-commenting-o"></p>';
                                     echo "</td>";
 
                                     // Email
                                     echo "<td>";
                                     echo $result['email'];
-                                    echo "<p></p>";
-                                    echo '<p onClick=makeEmail("' . $result['email'] . '") class="fa fa-envelope-o"></p>';
+                                    // echo "<p></p>";
+                                    // echo '<p onClick=makeEmail("' . $result['email'] . '") class="fa fa-envelope-o"></p>';
                                     echo "</td>";
 
                                     // Property
-                                    echo "<td>";
-                                    if ($result['address'] == 'Lead'){
-                                        echo "Lead";
-                                    } else {
-                                        echo htmlspecialchars($result['address'] . ", " . $result['city']);
-                                    }
-                                    echo "</td>";
+                                    // echo "<td>";
+                                    // if ($result['address'] == 'Lead'){
+                                    //     echo "Lead";
+                                    // } else {
+                                    //     echo htmlspecialchars($result['address'] . ", " . $result['city']);
+                                    // }
+                                    // echo "</td>";
 
                                     // How soon?
-                                    echo "<td>";
-                                    echo $result['howSoon'];
-                                    echo "</td>";
+                                    // echo "<td>";
+                                    // echo $result['howSoon'];
+                                    // echo "</td>";
 
                                     // Pre-approved?
-                                    echo "<td>";
-                                    echo $result['approved'];
-                                    echo "</td>";
+                                    // echo "<td>";
+                                    // echo $result['approved'];
+                                    // echo "</td>";
 
                                     // Price
-                                    echo "<td>";
-                                    echo "$" . number_format($result['priceMax'], 0);
-                                    echo "</td>";
+                                    // echo "<td>";
+                                    // echo "$" . number_format($result['priceMax'], 0);
+                                    // echo "</td>";
 
                                     // Bedroom
-                                    echo "<td>";
-                                    echo $result['bedroomsMin'];
-                                    echo "</td>";
+                                    // echo "<td>";
+                                    // echo $result['bedroomsMin'];
+                                    // echo "</td>";
 
                                     // Bathroom
-                                    echo "<td>";
-                                    echo $result['bathroomsMin'];
-                                    echo "</td>";
+                                    // echo "<td>";
+                                    // echo $result['bathroomsMin'];
+                                    // echo "</td>";
 
                                     // Notes
-                                    echo "<td id=" . $result['buyerID'] . " onClick=takeNote(" . $result['houseId'] . "," . $result['buyerID'] . ") >";
-                                    echo $result['note'];
-                                    echo "</td>";
+                                    // echo "<td id=" . $result['buyerID'] . " onClick=takeNote(" . $result['houseId'] . "," . $result['buyerID'] . ") >";
+                                    // echo $result['note'];
+                                    // echo "</td>";
 
                                     // Delete Button
-                                    echo "<td>";
-                                    echo "<button onClick=deleteVisitor(\"" . $result['buyerID'] . "\")>Delete</button>";
-                                    echo "</td>";
+                                    // echo "<td>";
+                                    // echo "<button onClick=deleteVisitor(\"" . $result['buyerID'] . "\")>Delete</button>";
+                                    // echo "</td>";
                                     echo "</tr>";
                                 }
                                 ?>
@@ -939,18 +932,18 @@ function deleteVisitor(visitorId)
       }
 
       // bind the buttons to load the rows
-    // $('.load-rows').on('click', function (e) {
-    //     e.preventDefault();
-    //     // get the url to load off the button
-    //     var url = $(this).data('url');
-    //     // ajax fetch the rows
-    //     $.get(url).then(function (rows) {
-    //         // and then load them using either
-    //         ft.rows.load(rows);
-    //         // or
-    //         // ft.loadRows(rows);
-    //     });
-    // });
+    $('.load-rows').on('click', function (e) {
+        e.preventDefault();
+        // get the url to load off the button
+        var url = $(this).data('url');
+        // ajax fetch the rows
+        $.get(url).then(function (rows) {
+            // and then load them using either
+            ft.rows.load(rows);
+            // or
+            // ft.loadRows(rows);
+        });
+    });
 // });
     </script>
 <!-- Modal -->
