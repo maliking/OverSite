@@ -1886,6 +1886,16 @@ $keys = array_keys($response);
                 else
                     alert("Note Empty");
             }
+
+            function sendToPastCleints(transId)
+            {
+                $.post( "sendToPastClients.php", { transId: transId})
+                      .done(function( data ) {
+                        // $('#inContract' + transId).remove();
+                        alert("Added to past clients");
+                      });   
+                // alert(clientId);
+            }
         </script>
 
 

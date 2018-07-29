@@ -191,6 +191,7 @@ $keys = array_keys($response);
                                                                             data-placement="top"
                                                                             title="Close of Escrow">Misc. 2 </a></th>
                                             <th data-breakpoints="xs sm">Notes</th>
+                                            <th data-breakpoints="xs sm">To Past Clients</th>
                                             <!-- <th data-breakpoints="xs sm"></th> -->
                                             <th data-breakpoints="xs sm">Edit Dates</th>
                                         </tr>
@@ -764,6 +765,8 @@ $keys = array_keys($response);
                                             echo '</td>
                                             <td> ' . $trans['notes']  . '<button onClick="takeNote(' . $trans['transId'] . ')" >Notes</button></td>';
                                            // <td> <button onClick=takeTransNote(' .$trans['transId'] . ')>  <i class="fa fa-edit" style="color:#d3d3d3"></i> </button></td>
+                                           echo '<td class="fa fa-archive" style="text-align: center;" onClick="sendToPastCleints(' . $trans['transId'] . ')"></td>';
+                                           
                                            echo '<td>';
                                            ?>
                                            <?php include "../staff/editDates.php"; ?>
