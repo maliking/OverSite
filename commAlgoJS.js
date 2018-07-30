@@ -98,7 +98,10 @@ function calculateCommission() {
         // document.getElementById("agent_net").value = formatNumber(initialCommission - brokerFee  - misc - remaxFee - transactionCoordFee - techFee - eoInsurance);
 
         if(document.getElementById("agent").value == "01747327")
+        {
             document.getElementById("broker").value = numeral(795).format('0,0.00');
+            brokerFee = 795;   
+        }    
         else
             document.getElementById("broker").value = numeral(brokerFee).format('0,0.00');
         // document.getElementById("percentage").value = ;
@@ -133,7 +136,10 @@ function calculateCommissionFifty()
     // document.getElementById("agent_net").value = formatNumber(initialCommission - brokerFee - transactionCoordFee - techFee - eoInsurance - misc - remaxFee);
 
     if(document.getElementById("agent").value == "01747327")
+    {
         document.getElementById("broker").value = numeral(795).format('0,0.00');
+        brokerFee = 795;   
+    } 
     else
         document.getElementById("broker").value = numeral(brokerFee).format('0,0.00');
     // document.getElementById("percentage").value = ;
