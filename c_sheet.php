@@ -378,7 +378,7 @@ $keys = array_keys($response);
                                                                     Coordinator</label>
                                                                 <div class="col-xs-3">
                                                                     <input type="text" class="form-control"
-                                                                           id="trans-coor" placeholder="" value="200.00"
+                                                                           id="trans-coor" name="trans-coor" placeholder="" value="200.00"
                                                                            onchange="calculateCommission()">
                                                                 </div>
 
@@ -389,7 +389,7 @@ $keys = array_keys($response);
                                                                 <label class="col-xs-9 control-label" for="pwd">TC. Tech
                                                                     Fee</label>
                                                                 <div class="col-xs-3">
-                                                                    <input type="text" class="form-control" id="tech"
+                                                                    <input type="text" class="form-control" id="tech" name="tech"
                                                                            placeholder="" value="50.00" onchange="calculateCommission()">
                                                                 </div>
 
@@ -401,7 +401,7 @@ $keys = array_keys($response);
                                                                     Insurance</label>
                                                                 <div class="col-xs-3">
                                                                     <input type="text" class="form-control"
-                                                                           id="eo_insurance" placeholder=""
+                                                                           id="eo_insurance" name="eo_insurance" placeholder=""
                                                                            value="99.00" onchange="calculateCommission()">
                                                                 </div>
 

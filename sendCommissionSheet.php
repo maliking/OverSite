@@ -35,6 +35,10 @@ $miscell =         str_replace(",", "", (string)$_POST['miscell']);
 $remaxFee =        str_replace(",", "", (string)$_POST['remaxFee']);
 $finalHousePrice = str_replace(",", "", (string)$_POST['finalHousePrice']);
 
+$procFee =         str_replace(",", "", (string)$_POST['trans-coor']);
+$techFee =         str_replace(",", "", (string)$_POST['tech']);
+$eoFee = 		   str_replace(",", "", (string)$_POST['eo_insurance']);
+
 $addRemaxFeeSql = "INSERT INTO remaxFee (userId, date, paid) VALUES (:userId, :date, :paid)";
 $remaxFeeParam = array();
 $remaxFeeParam[':userId'] = $_SESSION['userId'];
@@ -45,8 +49,8 @@ $remaxFeeStmt = $dbConn->prepare($addRemaxFeeSql);
 $remaxFeeStmt->execute($remaxFeeParam);
 
 $sql = "INSERT INTO commInfo
-        (houseId, license, firstName, lastName, date, settlementDate, checkNum, clients, address, city, state, zip, TYGross, FYGross, InitialGross, brokerFee, finalComm, remaxFee, miscTitle, misc, percentage, envelopeId, finalHousePrice, type, leadType)
-        VALUES (:houseId, :license, :firstName, :lastName, :date, :settlementDate, :checkNum, :clients, :address, :city, :state, :zip, :TYGross, :FYGross, :InitialGross, :brokerFee, :finalComm, :remaxFee, :miscTitle, :misc, :percentage, :envelopeId, :finalHousePrice, :type, :leadType)";
+        (houseId, license, firstName, lastName, date, settlementDate, checkNum, clients, address, city, state, zip, TYGross, FYGross, InitialGross, brokerFee, finalComm, eoFee, techFee, procFee, remaxFee, miscTitle, misc, percentage, envelopeId, finalHousePrice, type, leadType)
+        VALUES (:houseId, :license, :firstName, :lastName, :date, :settlementDate, :checkNum, :clients, :address, :city, :state, :zip, :TYGross, :FYGross, :InitialGross, :brokerFee, :finalComm, :eoFee, :techFee, :procFee, :remaxFee, :miscTitle, :misc, :percentage, :envelopeId, :finalHousePrice, :type, :leadType)";
 
 $namedParameters = array();
 // $namedParameters[":houseId"] = $houseResults['houseId'];
@@ -67,14 +71,19 @@ $namedParameters[":city"] = "";
 $namedParameters[":state"] = "";
 $namedParameters[":zip"] = "";
 
-$namedParameters[":TYGross"] = (int)$TYGross + $initialGross;
-$namedParameters[":FYGross"] = (int)$FYGross + $netCommission;
+$namedParameters[":TYGross"] = (float)$TYGross + $initialGross;
+$namedParameters[":FYGross"] = (float)$FYGross + $netCommission;
 $namedParameters[":InitialGross"] = $initialGross;
 $namedParameters[":brokerFee"] = $brokerFee;
 $namedParameters[":finalComm"] = $netCommission;
 $namedParameters[":miscTitle"] = $_POST['miscTitle'];
 $namedParameters[":misc"] = $miscell;
 $namedParameters[":remaxFee"] = (int)$remaxFee;
+
+$namedParameters[":eoFee"] = $eoFee;
+$namedParameters[":techFee"] = $techFee;
+$namedParameters[":procFee"] = $procFee;
+
 $namedParameters[":clients"] = $_POST['clients'];
 // $value = preg_replace('/[\%,]/', '', $_POST['percentage']);
 $value = floatval($_POST['percentage']);

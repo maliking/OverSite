@@ -54,6 +54,11 @@ $result = $stmt->fetchAll();
             <div class="row">
                 <div class="col-xs-12">
                     <div class="box">
+                        <div class="box-header">
+                            <button onClick="formatNumbers()">Re-Format numbers</button>
+                            <div class="clearfix"></div>
+
+                        </div>
                         <div class="box-body">
                             <table class="table table-bordered table-striped" data-filtering="true">
                                 <thead>
@@ -182,6 +187,16 @@ $result = $stmt->fetchAll();
             }
         });
     });
+    function formatNumbers()
+    {
+        if(confirm("Are you sure you want to Re-Format Commission Numbers?"))
+        {
+            $.post( "commNumbersFormat.php", function( data ) {
+              location.reload();
+            });
+            
+        }
+    }
 </script>
 </body>
 
