@@ -89,22 +89,23 @@ $result = $stmt->fetchAll();
                                 <?php
                                 foreach ($result as $sales) {
                                     echo "<tr>";
-                                    echo "<td ondblclick=editCommInfo('settlementDate') >" . date("m-d-Y", strtotime($sales['settlementDate'])) . "</td>";
-                                    echo "<td ondblclick=editCommInfo('address') >" . $sales['address'] . "</td>";
-                                    echo "<td ondblclick=editCommInfo('name') >" . $sales['firstName'] . " " . $sales['lastName'] . "</td>";
-                                    echo "<td ondblclick=editCommInfo('initialGross') >" . '$' . number_format($sales['InitialGross'], 0) . "</td>"; //Total
+                                    echo "<td ondblclick=editCommInfo('settlementDate','". $sales['commId'] ."') >" . date("m-d-Y", strtotime($sales['settlementDate'])) . "</td>";
+                                    echo "<td ondblclick=editCommInfo('address','". $sales['commId'] ."') >" . $sales['address'] . "</td>";
+                                    // echo "<td ondblclick=editCommInfo('name') >" . $sales['firstName'] . " " . $sales['lastName'] . "</td>";
+                                    echo "<td>" . $sales['firstName'] . " " . $sales['lastName'] . "</td>";
+                                    echo "<td ondblclick=editCommInfo('initialGross','". $sales['commId'] ."') >" . '$' . number_format($sales['InitialGross'], 0) . "</td>"; //Total
                                     echo "<td>" . '$' . number_format($sales['brokerFee'], 0) . "</td>"; //office
-                                    echo "<td ondblclick=editCommInfo('eoFee') >" . '$99.00' . "</td>"; //eo
-                                    echo "<td ondblclick=editCommInfo('techFee') >" . '$50.00' . "</td>"; //tech
-                                    echo "<td ondblclick=editCommInfo('procFee') >" . '$200.00' . "</td>"; //processing
-                                    echo "<td ondblclick=editCommInfo('remaxFee') >" . '$' . number_format($sales['remaxFee'], 0) . "</td>"; //remax_ff
-                                    echo "<td><span ondblclick=editCommInfo('miscTitle')>" . $sales['miscTitle'] . ' :</span> <span ondblclick=editCommInfo("miscFee")>$' . number_format($sales['misc'], 0) . "</span></td>"; //misc
+                                    echo "<td ondblclick=editCommInfo('eoFee','". $sales['commId'] ."') >" . '$99.00' . "</td>"; //eo
+                                    echo "<td ondblclick=editCommInfo('techFee','". $sales['commId'] ."') >" . '$50.00' . "</td>"; //tech
+                                    echo "<td ondblclick=editCommInfo('procFee','". $sales['commId'] ."') >" . '$200.00' . "</td>"; //processing
+                                    echo "<td ondblclick=editCommInfo('remaxFee','". $sales['commId'] ."') >" . '$' . number_format($sales['remaxFee'], 0) . "</td>"; //remax_ff
+                                    echo "<td><span ondblclick=editCommInfo('miscTitle','". $sales['commId'] ."')>" . $sales['miscTitle'] . ' :</span> <span ondblclick=editCommInfo("miscFee","'. $sales['commId'] .'")>$' . number_format($sales['misc'], 0) . "</span></td>"; //misc
                                     echo "<td>" . '$' . number_format($sales['finalComm'], 0) . "</td>"; //commission
                                     echo "<td>" . '$' . number_format($sales['TYGross'], 0) . "</td>"; //commission
-                                    echo "<td ondblclick=editCommInfo('clients') >" . $sales['clients'] . "</td>"; //client
-                                    echo "<td ondblclick=editCommInfo('finalHousePrice') >" . '$' . number_format($sales['finalHousePrice'], 0) . "</td>"; //price
+                                    echo "<td ondblclick=editCommInfo('clients','". $sales['commId'] ."') >" . $sales['clients'] . "</td>"; //client
+                                    echo "<td ondblclick=editCommInfo('finalHousePrice','". $sales['commId'] ."') >" . '$' . number_format($sales['finalHousePrice'], 0) . "</td>"; //price
                                     echo "<td>" . number_format($sales['percentage'], 2, '.','') . "%</td>"; //Avg Percent
-                                    echo "<td ondblclick=editCommInfo('type') >" . $sales['type'] . "</td>"; //listing buyer
+                                    echo "<td ondblclick=editCommInfo('type','". $sales['commId'] ."') >" . $sales['type'] . "</td>"; //listing buyer
                                     // echo "<td>" . $sales['notes'] . "</td>"; //notes
                                     echo '<td> <a href="viewCommissionSheet.php?comm=' . $sales['commId'] . '" target="_blank"> <button>View Commission Sheet</button> </a> </td>';
                                     echo "</tr>";
@@ -174,6 +175,7 @@ $result = $stmt->fetchAll();
 
 <!-- PAGE-SPECIFIC JS -->
 <script src="dist/js/vendor/footable.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 <script src="salesBreakdownJS.js"></script>
 <script>
     jQuery(function ($) {
