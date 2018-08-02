@@ -1762,8 +1762,8 @@ $keys = array_keys($response);
                         value: 'Buyer',
                     },
                     {
-                        text: 'List./Buy.',
-                        value: 'List./Buy.',
+                        text: 'Dual',
+                        value: 'Dual',
                     }
                 ],
                 callback: function (result) {
