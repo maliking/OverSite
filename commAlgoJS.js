@@ -81,8 +81,8 @@ function calculateCommission() {
                 brokerFee += commission * .10;
             }
             else {
-                brokerFee += 49999 * .10;
-                commission = commission - 49999;
+                brokerFee += difference * .10;
+                commission = commission - difference;
                 if (commission > 0) {
                     brokerFee += commission * .05;
                 }
