@@ -667,27 +667,27 @@ $keys = array_keys($response);
                                             //         $lastContacted = "NA";
                                             //     else if ($favorite['lastContacted'] != "0000-00-00") 
                                             //         $lastContacted = date("m/d/y g:i a", strtotime($favorite['lastContacted']));
-                                                if($activeProspectCount % 5 == 0)
-                                                {
-                                                    echo "<tr>";
-                                                    echo '<td></td>';
-                                                    echo '<td><b>Last Contacted</b></td>';
-                                                    echo '<td><b>Type</b></td>';
-                                                    echo '<td><b>Client</b></td>';
-                                                    echo '<td><b>Phone</b></td>';
-                                                    echo '<td><b>Email</b></td>';
-                                                    echo '<td><b>Zip</b></td>';
-                                                    echo '<td><b>Price</b></td>';
-                                                    echo '<td><b>Bedroom</b></td>';
-                                                    echo '<td><b>Bathroom</b></td>';
-                                                    echo '<td><b>SqFt</b></td>';
-                                                    echo '<td><b>Lot Size</b></td>';
-                                                    echo '<td><b>Notes</b></td>';
-                                                    echo '<td><b>Match</b></td>';
-                                                    echo '<td><b>Archive</b></td>';
-                                                    echo '<td><b>Delete</b></td>';
-                                                    echo "</tr>";
-                                                }
+                                                // if($activeProspectCount % 5 == 0)
+                                                // {
+                                                //     echo "<tr>";
+                                                //     echo '<td></td>';
+                                                //     echo '<td><b>Last Contacted</b></td>';
+                                                //     echo '<td><b>Type</b></td>';
+                                                //     echo '<td><b>Client</b></td>';
+                                                //     echo '<td><b>Phone</b></td>';
+                                                //     echo '<td><b>Email</b></td>';
+                                                //     echo '<td><b>Zip</b></td>';
+                                                //     echo '<td><b>Price</b></td>';
+                                                //     echo '<td><b>Bedroom</b></td>';
+                                                //     echo '<td><b>Bathroom</b></td>';
+                                                //     echo '<td><b>SqFt</b></td>';
+                                                //     echo '<td><b>Lot Size</b></td>';
+                                                //     echo '<td><b>Notes</b></td>';
+                                                //     echo '<td><b>Match</b></td>';
+                                                //     echo '<td><b>Archive</b></td>';
+                                                //     echo '<td><b>Delete</b></td>';
+                                                //     echo "</tr>";
+                                                // }
                                                 echo "<tr id=favorite" . $favorite['favoriteId'] . ">";
                                                 echo '<td></td>';
                                                 echo '<td id=lastContacted' . $favorite['favoriteId'] . ' class="fa fa-phone"  style="text-align: center;" onClick="showLastContactedModal(this)">' . "&nbsp&nbsp&nbsp" . '</td>';
