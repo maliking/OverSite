@@ -14,10 +14,15 @@ $volStmt = $dbConn->prepare($sumVolSql);
 $volStmt->execute();
 $volResult = $volStmt->fetch();
 
-$grossSql = "SELECT SUM(finalComm) as grossResult FROM commInfo";
+$grossSql = "SELECT SUM(InitialGross) as grossResult FROM commInfo";
 $grossStmt = $dbConn->prepare($grossSql);
 $grossStmt->execute();
 $grossResult = $grossStmt->fetch();
+
+$officeSql = "SELECT SUM(brokerFee) as officeResult FROM commInfo";
+$officeStmt = $dbConn->prepare($officeSql);
+$officeStmt->execute();
+$officeResult = $officeStmt->fetch();
 
 $avgPercentSql = "SELECT AVG(percentage) as avgPercentResult FROM commInfo";
 $avgPercentStmt = $dbConn->prepare($avgPercentSql);
@@ -156,6 +161,7 @@ $avgPercentResult = $avgPercentStmt->fetch();
                                     <td><?php echo "Units: " . $totalClosed['totalClosed']; ?></td>
                                     <td><?php echo "Vol Sold: $" . number_format($volResult['volResult']); ?></td>
                                     <td><?php echo "GCI: $" . number_format($grossResult['grossResult']); ?></td>
+                                    <td><?php echo "Office: $" . number_format($officeResult['officeResult']); ?></td>
                                     <td><?php echo "AVG: " . number_format($avgPercentResult['avgPercentResult'], 2, '.','') . "%"; ?></td>
                                 </tr>
                                 </tbody>
