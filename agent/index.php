@@ -662,10 +662,11 @@ $keys = array_keys($response);
                                             <?php
                                             $activeProspectCount =1;
                                             foreach ($favoriteResults as $favorite) 
-                                            {   if($favorite['lastContacted'] == "0000-00-00")
-                                                    $lastContacted = "NA";
-                                                else if ($favorite['lastContacted'] != "0000-00-00") 
-                                                    $lastContacted = date("m/d/y g:i a", strtotime($favorite['lastContacted']));
+                                            {   
+                                            //     if($favorite['lastContacted'] == "0000-00-00")
+                                            //         $lastContacted = "NA";
+                                            //     else if ($favorite['lastContacted'] != "0000-00-00") 
+                                            //         $lastContacted = date("m/d/y g:i a", strtotime($favorite['lastContacted']));
                                                 if($activeProspectCount % 5 == 0)
                                                 {
                                                     echo "<tr>";
@@ -689,7 +690,7 @@ $keys = array_keys($response);
                                                 }
                                                 echo "<tr id=favorite" . $favorite['favoriteId'] . ">";
                                                 echo '<td></td>';
-                                                echo '<td id=lastContacted' . $favorite['favoriteId'] . ' class="fa fa-phone"  style="text-align: center;" onClick="showLastContactedModal(this)">' . "&nbsp&nbsp&nbsp" . $lastContacted . '</td>';
+                                                echo '<td id=lastContacted' . $favorite['favoriteId'] . ' class="fa fa-phone"  style="text-align: center;" onClick="showLastContactedModal(this)">' . "&nbsp&nbsp&nbsp" . '</td>';
                                                 echo '<td>' . $favorite['listingType'] . '</td>';
                                                 echo '<td id=name' . $favorite['favoriteId'] . ' onClick=editFavorite("name",' . $favorite['favoriteId'] . ')>' . $favorite['firstName'] . " " . $favorite['lastName'] . '</td>';
                                                 echo '<td id=phone' . $favorite['favoriteId'] . ' onClick=editFavorite("phone",' . $favorite['favoriteId'] . ')>' . $favorite['phone'] . '</td>';
