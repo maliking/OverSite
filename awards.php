@@ -113,6 +113,8 @@ $avgPercentResult = $avgPercentStmt->fetch();
 <!-- PAGE-SPECIFIC JS -->
 <script src="dist/js/vendor/footable.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/locale/ca.js"></script>
 <script>
     jQuery(function ($) {
         // var ft = $('.table').footable({
@@ -154,6 +156,27 @@ $avgPercentResult = $avgPercentStmt->fetch();
                 // or
                 // ft.loadRows(rows);
             });
+            var year = moment().year();
+            if($(this).html() == "Year To Date"){
+                $("#startMonth").val(year + "-01");
+                $("#endMonth").val(year + "-12");
+            }
+            else if($(this).html() == "Q1"){
+                $("#startMonth").val(year + "-01");
+                $("#endMonth").val(year + "-03");
+            }
+            else if($(this).html() == "Q2"){
+                $("#startMonth").val(year + "-04");
+                $("#endMonth").val(year + "-06");
+            }
+            else if($(this).html() == "Q3"){
+                $("#startMonth").val(year + "-07");
+                $("#endMonth").val(year + "-09");
+            }
+            else if($(this).html() == "Q4"){
+                $("#startMonth").val(year + "-10");
+                $("#endMonth").val(year + "-12");
+            }
         
     });
 
