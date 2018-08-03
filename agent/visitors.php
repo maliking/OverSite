@@ -403,8 +403,8 @@ for ($h = 0; $h < sizeof($keys); $h++)
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3>My Visitors</h3>
-                            <button class="load-rows" type="button" onclick="window.location.pathname='agent/visitors.php'">Visitors</button>
+                            <h3>My Curent Leads</h3>
+                            <button class="load-rows" type="button" onclick="window.location.pathname='agent/visitors.php'">Current Leads</button>
                             <button class="load-rows" type="button" onclick="window.location.pathname='agent/pastClients.php'">Past Clients</button>
 
                             <button type="button" class="btn btn-success" style="float: right; margin-left: 7px;"

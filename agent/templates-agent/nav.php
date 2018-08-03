@@ -18,7 +18,7 @@
                     <span>My Appointments</span></a></li>
 
              <li><a href="../agent/visitors.php"><i class="fa fa-address-book-o"></i>
-                    <span>My Visitors/Leads</span></a></li>
+                    <span>Current Leads/Past Clients</span></a></li>
 
             <li class="header-style treeview">
                 <a href="#"><span class="header-color">PROPERTIES</span>

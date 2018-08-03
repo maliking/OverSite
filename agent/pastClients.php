@@ -136,7 +136,7 @@ for ($h = 0; $h < sizeof($keys); $h++)
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>RE/MAX Salinas | My Visitors</title>
+    <title>RE/MAX Salinas | Past Clients</title>
 
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -403,8 +403,8 @@ for ($h = 0; $h < sizeof($keys); $h++)
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <h3>My Visitors</h3>
-                            <button class="load-rows" type="button" onclick="window.location.pathname='agent/visitors.php'">Visitors</button>
+                            <h3>My Past Clients</h3>
+                            <button class="load-rows" type="button" onclick="window.location.pathname='agent/visitors.php'">Current Leads</button>
                             <button class="load-rows" type="button" onclick="window.location.pathname='agent/pastClients.php'">Past Clients</button>
 
                             <!-- <button type="button" class="btn btn-success" style="float: right; margin-left: 7px;"
