@@ -1890,11 +1890,20 @@ $keys = array_keys($response);
 
             function sendToPastCleints(transId)
             {
-                $.post( "sendToPastClients.php", { transId: transId})
+                bootbox.prompt("Enter final house price", function(result){
+                 if(result != null)
+                 {
+                    $.post( "sendToPastClients.php", { transId: transId, finalHousePrice: result})
                       .done(function( data ) {
                         // $('#inContract' + transId).remove();
                         alert("Added to past clients");
-                      });   
+                      });  
+                 }
+                 else{
+                    alert("Final house price Needed");
+                 }
+             });
+                 
                 // alert(clientId);
             }
         </script>

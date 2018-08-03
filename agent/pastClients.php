@@ -1,11 +1,12 @@
 <?php
 session_start();
+date_default_timezone_set('America/Los_Angeles');
 
 if (!isset($_SESSION['userId'])) {
     header("Location: http://www.oversite.cc/login.php");
 }
 require '../databaseConnection.php';
-require '../keys/cred.php';
+// require '../keys/cred.php';
 require '../twilio-php-master/Twilio/autoload.php';
 
 use Twilio\Jwt\ClientToken;
@@ -425,15 +426,10 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                     <th>Name</th>
                                     <th data-breakpoints="xs">Phone</th>
                                     <th data-breakpoints="xs">Email</th>
-                                    <!-- <th data-breakpoints="xs sm">Property</th> -->
 
-                                    <!-- <th data-breakpoints="xs sm">How soon are you looking to purchase a home?</th> -->
-                                    <!-- <th data-breakpoints="all">Pre-approved?</th> -->
-                                    <!-- <th data-breakpoints="xs sm">Price</th> -->
-                                    <!-- <th data-breakpoints="xs sm">Bedrooms</th> -->
-                                    <!-- <th data-breakpoints="xs sm">Bathrooms</th> -->
-                                    <!-- <th data-breakpoints="xs sm">Notes</th> -->
-                                    <!-- <th data-breakpoints="xs sm">Delete</th> -->
+                                    <th>Date Closed</th>
+                                    <th data-breakpoints="xs">Address</th>
+                                    <th data-breakpoints="xs">Final Price</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -448,31 +444,18 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                 $results = $stmt->fetchAll();
 
                                 foreach($results as $result) {
-//                                    $dbNote = $result['note'];
-
+                                    if($result['dateClosed'] == "0000-00-00")
+                                        $date = "NA";
+                                    else
+                                        $date = date('m-d-Y', strtotime($result['dateClosed']));
                                     echo "<tr id=visitor" . $result['buyerId']." >";
                                     echo "<td></td>";
-                                    // echo '<td><span class="fa fa-usd"  style="text-align: center;" onClick="addFavorite(' . $result['buyerId'] . ')"></span></td>';
 
-                                    // Type - Open House Visitor (OHV) or Lead
                                     echo "<td>";
                                     echo "<span title=\"Lead\" class=\"label label-warning\">Past Client</span>";
-                                    // if ($result['address'] == 'Lead'){
-                                    //     echo "<span title=\"Lead\" class=\"label label-warning\">ML</span>";
-                                    // } else {
-                                    //     echo "<span title=\"Open House Visitor\" class=\"label label-info\">OHV</span>";
-                                    // }
                                     echo "</td>";
 
                                     echo "<td>" . $result['buyerId']  . "</td>";
-                                    // Date Added
-                                    // echo "        <td>";
-                                    // if ($result['registeredDate'] == NULL) {
-                                    //     echo ".";
-                                    // } else {
-                                    //     echo date("m-d-Y", strtotime($result['registeredDate']));
-                                    // }
-                                    // echo "</td>";
 
                                     // Name
                                     echo "<td>";
@@ -482,62 +465,28 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                     // Phone Number
                                     echo "<td>";
                                     echo $result['phone'];
-                                    // echo "<p></p>";
-                                    // echo '<p onClick=makeCall("' . $result['phone'] . '") class="fa fa-phone"></p>';
-                                    // echo '<span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</span>';
-                                    // echo '<p onClick=makeText("' . $result['phone'] . '") class="fa fa-commenting-o"></p>';
                                     echo "</td>";
 
                                     // Email
                                     echo "<td>";
                                     echo $result['email'];
-                                    // echo "<p></p>";
-                                    // echo '<p onClick=makeEmail("' . $result['email'] . '") class="fa fa-envelope-o"></p>';
                                     echo "</td>";
 
-                                    // Property
-                                    // echo "<td>";
-                                    // if ($result['address'] == 'Lead'){
-                                    //     echo "Lead";
-                                    // } else {
-                                    //     echo htmlspecialchars($result['address'] . ", " . $result['city']);
-                                    // }
-                                    // echo "</td>";
+                                    // Date Closed
+                                    echo "<td>";
+                                    echo $date;
+                                    echo "</td>";
 
-                                    // How soon?
-                                    // echo "<td>";
-                                    // echo $result['howSoon'];
-                                    // echo "</td>";
+                                    // Address
+                                    echo "<td>";
+                                    echo $result['address'];
+                                    echo "</td>";
 
-                                    // Pre-approved?
-                                    // echo "<td>";
-                                    // echo $result['approved'];
-                                    // echo "</td>";
-
-                                    // Price
-                                    // echo "<td>";
-                                    // echo "$" . number_format($result['priceMax'], 0);
-                                    // echo "</td>";
-
-                                    // Bedroom
-                                    // echo "<td>";
-                                    // echo $result['bedroomsMin'];
-                                    // echo "</td>";
-
-                                    // Bathroom
-                                    // echo "<td>";
-                                    // echo $result['bathroomsMin'];
-                                    // echo "</td>";
-
-                                    // Notes
-                                    // echo "<td id=" . $result['buyerID'] . " onClick=takeNote(" . $result['houseId'] . "," . $result['buyerID'] . ") >";
-                                    // echo $result['note'];
-                                    // echo "</td>";
-
-                                    // Delete Button
-                                    // echo "<td>";
-                                    // echo "<button onClick=deleteVisitor(\"" . $result['buyerID'] . "\")>Delete</button>";
-                                    // echo "</td>";
+                                    // Final House Price
+                                    echo "<td>";
+                                    echo $result['finalHousePrice'];
+                                    echo "</td>";
+                                    
                                     echo "</tr>";
                                 }
                                 ?>
