@@ -644,6 +644,7 @@ $keys = array_keys($response);
                                             <th style="width:20px;">Last Contacted</th>
                                             <th>Type</th>
                                             <th>Client</th>
+                                            <th data-breakpoints='all'>Client 2</th>
                                             <th>Phone</th>
                                             <th>Email</th>
                                             <th>Zip</th>
@@ -689,10 +690,30 @@ $keys = array_keys($response);
                                                 //     echo "</tr>";
                                                 // }
                                                 echo "<tr id=favorite" . $favorite['favoriteId'] . ">";
-                                                echo '<td></td>';
+                                                echo '<td class="favoriteRowNumber"></td>';
                                                 echo '<td id=lastContacted' . $favorite['favoriteId'] . ' class="fa fa-phone"  style="text-align: center;" onClick="showLastContactedModal(this)">' . "&nbsp&nbsp&nbsp" . '</td>';
                                                 echo '<td>' . $favorite['listingType'] . '</td>';
                                                 echo '<td id=name' . $favorite['favoriteId'] . ' onClick=editFavorite("name",' . $favorite['favoriteId'] . ')>' . $favorite['firstName'] . " " . $favorite['lastName'] . '</td>';
+                                               echo '<td><table border="1">
+                                                    <tr>
+                                                    <td></td>
+                                                    <td><b>Client</b></td>
+                                                    
+                                                    </tr>
+                                                    <tr>
+                                                    <td><b>Name</b></td>
+                                                    <td style="color:#0000FF;" id=favTwoName'. $favorite['favoriteId'] . ' ondblclick="editFavClientName(' . $favorite['favoriteId'] . ')">' . $favorite['clientTwoName'] . '</td>
+                                                    </tr>
+                                                    <tr>
+                                                    <td><b>Phone</b></td>
+                                                    <td style="color:#0000FF;" id=favTwoNum' . $favorite['favoriteId'] . ' ondblclick="editFavClientNum(' . $favorite['favoriteId'] . ')">' . $favorite['clientTwoPhone'] . '</td>
+                                                    </tr>
+                                                    <tr>
+                                                    <td><b>Email</b></td>
+                                                    <td style="color:#0000FF;" id=favTwoEmail'. $favorite['favoriteId'] . ' ondblclick="editFavClientEmail(\'' . $favorite['favoriteId'] . '\')">' . $favorite['clientTwoEmail'] . '</td>
+                                                    </tr>
+                                                    
+                                                    </table></td>';
                                                 echo '<td id=phone' . $favorite['favoriteId'] . ' onClick=editFavorite("phone",' . $favorite['favoriteId'] . ')>' . $favorite['phone'] . '</td>';
                                                 echo '<td id=email' . $favorite['favoriteId'] . ' onClick=editFavorite("email",' . $favorite['favoriteId'] . ')>' . $favorite['email'] . '</td>';
                                                 echo '<td id=zip' . $favorite['favoriteId'] . ' onClick=editFavorite("zip",' . $favorite['favoriteId'] . ')>' . $favorite['zip'] . '</td>';
@@ -1004,9 +1025,9 @@ $keys = array_keys($response);
                 function addRowCount(tableAttr) {
                 var PageNumber = 0;
                 $(tableAttr).each(function () {
-                var RowCount = $('td:first-child', this).length;
+                var RowCount = $('td.favoriteRowNumber', this).length;
                 // alert(RowCount);
-                $('td:first-child', this).each(function (i) {
+                $('td.favoriteRowNumber', this).each(function (i) {
                 
                 $(this).html( i + 1);
 
@@ -1599,6 +1620,51 @@ $keys = array_keys($response);
                     $.post("saveInContractClientEmail.php", {
                         transId: id,
                         clientEmail: clientEmail
+                    });
+                }
+            }
+
+            function editFavClientName(id)
+            {
+                var clientName = prompt("Enter client name:");
+                if (clientName == null || clientName == "") {
+                } else {
+                    $("#favTwoName" + id).html(clientName);
+                    // alert(houseId + " " + buyerID);
+                    $.post("editFavTwo.php", {
+                        favoriteId: id,
+                        newData: clientName,
+                        column: "clientTwoName"
+                    });
+                }
+            }
+
+            function editFavClientNum(id)
+            {
+                var clientNum = prompt("Enter client number:");
+                if (clientNum == null || clientNum == "") {
+                } else {
+                    $("#favTwoNum" + id).html(clientNum);
+                    // alert(houseId + " " + buyerID);
+                    $.post("editFavTwo.php", {
+                        favoriteId: id,
+                        newData: clientNum,
+                        column: "clientTwoPhone"
+                    });
+                }
+            }
+
+            function editFavClientEmail(id)
+            {
+                var clientEmail = prompt("Enter client email:");
+                if (clientEmail == null || clientEmail == "") {
+                } else {
+                    $("#favTwoEmail" + id).html(clientEmail);
+                    // alert(houseId + " " + buyerID);
+                    $.post("editFavTwo.php", {
+                        favoriteId: id,
+                        newData: clientEmail,
+                        column: "clientTwoEmail"
                     });
                 }
             }
