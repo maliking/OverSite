@@ -15,10 +15,15 @@ $copyParameters[':favoriteId'] = $_POST['favoriteId'];
 $copyStmt = $dbConn->prepare($copySql);
 $copyStmt->execute($copyParameters);
 
-$deleteFavoriteSql = "DELETE FROM favorites WHERE favoriteId = :favoriteId";
-$deleteParameters = array();
-$deleteParameters[':favoriteId'] = $_POST['favoriteId'];
-$deleteStmt = $dbConn->prepare($deleteFavoriteSql);
-$deleteStmt->execute($deleteParameters);
+
+
+if($_POST['delFavorite'] == "true")
+{
+	$deleteFavoriteSql = "DELETE FROM favorites WHERE favoriteId = :favoriteId";
+	$deleteParameters = array();
+	$deleteParameters[':favoriteId'] = $_POST['favoriteId'];
+	$deleteStmt = $dbConn->prepare($deleteFavoriteSql);
+	$deleteStmt->execute($deleteParameters);
+}
 
 ?>

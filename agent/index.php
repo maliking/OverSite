@@ -1797,11 +1797,30 @@ $keys = array_keys($response);
                 if(confirm("Are you sure you want to archive this prospect?"))
                 {
                     // alert(favoriteId);
-                     $.post( "archiveFavorite.php", { favoriteId: favoriteId })
+                    bootbox.confirm({
+                    message: "Do you want to remove Prospect from Active Prospects table?",
+                    buttons: {
+                        confirm: {
+                            label: 'Yes',
+                            className: 'btn-success'
+                        },
+                        cancel: {
+                            label: 'No',
+                            className: 'btn-danger'
+                        }
+                    },
+                    callback: function (result) {
+                        // alert(result);
+                        $.post( "archiveFavorite.php", { favoriteId: favoriteId, delFavorite:result })
                       .done(function( data ) {
-                        $("#favorite" + favoriteId).hide();
+                        if(result == "true")
+                            $("#favorite" + favoriteId).hide();
                         alert( "Prospect archived" );
                       });
+                    }
+                });
+                    
+                     
                 }
             }
             function sendToInContract()
