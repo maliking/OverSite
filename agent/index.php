@@ -630,13 +630,15 @@ $keys = array_keys($response);
                         <div class="col-md-12">
                         <?php include 'progressGoal.php' ?>
                     </div>
-                        <div class="col-md-12" style="height:60vh;">
+                        <div class="col-md-12" id="activeProspectCollapse" style="height:60vh;">
+                            
                             <div class="box box-success" style="height:90%; overflow: auto;">
                                 <div class="box-header">
-                                    <h4>Active Prospects</h4>
+                                    <h4>Active Prospects<button type="button" onClick="collapseActiveProspects()">
+                                        <span class="fa fa-compress" aria-hidden="true"></span></button></h4>
                                     <button onClick="showProspectModal()">Add Prospect</button>
                                 </div>
-                                <div class="box-body" style="height:100%; ">
+                                <div class="box-body"  style="height:100%; ">
                                     <table class="table footable table-bordered table-striped" id="favoriteTable" data-sorting="true" data-filtering="true" style="height:100%; ">
                                         <thead>
                                             
@@ -749,7 +751,7 @@ $keys = array_keys($response);
                             </div>
                         </div>
 
-                        <div class="col-md-12" style="height:80vh;">
+                        <div class="col-md-12" id="inContractCollapse" style="height:80vh;">
                             
                             
                             <?php include 'inContractTable.php'; ?>
@@ -1990,6 +1992,38 @@ $keys = array_keys($response);
              });
                  
                 // alert(clientId);
+            }
+
+            var activeProspectsCollapseStatus = "collapse";
+            function collapseActiveProspects()
+            {
+                if(activeProspectsCollapseStatus == "collapse")
+                {
+                    $('#activeProspectCollapse').height("12vh");
+                    activeProspectsCollapseStatus = "expand";
+                }
+                else 
+                {   
+                    $('#activeProspectCollapse').height("60vh");
+                    activeProspectsCollapseStatus = "collapse";
+                }
+                // alert($('#activeProspectCollapse').height());
+            }
+
+            var inContractCollapseStatus = "collapse";
+            function collapseInContract()
+            {
+                if(inContractCollapseStatus == "collapse")
+                {
+                    $('#inContractCollapse').height("12vh");
+                    inContractCollapseStatus = "expand";
+                }
+                else 
+                {   
+                    $('#inContractCollapse').height("80vh");
+                    inContractCollapseStatus = "collapse";
+                }
+                // alert($('#activeProspectCollapse').height());
             }
         </script>
 
