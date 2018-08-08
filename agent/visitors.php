@@ -5,7 +5,7 @@ if (!isset($_SESSION['userId'])) {
     header("Location: http://www.oversite.cc/login.php");
 }
 require '../databaseConnection.php';
-require '../keys/cred.php';
+// require '../keys/cred.php';
 require '../twilio-php-master/Twilio/autoload.php';
 
 use Twilio\Jwt\ClientToken;
@@ -152,6 +152,11 @@ for ($h = 0; $h < sizeof($keys); $h++)
         #modal-table {
             color: black;
         }
+
+        .visitorNoteRow {
+                width: 100%;
+        }
+
 
         html, body {
     height: 100%;
@@ -432,7 +437,8 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                     <th data-breakpoints="xs sm">Price</th>
                                     <th data-breakpoints="xs sm">Bedrooms</th>
                                     <th data-breakpoints="xs sm">Bathrooms</th>
-                                    <th data-breakpoints="xs sm">Notes</th>
+                                    <th data-breakpoints="xs sm">Prev. Note</th>
+                                    <th data-breakpoints="xs sm">Add Note</th>
                                     <th data-breakpoints="xs sm">Delete</th>
                                 </tr>
                                 </thead>
@@ -537,8 +543,13 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                     echo "</td>";
 
                                     // Notes
-                                    echo "<td id=" . $result['buyerID'] . " onClick=takeNote(" . $result['houseId'] . "," . $result['buyerID'] . ") >";
+                                    echo "<td>";
                                     echo $result['note'];
+                                    echo "</td>";
+
+                                    // Add Note
+                                    echo "<td>";
+                                    echo "<button data-toggle='modal' onClick=takeNote(" . $result['houseId'] . "," . $result['buyerID'] . ") >Add Note</button>";
                                     echo "</td>";
 
                                     // Delete Button
@@ -635,6 +646,7 @@ for ($h = 0; $h < sizeof($keys); $h++)
 </div>
 <!-- /.wrapper -->
 
+<?php include "visitorNoteModal.php" ?>
 
 <!-- BEGIN TEMPLATE default-footer.php INCLUDE -->
 <?php include "./templates-agent/default-footer.php" ?>
@@ -657,28 +669,97 @@ for ($h = 0; $h < sizeof($keys); $h++)
 
     });
 
-    function takeNote(house, buyer) {
-        var today = moment().format("MM-DD-YYYY");
-        var prevNote = $("#" + buyer).html();
-        if(prevNote == "" || prevNote == " ")
-        {
-            var noteEntered = prompt("Enter Note:", today + " " + prevNote );
-        }
-        else
-        {
-            var noteEntered = prompt("Enter Note:", prevNote + " " + today );
-        }
-        if (noteEntered == null || noteEntered == "") {
-        } else {
-            $("#" + buyer).html(noteEntered);
-            // alert(houseId + " " + buyerID);
-            $.post("openhouse/saveNote.php", {
-                houseId: house,
-                buyerID: buyer,
-                note: noteEntered
-            });
-        }
+    function takeNote(houseId, buyerId) 
+    {
+        //erase all when opening modal
+                $('#buyerId').html('');
+                $('#houseId').html('');
+                $('#addNewNoteArea').val('');
+                $("#noteTable").empty();
+
+                //populate data
+                $('#buyerId').html(buyerId);
+                $('#houseId').html(houseId);
+                $.post( "getVisitorNotes.php", { buyerId: buyerId, houseId: houseId })
+                      .done(function( data ) {
+                        var result = JSON.parse(data);
+                        var x;
+                        var table = document.getElementById("noteTable");
+                        for(x in result)
+                        {
+                            var row = table.insertRow(0);
+                            var cell1 = row.insertCell(0);
+                            var cell2 = row.insertCell(1);
+                            cell2.className = "visitorNoteRow";
+                            cell1.innerHTML = "<h4>" + moment(result[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
+                            cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + result[x].visitorId + "' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + result[x].note + "</textarea>";
+                            // console.log(result[x].noteId);
+                            // console.log(result[x].noteDate);
+                            // console.log(result[x].note);
+                        }
+                        
+                      });
+
+                // Open Modal
+                $('#visitorNoteModal').modal('toggle');
+        // var today = moment().format("MM-DD-YYYY");
+        // var prevNote = $("#" + buyer).html();
+        // if(prevNote == "" || prevNote == " ")
+        // {
+        //     var noteEntered = prompt("Enter Note:", today + " " + prevNote );
+        // }
+        // else
+        // {
+        //     var noteEntered = prompt("Enter Note:", prevNote + " " + today );
+        // }
+        // if (noteEntered == null || noteEntered == "") {
+        // } else {
+        //     $("#" + buyer).html(noteEntered);
+        //     // alert(houseId + " " + buyerID);
+        //     $.post("openhouse/saveNote.php", {
+        //         houseId: house,
+        //         buyerID: buyer,
+        //         note: noteEntered
+        //     });
+        // }
     }
+
+    function addNewNote()
+            {
+                var buyerId = $('#buyerId').html();
+                var houseId = $('#houseId').html();
+                var note = $('#addNewNoteArea').val();
+                // alert(note);
+
+                if(note != "" && note != null)
+                {
+                    $.post( "addNewVisitorNote.php", { buyerId: buyerId, houseId: houseId, note:note })
+                      .done(function( data ) {
+                        var table = document.getElementById("noteTable");
+                        var row = table.insertRow(0);
+                        var cell1 = row.insertCell(0);
+                        var cell2 = row.insertCell(1);
+                        cell2.className = "visitorNoteRow";
+                        cell1.innerHTML = "<h4>" + moment().format('L') + "</h4>";
+                        cell2.innerHTML = "<textarea class='form-control' rows='2' id='comment' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + note + "</textarea>";
+                        alert( "Note Added");
+                        $('#addNewNoteArea').val("");
+                      });
+                }
+                else
+                    alert("Note Empty");
+            }
+            function saveNote(textArea)
+            {
+                var visitorId = textArea.id.replace("note", "");
+                var newNote = textArea.value;
+                // alert(areaId);
+                // alert(textArea.value);
+                $.post( "updateVisitorNote.php", { visitorId: visitorId, note: newNote })
+                      .done(function( data ) {
+                        alert("Note Updated");
+                      });
+            }
 
     // $('table').floatThead({
     //     position: 'absolute'
