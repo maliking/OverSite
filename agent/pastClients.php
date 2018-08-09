@@ -485,7 +485,7 @@ for ($h = 0; $h < sizeof($keys); $h++)
 
                                     // Final House Price
                                     echo "<td>";
-                                    echo $result['finalHousePrice'];
+                                    echo "$" . number_format((float)$result['finalHousePrice'],2);
                                     echo "</td>";
 
                                     //Delte
