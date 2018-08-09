@@ -449,7 +449,7 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                         $date = "NA";
                                     else
                                         $date = date('m-d-Y', strtotime($result['dateClosed']));
-                                    echo "<tr id=visitor" . $result['buyerId']." >";
+                                    echo "<tr id=visitor" . $result['buyerId']." class=visitor" . $result['pastClientId'] . " >";
                                     echo "<td></td>";
 
                                     echo "<td>";
@@ -596,7 +596,7 @@ for ($h = 0; $h < sizeof($keys); $h++)
         src="https://cdnjs.cloudflare.com/ajax/libs/floatthead/2.0.3/jquery.floatThead.js"></script>
 
 <script type="text/javascript" src="//media.twiliocdn.com/sdk/js/client/v1.3/twilio.min.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 <script>
     $(document).ready(function () {
         $('[data-toggle="popover"]').popover({
@@ -900,12 +900,33 @@ function deleteVisitor(visitorId)
         });
     });
 
-    function deletePastClient(pastClientId)
+    function deletePastClient(pastClientId, )
     {
-        $.post( "deletePastClient.php", { pastClientId: pastClientId})
-          .done(function( data ) {
-            alert( "Past Client Deleted");
-          });
+        bootbox.confirm({
+        message: "Are you sure you want to delete the Past Client?",
+        buttons: {
+            confirm: {
+                label: 'Yes',
+                className: 'btn-success'
+            },
+            cancel: {
+                label: 'No',
+                className: 'btn-danger'
+            }
+        },
+        callback: function (result) {
+            // alert(result);
+            if(result == true)
+            {
+                $.post( "deletePastClient.php", { pastClientId: pastClientId})
+              .done(function( data ) {
+                $('.visitor' + pastClientId).remove();
+                alert( "Past Client Deleted");
+              });
+            }
+        }
+    });
+        
     }
 // });
     </script>
