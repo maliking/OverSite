@@ -724,7 +724,12 @@ $keys = array_keys($response);
                                                 echo '<td id=bathroom' . $favorite['favoriteId'] . ' onClick=editFavorite("bathroom",' . $favorite['favoriteId'] . ')>' . $favorite['bathroom'] . '</td>';
                                                 echo '<td id=sqft' . $favorite['favoriteId'] . ' onClick=editFavorite("sqft",' . $favorite['favoriteId'] . ')>' . number_format($favorite['sqft']) . '</td>';
                                                 echo '<td id=lotSize' . $favorite['favoriteId'] . ' onClick=editFavorite("lotSize",' . $favorite['favoriteId'] . ')>' . number_format($favorite['lotSize']) . '</td>';
-                                                echo '<td><button data-toggle="modal" onClick=openNoteModal(' . $favorite['favoriteId'] . ')>' . substr($favorite['note'], 0, 15) . '</button></td>';
+                                                $note = $favorite['note'];
+                                                if($note == "")
+                                                {
+                                                    $note = "Add Note";
+                                                }
+                                                echo '<td><button data-toggle="modal" onClick=openNoteModal(' . $favorite['favoriteId'] . ')>' . substr($note, 0, 15) . '</button></td>';
                                                 echo '<td><a href="prospectsMatch.php?visitorId=' . $favorite['favoriteId'] . '" >House Matches</a></td>';
                                                 echo '<td class="fa fa-archive" style="text-align: center;" onClick="archiveFavorite(' . $favorite['favoriteId'] . ')"></td>';
                                                 echo '<td class="fa fa-file-text" style="text-align: center;" onClick="showSendToInContractModal(' . $favorite['favoriteId'] . ')"></td>';
@@ -758,9 +763,10 @@ $keys = array_keys($response);
 
                         </div>
                         <!-- /.col -->
-                        <div class="col-md-12" style="height:80vh;">
+                        <div class="col-md-12" id="calendarCollapse" style="height:80vh;">
                                 <div class="box box-success" style="height:100%; overflow: auto;">
-                                    <h3>Meetings</h3>
+                                    <h3>Meetings<button type="button" onClick="collapseCalendar()">
+                                        <span class="fa fa-compress" aria-hidden="true"></span></button></h3>
                                     <!-- THE CALENDAR -->
                                     <div id="calendar" ></div>
                                 </div>
@@ -2024,6 +2030,20 @@ $keys = array_keys($response);
                     inContractCollapseStatus = "collapse";
                 }
                 // alert($('#activeProspectCollapse').height());
+            }
+            var calendarCollapseStatus = "collapse";
+            function collapseCalendar()
+            {
+                if(calendarCollapseStatus == "collapse")
+                {
+                    $('#calendarCollapse').height("9vh");
+                    calendarCollapseStatus = "expand";
+                }
+                else 
+                {   
+                    $('#calendarCollapse').height("80vh");
+                    calendarCollapseStatus = "collapse";
+                }
             }
         </script>
 
