@@ -430,12 +430,13 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                     <th>Date Closed</th>
                                     <th data-breakpoints="xs">Address</th>
                                     <th data-breakpoints="xs">Final Price</th>
+                                    <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
 
-                                $sql = "SELECT * FROM pastClients WHERE userId = :userId";
+                                $sql = "SELECT * FROM pastClients WHERE userId = :userId AND junk != \"junk\"";
 
                                 $namedParameters = array();
                                 $namedParameters[':userId'] = $_SESSION['userId'];
@@ -485,6 +486,11 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                     // Final House Price
                                     echo "<td>";
                                     echo $result['finalHousePrice'];
+                                    echo "</td>";
+
+                                    //Delte
+                                    echo "<td>";
+                                    echo "<button onClick=deletePastClient(" . $result['pastClientId'] . ")>Delete</button>";
                                     echo "</td>";
                                     
                                     echo "</tr>";
@@ -893,6 +899,14 @@ function deleteVisitor(visitorId)
             // ft.loadRows(rows);
         });
     });
+
+    function deletePastClient(pastClientId)
+    {
+        $.post( "deletePastClient.php", { pastClientId: pastClientId})
+          .done(function( data ) {
+            alert( "Past Client Deleted");
+          });
+    }
 // });
     </script>
 <!-- Modal -->
