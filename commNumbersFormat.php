@@ -29,11 +29,14 @@ foreach($commSheets as $sheet)
 {
 	if($counter != 0 && $prevFirstName == $sheet['firstName'] && $prevLastName == $sheet['lastName'])
 	{	
-        $newBroker = commAlgo($newTY, $sheet['InitialGross']);
+        if($sheet['leadType'] == "Zillow")
+            $newBroker = $sheet['InitialGross'] * .05;
+        else
+            $newBroker = commAlgo($newTY, $sheet['InitialGross']);
         $newTY = $newTY + $sheet['InitialGross'];
-        $newFY = $newFY + ($sheet['InitialGross']- $newBroker - $sheet['remaxFee'] - $sheet['misc'] - 349);
+        $newFY = $newFY + ($sheet['InitialGross']- $newBroker - $sheet['remaxFee'] - $sheet['misc'] - $sheet['eoFee'] - $sheet['techFee'] - $sheet['procFee']);
         
-        $newFinalComm = $sheet['InitialGross'] - $newBroker - $sheet['remaxFee'] - $sheet['misc'] - 349;
+        $newFinalComm = $sheet['InitialGross'] - $newBroker - $sheet['remaxFee'] - $sheet['misc'] - $sheet['eoFee'] - $sheet['techFee'] - $sheet['procFee'];
 		
         $updateSql = "UPDATE commInfo SET TYGross = :TYGross, FYGross = :FYGross, brokerFee = :brokerFee, finalComm = :finalComm
                       WHERE commId = :commId";
@@ -54,11 +57,14 @@ foreach($commSheets as $sheet)
         $newBroker = 0;
         $newFinalComm = 0;
 
-        $newBroker = commAlgo($newTY, $sheet['InitialGross']);
+        if($sheet['leadType'] == "Zillow")
+            $newBroker = $sheet['InitialGross'] * .05;
+        else
+            $newBroker = commAlgo($newTY, $sheet['InitialGross']);
         $newTY = $newTY + $sheet['InitialGross'];
-        $newFY = $newFY + ($sheet['InitialGross'] - $newBroker - $sheet['remaxFee'] - $sheet['misc'] - 349);
+        $newFY = $newFY + ($sheet['InitialGross'] - $newBroker - $sheet['remaxFee'] - $sheet['misc'] - $sheet['eoFee'] - $sheet['techFee'] - $sheet['procFee']);
         
-        $newFinalComm = $sheet['InitialGross'] - $newBroker - $sheet['remaxFee'] - $sheet['misc'] - 349;
+        $newFinalComm = $sheet['InitialGross'] - $newBroker - $sheet['remaxFee'] - $sheet['misc'] - $sheet['eoFee'] - $sheet['techFee'] - $sheet['procFee'];
 
         $updateSql = "UPDATE commInfo SET TYGross = :TYGross, FYGross = :FYGross, brokerFee = :brokerFee, finalComm = :finalComm
                       WHERE commId = :commId";

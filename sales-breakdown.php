@@ -94,17 +94,17 @@ $result = $stmt->fetchAll();
                                     echo "<td ondblclick=editCommInfo('address','". $sales['commId'] ."') >" . $sales['address'] . "</td>";
                                     // echo "<td ondblclick=editCommInfo('name') >" . $sales['firstName'] . " " . $sales['lastName'] . "</td>";
                                     echo "<td>" . $sales['firstName'] . " " . $sales['lastName'] . "</td>";
-                                    echo "<td ondblclick=editCommInfo('initialGross','". $sales['commId'] ."') >" . '$' . number_format($sales['InitialGross'], 0) . "</td>"; //Total
-                                    echo "<td>" . '$' . number_format($sales['brokerFee'], 0) . "</td>"; //office
-                                    echo "<td ondblclick=editCommInfo('eoFee','". $sales['commId'] ."') >" . '$99.00' . "</td>"; //eo
-                                    echo "<td ondblclick=editCommInfo('techFee','". $sales['commId'] ."') >" . '$50.00' . "</td>"; //tech
-                                    echo "<td ondblclick=editCommInfo('procFee','". $sales['commId'] ."') >" . '$200.00' . "</td>"; //processing
-                                    echo "<td ondblclick=editCommInfo('remaxFee','". $sales['commId'] ."') >" . '$' . number_format($sales['remaxFee'], 0) . "</td>"; //remax_ff
-                                    echo "<td><span ondblclick=editCommInfo('miscTitle','". $sales['commId'] ."')>" . $sales['miscTitle'] . ' :</span> <span ondblclick=editCommInfo("miscFee","'. $sales['commId'] .'")>$' . number_format($sales['misc'], 0) . "</span></td>"; //misc
-                                    echo "<td>" . '$' . number_format($sales['finalComm'], 0) . "</td>"; //commission
-                                    echo "<td>" . '$' . number_format($sales['TYGross'], 0) . "</td>"; //commission
+                                    echo "<td ondblclick=editCommInfo('initialGross','". $sales['commId'] ."') >" . '$' . number_format($sales['InitialGross'], 2) . "</td>"; //Total
+                                    echo "<td>" . '$' . number_format($sales['brokerFee'], 2) . "</td>"; //office
+                                    echo "<td ondblclick=editCommInfo('eoFee','". $sales['commId'] ."') >$" . number_format($sales['eoFee'],2) . "</td>"; //eo
+                                    echo "<td ondblclick=editCommInfo('techFee','". $sales['commId'] ."') >$" . number_format($sales['techFee'],2) . "</td>"; //tech
+                                    echo "<td ondblclick=editCommInfo('procFee','". $sales['commId'] ."') >$" . number_format($sales['procFee'],2) . "</td>"; //processing
+                                    echo "<td ondblclick=editCommInfo('remaxFee','". $sales['commId'] ."') >" . '$' . number_format($sales['remaxFee'], 2) . "</td>"; //remax_ff
+                                    echo "<td><span ondblclick=editCommInfo('miscTitle','". $sales['commId'] ."')>" . $sales['miscTitle'] . ' :</span> <span ondblclick=editCommInfo("miscFee","'. $sales['commId'] .'")>$' . number_format($sales['misc'], 2) . "</span></td>"; //misc
+                                    echo "<td>" . '$' . number_format($sales['finalComm'], 2) . "</td>"; //commission
+                                    echo "<td>" . '$' . number_format($sales['TYGross'], 2) . "</td>"; //commission
                                     echo "<td ondblclick=editCommInfo('clients','". $sales['commId'] ."') >" . $sales['clients'] . "</td>"; //client
-                                    echo "<td ondblclick=editCommInfo('finalHousePrice','". $sales['commId'] ."') >" . '$' . number_format($sales['finalHousePrice'], 0) . "</td>"; //price
+                                    echo "<td ondblclick=editCommInfo('finalHousePrice','". $sales['commId'] ."') >" . '$' . number_format($sales['finalHousePrice'], 2) . "</td>"; //price
                                     echo "<td>" . number_format($sales['percentage'], 2, '.','') . "%</td>"; //Avg Percent
                                     echo "<td ondblclick=editCommInfo('type','". $sales['commId'] ."') >" . $sales['type'] . "</td>"; //listing buyer
                                     // echo "<td>" . $sales['notes'] . "</td>"; //notes
