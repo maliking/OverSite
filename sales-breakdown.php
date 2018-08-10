@@ -83,12 +83,13 @@ $result = $stmt->fetchAll();
                                     <th>Listing/Buyer</th>
                                     <!-- <th data-breakpoints="all">Notes</th> -->
                                     <th data-breakpoints="all">Commission Sheet</th>
+                                    <th>Delete</th>
                                 </tr>
                                 </thead>
                                 <tbody>
                                 <?php
                                 foreach ($result as $sales) {
-                                    echo "<tr>";
+                                    echo "<tr id=commSheet" . $sales['commId'] . " >";
                                     echo "<td ondblclick=editCommInfo('settlementDate','". $sales['commId'] ."') >" . date("m-d-Y", strtotime($sales['settlementDate'])) . "</td>";
                                     echo "<td ondblclick=editCommInfo('address','". $sales['commId'] ."') >" . $sales['address'] . "</td>";
                                     // echo "<td ondblclick=editCommInfo('name') >" . $sales['firstName'] . " " . $sales['lastName'] . "</td>";
@@ -108,6 +109,7 @@ $result = $stmt->fetchAll();
                                     echo "<td ondblclick=editCommInfo('type','". $sales['commId'] ."') >" . $sales['type'] . "</td>"; //listing buyer
                                     // echo "<td>" . $sales['notes'] . "</td>"; //notes
                                     echo '<td> <a href="viewCommissionSheet.php?comm=' . $sales['commId'] . '" target="_blank"> <button>View Commission Sheet</button> </a> </td>';
+                                    echo "<td><button onClick=deleteCommSheet(" . $sales['commId'] . ") >Delete</button></td>";
                                     echo "</tr>";
                                 }
                                 ?>
@@ -189,6 +191,33 @@ $result = $stmt->fetchAll();
             }
         });
     });
+    function deleteCommSheet(commId)
+    {
+        bootbox.confirm({
+            message: "Are you sure you want to delete the commission sheet?",
+            buttons: {
+                confirm: {
+                    label: 'Yes',
+                    className: 'btn-success'
+                },
+                cancel: {
+                    label: 'No',
+                    className: 'btn-danger'
+                }
+            },
+            callback: function (result) {
+                if(result == true)
+                {
+                    $.post( "deleteCommSheet.php", { commId: commId })
+                      .done(function( data ) {
+                        alert( "Commission Sheet Deleted");
+                        $('#commSheet' + commId).remove();
+                      });
+                }
+                
+            }
+        });
+    }
     
 </script>
 </body>
