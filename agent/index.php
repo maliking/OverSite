@@ -15,6 +15,12 @@ $favoriteStmt = $dbConn->prepare($favoriteSql);
 $favoriteStmt->execute($favoriteParameters);
 $favoriteResults = $favoriteStmt->fetchAll();
 
+$settingSql = "SELECT * FROM settings WHERE userId = :userId";
+$settingParam = array();
+$settingParam[':userId'] = $_SESSION['userId'];
+$settingStmt = $dbConn->prepare($settingSql);
+$settingStmt->execute($settingParam);
+$settingResult = $settingStmt->fetch();
 
 // $sqlRank = "SELECT UsersInfo.firstName, UsersInfo.lastName, count(*) as sold, sum(finalComm) as YTDComm FROM UsersInfo LEFT JOIN commInfo on UsersInfo.license = commInfo.license group by UsersInfo.license order by sold Desc ";
 // $stmtRank = $dbConnRank->prepare($sqlRank);
@@ -630,8 +636,8 @@ $keys = array_keys($response);
                         <div class="col-md-12">
                         <?php include 'progressGoal.php' ?>
                     </div>
+
                         <div class="col-md-12" id="activeProspectCollapse" style="height:60vh;">
-                            
                             <div class="box box-success" style="height:90%; overflow: auto;">
                                 <div class="box-header">
                                     <h4>Active Prospects<button type="button" onClick="collapseActiveProspects()">
@@ -756,13 +762,12 @@ $keys = array_keys($response);
                             </div>
                         </div>
 
-                        <div class="col-md-12" id="inContractCollapse" style="height:80vh;">
-                            
-                            
+                       <div class="col-md-12" id="inContractCollapse" style="height:80vh;">
                             <?php include 'inContractTable.php'; ?>
 
                         </div>
                         <!-- /.col -->
+
                         <div class="col-md-12" id="calendarCollapse" style="height:80vh;">
                                 <div class="box box-success" style="height:100%; overflow: auto;">
                                     <h3>Meetings<button type="button" onClick="collapseCalendar()">
@@ -1062,6 +1067,10 @@ $keys = array_keys($response);
 
         </script>
         <script>
+            var activeProspectsCollapseStatus = "";
+            var inContractCollapseStatus = "";
+            var calendarCollapseStatus = "";
+
             function saveMeeting() {
                 var id = $('#id').text();
                 var newNote = $('#textArea').val();
@@ -1234,9 +1243,23 @@ $keys = array_keys($response);
                             // alert("finished");
                         }
                     }
-
-
                 });
+            
+            
+
+            $.post( "getSettings.php", function( data ) {
+                var dataResult = JSON.parse(data);
+                activeProspectsCollapseStatus = dataResult.agentActiveProsTable;
+                inContractCollapseStatus = dataResult.agentInContrTable;
+                calendarCollapseStatus = dataResult.agentCalendar;
+                if(activeProspectsCollapseStatus != "expanded")
+                    $('#activeProspectCollapse').height("12vh");
+                if(inContractCollapseStatus != "expanded")
+                    $('#inContractCollapse').height("12vh");
+                if(calendarCollapseStatus != "expanded")
+                    $('#calendarCollapse').height("9vh");   
+                  // alert( "Data Loaded: " + dataResult.agentActiveProsTable );
+                });          
 
             });
         
@@ -2027,50 +2050,53 @@ $keys = array_keys($response);
                 // alert(clientId);
             }
 
-            var activeProspectsCollapseStatus = "collapse";
+
             function collapseActiveProspects()
             {
-                if(activeProspectsCollapseStatus == "collapse")
+                if(activeProspectsCollapseStatus == "expanded")
                 {
                     $('#activeProspectCollapse').height("12vh");
-                    activeProspectsCollapseStatus = "expand";
+                    activeProspectsCollapseStatus = "collapse";
                 }
                 else 
                 {   
                     $('#activeProspectCollapse').height("60vh");
-                    activeProspectsCollapseStatus = "collapse";
+                    activeProspectsCollapseStatus = "expanded";
                 }
+                $.post( "updateTableCollapse.php", { column: "agentActiveProsTable", status: activeProspectsCollapseStatus } );
                 // alert($('#activeProspectCollapse').height());
             }
 
-            var inContractCollapseStatus = "collapse";
+            
             function collapseInContract()
             {
-                if(inContractCollapseStatus == "collapse")
+                if(inContractCollapseStatus == "expanded")
                 {
                     $('#inContractCollapse').height("12vh");
-                    inContractCollapseStatus = "expand";
+                    inContractCollapseStatus = "collapse";
                 }
                 else 
                 {   
                     $('#inContractCollapse').height("80vh");
-                    inContractCollapseStatus = "collapse";
+                    inContractCollapseStatus = "expanded";
                 }
+                $.post( "updateTableCollapse.php", { column: "agentInContrTable", status: inContractCollapseStatus } );
                 // alert($('#activeProspectCollapse').height());
             }
-            var calendarCollapseStatus = "collapse";
+            
             function collapseCalendar()
             {
-                if(calendarCollapseStatus == "collapse")
+                if(calendarCollapseStatus == "expanded")
                 {
                     $('#calendarCollapse').height("9vh");
-                    calendarCollapseStatus = "expand";
+                    calendarCollapseStatus = "collapse";
                 }
                 else 
                 {   
                     $('#calendarCollapse').height("80vh");
-                    calendarCollapseStatus = "collapse";
+                    calendarCollapseStatus = "expanded";
                 }
+                $.post( "updateTableCollapse.php", { column: "agentCalendar", status: calendarCollapseStatus } );
             }
         </script>
 
