@@ -79,7 +79,7 @@ $stmt = $dbConn->prepare($sql);
 $stmt->execute($parameters);
 $result = $stmt->fetch();
 
-$sqlTransactions = "SELECT * FROM transactions WHERE userId = :userId";
+$sqlTransactions = "SELECT * FROM transactions WHERE userId = :userId AND junk != \"junk\"";
 $transParameters = array();
 $transParameters[':userId'] = $_SESSION['userId'];
 $transStmt = $dbConn->prepare($sqlTransactions);

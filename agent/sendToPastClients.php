@@ -20,4 +20,13 @@ $finalHousePriceParam[':pastClientId'] = $lastPastClientId;
 $finalHousePriceStmt = $dbConn->prepare($addFinalHousePriceSql);
 $finalHousePriceStmt->execute($finalHousePriceParam);
 
+if($_POST['delClient'] == "yes")
+{
+	$deleteSql = "UPDATE transactions SET junk = \"junk\" WHERE transId = :transId";
+	$deleteParam = array();
+	$deleteParam[':transId'] = $_POST['transId'];
+	$deleteStmt = $dbConn->prepare($deleteSql);
+	$deleteStmt->execute($deleteParam);
+
+}
 ?>

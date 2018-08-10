@@ -1986,11 +1986,38 @@ $keys = array_keys($response);
                 bootbox.prompt("Enter final house price", function(result){
                  if(result != null)
                  {
-                    $.post( "sendToPastClients.php", { transId: transId, finalHousePrice: result})
-                      .done(function( data ) {
-                        // $('#inContract' + transId).remove();
-                        alert("Added to past clients");
-                      });  
+                        bootbox.confirm({
+                        message: "Do you want to delete from In-Contract Table?",
+                        buttons: {
+                            confirm: {
+                                label: 'Yes',
+                                className: 'btn-success'
+                            },
+                            cancel: {
+                                label: 'No',
+                                className: 'btn-danger'
+                            }
+                        },
+                        callback: function (result) {
+                            if(result == true)
+                            {
+                                $.post( "sendToPastClients.php", { transId: transId, finalHousePrice: result, delClient: "yes"})
+                                  .done(function( data ) {
+                                    $('#inContract' + transId).remove();
+                                    alert("Added to past clients");
+                                  }); 
+                            }
+                            else
+                            {
+                                $.post( "sendToPastClients.php", { transId: transId, finalHousePrice: result, delClient: "no"})
+                                  .done(function( data ) {
+                                    // $('#inContract' + transId).remove();
+                                    alert("Added to past clients");
+                                  }); 
+                            }
+                        }
+                    });
+                     
                  }
                  else{
                     alert("Final house price Needed");
