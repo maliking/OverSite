@@ -13,9 +13,10 @@ $pastClientStmt->execute($param);
 
 $lastPastClientId = $dbConn->lastInsertId();
 
-$addFinalHousePriceSql = "UPDATE pastClients SET finalHousePrice = :finalHousePrice WHERE pastClientId = :pastClientId";
+$addFinalHousePriceSql = "UPDATE pastClients SET finalHousePrice = :finalHousePrice, listingType = :listingType WHERE pastClientId = :pastClientId";
 $finalHousePriceParam = array();
 $finalHousePriceParam[':finalHousePrice'] = $_POST['finalHousePrice'];
+$finalHousePriceParam[':listingType'] = $_POST['listingType'];
 $finalHousePriceParam[':pastClientId'] = $lastPastClientId;
 $finalHousePriceStmt = $dbConn->prepare($addFinalHousePriceSql);
 $finalHousePriceStmt->execute($finalHousePriceParam);

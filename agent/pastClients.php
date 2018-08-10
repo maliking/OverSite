@@ -6,7 +6,7 @@ if (!isset($_SESSION['userId'])) {
     header("Location: http://www.oversite.cc/login.php");
 }
 require '../databaseConnection.php';
-// require '../keys/cred.php';
+require '../keys/cred.php';
 require '../twilio-php-master/Twilio/autoload.php';
 
 use Twilio\Jwt\ClientToken;
@@ -430,6 +430,7 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                     <th>Date Closed</th>
                                     <th data-breakpoints="xs">Address</th>
                                     <th data-breakpoints="xs">Final Price</th>
+                                    <th data-breakpoints="xs">Listing Type</th>
                                     <th>Delete</th>
                                 </tr>
                                 </thead>
@@ -486,6 +487,11 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                     // Final House Price
                                     echo "<td>";
                                     echo "$" . number_format((float)$result['finalHousePrice'],2);
+                                    echo "</td>";
+
+                                    //Listing Type
+                                    echo "<td>";
+                                    echo $result['listingType'];
                                     echo "</td>";
 
                                     //Delte
