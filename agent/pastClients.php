@@ -427,6 +427,11 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                     <th data-breakpoints="xs">Phone</th>
                                     <th data-breakpoints="xs">Email</th>
 
+                                    <th>Name 2</th>
+                                    <th data-breakpoints="xs">Phone 2</th>
+                                    <th data-breakpoints="xs">Email 2</th>
+
+
                                     <th>Date Closed</th>
                                     <th data-breakpoints="xs">Address</th>
                                     <th data-breakpoints="xs">Final Price</th>
@@ -472,6 +477,21 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                     // Email
                                     echo "<td>";
                                     echo $result['email'];
+                                    echo "</td>";
+
+                                    // Name 2
+                                    echo "<td>";
+                                    echo $result['secondName'];
+                                    echo "</td>";
+
+                                    // Phone Number 2
+                                    echo "<td>";
+                                    echo $result['secondNumber'];
+                                    echo "</td>";
+
+                                    // Email 2
+                                    echo "<td>";
+                                    echo $result['secondEmail'];
                                     echo "</td>";
 
                                     // Date Closed

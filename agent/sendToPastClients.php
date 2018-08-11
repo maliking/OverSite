@@ -4,8 +4,8 @@ date_default_timezone_set('America/Los_Angeles');
 require '../databaseConnection.php';
 $dbConn = getConnection();
 
-$pastClientSql = "INSERT INTO pastClients (userId, buyerId, firstName, email, phone, dateClosed, address) 
-				  SELECT userId, transId, clientName, clientEmail, clientNum, coeComp, address FROM transactions WHERE transId = :transId";
+$pastClientSql = "INSERT INTO pastClients (userId, buyerId, firstName, email, phone, secondName, secondNumber, secondEmail, dateClosed, address) 
+				  SELECT userId, transId, clientName, clientEmail, clientNum, clientTwoName, clientTwoNum, clientTwoEmail, coeComp, address FROM transactions WHERE transId = :transId";
 $param = array();
 $param[':transId'] = $_POST['transId'];
 $pastClientStmt = $dbConn->prepare($pastClientSql);
