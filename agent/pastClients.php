@@ -465,32 +465,32 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                     echo "<td>" . $result['buyerId']  . "</td>";
 
                                     // Name
-                                    echo "<td>";
+                                    echo '<td class=clientName'. $result['pastClientId'] . ' ondblclick="editClientName(' . $result['pastClientId'] . ')">';
                                     echo $result['firstName'] . " " . $result['lastName'];
                                     echo "</td>";
 
                                     // Phone Number
-                                    echo "<td>";
+                                    echo '<td id=clientNum' . $result['pastClientId'] . ' ondblclick="editClientNum(' . $result['pastClientId'] . ')">';
                                     echo $result['phone'];
                                     echo "</td>";
 
                                     // Email
-                                    echo "<td>";
+                                    echo '<td id=clientEmail'. $result['pastClientId'] . ' ondblclick="editClientEmail(\'' . $result['pastClientId'] . '\')">';
                                     echo $result['email'];
                                     echo "</td>";
 
                                     // Name 2
-                                    echo "<td>";
+                                    echo '<td class=clientTwoName'. $result['pastClientId'] . ' ondblclick="editClientTwoName(' . $result['pastClientId'] . ')">';
                                     echo $result['secondName'];
                                     echo "</td>";
 
                                     // Phone Number 2
-                                    echo "<td>";
+                                    echo '<td id=clientTwoNum' . $result['pastClientId'] . ' ondblclick="editClientTwoNum(' . $result['pastClientId'] . ')">';
                                     echo $result['secondNumber'];
                                     echo "</td>";
 
                                     // Email 2
-                                    echo "<td>";
+                                    echo '<td id=clientTwoEmail'. $result['pastClientId'] . ' ondblclick="editClientTwoEmail(\'' . $result['pastClientId'] . '\')">';
                                     echo $result['secondEmail'];
                                     echo "</td>";
 
@@ -955,6 +955,100 @@ function deleteVisitor(visitorId)
         
     }
 // });
+
+            function editClientName(id)
+            {
+                // alert("edit client name");
+                var clientName = prompt("Enter client name:");
+                if (clientName == null || clientName == "") {
+                } else {
+                    $(".clientName" + id).html(clientName);
+                    // alert(houseId + " " + buyerID);
+                    $.post("updatePastClientOneData.php", {
+                        clientPastId: id,
+                        clientName: clientName,
+                        type: "name"
+                    });
+                }
+
+            }
+
+            function editClientNum(id)
+            {
+                var clientNum = prompt("Enter client number:");
+                if (clientNum == null || clientNum == "") {
+                } else {
+                    $("#clientNum" + id).html(clientNum);
+                    // alert(houseId + " " + buyerID);
+                    $.post("updatePastClientOneData.php", {
+                        clientPastId: id,
+                        clientNum: clientNum,
+                        type: "number"
+                    });
+                }
+            }
+
+            function editClientEmail(id)
+            {
+                var clientEmail = prompt("Enter client email:");
+                if (clientEmail == null || clientEmail == "") {
+                } else {
+                    $("#clientEmail" + id).html(clientEmail);
+                    // alert(houseId + " " + buyerID);
+                    $.post("updatePastClientOneData.php", {
+                        clientPastId: id,
+                        clientEmail: clientEmail,
+                        type: "email"
+                    });
+                }
+            }
+
+            function editClientTwoName(id)
+            {
+                // alert("edit client name");
+                var clientName = prompt("Enter client name:");
+                if (clientName == null || clientName == "") {
+                } else {
+                    $(".clientTwoName" + id).html(clientName);
+                    // alert(houseId + " " + buyerID);
+                    $.post("updatePastClientTwoData.php", {
+                        clientPastId: id,
+                        clientTwoName: clientName,
+                        type: "name"
+                    });
+                }
+
+            }
+
+            function editClientTwoNum(id)
+            {
+                var clientNum = prompt("Enter client number:");
+                if (clientNum == null || clientNum == "") {
+                } else {
+                    $("#clientTwoNum" + id).html(clientNum);
+                    // alert(houseId + " " + buyerID);
+                    $.post("updatePastClientTwoData.php", {
+                        clientPastId: id,
+                        clientTwoNum: clientNum,
+                        type: "number"
+                    });
+                }
+            }
+
+            function editClientTwoEmail(id)
+            {
+                var clientEmail = prompt("Enter client email:");
+                if (clientEmail == null || clientEmail == "") {
+                } else {
+                    $("#clientTwoEmail" + id).html(clientEmail);
+                    // alert(houseId + " " + buyerID);
+                    $.post("updatePastClientTwoData.php", {
+                        clientPastId: id,
+                        clientTwoEmail: clientEmail,
+                        type: "email"
+                    });
+                }
+            }
     </script>
 <!-- Modal -->
 
