@@ -16,6 +16,7 @@
                                             <th>Type</th>
                                             <th>Agent</th>
                                             <th>Client</th>
+                                            <th>Client 2</th>
                                             <th>Property</th>
 
                                             <th data-breakpoints="all">Info</th>
@@ -101,6 +102,7 @@
                                                 echo '</td>';
                                                 echo '<td>' . $trans['fName'] . " " .$trans['lName'];
                                             echo '<td class=clientName'. $trans['transId'] . ' ondblclick="editClientName(' . $trans['transId'] . ')">' . $trans['clientName'] . '</td>';
+                                            echo '<td class=clientTwoName'. $trans['transId'] . ' ondblclick="editClientTwoName(' . $trans['transId'] . ')">' . $trans['clientTwoName'] . '</td>';
                                             echo '<td id=propertyAddress'. $trans['transId'] . ' ondblclick="editProperty(' . $trans['transId'] . ')">' . $trans['address'] . '</td>';
                                             
                                             echo '<td><table border="1">
@@ -108,6 +110,7 @@
                                             <tr>
                                             <td></td>
                                             <td><b>Client</b></td>
+                                            <td><b>Client 2</b></td>
                                             <td><b>Lender</b></td>
                                             <td><b>Escrow</b></td>
                                             <td><b>Agent</b></td>
@@ -115,6 +118,7 @@
                                             <tr>
                                             <td><b>Name</b></td>
                                             <td class=clientName'. $trans['transId'] . ' ondblclick="editClientName(' . $trans['transId'] . ')">' . $trans['clientName'] . '</td>
+                                            <td class=clientTwoName'. $trans['transId'] . ' ondblclick="editClientTwoName(' . $trans['transId'] . ')">' . $trans['clientTwoName'] . '</td>
                                             <td id=lendorName' . $trans['transId'] . ' ondblclick=editLendorInfo("Name",' . $trans['transId']  . ') >' . $trans['lendorName'] . '</td>
                                             <td id=escrowName' . $trans['transId'] . ' ondblclick=editEscrowInfo("Name",' . $trans['transId']  . ') >' . $trans['escrowName'] . '</td>
                                             <td id=agentName' . $trans['transId'] . ' ondblclick=editAgentInfo("Name",' . $trans['transId']  . ') >' . $trans['agentName'] . '</td>
@@ -122,6 +126,7 @@
                                             <tr>
                                             <td><b>Phone</b></td>
                                             <td id=clientNum' . $trans['transId'] . ' ondblclick="editClientNum(' . $trans['transId'] . ')">' . $trans['clientNum'] . '</td>
+                                            <td id=clientTwoNum' . $trans['transId'] . ' ondblclick="editClientTwoNum(' . $trans['transId'] . ')">' . $trans['clientTwoNum'] . '</td>
                                             <td id=lendorNum' . $trans['transId'] . ' ondblclick=editLendorInfo("Num",' . $trans['transId']  . ') >' . $trans['lendorNum'] . '</td>
                                             <td id=escrowNum' . $trans['transId'] . ' ondblclick=editEscrowInfo("Num",' . $trans['transId']  . ') >' . $trans['escrowNum'] . '</td>
                                             <td id=agentNum' . $trans['transId'] . ' ondblclick=editAgentInfo("Num",' . $trans['transId']  . ') >' . $trans['agentNum'] . '</td>
@@ -129,6 +134,7 @@
                                             <tr>
                                             <td><b>Email</b></td>
                                             <td id=clientEmail'. $trans['transId'] . ' ondblclick="editClientEmail(\'' . $trans['transId'] . '\')">' . $trans['clientEmail'] . '</td>
+                                            <td id=clientTwoEmail'. $trans['transId'] . ' ondblclick="editClientTwoEmail(\'' . $trans['transId'] . '\')">' . $trans['clientTwoEmail'] . '</td>
                                             <td id=lendorEmail' . $trans['transId'] . ' ondblclick=editLendorInfo("Email",' . $trans['transId']  . ') >' . $trans['lendorEmail'] . '</td>
                                             <td id=escrowEmail' . $trans['transId'] . ' ondblclick=editEscrowInfo("Email",' . $trans['transId']  . ') >' . $trans['escrowEmail'] . '</td>
                                             <td id=agentEmail' . $trans['transId'] . ' ondblclick=editAgentInfo("Email",' . $trans['transId']  . ') >' . $trans['agentEmail'] . '</td>

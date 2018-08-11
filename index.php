@@ -405,7 +405,7 @@ $keys = array_keys($response);
 </script>
 <script>
 
- function editClientName(id)
+            function editClientName(id)
             {
                 // alert("edit client name");
                 var clientName = prompt("Enter client name:");
@@ -445,6 +445,53 @@ $keys = array_keys($response);
                     $.post("agent/saveInContractClientEmail.php", {
                         transId: id,
                         clientEmail: clientEmail
+                    });
+                }
+            }
+
+            function editClientTwoName(id)
+            {
+                // alert("edit client name");
+                var clientName = prompt("Enter client name:");
+                if (clientName == null || clientName == "") {
+                } else {
+                    $(".clientTwoName" + id).html(clientName);
+                    // alert(houseId + " " + buyerID);
+                    $.post("agent/updateClientTwoData.php", {
+                        transId: id,
+                        clientTwoName: clientName,
+                        type: "name"
+                    });
+                }
+
+            }
+
+            function editClientTwoNum(id)
+            {
+                var clientNum = prompt("Enter client number:");
+                if (clientNum == null || clientNum == "") {
+                } else {
+                    $("#clientTwoNum" + id).html(clientNum);
+                    // alert(houseId + " " + buyerID);
+                    $.post("agent/updateClientTwoData.php", {
+                        transId: id,
+                        clientTwoNum: clientNum,
+                        type: "number"
+                    });
+                }
+            }
+
+            function editClientTwoEmail(id)
+            {
+                var clientEmail = prompt("Enter client email:");
+                if (clientEmail == null || clientEmail == "") {
+                } else {
+                    $("#clientTwoEmail" + id).html(clientEmail);
+                    // alert(houseId + " " + buyerID);
+                    $.post("agent/updateClientTwoData.php", {
+                        transId: id,
+                        clientTwoEmail: clientEmail,
+                        type: "email"
                     });
                 }
             }
