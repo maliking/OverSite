@@ -151,6 +151,7 @@ $keys = array_keys($response);
                                             <th></th>
                                             <th>Type</th>
                                             <th>Client</th>
+                                            <th>Client 2</th>
                                             <th>Property</th>
 
                                             <th data-breakpoints="all">Info</th>
@@ -236,6 +237,7 @@ $keys = array_keys($response);
                                                 echo "<td class='inContractRowNumber'></td>";
                                                 echo "<td>" . $trans['transType'] . "</td>";
                                             echo '<td class=clientName'. $trans['transId'] . ' ondblclick="editClientName(' . $trans['transId'] . ')">' . $trans['clientName'] . '</td>';
+                                            echo '<td class=clientTwoName'. $trans['transId'] . ' ondblclick="editClientTwoName(' . $trans['transId'] . ')">' . $trans['clientTwoName'] . '</td>';
                                             echo '<td id=propertyAddress'. $trans['transId'] . ' ondblclick="editProperty(' . $trans['transId'] . ')">' . $trans['address'] . '</td>';
                                             // echo '<td id=clientNum' . $trans['transId'] . ' onClick="editClientNum(' . $trans['transId'] . ')">' . $trans['clientNum'] . '</td>';
                                             echo '<td><table border="1">
@@ -243,6 +245,7 @@ $keys = array_keys($response);
                                             <tr>
                                             <td></td>
                                             <td><b>Client</b></td>
+                                            <td><b>Client 2</b></td>
                                             <td><b>Lender</b></td>
                                             <td><b>Escrow</b></td>
                                             <td><b>Agent</b></td>
@@ -250,6 +253,7 @@ $keys = array_keys($response);
                                             <tr>
                                             <td><b>Name</b></td>
                                             <td style="color:#0000FF;" class=clientName'. $trans['transId'] . ' ondblclick="editClientName(' . $trans['transId'] . ')">' . $trans['clientName'] . '</td>
+                                            <td style="color:#0000FF;" class=clientTwoName'. $trans['transId'] . ' ondblclick="editClientTwoName(' . $trans['transId'] . ')">' . $trans['clientTwoName'] . '</td>
                                             <td style="color:#0000FF;" id=lendorName' . $trans['transId'] . ' ondblclick=editLendorInfo("Name",' . $trans['transId']  . ') >' . $trans['lendorName'] . '</td>
                                             <td style="color:#0000FF;" id=escrowName' . $trans['transId'] . ' ondblclick=editEscrowInfo("Name",' . $trans['transId']  . ') >' . $trans['escrowName'] . '</td>
                                             <td style="color:#0000FF;" id=agentName' . $trans['transId'] . ' ondblclick=editAgentInfo("Name",' . $trans['transId']  . ') >' . $trans['agentName'] . '</td>
@@ -257,6 +261,7 @@ $keys = array_keys($response);
                                             <tr>
                                             <td><b>Phone</b></td>
                                             <td style="color:#0000FF;" id=clientNum' . $trans['transId'] . ' ondblclick="editClientNum(' . $trans['transId'] . ')">' . $trans['clientNum'] . '</td>
+                                            <td style="color:#0000FF;" id=clientTwoNum' . $trans['transId'] . ' ondblclick="editClientTwoNum(' . $trans['transId'] . ')">' . $trans['clientTwoNum'] . '</td>
                                             <td style="color:#0000FF;" id=lendorNum' . $trans['transId'] . ' ondblclick=editLendorInfo("Num",' . $trans['transId']  . ') >' . $trans['lendorNum'] . '</td>
                                             <td style="color:#0000FF;" id=escrowNum' . $trans['transId'] . ' ondblclick=editEscrowInfo("Num",' . $trans['transId']  . ') >' . $trans['escrowNum'] . '</td>
                                             <td style="color:#0000FF;" id=agentNum' . $trans['transId'] . ' ondblclick=editAgentInfo("Num",' . $trans['transId']  . ') >' . $trans['agentNum'] . '</td>
@@ -264,6 +269,7 @@ $keys = array_keys($response);
                                             <tr>
                                             <td><b>Email</b></td>
                                             <td style="color:#0000FF;" id=clientEmail'. $trans['transId'] . ' ondblclick="editClientEmail(\'' . $trans['transId'] . '\')">' . $trans['clientEmail'] . '</td>
+                                            <td style="color:#0000FF;" id=clientTwoEmail'. $trans['transId'] . ' ondblclick="editClientTwoEmail(\'' . $trans['transId'] . '\')">' . $trans['clientTwoEmail'] . '</td>
                                             <td style="color:#0000FF;" id=lendorEmail' . $trans['transId'] . ' ondblclick=editLendorInfo("Email",' . $trans['transId']  . ') >' . $trans['lendorEmail'] . '</td>
                                             <td style="color:#0000FF;" id=escrowEmail' . $trans['transId'] . ' ondblclick=editEscrowInfo("Email",' . $trans['transId']  . ') >' . $trans['escrowEmail'] . '</td>
                                             <td style="color:#0000FF;" id=agentEmail' . $trans['transId'] . ' ondblclick=editAgentInfo("Email",' . $trans['transId']  . ') >' . $trans['agentEmail'] . '</td>
