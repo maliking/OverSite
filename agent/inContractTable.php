@@ -142,7 +142,8 @@ $keys = array_keys($response);
                                     <h4>In-Contract Property<button type="button" onClick="collapseInContract()">
                                         <span class="fa fa-compress" aria-hidden="true"></span></button></h4>
                                     <button><a href="my-inventory.php">Add New In-Contract</a></button>
-                                    <button onClick="showTransactionModal()">Add New Transaction</button>
+                                    <button style="margin-bottom: 10px" type="button" data-toggle="modal" data-target="#modal">Add New Transaction</button>
+                                    <!-- <button onClick="showTransactionModal()">Add New Transaction</button> -->
                                 </div>
                                 <div class="box-body" style="height:100%;">
                                     <table class="table footable table-bordered table-striped" data-sorting="true" data-filtering="true" style="height:100%;">

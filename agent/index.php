@@ -974,6 +974,8 @@ $keys = array_keys($response);
 
         <script type="text/javascript" src="../dist/js/vendor/footable.min.js"></script>
 
+        <?php include "../staff/staffEventModal.php" ?>
+
         <!-- PAGE-SPECIFIC JS -->
         <script src="../dist/js/vendor/moment-with-locales.min.js"></script>
         <script src="../dist/js/vendor/fullcalendar/fullcalendar.min.js"></script>
@@ -1498,48 +1500,87 @@ $keys = array_keys($response);
                 $('#sendToInContractId').html(id);
                 $('#sendToInContractModal').modal('toggle');
             }
+            // function addNewTransaction()
+            // {
+            //     var inContractAddress = $('[name=inContractAddress]').val();
+            //     var city = $('[name=inContractCity]').val();
+            //     var state = $('[name=inContractState]').val();
+            //     var zip = $('[name=inContractZip]').val();
+
+            //     var address = inContractAddress + " " + city + ", " + state + " " + zip;
+                
+            //     bootbox.prompt({
+            //     title: "Select what type of in-contract:",
+            //     inputType: 'checkbox',
+            //     inputOptions: [
+            //         {
+            //             text: 'Listing',
+            //             value: 'Listing',
+            //         },
+            //         {
+            //             text: 'Buyer',
+            //             value: 'Buyer',
+            //         },
+            //         {
+            //             text: 'List./Buy.',
+            //             value: 'List./Buy.',
+            //         }
+            //     ],
+            //     callback: function (result) {
+            //         inContractType = result[0];
+            //         // alert(inContractType);
+            //         // alert(address);
+            //         if(inContractType != null)
+            //         {
+            //         $.post( "addTransactionSimple.php", { address: address, type: inContractType})
+            //         .done(function( data ) {
+
+            //             alert("House In-contract. Will reflect on Dashboard after refreshing page.");
+            //             });
+            //         }
+            //     }
+
+            //     });
+                    
+            // }
+
             function addNewTransaction()
             {
-                var inContractAddress = $('[name=inContractAddress]').val();
-                var city = $('[name=inContractCity]').val();
-                var state = $('[name=inContractState]').val();
-                var zip = $('[name=inContractZip]').val();
+                var houseSelected = $('#houseId').children(":selected").attr("value");   
+                var agentSelected = $('#agentName').children(":selected").attr("value"); 
+                var accDate = $('#newAccDate').val();
 
-                var address = inContractAddress + " " + city + ", " + state + " " + zip;
-                
-                bootbox.prompt({
-                title: "Select what type of in-contract:",
-                inputType: 'checkbox',
-                inputOptions: [
-                    {
-                        text: 'Listing',
-                        value: 'Listing',
-                    },
-                    {
-                        text: 'Buyer',
-                        value: 'Buyer',
-                    },
-                    {
-                        text: 'List./Buy.',
-                        value: 'List./Buy.',
-                    }
-                ],
-                callback: function (result) {
-                    inContractType = result[0];
-                    // alert(inContractType);
-                    // alert(address);
-                    if(inContractType != null)
-                    {
-                    $.post( "addTransactionSimple.php", { address: address, type: inContractType})
-                    .done(function( data ) {
+                var inputAddress = $('#inputAddress').val();;
+                var inputCity = $('#inputCity').val();;
+                var inputState = $('#inputState').val();;
+                var inputZip = $('#inputZip').val();;
 
-                        alert("House In-contract. Will reflect on Dashboard after refreshing page.");
-                        });
-                    }
-                }
+                // alert(accDate);
 
-                });
+                // alert(agentSelected);
+
+                // alert(houseSelected);
+
+                if(houseSelected == "" && inputAddress != "" && inputState != "" && inputCity != "" && inputZip != "" && accDate != "")
+                {
+                    $.post("../staff/addTransactionStaffInput.php", {userId: agentSelected, address: inputAddress, state: inputState, 
+                                                            city: inputCity, zip: inputZip , accDate: accDate});
+                    alert("House In-Contract");
+                    location.reload();
                     
+                }
+                else if(houseSelected != "" && inputAddress == "" && inputState == "" && inputCity == "" && inputZip == "" && accDate != "")
+                {
+                    $.post("../staff/addTransactionStaff.php", {userId: agentSelected, houseId: houseSelected, accDate: accDate});
+                    alert("House In-Contract");
+                    location.reload();
+                }
+                else
+                {
+                    alert("Choose House from dropdown, input house data, or check date.");
+                }
+                
+                
             }
 
             function deleteFavorite(favoriteId)
