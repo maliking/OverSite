@@ -2053,82 +2053,94 @@ $keys = array_keys($response);
 
             function sendToPastCleints(transId)
             {
-                var listingType = "";
-                var finalHousePrice = "";
-                bootbox.prompt("Enter final house price", function(result){
-                 if(result != null)
-                 {
-                    finalHousePrice = result;
-                    bootbox.prompt({
-                        title: "This is a prompt with select!",
-                        inputType: 'select',
-                        inputOptions: [
-                            {
-                                text: '--Select One --',
-                                value: '',
-                            },
-                            {
-                                text: 'Listing',
-                                value: 'listing',
-                            },
-                            {
-                                text: 'Buyer',
-                                value: 'buyer',
-                            },
-                            {
-                                text: 'Zillow',
-                                value: 'zillow',
-                            },
-                            {
-                                text: 'Other',
-                                value: 'other',
-                            }
-                        ],
-                        callback: function (result) {
-                            listingType = result;
-                            bootbox.confirm({
-                                message: "Do you want to delete from In-Contract Table?",
-                                buttons: {
-                                    confirm: {
-                                        label: 'Yes',
-                                        className: 'btn-success'
-                                    },
-                                    cancel: {
-                                        label: 'No',
-                                        className: 'btn-danger'
-                                    }
+                // alert($('#coeComp' + transId).html());
+                if($('#coeComp' + transId).html() != "Completed: N/A " )
+                {
+                    var listingType = "";
+                    var finalHousePrice = "";
+                    bootbox.prompt("Enter final house price", function(result){
+                     if(result != null)
+                     {
+                        finalHousePrice = result;
+                        bootbox.prompt({
+                            title: "This is a prompt with select!",
+                            inputType: 'select',
+                            inputOptions: [
+                                {
+                                    text: '--Select One --',
+                                    value: '',
                                 },
-                                callback: function (result) {
-                                    if(result == true)
-                                    {
-                                        $.post( "sendToPastClients.php", { transId: transId, finalHousePrice: finalHousePrice, delClient: "yes", listingType: listingType})
-                                          .done(function( data ) {
-                                            $('#inContract' + transId).remove();
-                                            alert("Added to past clients");
-                                          }); 
-                                    }
-                                    else
-                                    {
-                                        $.post( "sendToPastClients.php", { transId: transId, finalHousePrice: finalHousePrice, delClient: "no", listingType: listingType})
-                                          .done(function( data ) {
-                                            // $('#inContract' + transId).remove();
-                                            alert("Added to past clients");
-                                          }); 
-                                    }
+                                {
+                                    text: 'Listing',
+                                    value: 'listing',
+                                },
+                                {
+                                    text: 'Buyer',
+                                    value: 'buyer',
+                                },
+                                {
+                                    text: 'Zillow',
+                                    value: 'zillow',
+                                },
+                                {
+                                    text: 'Other',
+                                    value: 'other',
                                 }
-                            });
+                            ],
+                            callback: function (result) {
+                                listingType = result;
+                                // alert(listingType);
+                                if(listingType != null)
+                                {
+                                    bootbox.confirm({
+                                        message: "Do you want to delete from In-Contract Table?",
+                                        buttons: {
+                                            confirm: {
+                                                label: 'Yes',
+                                                className: 'btn-success'
+                                            },
+                                            cancel: {
+                                                label: 'No',
+                                                className: 'btn-danger'
+                                            }
+                                        },
+                                        callback: function (result) {
+                                            if(result == true)
+                                            {
+                                                $.post( "sendToPastClients.php", { transId: transId, finalHousePrice: finalHousePrice, delClient: "yes", listingType: listingType})
+                                                  .done(function( data ) {
+                                                    $('#inContract' + transId).remove();
+                                                    alert("Added to past clients");
+                                                  }); 
+                                            }
+                                            else
+                                            {
+                                                $.post( "sendToPastClients.php", { transId: transId, finalHousePrice: finalHousePrice, delClient: "no", listingType: listingType})
+                                                  .done(function( data ) {
+                                                    // $('#inContract' + transId).remove();
+                                                    alert("Added to past clients");
+                                                  }); 
+                                            }
+                                        }
+                                    });
+                            }
+                            else
+                                alert("Listing type needed");
 
-                        }
+                            }
+                        });
+                            
+
+                         
+                     }
+                     else
+                     {
+                        alert("Final house price Needed");
+                    }
                     });
-                        
-
-                     
-                 }
-                 else{
-                    alert("Final house price Needed");
-                 }
-             });
-                 
+                }
+                else
+                    alert("COE Completed date needs to be entered");
                 // alert(clientId);
             }
 
