@@ -190,7 +190,11 @@
 
                                         <tr>
                                             <td>INSP</td>
-                                            <?php echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['genInspecDays'] . ' days')) . "</td>"; ?>
+                                            <?php 
+                                                if($trans['genInspecDays'] == "0")
+                                                    echo "<td>N/A</td>";
+                                                else 
+                                                    echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['genInspecDays'] . ' days')) . "</td>"; ?>
                                             <td>
                                                 <div>
                                                     <input type="text" class="form-control pull-right" onChange=<?php echo "saveDaysNum('" . $trans['transId'] . "','generalInspec',this)"; ?> <?php echo "id=genInspecDayNum".$trans['transId'];?> value=<?php echo $trans['genInspecDays'] ;?>>

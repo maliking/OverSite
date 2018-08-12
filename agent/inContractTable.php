@@ -477,7 +477,7 @@ $keys = array_keys($response);
                                                   $genReduced = $genReduced->modify('-3 days');
 
                                                   // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
-                                                  if($trans['genInspecComp'] != NULL && $trans['genInspecComp'] != '0000-00-00')
+                                                  if(($trans['genInspecComp'] != NULL && $trans['genInspecComp'] != '0000-00-00') || $trans['genInspecDays'] == "0")
                                                   {
                                                     echo '<i id=status' . $trans['transId'] .  'generalInspec' . ' class="fa fa-check-circle" style="color:#5cb85c"></i>';
                                                   }

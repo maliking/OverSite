@@ -605,11 +605,14 @@ $keys = array_keys($response);
             }
              function saveDateCalendar(transId,type,date)
              {
-          
+                var dateValue = date.value;
+                if(dateValue == "")
+                    dateValue = moment($("#aprvDay"+transId).val()).format("YYYY-MM-DD");
+
                 var aprvDay = $("#aprvDay"+transId).val();
                 // $("#aprvDay" + transId).val(date.value);
                 updateStatus(transId,type,date);
-                $.post( "staff/saveNewDates.php", { transId: transId, type:type, date:date.value, aprvDay: aprvDay });
+                $.post( "staff/saveNewDates.php", { transId: transId, type:type, date:dateValue, aprvDay: aprvDay });
                 // if(confirm("Do you want to download Extension Form?"))
                 // {
 

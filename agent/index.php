@@ -1312,10 +1312,10 @@ $keys = array_keys($response);
                     $('#' + type + 'Ord' + transId).html("Ordered: " + sendDate.substring(5,7) + "/" + sendDate.substring(8,10) + "/" + sendDate.substring(0,4) );
                 $.post( "../staff/saveOrdDates.php", { transId: transId, type:type, date:sendDate });
 
-                if(confirm("Do you want to download Extension Form?"))
-                {
+                // if(confirm("Do you want to download Extension Form?"))
+                // {
 
-                }
+                // }
             }
             function saveCompDate(transId,type,date)
             {
@@ -1379,15 +1379,18 @@ $keys = array_keys($response);
             }
              function saveDateCalendar(transId,type,date)
              {
+                var dateValue = date.value;
+                if(dateValue == "")
+                    dateValue = moment($("#aprvDay"+transId).val()).format("YYYY-MM-DD");
           
                 var aprvDay = $("#aprvDay"+transId).val();
-                $("#aprvDay" + transId).val(date.value);
+                // $("#aprvDay" + transId).val(date.value);
                 updateStatus(transId,type,date);
-                $.post( "../staff/saveNewDates.php", { transId: transId, type:type, date:date.value, aprvDay: aprvDay });
-                if(confirm("Do you want to download Extension Form?"))
-                {
+                $.post( "../staff/saveNewDates.php", { transId: transId, type:type, date:dateValue, aprvDay: aprvDay });
+                // if(confirm("Do you want to download Extension Form?"))
+                // {
 
-                }
+                // }
             }
             
             function saveDaysNum(transId,type,date)
@@ -1395,20 +1398,20 @@ $keys = array_keys($response);
            
                 $.post( "../staff/saveNewDaysNum.php", { transId: transId, type:type, date:date.value });
                 updateStatus(transId,date);
-                if(confirm("Do you want to download Extension Form?"))
-                {
+                // if(confirm("Do you want to download Extension Form?"))
+                // {
 
-                }
+                // }
             }
 
             function saveNewDates(transId)
             {
 
                 $("#editDateModal"+transId).modal("toggle");
-                if(confirm("Do you want to download Extension Form?"))
-                {
+                // if(confirm("Do you want to download Extension Form?"))
+                // {
 
-                }
+                // }
 
                 alert( "Dates Saved" );
                 location.reload();
