@@ -55,7 +55,7 @@ $result = $stmt->fetchAll();
                 <div class="col-xs-12">
                     <div class="box">
                         <div class="box-header">
-                            <button onClick="formatNumbers()">Re-Format numbers</button>
+                            <button onClick="formatNumbers()">Recalculate numbers</button>
                             <div class="clearfix"></div>
 
                         </div>
