@@ -661,7 +661,8 @@ $keys = array_keys($response);
                                             <th>Bathroom</th>
                                             <th>SqFt</th>
                                             <th>Lot Size</th>
-                                            <th>Notes</th>
+                                            <th>Prev. Note</th>
+                                            <th>Add Note</th>
                                             <th>Match</th>
                                             <th>To Client List</th>
                                             <th>To In-Contract</th>
@@ -730,12 +731,8 @@ $keys = array_keys($response);
                                                 echo '<td id=bathroom' . $favorite['favoriteId'] . ' onClick=editFavorite("bathroom",' . $favorite['favoriteId'] . ')>' . $favorite['bathroom'] . '</td>';
                                                 echo '<td id=sqft' . $favorite['favoriteId'] . ' onClick=editFavorite("sqft",' . $favorite['favoriteId'] . ')>' . number_format($favorite['sqft']) . '</td>';
                                                 echo '<td id=lotSize' . $favorite['favoriteId'] . ' onClick=editFavorite("lotSize",' . $favorite['favoriteId'] . ')>' . number_format($favorite['lotSize']) . '</td>';
-                                                $note = $favorite['note'];
-                                                if($note == "")
-                                                {
-                                                    $note = "Add Note";
-                                                }
-                                                echo '<td><button data-toggle="modal" onClick=openNoteModal(' . $favorite['favoriteId'] . ')>' . substr($note, 0, 15) . '</button></td>';
+                                                echo '<td style="text-align: center;" >' . substr($favorite['note'], 0, 15) . '</td>';
+                                                echo '<td><button data-toggle="modal" onClick=openNoteModal(' . $favorite['favoriteId'] . ')>Add Note</button></td>';
                                                 echo '<td><a href="prospectsMatch.php?visitorId=' . $favorite['favoriteId'] . '" >House Matches</a></td>';
                                                 echo '<td class="fa fa-archive" style="text-align: center;" onClick="archiveFavorite(' . $favorite['favoriteId'] . ')"></td>';
                                                 echo '<td class="fa fa-file-text" style="text-align: center;" onClick="showSendToInContractModal(' . $favorite['favoriteId'] . ')"></td>';

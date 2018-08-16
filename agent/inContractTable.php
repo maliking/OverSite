@@ -193,7 +193,8 @@ $keys = array_keys($response);
                                             <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                             data-placement="top"
                                                                             title="Close of Escrow">Misc. 2 </a></th>
-                                            <th data-breakpoints="xs sm">Notes</th>
+                                            <th data-breakpoints="xs sm">Prev. Note</th>
+                                            <th data-breakpoints="xs sm">Add Note</th>
                                             <th data-breakpoints="xs sm">To Past Clients</th>
                                             <!-- <th data-breakpoints="xs sm"></th> -->
                                             <th data-breakpoints="xs sm">Edit Dates</th>
@@ -770,14 +771,9 @@ $keys = array_keys($response);
                                                     {
                                                         echo '<i id=status' . $trans['transId'] .  'miscTwo' . ' class="fa fa-flag blink" style="color:#d9534f"></i>';
                                                     }
-                                            $note = $trans['notes'];
-                                            if($note == "")
-                                            {
-                                                $note = "Add Note";
-                                            }
                                             echo '</td>
-                                            <td> <button onClick="takeNote(' . $trans['transId'] . ')" >' . substr($note,0,15)  . '</button></td>';
-                                           // <td> <button onClick=takeTransNote(' .$trans['transId'] . ')>  <i class="fa fa-edit" style="color:#d3d3d3"></i> </button></td>
+                                            <td>' . substr($trans['notes'],0,15)  . '</td>
+                                           <td> <button onClick=takeNote(' .$trans['transId'] . ')>  <i class="fa fa-edit" style="color:#000000"></i> </button></td>';
                                            echo '<td class="fa fa-archive" style="text-align: center;" onClick="sendToPastCleints(' . $trans['transId'] . ')"></td>';
                                            
                                            echo '<td>';
