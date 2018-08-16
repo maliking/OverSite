@@ -161,8 +161,8 @@ $avgPercentResult = $avgPercentStmt->fetch();
                                     <td><?php echo "Units: " . $totalClosed['totalClosed']; ?></td>
                                     <td><?php echo "Vol Sold: $" . number_format($volResult['volResult']); ?></td>
                                     <td><?php echo "GCI: $" . number_format($grossResult['grossResult']); ?></td>
-                                    <td><?php echo "Office: $" . number_format($officeResult['officeResult']); ?></td>
                                     <td><?php echo "AVG: " . number_format($avgPercentResult['avgPercentResult'], 2, '.','') . "%"; ?></td>
+                                    <td><?php echo "Office: $" . number_format($officeResult['officeResult']); ?></td>
                                 </tr>
                                 </tbody>
                             </table>
