@@ -57,7 +57,8 @@
                                             <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                             data-placement="top"
                                                                             title="Close of Escrow">Misc. 2 </a></th>
-                                            <th data-breakpoints="xs sm">Notes</th>
+                                            <th data-breakpoints="xs sm">Prev. Note</th>
+                                            <th data-breakpoints="xs sm">Add Note</th>
                                             <!-- <th data-breakpoints="xs sm"></th> -->
                                             <th data-breakpoints="xs sm">Edit Dates</th>
                                         </tr>
@@ -635,8 +636,8 @@
                                                         echo '<i id=status' . $trans['transId'] .  'miscTwo' . ' class="fa fa-flag blink" style="color:#d9534f"></i>';
                                                     }
                                             echo '</td>
-                                            <td id=' . $trans['transId'] . ' onClick="takeNote(' . $trans['transId'] . ')" > ' . $trans['notes']  . ' </td>';
-                                           // <td> <button onClick=takeTransNote(' .$trans['transId'] . ')>  <i class="fa fa-edit" style="color:#d3d3d3"></i> </button></td>
+                                            <td id=' . $trans['transId'] . ' " > ' . substr($trans['notes'], 0, 15)  . ' </td>
+                                           <td> <button onClick=takeTransNote(' . $trans['transId'] . ')>  <i class="fa fa-edit" style="color:#000000"></i> </button></td>';
                                            echo '<td>';
                                            ?>
                                            <?php include "staff/editDates.php"; ?>
