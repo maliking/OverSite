@@ -3,6 +3,10 @@ function calculateCommission() {
     {
         calculateCommissionFifty();
     }
+    else if($('#leadType').val() == "ZillowSixty")
+    {
+        calculateCommissionSixty();
+    }
     else
     {
         var brokerFee = 0;
@@ -128,6 +132,44 @@ function calculateCommissionFifty()
     var eoInsurance = parseFloat(document.getElementById("eo_insurance").value.replace(",",""));
 
     brokerFee = initialCommission/2;
+
+
+    // document.getElementById("broker").value = formatNumber(brokerFee);
+    // // document.getElementById("percentage").value = ;
+    // document.getElementById("subtotal").value = formatNumber(initialCommission - brokerFee);
+    // document.getElementById("agent_net").value = formatNumber(initialCommission - brokerFee - transactionCoordFee - techFee - eoInsurance - misc - remaxFee);
+
+    if(document.getElementById("agent").value == "01747327")
+    {
+        document.getElementById("broker").value = numeral(795).format('0,0.00');
+        brokerFee = 795;   
+    } 
+    else
+        document.getElementById("broker").value = numeral(brokerFee).format('0,0.00');
+    // document.getElementById("percentage").value = ;
+    document.getElementById("subtotal").value = numeral(initialCommission - brokerFee).format('0,0.00');
+    document.getElementById("agent_net").value = numeral(initialCommission - brokerFee - transactionCoordFee - techFee - eoInsurance - misc - remaxFee).format('0,0.00');
+
+
+}
+
+function calculateCommissionSixty()
+{
+    var brokerFee = 0;
+    var difference = 0;
+    var misc = parseFloat(document.getElementById("misc").value.replace(",",""));
+    var TYGross = parseFloat(document.getElementById("beg-comm").value.replace(",",""));
+    var initialCommission = parseFloat(document.getElementById("gross-comm").value.replace(",",""));
+    // var misc = parseFloat(document.getElementById("misc").value);
+    var commission = parseFloat(document.getElementById("gross-comm").value.replace(",",""));
+
+    var remaxFee = parseFloat(document.getElementById("remaxFee").value.replace(",",""));
+
+    var transactionCoordFee = parseFloat(document.getElementById("trans-coor").value.replace(",",""));
+    var techFee = parseFloat(document.getElementById("tech").value.replace(",",""));
+    var eoInsurance = parseFloat(document.getElementById("eo_insurance").value.replace(",",""));
+
+    brokerFee = initialCommission * .60;
 
 
     // document.getElementById("broker").value = formatNumber(brokerFee);

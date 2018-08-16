@@ -283,7 +283,8 @@ $keys = array_keys($response);
                                                                 <select required class="form-control" id="leadType"
                                                                         name="leadType" onChange="updateComm()">
                                                                         <option>Select Lead Type</option>
-                                                                        <option value="Zillow">Zillow</option>
+                                                                        <option value="Zillow">Zillow(50)</option>
+                                                                        <option value="ZillowSixty">Zillow(60)</option>
                                                                         <option value="Realtor.com">Realtor.com</option>
                                                                         <option value="Referral">Referral</option>
                                                                         <option value="Past Client">Past Client</option>
