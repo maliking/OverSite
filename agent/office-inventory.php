@@ -254,6 +254,7 @@ $keys = array_keys($response);
                                    id="inventory-table" data-filtering="true">
                                 <thead>
                                 <tr>
+                                    <th></th>
                                     <th data-breakpoints="xs">Agent</th>
                                     <th>Property</th>
                                     <th data-type="number">Bd</th>
@@ -293,7 +294,9 @@ $keys = array_keys($response);
                                             $bathrooms = $response[$keys[$i]]['totalBaths'];
                                         }   
 
-                                        echo '<tr><td> ' . $name['firstName'] . " " . $name['lastName'] .  '</td>
+                                        echo '<tr>
+                                        <td class="rowNumber"></td>
+                                        <td> ' . $name['firstName'] . " " . $name['lastName'] .  '</td>
                                                     <td> ' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] .  ' </td>
                                                     <td>' . $bedrooms . '</td>
                                                     <td>'. $bathrooms .'</td>
@@ -352,6 +355,30 @@ $keys = array_keys($response);
             "position": "center"
             }
         });
+
+        $('.table').bind({
+                'after.ft.sorting': function (e) {
+                addRowCount('.table');
+                },
+                'footable_filtering': function (e) {
+                addRowCount('.table');
+                },
+                'ready.ft.table': function (e){
+                    addRowCount('.table');
+                }
+                });
+        function addRowCount(tableAttr) {
+                var PageNumber = 0;
+                $(tableAttr).each(function () {
+                var RowCount = $('td.rowNumber', this).length;
+                // alert(RowCount);
+                $('td.rowNumber', this).each(function (i) {
+                
+                $(this).html( i + 1);
+
+                });
+                });
+                }
     });
 
     function showMapModal()
