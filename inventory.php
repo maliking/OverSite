@@ -107,6 +107,7 @@ $keys = array_keys($response);
 
 
                                 <tr>
+                                    <th></th>
                                     <th>Agent</th>
                                     <th>Property</th>
                                     <th>Bedroom</th>
@@ -117,6 +118,7 @@ $keys = array_keys($response);
 
                                 </tr>
                                 </thead>
+                                <tbody>
                                 <?php
                                 // foreach ($result as $house) {
                                 for ($i = 0; $i < sizeof($keys); $i++) {
@@ -146,7 +148,9 @@ $keys = array_keys($response);
                                             $bathrooms = $response[$keys[$i]]['totalBaths'];
                                         }   
 
-                                        echo '<tbody><tr><td> ' . $name['firstName'] . " " . $name['lastName'] .  '</td>
+                                        echo '<tr>
+                                        <td class="rowNumber"></td>
+                                        <td> ' . $name['firstName'] . " " . $name['lastName'] .  '</td>
                                                     <td> ' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] .  ' </td>
                                                     <td>' . $bedrooms . '</td>
                                                     <td>'. $bathrooms .'</td>
@@ -155,11 +159,11 @@ $keys = array_keys($response);
 
                                                     <td ><a href="https://maps.google.com/?q=' . $response[$keys[$i]]['address'] . " " . $response[$keys[$i]]['cityName'] . ", " . $response[$keys[$i]]['state'] . " " . $response[$keys[$i]]['zipcode'] . '" target="_blank"><button >View on Map</button></a></td>
                                                     
-                                                </tr></tbody>';
+                                                </tr>';
                                     
                                 }
                                 ?>
-
+                                </tbody>
                             </table>
                         </div>
                         <!-- /.box-body -->
@@ -189,6 +193,29 @@ $keys = array_keys($response);
 
     jQuery(function ($) {
         $('.table').footable();
+        $('.table').bind({
+                'after.ft.sorting': function (e) {
+                addRowCount('.table');
+                },
+                'footable_filtering': function (e) {
+                addRowCount('.table');
+                },
+                'ready.ft.table': function (e){
+                    addRowCount('.table');
+                }
+                });
+        function addRowCount(tableAttr) {
+                var PageNumber = 0;
+                $(tableAttr).each(function () {
+                var RowCount = $('td.rowNumber', this).length;
+                // alert(RowCount);
+                $('td.rowNumber', this).each(function (i) {
+                
+                $(this).html( i + 1);
+
+                });
+                });
+                }
     });
 
 </script>
