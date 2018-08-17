@@ -50,7 +50,7 @@ $stmtInContractCount = $dbConnInContract->prepare($inContractCountSql);
 $stmtInContractCount->execute();
 $inContractCountResult = $stmtInContractCount->fetch();
 
-$sqlTransactions = "SELECT transactions.*, UsersInfo.firstName as fName, UsersInfo.lastName lName FROM transactions LEFT JOIN UsersInfo ON UsersInfo.userId = transactions.userId  ORDER BY UsersInfo.firstName DESC";
+$sqlTransactions = "SELECT transactions.*, UsersInfo.firstName as fName, UsersInfo.lastName lName FROM transactions LEFT JOIN UsersInfo ON UsersInfo.userId = transactions.userId WHERE transactions.junk != \"junk\" ORDER BY UsersInfo.firstName DESC";
 $transParameters = array();
 $transParameters[':userId'] = $_SESSION['userId'];
 $transStmt = $dbConn->prepare($sqlTransactions);
@@ -382,6 +382,9 @@ $keys = array_keys($response);
 
 <!-- PAGE-SPECIFIC JS -->
 <script src="./dist/js/vendor/footable.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
+
 
 <script>
     jQuery(function ($) {
@@ -811,6 +814,99 @@ function addNewTransaction()
                             $('#propertyAddress'+id).html(input);
                       });
                 }
+            }
+
+            function sendToPastCleints(transId)
+            {
+                // alert($('#coeComp' + transId).html());
+                if($('#coeComp' + transId).html() != "Completed: N/A " )
+                {
+                    var listingType = "";
+                    var finalHousePrice = "";
+                    bootbox.prompt("Enter final house price", function(result){
+                     if(result != null)
+                     {
+                        finalHousePrice = result;
+                        bootbox.prompt({
+                            title: "This is a prompt with select!",
+                            inputType: 'select',
+                            inputOptions: [
+                                {
+                                    text: '--Select One --',
+                                    value: '',
+                                },
+                                {
+                                    text: 'Listing',
+                                    value: 'listing',
+                                },
+                                {
+                                    text: 'Buyer',
+                                    value: 'buyer',
+                                },
+                                {
+                                    text: 'Zillow',
+                                    value: 'zillow',
+                                },
+                                {
+                                    text: 'Other',
+                                    value: 'other',
+                                }
+                            ],
+                            callback: function (result) {
+                                listingType = result;
+                                // alert(listingType);
+                                if(listingType != null)
+                                {
+                                    bootbox.confirm({
+                                        message: "Do you want to delete from In-Contract Table?",
+                                        buttons: {
+                                            confirm: {
+                                                label: 'Yes',
+                                                className: 'btn-success'
+                                            },
+                                            cancel: {
+                                                label: 'No',
+                                                className: 'btn-danger'
+                                            }
+                                        },
+                                        callback: function (result) {
+                                            if(result == true)
+                                            {
+                                                $.post( "agent/sendToPastClients.php", { transId: transId, finalHousePrice: finalHousePrice, delClient: "yes", listingType: listingType})
+                                                  .done(function( data ) {
+                                                    $('#inContract' + transId).remove();
+                                                    alert("Added to past clients");
+                                                  }); 
+                                            }
+                                            else
+                                            {
+                                                $.post( "agent/sendToPastClients.php", { transId: transId, finalHousePrice: finalHousePrice, delClient: "no", listingType: listingType})
+                                                  .done(function( data ) {
+                                                    // $('#inContract' + transId).remove();
+                                                    alert("Added to past clients");
+                                                  }); 
+                                            }
+                                        }
+                                    });
+                            }
+                            else
+                                alert("Listing type needed");
+
+                            }
+                        });
+                            
+
+                         
+                     }
+                     else
+                     {
+                        alert("Final house price Needed");
+                    }
+                    });
+                }
+                else
+                    alert("COE Completed date needs to be entered");
+                // alert(clientId);
             }
 </script>
 </body>

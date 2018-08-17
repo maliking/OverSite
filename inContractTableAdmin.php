@@ -59,6 +59,7 @@
                                                                             title="Close of Escrow">Misc. 2 </a></th>
                                             <th data-breakpoints="xs sm">Prev. Note</th>
                                             <th data-breakpoints="xs sm">Add Note</th>
+                                            <th data-breakpoints="xs sm">To Past Clients</th>
                                             <!-- <th data-breakpoints="xs sm"></th> -->
                                             <th data-breakpoints="xs sm">Edit Dates</th>
                                         </tr>
@@ -638,6 +639,7 @@
                                             echo '</td>
                                             <td id=' . $trans['transId'] . ' " > ' . substr($trans['notes'], 0, 15)  . ' </td>
                                            <td> <button onClick=takeTransNote(' . $trans['transId'] . ')>  <i class="fa fa-edit" style="color:#000000"></i> </button></td>';
+                                           echo '<td class="fa fa-archive" style="text-align: center;" onClick="sendToPastCleints(' . $trans['transId'] . ')"></td>';
                                            echo '<td>';
                                            ?>
                                            <?php include "staff/editDates.php"; ?>
