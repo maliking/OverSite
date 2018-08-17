@@ -102,7 +102,7 @@
                                                 //     echo '<b>BUY</b>';
                                                 // }
                                                 $inContrType = $trans['transType'];
-                                                if($inContrType = $trans['transType'] == "List./Buy.")
+                                                if($inContrType  == "List./Buy.")
                                                 {
                                                     $inContrType = "Dual";
                                                 }
