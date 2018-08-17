@@ -100,7 +100,12 @@
                                                 // } else {
                                                 //     echo '<b>BUY</b>';
                                                 // }
-                                                echo $trans['transType'];
+                                                $inContrType = $trans['transType'];
+                                                if($inContrType = $trans['transType'] == "List./Buy.")
+                                                {
+                                                    $inContrType = "Dual";
+                                                }
+                                                echo $inContrType;
                                                 echo '</td>';
                                                 echo '<td>' . $trans['fName'] . " " .$trans['lName'];
                                             echo '<td class=clientName'. $trans['transId'] . ' ondblclick="editClientName(' . $trans['transId'] . ')">' . $trans['clientName'] . '</td>';
