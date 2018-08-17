@@ -13,6 +13,7 @@
                                     <table class="table footable table-bordered table-striped" data-filtering="true" style="height: 100%;">
                                         <thead>
                                         <tr>
+                                            <th></th>
                                             <th>Type</th>
                                             <th>Agent</th>
                                             <th>Client</th>
@@ -94,7 +95,7 @@
                                                 //     echo "</tr>";
                                                 // }
                                                 $count++;
-                                                echo '<tr id=inContract' . $trans['transId'] . ' ><td>';
+                                                echo '<tr id=inContract' . $trans['transId'] . ' ><td></td><td>';
                                                 // if ($trans['transType'] == 'Listing') {
                                                 //     echo '<b>LIST</b>';
                                                 // } else {
