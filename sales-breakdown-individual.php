@@ -42,7 +42,7 @@ $result = $stmt->fetchAll();
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Sales Breakdown
+                Agent Sales Breakdown
             </h1>
             <ol class="breadcrumb">
                 <li>Transactions</li>
