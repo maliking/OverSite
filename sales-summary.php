@@ -62,7 +62,7 @@ $avgPercentResult = $avgPercentStmt->fetch();
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Sales Summaries
+                Sales Summary
             </h1>
             <ol class="breadcrumb">
                 <li>Transactions</li>
@@ -107,7 +107,7 @@ $avgPercentResult = $avgPercentStmt->fetch();
                                         $result['volSold'] = 0;
                                     if($result['GCI'] == "")
                                         $result['GCI'] = 0;
-                                    echo "<tr class='clickable-row' data-href='url:google.com'>";
+                                    echo "<tr class='clickable-row' data-href='google.com'>";
                                     // Rank
                                     echo "<td>";
                                     echo $rank;
