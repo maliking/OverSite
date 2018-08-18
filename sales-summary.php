@@ -90,10 +90,10 @@ $avgPercentResult = $avgPercentStmt->fetch();
                                 <tbody>
                                 <?php
                                 $rank = 1;
-                                $sql = "SELECT UsersInfo.firstName, UsersInfo.lastName, COUNT(commInfo.license) as closedUnits, commInfo.license, 
+                                $sql = "SELECT UsersInfo.firstName, UsersInfo.lastName, COUNT(commInfo.license) as closedUnits, commInfo.license as license, 
                                         SUM(commInfo.finalHousePrice) as volSold, SUM(commInfo.InitialGross) as GCI, AVG(commInfo.percentage) as avgPercent,
                                         SUM(commInfo.brokerFee) as brokerFee
-                                        FROM UsersInfo LEFT JOIN commInfo ON UsersInfo.license = commInfo.license WHERE UsersInfo.userType != '0' GROUP BY commInfo.license
+                                        FROM UsersInfo LEFT JOIN commInfo ON UsersInfo.license = license WHERE UsersInfo.userType != '0' GROUP BY license
                                         ORDER BY closedUnits DESC";
 
                                 $namedParameters = array();
@@ -107,7 +107,7 @@ $avgPercentResult = $avgPercentStmt->fetch();
                                         $result['volSold'] = 0;
                                     if($result['GCI'] == "")
                                         $result['GCI'] = 0;
-                                    echo "<tr class='clickable-row' data-href='sales-breakdown.php?'".$result['commInfo.license'].">";
+                                    echo "<tr class='clickable-row' data-href='sales-breakdown.php?'".$result['license'].">";
                                     // Rank
                                     echo "<td>";
                                     echo $rank;
