@@ -107,7 +107,7 @@ $avgPercentResult = $avgPercentStmt->fetch();
                                         $result['volSold'] = 0;
                                     if($result['GCI'] == "")
                                         $result['GCI'] = 0;
-                                    echo "<tr class='clickable-row' data-href='sales-breakdown.php?".$result['commInfo.license']."'>";
+                                    echo "<tr class='clickable-row' data-href='sales-breakdown.php?".$result['license']."'>";
                                     // Rank
                                     echo "<td>";
                                     echo $rank;
