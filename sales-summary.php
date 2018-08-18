@@ -36,7 +36,7 @@ $avgPercentResult = $avgPercentStmt->fetch();
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>RE/MAX Salinas | Sales Breakdowns</title>
+    <title>RE/MAX Salinas | Sales Breakdown</title>
 
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- BEGIN TEMPLATE default-css.php INCLUDE -->
@@ -62,7 +62,7 @@ $avgPercentResult = $avgPercentStmt->fetch();
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Sales Summary
+                Sales Summarys
             </h1>
             <ol class="breadcrumb">
                 <li>Transactions</li>
