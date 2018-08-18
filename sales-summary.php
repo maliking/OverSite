@@ -107,7 +107,7 @@ $avgPercentResult = $avgPercentStmt->fetch();
                                         $result['volSold'] = 0;
                                     if($result['GCI'] == "")
                                         $result['GCI'] = 0;
-                                    echo "<tr>";
+                                    echo "<tr class='clickable-row' data-href='url:google.com'>";
                                     // Rank
                                     echo "<td>";
                                     echo $rank;
@@ -206,6 +206,12 @@ $avgPercentResult = $avgPercentStmt->fetch();
             "connectors": false,
             "position": "center"
             }
+        });
+    });
+
+    jQuery(document).ready(function($) {
+        $(".clickable-row").click(function() {
+            window.location = $(this).data("href");
         });
     });
 </script>
