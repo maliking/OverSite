@@ -62,7 +62,7 @@ $avgPercentResult = $avgPercentStmt->fetch();
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Sales Summary
+                Sales Summarys
             </h1>
             <ol class="breadcrumb">
                 <li>Transactions</li>
@@ -103,11 +103,14 @@ $avgPercentResult = $avgPercentStmt->fetch();
                                 $results = $stmt->fetchAll();
 
                                 foreach($results as $result) {
+                                    $license = 0;
+                                    if($result['license'] != null)
+                                        $license = $result['license'];
                                     if($result['volSold'] == "")
                                         $result['volSold'] = 0;
                                     if($result['GCI'] == "")
                                         $result['GCI'] = 0;
-                                    echo "<tr class='clickable-row' data-href='sales-breakdown-individual.php?license=".$result['UsersInfo.license']."'>";
+                                    echo "<tr class='clickable-row' data-href='sales-breakdown-individual.php?license=".$license."'>";
                                     // Rank
                                     echo "<td>";
                                     echo $rank;
