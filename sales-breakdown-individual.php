@@ -186,7 +186,7 @@ if(isset($_GET['license'])){
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 <script src="salesBreakdownJS.js"></script>
 <script>
-    jQuery(function ($) {
+    /*jQuery(function ($) {
         $('.table').footable({
             "sorting": {
                 "enabled": true
@@ -223,7 +223,7 @@ if(isset($_GET['license'])){
                 
             }
         });
-    }
+    }*/
     
 </script>
 </body>
