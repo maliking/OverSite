@@ -139,7 +139,7 @@ $keys = array_keys($response);
         </style>
 <div class="box box-success" id="inContractTable" style="height:90%; overflow: auto;">
                                 <div class="box-header">
-                                    <h4 style='cursor:pointer;'>In-Contract Property<button type="button" onClick="collapseInContract()">
+                                    <h4 style='cursor:pointer;' class='clickable-table' data-href='inContractTable2.php'>In-Contract Property<button type="button" onClick="collapseInContract()">
                                         <span class="fa fa-compress" aria-hidden="true"></span></button></h4>
                                     <button><a href="my-inventory.php">Add New In-Contract</a></button>
                                     <button style="margin-bottom: 10px" type="button" data-toggle="modal" data-target="#modal">Add New Transaction</button>
