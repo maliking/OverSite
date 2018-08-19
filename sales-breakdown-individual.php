@@ -2,7 +2,9 @@
 session_start();
 
 require 'databaseConnection.php';
-$individual_license = $_GET['license'];
+$individual_license = null;
+if(isset($_GET['license']))
+    $individual_license = $_GET['license'];
 $dbConn = getConnection();
 $sql = "SELECT * FROM commInfo where commInfo.license = $individual_license";
 $stmt = $dbConn->prepare($sql);
