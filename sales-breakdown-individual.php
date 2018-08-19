@@ -2,16 +2,15 @@
 session_start();
 
 require 'databaseConnection.php';
-$license_exists = false;
-if(isset($_GET['license'])){
-    $individual_license = $_GET['license'];
-    $dbConn = getConnection();
-    $sql = "SELECT * FROM commInfo where commInfo.license = $individual_license";
-    $stmt = $dbConn->prepare($sql);
-    $stmt->execute();
-    $result = $stmt->fetchAll();
-    $license_exists = true;
-}
+
+$individual_license = $_GET['license'];
+$dbConn = getConnection();
+$sql = "SELECT * FROM commInfo where commInfo.license = $individual_license";
+$stmt = $dbConn->prepare($sql);
+$stmt->execute();
+$result = $stmt->fetchAll();
+$license_exists = true;
+
 ?>
 
 <!DOCTYPE html>
@@ -92,7 +91,6 @@ if(isset($_GET['license'])){
                                 </thead>
                                 <tbody>
                                 <?php
-                                if($license_exists and is_array($result)){
                                     foreach ($result as $sales) {
                                         echo "<tr id=commSheet" . $sales['commId'] . " >";
                                         echo "<td ondblclick=editCommInfo('settlementDate','". $sales['commId'] ."') >" . date("m-d-Y", strtotime($sales['settlementDate'])) . "</td>";
@@ -117,7 +115,6 @@ if(isset($_GET['license'])){
                                         echo "<td><button onClick=deleteCommSheet(" . $sales['commId'] . ") >Delete</button></td>";
                                         echo "</tr>";
                                     }
-                                }
                                 ?>
 
                                 <?php
