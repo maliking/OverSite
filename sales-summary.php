@@ -62,7 +62,7 @@ $avgPercentResult = $avgPercentStmt->fetch();
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Sales Summary
+                Sales Summarys
             </h1>
             <ol class="breadcrumb">
                 <li>Transactions</li>
