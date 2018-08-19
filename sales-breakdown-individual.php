@@ -92,7 +92,7 @@ if(isset($_GET['license'])){
                                 </thead>
                                 <tbody>
                                 <?php
-                                if($license_exists and is_array($result)){
+                                /*if($license_exists and is_array($result)){
                                     foreach ($result as $sales) {
                                         echo "<tr id=commSheet" . $sales['commId'] . " >";
                                         echo "<td ondblclick=editCommInfo('settlementDate','". $sales['commId'] ."') >" . date("m-d-Y", strtotime($sales['settlementDate'])) . "</td>";
@@ -117,7 +117,7 @@ if(isset($_GET['license'])){
                                         echo "<td><button onClick=deleteCommSheet(" . $sales['commId'] . ") >Delete</button></td>";
                                         echo "</tr>";
                                     }
-                                }
+                                }*/
                                 ?>
 
                                 <?php
@@ -186,7 +186,7 @@ if(isset($_GET['license'])){
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 <script src="salesBreakdownJS.js"></script>
 <script>
-    /*jQuery(function ($) {
+    jQuery(function ($) {
         $('.table').footable({
             "sorting": {
                 "enabled": true
@@ -223,7 +223,7 @@ if(isset($_GET['license'])){
                 
             }
         });
-    }*/
+    }
     
 </script>
 </body>
