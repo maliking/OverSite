@@ -2,7 +2,7 @@
 session_start();
 
 require 'databaseConnection.php';
-$individual_license = null;
+$individual_license = 0;
 if(isset($_GET['license']))
     $individual_license = $_GET['license'];
 $dbConn = getConnection();
