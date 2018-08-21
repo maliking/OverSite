@@ -385,6 +385,8 @@ $keys = array_keys($response);
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 
+<?php include "inContractNoteModalAdmin.php" ?>
+
 
 <script>
     jQuery(function ($) {
@@ -698,22 +700,86 @@ $keys = array_keys($response);
                 }
             }
 
-            function takeTransNote(transId)
+        function takeTransNote(transId)
         {
-            var prevNote = $("#" + transId).html();
-            var noteEntered = prompt("Enter Note:", prevNote);
-            if (noteEntered == null || noteEntered == "") {
-            } else {
-                $("#" + transId).html(noteEntered);
-                // alert(houseId + " " + buyerID);
-                $.post("agent/saveTransNote.php", {
-                    transId: transId,
-                    note: noteEntered
-                });
+            $('#transId').html('');
+                $('#addNewNoteInContractArea').val('');
+                $("#inContractNoteTable").empty();
+
+                //populate data
+                $('#transId').html(transId);
+                $.post( "getInContractNotes.php", { transId: transId })
+                      .done(function( data ) {
+                        var result = JSON.parse(data);
+                        var x;
+                        var table = document.getElementById("inContractNoteTable");
+                        for(x in result)
+                        {
+                            var row = table.insertRow(0);
+                            var cell1 = row.insertCell(0);
+                            var cell2 = row.insertCell(1);
+                            cell2.className = "inContractNoteRow";
+                            cell1.innerHTML = "<h4>" + moment(result[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
+                            cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + result[x].noteId + "' style='resize:none; border: solid 1px black' onchange='saveInContractNote(this)'>" + result[x].note + "</textarea>";
+                            // console.log(result[x].noteId);
+                            // console.log(result[x].noteDate);
+                            // console.log(result[x].note);
+                        }
+                        
+                      });
+
+                // Open Modal
+                $('#incontractNoteModal').modal('toggle');
+            // var prevNote = $("#" + transId).html();
+            // var noteEntered = prompt("Enter Note:", prevNote);
+            // if (noteEntered == null || noteEntered == "") {
+            // } else {
+            //     $("#" + transId).html(noteEntered);
+            //     // alert(houseId + " " + buyerID);
+            //     $.post("agent/saveTransNote.php", {
+            //         transId: transId,
+            //         note: noteEntered
+            //     });
                 
-            }
+            // }
 
         }
+        function addNewNoteInContract()
+        {
+            var transId = $('#transId').html();
+            var note = $('#addNewNoteInContractArea').val();
+            // alert(note);
+
+            if(note != "" && note != null)
+            {
+                $.post( "addNewInContractNote.php", { transId: transId, note:note })
+                  .done(function( data ) {
+                    var table = document.getElementById("inContractNoteTable");
+                    var row = table.insertRow(0);
+                    var cell1 = row.insertCell(0);
+                    var cell2 = row.insertCell(1);
+                    cell2.className = "inContractNoteRow";
+                    cell1.innerHTML = "<h4>" + moment().format('L') + "</h4>";
+                    cell2.innerHTML = "<textarea class='form-control' rows='2' id='comment' style='resize:none; border: solid 1px black' onchange='saveInContractNote(this)'>" + note + "</textarea>";
+                    alert( "Note Added");
+                    $('#addNewNoteInContractArea').val("");
+                  });
+            }
+            else
+                alert("Note Empty");
+        }
+
+        function saveInContractNote(textArea)
+            {
+                var noteId = textArea.id.replace("note", "");
+                var newNote = textArea.value;
+                // alert(areaId);
+                // alert(textArea.value);
+                $.post( "updateInContractNote.php", { noteId: noteId, note: newNote })
+                      .done(function( data ) {
+                        alert("Note Updated");
+                      });
+            }
 
 function addNewTransaction()
             {
