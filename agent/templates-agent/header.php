@@ -79,7 +79,7 @@ $stmt = $dbConn->prepare($sql);
 $stmt->execute($parameters);
 $result = $stmt->fetch();
 
-$sqlTransactions = "SELECT * FROM transactions WHERE userId = :userId AND junk != \"junk\"";
+$sqlTransactions = "SELECT *, ADDDATE(transactions.coeOrgDate,transactions.coeDays) AS coeDueDate FROM transactions WHERE userId = :userId AND junk != \"junk\" ORDER BY coeDueDate ASC";
 $transParameters = array();
 $transParameters[':userId'] = $_SESSION['userId'];
 $transStmt = $dbConn->prepare($sqlTransactions);

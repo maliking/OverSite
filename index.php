@@ -50,7 +50,7 @@ $stmtInContractCount = $dbConnInContract->prepare($inContractCountSql);
 $stmtInContractCount->execute();
 $inContractCountResult = $stmtInContractCount->fetch();
 
-$sqlTransactions = "SELECT transactions.*, UsersInfo.firstName as fName, UsersInfo.lastName lName FROM transactions LEFT JOIN UsersInfo ON UsersInfo.userId = transactions.userId WHERE transactions.junk != \"junk\" ORDER BY UsersInfo.firstName DESC";
+$sqlTransactions = "SELECT transactions.*, UsersInfo.firstName as fName, UsersInfo.lastName as lName, ADDDATE(transactions.coeOrgDate,transactions.coeDays) AS coeDueDate FROM transactions LEFT JOIN UsersInfo ON UsersInfo.userId = transactions.userId WHERE transactions.junk != \"junk\" ORDER BY coeDueDate ASC";
 $transParameters = array();
 $transParameters[':userId'] = $_SESSION['userId'];
 $transStmt = $dbConn->prepare($sqlTransactions);
