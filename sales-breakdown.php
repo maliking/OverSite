@@ -81,6 +81,7 @@ $result = $stmt->fetchAll();
                                     <th>House Price</th>
                                     <th>Avg. Perc.</th>
                                     <th>Listing/Buyer</th>
+                                    <th>Type</th>
                                     <!-- <th data-breakpoints="all">Notes</th> -->
                                     <th data-breakpoints="all">Commission Sheet</th>
                                     <th>Delete</th>
@@ -107,6 +108,7 @@ $result = $stmt->fetchAll();
                                     echo "<td ondblclick=editCommInfo('finalHousePrice','". $sales['commId'] ."') >" . '$' . number_format($sales['finalHousePrice'], 2) . "</td>"; //price
                                     echo "<td>" . number_format($sales['percentage'], 2, '.','') . "%</td>"; //Avg Percent
                                     echo "<td ondblclick=editCommInfo('type','". $sales['commId'] ."') >" . $sales['type'] . "</td>"; //listing buyer
+                                    echo "<td ondblclick=editCommInfo('leadType','". $sales['commId'] ."') >" . $sales['leadType'] . "</td>"; // zillow, realtor, etc.
                                     // echo "<td>" . $sales['notes'] . "</td>"; //notes
                                     echo '<td> <a href="viewCommissionSheet.php?comm=' . $sales['commId'] . '" target="_blank"> <button>View Commission Sheet</button> </a> </td>';
                                     echo "<td><button onClick=deleteCommSheet(" . $sales['commId'] . ") >Delete</button></td>";

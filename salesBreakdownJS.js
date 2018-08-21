@@ -213,9 +213,53 @@ function editCommInfo(type,commId)
 	    {
 	    	if(result != "" && result != null)
 	    	{
-		    	$.post( "updateComm.php", { type: "type", data: result, commId: commId })
+		    	$.post( "updateComm.php", { type: "type", data: result[0], commId: commId })
 				  .done(function( data ) {
 				    alert( "Type updated" );
+				  });
+			}
+	        // alert(result);
+	    }
+	});
+	}
+	else if(type == "leadType")
+	{
+		bootbox.prompt({
+	    title: "Enter new " + type,
+	    inputType: 'checkbox',
+	    inputOptions: [
+	        {
+	            text: 'Zillow',
+	            value: 'zillow',
+	        },
+	        {
+	            text: 'Realtor.com',
+	            value: 'realtor.com',
+	        },
+	        {
+	            text: 'Referral',
+	            value: 'referral',
+	        },
+	        {
+	            text: 'Past client',
+	            value: 'past client',
+	        },
+	        {
+	            text: 'Open House',
+	            value: 'open house',
+	        },
+	        {
+	            text: 'Other',
+	            value: 'Other',
+	        }
+	    ],
+	    callback: function (result) 
+	    {
+	    	if(result != "" && result != null)
+	    	{
+		    	$.post( "updateComm.php", { type: "leadType", data: result[0], commId: commId })
+				  .done(function( data ) {
+				    alert( "Lead Type updated" );
 				  });
 			}
 	        // alert(result);
