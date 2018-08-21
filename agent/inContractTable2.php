@@ -632,148 +632,11 @@ $keys = array_keys($response);
 
                     <!-- END example modal-->
                     <div class="row">
-                        <!-- /.col -->
-                        <div class="col-md-12">
-                        <?php include 'progressGoal.php' ?>
-                    </div>
-
-                        <div class="col-md-12" id="activeProspectCollapse" style="height:60vh;">
-                            <div class="box box-success" style="height:90%; overflow: auto;">
-                                <div class="box-header">
-                                    <h4 style='cursor:pointer;' class='clickable-table' data-href='activeProspectives.php'>Active Prospects<button type="button" onClick="collapseActiveProspects()">
-                                        <span class="fa fa-compress" aria-hidden="true"></span></button></h4>
-                                    <button onClick="showProspectModal()">Add Prospect</button>
-                                </div>
-                                <div class="box-body"  style="height:100%; ">
-                                    <table class="table footable table-bordered table-striped" id="favoriteTable" data-sorting="true" data-filtering="true" style="height:100%; ">
-                                        <thead>
-                                            
-                                            <th></th>
-                                            <th style="width:20px;">Last Contacted</th>
-                                            <th>Type</th>
-                                            <th>Client</th>
-                                            <th data-breakpoints='all'>Client 2</th>
-                                            <th>Phone</th>
-                                            <th>Email</th>
-                                            <th>Zip</th>
-                                            <th>Price</th>
-                                            <th>Bedroom</th>
-                                            <th>Bathroom</th>
-                                            <th>SqFt</th>
-                                            <th>Lot Size</th>
-                                            <th>Prev. Note</th>
-                                            <th>Add Note</th>
-                                            <th>Match</th>
-                                            <th>To Client List</th>
-                                            <th>To In-Contract</th>
-                                            <th>Delete</th>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $activeProspectCount =1;
-                                            foreach ($favoriteResults as $favorite) 
-                                            {   
-                                            //     if($favorite['lastContacted'] == "0000-00-00")
-                                            //         $lastContacted = "NA";
-                                            //     else if ($favorite['lastContacted'] != "0000-00-00") 
-                                            //         $lastContacted = date("m/d/y g:i a", strtotime($favorite['lastContacted']));
-                                                // if($activeProspectCount % 5 == 0)
-                                                // {
-                                                //     echo "<tr>";
-                                                //     echo '<td></td>';
-                                                //     echo '<td><b>Last Contacted</b></td>';
-                                                //     echo '<td><b>Type</b></td>';
-                                                //     echo '<td><b>Client</b></td>';
-                                                //     echo '<td><b>Phone</b></td>';
-                                                //     echo '<td><b>Email</b></td>';
-                                                //     echo '<td><b>Zip</b></td>';
-                                                //     echo '<td><b>Price</b></td>';
-                                                //     echo '<td><b>Bedroom</b></td>';
-                                                //     echo '<td><b>Bathroom</b></td>';
-                                                //     echo '<td><b>SqFt</b></td>';
-                                                //     echo '<td><b>Lot Size</b></td>';
-                                                //     echo '<td><b>Notes</b></td>';
-                                                //     echo '<td><b>Match</b></td>';
-                                                //     echo '<td><b>Archive</b></td>';
-                                                //     echo '<td><b>Delete</b></td>';
-                                                //     echo "</tr>";
-                                                // }
-                                                echo "<tr id=favorite" . $favorite['favoriteId'] . ">";
-                                                echo '<td class="favoriteRowNumber"></td>';
-                                                echo '<td id=lastContacted' . $favorite['favoriteId'] . ' class="fa fa-phone"  style="text-align: center;" onClick="showLastContactedModal(this)">' . "&nbsp&nbsp&nbsp" . '</td>';
-                                                echo '<td>' . $favorite['listingType'] . '</td>';
-                                                echo '<td id=name' . $favorite['favoriteId'] . ' onClick=editFavorite("name",' . $favorite['favoriteId'] . ')>' . $favorite['firstName'] . " " . $favorite['lastName'] . '</td>';
-                                               echo '<td><table border="1">
-                                                    <tr>
-                                                    <td></td>
-                                                    <td><b>Client</b></td>
-                                                    
-                                                    </tr>
-                                                    <tr>
-                                                    <td><b>Name</b></td>
-                                                    <td style="color:#0000FF;" id=favTwoName'. $favorite['favoriteId'] . ' ondblclick="editFavClientName(' . $favorite['favoriteId'] . ')">' . $favorite['clientTwoName'] . '</td>
-                                                    </tr>
-                                                    <tr>
-                                                    <td><b>Phone</b></td>
-                                                    <td style="color:#0000FF;" id=favTwoNum' . $favorite['favoriteId'] . ' ondblclick="editFavClientNum(' . $favorite['favoriteId'] . ')">' . $favorite['clientTwoPhone'] . '</td>
-                                                    </tr>
-                                                    <tr>
-                                                    <td><b>Email</b></td>
-                                                    <td style="color:#0000FF;" id=favTwoEmail'. $favorite['favoriteId'] . ' ondblclick="editFavClientEmail(\'' . $favorite['favoriteId'] . '\')">' . $favorite['clientTwoEmail'] . '</td>
-                                                    </tr>
-                                                    
-                                                    </table></td>';
-                                                echo '<td id=phone' . $favorite['favoriteId'] . ' onClick=editFavorite("phone",' . $favorite['favoriteId'] . ')>' . $favorite['phone'] . '</td>';
-                                                echo '<td id=email' . $favorite['favoriteId'] . ' onClick=editFavorite("email",' . $favorite['favoriteId'] . ')>' . $favorite['email'] . '</td>';
-                                                echo '<td id=zip' . $favorite['favoriteId'] . ' onClick=editFavorite("zip",' . $favorite['favoriteId'] . ')>' . $favorite['zip'] . '</td>';
-                                                echo '<td id=price' . $favorite['favoriteId'] . ' onClick=editFavorite("price",' . $favorite['favoriteId'] . ')>' . number_format($favorite['price']) . '</td>';
-                                                echo '<td id=bedroom' . $favorite['favoriteId'] . ' onClick=editFavorite("bedroom",' . $favorite['favoriteId'] . ')>' . $favorite['bedroom'] . '</td>';
-                                                echo '<td id=bathroom' . $favorite['favoriteId'] . ' onClick=editFavorite("bathroom",' . $favorite['favoriteId'] . ')>' . $favorite['bathroom'] . '</td>';
-                                                echo '<td id=sqft' . $favorite['favoriteId'] . ' onClick=editFavorite("sqft",' . $favorite['favoriteId'] . ')>' . number_format($favorite['sqft']) . '</td>';
-                                                echo '<td id=lotSize' . $favorite['favoriteId'] . ' onClick=editFavorite("lotSize",' . $favorite['favoriteId'] . ')>' . number_format($favorite['lotSize']) . '</td>';
-                                                echo '<td style="text-align: center;" >' . substr($favorite['note'], 0, 15) . '</td>';
-                                                echo '<td><button data-toggle="modal" onClick=openNoteModal(' . $favorite['favoriteId'] . ')>Add Note</button></td>';
-                                                echo '<td><a href="prospectsMatch.php?visitorId=' . $favorite['favoriteId'] . '" >House Matches</a></td>';
-                                                echo '<td class="fa fa-archive" style="text-align: center;" onClick="archiveFavorite(' . $favorite['favoriteId'] . ')"></td>';
-                                                echo '<td class="fa fa-file-text" style="text-align: center;" onClick="showSendToInContractModal(' . $favorite['favoriteId'] . ')"></td>';
-                                                echo '<td class="fa fa-trash-o"  style="text-align: center;" onClick="deleteFavorite(' . $favorite['favoriteId'] . ')"></td>';
-                                                echo "</tr>";
-                                            }
-                                            ?>
-                                            <!-- <tr>
-                                            <td class="fa fa-usd"  style="color: green; text-align: center;" onClick="deleteFavorite()"></td>
-                                            <td>test</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td><a href="prospectsMatch.php">House Matches</a></td>
-                                        </tr> -->
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
 
                        <div class="col-md-12" id="inContractCollapse" style="height:80vh;">
                             <?php include 'inContractTable.php'; ?>
 
                         </div>
-                        <!-- /.col -->
-
-                        <div class="col-md-12" id="calendarCollapse" style="height:80vh;">
-                                <div class="box box-success" style="height:100%; overflow: auto;">
-                                    <h3>Meetings<button type="button" onClick="collapseCalendar()">
-                                        <span class="fa fa-compress" aria-hidden="true"></span></button></h3>
-                                    <!-- THE CALENDAR -->
-                                    <div id="calendar" ></div>
-                                </div>
-                                <!-- /.box-body -->
-                            </div>
                     </div>
                     <!-- /.row -->
                 </section>
@@ -2185,23 +2048,6 @@ $keys = array_keys($response);
                 // alert(clientId);
             }
 
-
-            function collapseActiveProspects()
-            {
-                if(activeProspectsCollapseStatus == "expanded")
-                {
-                    $('#activeProspectCollapse').height("12vh");
-                    activeProspectsCollapseStatus = "collapse";
-                }
-                else 
-                {   
-                    $('#activeProspectCollapse').height("60vh");
-                    activeProspectsCollapseStatus = "expanded";
-                }
-                $.post( "updateTableCollapse.php", { column: "agentActiveProsTable", status: activeProspectsCollapseStatus } );
-                // alert($('#activeProspectCollapse').height());
-            }
-
             
             function collapseInContract()
             {
@@ -2218,27 +2064,6 @@ $keys = array_keys($response);
                 $.post( "updateTableCollapse.php", { column: "agentInContrTable", status: inContractCollapseStatus } );
                 // alert($('#activeProspectCollapse').height());
             }
-            
-            function collapseCalendar()
-            {
-                if(calendarCollapseStatus == "expanded")
-                {
-                    $('#calendarCollapse').height("9vh");
-                    calendarCollapseStatus = "collapse";
-                }
-                else 
-                {   
-                    $('#calendarCollapse').height("80vh");
-                    calendarCollapseStatus = "expanded";
-                }
-                $.post( "updateTableCollapse.php", { column: "agentCalendar", status: calendarCollapseStatus } );
-            }
-
-            jQuery(document).ready(function($) {
-                $(".clickable-table").click(function() {
-                    window.open($(this).data("href"));
-                });
-            });
         </script>
 
 

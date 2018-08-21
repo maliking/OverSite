@@ -77,7 +77,7 @@ $keys = array_keys($response);
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>RE/MAX Salinas | Dashboard</title>
+        <title>RE/MAX Salinas | Active Prospectives</title>
 
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 
@@ -632,15 +632,10 @@ $keys = array_keys($response);
 
                     <!-- END example modal-->
                     <div class="row">
-                        <!-- /.col -->
-                        <div class="col-md-12">
-                        <?php include 'progressGoal.php' ?>
-                    </div>
-
                         <div class="col-md-12" id="activeProspectCollapse" style="height:60vh;">
                             <div class="box box-success" style="height:90%; overflow: auto;">
                                 <div class="box-header">
-                                    <h4 style='cursor:pointer;' class='clickable-table' data-href='activeProspectives.php'>Active Prospects<button type="button" onClick="collapseActiveProspects()">
+                                    <h4 style='cursor:pointer;'>Active Prospects<button type="button" onClick="collapseActiveProspects()">
                                         <span class="fa fa-compress" aria-hidden="true"></span></button></h4>
                                     <button onClick="showProspectModal()">Add Prospect</button>
                                 </div>
@@ -758,22 +753,6 @@ $keys = array_keys($response);
                                 </div>
                             </div>
                         </div>
-
-                       <div class="col-md-12" id="inContractCollapse" style="height:80vh;">
-                            <?php include 'inContractTable.php'; ?>
-
-                        </div>
-                        <!-- /.col -->
-
-                        <div class="col-md-12" id="calendarCollapse" style="height:80vh;">
-                                <div class="box box-success" style="height:100%; overflow: auto;">
-                                    <h3>Meetings<button type="button" onClick="collapseCalendar()">
-                                        <span class="fa fa-compress" aria-hidden="true"></span></button></h3>
-                                    <!-- THE CALENDAR -->
-                                    <div id="calendar" ></div>
-                                </div>
-                                <!-- /.box-body -->
-                            </div>
                     </div>
                     <!-- /.row -->
                 </section>
@@ -2233,12 +2212,6 @@ $keys = array_keys($response);
                 }
                 $.post( "updateTableCollapse.php", { column: "agentCalendar", status: calendarCollapseStatus } );
             }
-
-            jQuery(document).ready(function($) {
-                $(".clickable-table").click(function() {
-                    window.open($(this).data("href"));
-                });
-            });
         </script>
 
 
