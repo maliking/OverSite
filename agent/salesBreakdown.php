@@ -14,6 +14,32 @@ $stmt = $dbConn->prepare($sql);
 $stmt->execute($param);
 $commSales = $stmt->fetchAll();
 
+$dbConn = getConnection();
+$sql = "SELECT COUNT(*) as totalClosed, SUM(finalHousePrice) as volResult, SUM(InitialGross) as grossResult, SUM(finalComm) as finalCommResult, AVG(finalHousePrice) as avgPercentResult FROM commInfo WHERE license = :license";
+$stmt = $dbConn->prepare($sql);
+$stmt->execute($param);
+$totalClosed = $stmt->fetch();
+
+// $sumVolSql = "SELECT SUM(finalHousePrice) as volResult FROM commInfo";
+// $volStmt = $dbConn->prepare($sumVolSql);
+// $volStmt->execute();
+// $volResult = $volStmt->fetch();
+
+// $grossSql = "SELECT SUM(InitialGross) as grossResult FROM commInfo";
+// $grossStmt = $dbConn->prepare($grossSql);
+// $grossStmt->execute();
+// $grossResult = $grossStmt->fetch();
+
+// $officeSql = "SELECT SUM(brokerFee) as officeResult FROM commInfo";
+// $officeStmt = $dbConn->prepare($officeSql);
+// $officeStmt->execute();
+// $officeResult = $officeStmt->fetch();
+
+// $avgPercentSql = "SELECT AVG(percentage) as avgPercentResult FROM commInfo";
+// $avgPercentStmt = $dbConn->prepare($avgPercentSql);
+// $avgPercentStmt->execute();
+// $avgPercentResult = $avgPercentStmt->fetch();
+
 ?>
 
     <!DOCTYPE html>
@@ -91,11 +117,13 @@ $commSales = $stmt->fetchAll();
                             <table class="table table-bordered table-striped" data-filtering="true">
                                 <thead>
                                 <tr>
+                                    <th></th>
+                                    <th></th>
                                     <th>Date Settled</th>
                                     <th>Property Address</th>
                                     <th data-type="text">Agent</th>
                                     <th>Gross Comm.</th>
-                                    <th>Office</th>
+                                    <!-- <th>Office</th> -->
                                     <th data-breakpoints="all">E&O <a href="#" data-toggle="tooltip"
                                                                       data-placement="top" title="Errors & Omissions"><i
                                                     class="fa fa-question-circle"></i></a></th>
@@ -103,8 +131,8 @@ $commSales = $stmt->fetchAll();
                                     <th data-breakpoints="all">Processing</th>
                                     <th data-breakpoints="all">RE/MAX FF</th>
                                     <th data-breakpoints="all">Misc</th>
-                                    <th>Agent Net Commission</th>
-                                    <th>Ending Comm.</th>
+                                    <!-- <th>Agent Net Commission</th> -->
+                                    <th>YTD Ending Gross Comm.</th>
                                     <th data-breakpoints="all">Client</th>
                                     <th>House Price</th>
                                     <th>Avg. Perc.</th>
@@ -118,18 +146,20 @@ $commSales = $stmt->fetchAll();
                                 <?php
                                 foreach ($commSales as $sales) {
                                     echo "<tr id=commSheet" . $sales['commId'] . " >";
+                                    echo "<td></td>";
+                                    echo "<td class=rowNumber ></td>";
                                     echo "<td ondblclick=editCommInfo('settlementDate','". $sales['commId'] ."') >" . date("m-d-Y", strtotime($sales['settlementDate'])) . "</td>";
                                     echo "<td ondblclick=editCommInfo('address','". $sales['commId'] ."') >" . $sales['address'] . "</td>";
                                     // echo "<td ondblclick=editCommInfo('name') >" . $sales['firstName'] . " " . $sales['lastName'] . "</td>";
                                     echo "<td>" . $sales['firstName'] . " " . $sales['lastName'] . "</td>";
                                     echo "<td ondblclick=editCommInfo('initialGross','". $sales['commId'] ."') >" . '$' . number_format($sales['InitialGross'], 2) . "</td>"; //Total
-                                    echo "<td>" . '$' . number_format($sales['brokerFee'], 2) . "</td>"; //office
+                                    // echo "<td>" . '$' . number_format($sales['brokerFee'], 2) . "</td>"; //office
                                     echo "<td ondblclick=editCommInfo('eoFee','". $sales['commId'] ."') >$" . number_format($sales['eoFee'],2) . "</td>"; //eo
                                     echo "<td ondblclick=editCommInfo('techFee','". $sales['commId'] ."') >$" . number_format($sales['techFee'],2) . "</td>"; //tech
                                     echo "<td ondblclick=editCommInfo('procFee','". $sales['commId'] ."') >$" . number_format($sales['procFee'],2) . "</td>"; //processing
                                     echo "<td ondblclick=editCommInfo('remaxFee','". $sales['commId'] ."') >" . '$' . number_format($sales['remaxFee'], 2) . "</td>"; //remax_ff
                                     echo "<td><span ondblclick=editCommInfo('miscTitle','". $sales['commId'] ."')>" . $sales['miscTitle'] . ' :</span> <span ondblclick=editCommInfo("miscFee","'. $sales['commId'] .'")>$' . number_format($sales['misc'], 2) . "</span></td>"; //misc
-                                    echo "<td>" . '$' . number_format($sales['finalComm'], 2) . "</td>"; //commission
+                                    // echo "<td>" . '$' . number_format($sales['finalComm'], 2) . "</td>"; //commission
                                     echo "<td>" . '$' . number_format($sales['TYGross'], 2) . "</td>"; //commission
                                     echo "<td ondblclick=editCommInfo('clients','". $sales['commId'] ."') >" . $sales['clients'] . "</td>"; //client
                                     echo "<td ondblclick=editCommInfo('finalHousePrice','". $sales['commId'] ."') >" . '$' . number_format($sales['finalHousePrice'], 2) . "</td>"; //price
@@ -145,6 +175,21 @@ $commSales = $stmt->fetchAll();
                                 <?php
                                 ?>
 
+                                </tbody>
+                            </table>
+                            <table class="table table-bordered table-striped">
+                                
+                            <tbody>
+                            <tr>
+                                    <td>Total</td>
+                                    <td></td>
+                                    <td><?php echo "Units: " . $totalClosed['totalClosed']; ?></td>
+                                    <td><?php echo "YTD GCI: $" . number_format($totalClosed['grossResult']); ?></td>
+                                    <td><?php echo "YTD NET: $" . number_format($totalClosed['finalCommResult']); ?></td>
+                                    <td><?php echo "Vol Sold: $" . number_format($totalClosed['volResult']); ?></td>
+                                    <td><?php echo "AVG House Price: $" . number_format($totalClosed['avgPercentResult'], 2, '.',','); ?></td>
+                                    <!-- <td><?php //echo "Office: $" . number_format($totalClosed['officeResult']); ?></td> -->
+                                </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -206,6 +251,30 @@ $commSales = $stmt->fetchAll();
             "position": "center"
             }
         });
+
+        $('.table').bind({
+                'after.ft.sorting': function (e) {
+                addRowCount('.table');
+                },
+                'footable_filtering': function (e) {
+                addRowCount('.table');
+                },
+                'ready.ft.table': function (e){
+                    addRowCount('.table');
+                }
+                });
+        function addRowCount(tableAttr) {
+                var PageNumber = 0;
+                $(tableAttr).each(function () {
+                var RowCount = $('td.rowNumber', this).length;
+                // alert(RowCount);
+                $('td.rowNumber', this).each(function (i) {
+                
+                $(this).html( i + 1);
+
+                });
+                });
+                }
     });
 
            function deleteCommSheet(commId)
