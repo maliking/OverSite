@@ -444,7 +444,7 @@ $keys = array_keys($response);
                                                                 <div class="col-xs-3">
                                                                     <input type="text" class="form-control"
                                                                            id="agent_net" name="netCommission"
-                                                                           placeholder="" >
+                                                                           placeholder="" readonly>
                                                                 </div>
                                                             </div>
                                                             <div class="clearfix"></div>
