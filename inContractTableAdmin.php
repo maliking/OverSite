@@ -60,7 +60,7 @@
                                                                             title="Close of Escrow">Misc. 2 </a></th>
                                             <th data-breakpoints="xs sm">Prev. Note</th>
                                             <th data-breakpoints="xs sm">Add Note</th>
-                                            <th data-breakpoints="xs sm">To Past Clients</th>
+                                            <th data-breakpoints="xs sm">Close Transaction</th>
                                             <!-- <th data-breakpoints="xs sm"></th> -->
                                             <th data-breakpoints="xs sm">Edit Dates</th>
                                         </tr>
