@@ -2,6 +2,10 @@
 date_default_timezone_set('America/Los_Angeles');
 require("../databaseConnection.php");
 
+require '../keys/cred.php';
+require '../twilio-php-master/Twilio/autoload.php';
+use Twilio\Rest\Client;
+
 session_start();
 $dbConn = getConnection();
 
@@ -58,6 +62,19 @@ $parameters[':notes'] = "";
 
 $stmt = $dbConn->prepare($insertSql);
 $stmt->execute($parameters);
+
+// foreach ($numbersToSend as $number)
+// {
+// 	$twilio_phone_number = "+18315851661";
+// 	$client = new Client($sid, $token);
+// 	$client->messages->create(
+// 	    $number,
+// 	    array(
+// 	        "From" => $twilio_phone_number,
+// 	        "Body" => $result['firstName'] . " " . $result['lastName'] . " - " . $_POST['address'] . " placed in-contract",
+// 	    )
+// 	);
+// }
 
 // $buyerSql = "INSERT INTO transactions (houseId, userId, address, transType, clientName, clientNum, accDay, emdDays,
 // 						 sellerDiscDays, buyerDiscDays, signedDiscDays, genInspecDays, termiteInspecDays, septicInspecDays, waterInspecDays, 
