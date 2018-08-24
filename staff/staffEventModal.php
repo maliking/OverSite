@@ -77,6 +77,30 @@ $keys = array_keys($response);
                         </select>
 
                         <br>
+
+                        <label for="coAgent" id="coAgentLabel">Co-Agent Name: </label>
+                        <input type="text" id="coAgentName" value="" placeholder="If applicable">
+
+                        <br>
+                        <br>
+
+                        <label for="type">Type:</label>
+                        <select class="form-control" id="typeEntered" onchange="displayLabelAgentInfo()">
+                            <option value="" id="emptyType">--Select House--</option>
+                            <option value="buyer" id="buyer">Buyer</option>
+                            <option value="seller" id="seller">Seller</option>
+                            <option value="dual" id="dual">Dual</option>
+                            
+                        </select>
+
+                        <br>
+                        
+                        <label for="agentInfo" id="agentInfoLabel"></label>
+                        <input type="text" id="agentInfo" value="" readonly>
+
+                        <br>
+                        <br>
+
                             <strong>OR</strong>
                         <br>
                         Address:&nbsp&nbsp<input type="text" name="address" id="inputAddress" placeholder="Address"><br>

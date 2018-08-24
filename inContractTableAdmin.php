@@ -16,6 +16,7 @@
                                             <th></th>
                                             <th>Type</th>
                                             <th>Agent</th>
+                                            <th>Co-Agent</th>
                                             <th>Client</th>
                                             <th>Client 2</th>
                                             <th>Property</th>
@@ -109,6 +110,7 @@
                                                 echo $inContrType;
                                                 echo '</td>';
                                                 echo '<td>' . $trans['fName'] . " " .$trans['lName'];
+                                                echo '<td>' . $trans['coAgent'];
                                             echo '<td class=clientName'. $trans['transId'] . ' ondblclick="editClientName(' . $trans['transId'] . ')">' . $trans['clientName'] . '</td>';
                                             echo '<td class=clientTwoName'. $trans['transId'] . ' ondblclick="editClientTwoName(' . $trans['transId'] . ')">' . $trans['clientTwoName'] . '</td>';
                                             echo '<td id=propertyAddress'. $trans['transId'] . ' ondblclick="editProperty(' . $trans['transId'] . ')">' . $trans['address'] . '</td>';

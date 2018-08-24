@@ -30,17 +30,17 @@ $twentyOneDay = dateVerify(21);
 $thirtyDay = dateVerify(30);
 
 
-$insertSql = "INSERT INTO transactions(houseId, userId, address, transType, clientName, clientNum, accDay, emdDays,
+$insertSql = "INSERT INTO transactions(houseId, userId, coAgent, address, transType, clientName, clientNum, agentName, accDay, emdDays,
 						 sellerDiscDays, buyerDiscDays, signedDiscDays, genInspecDays, termiteInspecDays, septicInspecDays, waterInspecDays, 
 						 appraisalDays, apprOrdered, apprComp, lcDays, coeDays, coeOrgDate, notes) 
-VALUES (:houseId, :userId, :address, :transType, :clientName, :clientNum, :accDay, :emdDays, :sellerDiscDays, :buyerDiscDays, :signedDiscDays, :genInspecDays, :termiteInspecDays, 
+VALUES (:houseId, :userId, :coAgent, :address, :transType, :clientName, :clientNum, :agentName, :accDay, :emdDays, :sellerDiscDays, :buyerDiscDays, :signedDiscDays, :genInspecDays, :termiteInspecDays, 
 	:septicInspecDays, :waterInspecDays, :appraisalDays, :apprOrdered, :apprComp, :lcDays, :coeDays, :coeOrgDate, :notes)";
 
 $parameters = array();
 $parameters[':houseId'] = $houseId;
 $parameters[':userId'] = $_POST['userId'];
 $parameters[':address'] = $address['address'] . " " . $address['city'] . " ," . $address['state'] . " " . $address['zip'];
-$parameters[':transType'] = "Listing";
+$parameters[':transType'] = $_POST['typeEntered'];
 $parameters[':clientName'] = "NA";
 $parameters[':clientNum'] = "NA";
 $parameters[':accDay'] = $_POST['accDate'];
@@ -59,6 +59,9 @@ $parameters[':lcDays'] = $twentyOneDay;
 $parameters[':coeDays'] = $thirtyDay;
 $parameters[':coeOrgDate'] = $_POST['accDate'];
 $parameters[':notes'] = "";
+
+$parameters[':coAgent'] = $_POST['coAgentName'];
+$parameters[':agentName'] = $_POST['agentInfoTypeEntered'];
 
 $stmt = $dbConn->prepare($insertSql);
 $stmt->execute($parameters);
