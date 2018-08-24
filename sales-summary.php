@@ -28,6 +28,12 @@ $avgPercentSql = "SELECT AVG(percentage) as avgPercentResult FROM commInfo";
 $avgPercentStmt = $dbConn->prepare($avgPercentSql);
 $avgPercentStmt->execute();
 $avgPercentResult = $avgPercentStmt->fetch();
+
+$otherSumSql = "SELECT SUM(eoFee) as eoFee, SUM(techFee) as techFee, SUM(procFee) as procFee,
+                SUM(remaxFee) as remaxFee, SUM(misc) as misc FROM commInfo";
+$otherStmt = $dbConn->prepare($otherSumSql);
+$otherStmt->execute();
+$otherResult = $otherStmt->fetch();
 ?>
 
 <!DOCTYPE html>
@@ -85,6 +91,11 @@ $avgPercentResult = $avgPercentStmt->fetch();
                                     <th>GCI</th>
                                     <th>Avg. Percentage</th>
                                     <th>Broker Fee</th>
+                                    <th>E&O Fee</th>
+                                    <th>Tech Fee</th>
+                                    <th>Processing Fee</th>
+                                    <th>Remax Fee</th>
+                                    <th>Misc</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -92,7 +103,8 @@ $avgPercentResult = $avgPercentStmt->fetch();
                                 $rank = 1;
                                 $sql = "SELECT UsersInfo.firstName, UsersInfo.lastName, COUNT(commInfo.license) as closedUnits, commInfo.license, 
                                         SUM(commInfo.finalHousePrice) as volSold, SUM(commInfo.InitialGross) as GCI, AVG(commInfo.percentage) as avgPercent,
-                                        SUM(commInfo.brokerFee) as brokerFee
+                                        SUM(commInfo.brokerFee) as brokerFee, SUM(commInfo.eoFee) as eoFee, SUM(commInfo.techFee) as techFee,
+                                        SUM(commInfo.procFee) as procFee, SUM(commInfo.remaxFee) as remaxFee, SUM(commInfo.misc) as misc
                                         FROM UsersInfo LEFT JOIN commInfo ON UsersInfo.license = commInfo.license WHERE UsersInfo.userType != '0' GROUP BY commInfo.license
                                         ORDER BY closedUnits DESC";
 
@@ -122,18 +134,18 @@ $avgPercentResult = $avgPercentStmt->fetch();
                                     echo "</td>";
 
                                    
-                                    // How soon?
+                                    // Closed Unites
                                     echo "<td>";
                                     echo $result['closedUnits'];
                                     echo "</td>";
 
-                                    // Pre-approved?
+                                    // Volume sold
                                     echo "<td>";
                                     echo "$" . number_format($result['volSold']);
                                     echo "</td>";
 
                              
-                                    // Bedroom
+                                    // Initial Gross
                                     echo "<td>";
                                     echo "$" . number_format($result['GCI']);
                                     echo "</td>";
@@ -146,6 +158,32 @@ $avgPercentResult = $avgPercentStmt->fetch();
                                     // Broker Fee Total
                                     echo "<td>";
                                     echo "$" . number_format($result['brokerFee']);
+                                    echo "</td>";
+
+                                    // E&O Fee
+                                    echo "<td>";
+                                    echo "$" . number_format($result['eoFee'],2);
+                                    echo "</td>";
+
+                                    // Tech Fee
+                                    echo "<td>";
+                                    echo "$" . number_format($result['techFee'],2);
+                                    echo "</td>";
+
+                             
+                                    // Proc Fee
+                                    echo "<td>";
+                                    echo "$" . number_format($result['procFee'],2);
+                                    echo "</td>";
+
+                                    // Remax Fee
+                                    echo "<td>";
+                                    echo "$" . number_format($result['remaxFee'], 2, '.','');
+                                    echo "</td>";
+
+                                    // Misc
+                                    echo "<td>";
+                                    echo "$" . number_format($result['misc'],2);
                                     echo "</td>";
 
                                     echo "</tr>";
@@ -166,6 +204,13 @@ $avgPercentResult = $avgPercentStmt->fetch();
                                     <td><?php echo "GCI: $" . number_format($grossResult['grossResult']); ?></td>
                                     <td><?php echo "AVG: " . number_format($avgPercentResult['avgPercentResult'], 2, '.','') . "%"; ?></td>
                                     <td><?php echo "Office: $" . number_format($officeResult['officeResult']); ?></td>
+
+                                    <td><?php echo "E&O Fee: $" . number_format($otherResult['eoFee'],2); ?></td>
+                                    <td><?php echo "Tech Fee: $" . number_format($otherResult['techFee'],2); ?></td>
+                                    <td><?php echo "Procc. Fee: $" . number_format($otherResult['procFee'],2); ?></td>
+                                    <td><?php echo "Remax Fee: $" . number_format($otherResult['remaxFee'], 2, '.','') . "%"; ?></td>
+                                    <td><?php echo "Misc: $" . number_format($otherResult['misc'],2); ?></td>
+
                                 </tr>
                                 </tbody>
                             </table>
