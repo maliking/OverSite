@@ -1011,6 +1011,61 @@ function addNewTransaction()
                     $("#agentInfo").attr("readonly", true);
                 }
             }
+            
+            function filterTransactions(type)
+            {
+                // var count
+                // console.log($('.filterCheck'));
+                if(type == "flag")
+                {
+                    $('#flagFilterButton').css("background-color", "red");
+                    $('#warningFilterButton').css("background-color", "");
+                    $('#agentInContractTable > tbody  > tr').each(function() {
+                            $(this).show();                        
+                    });
+
+                    $('#agentInContractTable > tbody  > tr').each(function() {
+                        console.log("New row");
+                        $($(this).find("td i")).each(function() {
+                            if($(this).attr('class') == "fa fa-warning")
+                            {
+                                $(this).parent().parent().hide();
+                                // console.log("hide " + $(this).attr('class'));
+                                return false;
+                            }
+                        });
+                    });
+                }
+                else if(type == "warning")
+                {
+                    $('#flagFilterButton').css("background-color", "");
+                    $('#warningFilterButton').css("background-color", "red");
+                    $('#agentInContractTable > tbody  > tr').each(function() {
+                            $(this).show();                        
+                    });
+                    
+                    $('#agentInContractTable > tbody  > tr').each(function() {
+                        console.log("New row");
+                        $($(this).find("td i")).each(function() {
+                            if($(this).attr('class') == "fa fa-flag blink")
+                            {
+                                $(this).parent().parent().hide();
+                                // console.log("hide " + $(this).attr('class'));
+                                return false;
+                            }
+                        });
+                    });
+                }
+                else if(type == "clear")
+                {
+                    $('#flagFilterButton').css("background-color", "");
+                    $('#warningFilterButton').css("background-color", "");
+                    $('#agentInContractTable > tbody  > tr').each(function() {
+                    
+                            $(this).show();                        
+                    });
+                }
+            }
 </script>
 </body>
 
