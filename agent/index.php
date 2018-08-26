@@ -2299,7 +2299,7 @@ $keys = array_keys($response);
                     });
 
                     $('#agentInContractTable > tbody  > tr').each(function() {
-                        console.log("New row");
+                        // console.log("New row");
                         $($(this).find("td i")).each(function() {
                             if($(this).attr('class') == "fa fa-warning")
                             {
@@ -2319,7 +2319,7 @@ $keys = array_keys($response);
                     });
                     
                     $('#agentInContractTable > tbody  > tr').each(function() {
-                        console.log("New row");
+                        // console.log("New row");
                         $($(this).find("td i")).each(function() {
                             if($(this).attr('class') == "fa fa-flag blink")
                             {

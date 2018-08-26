@@ -1025,7 +1025,7 @@ function addNewTransaction()
                     });
 
                     $('#agentInContractTable > tbody  > tr').each(function() {
-                        console.log("New row");
+                        // console.log("New row");
                         $($(this).find("td i")).each(function() {
                             if($(this).attr('class') == "fa fa-warning")
                             {
@@ -1045,7 +1045,7 @@ function addNewTransaction()
                     });
                     
                     $('#agentInContractTable > tbody  > tr').each(function() {
-                        console.log("New row");
+                        // console.log("New row");
                         $($(this).find("td i")).each(function() {
                             if($(this).attr('class') == "fa fa-flag blink")
                             {
