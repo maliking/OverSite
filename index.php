@@ -792,33 +792,44 @@ function addNewTransaction()
                 var inputState = $('#inputState').val();
                 var inputZip = $('#inputZip').val();
 
-                var coAgentName = $('#coAgentName').val();
+                var coAgentName = $('#coAgentId option:selected').text();
+                var coAgentId = $('#coAgentId').val();
+                var coAgentOther = $('#coAgentNameOther').val();
+                // alert(coAgentName);
+                // alert(coAgentId);
                 var typeEntered = $('#typeEntered').val();
                 var agentInfoTypeEntered = $('#agentInfo').val();
 
+                if(coAgentId == "")
+                {
+                    coAgentName = coAgentOther;
+                }
                 // alert(accDate);
 
                 // alert(agentSelected);
 
                 // alert(houseSelected);
-
-                if(houseSelected == "" && inputAddress != "" && inputState != "" && inputCity != "" && inputZip != "" && accDate != "" && typeEntered != "")
+                if(coAgentName != "" && coAgentOther != "")
+                {
+                    alert("Choose House from dropdown, input house data, check date, co-agent, or type of transaction.");
+                }
+                else if(houseSelected == "" && inputAddress != "" && inputState != "" && inputCity != "" && inputZip != "" && accDate != "" && typeEntered != "")
                 {
                     $.post("staff/addTransactionStaffInput.php", {userId: agentSelected, address: inputAddress, state: inputState, 
-                                                            city: inputCity, zip: inputZip , accDate: accDate, coAgentName: coAgentName, typeEntered: typeEntered,
+                                                            city: inputCity, zip: inputZip , accDate: accDate, coAgentName: coAgentName, coAgentId: coAgentId, typeEntered: typeEntered,
                                                             agentInfoTypeEntered: agentInfoTypeEntered});
                     alert("House In-Contract");
                     
                 }
                 else if(houseSelected != "" && typeEntered != "" && inputAddress == "" && inputState == "" && inputCity == "" && inputZip == "" && accDate != "")
                 {
-                    $.post("staff/addTransactionStaff.php", {userId: agentSelected, houseId: houseSelected, accDate: accDate, coAgentName: coAgentName, typeEntered: typeEntered,
+                    $.post("staff/addTransactionStaff.php", {userId: agentSelected, houseId: houseSelected, accDate: accDate, coAgentName: coAgentName, coAgentId: coAgentId, typeEntered: typeEntered,
                                                             agentInfoTypeEntered: agentInfoTypeEntered});
                     alert("House In-Contract");
                 }
                 else
                 {
-                    alert("Choose House from dropdown, input house data, check date, or type of transaction.");
+                    alert("Choose House from dropdown, input house data, check date, co-agent, or type of transaction.");
                 }
                 
                 

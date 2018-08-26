@@ -3,6 +3,13 @@
 // require("../databaseConnection.php");
 // $dbConn = getConnection();
 
+$allAgentsSql = "SELECT firstName, lastName, userId FROM UsersInfo WHERE userId != :userId AND userType != \"0\" ";
+$allAgentParam = array();
+$allAgentParam['userId'] = $_SESSION['userId'];
+$allAgentStmt = $dbConn->prepare($allAgentsSql);
+$allAgentStmt->execute($allAgentParam);
+$allAgentResults = $allAgentStmt->fetchAll();
+
 $url = 'https://api.idxbroker.com/clients/featured';
 
 $method = 'GET';
@@ -33,6 +40,8 @@ if ($code >= 200 || $code < 300) {
 }
 
 $keys = array_keys($response);
+
+
 ?>
 <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -79,7 +88,22 @@ $keys = array_keys($response);
                         <br>
 
                         <label for="coAgent" id="coAgentLabel">Co-Agent Name: </label>
-                        <input type="text" id="coAgentName" value="" placeholder="If applicable">
+                        <!-- <input type="text" id="coAgentName" value="" placeholder="If applicable"> -->
+
+                        <select class="form-control" id="coAgentId">
+                            <option value="" id="empty">--Select Agent--</option>
+                            <?php
+                            foreach($allAgentResults as $agent)
+                            {
+                                echo "<option value=" . $agent['userId'] . " >" . $agent['firstName'] . " " . $agent['lastName'] . "</option>";
+                            }
+                            ?>
+                            <!-- <option>1234 House St.</option>
+                            <option>492 Example Dr.</option> -->
+                        </select>
+
+                        <label for="coAgentOther" id="coAgentOther">Other: </label>
+                        <input type="text" id="coAgentNameOther" value="" placeholder="If applicable">
 
                         <br>
                         <br>
