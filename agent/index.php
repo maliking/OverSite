@@ -648,7 +648,7 @@ $keys = array_keys($response);
                         <div class="col-md-12" id="activeProspectCollapse" style="height:60vh;">
                             <div class="box box-success" style="height:90%; overflow: auto;">
                                 <div class="box-header">
-                                    <h4 style='cursor:pointer;' class='clickable-table' data-href='activeProspectives.php'>Active Prospects<button type="button" onClick="collapseActiveProspects()">
+                                    <h4 style='cursor:pointer;' class='clickable-table' data-href='activeProspectives.php'>Active Prospects<button type="button" onClick="collapseActiveProspects()"> <button>Open Table</button>
                                         <span class="fa fa-compress" aria-hidden="true"></span></button></h4>
                                     <button onClick="showProspectModal()">Add Prospect</button>
                                 </div>
