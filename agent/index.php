@@ -651,7 +651,7 @@ $keys = array_keys($response);
                                     <h4 >Active Prospects<button type="button" onClick="collapseActiveProspects()">
                                         <span class="fa fa-compress" aria-hidden="true"></span></button></h4>
                                     <button onClick="showProspectModal()">Add Prospect</button>
-                                    <button onClick="openActiveProspectiveTable()">Open Table</button>
+                                    <button onClick="window.open('activeProspectives.php');">Open Table</button>
                                 </div>
                                 <div class="box-body"  style="height:100%; ">
                                     <table class="table footable table-bordered table-striped" id="favoriteTable" data-sorting="true" data-filtering="true" style="height:100%; ">
