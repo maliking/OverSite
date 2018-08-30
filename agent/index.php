@@ -648,9 +648,10 @@ $keys = array_keys($response);
                         <div class="col-md-12" id="activeProspectCollapse" style="height:60vh;">
                             <div class="box box-success" style="height:90%; overflow: auto;">
                                 <div class="box-header">
-                                    <h4 style='cursor:pointer;' class='clickable-table' data-href='activeProspectives.php'>Active Prospects<button type="button" onClick="collapseActiveProspects()"> <button>Open Table</button>
+                                    <h4 >Active Prospects<button type="button" onClick="collapseActiveProspects()">
                                         <span class="fa fa-compress" aria-hidden="true"></span></button></h4>
                                     <button onClick="showProspectModal()">Add Prospect</button>
+                                    <button onClicl="openActiveProspectiveTable()">Open Table</button>
                                 </div>
                                 <div class="box-body"  style="height:100%; ">
                                     <table class="table footable table-bordered table-striped" id="favoriteTable" data-sorting="true" data-filtering="true" style="height:100%; ">
@@ -2045,6 +2046,10 @@ $keys = array_keys($response);
 
                 // Open Modal
                 $('#noteModal').modal('toggle');
+            }
+
+            function openActiveProspectiveTable(){
+                window.open('activeProspectives.php');
             }
             function addNewNote()
             {
