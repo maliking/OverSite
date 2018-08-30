@@ -2051,6 +2051,11 @@ $keys = array_keys($response);
             function openActiveProspectiveTable(){
                 window.open('activeProspectives.php');
             }
+
+            function openInContractTable(){
+                window.open('inContractTable2.php');
+            }
+
             function addNewNote()
             {
                 var favoriteId = $('#favoriteId').html();
