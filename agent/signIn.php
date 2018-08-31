@@ -125,10 +125,10 @@ $_SESSION['flyer'] = $result['flyer'];
 
             <div class="col-md-4 col-sm-4 col-xs-12 form-group has-feedback col-md-offset-4">
                 <input type="text" name="email" class="form-control has-feedback-left" id="inputSuccess4"
-                       placeholder="Email" required>
+                       placeholder="Email">
                 <span class="form-control-feedback left" aria-hidden="true"></span>
                 </br>
-                <input type="text" name="phone" class="form-control" id="inputSuccess5" placeholder="Phone" required>
+                <input type="text" name="phone" class="form-control" id="inputSuccess5" placeholder="Phone">
                 <span class=" form-control-feedback right" aria-hidden="true"></span>
             </div>
 
