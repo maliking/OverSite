@@ -2302,6 +2302,7 @@ $keys = array_keys($response);
                 // console.log($('.filterCheck'));
                 if(type == "flag")
                 {
+                    var containsFlag = "no";
                     $('#flagFilterButton').css("background-color", "red");
                     $('#warningFilterButton').css("background-color", "");
                     $('#agentInContractTable > tbody  > tr').each(function() {
@@ -2310,18 +2311,21 @@ $keys = array_keys($response);
 
                     $('#agentInContractTable > tbody  > tr').each(function() {
                         // console.log("New row");
+                        containsFlag = "no";
                         $($(this).find("td i")).each(function() {
-                            if($(this).attr('class') == "fa fa-warning")
+                            if($(this).attr('class') == "fa fa-flag blink")
                             {
-                                $(this).parent().parent().hide();
+                                containsFlag = "yes";
                                 // console.log("hide " + $(this).attr('class'));
-                                return false;
                             }
                         });
+                        if(containsFlag == "no")
+                            $(this).hide();
                     });
                 }
                 else if(type == "warning")
                 {
+                    var containsWarning = "no";
                     $('#flagFilterButton').css("background-color", "");
                     $('#warningFilterButton').css("background-color", "red");
                     $('#agentInContractTable > tbody  > tr').each(function() {
@@ -2330,14 +2334,16 @@ $keys = array_keys($response);
                     
                     $('#agentInContractTable > tbody  > tr').each(function() {
                         // console.log("New row");
+                        containsWarning = "no";
                         $($(this).find("td i")).each(function() {
-                            if($(this).attr('class') == "fa fa-flag blink")
+                            if($(this).attr('class') == "fa fa-warning")
                             {
-                                $(this).parent().parent().hide();
+                                containsWarning = "yes";
                                 // console.log("hide " + $(this).attr('class'));
-                                return false;
                             }
                         });
+                        if(containsWarning == "no")
+                            $(this).hide();
                     });
                 }
                 else if(type == "clear")
