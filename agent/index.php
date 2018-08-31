@@ -2140,7 +2140,7 @@ $keys = array_keys($response);
                      {
                         finalHousePrice = result;
                         bootbox.prompt({
-                            title: "This is a prompt with select!",
+                            title: "Choose Agency Type",
                             inputType: 'select',
                             inputOptions: [
                                 {
@@ -2156,12 +2156,8 @@ $keys = array_keys($response);
                                     value: 'buyer',
                                 },
                                 {
-                                    text: 'Zillow',
-                                    value: 'zillow',
-                                },
-                                {
-                                    text: 'Other',
-                                    value: 'other',
+                                    text: 'Dual',
+                                    value: 'dual',
                                 }
                             ],
                             callback: function (result) {

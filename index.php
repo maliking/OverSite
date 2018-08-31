@@ -911,7 +911,7 @@ function addNewTransaction()
                      {
                         finalHousePrice = result;
                         bootbox.prompt({
-                            title: "This is a prompt with select!",
+                            title: "Choose Agency Type",
                             inputType: 'select',
                             inputOptions: [
                                 {
@@ -927,12 +927,8 @@ function addNewTransaction()
                                     value: 'buyer',
                                 },
                                 {
-                                    text: 'Zillow',
-                                    value: 'zillow',
-                                },
-                                {
-                                    text: 'Other',
-                                    value: 'other',
+                                    text: 'Dual',
+                                    value: 'dual',
                                 }
                             ],
                             callback: function (result) {
