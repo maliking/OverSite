@@ -435,6 +435,11 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                     <th>Date Closed</th>
                                     <th data-breakpoints="xs">Address</th>
                                     <th data-breakpoints="xs">Final Price</th>
+
+                                    <th data-breakpoints="xs">Loan Type</th>
+                                    <th data-breakpoints="xs">Loan Amount</th>
+                                    <th data-breakpoints="xs">Loan Interest Rate</th>
+
                                     <th data-breakpoints="xs">Listing Type</th>
                                     <th>Delete</th>
                                 </tr>
@@ -507,6 +512,21 @@ for ($h = 0; $h < sizeof($keys); $h++)
                                     // Final House Price
                                     echo "<td>";
                                     echo "$" . number_format((float)$result['finalHousePrice'],2);
+                                    echo "</td>";
+
+                                    // Loan type
+                                    echo "<td>";
+                                    echo $result['loanType'];
+                                    echo "</td>";
+
+                                    //Loan Amount
+                                    echo "<td>";
+                                    echo "$" . number_format($result['loanAmount'],2);
+                                    echo "</td>";
+
+                                    //Loan Interest Rate
+                                    echo "<td>";
+                                    echo $result['loanRate'] . "%";
                                     echo "</td>";
 
                                     //Listing Type
