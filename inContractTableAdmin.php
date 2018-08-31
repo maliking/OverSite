@@ -14,7 +14,7 @@
                                     <button id="flagFilterButton" type="button" onClick="filterTransactions('flag')"><i class="fa fa-flag" aria-hidden="true"></i></button>
                                     <button id="warningFilterButton" type="button" onClick="filterTransactions('warning')"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></button>
                                     <button type="button" onClick="filterTransactions('clear')">Clear</button>
-                                    <table class="table footable table-bordered table-striped" data-filtering="true" style="height: 100%;">
+                                    <table class="table footable table-bordered table-striped" id="agentInContractTable" data-filtering="true" style="height: 100%;">
                                         <thead>
                                         <tr>
                                             <th></th>
