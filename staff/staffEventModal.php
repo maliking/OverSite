@@ -108,7 +108,7 @@ $keys = array_keys($response);
                         <br>
                         <br>
 
-                        <label for="type">Type:</label>
+                        <label for="type">Agency Type:</label>
                         <select class="form-control" id="typeEntered" onchange="displayLabelAgentInfo()">
                             <option value="" id="emptyType">--Select House--</option>
                             <option value="buyer" id="buyer">Buyer</option>
