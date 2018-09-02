@@ -2,7 +2,7 @@
 date_default_timezone_set('America/Los_Angeles');
 require("../databaseConnection.php");
 
-// require '../keys/cred.php';
+require '../keys/cred.php';
 require '../twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
 
