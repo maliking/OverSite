@@ -82,6 +82,18 @@ else if($type == "lc")
 	$dateStmt = $dbConn->prepare($dateSql);
 	$dateStmt->execute($namedParameters);
 }
+else if($type == "vpc") 
+{
+	$createDate = date_create($date);
+	$dateSql = "UPDATE transactions SET  vpcDays = :vpcDays WHERE transId = :transId";
+	$namedParameters = array();
+	$namedParameters[':transId'] = $transId;
+
+	$diff  = date_diff($aprvDay, $createDate);
+	$namedParameters[':vpcDays'] = $diff->days;
+	$dateStmt = $dbConn->prepare($dateSql);
+	$dateStmt->execute($namedParameters);
+}
 else if($type == "coe") 
 {
 	$createDate = date_create($date);

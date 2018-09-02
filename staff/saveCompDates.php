@@ -63,6 +63,15 @@ else if($type == "lc")
 	$dateStmt = $dbConn->prepare($dateSql);
 	$dateStmt->execute($namedParameters);
 }
+else if($type == "vpc") 
+{
+	$dateSql = "UPDATE transactions SET  vpcComp = :vpcComp WHERE transId = :transId";
+	$namedParameters = array();
+	$namedParameters[':transId'] = $transId;
+	$namedParameters[':vpcComp'] = $date;
+	$dateStmt = $dbConn->prepare($dateSql);
+	$dateStmt->execute($namedParameters);
+}
 else if($type == "coe") 
 {
 	$dateSql = "UPDATE transactions SET  coeComp = :coeComp WHERE transId = :transId";

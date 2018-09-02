@@ -191,6 +191,9 @@ $keys = array_keys($response);
                                                                             title="Loan Contingencies">LC </a></th>
                                             <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                             data-placement="top"
+                                                                            title="VPC">Final Walkthrough </a></th>
+                                            <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
+                                                                            data-placement="top"
                                                                             title="Close of Escrow">COE </a></th>
 
                                             <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
@@ -601,8 +604,54 @@ $keys = array_keys($response);
                                                     {
                                                         echo '<i id=status' . $trans['transId'] .  'lc' . ' class="fa fa-flag blink" style="color:#d9534f"></i>';
                                                     }
-                                            echo '</td>
-                                            <td>
+                                            echo '</td>';
+                                            //VPC
+                                            echo '<td>
+                                                <div class="btn-group">
+                                                  <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    ' . date('m/d/y', strtotime($day . ' + '. $trans['vpcDays'] . ' days' )) . ' <span class="caret"></span>
+                                                  </button>
+                                                  <ul class="dropdown-menu">';
+                                                  if($trans['vpcComp'] != NULL && $trans['vpcComp'] != '0000-00-00')
+                                                  {
+                                                    echo '<li><a href="#" id=vpcComp'. $trans['transId'] .'>Completed: ' . date('m/d/y', strtotime($trans['vpcComp'])) . '</a>
+                                                    <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'vpc\',this) value=' . $trans['vpcComp'] . '></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
+                                                  }
+                                                else
+                                                {
+                                                    echo '<li><a href="#" id=vpcComp'. $trans['transId'] .'>Completed: N/A </a>
+                                                    <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'vpc\',this) ></li>';
+                                                    // echo '<li role="separator" class="divider"></li>';
+                                                }
+                                                    // <li><a href="#">Ordered: 12/12/12</a></li>
+                                                  echo '</ul>
+                                                </div>';
+                                                  echo '&nbsp';
+                                                  // $today = new DateTime('today');
+                                                  $vpcOnTime = new DateTime($trans['accDay']);
+                                                  $vpcOnTime = $vpcOnTime->add(new DateInterval('P'.$trans['vpcDays'] .'D'));
+
+                                                  $vpcReduced = new DateTime($trans['accDay']);
+                                                  $vpcReduced = $vpcReduced->add(new DateInterval('P'.$trans['vpcDays'] .'D'));
+                                                  $vpcReduced = $vpcReduced->modify('-3 days');
+
+                                                  // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
+                                                  if($trans['vpcComp'] != NULL && $trans['vpcComp'] != '0000-00-00')
+                                                  {
+                                                    echo '<i id=status' . $trans['transId'] .  'vpc' . ' class="fa fa-check-circle" style="color:#5cb85c"></i>';
+                                                  }
+                                                    else if($today >= $vpcReduced && $today < $vpcOnTime)
+                                                    {
+                                                        echo '<i id=status' . $trans['transId'] .  'vpc' . ' class="fa fa-warning" style="color:#ffae42"></i>';
+                                                    }
+                                                    else if($today >= $vpcOnTime)
+                                                    {
+                                                        echo '<i id=status' . $trans['transId'] .  'vpc' . ' class="fa fa-flag blink" style="color:#d9534f"></i>';
+                                                    }
+                                            echo '</td>';
+
+                                            echo '<td>
                                                 <div class="btn-group">
                                                   <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     ' . date('m/d/y', strtotime($day . ' + '. $trans['coeDays'] . ' days' )) . ' <span class="caret"></span>

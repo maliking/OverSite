@@ -313,6 +313,42 @@
                                         </tr>
                                         
                                         <tr>
+                                            <td>Final Walkthrough</td>
+                                            <?php echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['vpcDays'] . ' days')) . "</td>"; ?>
+                                            <td>
+                                                <div>
+                                                    <input type="text" class="form-control pull-right" onChange=<?php echo "saveDaysNum('" . $trans['transId'] . "','vpc',this)"; ?> <?php echo "id=vpcDayNum".$trans['transId'];?> value=<?php echo $trans['vpcDays'] ;?>>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="input-group date">
+                                                    <input class="col" type="date" class="form-control pull-right" onChange=<?php echo "saveDateCalendar('" . $trans['transId'] . "','vpc',this)"; ?> <?php echo "id=vpcDay".$trans['transId'];?> placeholder="&#xf073;" value=<?php echo date('Y-m-d', strtotime($day . ' + '. $trans['vpcDays'] . ' days'));?>>
+                                                </div>
+                                            </td>
+
+                                            <td>
+                                                <div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="input-group date">
+                                                    <?php
+                                                        if($trans['vpcComp'] == NULL)
+                                                        {
+                                                            echo '<input class="col" type="date" class="form-control pull-right" onChange=saveCompDate("'.$trans['transId'] . '","vpc",this) id=vpcCompDay'.$trans['transId'].' placeholder="&#xf073;" value="" >';
+
+                                                        }
+                                                        else
+                                                        {
+                                                            echo '<input class="col" type="date" class="form-control pull-right" onChange=saveCompDate("'.$trans['transId'] . '","vpc",this)  id=vpcCompDay'.$trans['transId'].' placeholder="&#xf073;" value=' . $trans['vpcComp'] . '>';
+
+                                                        }
+                                                    ?>
+                                                </div>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
                                             <td>COE</td>
                                             <?php echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['coeDays'] . ' days')) . "</td>"; ?>
                                             <td>
@@ -390,23 +426,23 @@
                                             </td>
                                         </tr>
 
-                                        <tr>
-                                            <td><input style="width: 50px;" type="text" value=<?php echo "\"" . $trans['miscTwoName'] . "\"" ?> onChange=<?php echo "saveNameMisc('" . $trans['transId'] . "','miscTwo',this)"; ?>></td>
+                                        <!-- <tr>
+                                            <td><input style="width: 50px;" type="text" value=<?php //echo "\"" . $trans['miscTwoName'] . "\"" ?> onChange=<?php //echo "saveNameMisc('" . $trans['transId'] . "','miscTwo',this)"; ?>></td>
                                             <?php 
-                                            if($trans['miscTwoDays'] == "0")
-                                                echo "<td>mm/dd/yyyy</td>";
-                                            else
-                                                echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['miscTwoDays'] . ' days')) . "</td>"; 
+                                            //if($trans['miscTwoDays'] == "0")
+                                                //echo "<td>mm/dd/yyyy</td>";
+                                            // else
+                                            //     echo "<td>" . date('m/d/y', strtotime($day . ' + '. $trans['miscTwoDays'] . ' days')) . "</td>"; 
                                             ?>
                                             <td>
                                                 <div>
-                                                    <input type="text" class="form-control pull-right" onChange=<?php echo "saveDaysNum('" . $trans['transId'] . "','miscTwo',this)"; ?> <?php echo "id=miscTwoDayNum".$trans['transId'];?> value=<?php echo $trans['miscTwoDays'] ;?>>
+                                                    <input type="text" class="form-control pull-right" onChange=<?php //echo "saveDaysNum('" . $trans['transId'] . "','miscTwo',this)"; ?> <?php //echo "id=miscTwoDayNum".$trans['transId'];?> value=<?php //echo $trans['miscTwoDays'] ;?>>
 
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="input-group date">
-                                                    <input class="col" type="date" class="form-control pull-right" onChange=<?php echo "saveDateCalendar('" . $trans['transId'] . "','miscTwo',this)"; ?> <?php echo "id=miscTwoDay".$trans['transId'];?> placeholder="&#xf073;" value=<?php if($trans['miscTwoDays'] == "0"){echo "";} else echo date('Y-m-d', strtotime($day . ' + '. $trans['miscTwoDays'] . ' days'));?>>
+                                                    <input class="col" type="date" class="form-control pull-right" onChange=<?php //echo "saveDateCalendar('" . $trans['transId'] . "','miscTwo',this)"; ?> <?php //echo "id=miscTwoDay".$trans['transId'];?> placeholder="&#xf073;" value=<?php //if($trans['miscTwoDays'] == "0"){echo "";} else echo date('Y-m-d', strtotime($day . ' + '. $trans['miscTwoDays'] . ' days'));?>>
 
                                                 </div>
                                             </td>
@@ -418,20 +454,20 @@
                                             <td>
                                                 <div class="input-group date">
                                                     <?php
-                                                        if($trans['miscTwoComp'] == NULL)
+                                                        //if($trans['miscTwoComp'] == NULL)
                                                         {
-                                                            echo '<input class="col" type="date" class="form-control pull-right" onChange=saveCompDate("'.$trans['transId'] . '","miscTwo",this) id=sellDay'.$trans['transId'].' placeholder="&#xf073;" value="" >';
+                                                           // echo '<input class="col" type="date" class="form-control pull-right" onChange=saveCompDate("'.$trans['transId'] . '","miscTwo",this) id=sellDay'.$trans['transId'].' placeholder="&#xf073;" value="" >';
 
                                                         }
-                                                        else
+                                                        // else
                                                         {
-                                                            echo '<input class="col" type="date" class="form-control pull-right" onChange=saveCompDate("'.$trans['transId'] . '","miscTwo",this)  id=sellDay'.$trans['transId'].' placeholder="&#xf073;" value=' . $trans['miscTwoComp'] . '>';
+                                                            // echo '<input class="col" type="date" class="form-control pull-right" onChange=saveCompDate("'.$trans['transId'] . '","miscTwo",this)  id=sellDay'.$trans['transId'].' placeholder="&#xf073;" value=' . $trans['miscTwoComp'] . '>';
 
                                                         }
                                                     ?>
                                                 </div>
                                             </td>
-                                        </tr>
+                                        </tr> -->
                                     </table>
                                    
                 
