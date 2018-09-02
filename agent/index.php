@@ -980,7 +980,7 @@ $keys = array_keys($response);
 
         <script type="text/javascript" src="../dist/js/vendor/footable.min.js"></script>
 
-        <?php include "../staff/staffEventModal.php" ?>
+        <?php include "../staff/staffEventModalAgent.php" ?>
 
         <!-- PAGE-SPECIFIC JS -->
         <script src="../dist/js/vendor/moment-with-locales.min.js"></script>

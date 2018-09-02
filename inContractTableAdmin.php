@@ -114,9 +114,14 @@
                                                 {
                                                     $inContrType = "Dual";
                                                 }
+                                                $secAgent = "";
+                                                if($trans['agentId'] != "0")
+                                                {
+                                                    $secAgent = " & " . $trans['agentName'];
+                                                }
                                                 echo $inContrType;
                                                 echo '</td>';
-                                                echo '<td>' . $trans['fName'] . " " .$trans['lName'];
+                                                echo '<td>' . $trans['fName'] . " " .$trans['lName'] . $secAgent;
                                                 echo '<td>' . $trans['coAgent'];
                                             echo '<td class=clientName'. $trans['transId'] . ' ondblclick="editClientName(' . $trans['transId'] . ')">' . $trans['clientName'] . '</td>';
                                             echo '<td class=clientTwoName'. $trans['transId'] . ' ondblclick="editClientTwoName(' . $trans['transId'] . ')">' . $trans['clientTwoName'] . '</td>';

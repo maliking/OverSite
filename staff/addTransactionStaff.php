@@ -2,7 +2,7 @@
 date_default_timezone_set('America/Los_Angeles');
 require("../databaseConnection.php");
 
-require '../keys/cred.php';
+// require '../keys/cred.php';
 require '../twilio-php-master/Twilio/autoload.php';
 use Twilio\Rest\Client;
 
@@ -31,10 +31,10 @@ $twentyFiveDay = dateVerify(25);
 $thirtyDay = dateVerify(30);
 
 
-$insertSql = "INSERT INTO transactions(houseId, userId, coAgent, address, transType, clientName, clientNum, agentName, coAgentId, accDay, emdDays,
+$insertSql = "INSERT INTO transactions(houseId, userId, coAgent, address, transType, clientName, clientNum, agentId ,agentName, coAgentId, accDay, emdDays,
 						 sellerDiscDays, buyerDiscDays, signedDiscDays, genInspecDays, termiteInspecDays, septicInspecDays, waterInspecDays, 
 						 appraisalDays, apprOrdered, apprComp, lcDays, vpcDays, coeDays, coeOrgDate, notes) 
-VALUES (:houseId, :userId, :coAgent, :address, :transType, :clientName, :clientNum, :agentName, :coAgentId, :accDay, :emdDays, :sellerDiscDays, :buyerDiscDays, :signedDiscDays, :genInspecDays, :termiteInspecDays, 
+VALUES (:houseId, :userId, :coAgent, :address, :transType, :clientName, :clientNum, :agentId ,:agentName, :coAgentId, :accDay, :emdDays, :sellerDiscDays, :buyerDiscDays, :signedDiscDays, :genInspecDays, :termiteInspecDays, 
 	:septicInspecDays, :waterInspecDays, :appraisalDays, :apprOrdered, :apprComp, :lcDays, :vpcDays, :coeDays, :coeOrgDate, :notes)";
 
 $parameters = array();
@@ -64,6 +64,8 @@ $parameters[':notes'] = "";
 
 $parameters[':coAgent'] = $_POST['coAgentName'];
 $parameters[':coAgentId'] = $_POST['coAgentId'];
+
+$parameters[':agentId'] = $_POST['agentInfoId'];
 $parameters[':agentName'] = $_POST['agentInfoTypeEntered'];
 
 $stmt = $dbConn->prepare($insertSql);

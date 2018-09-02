@@ -30,10 +30,10 @@ $twentyOneDay = dateVerify(21);
 $thirtyDay = dateVerify(30);
 
 
-$insertSql = "INSERT INTO transactions(houseId, userId, coAgent, address, transType, clientName, clientNum, agentName, coAgentId, accDay, emdDays,
+$insertSql = "INSERT INTO transactions(houseId, userId, coAgent, address, transType, clientName, clientNum, agentId ,agentName, coAgentId, accDay, emdDays,
 						 sellerDiscDays, buyerDiscDays, signedDiscDays, genInspecDays, termiteInspecDays, septicInspecDays, waterInspecDays, 
 						 appraisalDays, apprOrdered, apprComp, lcDays, coeDays, coeOrgDate, notes) 
-VALUES (:houseId, :userId, :coAgent, :address, :transType, :clientName, :clientNum, :agentName, :coAgentId, :accDay, :emdDays, :sellerDiscDays, :buyerDiscDays, :signedDiscDays, :genInspecDays, :termiteInspecDays, 
+VALUES (:houseId, :userId, :coAgent, :address, :transType, :clientName, :clientNum, :agentId ,:agentName, :coAgentId, :accDay, :emdDays, :sellerDiscDays, :buyerDiscDays, :signedDiscDays, :genInspecDays, :termiteInspecDays, 
 	:septicInspecDays, :waterInspecDays, :appraisalDays, :apprOrdered, :apprComp, :lcDays, :coeDays, :coeOrgDate, :notes)";
 
 $parameters = array();
@@ -62,6 +62,8 @@ $parameters[':notes'] = "";
 
 $parameters[':coAgent'] = $_POST['coAgentName'];
 $parameters[':coAgentId'] = $_POST['coAgentId'];
+
+$parameters[':agentId'] = $_POST['agentInfoId'];
 $parameters[':agentName'] = $_POST['agentInfoTypeEntered'];
 
 $stmt = $dbConn->prepare($insertSql);
