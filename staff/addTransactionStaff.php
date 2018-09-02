@@ -27,14 +27,15 @@ $threeDay = dateVerify(3);
 $sevenDay = dateVerify(7);
 $sevenTeenDay =dateVerify(17);
 $twentyOneDay = dateVerify(21);
+$twentyFiveDay = dateVerify(25);
 $thirtyDay = dateVerify(30);
 
 
 $insertSql = "INSERT INTO transactions(houseId, userId, coAgent, address, transType, clientName, clientNum, agentName, coAgentId, accDay, emdDays,
 						 sellerDiscDays, buyerDiscDays, signedDiscDays, genInspecDays, termiteInspecDays, septicInspecDays, waterInspecDays, 
-						 appraisalDays, apprOrdered, apprComp, lcDays, coeDays, coeOrgDate, notes) 
+						 appraisalDays, apprOrdered, apprComp, lcDays, vpcDays, coeDays, coeOrgDate, notes) 
 VALUES (:houseId, :userId, :coAgent, :address, :transType, :clientName, :clientNum, :agentName, :coAgentId, :accDay, :emdDays, :sellerDiscDays, :buyerDiscDays, :signedDiscDays, :genInspecDays, :termiteInspecDays, 
-	:septicInspecDays, :waterInspecDays, :appraisalDays, :apprOrdered, :apprComp, :lcDays, :coeDays, :coeOrgDate, :notes)";
+	:septicInspecDays, :waterInspecDays, :appraisalDays, :apprOrdered, :apprComp, :lcDays, :vpcDays, :coeDays, :coeOrgDate, :notes)";
 
 $parameters = array();
 $parameters[':houseId'] = $houseId;
@@ -56,6 +57,7 @@ $parameters[':appraisalDays'] = $sevenTeenDay;
 $parameters[':apprOrdered'] = "";
 $parameters[':apprComp'] = "";
 $parameters[':lcDays'] = $twentyOneDay;
+$parameters[':vpcDays'] = $twentyFiveDay;
 $parameters[':coeDays'] = $thirtyDay;
 $parameters[':coeOrgDate'] = $_POST['accDate'];
 $parameters[':notes'] = "";
