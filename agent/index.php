@@ -1553,7 +1553,7 @@ $keys = array_keys($response);
             function addNewTransaction()
             {
                 var houseSelected = $('#houseId').children(":selected").attr("value");   
-                var agentSelected = $('#agentName').children(":selected").attr("value"); 
+                var agentSelected = $('#agentName').text();
                 var accDate = $('#newAccDate').val();
 
                 var inputAddress = $('#inputAddress').val();
@@ -1568,11 +1568,17 @@ $keys = array_keys($response);
                 // alert(coAgentId);
 
                 var typeEntered = $('#typeEntered').val();
-                var agentInfoTypeEntered = $('#agentInfo').val();
+                var agentInfoTypeEntered = $('#agentInfo option:selected').text();
+                var agentInfoTypeEnteredId = $('#agentInfo').val();
+                var agentInfoOther = $('#coAgentNameOther').val();
 
                 if(coAgentId == "")
                 {
                     coAgentName = coAgentOther;
+                }
+                if(agentInfoTypeEnteredId == "")
+                {
+                    agentInfoTypeEntered = agentInfoOther;
                 }
                 // alert(accDate);
 
@@ -1581,13 +1587,17 @@ $keys = array_keys($response);
                 // alert(houseSelected);
                 if(coAgentName != "" && coAgentOther != "")
                 {
-                    alert("Choose House from dropdown, input house data, check date, co-agent, or type of transaction.");
+                    alert("Choose House from dropdown, input house data, check date, co-agent, or agency type of transaction.");
+                }
+                else if(agentInfoTypeEntered != "" && agentInfoOther != "")
+                {
+                    alert("Choose House from dropdown, input house data, check date, co-agent, or agency type of transaction.");
                 }
                 else if(houseSelected == "" && inputAddress != "" && inputState != "" && inputCity != "" && inputZip != "" && accDate != "" && typeEntered != "")
                 {
                     $.post("../staff/addTransactionStaffInput.php", {userId: agentSelected, address: inputAddress, state: inputState, 
                                                             city: inputCity, zip: inputZip , accDate: accDate, coAgentName: coAgentName, coAgentId: coAgentId, typeEntered: typeEntered,
-                                                            agentInfoTypeEntered: agentInfoTypeEntered});
+                                                            agentInfoId: agentInfoTypeEnteredId ,agentInfoTypeEntered: agentInfoTypeEntered});
                     alert("House In-Contract");
                     location.reload();
                     
@@ -1595,7 +1605,7 @@ $keys = array_keys($response);
                 else if(houseSelected != "" && typeEntered != "" && inputAddress == "" && inputState == "" && inputCity == "" && inputZip == "" && accDate != "")
                 {
                     $.post("../staff/addTransactionStaff.php", {userId: agentSelected, houseId: houseSelected, accDate: accDate, coAgentName: coAgentName, coAgentId: coAgentId,
-                                                                typeEntered: typeEntered, agentInfoTypeEntered: agentInfoTypeEntered});
+                                                                agentInfoId: agentInfoTypeEnteredId, typeEntered: typeEntered, agentInfoTypeEntered: agentInfoTypeEntered});
                     alert("House In-Contract");
                     location.reload();
                 }
@@ -2277,18 +2287,24 @@ $keys = array_keys($response);
                 // alert($('#typeEntered').val());
                 if($('#typeEntered').val() == "buyer")
                 {
+                    $('#agentInfoDiv').show();
                     $('#agentInfoLabel').text("Enter Seller agent Name");
-                    $("#agentInfo").attr("readonly", false);
+                    $("#agentInfo")[0].selectedIndex = 0;
+                    $('#agentInfoOtherName').val("");
                 }
                 else if($('#typeEntered').val() == "seller")
                 {
+                    $('#agentInfoDiv').show();
                     $('#agentInfoLabel').text("Enter Buyer agent Name");
-                    $("#agentInfo").attr("readonly", false);
+                    $("#agentInfo")[0].selectedIndex = 0;
+                    $('#agentInfoOtherName').val("");
                 }
                 else if($('#typeEntered').val() == "dual")
                 {
+                    $('#agentInfoDiv').hide();
                     $('#agentInfoLabel').text("");
-                    $("#agentInfo").attr("readonly", true);
+                    $("#agentInfo")[0].selectedIndex = 0;
+                    $('#agentInfoOtherName').val("");
                 }
             }
 

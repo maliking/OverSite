@@ -245,8 +245,16 @@ $keys = array_keys($response);
                                                 // } else {
                                                 //     echo '<b>BUY</b>';
                                                 // }
+                                                $transType = $trans['transType'];
+                                                if($trans['agentId'] == $_SESSION['userId'])
+                                                {
+                                                    if($transType == "buyer")
+                                                        $transType = "seller";
+                                                    else
+                                                        $transType = "buyer";
+                                                }
                                                 echo "<td class='inContractRowNumber'></td>";
-                                                echo "<td>" . $trans['transType'] . "</td>";
+                                                echo "<td>" . $transType . "</td>";
                                                 echo "<td>" . $trans['coAgent'] . "</td>";
                                             echo '<td class=clientName'. $trans['transId'] . ' ondblclick="editClientName(' . $trans['transId'] . ')">' . $trans['clientName'] . '</td>';
                                             echo '<td class=clientTwoName'. $trans['transId'] . ' ondblclick="editClientTwoName(' . $trans['transId'] . ')">' . $trans['clientTwoName'] . '</td>';

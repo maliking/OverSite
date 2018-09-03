@@ -55,7 +55,7 @@ $keys = array_keys($response);
                 <!-- content goes here -->
                 <form>
                     <div class="form-group">
-                        <p hidden id="agentName"><?php $_SESSION['userId']; ?></p>
+                        <p hidden id="agentName"><?php echo $_SESSION['userId']; ?></p>
                        <!--  <label for="agent">Agent:</label>
                         <select class="form-control" id="agentName" onChange="hideHouses()">
                             <option value="">--Select Agent--</option>
@@ -101,12 +101,25 @@ $keys = array_keys($response);
                         </select>
 
                         <br>
+                        <div hidden id="agentInfoDiv">
+                        <label for="sellBuyAgent" id="agentInfoLabel"></label>
+                        <!-- <input type="text" id="coAgentName" value="" placeholder="If applicable"> -->
 
+                        <select class="form-control" id="agentInfo">
+                            <option value="" id="empty">--Select Agent--</option>
+                            <?php
+                            foreach($allAgentResults as $agent)
+                            {
+                                echo "<option value=" . $agent['userId'] . " >" . $agent['firstName'] . " " . $agent['lastName'] . "</option>";
+                            }
+                            ?>
+                            <!-- <option>1234 House St.</option>
+                            <option>492 Example Dr.</option> -->
+                        </select>
 
-                        <br>
-                        
-                        <label for="agentInfo" id="agentInfoLabel"></label>
-                        <input type="text" id="agentInfo" value="" readonly>
+                        <label for="agentInfoOther" id="agentInfoOther">Other: </label>
+                        <input type="text" id="agentInfoOtherName" value="" placeholder="If applicable">
+                    </div>
 
                         <br>
                         <br>
