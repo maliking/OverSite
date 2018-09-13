@@ -5,11 +5,12 @@ date_default_timezone_set('America/Los_Angeles');
 require 'databaseConnection.php';
 $dbConn = getConnection();
 
-$favoriteSql = "UPDATE transactions SET notes = :notes WHERE transId = :transId";
+$favoriteSql = "UPDATE transactions SET lastNoteDate = :lastNoteDate WHERE transId = :transId";
 
 $favoriteParameters = array();
 $favoriteParameters[':transId'] = $_POST['transId'];
-$favoriteParameters[':notes'] = $_POST['note'];
+$favoriteParameters[':lastNoteDate'] = date("Y/m/d");
+// $favoriteParameters[':notes'] = $_POST['note'];
 $favoriteStmt = $dbConn->prepare($favoriteSql);
 $favoriteStmt->execute($favoriteParameters);
 

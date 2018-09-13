@@ -836,7 +836,13 @@ $keys = array_keys($response);
                                             //             echo '<i id=status' . $trans['transId'] .  'miscTwo' . ' class="fa fa-flag blink" style="color:#d9534f"></i>';
                                             //         }
                                             // echo '</td>';
-                                            echo '<td>' . substr($trans['notes'],0,15)  . '</td>
+                                            if($trans['lastNoteDate'] == "0000-00-00")
+                                            {
+                                                $lastDate = "N/A";
+                                            }
+                                            else
+                                                $lastDate = date("m-d-Y", strtotime($trans['lastNoteDate']));
+                                            echo '<td>' . $lastDate  . '</td>
                                            <td> <button onClick=takeNote(' .$trans['transId'] . ')>  <i class="fa fa-edit" style="color:#000000"></i> </button></td>';
                                            echo '<td class="fa fa-archive" style="text-align: center;" onClick="sendToPastCleints(' . $trans['transId'] . ')"></td>';
                                            
