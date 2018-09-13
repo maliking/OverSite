@@ -135,7 +135,7 @@
                                             <td><b>Client 2</b></td>
                                             <td><b>Lender</b></td>
                                             <td><b>Escrow</b></td>
-                                            <td><b>Agent</b></td>
+                                            <td><b>Agent</b><button style="font-size:24px; background:none; border:none; margin:0; padding:0; cursor: pointer; font-color: green;"><i class="fa fa-arrow-circle-o-right"></i></button></td>
                                             </tr>
                                             <tr>
                                             <td><b>Name</b></td>
