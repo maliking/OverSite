@@ -162,8 +162,7 @@
                                             <td id=agentEmail' . $trans['transId'] . ' ondblclick=editAgentInfo("Email",' . $trans['transId']  . ') >' . $trans['agentEmail'] . '</td>
                                             </tr>
                                             
-                                            </table></td>
-                                            <button style="font-size:24px"><i class="fa fa-arrow-circle-o-right"></i></button>';
+                                            </table></td>';
 
 
                                            echo '<td>
