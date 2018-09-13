@@ -135,8 +135,9 @@
                                             <td><b>Client 2</b></td>
                                             <td><b>Lender</b></td>
                                             <td><b>Escrow</b></td>
-                                            <td><b>Agent</b></td>
+                                            <td><b>Agents</b></td>
                                             </tr>
+                                            <button style="font-size:24px"><i class="fa fa-arrow-circle-o-right"></i></button>
                                             <tr>
                                             <td><b>Name</b></td>
                                             <td class=clientName'. $trans['transId'] . ' ondblclick="editClientName(' . $trans['transId'] . ')">' . $trans['clientName'] . '</td>
