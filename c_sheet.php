@@ -348,7 +348,7 @@ $keys = array_keys($response);
                                                                     Fee</label>
                                                                 <div class="col-xs-3">
                                                                     <input type="text" class="form-control" id="broker"
-                                                                           name="brokerFee" placeholder="" readonly>
+                                                                           name="brokerFee" placeholder="" >
                                                                 </div>
                                                             </div>
                                                             <div class="clearfix"></div>
