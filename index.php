@@ -26,7 +26,7 @@ $stmt->execute();
 $houseStatus = $stmt->fetchAll();
 
 $dbConnEarn = getConnection();
-$sqlEarn = "SELECT AVG(finalComm) as average, SUM(finalComm) AS earnings, AVG(percentage) AS avgPercent FROM commInfo";
+$sqlEarn = "SELECT COUNT(*) as soldHouses, AVG(finalComm) as average, SUM(finalComm) AS earnings, AVG(percentage) AS avgPercent FROM commInfo";
 $stmtEarn = $dbConnEarn->prepare($sqlEarn);
 $stmtEarn->execute();
 $sumEarnings = $stmtEarn->fetch();
@@ -181,7 +181,8 @@ $keys = array_keys($response);
                     <!-- small box -->
                     <div class="small-box bg-green">
                         <div class="inner">
-                            <h3><?php //echo $houseStatus[2]['num']; ?></h3>
+                            <h3><?php echo $sumEarnings['soldHouses'];
+                            //echo $houseStatus[2]['num']; ?></h3>
                             <p>Sold Listings</p>
                         </div>
                         <div class="icon">
