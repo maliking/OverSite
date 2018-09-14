@@ -196,9 +196,9 @@ $keys = array_keys($response);
                                                                             data-placement="top"
                                                                             title="Close of Escrow">COE </a></th>
 
-                                            <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
+                                            <!-- <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                             data-placement="top"
-                                                                            title="Close of Escrow">Misc. 1 </a></th>
+                                                                            title="Close of Escrow">Misc. 1 </a></th> -->
                                             <!-- <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                             data-placement="top"
                                                                             title="Close of Escrow">Misc. 2 </a></th> -->
@@ -715,68 +715,68 @@ $keys = array_keys($response);
                                                     {
                                                         echo '<i id=status' . $trans['transId'] .  'coe' . ' class="fa fa-flag blink" style="color:#d9534f"></i>';
                                                     }
-                                            echo '</td>
-                                            <td>
-                                                <div class="btn-group">
-                                                  <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    ';
-                                                    if($trans['miscOneDays']  == "0")
-                                                      echo "mm/dd/yyyy";
-                                                    else
-                                                      echo  date('m/d/y', strtotime($day . ' + '. $trans['miscOneDays'] . ' days' ));
-                                                  echo ' <span class="caret"></span>
-                                                  </button>
-                                                  <ul class="dropdown-menu">';
+                                            echo '</td>';
+                                            // echo '<td>
+                                            //     <div class="btn-group">
+                                            //       <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            //         ';
+                                            //         if($trans['miscOneDays']  == "0")
+                                            //           echo "mm/dd/yyyy";
+                                            //         else
+                                            //           echo  date('m/d/y', strtotime($day . ' + '. $trans['miscOneDays'] . ' days' ));
+                                            //       echo ' <span class="caret"></span>
+                                            //       </button>
+                                            //       <ul class="dropdown-menu">';
 
-                                                  echo '<li><a href="#">' . $trans['miscOneName'] . '</a></li>';
+                                            //       echo '<li><a href="#">' . $trans['miscOneName'] . '</a></li>';
 
-                                                  echo '<li role="separator" class="divider"></li>';
-                                                  if($trans['miscOneComp'] != NULL && $trans['miscOneComp'] != '0000-00-00')
-                                                  {
-                                                    echo '<li><a href="#">Completed: ' . date('m/d/y', strtotime($trans['miscOneComp'])) . '</a>
-                                                    <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'miscOne\',this) value=' . $trans['miscOneComp'] . '></li>';
-                                                    // echo '<li role="separator" class="divider"></li>';
-                                                  }
-                                                else
-                                                {
-                                                    echo '<li><a href="#">Completed: N/A </a>
-                                                    <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'miscOne\',this) ></li>';
-                                                    // echo '<li role="separator" class="divider"></li>';
-                                                }
+                                            //       echo '<li role="separator" class="divider"></li>';
+                                            //       if($trans['miscOneComp'] != NULL && $trans['miscOneComp'] != '0000-00-00')
+                                            //       {
+                                            //         echo '<li><a href="#">Completed: ' . date('m/d/y', strtotime($trans['miscOneComp'])) . '</a>
+                                            //         <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'miscOne\',this) value=' . $trans['miscOneComp'] . '></li>';
+                                            //         // echo '<li role="separator" class="divider"></li>';
+                                            //       }
+                                            //     else
+                                            //     {
+                                            //         echo '<li><a href="#">Completed: N/A </a>
+                                            //         <input type="date" onChange=saveCompDate(\'' . $trans['transId'] . '\',\'miscOne\',this) ></li>';
+                                            //         // echo '<li role="separator" class="divider"></li>';
+                                            //     }
 
                                                  
-                                                  echo '</ul>
-                                                </div>';
-                                                  echo '&nbsp';
-                                                  // $today = new DateTime('today');
-                                                  $miscOneOnTime = new DateTime($trans['accDay']);
-                                                  $miscOneOnTime = $miscOneOnTime->add(new DateInterval('P'.$trans['miscOneDays'] .'D'));
+                                            //       echo '</ul>
+                                            //     </div>';
+                                            //       echo '&nbsp';
+                                            //       // $today = new DateTime('today');
+                                            //       $miscOneOnTime = new DateTime($trans['accDay']);
+                                            //       $miscOneOnTime = $miscOneOnTime->add(new DateInterval('P'.$trans['miscOneDays'] .'D'));
 
-                                                  $miscOneReduced = new DateTime($trans['accDay']);
-                                                  $miscOneReduced = $miscOneReduced->add(new DateInterval('P'.$trans['miscOneDays'] .'D'));
-                                                  $miscOneReduced = $miscOneReduced->modify('-3 days');
+                                            //       $miscOneReduced = new DateTime($trans['accDay']);
+                                            //       $miscOneReduced = $miscOneReduced->add(new DateInterval('P'.$trans['miscOneDays'] .'D'));
+                                            //       $miscOneReduced = $miscOneReduced->modify('-3 days');
 
-                                                  // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
-                                                  if ($trans['miscOneDays'] == "0")
-                                                  {
-                                                    echo "";
-                                                  }
-                                                  else if($trans['miscOneComp'] != NULL && $trans['miscOneComp'] != '0000-00-00')
-                                                  {
-                                                    echo '<i id=status' . $trans['transId'] .  'miscOne' . ' class="fa fa-check-circle" style="color:#5cb85c"></i>';
-                                                  }
-                                                    else if($today >= $miscOneReduced && $today < $miscOneOnTime)
-                                                    {
-                                                        echo '<i id=status' . $trans['transId'] .  'miscOne' . ' class="fa fa-warning" style="color:#ffae42"></i>';
-                                                    }
-                                                    else if($today >= $miscOneOnTime)
-                                                    {
-                                                        echo '<i id=status' . $trans['transId'] .  'miscOne' . ' class="fa fa-flag blink" style="color:#d9534f"></i>';
-                                                    }
+                                            //       // $emdOnTime = strtotime($day . ' + '. ($trans['emdDays'] - 3) . ' days' );
+                                            //       if ($trans['miscOneDays'] == "0")
+                                            //       {
+                                            //         echo "";
+                                            //       }
+                                            //       else if($trans['miscOneComp'] != NULL && $trans['miscOneComp'] != '0000-00-00')
+                                            //       {
+                                            //         echo '<i id=status' . $trans['transId'] .  'miscOne' . ' class="fa fa-check-circle" style="color:#5cb85c"></i>';
+                                            //       }
+                                            //         else if($today >= $miscOneReduced && $today < $miscOneOnTime)
+                                            //         {
+                                            //             echo '<i id=status' . $trans['transId'] .  'miscOne' . ' class="fa fa-warning" style="color:#ffae42"></i>';
+                                            //         }
+                                            //         else if($today >= $miscOneOnTime)
+                                            //         {
+                                            //             echo '<i id=status' . $trans['transId'] .  'miscOne' . ' class="fa fa-flag blink" style="color:#d9534f"></i>';
+                                            //         }
 
 
 
-                                            echo '</td>';
+                                            // echo '</td>';
                                             // echo'<td>
                                             //     <div class="btn-group">
                                             //       <button class="btn btn-default btn-xs dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
