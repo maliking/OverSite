@@ -208,7 +208,7 @@ $otherResult = $otherStmt->fetch();
                                     <td><?php echo "E&O Fee: $" . number_format($otherResult['eoFee'],2); ?></td>
                                     <td><?php echo "Tech Fee: $" . number_format($otherResult['techFee'],2); ?></td>
                                     <td><?php echo "Procc. Fee: $" . number_format($otherResult['procFee'],2); ?></td>
-                                    <td><?php echo "Remax Fee: $" . number_format($otherResult['remaxFee'], 2, '.','') . "%"; ?></td>
+                                    <td><?php echo "Remax Fee: $" . number_format($otherResult['remaxFee'], 2, '.',''); ?></td>
                                     <td><?php echo "Misc: $" . number_format($otherResult['misc'],2); ?></td>
 
                                 </tr>
