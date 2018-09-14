@@ -75,7 +75,7 @@ $keys = array_keys($response);
                         <!-- <input type="text" id="coAgentName" value="" placeholder="If applicable"> -->
 
                         <select class="form-control" id="coAgentId">
-                            <option value="" id="empty">--Select Agent--</option>
+                            <option value="" id="empty">--None--</option>
                             <?php
                             foreach($allAgentResults as $agent)
                             {
