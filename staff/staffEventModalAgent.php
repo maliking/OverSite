@@ -143,7 +143,7 @@ $keys = array_keys($response);
                         
                         <br>
 
-                            <strong>OR</strong>
+                            <strong>OR ENTER MANUALLY</strong>
                         <br>
                         Address:&nbsp&nbsp<input type="text" name="address" id="inputAddress" placeholder="Address"><br>
                         City:&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<input type="text" name="city" id="inputCity" placeholder="City"><br>
