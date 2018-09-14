@@ -123,7 +123,7 @@ $keys = array_keys($response);
 
                         <br>
                         <br>
-                        <label for="address">Address:</label>
+                        <label for="address">Office Listing:</label>
                         <select class="form-control" id="houseId">
                             <option value="" id="empty">--Select House--</option>
                             <?php
