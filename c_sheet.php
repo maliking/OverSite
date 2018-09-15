@@ -303,6 +303,7 @@ $keys = array_keys($response);
                                                                         <option value="Seller">Seller</option>
                                                                         <option value="Buyer">Buyer</option>
                                                                         <option value="Seller/Buyer">Seller/Buyer</option>
+                                                                        <option value="co-agent">Co-Agent</option>
 
                                                                 </select>
 

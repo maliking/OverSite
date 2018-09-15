@@ -251,7 +251,12 @@ function editCommInfo(type,commId)
 	        {
 	            text: 'Other',
 	            value: 'Other',
+	        },
+	        {
+	            text: 'Co-Agent',
+	            value: 'co-agent',
 	        }
+	        
 	    ],
 	    callback: function (result) 
 	    {

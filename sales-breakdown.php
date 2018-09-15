@@ -90,6 +90,11 @@ $result = $stmt->fetchAll();
                                 <tbody>
                                 <?php
                                 foreach ($result as $sales) {
+                                    if($sales['leadType'] == "co-agent")
+                                        $percent = number_format((($sales['finalHousePrice'] / 2) / $sales['InitialGross']), 2);
+                                    else
+                                        $percent = number_format($sales['percentage'], 2, '.','');
+                                    
                                     echo "<tr id=commSheet" . $sales['commId'] . " >";
                                     echo "<td ondblclick=editCommInfo('settlementDate','". $sales['commId'] ."') >" . date("m-d-Y", strtotime($sales['settlementDate'])) . "</td>";
                                     echo "<td ondblclick=editCommInfo('address','". $sales['commId'] ."') >" . $sales['address'] . "</td>";
@@ -106,7 +111,7 @@ $result = $stmt->fetchAll();
                                     echo "<td>" . '$' . number_format($sales['TYGross'], 2) . "</td>"; //commission
                                     echo "<td ondblclick=editCommInfo('clients','". $sales['commId'] ."') >" . $sales['clients'] . "</td>"; //client
                                     echo "<td ondblclick=editCommInfo('finalHousePrice','". $sales['commId'] ."') >" . '$' . number_format($sales['finalHousePrice'], 2) . "</td>"; //price
-                                    echo "<td>" . number_format($sales['percentage'], 2, '.','') . "%</td>"; //Avg Percent
+                                    echo "<td>" . $percent . "%</td>"; //Avg Percent
                                     echo "<td ondblclick=editCommInfo('type','". $sales['commId'] ."') >" . $sales['type'] . "</td>"; //listing buyer
                                     echo "<td ondblclick=editCommInfo('leadType','". $sales['commId'] ."') >" . $sales['leadType'] . "</td>"; // zillow, realtor, etc.
                                     // echo "<td>" . $sales['notes'] . "</td>"; //notes
