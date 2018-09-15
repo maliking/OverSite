@@ -1570,7 +1570,7 @@ $keys = array_keys($response);
                 var typeEntered = $('#typeEntered').val();
                 var agentInfoTypeEntered = $('#agentInfo option:selected').text();
                 var agentInfoTypeEnteredId = $('#agentInfo').val();
-                var agentInfoOther = $('#coAgentNameOther').val();
+                var agentInfoOther = $('#agentInfoOtherName').val();
 
                 if(coAgentId == "")
                 {
