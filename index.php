@@ -830,6 +830,7 @@ function addNewTransaction()
                                                             city: inputCity, zip: inputZip , accDate: accDate, coAgentName: coAgentName, coAgentId: coAgentId, typeEntered: typeEntered,
                                                             agentInfoId: agentInfoTypeEnteredId ,agentInfoTypeEntered: agentInfoTypeEntered});
                     alert("House In-Contract");
+                    location.reload();
                     
                 }
                 else if(houseSelected != "" && typeEntered != "" && inputAddress == "" && inputState == "" && inputCity == "" && inputZip == "" && accDate != "")
@@ -837,6 +838,7 @@ function addNewTransaction()
                     $.post("staff/addTransactionStaff.php", {userId: agentSelected, houseId: houseSelected, accDate: accDate, coAgentName: coAgentName, coAgentId: coAgentId, typeEntered: typeEntered,
                                                             agentInfoId: agentInfoTypeEnteredId ,agentInfoTypeEntered: agentInfoTypeEntered});
                     alert("House In-Contract");
+                    location.reload();
                 }
                 else
                 {
