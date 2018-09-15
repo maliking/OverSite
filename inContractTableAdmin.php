@@ -18,6 +18,7 @@
                                         <thead>
                                         <tr>
                                             <th></th>
+                                            <th></th>
                                             <th>Type</th>
                                             <th>Agent</th>
                                             <th>Co-Agent</th>
@@ -103,7 +104,9 @@
                                                 //     echo "</tr>";
                                                 // }
                                                 $count++;
-                                                echo '<tr id=inContract' . $trans['transId'] . ' ><td></td><td>';
+                                                echo '<tr id=inContract' . $trans['transId'] . ' ><td></td>';
+                                                echo "<td class='inContractRowNumber'></td>";
+                                                echo "<td>";
                                                 // if ($trans['transType'] == 'Listing') {
                                                 //     echo '<b>LIST</b>';
                                                 // } else {

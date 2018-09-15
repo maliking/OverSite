@@ -45,7 +45,7 @@ $stmtInContract = $dbConnInContract->prepare($inContractSql);
 $stmtInContract->execute();
 $inContractResults = $stmtInContract->fetchAll();
 
-$inContractCountSql = "SELECT count(*) as count FROM transactions";
+$inContractCountSql = "SELECT count(*) as count FROM transactions WHERE junk != 'junk'";
 $stmtInContractCount = $dbConnInContract->prepare($inContractCountSql);
 $stmtInContractCount->execute();
 $inContractCountResult = $stmtInContractCount->fetch();
@@ -401,6 +401,31 @@ $keys = array_keys($response);
             }
         });
     });
+
+    $('.table').bind({
+'after.ft.sorting': function (e) {
+addRowCount('.table');
+},
+'footable_filtering': function (e) {
+addRowCount('.table');
+},
+'ready.ft.table': function (e){
+    addRowCount('.table');
+}
+});
+
+function addRowCount(tableAttr) {
+var PageNumber = 0;
+$(tableAttr).each(function () {
+var RowCount = $('td.inContractRowNumber', this).length;
+// alert(RowCount);
+$('td.inContractRowNumber', this).each(function (i) {
+$(this).html( i + 1);
+
+});
+});
+}
+
 </script>
 <script>
     $(document).ready(function () {
