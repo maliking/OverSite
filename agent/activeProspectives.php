@@ -718,14 +718,14 @@ $keys = array_keys($response);
                                                     </tr>
                                                     
                                                     </table></td>';
-                                                echo '<td id=phone' . $favorite['favoriteId'] . ' onClick=editFavorite("phone",' . $favorite['favoriteId'] . ','. (string)$favorite['phone'] . ')>' . $favorite['phone'] . '</td>';
-                                                echo '<td id=email' . $favorite['favoriteId'] . ' onClick=editFavorite("email",' . $favorite['favoriteId'] . ')>' . $favorite['email'] . '</td>';
-                                                echo '<td id=zip' . $favorite['favoriteId'] . ' onClick=editFavorite("zip",' . $favorite['favoriteId'] . ')>' . $favorite['zip'] . '</td>';
+                                                echo '<td id=phone' . $favorite['favoriteId'] . ' onClick=editFavorite("phone",' . $favorite['favoriteId'] . ','. $favorite['phone'] . ')>' . $favorite['phone'] . '</td>';
+                                                echo '<td id=email' . $favorite['favoriteId'] . ' onClick=editFavorite("email",' . $favorite['favoriteId'] . ','. $favorite['email'] . ')>' . $favorite['email'] . '</td>';
+                                                echo '<td id=zip' . $favorite['favoriteId'] . ' onClick=editFavorite("zip",' . $favorite['favoriteId'] . ','. $favorite['zip'] . ')>' . $favorite['zip'] . '</td>';
                                                 echo '<td id=price' . $favorite['favoriteId'] . ' onClick=editFavorite("price",' . $favorite['favoriteId']. ','. $favorite['price'] .')>' . number_format($favorite['price']) . '</td>';
-                                                echo '<td id=bedroom' . $favorite['favoriteId'] . ' onClick=editFavorite("bedroom",' . $favorite['favoriteId'] . ')>' . $favorite['bedroom'] . '</td>';
-                                                echo '<td id=bathroom' . $favorite['favoriteId'] . ' onClick=editFavorite("bathroom",' . $favorite['favoriteId'] . ')>' . $favorite['bathroom'] . '</td>';
-                                                echo '<td id=sqft' . $favorite['favoriteId'] . ' onClick=editFavorite("sqft",' . $favorite['favoriteId'] . ')>' . number_format($favorite['sqft']) . '</td>';
-                                                echo '<td id=lotSize' . $favorite['favoriteId'] . ' onClick=editFavorite("lotSize",' . $favorite['favoriteId'] . ')>' . number_format($favorite['lotSize']) . '</td>';
+                                                echo '<td id=bedroom' . $favorite['favoriteId'] . ' onClick=editFavorite("bedroom",' . $favorite['favoriteId'] . ','. $favorite['bedroom'] . ')>' . $favorite['bedroom'] . '</td>';
+                                                echo '<td id=bathroom' . $favorite['favoriteId'] . ' onClick=editFavorite("bathroom",' . $favorite['favoriteId'] . ','. $favorite['bathroom'] . ')>' . $favorite['bathroom'] . '</td>';
+                                                echo '<td id=sqft' . $favorite['favoriteId'] . ' onClick=editFavorite("sqft",' . $favorite['favoriteId'] . ','. $favorite['sqft'] . ')>' . number_format($favorite['sqft']) . '</td>';
+                                                echo '<td id=lotSize' . $favorite['favoriteId'] . ' onClick=editFavorite("lotSize",' . $favorite['favoriteId'] . ','. $favorite['lotSize'] . ')>' . number_format($favorite['lotSize']) . '</td>';
                                                 echo '<td style="text-align: center;" >' . substr($favorite['note'], 0, 15) . '</td>';
                                                 echo '<td><button data-toggle="modal" onClick=openNoteModal(' . $favorite['favoriteId'] . ')>Add Note</button></td>';
                                                 echo '<td><a href="prospectsMatch.php?visitorId=' . $favorite['favoriteId'] . '" >House Matches</a></td>';
