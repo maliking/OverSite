@@ -718,7 +718,7 @@ $keys = array_keys($response);
                                                     </tr>
                                                     
                                                     </table></td>';
-                                                echo '<td id=phone' . $favorite['favoriteId'] . ' onClick=editFavorite("phone",' . $favorite['favoriteId'] . ','. $favorite['phone'] . ')>' . $favorite['phone'] . '</td>';
+                                                echo '<td id=phone' . $favorite['favoriteId'] . ' onClick=editFavorite("phone",' . $favorite['favoriteId'] . ', "testing")>' . $favorite['phone'] . '</td>';
                                                 echo '<td id=email' . $favorite['favoriteId'] . ' onClick=editFavorite("email",' . $favorite['favoriteId'] . ','. $favorite['email'] . ')>' . $favorite['email'] . '</td>';
                                                 echo '<td id=zip' . $favorite['favoriteId'] . ' onClick=editFavorite("zip",' . $favorite['favoriteId'] . ','. $favorite['zip'] . ')>' . $favorite['zip'] . '</td>';
                                                 echo '<td id=price' . $favorite['favoriteId'] . ' onClick=editFavorite("price",' . $favorite['favoriteId']. ','. $favorite['price'] .')>' . number_format($favorite['price']) . '</td>';
