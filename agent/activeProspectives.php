@@ -697,7 +697,7 @@ $keys = array_keys($response);
                                                 echo '<td class="favoriteRowNumber"></td>';
                                                 echo '<td id=lastContacted' . $favorite['favoriteId'] . ' class="fa fa-phone"  style="text-align: center;" onClick="showLastContactedModal(this)">' . "&nbsp&nbsp&nbsp" . '</td>';
                                                 echo '<td>' . $favorite['listingType'] . '</td>';
-                                                echo '<td id=name' . $favorite['favoriteId'] . ' onClick=editFavorite("name",' . $favorite['favoriteId'] . ')>' . $favorite['firstName'] . " " . $favorite['lastName'] . '</td>';
+                                                echo '<td id=name' . $favorite['favoriteId'] . ' onClick=editFavorite("name",' . $favorite['favoriteId'] . ',' . $favorite['firstName'] . " " . $favorite['lastName'] .  ')>' . $favorite['firstName'] . " " . $favorite['lastName'] . '</td>';
                                                echo '<td><table border="1">
                                                     <tr>
                                                     <td></td>
