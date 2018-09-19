@@ -1767,10 +1767,12 @@ $keys = array_keys($response);
                 }
             }
 
+
+            //var submit = document.getElementById('btnSearch');
             function editFavorite(type,id)
             {
                 // alert("edit favorite");
-                var input = prompt("Enter new " + type);
+                var input = prompt("Enter new " + type, "Hello world");
                 if(input != null && input != "")
                 {
                     $.post("editFavorite.php", {
