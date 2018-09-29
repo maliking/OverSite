@@ -1843,6 +1843,21 @@ $keys = array_keys($response);
                 }
             }
 
+            function editCoAgentName(id)
+            {
+                var newCoAgentName = prompt("Enter co-agent name:");
+                if (newCoAgentName == null || newCoAgentName == "") {
+                } else {
+                    $("#coAgentName" + id).html(newCoAgentName);
+                    // alert(houseId + " " + buyerID);
+                    $.post("updateClientTwoData.php", {
+                        transId: id,
+                        coAgentName: newCoAgentName,
+                        type: "coAgentName"
+                    });
+                }
+            }
+
             function showLastContactedModal(row)
             {
                 $('#lastContactedModal').modal('toggle');
