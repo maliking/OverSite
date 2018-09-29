@@ -527,6 +527,21 @@ $(this).html( i + 1);
                 }
             }
 
+            function editCoAgentName(id)
+            {
+                var newCoAgentName = prompt("Enter co-agent name:");
+                if (newCoAgentName == null || newCoAgentName == "") {
+                } else {
+                    $("#coAgentName" + id).html(newCoAgentName);
+                    // alert(houseId + " " + buyerID);
+                    $.post("agent/updateClientTwoData.php", {
+                        transId: id,
+                        coAgentName: newCoAgentName,
+                        type: "coAgentName"
+                    });
+                }
+            }
+
             function takeNote(id)
             {
                 // alert(id);

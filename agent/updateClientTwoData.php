@@ -34,6 +34,14 @@ else if($_POST['type'] == "email")
 	$stmt->execute($namedParameters);
 }
 
-
+else if($_POST['type'] == "coAgentName")
+{
+	$sql = "UPDATE transactions SET coAgent = :coAgent WHERE transId = :transId";
+	$namedParameters = array();
+	$namedParameters[":coAgent"] = $_POST['coAgentName'];
+	$namedParameters[":transId"] = $_POST['transId'];
+	$stmt = $dbConn->prepare($sql);
+	$stmt->execute($namedParameters);
+}
 
 ?>
