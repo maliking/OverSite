@@ -239,7 +239,7 @@ $base = $pdf->Output($houseResults['address'] . ".pdf", 'F');
 // $doc = base64_encode($base);
 ///////////////////////////
 $documentName = $houseResults['address'] . ".pdf";
-$documentFileName = $base;
+$documentFileName = $houseResults['address'] . ".pdf";
 // RETURNS
 	// Associative array with elements:
 	//	ok -- true for success
