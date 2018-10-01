@@ -2085,12 +2085,13 @@ $keys = array_keys($response);
             function sendNotesText(favoritePhone){
                 alert(favoritePhone);
                 var id = document.getElementsByClassName("favoriteNoteRow");
-                if(id == null){
+                alert(id);
+                /*if(id == null){
                     alert("No notes added yet!");
                 }
                 for (var x = 0; x < id.length; x++) {
                     alert (id[x].value);
-                }
+                }*/
             }
 
             function openActiveProspectiveTable(){
