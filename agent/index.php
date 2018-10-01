@@ -2083,6 +2083,7 @@ $keys = array_keys($response);
             }
 
             function sendNotesText(favoritePhone){
+                alert(favoritePhone);
                 var id = document.getElementsByClassName("favoriteNoteRow");
                 if(id == null){
                     alert("No notes added yet!");
