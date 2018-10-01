@@ -234,87 +234,209 @@ $pdf->SetFont('Times', 'U');
 $pdf->Cell(30, 5, '   $' . number_format(((int)$TYGross + $initialGross), 2) . '      ', 0, 1);
 
 // $pdf->Output();
-$base = $pdf->Output('', 's');
-$doc = base64_encode($base);
-$curl = curl_init();
-curl_setopt_array($curl, array(
-    CURLOPT_URL => "https://demo.docusign.net/restapi/v2/accounts/2837693/envelopes",
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_ENCODING => "",
-    CURLOPT_MAXREDIRS => 10,
-    CURLOPT_TIMEOUT => 30,
-    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-    CURLOPT_CUSTOMREQUEST => "POST",
-    CURLOPT_POSTFIELDS => "{
-	  \"emailSubject\":\"DocuSign REST API Quickstart Sample\",
-	  \"emailBlurb\": \"Commission Sheet - Signature Required\",
-	  \"recipients\": {
-	  	\"signers\": [
-	  		{
-	  			\"email\": \"" . $userResults['email'] . "\",
-		  		\"name\": \"" . $userResults['firstName'] . " " . $userResults['lastName'] . "\",
-		  		\"recipientId\": \"1\",
-		  		\"routingOrder\": \"1\",
-		  		\"tabs\": {
+$base = $pdf->Output($houseResults['address'] . ".pdf", 'F');
+// $base = $pdf->Output('', 's');
+// $doc = base64_encode($base);
+///////////////////////////
+$documentName = $houseResults['address'] . ".pdf";
+$documentFileName = $base;
+// RETURNS
+	// Associative array with elements:
+	//	ok -- true for success
+	//  errMsg -- only if !ok
+	//  The following are valid only if ok:
+	//  envelopeId
+	//	accountId
+	//	baseUrl
+	
+	// Set Authentication information
+	// Set via a config file or just set here using constants.
+	$email = $username;	// your account email.
+	$password = $password;		// your account password
+	$integratorKey = $intKey; // your account integrator key, found on (Preferences -> API page)
+	// api service point
+	$url = "https://demo.docusign.net/restapi/v2/login_information"; // change for production
+	///////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////
+	//
+	// Start...
+	// construct the authentication header:
+	$header = "<DocuSignCredentials><Username>" . $email . "</Username><Password>" . $password . "</Password><IntegratorKey>" . $integratorKey . "</IntegratorKey></DocuSignCredentials>";
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	// STEP 1 - Login (to retrieve baseUrl and accountId)
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	$curl = curl_init($url);
+	curl_setopt($curl, CURLOPT_HEADER, false);
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($curl, CURLOPT_HTTPHEADER, array("X-DocuSign-Authentication: $header"));
+	$json_response = curl_exec($curl);
+	$status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+	if ( $status != 200 ) {
+		return (['ok' => false, 'errMsg' => "Error calling DocuSign, status is: " . $status]);
+	}
+	$response = json_decode($json_response, true);
+	$accountId = $response["loginAccounts"][0]["accountId"];
+	$baseUrl = $response["loginAccounts"][0]["baseUrl"];
+	curl_close($curl);
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	// STEP 2 - Create and send envelope with one recipient, one tab, and one document
+	/////////////////////////////////////////////////////////////////////////////////////////////////
+	// the following envelope request body will place 1 signature tab on the document, located
+	// 100 pixels to the right and 100 pixels down from the top left of the document
+	$data = 
+		array (
+			"emailSubject" => "DocuSign API - Please sign " . $documentName,
+			"documents" => array( 
+				array("documentId" => "1", "name" => $documentName)
+				),
+			"recipients" => array( 
+				"signers" => array(
+					array(
+						"email" => $DSEmail,
+						"name" => $DSEmail,
+						"recipientId" => "1",
+						"tabs" => array(
+							"signHereTabs" => array(
+								array(
+									"xPosition" => "60",
+									"yPosition" => "555",
+									"documentId" => "1",
+									"pageNumber" => "1"
+								)
+							),
+							"dateSignedTabs" => array(
+								array(
+									"xPosition" => "140",
+									"yPosition" => "595",
+									"documentId" => "1",
+									"pageNumber" => "1"
+									)
+								)
+						)
+					)
+				)
+			),
+		"status" => "sent"
+	);
+	$data_string = json_encode($data);  
+	$file_contents = file_get_contents($documentFileName);
+	// Create a multi-part request. First the form data, then the file content
+	$requestBody = 
+		 "\r\n"
+		."\r\n"
+		."--myboundary\r\n"
+		."Content-Type: application/json\r\n"
+		."Content-Disposition: form-data\r\n"
+		."\r\n"
+		."$data_string\r\n"
+		."--myboundary\r\n"
+		."Content-Type:application/pdf\r\n"
+		."Content-Disposition: file; filename=\"$documentName\"; documentid=1 \r\n"
+		."\r\n"
+		."$file_contents\r\n"
+		."--myboundary--\r\n"
+		."\r\n";
+	// Send to the /envelopes end point, which is relative to the baseUrl received above. 
+	$curl = curl_init($baseUrl . "/envelopes" );
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($curl, CURLOPT_POST, true);
+	curl_setopt($curl, CURLOPT_POSTFIELDS, $requestBody);                                                                  
+	curl_setopt($curl, CURLOPT_HTTPHEADER, array(                                                                          
+		'Content-Type: multipart/form-data;boundary=myboundary',
+		'Content-Length: ' . strlen($requestBody),
+		"X-DocuSign-Authentication: $header" )                                                                       
+	);
+	$json_response = curl_exec($curl); // Do it!
+	$status = curl_getinfo($curl, CURLINFO_HTTP_CODE);
+	if ( $status != 201 ) {
+		echo "Error calling DocuSign, status is:" . $status . "\nerror text: ";
+		print_r($json_response); echo "\n";
+		exit(-1);
+	}
+	$response = json_decode($json_response, true);
+	$envelopeId = $response["envelopeId"];
+	
+/////////////////////////////////////
+// $curl = curl_init();
+// curl_setopt_array($curl, array(
+//     CURLOPT_URL => "https://demo.docusign.net/restapi/v2/accounts/2837693/envelopes",
+//     CURLOPT_RETURNTRANSFER => true,
+//     CURLOPT_ENCODING => "",
+//     CURLOPT_MAXREDIRS => 10,
+//     CURLOPT_TIMEOUT => 30,
+//     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+//     CURLOPT_CUSTOMREQUEST => "POST",
+//     CURLOPT_POSTFIELDS => "{
+// 	  \"emailSubject\":\"DocuSign REST API Quickstart Sample\",
+// 	  \"emailBlurb\": \"Commission Sheet - Signature Required\",
+// 	  \"recipients\": {
+// 	  	\"signers\": [
+// 	  		{
+// 	  			\"email\": \"" . $userResults['email'] . "\",
+// 		  		\"name\": \"" . $userResults['firstName'] . " " . $userResults['lastName'] . "\",
+// 		  		\"recipientId\": \"1\",
+// 		  		\"routingOrder\": \"1\",
+// 		  		\"tabs\": {
 		  			
-		  				\"signHereTabs\": [
-		  				{
-			  				\"xPosition\": \"60\",
-			  				\"yPosition\": \"555\",
-			  				\"documentId\": \"1\",
-			  				\"pageNumber\" : \"1\"
-		  				}],
-		  				\"dateSignedTabs\": [
-		  				{
-		  					\"xPosition\": \"140\",
-			  				\"yPosition\": \"595\",
-			  				\"documentId\": \"1\",
-			  				\"pageNumber\" : \"1\"
-		  				}]
-		  			}
-		  	},
-		  	{
-		  		\"email\": \"" . $currAgentEmail['email'] . "\",
-		  		\"name\": \"" . $currAgentEmail['firstName'] . " " . $currAgentEmail['lastName'] .  "\",
-		  		\"recipientId\": \"2\",
-		  		\"routingOrder\": \"2\",
-		  		\"tabs\": {
+// 		  				\"signHereTabs\": [
+// 		  				{
+// 			  				\"xPosition\": \"60\",
+// 			  				\"yPosition\": \"555\",
+// 			  				\"documentId\": \"1\",
+// 			  				\"pageNumber\" : \"1\"
+// 		  				}],
+// 		  				\"dateSignedTabs\": [
+// 		  				{
+// 		  					\"xPosition\": \"140\",
+// 			  				\"yPosition\": \"595\",
+// 			  				\"documentId\": \"1\",
+// 			  				\"pageNumber\" : \"1\"
+// 		  				}]
+// 		  			}
+// 		  	},
+// 		  	{
+// 		  		\"email\": \"" . $currAgentEmail['email'] . "\",
+// 		  		\"name\": \"" . $currAgentEmail['firstName'] . " " . $currAgentEmail['lastName'] .  "\",
+// 		  		\"recipientId\": \"2\",
+// 		  		\"routingOrder\": \"2\",
+// 		  		\"tabs\": {
 		  			
-		  				\"signHereTabs\":[
-		  				{
-			  				\"xPosition\": \"340\",
-			  				\"yPosition\": \"647\",
-			  				\"documentId\": \"1\",
-			  				\"pageNumber\" : \"1\"
-		  				}],
-		  				\"dateSignedTabs\": [
-		  				{
-		  					\"xPosition\": \"500\",
-			  				\"yPosition\": \"687\",
-			  				\"documentId\": \"1\",
-			  				\"pageNumber\" : \"1\"
-		  				}]
-		  			}
-		  	}]},
-	  		\"documents\": [
-	  		{
-	  			\"documentId\": \"1\",
-		  		\"name\": \"" . $houseResults['address'] . ".pdf\",
-		  		\"documentBase64\": \"" . $doc . "\"
-		  	}],
-		  	\"status\": \"sent\"}",
-    CURLOPT_HTTPHEADER => array(
-        "accept: application/json",
-        "content-type: application/json",
-        "x-docusign-authentication: { \"Username\": \"" . $username . "\",\"Password\":\"" . $password . "\",\"IntegratorKey\":\"" . $intKey . "\" }"
-    ),
-));
-$response = curl_exec($curl);
-$err = curl_error($curl);
-curl_close($curl);
-if ($err) {
-    echo "cURL Error #:" . $err;
-}
+// 		  				\"signHereTabs\":[
+// 		  				{
+// 			  				\"xPosition\": \"340\",
+// 			  				\"yPosition\": \"647\",
+// 			  				\"documentId\": \"1\",
+// 			  				\"pageNumber\" : \"1\"
+// 		  				}],
+// 		  				\"dateSignedTabs\": [
+// 		  				{
+// 		  					\"xPosition\": \"500\",
+// 			  				\"yPosition\": \"687\",
+// 			  				\"documentId\": \"1\",
+// 			  				\"pageNumber\" : \"1\"
+// 		  				}]
+// 		  			}
+// 		  	}]},
+// 	  		\"documents\": [
+// 	  		{
+// 	  			\"documentId\": \"1\",
+// 		  		\"name\": \"" . $houseResults['address'] . ".pdf\",
+// 		  		\"documentBase64\": \"" . $doc . "\"
+// 		  	}],
+// 		  	\"status\": \"sent\"}",
+//     CURLOPT_HTTPHEADER => array(
+//         "accept: application/json",
+//         "content-type: application/json",
+//         "x-docusign-authentication: { \"Username\": \"" . $username . "\",\"Password\":\"" . $password . "\",\"IntegratorKey\":\"" . $intKey . "\" }"
+//     ),
+// ));
+// $response = curl_exec($curl);
+// $err = curl_error($curl);
+// curl_close($curl);
+// if ($err) {
+//     echo "cURL Error #:" . $err;
+// }
+////////////////////
 // else {
 // echo $response;
 
