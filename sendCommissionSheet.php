@@ -234,7 +234,7 @@ $pdf->SetFont('Times', 'U');
 $pdf->Cell(30, 5, '   $' . number_format(((int)$TYGross + $initialGross), 2) . '      ', 0, 1);
 
 // $pdf->Output();
-$base = $pdf->Output("uploadFlyers/" . $houseResults['address'] . ".pdf", 'f');
+$pdf->Output("uploadFlyers/" . $houseResults['address'] . ".pdf", 'f');
 // $base = $pdf->Output('', 's');
 // $doc = base64_encode($base);
 ///////////////////////////
