@@ -2084,7 +2084,7 @@ $keys = array_keys($response);
 
             function sendNotesText(favoritePhone){
                 alert(favoritePhone);
-                var id = document.getElementsByTagName("favoriteNoteRow");
+                var id = document.getElementsByTagName("noteDate");
                 alert(id);
                 /*if(id == null){
                     alert("No notes added yet!");
