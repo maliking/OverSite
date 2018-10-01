@@ -293,8 +293,8 @@ $documentFileName = "uploadFlyers/" . $houseListingId . ".pdf";
 			"recipients" => array( 
 				"signers" => array(
 					array(
-						"email" => $DSEmail,
-						"name" => $DSEmail,
+						"email" => $userResults['email'],
+						"name" => $userResults['firstName'] . " " . $userResults['lastName'],
 						"recipientId" => "1",
 						"routingOrder" => "1",
 						"tabs" => array(
@@ -317,8 +317,8 @@ $documentFileName = "uploadFlyers/" . $houseListingId . ".pdf";
 						)
 					),
 					array(
-						"email" => $DSEmail,
-						"name" => $DSEmail,
+						"email" => $currAgentEmail['email'],
+						"name" => $currAgentEmail['firstName'] . " " . $currAgentEmail['lastName'],
 						"recipientId" => "2",
 						"routingOrder" => "2",
 						"tabs" => array(
