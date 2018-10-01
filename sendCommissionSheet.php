@@ -4,9 +4,9 @@ require("databaseConnection.php");
 // require("keys/cred.php");
 session_start();
 $dbConn = getConnection();
-if (!isset($_SESSION['userId'])) {
-    header("Location: index.html?error=wrong username or password");
-}
+// if (!isset($_SESSION['userId'])) {
+//     header("Location: index.html?error=wrong username or password");
+// }
 
 $license = $_POST['license'];
 $houseListingId = $_POST['propertyAddress'];
