@@ -296,6 +296,7 @@ $documentFileName = "uploadFlyers/" . $houseListingId . ".pdf";
 						"email" => $DSEmail,
 						"name" => $DSEmail,
 						"recipientId" => "1",
+						"routingOrder" => "1",
 						"tabs" => array(
 							"signHereTabs" => array(
 								array(
@@ -309,6 +310,30 @@ $documentFileName = "uploadFlyers/" . $houseListingId . ".pdf";
 								array(
 									"xPosition" => "140",
 									"yPosition" => "595",
+									"documentId" => "1",
+									"pageNumber" => "1"
+									)
+								)
+						)
+					),
+					array(
+						"email" => $DSEmail,
+						"name" => $DSEmail,
+						"recipientId" => "2",
+						"routingOrder" => "2",
+						"tabs" => array(
+							"signHereTabs" => array(
+								array(
+									"xPosition" => "340",
+									"yPosition" => "647",
+									"documentId" => "1",
+									"pageNumber" => "1"
+								)
+							),
+							"dateSignedTabs" => array(
+								array(
+									"xPosition" => "500",
+									"yPosition" => "687",
 									"documentId" => "1",
 									"pageNumber" => "1"
 									)
