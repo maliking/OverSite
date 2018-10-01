@@ -2069,7 +2069,7 @@ $keys = array_keys($response);
                             var cell1 = row.insertCell(0);
                             var cell2 = row.insertCell(1);
                             cell2.className = "favoriteNoteRow";
-                            cell1.innerHTML = "<h4>" + moment(result[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
+                            cell1.innerHTML = "<h4 id='noteDate' >" + moment(result[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
                             cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + result[x].noteId + "' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + result[x].note + "</textarea>";
                             // console.log(result[x].noteId);
                             // console.log(result[x].noteDate);
@@ -2084,7 +2084,7 @@ $keys = array_keys($response);
 
             function sendNotesText(favoritePhone){
                 alert(favoritePhone);
-                var id = document.getElementsByClassName("favoriteNoteRow");
+                var id = document.getElementsByTagName("favoriteNoteRow");
                 alert(id);
                 /*if(id == null){
                     alert("No notes added yet!");
