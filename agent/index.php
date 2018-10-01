@@ -2082,6 +2082,16 @@ $keys = array_keys($response);
                 $('#noteModal').modal('toggle');
             }
 
+            function sendNotesText(favoritePhone){
+                var id = document.getElementsByClassName("favoriteNoteRow");
+                if(id == null){
+                    alert("No notes added yet!");
+                }
+                for (var x = 0; x < id.length; x++) {
+                    alert (id[x].value);
+                }
+            }
+
             function openActiveProspectiveTable(){
                 window.open('activeProspectives.php');
             }
