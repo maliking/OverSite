@@ -153,7 +153,7 @@ $pdf->Cell(10, 3, '', 0, 1);
 $pdf->SetFont('Times', 'B');
 $pdf->Cell(37, 10, 'Property Address: ', 0, 0);
 $pdf->SetFont('Times', 'U');
-$pdf->Cell(50, 10, '   ' . $houseResults['address'] . '       ', 0, 1);
+$pdf->Cell(50, 10, '   ' . $houseListingId . '       ', 0, 1);
 // $pdf->Cell(50, 10, '   ' . $houseResults['address'] . ', ' . $houseResults['city'] . ', ' . $houseResults['state'] . ', ' . $houseResults['zip'] . '      ', 0, 1);
 
 $pdf->Cell(0, 5, ' ', 0, 1);
@@ -234,12 +234,12 @@ $pdf->SetFont('Times', 'U');
 $pdf->Cell(30, 5, '   $' . number_format(((int)$TYGross + $initialGross), 2) . '      ', 0, 1);
 
 // $pdf->Output();
-$pdf->Output("uploadFlyers/" . $houseResults['address'] . ".pdf", 'f');
+$pdf->Output("uploadFlyers/" . $houseListingId . ".pdf", 'f');
 // // $base = $pdf->Output('', 's');
 // // $doc = base64_encode($base);
 // ///////////////////////////
-$documentName = $houseResults['address'] . ".pdf";
-$documentFileName = "uploadFlyers/" . $houseResults['address'] . ".pdf";
+$documentName = $houseListingId . ".pdf";
+$documentFileName = "uploadFlyers/" . $houseListingId . ".pdf";
 // RETURNS
 	// Associative array with elements:
 	//	ok -- true for success
