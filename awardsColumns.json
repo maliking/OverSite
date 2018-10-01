@@ -9,15 +9,18 @@
   },
   {
     "name": "closedUnits",
-    "title": "Closed Units"
+    "title": "Closed Units",
+    "type": "number"
   },
   {
     "name": "volSold",
-    "title": "Vol Sold"
+    "title": "Vol Sold",
+    "type": "number"
   },
   {
     "name": "gci",
-    "title": "GCI"
+    "title": "GCI",
+    "type": "number"
   },
   {
     "name": "avgPercent",
