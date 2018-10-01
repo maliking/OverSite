@@ -238,8 +238,8 @@ $pdf->Output("uploadFlyers/" . $houseResults['address'] . ".pdf", 'f');
 // // $base = $pdf->Output('', 's');
 // // $doc = base64_encode($base);
 // ///////////////////////////
-// $documentName = $houseResults['address'] . ".pdf";
-// $documentFileName = "uploadFlyers/" . $houseResults['address'] . ".pdf";
+$documentName = $houseResults['address'] . ".pdf";
+$documentFileName = "uploadFlyers/" . $houseResults['address'] . ".pdf";
 // RETURNS
 	// Associative array with elements:
 	//	ok -- true for success
