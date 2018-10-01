@@ -1127,6 +1127,18 @@ function addNewTransaction()
                     });
                 }
             }
+
+    function toggleHold(id, holdStatus)
+    {
+        
+            $.post( "holdStatusChange.php", { transId: id, holdStatus: holdStatus})
+              .done(function( data ) {
+                alert("Transaction placed on (Un)Hold");
+                location.reload();
+              });
+        
+        
+    }
 </script>
 </body>
 

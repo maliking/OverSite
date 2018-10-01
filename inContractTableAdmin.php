@@ -27,6 +27,7 @@
                                             <th>Property</th>
 
                                             <th data-breakpoints="all">Info</th>
+                                            <th data-breakpoints="all">(Un)Hold</th>
                                             <!-- <th data-breakpoints="all">Client Email</th> -->
                                             <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                             data-placement="top"
@@ -56,7 +57,7 @@
                                                                             title="Loan Contingencies">LC </a></th>
                                             <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                             data-placement="top"
-                                                                            title="VPC">Final Walkthrough</a></th>
+                                                                            title="VPC">Final Walk.</a></th>
                                             <th data-breakpoints="xs sm"><a class="dotted" href="#" data-toggle="tooltip"
                                                                             data-placement="top"
                                                                             title="Close of Escrow">COE </a></th>
@@ -104,7 +105,57 @@
                                                 //     echo "</tr>";
                                                 // }
                                                 $count++;
-                                                echo '<tr id=inContract' . $trans['transId'] . ' ><td></td>';
+                                                echo '<tr id=inContract' . $trans['transId'] . ' >';
+                                                if($trans['holdStatus'] == "hold")
+                                                {
+                                                    echo '<td></td>';
+                                                    // echo '<td></td>';
+                                                    echo "<td class='inContractRowNumber'></td>";
+                                                    // echo '<td></td>';
+                                                    echo "<td>";
+                                     
+                                                $inContrType = $trans['transType'];
+                                                if($inContrType  == "List./Buy.")
+                                                {
+                                                    $inContrType = "Dual";
+                                                }
+                                                $secAgent = "";
+                                                if($trans['agentId'] != "0")
+                                                {
+                                                    $secAgent = " & " . $trans['agentName'];
+                                                }
+                                                echo $inContrType;
+                                                echo '</td>';
+                                                    // echo '<td></td>';
+                                                echo '<td>' . $trans['fName'] . " " .$trans['lName'] . $secAgent;
+                                                    echo '<td></td>';
+                                                    echo '<td></td>';
+                                                    echo '<td></td>';
+                                                    // echo '<td></td>';
+                                                    echo '<td id=propertyAddress'. $trans['transId'] . ' ondblclick="editProperty(' . $trans['transId'] . ')">' . $trans['address'] . '</td>';
+
+                                                    echo '<td></td>';
+                                                    // echo '<td></td>';
+                                                    echo "<td><button onClick=toggleHold(" . $trans['transId'] . ",\"" . $trans['holdStatus'] . "\") >(Un)Hold</button></td>";
+
+                                                    echo '<td>ON HOLD</td>';
+                                                    echo '<td></td>';
+                                                    echo '<td></td>';
+                                                    echo '<td></td>';
+                                                    echo '<td></td>';
+                                                    echo '<td></td>';
+                                                    echo '<td></td>';
+                                                    echo '<td></td>';
+                                                    echo '<td></td>';
+                                                    echo '<td></td>';
+                                                    echo '<td></td>';
+                                                    echo '<td></td>';
+                                                    echo '<td></td>';
+
+                                                }
+                                                else
+                                                {
+                                                echo '<td></td>';
                                                 echo "<td class='inContractRowNumber'></td>";
                                                 echo "<td>";
                                                 // if ($trans['transType'] == 'Listing') {
@@ -167,7 +218,7 @@
                                             
                                             </table></td>';
 
-
+                                            echo "<td><button onClick=toggleHold(" . $trans['transId'] . ",\"" . $trans['holdStatus'] . "\") >(Un)Hold</button></td>";
                                            echo '<td>
                                                 <div class="btn-group">
                                                     ' . date('m/d/y', strtotime($day)) . ' 
@@ -720,8 +771,9 @@
                                            <?php include "staff/editDates.php"; ?>
                                            <?php
 
-                                           echo '</td>
-                                        </tr>';
+                                           echo '</td>';
+                                       }
+                                        echo '</tr>';
                                     }
                                             ?>
 

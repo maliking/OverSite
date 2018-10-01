@@ -23,8 +23,8 @@ foreach ($results as $row)
 	$myObj->rank = $rankCount;
 	$myObj->name = $row['firstName'] . " " . $row['lastName'];
 	$myObj->closedUnits = $row['closedUnits'];
-	$myObj->volSold = "$" . number_format($row['volSold'], 2, ".", ",");
-	$myObj->gci = "$" . number_format($row['GCI'],2 , ".", ",");
+	$myObj->volSold = "" . number_format($row['volSold'], 2, ".", ",");
+	$myObj->gci = "" . number_format($row['GCI'],2 , ".", ",");
 	$myObj->avgPercent = number_format($row['avgPercent'],2);
 
 	$rankCount++;
