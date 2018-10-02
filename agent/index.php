@@ -2069,7 +2069,7 @@ $keys = array_keys($response);
                             var cell1 = row.insertCell(0);
                             var cell2 = row.insertCell(1);
                             cell2.className = "favoriteNoteRow";
-                            cell1.innerHTML = "<h4 id='noteDate' >" + moment(result[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
+                            cell1.innerHTML = "<h4>" + moment(result[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
                             cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + result[x].noteId + "' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + result[x].note + "</textarea>";
                             // console.log(result[x].noteId);
                             // console.log(result[x].noteDate);
@@ -2083,17 +2083,23 @@ $keys = array_keys($response);
             }
 
             function sendNotesText(favoriteId){
-                alert(favoriteId);
-                var date = document.getElementsByTagName("noteDate");
-                for (var i = 0; i < date.length; i++) {
-                  alert(date[i].id);
-                }
-                /*if(id == null){
-                    alert("No notes added yet!");
-                }
-                for (var x = 0; x < id.length; x++) {
-                    alert (id[x].value);
-                }*/
+                $('#favoriteId').html('');
+                $('#favoriteId').html(favoriteId);
+                $.post( "getFavoriteNotes.php", { favoriteId: favoriteId })
+                      .done(function( data ) {
+                        var result = JSON.parse(data);
+                        var x;
+                        for(x in result)
+                        {
+                            alert(moment(result[x].noteDate).format('MM/DD/YYYY h:mma'));
+                            alert(result[x].note);
+                            // console.log(result[x].noteId);
+                            // console.log(result[x].noteDate);
+                            // console.log(result[x].note);
+                        }
+                        
+                      });
+
             }
 
             function openActiveProspectiveTable(){
