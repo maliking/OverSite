@@ -1084,6 +1084,8 @@ $keys = array_keys($response);
 
         </script>
         <script>
+            var text = "";
+
             var activeProspectsCollapseStatus = "";
             var inContractCollapseStatus = "";
             var calendarCollapseStatus = "";
@@ -2051,6 +2053,7 @@ $keys = array_keys($response);
 
             function openNoteModal(favoriteId)
             {
+                text = "";
                 //erase all when opening modal
                 $('#favoriteId').html('');
                 $('#addNewNoteArea').val('');
@@ -2071,15 +2074,26 @@ $keys = array_keys($response);
                             cell2.className = "favoriteNoteRow";
                             cell1.innerHTML = "<h4>" + moment(result[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
                             cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + result[x].noteId + "' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + result[x].note + "</textarea>";
+                            text += moment(result[x].noteDate).format('MM/DD/YYYY h:mma') + "\n";
+                            text += result[x].note + "\n";
+                            text += "----- \n";
                             // console.log(result[x].noteId);
                             // console.log(result[x].noteDate);
                             // console.log(result[x].note);
                         }
                         
                       });
-
                 // Open Modal
                 $('#noteModal').modal('toggle');
+            }
+
+            function sendNotesText(favoriteId){
+                var phone = "+18212764194";
+                $.post( "../staff/sendText.php", { phone: phone , text: text })
+                    .done(function( data ) {
+                        alert("Text sent");
+                });
+
             }
 
             function openActiveProspectiveTable(){
