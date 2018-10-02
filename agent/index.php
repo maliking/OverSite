@@ -2092,8 +2092,8 @@ $keys = array_keys($response);
                         var x;
                         for(x in result)
                         {
-                            text = text + moment(result[x].noteDate).format('MM/DD/YYYY h:mma');
-                            text = text + result[x].note;
+                            text = text + " 2 " + moment(result[x].noteDate).format('MM/DD/YYYY h:mma');
+                            text = text + " " + result[x].note;
                         }
                         
                       });
