@@ -2073,7 +2073,7 @@ $keys = array_keys($response);
                             cell2.className = "favoriteNoteRow";
                             cell1.innerHTML = "<h4>" + moment(result[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
                             cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + result[x].noteId + "' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + result[x].note + "</textarea>";
-                            text += result[x].noteId + " ";
+                            text += moment(result[x].noteDate).format('MM/DD/YYYY h:mma') + " ";
                             // console.log(result[x].noteId);
                             // console.log(result[x].noteDate);
                             // console.log(result[x].note);
