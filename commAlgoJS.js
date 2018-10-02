@@ -169,7 +169,7 @@ function calculateCommissionSixty()
     var techFee = parseFloat(document.getElementById("tech").value.replace(",",""));
     var eoInsurance = parseFloat(document.getElementById("eo_insurance").value.replace(",",""));
 
-    brokerFee = initialCommission * .60;
+    brokerFee = initialCommission * .40;
 
 
     // document.getElementById("broker").value = formatNumber(brokerFee);
