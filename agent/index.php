@@ -2085,20 +2085,21 @@ $keys = array_keys($response);
             function sendNotesText(favoriteId){
                 $('#favoriteId').html('');
                 $('#favoriteId').html(favoriteId);
+                var text = "";
                 $.post( "getFavoriteNotes.php", { favoriteId: favoriteId })
                       .done(function( data ) {
                         var result = JSON.parse(data);
                         var x;
                         for(x in result)
                         {
-                            alert(moment(result[x].noteDate).format('MM/DD/YYYY h:mma'));
-                            alert(result[x].note);
-                            console.log(result[x].noteId);
-                            console.log(result[x].noteDate);
-                            console.log(result[x].note);
+                            text = text + moment(result[x].noteDate).format('MM/DD/YYYY h:mma');
+                            text = text + result[x].note;
                         }
                         
                       });
+
+                alert(text);
+
 
             }
 
