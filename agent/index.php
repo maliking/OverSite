@@ -2091,7 +2091,7 @@ $keys = array_keys($response);
                 var phone = "+18212764194";
                 $.post( "../staff/sendText.php", { phone: phone , text: text })
                     .done(function( data ) {
-                        console.log(data);
+                        alert("Text sent");
                 });
 
             }
