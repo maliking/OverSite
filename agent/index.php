@@ -2089,10 +2089,11 @@ $keys = array_keys($response);
 
             function sendNotesText(favoriteId){
                 var phone = "+18212764194";
-                var text = "";
-                $.post( "../staff/sendText.php", { phone: phone, text: text})
-                      .done(function( data ) {
-                      });
+                $.post( "../staff/sendText.php", { phone: phone , text: text })
+                    .done(function( data ) {
+                    alert("Message Sent");
+                });
+
             }
 
             function openActiveProspectiveTable(){
