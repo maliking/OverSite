@@ -2082,8 +2082,8 @@ $keys = array_keys($response);
                 $('#noteModal').modal('toggle');
             }
 
-            function sendNotesText(favoritePhone){
-                alert(favoritePhone);
+            function sendNotesText(favoriteId){
+                alert(favoriteId);
                 var date = document.getElementsByTagName("noteDate");
                 for (var i = 0; i < date.length; i++) {
                   alert(date[i].id);
