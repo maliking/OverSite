@@ -2053,6 +2053,7 @@ $keys = array_keys($response);
 
             function openNoteModal(favoriteId)
             {
+                text = "";
                 //erase all when opening modal
                 $('#favoriteId').html('');
                 $('#addNewNoteArea').val('');
@@ -2074,36 +2075,24 @@ $keys = array_keys($response);
                             cell1.innerHTML = "<h4>" + moment(result[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
                             cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + result[x].noteId + "' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + result[x].note + "</textarea>";
                             text += moment(result[x].noteDate).format('MM/DD/YYYY h:mma') + "\n";
+                            text += result[x].note + "\n";
+                            text += "----- \n";
                             // console.log(result[x].noteId);
                             // console.log(result[x].noteDate);
                             // console.log(result[x].note);
                         }
                         
                       });
-                alert(text);
                 // Open Modal
                 $('#noteModal').modal('toggle');
             }
 
             function sendNotesText(favoriteId){
-                $('#favoriteId').html('');
-                $('#favoriteId').html(favoriteId);
+                var phone = "+18212764194";
                 var text = "";
-                $.post( "getFavoriteNotes.php", { favoriteId: favoriteId })
+                $.post( "../staff/sendText.php", { phone: phone, text: text})
                       .done(function( data ) {
-                        var result = JSON.parse(data);
-                        var x;
-                        for(x in result)
-                        {
-                            text = text + " 2 " + moment(result[x].noteDate).format('MM/DD/YYYY h:mma');
-                            text = text + " " + result[x].note;
-                        }
-                        
                       });
-
-                alert(text);
-
-
             }
 
             function openActiveProspectiveTable(){
