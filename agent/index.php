@@ -2093,9 +2093,9 @@ $keys = array_keys($response);
                         {
                             alert(moment(result[x].noteDate).format('MM/DD/YYYY h:mma'));
                             alert(result[x].note);
-                            // console.log(result[x].noteId);
-                            // console.log(result[x].noteDate);
-                            // console.log(result[x].note);
+                            console.log(result[x].noteId);
+                            console.log(result[x].noteDate);
+                            console.log(result[x].note);
                         }
                         
                       });
