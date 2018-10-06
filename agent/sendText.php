@@ -19,13 +19,24 @@ $result = $stmt->fetch();
 
 $twilio_phone_number = "+18315851661";
 $client = new Client($sid, $token);
-$client->messages->create(
-    $_POST['phone'],
-    array(
-        "From" => $twilio_phone_number,
-        "Body" => $_POST['text'] . " %0a" . 
-        "Please don’t respond to this text. Please contact " . $result['firstName'] . " " . $result['lastName'] . "  at: " . $result['phone'] ,
-    )
-);
+if(isset($_POST['notesText'])){
+	$client->messages->create(
+	    $_POST['phone'],
+	    array(
+	        "From" => $twilio_phone_number,
+	        "Body" => $_POST['text'] ,
+	    )
+	);
+}
+else{
+	$client->messages->create(
+	    $_POST['phone'],
+	    array(
+	        "From" => $twilio_phone_number,
+	        "Body" => $_POST['text'] . " %0a" . 
+	        "Please don’t respond to this text. Please contact " . $result['firstName'] . " " . $result['lastName'] . "  at: " . $result['phone'] ,
+	    )
+	);
+}
 
 ?>
