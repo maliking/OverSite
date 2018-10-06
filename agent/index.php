@@ -2088,7 +2088,7 @@ $keys = array_keys($response);
             }
 
             function sendNotesText(favoriteId){
-                var phone = "+18212764194";
+                var phone = "+18312764194";
                 $.post( "sendText.php", { phone: phone , text: text })
                     .done(function( data ) {
                         alert("Text sent");
