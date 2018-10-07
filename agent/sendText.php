@@ -20,11 +20,18 @@ $result = $stmt->fetch();
 $twilio_phone_number = "+18315851661";
 $client = new Client($sid, $token);
 if(isset($_POST['notesText'])){
+	$phoneSql = "SELECT phone FROM favorites WHERE favoriteId = :favoriteId";
+    $phoneParameters = array();
+    $phoneParameters[':favoriteId'] = $_POST['favoriteId'];
+    $phoneStmt = $dbConn->prepare($phoneSql);
+    $phoneStmt->execute($phoneParameters);
+    $phoneResult = $phoneStmt->fetch();
+	
 	$client->messages->create(
-	    $_POST['phone'],
+	    "+18312764194",
 	    array(
 	        "From" => $twilio_phone_number,
-	        "Body" => $_POST['text'] ,
+	        "Body" => $_POST['text'] . $phoneResult['result'],
 	    )
 	);
 }
