@@ -681,7 +681,7 @@ $keys = array_keys($response);
                                             <?php
                                             $activeProspectCount =1;
                                             foreach ($favoriteResults as $favorite) 
-                                            {   
+                                            {  
                                             //     if($favorite['lastContacted'] == "0000-00-00")
                                             //         $lastContacted = "NA";
                                             //     else if ($favorite['lastContacted'] != "0000-00-00") 
@@ -2088,9 +2088,15 @@ $keys = array_keys($response);
             }
 
             function sendNotesText(favoriteId){
+                $favoriteSql = "SELECT phone FROM favorites WHERE favoriteId = :favoriteId";
+                $favoriteParameters = array();
+                $favoriteParameters[':favoriteId'] = favoriteId;
+                $favoriteStmt = $dbConn->prepare($favoriteSql);
+                $favoriteStmt->execute($favoriteParameters);
+                $favoriteResult = $favoriteStmt->fetch();
                 var phone = "+18312764194";
                 var notesText = "set";
-                text += favoriteId;
+                text += favoriteResult['phone'];
                 $.post( "sendText.php", { phone: phone , text: text, notesText: notesText })
                     .done(function( data ) {
                         alert("Text sent");
