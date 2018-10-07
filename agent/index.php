@@ -2092,7 +2092,7 @@ $keys = array_keys($response);
                 text += favoriteId;
                 var notesText = "set";
                 
-                $.post( "sendText.php", { favoriteId: favoriteId , text: text, notesText: notesText })
+                $.post( "sendText.php", { phone: phone , text: text, notesText: notesText })
                     .done(function( data ) {
                         alert("Text sent");
                 });
