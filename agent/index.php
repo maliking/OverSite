@@ -2088,15 +2088,15 @@ $keys = array_keys($response);
             }
 
             function sendNotesText(favoriteId){
-                $favoriteSql = "SELECT phone FROM favorites WHERE favoriteId = :favoriteId";
-                $favoriteParameters = array();
-                $favoriteParameters[':favoriteId'] = favoriteId;
-                $favoriteStmt = $dbConn->prepare($favoriteSql);
-                $favoriteStmt->execute($favoriteParameters);
-                $favoriteResult = $favoriteStmt->fetch();
+                $phoneSql = "SELECT phone FROM favorites WHERE favoriteId = :favoriteId";
+                $phoneParameters = array();
+                $phoneParameters[':favoriteId'] = favoriteId;
+                $phoneStmt = $dbConn->prepare($phoneSql);
+                $phoneStmt->execute($phoneParameters);
+                $phoneResult = $phoneStmt->fetch();
                 var phone = "+18312764194";
                 var notesText = "set";
-                text += favoriteResult['phone'];
+                text += phoneResult['phone'];
                 $.post( "sendText.php", { phone: phone , text: text, notesText: notesText })
                     .done(function( data ) {
                         alert("Text sent");
