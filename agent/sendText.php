@@ -31,7 +31,7 @@ if(isset($_POST['notesText'])){
 	    $_POST['phone'],
 	    array(
 	        "From" => $twilio_phone_number,
-	        "Body" => $_POST['text'] . $phoneResult['result'],
+	        "Body" => $_POST['text'] ,//. $phoneResult['result']
 	    )
 	);
 }
