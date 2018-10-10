@@ -22,7 +22,7 @@ $settingStmt = $dbConn->prepare($settingSql);
 $settingStmt->execute($settingParam);
 $settingResult = $settingStmt->fetch();
 
-$sqlGetAgents = "SELECT userId, firstName, lastName, mlsId FROM UsersInfo WHERE userId = :userId";
+$sqlGetAgents = "SELECT userId, phone, firstName, lastName, mlsId FROM UsersInfo WHERE userId = :userId";
 $dataPara = array();
 $dataPara[':userId'] = $_SESSION['userId'];
 $agentStmt = $dbConn->prepare($sqlGetAgents);
@@ -750,7 +750,7 @@ $keys = array_keys($response);
                                                 echo '<td id=sqft' . $favorite['favoriteId'] . ' onClick=editFavorite("sqft",' . $favorite['favoriteId'] . ','. $favorite['sqft'] . ')>' . number_format($favorite['sqft']) . '</td>';
                                                 echo '<td id=lotSize' . $favorite['favoriteId'] . ' onClick=editFavorite("lotSize",' . $favorite['favoriteId'] . ','. $favorite['lotSize'] . ')>' . number_format($favorite['lotSize']) . '</td>';
                                                 echo '<td style="text-align: center;" >' . substr($favorite['note'], 0, 15) . '</td>';
-                                                echo '<td><button data-toggle="modal" onClick=openNoteModal(' . $favorite['favoriteId'] . ', ' . $favorite['phone'] .')>Add Note</button></td>';
+                                                echo '<td><button data-toggle="modal" onClick=openNoteModal(' . $favorite['favoriteId']  .')>Add Note</button></td>';
                                                 echo '<td><a href="prospectsMatch.php?visitorId=' . $favorite['favoriteId'] . '" >House Matches</a></td>';
                                                 echo '<td class="fa fa-archive" style="text-align: center;" onClick="archiveFavorite(' . $favorite['favoriteId'] . ')"></td>';
                                                 echo '<td class="fa fa-file-text" style="text-align: center;" onClick="showSendToInContractModal(' . $favorite['favoriteId'] . ')"></td>';
@@ -1084,8 +1084,6 @@ $keys = array_keys($response);
 
         </script>
         <script>
-            var notesTextPhone;
-
             var notesResult;
 
             var text = "";
@@ -2055,9 +2053,8 @@ $keys = array_keys($response);
             /////
             }
 
-            function openNoteModal(favoriteId, phone)
+            function openNoteModal(favoriteId)
             {
-                notesTextPhone = phone;
                 //erase all when opening modal
                 $('#favoriteId').html('');
                 $('#addNewNoteArea').val('');
@@ -2110,7 +2107,7 @@ $keys = array_keys($response);
                     text += notesResult[notesCheckedArray[i]].note + "\n";
                     text += "----- \n";
                 }
-                alert(notesTextPhone);
+                alert(agentResults['phone']);
 
                 var phone = "+18312764194";
                 var notesText = "set";
