@@ -2108,6 +2108,7 @@ $keys = array_keys($response);
                     text += notesResult[notesCheckedArray[i]].note + "\n";
                     text += "----- \n";
                 }
+                alert(favoriteId);
 
                 var phone = "+18312764194";
                 var notesText = "set";
