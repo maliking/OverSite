@@ -11,9 +11,9 @@
       </div>
       <div class="modal-body" style="height:70%; overflow: auto;">
 
-        <form id="noteTable" style="border-collapse:separate; border-spacing: 0 15px;" >
+        <table id="noteTable" style="border-collapse:separate; border-spacing: 0 15px;" >
 
-      </form>
+      </table>
       </div>
       <div class="modal-footer" style="border-top: solid 2px black">
         <textarea class="form-control" rows="2" id="addNewNoteArea" style="resize:none;" placeholder="Add new note"></textarea>
