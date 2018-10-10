@@ -2109,7 +2109,7 @@ $keys = array_keys($response);
                 }
                 alert(<?php $_SESSION['userId']?>);
 
-                text += "check this" + <?php $_SESSION['userId']?>;
+                text = text + "check this" + <?php $_SESSION['userId']?>;
 
                 var phone = "+18312764194";
                 var notesText = "set";
