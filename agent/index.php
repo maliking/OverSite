@@ -2106,6 +2106,8 @@ $keys = array_keys($response);
                     text = text + notesResult[selected[i]];
                 }
 
+                alert(selected);
+
                 var phone = "+18312764194";
                 var notesText = "set";
                 
