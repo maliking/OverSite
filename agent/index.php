@@ -2107,7 +2107,7 @@ $keys = array_keys($response);
                     text += notesResult[notesCheckedArray[i]].note + "\n";
                     text += "----- \n";
                 }
-                alert(<?php $agentResults['phone']?>);
+                alert(<?php $_SESSION['userId']?>);
 
                 var phone = "+18312764194";
                 var notesText = "set";
