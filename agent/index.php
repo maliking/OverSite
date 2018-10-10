@@ -2090,7 +2090,7 @@ $keys = array_keys($response);
                 $('#noteModal').modal('toggle');
             }
 
-            function sendNotesText(){
+            function sendNotesText(userId){
                 var notesCheckedArray = [];
                 
                 $(".notesChecked:checked").each(function() {
@@ -2108,6 +2108,7 @@ $keys = array_keys($response);
                     text += "----- \n";
                 }
 
+                alert(userId);    
                 var phone = "+18312764194";
                 var notesText = "set";
                 
