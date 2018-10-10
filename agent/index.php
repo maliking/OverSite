@@ -1084,6 +1084,8 @@ $keys = array_keys($response);
 
         </script>
         <script>
+            var notesResult;
+
             var text = "";
 
             var activeProspectsCollapseStatus = "";
@@ -2063,18 +2065,18 @@ $keys = array_keys($response);
                 $('#favoriteId').html(favoriteId);
                 $.post( "getFavoriteNotes.php", { favoriteId: favoriteId })
                       .done(function( data ) {
-                        var result = JSON.parse(data);
+                        notesResult = JSON.parse(data);
                         var x;
                         var table = document.getElementById("noteTable");
-                        for(x in result)
+                        for(x in notesResult)
                         {
                             var row = table.insertRow(0);
                             var cell1 = row.insertCell(0);
                             var cell2 = row.insertCell(1);
                             var cell3 = row.insertCell(2);
                             cell2.className = "favoriteNoteRow";
-                            cell1.innerHTML = "<h4>" + moment(result[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
-                            cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + result[x].noteId + "' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + result[x].note + "</textarea>";
+                            cell1.innerHTML = "<h4>" + moment(notesResult[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
+                            cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + notesResult[x].noteId + "' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + notesResult[x].note + "</textarea>";
                             cell3.innerHTML = "<input type='checkbox' class='notesChecked' value=" + x + ">";
                             /*text += moment(result[x].noteDate).format('MM/DD/YYYY h:mma') + "\n";
                             text += result[x].note + "\n";
@@ -2100,7 +2102,7 @@ $keys = array_keys($response);
                 selected = notesCheckedArray.join(',') ;*/
                 var i;
                 for(i in notesCheckedArray){
-                    text = text + result[notesCheckedArray[i]];
+                    text = text + notesResult[notesCheckedArray[i]];
                 }
 
                 var phone = "+18312764194";
