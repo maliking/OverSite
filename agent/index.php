@@ -2106,7 +2106,6 @@ $keys = array_keys($response);
                 }
 
                 var phone = "+18312764194";
-                text += favoriteId;
                 var notesText = "set";
                 
                 if(notesCheckedArray.length > 0){
