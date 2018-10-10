@@ -2076,7 +2076,7 @@ $keys = array_keys($response);
                             var cell3 = row.insertCell(2);
                             cell2.className = "favoriteNoteRow";
                             cell1.innerHTML = "<h4>" + moment(notesResult[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
-                            cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + notesResult[x].noteId + "' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + notesResult[x].note + "</textarea>";
+                            cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + notesResult[x].noteId + "' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + notesResult[x].note + " " + favoriteId + </textarea>";
                             cell3.innerHTML = "<input type='checkbox' class='notesChecked' value=" + x + ">";
                             /*text += moment(result[x].noteDate).format('MM/DD/YYYY h:mma') + "\n";
                             text += result[x].note + "\n";
@@ -2109,7 +2109,7 @@ $keys = array_keys($response);
                     text += "----- \n";
                 }
 
-                var phone = "+18312934153";
+                var phone = "+18312143465";
                 var notesText = "set";
                 
                 if(notesCheckedArray.length > 0){
