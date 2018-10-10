@@ -2090,7 +2090,7 @@ $keys = array_keys($response);
             }
 
             function sendNotesText(favoriteId){
-                var notescheckedArray = [];
+                var notesCheckedArray = [];
                 
                 $(".notesChecked:checked").each(function() {
                     notesCheckedArray.push($(this).val());
