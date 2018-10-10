@@ -2075,7 +2075,7 @@ $keys = array_keys($response);
                             cell2.className = "favoriteNoteRow";
                             cell1.innerHTML = "<h4>" + moment(result[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
                             cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + result[x].noteId + "' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + result[x].note + "</textarea>";
-                            cell3.innerHTML = "<input type='checkbox' name='noteChecked' value=" + result[x].note + ">";
+                            cell3.innerHTML = "<input type='checkbox' class='notesChecked' value=" + result[x].note + ">";
                             text += moment(result[x].noteDate).format('MM/DD/YYYY h:mma') + "\n";
                             text += result[x].note + "\n";
                             text += "----- \n";
@@ -2090,6 +2090,21 @@ $keys = array_keys($response);
             }
 
             function sendNotesText(favoriteId){
+                var notescheckedArray = [];
+                
+                $(".notesChecked:checked").each(function() {
+                    notesCheckedArray.push($(this).val());
+                });
+                
+                var selected;
+                selected = notesCheckedArray.join(',') ;
+                
+                if(selected.length > 0){
+                    alert("You have selected " + selected); 
+                }else{
+                    alert("Please at least check one of the checkbox"); 
+                }
+
                 var phone = "+18312764194";
                 text += favoriteId;
                 var notesText = "set";
