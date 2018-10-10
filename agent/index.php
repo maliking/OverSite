@@ -2073,7 +2073,7 @@ $keys = array_keys($response);
                             var cell2 = row.insertCell(1);
                             cell2.className = "favoriteNoteRow";
                             cell1.innerHTML = "<h4>" + moment(result[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
-                            cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + result[x].noteId + "' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + result[x].note + "</textarea>";
+                            cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + result[x].noteId + "' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + result[x].note + "</textarea><input type='checkbox' name='noteChecked' value=" + result[x].note + ">";
                             text += moment(result[x].noteDate).format('MM/DD/YYYY h:mma') + "\n";
                             text += result[x].note + "\n";
                             text += "----- \n";
@@ -2088,7 +2088,7 @@ $keys = array_keys($response);
             }
 
             function sendNotesText(favoriteId){
-                var phone = "+18312934153";
+                var phone = "+18312764194";
                 text += favoriteId;
                 var notesText = "set";
                 
