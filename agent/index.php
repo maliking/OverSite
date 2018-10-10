@@ -2098,13 +2098,13 @@ $keys = array_keys($response);
                     notesCheckedArray.push($(this).val());
                 });
                 
-                var selected;
-                selected = notesCheckedArray.join(',') ;
+               /*var selected;
+                selected = notesCheckedArray.join(',') ;*/
 
                 var i;
-                for(i in selected){
-                    text = text + notesResult[i].note;
-                    alert(notesResult[selected[i]].note);
+                for(i in notesCheckedArray){
+                    text = text + notesResult[notesCheckedArray[i]].note;
+                    alert(notesResult[notesCheckedArray[i]].note);
                 }
 
                 var phone = "+18312764194";
