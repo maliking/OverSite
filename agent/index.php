@@ -2108,8 +2108,7 @@ $keys = array_keys($response);
                     text += "----- \n";
                 }
    
-                var phone = "+18312764194";
-                alert("+1" + agentPhone);
+                var phone = "+1" + agentPhone;
                 var notesText = "set";
                 
                 if(notesCheckedArray.length > 0){
