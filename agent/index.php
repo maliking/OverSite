@@ -2103,8 +2103,8 @@ $keys = array_keys($response);
 
                 var i;
                 for(i in selected){
-                    text = text + notesResult[i];
-                    alert(notesResult[i].note);
+                    text = text + notesResult[i].note;
+                    alert(notesResult[selected[i]].note);
                 }
 
                 var phone = "+18312764194";
