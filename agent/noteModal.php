@@ -21,7 +21,7 @@ session_start();
       <div class="modal-footer" style="border-top: solid 2px black">
         <textarea class="form-control" rows="2" id="addNewNoteArea" style="resize:none;" placeholder="Add new note"></textarea>
       </br>
-        <?php echo '<td><button type="button" class="btn btn-default" onClick=sendNotesText(' . $_SESSION['userId'] . ')>Text Notes</button></td>'; ?>
+        <?php echo '<td><button type="button" class="btn btn-default" onClick=sendNotesText(' . $_SESSION['phone'] . ')>Text Notes</button></td>'; ?>
         <button type="button" class="btn btn-default" onClick="addNewNote()">Add</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
