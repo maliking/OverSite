@@ -2104,7 +2104,7 @@ $keys = array_keys($response);
                 var i;
                 for(i in selected){
                     text = text + notesResult[i];
-                    alert(notesResult[i]);
+                    alert(notesResult[i].note);
                 }
 
                 var phone = "+18312764194";
