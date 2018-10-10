@@ -28,7 +28,7 @@ $dataPara[':userId'] = $_SESSION['userId'];
 $agentStmt = $dbConn->prepare($sqlGetAgents);
 $agentStmt->execute($dataPara);
 $agentResults = $agentStmt->fetch();
-$agentResults = array($agentResults);
+//$agentResults = array($agentResults);
 
 // $sqlRank = "SELECT UsersInfo.firstName, UsersInfo.lastName, count(*) as sold, sum(finalComm) as YTDComm FROM UsersInfo LEFT JOIN commInfo on UsersInfo.license = commInfo.license group by UsersInfo.license order by sold Desc ";
 // $stmtRank = $dbConnRank->prepare($sqlRank);
@@ -2075,7 +2075,7 @@ $keys = array_keys($response);
                             var cell3 = row.insertCell(2);
                             cell2.className = "favoriteNoteRow";
                             cell1.innerHTML = "<h4>" + moment(notesResult[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
-                            cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + notesResult[x].noteId + "' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + notesResult[x].note + " " + favoriteId + "</textarea>";
+                            cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + notesResult[x].noteId + "' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + notesResult[x].note + "</textarea>";
                             cell3.innerHTML = "<input type='checkbox' class='notesChecked' value=" + x + ">";
                             /*text += moment(result[x].noteDate).format('MM/DD/YYYY h:mma') + "\n";
                             text += result[x].note + "\n";
