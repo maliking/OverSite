@@ -2076,9 +2076,9 @@ $keys = array_keys($response);
                             cell1.innerHTML = "<h4>" + moment(result[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
                             cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + result[x].noteId + "' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + result[x].note + "</textarea>";
                             cell3.innerHTML = "<input type='checkbox' class='notesChecked' value=" + x + ">";
-                            text += moment(result[x].noteDate).format('MM/DD/YYYY h:mma') + "\n";
+                            /*text += moment(result[x].noteDate).format('MM/DD/YYYY h:mma') + "\n";
                             text += result[x].note + "\n";
-                            text += "----- \n";
+                            text += "----- \n";*/
                             // console.log(result[x].noteId);
                             // console.log(result[x].noteDate);
                             // console.log(result[x].note);
@@ -2096,23 +2096,26 @@ $keys = array_keys($response);
                     notesCheckedArray.push($(this).val());
                 });
                 
-                var selected;
-                selected = notesCheckedArray.join(',') ;
-                
-                if(selected.length > 0){
-                    alert("You have selected " + selected); 
-                }else{
-                    alert("Please at least check one of the checkbox"); 
+                /*var selected;
+                selected = notesCheckedArray.join(',') ;*/
+                var i;
+                for(i in notesCheckedArray){
+                    text = text + result[notesCheckedArray[i]];
                 }
 
                 var phone = "+18312764194";
                 text += favoriteId;
                 var notesText = "set";
                 
-                $.post( "sendText.php", { phone: phone , text: text, notesText: notesText })
-                    .done(function( data ) {
-                        alert("Text sent");
-                });
+                if(notesCheckedArray.length > 0){
+                    $.post( "sendText.php", { phone: phone , text: text, notesText: notesText })
+                        .done(function( data ) {
+                            alert("Text sent");
+                    });
+                }
+                else{
+                    alert("No text checkbox was checked!");
+                }
 
             }
 
