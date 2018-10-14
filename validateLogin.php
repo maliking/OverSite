@@ -32,6 +32,7 @@ else if (empty($result)) {
 else {
 
     $_SESSION['userId'] = $result['userId'];
+    $_SESSION['phone'] = $result['phone'];
     $_SESSION['username'] = $result['username'];
     $_SESSION['license'] = $result['license'];
     $_SESSION['userType'] = $result['userType'];

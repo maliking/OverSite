@@ -22,13 +22,13 @@ $settingStmt = $dbConn->prepare($settingSql);
 $settingStmt->execute($settingParam);
 $settingResult = $settingStmt->fetch();
 
-$sqlGetAgents = "SELECT userId, firstName, lastName, mlsId FROM UsersInfo WHERE userId = :userId";
+$sqlGetAgents = "SELECT userId, phone, firstName, lastName, mlsId FROM UsersInfo WHERE userId = :userId";
 $dataPara = array();
 $dataPara[':userId'] = $_SESSION['userId'];
 $agentStmt = $dbConn->prepare($sqlGetAgents);
 $agentStmt->execute($dataPara);
 $agentResults = $agentStmt->fetch();
-$agentResults = array($agentResults);
+//$agentResults = array($agentResults);
 
 // $sqlRank = "SELECT UsersInfo.firstName, UsersInfo.lastName, count(*) as sold, sum(finalComm) as YTDComm FROM UsersInfo LEFT JOIN commInfo on UsersInfo.license = commInfo.license group by UsersInfo.license order by sold Desc ";
 // $stmtRank = $dbConnRank->prepare($sqlRank);
@@ -681,7 +681,7 @@ $keys = array_keys($response);
                                             <?php
                                             $activeProspectCount =1;
                                             foreach ($favoriteResults as $favorite) 
-                                            {   
+                                            {  
                                             //     if($favorite['lastContacted'] == "0000-00-00")
                                             //         $lastContacted = "NA";
                                             //     else if ($favorite['lastContacted'] != "0000-00-00") 
@@ -750,7 +750,7 @@ $keys = array_keys($response);
                                                 echo '<td id=sqft' . $favorite['favoriteId'] . ' onClick=editFavorite("sqft",' . $favorite['favoriteId'] . ','. $favorite['sqft'] . ')>' . number_format($favorite['sqft']) . '</td>';
                                                 echo '<td id=lotSize' . $favorite['favoriteId'] . ' onClick=editFavorite("lotSize",' . $favorite['favoriteId'] . ','. $favorite['lotSize'] . ')>' . number_format($favorite['lotSize']) . '</td>';
                                                 echo '<td style="text-align: center;" >' . substr($favorite['note'], 0, 15) . '</td>';
-                                                echo '<td><button data-toggle="modal" onClick=openNoteModal(' . $favorite['favoriteId'] . ')>Add Note</button></td>';
+                                                echo '<td><button data-toggle="modal" onClick=openNoteModal(' . $favorite['favoriteId']. ')>Add Note</button></td>';
                                                 echo '<td><a href="prospectsMatch.php?visitorId=' . $favorite['favoriteId'] . '" >House Matches</a></td>';
                                                 echo '<td class="fa fa-archive" style="text-align: center;" onClick="archiveFavorite(' . $favorite['favoriteId'] . ')"></td>';
                                                 echo '<td class="fa fa-file-text" style="text-align: center;" onClick="showSendToInContractModal(' . $favorite['favoriteId'] . ')"></td>';
@@ -1084,6 +1084,8 @@ $keys = array_keys($response);
 
         </script>
         <script>
+            var notesResult;
+
             var text = "";
 
             var activeProspectsCollapseStatus = "";
@@ -2053,7 +2055,6 @@ $keys = array_keys($response);
 
             function openNoteModal(favoriteId)
             {
-                text = "";
                 //erase all when opening modal
                 $('#favoriteId').html('');
                 $('#addNewNoteArea').val('');
@@ -2063,20 +2064,22 @@ $keys = array_keys($response);
                 $('#favoriteId').html(favoriteId);
                 $.post( "getFavoriteNotes.php", { favoriteId: favoriteId })
                       .done(function( data ) {
-                        var result = JSON.parse(data);
+                        notesResult = JSON.parse(data);
                         var x;
                         var table = document.getElementById("noteTable");
-                        for(x in result)
+                        for(x in notesResult)
                         {
                             var row = table.insertRow(0);
                             var cell1 = row.insertCell(0);
                             var cell2 = row.insertCell(1);
+                            var cell3 = row.insertCell(2);
                             cell2.className = "favoriteNoteRow";
-                            cell1.innerHTML = "<h4>" + moment(result[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
-                            cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + result[x].noteId + "' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + result[x].note + "</textarea>";
-                            text += moment(result[x].noteDate).format('MM/DD/YYYY h:mma') + "\n";
+                            cell1.innerHTML = "<h4>" + moment(notesResult[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
+                            cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + notesResult[x].noteId + "' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + notesResult[x].note + "</textarea>";
+                            cell3.innerHTML = "<input type='checkbox' class='notesChecked' value=" + x + ">";
+                            /*text += moment(result[x].noteDate).format('MM/DD/YYYY h:mma') + "\n";
                             text += result[x].note + "\n";
-                            text += "----- \n";
+                            text += "----- \n";*/
                             // console.log(result[x].noteId);
                             // console.log(result[x].noteDate);
                             // console.log(result[x].note);
@@ -2087,12 +2090,36 @@ $keys = array_keys($response);
                 $('#noteModal').modal('toggle');
             }
 
-            function sendNotesText(favoriteId){
-                var phone = "+18212764194";
-                $.post( "../staff/sendText.php", { phone: phone , text: text })
-                    .done(function( data ) {
-                        alert("Text sent");
+            function sendNotesText(agentPhone){
+                var notesCheckedArray = [];
+                
+                $(".notesChecked:checked").each(function() {
+                    notesCheckedArray.push($(this).val());
                 });
+                
+               /*var selected;
+                selected = notesCheckedArray.join(',') ;*/
+
+                var i;
+                for(i in notesCheckedArray){
+                    //text = text + notesResult[notesCheckedArray[i]].note;
+                    text = text + moment(notesResult[notesCheckedArray[i]].noteDate).format('MM/DD/YYYY h:mma') + "\n";
+                    text += notesResult[notesCheckedArray[i]].note + "\n";
+                    text += "----- \n";
+                }
+   
+                var phone = "+1" + agentPhone;
+                var notesText = "set";
+                
+                if(notesCheckedArray.length > 0){
+                    $.post( "sendText.php", { phone: phone , text: text, notesText: notesText })
+                        .done(function( data ) {
+                            alert("Text sent");
+                    });
+                }
+                else{
+                    alert("No text checkbox was checked!");
+                }
 
             }
 
