@@ -30,9 +30,10 @@ foreach($commSheets as $sheet)
 	if($counter != 0 && $prevFirstName == $sheet['firstName'] && $prevLastName == $sheet['lastName'])
 	{	
         if($sheet['leadType'] == "Zillow")
-            $newBroker = $sheet['InitialGross'] * .05;
+            $newBroker = $sheet['InitialGross'] * .5;
         else
-            $newBroker = commAlgo($newTY, $sheet['InitialGross']);
+            $newBroker = $sheet['brokerFee'];
+            // $newBroker = commAlgo($newTY, $sheet['InitialGross']);
         $newTY = $newTY + $sheet['InitialGross'];
         $newFY = $newFY + ($sheet['InitialGross']- $newBroker - $sheet['remaxFee'] - $sheet['misc'] - $sheet['eoFee'] - $sheet['techFee'] - $sheet['procFee']);
         
@@ -58,9 +59,10 @@ foreach($commSheets as $sheet)
         $newFinalComm = 0;
 
         if($sheet['leadType'] == "Zillow")
-            $newBroker = $sheet['InitialGross'] * .05;
+            $newBroker = $sheet['InitialGross'] * .5;
         else
-            $newBroker = commAlgo($newTY, $sheet['InitialGross']);
+            $newBroker = $sheet['brokerFee'];
+            // $newBroker = commAlgo($newTY, $sheet['InitialGross']);
         $newTY = $newTY + $sheet['InitialGross'];
         $newFY = $newFY + ($sheet['InitialGross'] - $newBroker - $sheet['remaxFee'] - $sheet['misc'] - $sheet['eoFee'] - $sheet['techFee'] - $sheet['procFee']);
         
