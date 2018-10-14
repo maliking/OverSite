@@ -349,7 +349,8 @@ $keys = array_keys($response);
                                                                     Fee</label>
                                                                 <div class="col-xs-3">
                                                                     <input type="text" class="form-control" id="broker"
-                                                                           name="brokerFee" placeholder="" >
+                                                                           name="brokerFee" placeholder="" 
+                                                                           onChange="updateAgentNet()">
                                                                 </div>
                                                             </div>
                                                             <div class="clearfix"></div>
@@ -538,6 +539,20 @@ $keys = array_keys($response);
         else{
            
         }
+    }
+
+    function updateAgentNet()
+    {
+        var initialCommission = parseFloat(document.getElementById("gross-comm").value.replace(",",""));
+        var brokerFee = parseFloat(document.getElementById("broker").value.replace(",",""));
+        var misc = parseFloat(document.getElementById("misc").value.replace(",",""));
+        var remaxFee = parseFloat(document.getElementById("remaxFee").value.replace(",",""));
+        var transactionCoordFee = parseFloat(document.getElementById("trans-coor").value.replace(",",""));
+        var techFee = parseFloat(document.getElementById("tech").value.replace(",",""));
+        var eoInsurance = parseFloat(document.getElementById("eo_insurance").value.replace(",",""));
+
+        document.getElementById("agent_net").value = numeral(initialCommission - brokerFee  - misc - remaxFee - transactionCoordFee - techFee - eoInsurance).format('0,0.00');
+        // alert("update agent net");
     }
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAK_Tffqf_2RClIjnuOPoz6wk1lZy4dAeg&libraries=places&callback=initAutocomplete"
