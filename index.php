@@ -761,7 +761,7 @@ $(this).html( i + 1);
                             var cell2 = row.insertCell(1);
                             cell2.className = "inContractNoteRow";
                             cell1.innerHTML = "<h4>" + moment(result[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
-                            cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + result[x].noteId + "' style='resize:none; border: solid 10px black;' onchange='saveInContractNote(this)'>" + result[x].note + "</textarea>";
+                            cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + result[x].noteId + "' style='resize:none; border: solid 1px black; width: 300px; height: 300px;' onchange='saveInContractNote(this)'>" + result[x].note + "</textarea>";
                             // console.log(result[x].noteId);
                             // console.log(result[x].noteDate);
                             // console.log(result[x].note);
