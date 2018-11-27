@@ -25,6 +25,14 @@ $sqlGetVisitors = "SELECT BuyerInfo.*, UsersInfo.firstName as agentF, UsersInfo.
 $visitorStmt = $dbConn->prepare($sqlGetVisitors);
 $visitorStmt->execute();
 $visitorResults = $visitorStmt->fetchAll();
+
+$favoriteSql = "SELECT * FROM favorites";
+$favoriteParameters = array();
+// $favoriteParameters[':userId'] = $_SESSION['userId'];
+$favoriteStmt = $dbConn->prepare($favoriteSql);
+$favoriteStmt->execute($favoriteParameters);
+$favoriteResults = $favoriteStmt->fetchAll();
+
 ?>
 
 <!DOCTYPE html>
@@ -99,56 +107,76 @@ $visitorResults = $visitorStmt->fetchAll();
                                         <table class="table table-striped" data-filtering="true">
                                             <thead>
                                                 <tr>
-                                                    <th>Type</th>
-                                                    <th>Date</th>
-                                                    <th>Agent</th>
-                                                    <th>ID</th>
+                                                    <!-- 
+                                                    Name
+                                                    Phone
+                                                    Email
+                                                    Date submitted
+                                                    Social Media
+                                                    Price
+                                                    Bedroom 
+                                                    Bathroom
+                                                    Zip
+                                                    Pre-approved
+                                                    Note
+                                                    -->
+                                                    <!-- <th>Type</th> -->
+                                                    <th>Last Contacted Date</th>
+                                                    <!-- <th>Agent</th> -->
+                                                    <!-- <th>ID</th> -->
                                                     <th>Name</th>
                                                     <th>Phone</th>
                                                     <th>Email</th>
-                                                    <th>Property</th>
+                                                    <th>Social Media</th>
+                                                    <th>Zip</th>
+                                                    <!-- <th>Property</th> -->
                                                     <th>Pre-Approved?</th>
-                                                    <th>How soon?</th>
+                                                    <!-- <th>How soon?</th> -->
                                                     <th>Price</th>
                                                     <th>Bedroom</th>
                                                     <th>Bathroom</th>
                                                     <th>Notes</th>
-                                                    <th>House Match</th>
-                                                    <th>Delete</th>
-                                                    <th data-breakpoints="all">Agent Email</th>
-                                                    <th data-breakpoints="all">Agent Phone</th>
+                                                    <th>Admin Notes</th>
+                                                    <!-- <th>House Match</th> -->
+                                                    <!-- <th>Delete</th> -->
+                                                    <!-- <th data-breakpoints="all">Agent Email</th> -->
+                                                    <!-- <th data-breakpoints="all">Agent Phone</th> -->
                                                     
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                <?php
-                                                    foreach ($visitorResults as $lead) 
+                                                    foreach ($favoriteResults as $lead) 
                                                     {
-                                                        echo "<tr id=buyer" . $lead['buyerID'] . ">";
-                                                        echo "<td>";
-                                                        if ($lead['address'] == 'Lead'){
-                                                            echo "<span title=\"Lead\" class=\"label label-warning\">ML</span>";
-                                                        } else {
-                                                            echo "<span title=\"Open House Visitor\" class=\"label label-info\">OHV</span>";
-                                                        }
-                                                        echo "</td>";
-                                                        echo "<td>" . $lead['registeredDate'] . "</td>";
-                                                        echo "<td>" . $lead['agentF'] . " " . $lead['agentL'] . "</td>";
-                                                        echo "<td>" . $lead['buyerID'] . "</td>";
+                                                        //echo "<tr id=buyer" . $lead['buyerID'] . ">";
+                                                        // echo "<td>";
+                                                        // if ($lead['address'] == 'Lead'){
+                                                        //     echo "<span title=\"Lead\" class=\"label label-warning\">ML</span>";
+                                                        // } else {
+                                                        //     echo "<span title=\"Open House Visitor\" class=\"label label-info\">OHV</span>";
+                                                        // }
+                                                        // echo "</td>";
+                                                        echo "<td>" . $lead['lastContacted'] . "</td>";
+                                                        // echo "<td>" . $lead['agentF'] . " " . $lead['agentL'] . "</td>";
+                                                        // echo "<td>" . $lead['buyerID'] . "</td>";
                                                         echo "<td>" . $lead['firstName'] . " " . $lead['lastName'] . "</td>";
                                                         echo "<td>" . $lead['phone'] . "</td>";
                                                         echo "<td>" . $lead['email'] . "</td>";
-                                                        echo "<td>" . $lead['address']. "</td>";
+                                                        echo "<td>" . "Social Media" . "</td>";
+                                                        echo "<td>" . $lead['zip'] . "</td>";
+                                                        // echo "<td>" . $lead['address']. "</td>";
                                                         echo "<td>" . $lead['approved'] . "</td>";
-                                                        echo "<td>" . $lead['howSoon'] . "</td>";
-                                                        echo "<td>$" . number_format($lead['priceMax']) . "</td>";
-                                                        echo "<td>" . $lead['bedroomsMin'] . "</td>";
-                                                        echo "<td>" . $lead['bathroomsMin'] . "</td>";
+                                                        // echo "<td>" . $lead['howSoon'] . "</td>";
+                                                        echo "<td>$" . number_format($lead['price']) . "</td>";
+                                                        echo "<td>" . $lead['bedroom'] . "</td>";
+                                                        echo "<td>" . $lead['bathroom'] . "</td>";
                                                         echo "<td>" . $lead['note'] . "</td>";
-                                                        echo '<td><a target="_blank" href="prospectsMatch.php?visitorId=' . $lead['buyerID'] . ' ">House Matches</a></td>';
-                                                        echo "<td><button onClick=moveToTrash('" . $lead['buyerID'] . "')>Delete</button></td>";
-                                                        echo "<td>" . $lead['agentEmail'] . "</td>";
-                                                        echo "<td>" . $lead['agentPhone'] . "</td>";
+                                                        echo '<td><button data-toggle="modal" onClick="openNoteModal(\'' . $lead['favoriteId'] . '\')" >Add Note</button></td>';
+                                                        // echo "<td>" . "Admin Notes" . "</td>";
+                                                        // echo '<td><a target="_blank" href="prospectsMatch.php?visitorId=' . $lead['buyerID'] . ' ">House Matches</a></td>';
+                                                        // echo "<td><button onClick=moveToTrash('" . $lead['buyerID'] . "')>Delete</button></td>";
+                                                        // echo "<td>" . $lead['agentEmail'] . "</td>";
+                                                        // echo "<td>" . $lead['agentPhone'] . "</td>";
                                                         echo "</tr>";
                                                     }
                                                 ?>
@@ -172,7 +200,33 @@ $visitorResults = $visitorStmt->fetchAll();
             <!-- /.content-wrapper -->
         </div>
         <!-- /.wrapper -->
-        
+
+        <div id="noteModal" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="height:100%;">
+
+        <!-- Modal content-->
+        <div class="modal-content" style="height:95%;">
+          <div class="modal-header" style="border-bottom: solid 2px black">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Notes</h4>
+            <p id="favoriteId" hidden></p>
+          </div>
+          <div class="modal-body" style="height:70%; overflow: auto;">
+
+            <table id="noteTable" style="border-collapse:separate; border-spacing: 0 15px;" >
+
+          </table>
+          </div>
+          <div class="modal-footer" style="border-top: solid 2px black">
+            <textarea class="form-control" rows="2" id="addNewNoteArea" style="resize:none;" placeholder="Add new note"></textarea>
+          </br>
+            <button type="button" class="btn btn-default" onClick="addNewNote()">Add</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
 
         <!-- BEGIN TEMPLATE default-footer.php INCLUDE -->
         <?php include "templates-osa/default-footer.php" ?>
@@ -189,7 +243,8 @@ $visitorResults = $visitorStmt->fetchAll();
         <!--        <script src="../dist/js/vendor/fullcalendar/gcal.min.js"></script>-->
         <script src="../dist/js/vendor/fullcalendar/fullcalendar.min.js"></script>
 
-
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/locale/ca.js"></script>
 
 
 
@@ -214,6 +269,75 @@ $visitorResults = $visitorStmt->fetchAll();
                     alert( "Added to Junk" );
                     $("#buyer" + buyerId).hide();
                   });
+            }
+
+            function openNoteModal(favoriteId)
+            {
+                //erase all when opening modal
+                $('#favoriteId').html('');
+                $('#addNewNoteArea').val('');
+                $("#noteTable").empty();
+
+                //populate data
+                $('#favoriteId').html(favoriteId);
+                $.post( "getFavoriteNotesOsa.php", { favoriteId: favoriteId })
+                      .done(function( data ) {
+                        notesResult = JSON.parse(data);
+                        var x;
+                        var table = document.getElementById("noteTable");
+                        for(x in notesResult)
+                        {
+                            var row = table.insertRow(0);
+                            var cell1 = row.insertCell(0);
+                            var cell2 = row.insertCell(1);
+                            var cell3 = row.insertCell(2);
+                            cell2.className = "favoriteNoteRow";
+                            cell1.innerHTML = "<h4>" + moment(notesResult[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
+                            cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + notesResult[x].noteId + "' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + notesResult[x].note + "</textarea>";
+                            cell3.innerHTML = "<input type='checkbox' class='notesChecked' value=" + x + ">";
+                            
+                        }
+                        
+                      });
+                // Open Modal
+                $('#noteModal').modal('toggle');
+            }
+
+            function addNewNote()
+            {
+                var favoriteId = $('#favoriteId').html();
+                var note = $('#addNewNoteArea').val();
+                // alert(note);
+
+                if(note != "" && note != null)
+                {
+                    $.post( "addNewFavoriteNoteOsa.php", { favoriteId: favoriteId, note:note })
+                      .done(function( data ) {
+                        var table = document.getElementById("noteTable");
+                        var row = table.insertRow(0);
+                        var cell1 = row.insertCell(0);
+                        var cell2 = row.insertCell(1);
+                        cell2.className = "favoriteNoteRow";
+                        cell1.innerHTML = "<h4>" + moment().format('L') + "</h4>";
+                        cell2.innerHTML = "<textarea class='form-control' rows='2' id='comment' style='resize:none; border: solid 1px black' onchange='saveNote(this)'>" + note + "</textarea>";
+                        alert( "Note Added");
+                        $('#addNewNoteArea').val("");
+                      });
+                }
+                else
+                    alert("Note Empty");
+            }
+
+            function saveNote(textArea)
+            {
+                var noteId = textArea.id.replace("note", "");
+                var newNote = textArea.value;
+                // alert(areaId);
+                // alert(textArea.value);
+                $.post( "updateFavoriteNoteOsa.php", { noteId: noteId, note: newNote })
+                      .done(function( data ) {
+                        alert("Note Updated");
+                      });
             }
 
         </script>
