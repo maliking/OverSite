@@ -64,7 +64,11 @@ $parameters[':coAgent'] = $_POST['coAgentName'];
 $parameters[':coAgentId'] = $_POST['coAgentId'];
 
 $parameters[':agentId'] = $_POST['agentInfoId'];
-$parameters[':agentName'] = $_POST['agentInfoTypeEntered'];
+$parameters[':agentName'] = $_POST['outName'];
+
+$parameters[':agentAgency'] = $_POST['outAgency'];
+$parameters[':agentPhone'] = $_POST['outPhone'];
+$parameters[':agentEmail'] = $_POST['outEmail'];
 
 $stmt = $dbConn->prepare($insertSql);
 $stmt->execute($parameters);

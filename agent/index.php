@@ -1585,6 +1585,11 @@ $keys = array_keys($response);
                 var agentInfoTypeEnteredId = $('#agentInfo').val();
                 var agentInfoOther = $('#agentInfoOtherName').val();
 
+                var outSideAgentAgency = $('#outSideAgentAgency').val();
+                var outSideAgentName = coAgentOther;
+                var outSideAgentPhone = $('#outSideAgentPhone').val();
+                var outSideAgentEmail = $('#outSideAgentEmail').val();
+
                 if(coAgentId == "")
                 {
                     coAgentName = coAgentOther;
@@ -1610,7 +1615,8 @@ $keys = array_keys($response);
                 {
                     $.post("../staff/addTransactionStaffInput.php", {userId: agentSelected, address: inputAddress, state: inputState, 
                                                             city: inputCity, zip: inputZip , accDate: accDate, coAgentName: coAgentName, coAgentId: coAgentId, typeEntered: typeEntered,
-                                                            agentInfoId: agentInfoTypeEnteredId ,agentInfoTypeEntered: agentInfoTypeEntered});
+                                                            agentInfoId: agentInfoTypeEnteredId ,agentInfoTypeEntered: agentInfoTypeEntered,
+                                                            outAgency: outSideAgentAgency, outName: outSideAgentName, outPhone: outSideAgentPhone, outEmail: outSideAgentEmail});
                     alert("House In-Contract");
                     location.reload();
                     
@@ -1618,7 +1624,8 @@ $keys = array_keys($response);
                 else if(houseSelected != "" && typeEntered != "" && inputAddress == "" && inputState == "" && inputCity == "" && inputZip == "" && accDate != "")
                 {
                     $.post("../staff/addTransactionStaff.php", {userId: agentSelected, houseId: houseSelected, accDate: accDate, coAgentName: coAgentName, coAgentId: coAgentId,
-                                                                agentInfoId: agentInfoTypeEnteredId, typeEntered: typeEntered, agentInfoTypeEntered: agentInfoTypeEntered});
+                                                                agentInfoId: agentInfoTypeEnteredId, typeEntered: typeEntered, agentInfoTypeEntered: agentInfoTypeEntered,
+                                                            outAgency: outSideAgentAgency, outName: outSideAgentName, outPhone: outSideAgentPhone, outEmail: outSideAgentEmail});
                     alert("House In-Contract");
                     location.reload();
                 }
@@ -1626,6 +1633,8 @@ $keys = array_keys($response);
                 {
                     alert("Choose House from dropdown, input house data, check date, or type of transaction.");
                 }
+
+                
                 
                 
             }
@@ -2377,6 +2386,18 @@ $keys = array_keys($response);
                     $('#agentInfoLabel').text("");
                     $("#agentInfo")[0].selectedIndex = 0;
                     $('#agentInfoOtherName').val("");
+                }
+            }
+
+            function showOutsideAgentDiv()
+            {
+                if($('#coAgentNameOther').val() != "")
+                {
+                    $('#outsideAgentInfoDiv').show();
+                }
+                else
+                {
+                    $('#outsideAgentInfoDiv').hide();
                 }
             }
 

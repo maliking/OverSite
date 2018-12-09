@@ -82,6 +82,7 @@ $keys = array_keys($response);
                         </select>
 
                         <br>
+
                         <div hidden id="agentInfoDiv">
                         <label for="sellBuyAgent" id="agentInfoLabel"></label>
                         <!-- <input type="text" id="coAgentName" value="" placeholder="If applicable"> -->
@@ -119,11 +120,30 @@ $keys = array_keys($response);
                             <option>492 Example Dr.</option> -->
                         </select>
 
-                        <label for="coAgentOther" id="coAgentOther">Other: </label>
-                        <input type="text" id="coAgentNameOther" value="" placeholder="If applicable">
+                        <label for="coAgentOther" id="coAgentOther">Non-In House Agent Name: </label>
+                        <input type="text" id="coAgentNameOther" value="" placeholder="If applicable" onChange="showOutsideAgentDiv()">
 
-                
                         <br>
+                        
+                        <div hidden id="outsideAgentInfoDiv">
+                        <label for="outsideAgent" id="outSideAgentInfo"></label>
+                        
+
+                        <label for="outsideAgentAgencyField" id="outSideAgentAgencyField">Agency: </label>
+                        <input type="text" id="outSideAgentAgency" value="">
+                        <br>
+                       <!--  <label for="outsideAgentNameField" id="outSideAgentNameField">Name: </label>
+                        <input type="text" id="outSideAgentName" value="">
+                        <br> -->
+                        <label for="outsideAgentPhoneField" id="outSideAgentPhoneField">Phone: </label>
+                        <input type="text" id="outSideAgentPhone" value="">
+                        <br>
+                        <label for="outsideAgentEmailField" id="outSideAgentEmailField">Email: </label>
+                        <input type="text" id="outSideAgentEmail" value="">
+
+                    </div>
+
+                    
                         <br>
                         <label for="address">Office Listing:</label>
                         <select class="form-control" id="houseId">
