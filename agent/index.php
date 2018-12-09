@@ -2398,6 +2398,10 @@ $keys = array_keys($response);
                 else
                 {
                     $('#outsideAgentInfoDiv').hide();
+                    var outSideAgentAgency = $('#outSideAgentAgency').val("");
+                    var outSideAgentName = $('#coAgentNameOther').val("");
+                    var outSideAgentPhone = $('#outSideAgentPhone').val("");
+                    var outSideAgentEmail = $('#outSideAgentEmail').val("");
                 }
             }
 
