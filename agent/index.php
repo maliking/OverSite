@@ -2371,6 +2371,13 @@ $keys = array_keys($response);
                     $("#agentInfo")[0].selectedIndex = 0;
                     $('#agentInfoOtherName').val("");
                 }
+                else
+                {
+                    $('#agentInfoDiv').hide();
+                    $('#agentInfoLabel').text("");
+                    $("#agentInfo")[0].selectedIndex = 0;
+                    $('#agentInfoOtherName').val("");
+                }
             }
 
             function filterTransactions(type)

@@ -71,26 +71,7 @@ $keys = array_keys($response);
 
                         <br> -->
 
-                        <label for="coAgent" id="coAgentLabel">Co-Agent Name: </label>
-                        <!-- <input type="text" id="coAgentName" value="" placeholder="If applicable"> -->
-
-                        <select class="form-control" id="coAgentId">
-                            <option value="" id="empty">--None--</option>
-                            <?php
-                            foreach($allAgentResults as $agent)
-                            {
-                                echo "<option value=" . $agent['userId'] . " >" . $agent['firstName'] . " " . $agent['lastName'] . "</option>";
-                            }
-                            ?>
-                            <!-- <option>1234 House St.</option>
-                            <option>492 Example Dr.</option> -->
-                        </select>
-
-                        <label for="coAgentOther" id="coAgentOther">Other: </label>
-                        <input type="text" id="coAgentNameOther" value="" placeholder="If applicable">
-
-                        <br>
-                        <br>
+                        
                         <label for="type">Agency Type:</label>
                         <select class="form-control" id="typeEntered" onchange="displayLabelAgentInfo()">
                             <option value="" id="emptyType">--Select House--</option>
@@ -121,6 +102,27 @@ $keys = array_keys($response);
                         <input type="text" id="agentInfoOtherName" value="" placeholder="If applicable">
                     </div>
 
+                    <br>
+
+                        <label for="coAgent" id="coAgentLabel">Co-Agent Name: </label>
+                        <!-- <input type="text" id="coAgentName" value="" placeholder="If applicable"> -->
+
+                        <select class="form-control" id="coAgentId">
+                            <option value="" id="empty">--None--</option>
+                            <?php
+                            foreach($allAgentResults as $agent)
+                            {
+                                echo "<option value=" . $agent['userId'] . " >" . $agent['firstName'] . " " . $agent['lastName'] . "</option>";
+                            }
+                            ?>
+                            <!-- <option>1234 House St.</option>
+                            <option>492 Example Dr.</option> -->
+                        </select>
+
+                        <label for="coAgentOther" id="coAgentOther">Other: </label>
+                        <input type="text" id="coAgentNameOther" value="" placeholder="If applicable">
+
+                
                         <br>
                         <br>
                         <label for="address">Office Listing:</label>
