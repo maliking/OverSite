@@ -3,6 +3,11 @@ session_start();
 
 require '../databaseConnection.php';
 
+require 'keys/cred.php';
+require '../twilio-php-master/Twilio/autoload.php';
+
+use Twilio\Rest\Client;
+
 $dbConn = getConnection();
 
 
@@ -10,6 +15,8 @@ $transId = $_POST['transId'];
 
 $type = $_POST['type'];
 $date = $_POST['date'];
+
+$statusUpdate = "";
 
 if($type == "emd") 
 {
@@ -19,6 +26,7 @@ if($type == "emd")
 	$namedParameters[':emdDays'] = $date;
 	$dateStmt = $dbConn->prepare($dateSql);
 	$dateStmt->execute($namedParameters);
+	$statusUpdate = "EMD Days";
 }
 else if($type == "seller") 
 {
@@ -28,6 +36,7 @@ else if($type == "seller")
 	$namedParameters[':sellerDiscDays'] = $date;
 	$dateStmt = $dbConn->prepare($dateSql);
 	$dateStmt->execute($namedParameters);
+	$statusUpdate = "Seller Disclosures Days";
 		
 }
 else if($type == "generalInspec") 
@@ -38,6 +47,7 @@ else if($type == "generalInspec")
 	$namedParameters[':genInspecDays'] = $date;
 	$dateStmt = $dbConn->prepare($dateSql);
 	$dateStmt->execute($namedParameters);
+	$statusUpdate = "General Inspection Days";
 }
 else if($type == "appr") 
 {
@@ -47,6 +57,7 @@ else if($type == "appr")
 	$namedParameters[':appraisalDays'] = $date;
 	$dateStmt = $dbConn->prepare($dateSql);
 	$dateStmt->execute($namedParameters);
+	$statusUpdate = "Appraisal Days";
 }
 else if($type == "lc") 
 {
@@ -56,6 +67,7 @@ else if($type == "lc")
 	$namedParameters[':lcDays'] = $date;
 	$dateStmt = $dbConn->prepare($dateSql);
 	$dateStmt->execute($namedParameters);
+	$statusUpdate = "LC Days";
 }
 else if($type == "vpc") 
 {
@@ -74,6 +86,7 @@ else if($type == "coe")
 	$namedParameters[':coeDays'] = $date;
 	$dateStmt = $dbConn->prepare($dateSql);
 	$dateStmt->execute($namedParameters);
+	$statusUpdate = "COE Days";
 }
 
 else if($type == "miscOne")
@@ -103,6 +116,34 @@ else if($type == "signed")
 	$namedParameters[':signedDiscDays'] = $date;
 	$dateStmt = $dbConn->prepare($dateSql);
 	$dateStmt->execute($namedParameters);
+	$statusUpdate = "Signed Disclosures Days";
+}
+
+
+$transInfoSql = "SELECT address FROM transactions WHERE transId = :transId";
+$transParam = array();
+$transParam[':transId'] = $transId;
+
+$transInfoStmt = $dbConn->prepare($transInfoSql);
+$transInfoStmt->execute($transParam);
+
+$transInfoResults = $transInfoStmt->fetch();
+
+
+$sendToNums = array("8312934153", "8312934153");
+$twilio_phone_number = "+18315851661";
+// if($houseId == "89")
+// {
+foreach ($sendToNums as $sendTo) 
+{
+	$client = new Client($sid, $token);
+	$client->messages->create(
+    $sendTo,
+    array(
+        "From" => $twilio_phone_number,
+        "Body" => $transInfoResults['address'] . " " . $statusUpdate . " updated",
+    )
+);
 }
 
 ?>

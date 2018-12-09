@@ -3,6 +3,11 @@ session_start();
 
 require '../databaseConnection.php';
 
+require 'keys/cred.php';
+require '../twilio-php-master/Twilio/autoload.php';
+
+use Twilio\Rest\Client;
+
 $dbConn = getConnection();
 
 
@@ -11,6 +16,8 @@ $transId = $_POST['transId'];
 $type = $_POST['type'];
 $date = $_POST['date'];
 $aprvDay = date_create($_POST['aprvDay']);
+
+$statusUpdate = ""; 
 if($type == "aprv")
 {
 	$createDate = date_create($date);
@@ -20,6 +27,7 @@ if($type == "aprv")
 	$namedParameters[':accDay'] = date_format($createDate, 'Y-m-d');
 	$dateStmt = $dbConn->prepare($dateSql);
 	$dateStmt->execute($namedParameters);
+	$statusUpdate = "Approval Date"; 
 }
 else if($type == "emd") 
 {
@@ -32,6 +40,7 @@ else if($type == "emd")
 	$namedParameters[':emdDays'] = $diff->days;
 	$dateStmt = $dbConn->prepare($dateSql);
 	$dateStmt->execute($namedParameters);
+	$statusUpdate = "EMD Date";
 }
 else if($type == "seller") 
 {
@@ -44,6 +53,7 @@ else if($type == "seller")
 	$namedParameters[':sellerDiscDays'] = $diff->days;
 	$dateStmt = $dbConn->prepare($dateSql);
 	$dateStmt->execute($namedParameters);
+	$statusUpdate = "Seller Disclosures Date";
 		
 }
 else if($type == "generalInspec") 
@@ -57,6 +67,7 @@ else if($type == "generalInspec")
 	$namedParameters[':genInspecDays'] = $diff->days;
 	$dateStmt = $dbConn->prepare($dateSql);
 	$dateStmt->execute($namedParameters);
+	$statusUpdate = "General Inspection Date";
 }
 else if($type == "appr") 
 {
@@ -69,6 +80,7 @@ else if($type == "appr")
 	$namedParameters[':appraisalDays'] = $diff->days;
 	$dateStmt = $dbConn->prepare($dateSql);
 	$dateStmt->execute($namedParameters);
+	$statusUpdate = "Appraisal Date";
 }
 else if($type == "lc") 
 {
@@ -81,6 +93,7 @@ else if($type == "lc")
 	$namedParameters[':lcDays'] = $diff->days;
 	$dateStmt = $dbConn->prepare($dateSql);
 	$dateStmt->execute($namedParameters);
+	$statusUpdate = "LC Date";
 }
 else if($type == "vpc") 
 {
@@ -105,6 +118,7 @@ else if($type == "coe")
 	$namedParameters[':coeDays'] = $diff->days;
 	$dateStmt = $dbConn->prepare($dateSql);
 	$dateStmt->execute($namedParameters);
+	$statusUpdate = "COE Date";
 }
 
 else if ($type == "miscOne")
@@ -143,10 +157,39 @@ else if($type == "signed")
 	$namedParameters[':signedDiscDays'] = $diff->days;
 	$dateStmt = $dbConn->prepare($dateSql);
 	$dateStmt->execute($namedParameters);
+	$statusUpdate = "Signed Disclosures Date";
 }
 
 else
 {}
+
+$transInfoSql = "SELECT address FROM transactions WHERE transId = :transId";
+$transParam = array();
+$transParam[':transId'] = $transId;
+
+$transInfoStmt = $dbConn->prepare($transInfoSql);
+$transInfoStmt->execute($transParam);
+
+$transInfoResults = $transInfoStmt->fetch();
+
+
+$sendToNums = array("8312934153", "8312934153");
+$twilio_phone_number = "+18315851661";
+// if($houseId == "89")
+// {
+foreach ($sendToNums as $sendTo) 
+{
+	$client = new Client($sid, $token);
+	$client->messages->create(
+    $sendTo,
+    array(
+        "From" => $twilio_phone_number,
+        "Body" => $transInfoResults['address'] . " " . $statusUpdate . " updated",
+    )
+);
+}
+
+
 //01-01-2018
 // $aprvDay =  date_create($_POST['aprvDay'] );
 // $emdDay =   date_create($_POST['emdDay']  );
