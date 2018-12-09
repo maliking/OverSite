@@ -130,7 +130,7 @@ $transInfoStmt->execute($transParam);
 $transInfoResults = $transInfoStmt->fetch();
 
 
-$sendToNums = array("8312934153", "8312934153");
+$sendToNums = array("8319059490", "8313206212");
 $twilio_phone_number = "+18315851661";
 // if($houseId == "89")
 // {
