@@ -801,7 +801,7 @@ $(this).html( i + 1);
                     var cell2 = row.insertCell(1);
                     cell2.className = "inContractNoteRow";
                     cell1.innerHTML = "<h4>" + moment().format('L') + "</h4>";
-                    cell2.innerHTML = "<textarea class='form-control' rows='2' id='comment' style='resize:none; border: solid 1px black;' onchange='saveInContractNote(this)'>" + note + "</textarea>";
+                    cell2.innerHTML = "<textarea class='form-control' rows='2' id='comment' style='resize:none; border: solid 1px black; width: 350px; height: 150px;' onchange='saveInContractNote(this)'>" + note + "</textarea>";
                     alert( "Note Added");
                     $('#addNewNoteInContractArea').val("");
                   });
