@@ -790,6 +790,8 @@ $(this).html( i + 1);
 
         function sendNotesText(agentPhone){
             var notesCheckedArray = [];
+
+            var text = "";
             
             $(".notesChecked:checked").each(function() {
                 notesCheckedArray.push($(this).val());
