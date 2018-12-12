@@ -435,6 +435,10 @@ $(this).html( i + 1);
     });
 </script>
 <script>
+    var notesResult;
+
+    var text = "";
+    
 
             function editClientName(id)
             {
@@ -751,18 +755,19 @@ $(this).html( i + 1);
                 $('#transId').html(transId);
                 $.post( "getInContractNotes.php", { transId: transId })
                       .done(function( data ) {
+                        notesResult = JSON.parse(data);
                         var result = JSON.parse(data);
                         var x;
                         var table = document.getElementById("inContractNoteTable");
-                        for(x in result)
+                        for(x in notesResult)
                         {
                             var row = table.insertRow(0);
                             var cell1 = row.insertCell(0);
                             var cell2 = row.insertCell(1);
                             var cell3 = row.insertCell(2);
                             cell2.className = "inContractNoteRow";
-                            cell1.innerHTML = "<h4>" + moment(result[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
-                            cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + result[x].noteId + "' style='resize:none; border: solid 1px black; width: 350px; height: 150px;' onchange='saveInContractNote(this)'>" + result[x].note + "</textarea>";
+                            cell1.innerHTML = "<h4>" + moment(notesResult[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
+                            cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + notesResult[x].noteId + "' style='resize:none; border: solid 1px black; width: 350px; height: 150px;' onchange='saveInContractNote(this)'>" + notesResult[x].note + "</textarea>";
                             cell3.innerHTML = "<input type='checkbox' class='notesChecked' value=" + x + ">";
                             // console.log(result[x].noteId);
                             // console.log(result[x].noteDate);
@@ -790,8 +795,6 @@ $(this).html( i + 1);
 
         function sendNotesText(agentPhone){
             var notesCheckedArray = [];
-
-            var text = "";
             
             $(".notesChecked:checked").each(function() {
                 notesCheckedArray.push($(this).val());
