@@ -759,9 +759,11 @@ $(this).html( i + 1);
                             var row = table.insertRow(0);
                             var cell1 = row.insertCell(0);
                             var cell2 = row.insertCell(1);
+                            var cell3 = row.insertCell(2);
                             cell2.className = "inContractNoteRow";
                             cell1.innerHTML = "<h4>" + moment(result[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
                             cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + result[x].noteId + "' style='resize:none; border: solid 1px black; width: 350px; height: 150px;' onchange='saveInContractNote(this)'>" + result[x].note + "</textarea>";
+                            cell3.innerHTML = "<input type='checkbox' class='notesChecked' value=" + x + ">";
                             // console.log(result[x].noteId);
                             // console.log(result[x].noteDate);
                             // console.log(result[x].note);
@@ -785,6 +787,40 @@ $(this).html( i + 1);
             // }
 
         }
+
+        function sendNotesText(agentPhone){
+            var notesCheckedArray = [];
+            
+            $(".notesChecked:checked").each(function() {
+                notesCheckedArray.push($(this).val());
+            });
+            
+           /*var selected;
+            selected = notesCheckedArray.join(',') ;*/
+
+            var i;
+            for(i in notesCheckedArray){
+                //text = text + notesResult[notesCheckedArray[i]].note;
+                text = text + moment(notesResult[notesCheckedArray[i]].noteDate).format('MM/DD/YYYY h:mma') + "\n";
+                text += notesResult[notesCheckedArray[i]].note + "\n";
+                text += "----- \n";
+            }
+
+            var phone = "+1" + agentPhone;
+            var notesText = "set";
+            
+            if(notesCheckedArray.length > 0){
+                $.post( "sendText.php", { phone: phone , text: text, notesText: notesText })
+                    .done(function( data ) {
+                        alert("Text sent");
+                });
+            }
+            else{
+                alert("No text checkbox was checked!");
+            }
+
+        }
+
         function addNewNoteInContract()
         {
             var transId = $('#transId').html();
