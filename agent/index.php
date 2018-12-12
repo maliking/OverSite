@@ -1120,6 +1120,7 @@ $keys = array_keys($response);
             }
 
             $(document).ready(function() {
+                followUp();
                 $('#calendar').fullCalendar({
 
                     eventSources: [{
@@ -2464,6 +2465,34 @@ $keys = array_keys($response);
                             $(this).show();                        
                     });
                 }
+            }
+
+            function followUp()
+            {
+                var leads;
+                var stringOfLeads = "";
+                $.post( "getFollowUpLeads.php", function( data ) {
+                  // alert( "Data Loaded: " + data );
+                  
+                  leads = JSON.parse(data);
+                    var x;
+                    for(x in leads)
+                    {
+                        stringOfLeads += leads[x].firstName + " " + leads[x].lastName + " " + moment(leads[x].lastContacted).format("MM/DD/YYYY") + "<br>";
+                    }
+                    // console.log(stringOfLeads);
+                    bootbox.alert({ 
+                  size: "small",
+                  title: "Follow Up:",
+                  message: stringOfLeads, 
+                  callback: function(){ /* your callback code */ }
+                })
+
+                });
+                
+
+
+               
             }
         </script>
 
