@@ -810,7 +810,7 @@ $(this).html( i + 1);
             
            /*var selected;
             selected = notesCheckedArray.join(',') ;*/
-            text = "Oversite text from " + $.session.get('userName') + "\n";
+            text = "Oversite text from " + $.session.get('fullName') + "\n";
             var i;
             for(i in notesCheckedArray){
                 //text = text + notesResult[notesCheckedArray[i]].note;
