@@ -779,7 +779,6 @@ $(this).html( i + 1);
                         $.post("getUsersInfo.php", {transId: transId})
                             .done(function(data){
                                 var userResults = JSON.parse(data);
-                                alert(userResults);
                                 agentPhoneNumber = userResults.phone;
                             });
                         
@@ -811,7 +810,7 @@ $(this).html( i + 1);
             
            /*var selected;
             selected = notesCheckedArray.join(',') ;*/
-            text = "";
+            text = "Oversite text from " + $.session.get('userName') + "\n";
             var i;
             for(i in notesCheckedArray){
                 //text = text + notesResult[notesCheckedArray[i]].note;
