@@ -784,7 +784,7 @@ $(this).html( i + 1);
                                 agentPhoneNumber = userResults.phone;
                             });
 
-                        $.post("getAdminaInfo.php", {transId: transId})
+                        $.post("getAdminInfo.php", {transId: transId})
                             .done(function(data){
                                 var userResults = JSON.parse(data);
                                 adminName = userResults;
