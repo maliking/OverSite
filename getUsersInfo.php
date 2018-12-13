@@ -6,7 +6,7 @@ $dbConn = getConnection();
 
 $sql = "SELECT phone FROM transactions LEFT JOIN UsersInfo ON UsersInfo.userId = transactions.userId WHERE transactions.transId = :transId";
 $namedParameters = array();
-$namedParameters[":transId"] = $_SESSION['transId'];
+$namedParameters[":transId"] = $_POST['transId'];
 
 $stmt = $dbConn->prepare($sql);
 $stmt->execute($namedParameters);
