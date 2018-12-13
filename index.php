@@ -811,7 +811,7 @@ $(this).html( i + 1);
             
            /*var selected;
             selected = notesCheckedArray.join(',') ;*/
-
+            text = "";
             var i;
             for(i in notesCheckedArray){
                 //text = text + notesResult[notesCheckedArray[i]].note;
