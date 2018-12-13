@@ -779,6 +779,7 @@ $(this).html( i + 1);
                         $.post("getUsersInfo.php", {transId: transId})
                             .done(function(data){
                                 var userResults = JSON.parse(data);
+                                alert(userResults);
                                 agentPhoneNumber = userResults.phone;
                             });
                         
