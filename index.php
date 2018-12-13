@@ -440,6 +440,8 @@ $(this).html( i + 1);
     var text = "";
 
     var agentPhoneNumber = 0;
+
+    var adminName = "";
     
 
             function editClientName(id)
@@ -781,6 +783,14 @@ $(this).html( i + 1);
                                 var userResults = JSON.parse(data);
                                 agentPhoneNumber = userResults.phone;
                             });
+
+                        $.post("getAdminaInfo.php", {transId: transId})
+                            .done(function(data){
+                                var userResults = JSON.parse(data);
+                                adminName = userResults;
+                                alert(data);
+                                alert(userResults);
+                            });
                         
                       });
 
@@ -810,7 +820,7 @@ $(this).html( i + 1);
             
            /*var selected;
             selected = notesCheckedArray.join(',') ;*/
-            text = "Oversite text from " + $.session.get('fullName') + "\n";
+            text = "Oversite text from " + adminName + "\n";
             var i;
             for(i in notesCheckedArray){
                 //text = text + notesResult[notesCheckedArray[i]].note;
