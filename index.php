@@ -788,8 +788,6 @@ $(this).html( i + 1);
                             .done(function(data){
                                 var userResults = JSON.parse(data);
                                 adminName = userResults;
-                                alert(data);
-                                alert(userResults);
                             });
                         
                       });

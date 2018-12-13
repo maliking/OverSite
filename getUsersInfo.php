@@ -10,7 +10,7 @@ $namedParameters[":transId"] = $_POST['transId'];
 
 $stmt = $dbConn->prepare($sql);
 $stmt->execute($namedParameters);
-$results = $stmt->fetchAll();
+$results = $stmt->fetch();
 
 echo json_encode($results);
 
