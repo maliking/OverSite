@@ -753,8 +753,6 @@ $(this).html( i + 1);
             $('#transId').html('');
                 $('#addNewNoteInContractArea').val('');
                 $("#inContractNoteTable").empty();
-                agentPhoneNumber = $("#agentPhoneNumber").val().text();
-                alert( agentPhoneNumber );
                 //populate data
                 $('#transId').html(transId);
                 $.post( "getInContractNotes.php", { transId: transId })
@@ -778,11 +776,11 @@ $(this).html( i + 1);
                             // console.log(result[x].note);
                             agentUserId = notesResult[x].userId;
                         }
-                        /*$.post("getUsersInfo.php", {userId: agentUserId})
+                        $.post("getUsersInfo.php", {transId: transId})
                             .done(function(data){
                                 var userResults = JSON.parse(data);
                                 agentPhoneNumber = userResults.phone;
-                            });*/
+                            });
                         
                       });
 

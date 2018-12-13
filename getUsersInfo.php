@@ -4,9 +4,9 @@ session_start();
 require 'databaseConnection.php';
 $dbConn = getConnection();
 
-$sql = "SELECT phone FROM UsersInfo WHERE userId = :userId";
+$sql = "SELECT phone FROM transactions LEFT JOIN UsersInfo ON UsersInfo.userId = transactions.userId WHERE transactions.transId = :transId";
 $namedParameters = array();
-$namedParameters[":userId"] = $_SESSION['userId'];
+$namedParameters[":transId"] = $_SESSION['transId'];
 
 $stmt = $dbConn->prepare($sql);
 $stmt->execute($namedParameters);
