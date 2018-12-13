@@ -825,7 +825,6 @@ $(this).html( i + 1);
                 text = text + moment(notesResult[notesCheckedArray[i]].noteDate).format('MM/DD/YYYY h:mma') + "\n";
                 text += notesResult[notesCheckedArray[i]].note + "\n";
                 text += "----- \n";
-                text += agentPhoneNumber;
             }
 
             var phone = "+1" + agentPhone;
