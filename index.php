@@ -809,7 +809,7 @@ $(this).html( i + 1);
 
         }
 
-        function sendNotesText(agentPhone){
+        function sendNotesText(){
             var notesCheckedArray = [];
             
             $(".notesChecked:checked").each(function() {
@@ -827,7 +827,7 @@ $(this).html( i + 1);
                 text += "----- \n";
             }
 
-            var phone = "+1" + agentPhone;
+            var phone = "+1" + agentPhoneNumber;
             var notesText = "set";
             
             if(notesCheckedArray.length > 0){
