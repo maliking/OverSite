@@ -438,6 +438,8 @@ $(this).html( i + 1);
     var notesResult;
 
     var text = "";
+
+    var agentPhoneNumber;
     
 
             function editClientName(id)
@@ -772,6 +774,7 @@ $(this).html( i + 1);
                             // console.log(result[x].noteId);
                             // console.log(result[x].noteDate);
                             // console.log(result[x].note);
+                            agentPhoneNumber = notesResult[x].userId;
                         }
                         
                       });
@@ -809,6 +812,7 @@ $(this).html( i + 1);
                 text = text + moment(notesResult[notesCheckedArray[i]].noteDate).format('MM/DD/YYYY h:mma') + "\n";
                 text += notesResult[notesCheckedArray[i]].note + "\n";
                 text += "----- \n";
+                text += agentPhoneNumber;
             }
 
             var phone = "+1" + agentPhone;
