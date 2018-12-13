@@ -777,7 +777,7 @@ $(this).html( i + 1);
                             // console.log(result[x].note);
                             agentUserId = notesResult[x].userId;
                         }
-                        $.post("getUsersInfo.php", {userId: userId})
+                        $.post("getUsersInfo.php", {userId: agentUserId})
                             .done(function(data){
                                 var userResults = JSON.parse(data);
                                 agentPhoneNumber = userResults.phone;
