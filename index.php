@@ -780,11 +780,7 @@ $(this).html( i + 1);
                         $.post("getUsersInfo.php", {userId: userId})
                             .done(function(data){
                                 var userResults = JSON.parse(data);
-                                var x;
-                                for(x in userResults)
-                                {
-                                    agentPhoneNumber = userResults[x].phone;
-                                }
+                                agentPhoneNumber = userResults.phone;
                             });
                         
                       });
