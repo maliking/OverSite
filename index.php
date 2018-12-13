@@ -753,7 +753,7 @@ $(this).html( i + 1);
             $('#transId').html('');
                 $('#addNewNoteInContractArea').val('');
                 $("#inContractNoteTable").empty();
-                agentPhoneNumber = $("#agentPhoneNumber").val();
+                agentPhoneNumber = $("#agentPhoneNumber").val().text();
                 alert( agentPhoneNumber );
                 //populate data
                 $('#transId').html(transId);
