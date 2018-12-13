@@ -439,7 +439,7 @@ $(this).html( i + 1);
 
     var text = "";
 
-    var agentPhoneNumber;
+    var agentPhoneNumber = 0;
     
 
             function editClientName(id)
@@ -749,6 +749,7 @@ $(this).html( i + 1);
 
         function takeTransNote(transId)
         {
+            var agentUserId = 0;
             $('#transId').html('');
                 $('#addNewNoteInContractArea').val('');
                 $("#inContractNoteTable").empty();
@@ -774,8 +775,17 @@ $(this).html( i + 1);
                             // console.log(result[x].noteId);
                             // console.log(result[x].noteDate);
                             // console.log(result[x].note);
-                            agentPhoneNumber = notesResult[x].userId;
+                            agentUserId = notesResult[x].userId;
                         }
+                        $.post("getUsersInfo.php", {userId: userId})
+                            .done(function(data){
+                                var userResults = JSON.parse(data);
+                                var x;
+                                for(x in userResults)
+                                {
+                                    agentPhoneNumber = userResults[x].phone;
+                                }
+                            });
                         
                       });
 
