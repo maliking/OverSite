@@ -21,6 +21,7 @@
                                             <th></th>
                                             <th>Type</th>
                                             <th>Agent</th>
+                                            <th>Agent Phone</th>
                                             <th>Co-Agent</th>
                                             <th>Client</th>
                                             <th>Client 2</th>
@@ -127,7 +128,8 @@
                                                 echo $inContrType;
                                                 echo '</td>';
                                                     // echo '<td></td>';
-                                                echo '<td>' . $trans['fName'] . " " .$trans['lName'] . $secAgent;
+                                                echo '<td >' . $trans['fName'] . " " .$trans['lName'] . $secAgent;
+                                                    echo '<td id="agentPhoneNumber">'.$trans['phone'].'</td>';
                                                     echo '<td></td>';
                                                     echo '<td></td>';
                                                     echo '<td></td>';

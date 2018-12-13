@@ -50,7 +50,7 @@ $stmtInContractCount = $dbConnInContract->prepare($inContractCountSql);
 $stmtInContractCount->execute();
 $inContractCountResult = $stmtInContractCount->fetch();
 
-$sqlTransactions = "SELECT transactions.*, UsersInfo.firstName as fName, UsersInfo.lastName as lName, ADDDATE(transactions.coeOrgDate,transactions.coeDays) AS coeDueDate FROM transactions LEFT JOIN UsersInfo ON UsersInfo.userId = transactions.userId WHERE transactions.junk != \"junk\" ORDER BY coeDueDate ASC";
+$sqlTransactions = "SELECT phone, transactions.*, UsersInfo.firstName as fName, UsersInfo.lastName as lName, ADDDATE(transactions.coeOrgDate,transactions.coeDays) AS coeDueDate FROM transactions LEFT JOIN UsersInfo ON UsersInfo.userId = transactions.userId WHERE transactions.junk != \"junk\" ORDER BY coeDueDate ASC";
 $transParameters = array();
 $transParameters[':userId'] = $_SESSION['userId'];
 $transStmt = $dbConn->prepare($sqlTransactions);
@@ -753,7 +753,8 @@ $(this).html( i + 1);
             $('#transId').html('');
                 $('#addNewNoteInContractArea').val('');
                 $("#inContractNoteTable").empty();
-
+                agentPhoneNumber = $("#agentPhoneNumber").val;
+                alert( agentPhoneNumber );
                 //populate data
                 $('#transId').html(transId);
                 $.post( "getInContractNotes.php", { transId: transId })
@@ -777,11 +778,11 @@ $(this).html( i + 1);
                             // console.log(result[x].note);
                             agentUserId = notesResult[x].userId;
                         }
-                        $.post("getUsersInfo.php", {userId: agentUserId})
+                        /*$.post("getUsersInfo.php", {userId: agentUserId})
                             .done(function(data){
                                 var userResults = JSON.parse(data);
                                 agentPhoneNumber = userResults.phone;
-                            });
+                            });*/
                         
                       });
 
