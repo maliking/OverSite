@@ -127,7 +127,8 @@
                                                 echo $inContrType;
                                                 echo '</td>';
                                                     // echo '<td></td>';
-                                                echo '<td>' . $trans['fName'] . " " .$trans['lName'] . $secAgent;
+                                                echo '<td >' . $trans['fName'] . " " .$trans['lName'] . $secAgent;
+                                                    echo '<span id="agentPhoneNumber" value="'.$trans['phone'].'"></span>';
                                                     echo '<td></td>';
                                                     echo '<td></td>';
                                                     echo '<td></td>';

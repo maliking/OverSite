@@ -2109,6 +2109,7 @@ $keys = array_keys($response);
                 $(".notesChecked:checked").each(function() {
                     notesCheckedArray.push($(this).val());
                 });
+                text = "";
                 
                /*var selected;
                 selected = notesCheckedArray.join(',') ;*/

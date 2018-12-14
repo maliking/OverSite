@@ -18,6 +18,7 @@
       <div class="modal-footer" style="border-top: solid 2px black">
         <textarea class="form-control" rows="2" id="addNewNoteInContractArea" style="resize:none;" placeholder="Add new note"></textarea>
       </br>
+        <?php echo '<td><button type="button" class="btn btn-default" onClick=sendNotesText("8312934153")>Text Notes</button></td>'; ?>
         <button type="button" class="btn btn-default" onClick="addNewNoteInContract()">Add</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>

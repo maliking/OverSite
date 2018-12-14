@@ -30,7 +30,7 @@ else if (empty($result)) {
 } 
 
 else {
-
+    $_SESSION['fullName'] = $result['firstName'] . " " . $result['lastName'];
     $_SESSION['userId'] = $result['userId'];
     $_SESSION['phone'] = $result['phone'];
     $_SESSION['username'] = $result['username'];

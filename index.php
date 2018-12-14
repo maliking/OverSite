@@ -50,7 +50,7 @@ $stmtInContractCount = $dbConnInContract->prepare($inContractCountSql);
 $stmtInContractCount->execute();
 $inContractCountResult = $stmtInContractCount->fetch();
 
-$sqlTransactions = "SELECT transactions.*, UsersInfo.firstName as fName, UsersInfo.lastName as lName, ADDDATE(transactions.coeOrgDate,transactions.coeDays) AS coeDueDate FROM transactions LEFT JOIN UsersInfo ON UsersInfo.userId = transactions.userId WHERE transactions.junk != \"junk\" ORDER BY coeDueDate ASC";
+$sqlTransactions = "SELECT phone, transactions.*, UsersInfo.firstName as fName, UsersInfo.lastName as lName, ADDDATE(transactions.coeOrgDate,transactions.coeDays) AS coeDueDate FROM transactions LEFT JOIN UsersInfo ON UsersInfo.userId = transactions.userId WHERE transactions.junk != \"junk\" ORDER BY coeDueDate ASC";
 $transParameters = array();
 $transParameters[':userId'] = $_SESSION['userId'];
 $transStmt = $dbConn->prepare($sqlTransactions);
@@ -435,6 +435,14 @@ $(this).html( i + 1);
     });
 </script>
 <script>
+    var notesResult;
+
+    var text = "";
+
+    var agentPhoneNumber = 0;
+
+    var adminName = "";
+    
 
             function editClientName(id)
             {
@@ -743,29 +751,44 @@ $(this).html( i + 1);
 
         function takeTransNote(transId)
         {
+            var agentUserId = 0;
             $('#transId').html('');
                 $('#addNewNoteInContractArea').val('');
                 $("#inContractNoteTable").empty();
-
                 //populate data
                 $('#transId').html(transId);
                 $.post( "getInContractNotes.php", { transId: transId })
                       .done(function( data ) {
+                        notesResult = JSON.parse(data);
                         var result = JSON.parse(data);
                         var x;
                         var table = document.getElementById("inContractNoteTable");
-                        for(x in result)
+                        for(x in notesResult)
                         {
                             var row = table.insertRow(0);
                             var cell1 = row.insertCell(0);
                             var cell2 = row.insertCell(1);
+                            var cell3 = row.insertCell(2);
                             cell2.className = "inContractNoteRow";
-                            cell1.innerHTML = "<h4>" + moment(result[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
-                            cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + result[x].noteId + "' style='resize:none; border: solid 1px black; width: 350px; height: 150px;' onchange='saveInContractNote(this)'>" + result[x].note + "</textarea>";
+                            cell1.innerHTML = "<h4>" + moment(notesResult[x].noteDate).format('MM/DD/YYYY h:mma')+ "</h4>";
+                            cell2.innerHTML = "<textarea class='form-control' rows='2' id='note" + notesResult[x].noteId + "' style='resize:none; border: solid 1px black; width: 350px; height: 150px;' onchange='saveInContractNote(this)'>" + notesResult[x].note + "</textarea>";
+                            cell3.innerHTML = "<input type='checkbox' class='notesChecked' value=" + x + ">";
                             // console.log(result[x].noteId);
                             // console.log(result[x].noteDate);
                             // console.log(result[x].note);
+                            agentUserId = notesResult[x].userId;
                         }
+                        $.post("getUsersInfo.php", {transId: transId})
+                            .done(function(data){
+                                var userResults = JSON.parse(data);
+                                agentPhoneNumber = userResults.phone;
+                            });
+
+                        $.post("getAdminInfo.php", {transId: transId})
+                            .done(function(data){
+                                var userResults = JSON.parse(data);
+                                adminName = userResults;
+                            });
                         
                       });
 
@@ -785,6 +808,40 @@ $(this).html( i + 1);
             // }
 
         }
+
+        function sendNotesText(){
+            var notesCheckedArray = [];
+            
+            $(".notesChecked:checked").each(function() {
+                notesCheckedArray.push($(this).val());
+            });
+            
+           /*var selected;
+            selected = notesCheckedArray.join(',') ;*/
+            text = "Oversite text from " + adminName + "\n";
+            var i;
+            for(i in notesCheckedArray){
+                //text = text + notesResult[notesCheckedArray[i]].note;
+                text = text + moment(notesResult[notesCheckedArray[i]].noteDate).format('MM/DD/YYYY h:mma') + "\n";
+                text += notesResult[notesCheckedArray[i]].note + "\n";
+                text += "----- \n";
+            }
+
+            var phone = "+1" + agentPhoneNumber;
+            var notesText = "set";
+            
+            if(notesCheckedArray.length > 0){
+                $.post( "sendText.php", { phone: phone , text: text, notesText: notesText })
+                    .done(function( data ) {
+                        alert("Text sent");
+                });
+            }
+            else{
+                alert("No text checkbox was checked!");
+            }
+
+        }
+
         function addNewNoteInContract()
         {
             var transId = $('#transId').html();
@@ -801,7 +858,7 @@ $(this).html( i + 1);
                     var cell2 = row.insertCell(1);
                     cell2.className = "inContractNoteRow";
                     cell1.innerHTML = "<h4>" + moment().format('L') + "</h4>";
-                    cell2.innerHTML = "<textarea class='form-control' rows='2' id='comment' style='resize:none; border: solid 1px black;' onchange='saveInContractNote(this)'>" + note + "</textarea>";
+                    cell2.innerHTML = "<textarea class='form-control' rows='2' id='comment' style='resize:none; border: solid 1px black; width: 350px; height: 150px;' onchange='saveInContractNote(this)'>" + note + "</textarea>";
                     alert( "Note Added");
                     $('#addNewNoteInContractArea').val("");
                   });
