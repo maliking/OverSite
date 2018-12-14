@@ -74,7 +74,7 @@ $parameters[':agentPhone'] = $_POST['outPhone'];
 $parameters[':agentEmail'] = $_POST['outEmail'];
 
 $stmt = $dbConn->prepare($insertSql);
-$stmt->execute($parameters);
+// $stmt->execute($parameters);
 
 
 // foreach ($numbersToSend as $number)
