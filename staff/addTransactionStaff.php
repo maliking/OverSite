@@ -31,10 +31,11 @@ $twentyFiveDay = dateVerify(25);
 $thirtyDay = dateVerify(30);
 
 
-$insertSql = "INSERT INTO transactions(houseId, userId, coAgent, address, transType, clientName, clientNum, agentId ,agentName, coAgentId, accDay, emdDays,
+$insertSql = "INSERT INTO transactions(houseId, userId, coAgent, address, transType, clientName, clientNum, agentId , agentAgency, agentName,
+						 agentPhone, agentEmail, coAgentId, accDay, emdDays,
 						 sellerDiscDays, buyerDiscDays, signedDiscDays, genInspecDays, termiteInspecDays, septicInspecDays, waterInspecDays, 
 						 appraisalDays, apprOrdered, apprComp, lcDays, vpcDays, coeDays, coeOrgDate, notes) 
-VALUES (:houseId, :userId, :coAgent, :address, :transType, :clientName, :clientNum, :agentId ,:agentName, :coAgentId, :accDay, :emdDays, :sellerDiscDays, :buyerDiscDays, :signedDiscDays, :genInspecDays, :termiteInspecDays, 
+VALUES (:houseId, :userId, :coAgent, :address, :transType, :clientName, :clientNum, :agentId , :agentAgency, :agentName, :agentPhone, :agentEmail, :coAgentId, :accDay, :emdDays, :sellerDiscDays, :buyerDiscDays, :signedDiscDays, :genInspecDays, :termiteInspecDays, 
 	:septicInspecDays, :waterInspecDays, :appraisalDays, :apprOrdered, :apprComp, :lcDays, :vpcDays, :coeDays, :coeOrgDate, :notes)";
 
 $parameters = array();

@@ -1566,36 +1566,36 @@ $keys = array_keys($response);
 
             function addNewTransaction()
             {
-                var houseSelected = $('#houseId').children(":selected").attr("value");   
-                var agentSelected = $('#agentName').text();
-                var accDate = $('#newAccDate').val();
+                var houseSelected = $('#houseId').children(":selected").attr("value"); // selected in house lisitng
+                var agentSelected = $('#agentName').text(); // ID of the current agent logged in
+                var accDate = $('#newAccDate').val(); // date in contract 
 
-                var inputAddress = $('#inputAddress').val();
-                var inputCity = $('#inputCity').val();
-                var inputState = $('#inputState').val();
-                var inputZip = $('#inputZip').val();
+                var inputAddress = $('#inputAddress').val(); // manual input address
+                var inputCity = $('#inputCity').val(); // manual input address
+                var inputState = $('#inputState').val(); // manual input address
+                var inputZip = $('#inputZip').val(); // manual input address
 
-                var coAgentName = $('#coAgentId option:selected').text();
-                var coAgentId = $('#coAgentId').val();
-                var coAgentOther = $('#coAgentNameOther').val();
+                var coAgentName = $('#coAgentId option:selected').text(); // in house co agent name
+                var coAgentId = $('#coAgentId').val(); // in house co agent ID
+                var coAgentOther = $('#coAgentNameOther').val(); // non in house co agent name
                 // alert(coAgentName);
                 // alert(coAgentId);
 
-                var typeEntered = $('#typeEntered').val();
-                var agentInfoTypeEntered = $('#agentInfo option:selected').text();
-                var agentInfoTypeEnteredId = $('#agentInfo').val();
-                var agentInfoOther = $('#agentInfoOtherName').val();
+                var typeEntered = $('#typeEntered').val(); // Agency type; Seller, Buyer, Dual
+                var agentInfoTypeEntered = $('#agentInfo option:selected').text();// Name of in house agent that is under seller or buyer
+                var agentInfoTypeEnteredId = $('#agentInfo').val(); // ID of in house agent that is under seller or buyer
+                var agentInfoOther = $('#agentInfoOtherName').val(); // name of non in house that is under seller or buyer
 
-                var outSideAgentAgency = $('#outSideAgentAgency').val();
+                var outSideAgentAgency = $('#outSideAgentAgency').val(); // non in house agent agency
                 var outSideAgentName = coAgentOther;
-                var outSideAgentPhone = $('#outSideAgentPhone').val();
-                var outSideAgentEmail = $('#outSideAgentEmail').val();
+                var outSideAgentPhone = $('#outSideAgentPhone').val(); // non in house agent phone
+                var outSideAgentEmail = $('#outSideAgentEmail').val(); // non in house agent email
 
-                if(coAgentId == "")
+                if(coAgentId == "" && coAgentOther != "")
                 {
                     coAgentName = coAgentOther;
                 }
-                if(agentInfoTypeEnteredId == "")
+                if(agentInfoTypeEnteredId == "" && agentInfoOther != "")
                 {
                     agentInfoTypeEntered = agentInfoOther;
                 }
@@ -1604,13 +1604,15 @@ $keys = array_keys($response);
                 // alert(agentSelected);
 
                 // alert(houseSelected);
-                if(coAgentName != "" && coAgentOther != "")
+                if(coAgentName != "" && coAgentOther != "" )
                 {
-                    alert("Choose House from dropdown, input house data, check date, co-agent, or agency type of transaction.");
+                    // alert("Choose House from dropdown, input house data, check date, co-agent, or agency type of transaction.");
+                    alert("In house and non-in house co-agent fields where filled. Remove one.");
                 }
                 else if(agentInfoTypeEntered != "" && agentInfoOther != "")
                 {
-                    alert("Choose House from dropdown, input house data, check date, co-agent, or agency type of transaction.");
+                    // alert("Choose House from dropdown, input house data, check date, co-agent, or agency type of transaction.");
+                    alert("In house and non-in house Seller/Buyer fields where filled. Remove one.");
                 }
                 else if(houseSelected == "" && inputAddress != "" && inputState != "" && inputCity != "" && inputZip != "" && accDate != "" && typeEntered != "")
                 {
@@ -1632,7 +1634,8 @@ $keys = array_keys($response);
                 }
                 else
                 {
-                    alert("Choose House from dropdown, input house data, check date, or type of transaction.");
+                    // alert("Choose House from dropdown, input house data, check date, or type of transaction.");
+                    alert("New Transaction could not be saved");
                 }
 
                 
