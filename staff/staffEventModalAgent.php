@@ -183,7 +183,7 @@ $keys = array_keys($response);
 
             </div>
             <div class="modal-footer">
-                <button type="button" role="button" id="resetButton" class="btn btn-success btn-block" data-dismiss="modal" onClick="addNewTransaction()" >Submit</button>
+                <button type="button" role="button" id="resetButton" class="btn btn-success btn-block" onClick="addNewTransaction()" >Submit</button>
             </div>
         </div>
     </div>
