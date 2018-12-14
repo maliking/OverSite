@@ -1120,7 +1120,7 @@ $keys = array_keys($response);
             }
 
             $(document).ready(function() {
-                followUp();
+                // followUp();
                 $('#calendar').fullCalendar({
 
                     eventSources: [{
