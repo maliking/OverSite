@@ -1972,6 +1972,22 @@ $keys = array_keys($response);
                       });
                 }
             }
+            function editCoAgentInfo(type, id)
+            {
+                var input = prompt("Enter new agent" + type);
+                if(input != null && input != "")
+                {
+                    $.post("editCoAgentInfo.php", {
+                            type: type,
+                            id: id,
+                            newData: input
+                        })
+                    .done(function( data ) {
+                            alert( "Data updated");
+                            $('#agent'+type+id).html(input);
+                      });
+                }
+            }
             function editProperty(id)
             {
                 var input = prompt("Enter new property address: ");
