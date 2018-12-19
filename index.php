@@ -1005,7 +1005,7 @@ function addNewTransaction()
                         })
                     .done(function( data ) {
                             alert( "Data updated");
-                            $('#agent'+type+id).html(input);
+                            $('#coAgent'+type+id).html(input);
                       });
                 }
             }
