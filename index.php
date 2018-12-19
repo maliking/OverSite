@@ -1116,6 +1116,11 @@ function addNewTransaction()
 
             function displayLabelAgentInfo()
             {
+                $('#houseId > option').each(function() {
+                        
+                    $(this).attr("disabled", false);
+                       
+                    });
                 // alert($('#typeEntered').val());
                 if($('#typeEntered').val() == "buyer")
                 {
@@ -1130,6 +1135,15 @@ function addNewTransaction()
                     $('#agentInfoLabel').text("Enter Buyer agent Name");
                     $("#agentInfo")[0].selectedIndex = 0;
                     $('#agentInfoOtherName').val("");
+
+                    $('#houseId > option').each(function() {
+                        if($(this).attr('id') != $("#agentName").children(":selected").attr("id") && $(this).val() != "")
+                        {
+                            $(this).attr("disabled", true);
+                        }
+                        // alert($(this).text() + ' ' + $(this).val());
+                    });
+
                 }
                 else if($('#typeEntered').val() == "dual")
                 {
@@ -1138,8 +1152,31 @@ function addNewTransaction()
                     $("#agentInfo")[0].selectedIndex = 0;
                     $('#agentInfoOtherName').val("");
                 }
+                else
+                {
+                    $('#agentInfoDiv').hide();
+                    $('#agentInfoLabel').text("");
+                    $("#agentInfo")[0].selectedIndex = 0;
+                    $('#agentInfoOtherName').val("");
+                }
             }
             
+            function showOutsideAgentDiv()
+            {
+                if($('#coAgentNameOther').val() != "")
+                {
+                    $('#outsideAgentInfoDiv').show();
+                }
+                else
+                {
+                    $('#outsideAgentInfoDiv').hide();
+                    var outSideAgentAgency = $('#outSideAgentAgency').val("");
+                    var outSideAgentName = $('#coAgentNameOther').val("");
+                    var outSideAgentPhone = $('#outSideAgentPhone').val("");
+                    var outSideAgentEmail = $('#outSideAgentEmail').val("");
+                }
+            }
+
             function filterTransactions(type)
             {
                 // var count

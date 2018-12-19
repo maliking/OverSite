@@ -3,12 +3,19 @@
 // require("../databaseConnection.php");
 // $dbConn = getConnection();
 
-$allAgentsSql = "SELECT firstName, lastName, userId FROM UsersInfo WHERE userId != :userId AND userType != \"0\" ";
+$allAgentsSql = "SELECT firstName, lastName, userId, mlsId FROM UsersInfo WHERE userId != :userId AND userType != \"0\" ";
 $allAgentParam = array();
 $allAgentParam['userId'] = $_SESSION['userId'];
 $allAgentStmt = $dbConn->prepare($allAgentsSql);
 $allAgentStmt->execute($allAgentParam);
 $allAgentResults = $allAgentStmt->fetchAll();
+
+$agentMls = "SELECT firstName, lastName, userId, mlsId FROM UsersInfo WHERE userId = :userId";
+$agentMlsParam = array();
+$agentMlsParam['userId'] = $_SESSION['userId'];
+$agentMlsStmt = $dbConn->prepare($agentMls);
+$agentMlsStmt->execute($agentMlsParam);
+$agentMlsRes = $agentMlsStmt->fetch();
 
 $url = 'https://api.idxbroker.com/clients/featured';
 
@@ -56,6 +63,7 @@ $keys = array_keys($response);
                 <form>
                     <div class="form-group">
                         <p hidden id="agentName"><?php echo $_SESSION['userId']; ?></p>
+                        <p hidden id="agentMlsId"><?php echo $agentMlsRes['mlsId']; ?></p>
                        <!--  <label for="agent">Agent:</label>
                         <select class="form-control" id="agentName" onChange="hideHouses()">
                             <option value="">--Select Agent--</option>

@@ -2379,6 +2379,10 @@ $keys = array_keys($response);
 
             function displayLabelAgentInfo()
             {
+                $('#houseId > option').each(function() {
+                        
+                    $(this).attr("disabled", false);
+                });
                 // alert($('#typeEntered').val());
                 if($('#typeEntered').val() == "buyer")
                 {
@@ -2393,6 +2397,12 @@ $keys = array_keys($response);
                     $('#agentInfoLabel').text("Enter Buyer agent Name");
                     $("#agentInfo")[0].selectedIndex = 0;
                     $('#agentInfoOtherName').val("");
+                    $('#houseId > option').each(function() {
+                        if($(this).attr('id') != ("agent" + $("#agentMlsId").text()) && $(this).val() != "")
+                        {
+                            $(this).attr("disabled", true);
+                        }
+                    });
                 }
                 else if($('#typeEntered').val() == "dual")
                 {
