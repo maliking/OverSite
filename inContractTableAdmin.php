@@ -199,6 +199,7 @@
                                             <td id=lendorName' . $trans['transId'] . ' ondblclick=editLendorInfo("Name",' . $trans['transId']  . ') >' . $trans['lendorName'] . '</td>
                                             <td id=escrowName' . $trans['transId'] . ' ondblclick=editEscrowInfo("Name",' . $trans['transId']  . ') >' . $trans['escrowName'] . '</td>
                                             <td id=agentName' . $trans['transId'] . ' ondblclick=editAgentInfo("Name",' . $trans['transId']  . ') >' . $trans['agentName'] . '</td>
+                                            <td id=coAgentName' . $trans['transId'] . ' ondblclick=editCoAgentInfo("Name",' . $trans['transId']  . ') >' . $trans['coAgent'] . '</td>
                                             </tr>
                                             <tr>
                                             <td><b>Phone</b></td>
@@ -207,6 +208,7 @@
                                             <td id=lendorNum' . $trans['transId'] . ' ondblclick=editLendorInfo("Num",' . $trans['transId']  . ') >' . $trans['lendorNum'] . '</td>
                                             <td id=escrowNum' . $trans['transId'] . ' ondblclick=editEscrowInfo("Num",' . $trans['transId']  . ') >' . $trans['escrowNum'] . '</td>
                                             <td id=agentNum' . $trans['transId'] . ' ondblclick=editAgentInfo("Num",' . $trans['transId']  . ') >' . $trans['agentNum'] . '</td>
+                                            <td id=coAgentNum' . $trans['transId'] . ' ondblclick=editCoAgentInfo("Num",' . $trans['transId']  . ') >' . $trans['coAgentNum'] . '</td>
                                             </tr>
                                             <tr>
                                             <td><b>Email</b></td>
@@ -215,6 +217,7 @@
                                             <td id=lendorEmail' . $trans['transId'] . ' ondblclick=editLendorInfo("Email",' . $trans['transId']  . ') >' . $trans['lendorEmail'] . '</td>
                                             <td id=escrowEmail' . $trans['transId'] . ' ondblclick=editEscrowInfo("Email",' . $trans['transId']  . ') >' . $trans['escrowEmail'] . '</td>
                                             <td id=agentEmail' . $trans['transId'] . ' ondblclick=editAgentInfo("Email",' . $trans['transId']  . ') >' . $trans['agentEmail'] . '</td>
+                                            <td id=coAgentEmail' . $trans['transId'] . ' ondblclick=editCoAgentInfo("Email",' . $trans['transId']  . ') >' . $trans['coAgentEmail'] . '</td>
                                             </tr>
                                             
                                             </table></td>';
