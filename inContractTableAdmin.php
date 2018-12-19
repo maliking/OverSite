@@ -181,7 +181,7 @@
                                             echo '<td class=clientName'. $trans['transId'] . ' ondblclick="editClientName(' . $trans['transId'] . ')">' . $trans['clientName'] . '</td>';
                                             echo '<td class=clientTwoName'. $trans['transId'] . ' ondblclick="editClientTwoName(' . $trans['transId'] . ')">' . $trans['clientTwoName'] . '</td>';
                                             echo '<td id=propertyAddress'. $trans['transId'] . ' ondblclick="editProperty(' . $trans['transId'] . ')">' . $trans['address'] . '</td>';
-                                            
+                                            // <button style="font-size:24px; background:none; border:none; margin:0; padding:0; cursor: pointer; font-color: green;"><i class="fa fa-arrow-circle-o-right"></i></button>
                                             echo '<td><table border="1">
                                           
                                             <tr>
@@ -190,7 +190,8 @@
                                             <td><b>Client 2</b></td>
                                             <td><b>Lender</b></td>
                                             <td><b>Escrow</b></td>
-                                            <td><b>Agent</b><button style="font-size:24px; background:none; border:none; margin:0; padding:0; cursor: pointer; font-color: green;"><i class="fa fa-arrow-circle-o-right"></i></button></td>
+                                            <td><b>Agent</b></td>
+                                            <td><b>Co-Agent</b></td>
                                             </tr>
                                             <tr>
                                             <td><b>Name</b></td>
