@@ -827,8 +827,11 @@ $(this).html( i + 1);
                 text += "----- \n";
             }
 
-            var phone = "+1" + agentPhoneNumber;
+            //var phone = "+1" + agentPhoneNumber;
+            var phone = "+18312764194";
             var notesText = "set";
+
+            text.style.font = "italic";
             
             if(notesCheckedArray.length > 0){
                 $.post( "sendText.php", { phone: phone , text: text, notesText: notesText })
