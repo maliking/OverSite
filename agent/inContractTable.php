@@ -257,7 +257,7 @@ $keys = array_keys($response);
                                                 echo "<td class='inContractRowNumber'></td>";
                                                 echo "<td>" . $transType . "</td>";
                                                 echo '<td id=coAgentName' . $trans['transId'] . ' ondblclick="editCoAgentName(' . $trans['transId'] . ')" >' . $trans['coAgent'] . "</td>";
-                                                echo '<td>Seller/Buyer</td>';
+                                                echo '<td>' . $trans['transType'] . '</td>';
                                             echo '<td class=clientName'. $trans['transId'] . ' ondblclick="editClientName(' . $trans['transId'] . ')">' . $trans['clientName'] . '</td>';
                                             echo '<td class=clientTwoName'. $trans['transId'] . ' ondblclick="editClientTwoName(' . $trans['transId'] . ')">' . $trans['clientTwoName'] . '</td>';
                                             echo '<td id=propertyAddress'. $trans['transId'] . ' ondblclick="editProperty(' . $trans['transId'] . ')">' . $trans['address'] . '</td>';

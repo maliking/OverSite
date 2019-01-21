@@ -903,11 +903,11 @@ function addNewTransaction()
                 var agentInfoTypeEnteredId = $('#agentInfo').val();
                 var agentInfoOther = $('#agentInfoOtherName').val();
 
-                if(coAgentId == "")
+                if(coAgentId == "" && coAgentOther != "")
                 {
                     coAgentName = coAgentOther;
                 }
-                if(agentInfoTypeEnteredId == "")
+                if(agentInfoTypeEnteredId == "" && agentInfoOther != "")
                 {
                     agentInfoTypeEntered = agentInfoOther;
                 }
@@ -916,11 +916,11 @@ function addNewTransaction()
                 // alert(agentSelected);
 
                 // alert(houseSelected);
-                if(coAgentName != "" && coAgentOther != "")
+                if(coAgentId != "" && coAgentOther != "")
                 {
                     alert("Choose House from dropdown, input house data, check date, co-agent, or agency type of transaction.");
                 }
-                else if(agentInfoTypeEntered != "" && agentInfoOther != "")
+                else if(agentInfoTypeEnteredId != "" && agentInfoOther != "")
                 {
                     alert("Choose House from dropdown, input house data, check date, co-agent, or agency type of transaction.");
                 }

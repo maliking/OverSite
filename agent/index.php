@@ -1604,12 +1604,12 @@ $keys = array_keys($response);
                 // alert(agentSelected);
 
                 // alert(houseSelected);
-                if(coAgentName != "" && coAgentOther != "" )
+                if(coAgentId != "" && coAgentOther != "" )
                 {
                     // alert("Choose House from dropdown, input house data, check date, co-agent, or agency type of transaction.");
                     alert("In house and non-in house co-agent fields where filled. Remove one.");
                 }
-                else if(agentInfoTypeEntered != "" && agentInfoOther != "")
+                else if(agentInfoTypeEnteredId != "" && agentInfoOther != "")
                 {
                     // alert("Choose House from dropdown, input house data, check date, co-agent, or agency type of transaction.");
                     alert("In house and non-in house Seller/Buyer fields where filled. Remove one.");
